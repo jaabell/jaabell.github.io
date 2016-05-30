@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="author" content="Jose Abell">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <title>Jose Abell's Research Blog - compiler | Jose Abell's Research Blog</title>
+
+        <link rel="alternate" type="application/atom+xml" title="Jose Abell's Research Blog blog atom feed" href="/feeds/all.atom.xml" />
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+        <link rel="stylesheet" href="/theme/css/pygments.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
+
+<!-- Using MathJax, with the delimiters $ -->
+<!-- Conflict with pygments for the .mo and .mi -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  "HTML-CSS": {
+  styles: {
+  ".MathJax .mo, .MathJax .mi": {color: "black ! important"}}
+  },
+  tex2jax: {inlineMath: [['\\(','\\)'],['$','$'], ['\\\\(','\\\\)']],processEscapes: true}
+  });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    </head>
+
+    <body>
+        <header class="main-header" style="background: url('/images/header.png') no-repeat center center #DDD; background-size: 100%;">
+        <h1 id="title"> José Abell's research blog</h1>
+        <hr>
+        <nav>
+            <div class="container">
+            <ul>
+                <li><a href="/" title="Home">Home</a></li>
+                        <li><a href="http://www.joseabell.com/pages/01about.html">About</a></li>
+                        <li><a href="http://www.joseabell.com/pages/02research.html">Research</a></li>
+                        <li><a href="http://www.joseabell.com/pages/03teaching.html">Teaching</a></li>
+                        <li><a href="http://www.joseabell.com/pages/04publications.html">Publications</a></li>
+                        <li><a href="http://www.joseabell.com/pages/05tools.html">Tools</a></li>
+                        <li><a href="http://www.joseabell.com/pages/06cv.html">CV</a></li>
+                        <li><a href="http://www.joseabell.com/pages/07links.html">Links</a></li>
+            </ul>
+            </div>
+        </nav>
+        </header>
+
+<div class="container index">
+
+  <article>
+    <header>
+      <h2><a href="http://www.joseabell.com/nts-note-to-self-creating-dynamically-linked-libraries.html">NTS (Note-To-Self): Creating dynamically linked libraries</a></h2>
+      <time datetime="" title="2013-10-28T18:57:00-07:00" pubdate>Mon 28 October 2013</time>
+    </header>
+
+    <div class="article_content">
+      <p>A nice extensive tutorial can be found <a href="http://www.yolinux.com/TUTORIALS/LibraryArchives-StaticAndDynamic.html">here</a>.</p>
+<p>In a&nbsp;nutshell:</p>
+<pre><code>:::shell.BashLexer
+gcc -Wall -fPIC -c \*.c  
+gcc -shared -Wl,-soname,libctest.so.1 -o libctest.so.1.0 \*.o  
+mv libctest.so.1.0 /opt/lib  
+ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so.1  
+ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so
+</code></pre>
+<!--more-->
+
+<ul>
+<li><code>-Wall</code>: include warnings. See man page for warnings&nbsp;specified.</li>
+<li><code>-fPIC</code>: Compiler directive to output position independent code, a
+    characteristic required by shared libraries. Also see&nbsp;&#8220;-fpic&#8221;.</li>
+<li><code>-shared</code>: Produce a shared object which can then be linked with ...</li></ul></!--more-->
+    </div>
+
+    <div class="meta">
+      <div>
+        <a href="http://www.joseabell.com/nts-note-to-self-creating-dynamically-linked-libraries.html" class="read_more">Read more &#8594;</a>
+      </div>
+
+      <div>
+            <a href="http://www.joseabell.com/tag/c.html" class="tag">c++</a>
+            <a href="http://www.joseabell.com/tag/coding.html" class="tag">coding</a>
+            <a href="http://www.joseabell.com/tag/compiler.html" class="tag">compiler</a>
+            <a href="http://www.joseabell.com/tag/gcc.html" class="tag">gcc</a>
+            <a href="http://www.joseabell.com/tag/library.html" class="tag">library</a>
+            <a href="http://www.joseabell.com/tag/linux.html" class="tag">linux</a>
+            <a href="http://www.joseabell.com/tag/note-to-self.html" class="tag">note to self</a>
+            <a href="http://www.joseabell.com/tag/programming.html" class="tag">programming</a>
+            <a href="http://www.joseabell.com/tag/reminder.html" class="tag">reminder</a>
+            <a href="http://www.joseabell.com/tag/tutorial.html" class="tag">tutorial</a>
+      </div>
+
+    </div>
+
+  </article>
+  <div class="separator">&equiv;</div>
+
+  <nav class="pagination row">
+    <div class="col-xs-6 left">
+    </div>
+    <div class="col-xs-6 right">
+    </div>
+  </nav>
+
+  </div>
+
+</div>
+
+
+<center>
+<div class="textwidget">
+  <div id="clustrmaps-widget"></div>
+  <script type="text/javascript">var _clustrmaps = {'url' : 'http://www.joseabell.com', 'user' : 1114615, 'server' : '2', 'id' : 'clustrmaps-widget', 'version' : 1, 'date' : '2013-09-27', 'lang' : 'en', 'corners' : 'square' };(function (){ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'http://www2.clustrmaps.com/counter/map.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);})();
+  </script>
+  <noscript>
+    <a href="http://www2.clustrmaps.com/user/ba61101f7"><img src="http://www2.clustrmaps.com/stats/maps-no_clusters/www.joseabell.com-thumb.jpg" alt="Locations of visitors to this page" />
+    </a>
+  </noscript>
+</div>
+</center>
+
+    </body>
+</html>

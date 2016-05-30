@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="author" content="Jose Abell">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <title>Useful Commands | Jose Abell's Research Blog</title>
+
+        <link rel="alternate" type="application/atom+xml" title="Jose Abell's Research Blog blog atom feed" href="/feeds/all.atom.xml" />
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+        <link rel="stylesheet" href="/theme/css/pygments.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
+
+<!-- Using MathJax, with the delimiters $ -->
+<!-- Conflict with pygments for the .mo and .mi -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  "HTML-CSS": {
+  styles: {
+  ".MathJax .mo, .MathJax .mi": {color: "black ! important"}}
+  },
+  tex2jax: {inlineMath: [['\\(','\\)'],['$','$'], ['\\\\(','\\\\)']],processEscapes: true}
+  });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    </head>
+
+    <body>
+        <header class="main-header" style="background: url('/images/header.png') no-repeat center center #DDD; background-size: 100%;">
+        <h1 id="title"> José Abell's research blog</h1>
+        <hr>
+        <nav>
+            <div class="container">
+            <ul>
+                <li><a href="/" title="Home">Home</a></li>
+                        <li><a href="http://www.joseabell.com/pages/01about.html">About</a></li>
+                        <li><a href="http://www.joseabell.com/pages/02research.html">Research</a></li>
+                        <li><a href="http://www.joseabell.com/pages/03teaching.html">Teaching</a></li>
+                        <li><a href="http://www.joseabell.com/pages/04publications.html">Publications</a></li>
+                        <li><a href="http://www.joseabell.com/pages/05tools.html">Tools</a></li>
+                        <li><a href="http://www.joseabell.com/pages/06cv.html">CV</a></li>
+                        <li><a href="http://www.joseabell.com/pages/07links.html">Links</a></li>
+            </ul>
+            </div>
+        </nav>
+        </header>
+
+<div class="container post">
+
+    <article>
+        <header>
+            <h1>Useful Commands</h1>
+                <time datetime="page.date.isoformat()" pubdate>Wed 25 June 2014</time>
+        </header>
+
+        <div class="article_content">
+            <h2 id="table-of-contents">Table of&nbsp;Contents</h2>
+<div class="toc">
+<ul>
+<li><a href="#table-of-contents">Table of&nbsp;Contents</a></li>
+<li><a href="#linux-management">Linux&nbsp;Management</a></li>
+<li><a href="#git-management">Git&nbsp;Management</a></li>
+<li><a href="#managing-gitolite">Managing&nbsp;gitolite</a></li>
+<li><a href="#python-cool-stuff">Python cool stuff</a><ul>
+<li><a href="#iteration-awesomeness">Iteration&nbsp;awesomeness.</a></li>
+<li><a href="#ipython-notebook">IPython&nbsp;Notebook</a></li>
+<li><a href="#ipython-notebook-server">IPython Notebook server</a><ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#setup">Setup</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#c">C++</a></li>
+<li><a href="#other-cool-stuff">Other cool stuff</a><ul>
+<li><a href="#making-videos-of-stuff">Making videos of stuff</a><ul>
+<li><a href="#screen-capture-streaming-making-desktop-videos-with-audio">Screen capture / streaming / making desktop videos with&nbsp;audio</a></li>
+<li><a href="#making-a-movie-from-separate-png-images">Making a movie from separate png&nbsp;images.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#debugging">Debugging!</a></li>
+<li><a href="#website-management-with-pelican">Website Management (with&nbsp;pelican)</a></li>
+<li><a href="#apache-management">Apache&nbsp;management</a></li>
+<li><a href="#tweaks-to-bashrc">Tweaks to&nbsp;.bashrc</a></li>
+</ul>
+</div>
+<h2 id="linux-management">Linux&nbsp;Management</h2>
+<p>To use find to remove&nbsp;files</p>
+<pre><code>find . -name "*.o" -exec rm {} \;
+</code></pre>
+<p>To find and delete files matching a criteria but not&nbsp;another</p>
+<pre><code>find . -depth -name "*.pdf" -prune -not -name "*graded.pdf" -delete
+</code></pre>
+<p>From: <a href="http://rushi.wordpress.com/2008/08/05/find-replace-across-multiple-files-in-linux/">rushi.wordpress.com/2008/08/05/find-replace-across-multiple-files-in-linux/</a>)</p>
+<pre><code>find . -name "*.cpp" -print | xargs sed -i 's/jose/jaabell/g'
+</code></pre>
+<h2 id="git-management">Git&nbsp;Management</h2>
+<p>Create and checkout a local branch and set it up to track a remote&nbsp;branch</p>
+<pre><code>git checkout -b master -t origin/master
+</code></pre>
+<p>Where <code>origin/master</code> is a remote&nbsp;branch.</p>
+<p>Git history&nbsp;cleanup:</p>
+<pre><code>git gc --aggressive
+</code></pre>
+<p>Adding a&nbsp;branch</p>
+<pre><code>git push &lt;remote-name&gt; &lt;branch-name&gt;
+</code></pre>
+<p>Formally git push <remote-name> <local-branch-name>:<remote-branch-name>
+But when you omit one, it assumes both names are the same.&nbsp;Do:</p>
+<pre><code>git push -u &lt;remote-name&gt; &lt;branch-name&gt;
+</code></pre>
+<p>So that a subsequent git pull will know what to do (set upstream&nbsp;tracking)</p>
+<p>Setting up a non-empty folder to be a git&nbsp;repo</p>
+<pre><code>cd &lt;localdir&gt;
+git init
+git add .
+git commit -m 'message'
+git remote add origin &lt;url&gt;
+git push -u origin master
+</code></pre>
+<h2 id="managing-gitolite">Managing&nbsp;gitolite</h2>
+<p>Checkout the gitolite admin&nbsp;repo:</p>
+<pre><code>git clone git@powa:gitolite-admin gadmin
+</code></pre>
+<p>To add a user <span class="caps">SSH</span> key do the&nbsp;following:</p>
+<ul>
+<li>Add it to the&nbsp;keydir</li>
+<li>
+<p>Multiple keys for same user either in subfolders or using @ ie.&nbsp;equivalently</p>
+<ul>
+<li><code>jose@home.pub</code></li>
+<li><code>home/jose.pub</code></li>
+</ul>
+</li>
+<li>
+<p>Stage it and commit&nbsp;it</p>
+<pre><code>git add . 
+git commit -m "message"
+</code></pre>
+</li>
+<li>
+<p>Push to the gitolite&nbsp;repo</p>
+<pre><code>git push
+</code></pre>
+</li>
+</ul>
+<p>Changing admin&nbsp;settings</p>
+<ul>
+<li>
+<p>Open the file <code>gitolite-admin/cong/gitolite.conf</code></p>
+</li>
+<li>
+<p>Make changes, commit and&nbsp;push</p>
+<pre><code>git commit -am "message"
+git push
+</code></pre>
+</li>
+</ul>
+<p>If directly changing stuff in the gitolite server (ie. logging in through ssh into the git&nbsp;user)</p>
+<ul>
+<li>
+<p>Remember to&nbsp;use:</p>
+<pre><code>ssh (myusername)@powa.engr.ucdavis.edu
+su git  [input the typical CompGeoMech password]
+</code></pre>
+</li>
+<li>
+<p>Make some changes and&nbsp;then </p>
+<pre><code>gl-setup
+gl-admin-push
+</code></pre>
+</li>
+</ul>
+<p>To add a new&nbsp;repo:</p>
+<ul>
+<li>Add a new line into  the <code>conf/gitolite.conf</code> file</li>
+<li>Push changes into&nbsp;gitolite</li>
+<li>Pull the new (empty)&nbsp;repo</li>
+<li>Add stuff to it and&nbsp;push</li>
+<li>Good to&nbsp;go!</li>
+</ul>
+<h2 id="python-cool-stuff">Python cool&nbsp;stuff</h2>
+<h3 id="iteration-awesomeness">Iteration&nbsp;awesomeness.</h3>
+<p>Define,</p>
+<pre><code>a = ['a1', 'a2', 'a3']
+b = ['b1', 'b2']
+</code></pre>
+<p>will iterate 3 times, the last iteration, b will be&nbsp;None.</p>
+<pre><code>print "Map:"
+for x, y in map(None, a, b):
+  print x, y
+</code></pre>
+<p>will iterate 2 times,
+the third value of a will not be&nbsp;used</p>
+<pre><code>print "Zip:"
+for x, y in zip(a, b):
+  print x, y
+</code></pre>
+<p>will iterate 6 times,
+it will iterate over each b, for each a
+producing a slightly different&nbsp;output</p>
+<pre><code>print "List:"
+for x, y in [(x,y) for x in a for y in b]:
+    print x, y
+</code></pre>
+<h3 id="ipython-notebook">IPython&nbsp;Notebook</h3>
+<p>Install&nbsp;pip</p>
+<pre><code>sudo apt-get install python-pip
+sudo pip install ipython --upgrade
+sudo pip install ipython[notebook]
+</code></pre>
+<h3 id="ipython-notebook-server">IPython Notebook&nbsp;server</h3>
+<h4 id="installation">Installation</h4>
+<pre><code>sudo apt-get install ipython-notebook
+</code></pre>
+<h4 id="setup">Setup</h4>
+<pre><code>ipython
+from IPython.lib import passwd
+passwd()
+
+#Enter passwd
+#u'sha1:e6356b6e0ee8:1906d7f56995bc18925c4af976ac3a588bc10913'
+</code></pre>
+<p>Create an <span class="caps">SSL</span> certificate to encrypt session
+    openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out&nbsp;mycert.pem</p>
+<p>Edit <code>ipython_notebook_config.py</code> to look something like&nbsp;this</p>
+<pre><code>c = get_config()
+c.NotebookApp.open_browser = False
+c.NotebookApp.port = 16562
+c.NotebookApp.certfile = u'/home/jaabell/ipython_notebook_ssl_certificate.pem'
+c.NotebookApp.password = u'sha1:e6356b6e0ee8:1906d7f56995bc18925c4af976ac3a588bc10913'
+c.IPKernelApp.ip = u'*'
+c.IPKernelApp.pylab = 'inline'
+c.FileNotebookManager.notebook_dir = u'/home/jaabell/www/blog/content/ipython_notebooks'
+</code></pre>
+<p>Create a profile for the&nbsp;server</p>
+<pre><code>ipython profile create nbserver
+</code></pre>
+<p>Edit <code>~/.config/ipython/profile_nbserver/ipython_notebook_config.py</code></p>
+<p>Run the&nbsp;server </p>
+<pre><code> ipython notebook --profile=nbserver
+</code></pre>
+<p>Keep the server alive with <code>supervisor</code></p>
+<pre><code>sudo apt-get install supervisor
+</code></pre>
+<h2 id="c">C++</h2>
+<p>To view contents of a static library&nbsp;(*.a) </p>
+<pre><code>nm -C &lt;PATH_TO_LIB&gt;.a &gt; contents.txt
+</code></pre>
+<p>The <code>-C</code> flag is for&nbsp;C++.</p>
+<h2 id="other-cool-stuff">Other cool&nbsp;stuff</h2>
+<h3 id="making-videos-of-stuff">Making videos of&nbsp;stuff</h3>
+<h4 id="screen-capture-streaming-making-desktop-videos-with-audio">Screen capture / streaming / making desktop videos with&nbsp;audio</h4>
+<ul>
+<li>
+<p>on bin/recordscreen (python&nbsp;script)</p>
+<p>see recordscreen&nbsp;&#8212;help</p>
+</li>
+<li>
+<p>kazam (sudo apt-get install&nbsp;kazam)</p>
+</li>
+</ul>
+<h4 id="making-a-movie-from-separate-png-images">Making a movie from separate png&nbsp;images.</h4>
+<p>(From <a href="http://www.miscdebris.net/blog/2008/04/28/create-a-movie-file-from-single-image-files-png-jpegs/">here</a>)</p>
+<pre><code>ffmpeg -qscale 5 -r 20 -b 9600 -i img%04d.png movie.mp4
+</code></pre>
+<p>The options&nbsp;are</p>
+<ul>
+<li><code>qscale 5</code>&#8230;  define fixed video quantizer scale (<span class="caps">VBR</span>) where 1 is the best and 31 the worst. Since mpeg/jpeg has problems to compress line graphics it’s a good idea to set this variable close to 1. You get a big movie file, but otherwise the movie doesn’t look, well, that&nbsp;good.</li>
+<li><code>r</code>:&nbsp;framerate</li>
+<li><code>b</code>: video&nbsp;bitrate</li>
+<li><code>i</code>: input files, <code>%04d</code> says that we have four numbers in the filename where the number is filled with zeros left of&nbsp;it.</li>
+</ul>
+<p><code>movie.mp4</code> is the filename, the extension says that it is a quicktime movie. You can also create a Macromedia Flash movie by using the .flv&nbsp;extension.</p>
+<h2 id="debugging">Debugging!</h2>
+<p>On Ubuntu <code>gdb</code> attaching to processes is forbidden&#8230; because hackers. To&nbsp;allow:</p>
+<pre><code>echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+</code></pre>
+<p>To permanently allow it edit <code>/etc/sysctl.d/10-ptrace.conf</code> and change the&nbsp;line:</p>
+<pre><code>kernel.yama.ptrace_scope = 1
+</code></pre>
+<p>To&nbsp;read</p>
+<pre><code>kernel.yama.ptrace_scope = 0
+</code></pre>
+<h2 id="website-management-with-pelican">Website Management (with&nbsp;pelican)</h2>
+<p>Install pelican using tutorials in&nbsp;website.</p>
+<p>Setup:
+    sudo apt-get install python-pip 
+    sudo pip install pelican fabric
+    sudo pip install pelican markdown typogrify pelican_youtube&nbsp;ipython</p>
+<p>Use fabric or make to&nbsp;build</p>
+<p>Using&nbsp;vitualenv</p>
+<pre><code>virtualenv ~/virtualenvs/pelican
+cd ~/virtualenvs/pelican
+. bin/activate
+</code></pre>
+<p>Download the [ipythonnb&nbsp;plugin][https://github.com/danielfrg/pelican-ipythonnb]</p>
+<pre><code>git clone https://github.com/danielfrg/pelican-ipythonnb.git
+</code></pre>
+<p>Will need <a href="http://johnmacfarlane.net/pandoc/">pandoc</a> </p>
+<pre><code>sudo apt-get install pandoc pandoc-cite
+</code></pre>
+<h2 id="apache-management">Apache&nbsp;management</h2>
+<p>Once apache is&nbsp;running</p>
+<p>To create a new&nbsp;website</p>
+<ul>
+<li>
+<p>Create a new virtual host inside <code>sites-available</code>. Here is the code for my&nbsp;website:</p>
+<p><VirtualHost *>
+      ServerAdmin ja.abell@gmail.co,
+      ServerName www.joseabell.com
+      DocumentRoot /var/www/joseabell.com/
+      <Directory />
+              Options FollowSymLinks
+              AllowOverride None
+      </Directory>
+      <Directory /var/www/joseabell.com/>
+              Options Indexes FollowSymLinks MultiViews
+              AllowOverride None
+              Order allow,deny
+              allow from all
+      </Directory>
+</VirtualHost></p>
+</li>
+<li>
+<p>Link from <code>sites-available</code> to <code>sites-enabled</code></p>
+</li>
+<li>
+<p>Restart&nbsp;Apache</p>
+<p>/etc/init.d/apache2&nbsp;restart</p>
+</li>
+</ul>
+<h2 id="tweaks-to-bashrc">Tweaks to&nbsp;.bashrc</h2>
+<p>Add screen name to&nbsp;prompt</p>
+<pre><code>#For screen
+if [ "$TERM" = screen ]; then
+    PS1="(screen,$STY)\n$PS1"
+fi
+</code></pre>
+        </div>
+
+    </article>
+</div>
+
+    </body>
+</html>

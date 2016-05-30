@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abell's Research Blog</title><link href="http://www.joseabell.com/" rel="alternate"></link><link href="http://www.joseabell.com/feeds/jaabell.atom.xml" rel="self"></link><id>http://www.joseabell.com/</id><updated>2014-06-24T10:48:59-07:00</updated><entry><title>Site now powered by pelican!</title><link href="http://www.joseabell.com/site-moved-to-pelican.html" rel="alternate"></link><updated>2014-06-24T10:48:59-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2014-06-24:site-moved-to-pelican.html</id><summary type="html">&lt;p&gt;I finally completed the transition from WordPress to &lt;a href="www.getpelican.com"&gt;Pelican&lt;/a&gt;. The moment was right. Pelican is more
+appropriate for me as it is much simpler to manage (I host my own webpage), more flexible in terms
+of what I can do with the blog, requires no php or database&amp;nbsp;knowledge. &lt;/p&gt;
+&lt;p&gt;Pelican is a python powered static &lt;span class="caps"&gt;HTML&lt;/span&gt; generator. I set-up a heierarchy of folders where I store
+my content. Web content is generated using the Markdown text syntax. Pelican uses these &lt;a href="http://daringfireball.net/projects/markdown/"&gt;markdown&lt;/a&gt;
+files and the folder structure to generate the website &lt;span class="caps"&gt;HTML&lt;/span&gt;. &lt;/p&gt;
+&lt;p&gt;Static &lt;span class="caps"&gt;HTML&lt;/span&gt; has some advantages over a database with server-side logic based website. The most
+important for me is speed and low memory usage, because I want to host my own&amp;nbsp;website. &lt;/p&gt;
+&lt;p&gt;Also, it makes it easier to share code as I can include code snippets directly in the markdown text
+file and it gets highlighted using pygments (python&amp;nbsp;module).&lt;/p&gt;
+&lt;p&gt;Thanks to &lt;a href="http://danielfrg.com/blog/2013/02/16/blogging-pelican-ipython-notebook/"&gt;this&lt;/a&gt; I can
+also now (to do) use python notebooks to blog directly. This is a nice feature as I will be
+blogging mainly about scientific computing, showing some example here and there and&amp;nbsp;such.&lt;/p&gt;
+&lt;p&gt;Finally, I can version control the website using &lt;a href="http://git-scm.com/"&gt;git&lt;/a&gt; and automate site
+updating using a git-hook on the server (thank &lt;a href="http://www.textandhubris.com/automate-pelican-with-git.html"&gt;this post&lt;/a&gt;).
+This means I can clone my git repo, make changes and push them and the server will automatically
+generate the website and deploy&amp;nbsp;it!&lt;/p&gt;
+&lt;p&gt;I love&amp;nbsp;pelican!&lt;/p&gt;</summary><category term="pelican"></category><category term="blog"></category><category term="hacker"></category></entry><entry><title>SNE # 01. Example of ESSI simulation and visualization with visitESSI</title><link href="http://www.joseabell.com/sne-01-example-of-essi-simulation-and-visualization-with-visitessi.html" rel="alternate"></link><updated>2014-05-16T19:37:00-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2014-05-16:sne-01-example-of-essi-simulation-and-visualization-with-visitessi.html</id><summary type="html">&lt;p&gt;These are the results of a simple elastic-domain simulation. Mesh
+consists&amp;nbsp;of&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span style="line-height: 14px;"&gt;154523 Nodes (46359&amp;nbsp;DOFs)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;1250 27 node bricks (&lt;span class="caps"&gt;LT&lt;/span&gt;&amp;nbsp;formulation)&lt;/li&gt;
+&lt;li&gt;1200 time-steps (dt =&amp;nbsp;0.01s)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Results were stored in the new format of output for &lt;span class="caps"&gt;ESSI&lt;/span&gt; simulator and
+visualized in VisIt post-processor where the movie was created.&lt;br /&gt;
+&lt;!--more--&gt;&lt;br /&gt;
+&lt;!--http://youtu.be/VURohwb-OJQ--&gt;&lt;/p&gt;
+&lt;div class="youtube" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/VURohwb-OJQ" frameborder="0"&gt;&lt;/iframe&gt;
+&lt;/div&gt;</summary><category term="animation"></category><category term="c++"></category><category term="ESSI"></category><category term="linux"></category><category term="post-processing"></category><category term="small numerical experiments"></category><category term="sne"></category><category term="visitESSI"></category><category term="movie"></category></entry><entry><title>NTS (Note-To-Self): Creating dynamically linked libraries</title><link href="http://www.joseabell.com/nts-note-to-self-creating-dynamically-linked-libraries.html" rel="alternate"></link><updated>2013-10-28T18:57:00-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2013-10-28:nts-note-to-self-creating-dynamically-linked-libraries.html</id><summary type="html">&lt;p&gt;A nice extensive tutorial can be found &lt;a href="http://www.yolinux.com/TUTORIALS/LibraryArchives-StaticAndDynamic.html"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In a&amp;nbsp;nutshell:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;:::shell.BashLexer
+gcc -Wall -fPIC -c \*.c  
+gcc -shared -Wl,-soname,libctest.so.1 -o libctest.so.1.0 \*.o  
+mv libctest.so.1.0 /opt/lib  
+ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so.1  
+ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so
+&lt;/code&gt;&lt;/pre&gt;
+&lt;!--more--&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-Wall&lt;/code&gt;: include warnings. See man page for warnings&amp;nbsp;specified.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-fPIC&lt;/code&gt;: Compiler directive to output position independent code, a
+    characteristic required by shared libraries. Also see&amp;nbsp;&amp;#8220;-fpic&amp;#8221;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-shared&lt;/code&gt;: Produce a shared object which can then be linked with other objects
+    to form an&amp;nbsp;executable.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-Wl,options&lt;/code&gt;: Pass options to&amp;nbsp;linker.&lt;/li&gt;
+&lt;li&gt;In this example the options to be passed on to the linker are: &lt;code&gt;-soname
+    libctest.so.1&lt;/code&gt;. The name after the &lt;code&gt;-o&lt;/code&gt; option is passed to&amp;nbsp;gcc.&lt;/li&gt;
+&lt;li&gt;Option &lt;code&gt;-o&lt;/code&gt;:
+    Output of operation. In this case the name of the shared object to
+    be output will be &lt;code&gt;libctest.so.1.0&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;See note on &amp;#8220;Library&amp;nbsp;Paths&amp;#8221;&lt;/p&gt;</summary><category term="c++"></category><category term="coding"></category><category term="compiler"></category><category term="gcc"></category><category term="library"></category><category term="linux"></category><category term="note to self"></category><category term="programming"></category><category term="reminder"></category><category term="tutorial"></category></entry><entry><title>SNE # 0. Stochastic inverse pendulum</title><link href="http://www.joseabell.com/sne-0-stochastic-inverse-pendulum.html" rel="alternate"></link><updated>2013-10-09T20:37:00-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2013-10-09:sne-0-stochastic-inverse-pendulum.html</id><summary type="html">&lt;p&gt;This is the first installment of &amp;#8220;Small Numerical Experiments&amp;#8221; (&lt;span class="caps"&gt;SNE&lt;/span&gt;), a
+section where I upload and comment (briefly) some small numerical
+example. The purpose is to prove a point to myself, test some code,
+ideas,&amp;nbsp;etc.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/sne/01/pendulum_medium.png"&gt;&lt;img alt="pendulum" src="/images/sne/01/pendulum_medium.png" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In this first post I will explore the response of a &lt;em&gt;stochastic inverse
+pendulum.&lt;/em&gt; What I mean in this case is an inverse pendulum (shown left)
+with a random initial condition. The purpose is to obtain the
+time-evolving probability density function (&lt;span class="caps"&gt;PDF&lt;/span&gt;) of the pendulum&amp;#8217;s
+position. I will be doing Monte-Carlo simulations to obtain an
+approximation to this &lt;span class="caps"&gt;PDF&lt;/span&gt;.&lt;br /&gt;
+&lt;!--more--&gt;&lt;br /&gt;
+The response of the system is governed by the following nonlinear
+ordinary differential equation in terms of the angular displacement
+&lt;mathjax&gt;$\theta$&lt;/mathjax&gt; with respect to the&amp;nbsp;vertical:&lt;/p&gt;
+&lt;p&gt;&lt;mathjax&gt;$$
+ m l^2 \ddot{\theta} + c \dot{\theta} - mgl \sin \theta = 0
+$$&lt;/mathjax&gt;&lt;/p&gt;
+&lt;p&gt;Subject to an initial condition &lt;mathjax&gt;$$ \theta(0) = \theta_0$$&lt;/mathjax&gt; and
+&lt;mathjax&gt;$$ \dot{\theta}(0) =\dot{\theta}_0$$&lt;/mathjax&gt;. In this case, the initial
+angular velocity is set to zero and the initial angular displacement is
+set to have a Gaussian random distribution with mean zero and standard
+deviation of 10 degrees. The linear damping constant is set to 10%
+critical damping the system would have in the case of small oscillations
+about the final equilibrium point &lt;mathjax&gt;$$\theta = 180^{\circ}$$&lt;/mathjax&gt;.&lt;/p&gt;
+&lt;p&gt;The example is coded in python and solved using the &lt;em&gt;odeint &lt;/em&gt;solver
+available in &lt;a href="http://www.scipy.org"&gt;scipy&lt;/a&gt;. Here is an example response for a given nonzero
+initial&amp;nbsp;condition.&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/sne/01/one.png"&gt;&lt;img alt="one" src="/images/sne/01/one.png" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Doing 5000 Monte-Carlo draws and plotting all the responses together we
+get:&lt;a href="/images/sne/01/ensemble.png"&gt;&lt;img alt="ensemble" src="/images/sne/01/ensemble.png" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;About half of the the pendulums swing to the left and the other half to
+the right. This would result in a bimodal distribution and is a mere
+artifact of the mathematical model used. Indeed, what the model
+perceives as two distinct equilibrium points are actually the same
+position for the pendulum. This arises because of the periodicity in the
+&lt;mathjax&gt;$\sin()$&lt;/mathjax&gt; function.&lt;/p&gt;
+&lt;p&gt;From this set of motions a &lt;span class="caps"&gt;PDF&lt;/span&gt; may be computed for each time and
+animated to show the evolution of the &lt;span class="caps"&gt;PDF&lt;/span&gt; with&amp;nbsp;time.&lt;/p&gt;
+&lt;div class="youtube" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/7nzB6LfW2ys" frameborder="0"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The bimodal distribution obtained at the end is, therefore, an artifact,
+as the peaks correspond to the same final configuration for the system.
+In a more complex case it might not be possible to distinguish between
+peaks in PDFs which are real, ie. correspond to physically different
+configurations, from those that arise from deficiencies in the
+mathematical tool&amp;nbsp;used.&lt;/p&gt;
+&lt;p&gt;These spurious peaks generate unrealistic dispersion in the distribution
+of results. Is there a way to identify them and get rid of&amp;nbsp;them?&lt;/p&gt;
+&lt;p&gt;The following python code produces these&amp;nbsp;results.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;:::PythonLexer
+#!/bin/python  
+# -*- coding: utf-8 -*-  
+# Small numerical experiments # 00  
+"""  
+@SNE_number: 00  
+@Title: Stochastic inverse pendulum  
+@Idea: Show a case in which bifurcation behavior produces multimodal
+distribution.  
+@Tags: scipy, ode, stochastic, multimodal, bimodal, matplotlib,
+Monte-Carlo, animation, python  
+@Date: Created on Fri Oct 4 2013  
+@author: jaabell  
+"""
+
+import scipy as sp  
+import matplotlib.pylab as plt  
+from scipy.integrate import odeint
+
+N = 5000 #[] number of Monte-Carlo trials  
+mu_theta = 0.0 #[deg]  
+sigma_theta = 10 #[deg]  
+tmax = 10 #[s] Maximum time for simulation  
+dt = 0.01 #[s] Time step for integration  
+m = 1 #[]  
+g = 9.81 #[m/s\^2]  
+l = 0.50 #[m]  
+xi = 0.3 #[] Ratio of critical damping (for a regular pendulum under
+small deflections)  
+Nbins = 50 #[] Number of bins for computing histograms  
+theta_0_dot = 0.0 #[deg/sec] initial angular velocity for pendulums
+
+compute = False #Use this in an interactive session (ie. spyder) to
+avoid recomputing the Monte-Carlo runs
+
+c = 2*xi*m*l**2 #[N*m*s/rad] Damping constant  
+Nt = int(tmax/dt) #[] Number of simulation timesteps
+
+#Generate parameters for Monte-Carlo trials  
+mu_theta_rad = mu_theta*sp.pi/180  
+sigma_theta_rad = sigma_theta*sp.pi/180  
+thetas = sp.randn((N))*sigma_theta_rad + mu_theta_rad  
+t = sp.arange(0,tmax, dt)
+
+#Recast problem as a set of first order ODEs  
+b = -c/(m*l**2)  
+a = g/l  
+def func(y, t):  
+    return [y[1],a*sp.sin(y[0]) + b*y[1] ]
+
+def gradient(y,t):  
+    return [[0.0,1.0],[a*sp.cos(y[0]),b]]
+
+#Do the Monte-Carlo runs  
+if compute:  
+    yall = sp.zeros((Nt,N))  
+    i = 0  
+    for theta_0 in thetas:  
+        y0 = [theta_0*sp.pi/180, theta_0_dot*sp.pi/180]  
+        y = odeint(func, y0, t, Dfun=gradient)  
+        yall[:,i] = y[:,0]  
+        print "Case {} of {}".format(i,N)  
+        i+= 1
+
+# Some plotting (animation after a tutorial found in http://jakevdp.github.io/blog/2012/08/18/matplotlib-animation-tutorial/)  
+# Also look at http://matplotlib.org/api/animation_api.html  
+plt.close("all")
+
+from matplotlib import animation
+
+# First set up the figure, the axis, and the plot element we want to
+animate  
+fig = plt.figure()  
+ax = plt.axes(xlim=(-300, 300), ylim=(0, 10))  
+ax.grid()  
+ax.set_xticks(sp.linspace(-270,270,num=7))  
+ax.set_xlabel("$\\\theta$")  
+ax.set_ylabel("$f_{\\\theta}(\\\theta, t)$")
+
+line, = ax.plot([], [], lw=2)
+
+time_text = ax.text(-270, 9, '')#, transform=ax.transAxes)
+
+from scipy.interpolate import interp1d  
+probability_thresholds = sp.linspace(0,1,21)
+
+def myhistogram(y):  
+    yn = sp.array(y)  
+    yn.sort()  
+    cdf = sp.linspace(0,1,yn.size)  
+    y_bins = interp1d(cdf, yn, kind='linear', axis=-1, copy=True,
+    bounds_error=True)(probability_thresholds)  
+    return probability_thresholds, y_bins
+
+def init():  
+    line.set_data([],[])  
+    time_text.set_text("")  
+    return line, time_text
+
+def animate(i):  
+    cdf, y_bins = myhistogram(yall[i,:])  
+    pdf = sp.diff(cdf) / sp.diff(y_bins)  
+    y_bins_centers = 0.5*(y_bins[0:-1] + y_bins[1::])  
+    # pdf, y_bins = sp.histogram(yall[i,:], bins = Nbins, density =
+    True)  
+    # y_bins_centers = 0.5*(y_bins[0:-1] + y_bins[1::])  
+    line.set_data(y_bins_centers*180/sp.pi, pdf)  
+    time_text.set_text("Time = {0:4.2f} s".format(t[i]))  
+    return line, time_text
+
+anim = animation.FuncAnimation(fig, animate, init_func=init,  
+frames=1000, interval=1, blit=True)  
+#anim.save('basic_animation.mp4', fps=30, extra_args=['-vcodec',
+'libx264'])
+
+plt.show()
+
+#plt.figure()  
+#plt.plot(t,yall[:,0]*180/sp.pi)  
+#plt.grid()  
+#plt.yticks(sp.linspace(-270,270,num=13))  
+#plt.xlabel("$t$")  
+#plt.ylabel("$\\\theta(t)$")
+&lt;/code&gt;&lt;/pre&gt;&lt;script type= "text/javascript"&gt;
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+&lt;/script&gt;
+</summary><category term="animation"></category><category term="bimodal"></category><category term="matplotlib"></category><category term="Monte-Carlo"></category><category term="multimodal"></category><category term="ode"></category><category term="python"></category><category term="scipy"></category><category term="small numerical experiments"></category><category term="sne"></category><category term="stochastic"></category></entry></feed>

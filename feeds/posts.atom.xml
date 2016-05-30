@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abell's Research Blog</title><link href="http://www.joseabell.com/" rel="alternate"></link><link href="http://www.joseabell.com/feeds/posts.atom.xml" rel="self"></link><id>http://www.joseabell.com/</id><updated>2014-11-30T22:42:13-08:00</updated><entry><title>Simulation of a surface wave (Rayleigh)</title><link href="http://www.joseabell.com/simulation-of-a-surface-wave-English.html" rel="alternate"></link><updated>2014-11-30T22:42:13-08:00</updated><author><name>Jose Abell</name></author><id>tag:www.joseabell.com,2014-11-30:simulation-of-a-surface-wave-English.html</id><summary type="html">&lt;p&gt;This simulation, done in the &lt;span class="caps"&gt;UCD&lt;/span&gt; &lt;span class="caps"&gt;ESSI&lt;/span&gt; simulator and visualized in VisIt using VisIt-&lt;span class="caps"&gt;ESSI&lt;/span&gt; plugin, shows the passage of a surface wave (Rayleigh wave). The simulation consists on a surface impact on an elastic domain of 900m by 1800m depth, and a shear wave velocity of 1000km/s. Elliptical-retrograde motion can be seen as an illustration of Rayleigh&amp;nbsp;waves.&lt;/p&gt;
+&lt;p&gt;VisIt can be obtained &lt;a href="https://wci.llnl.gov/simulation/computer-codes/visit/"&gt;here&lt;/a&gt;, and the plugin &lt;a href="https://github.com/jaabell/visitESSI"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;!-- more   --&gt;
+
+&lt;!-- https://www.youtube.com/watch?v=mrT5L4xsKs0 --&gt;
+
+&lt;div class="youtube" align="left"&gt;
+&lt;iframe width="640" height="480" src="//www.youtube.com/embed/a1xBlIL6ZOM" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;</summary><category term="essi"></category><category term="visitessi"></category><category term="postprocessing"></category><category term="movie"></category></entry><entry><title>Visualizing ESSI output with VisIt-ESSI</title><link href="http://www.joseabell.com/visualizing-essi-output-with-visit-essi-English.html" rel="alternate"></link><updated>2014-11-23T11:34:38-08:00</updated><author><name>Jose Abell</name></author><id>tag:www.joseabell.com,2014-11-23:visualizing-essi-output-with-visit-essi-English.html</id><summary type="html">&lt;p&gt;VisIt-&lt;span class="caps"&gt;ESSI&lt;/span&gt; is a plugin for the VisIt post-processor created my CompGeoMech. 
+It allows for remote (soon parallel also) visualization of outputs produced
+by &lt;span class="caps"&gt;ESSI&lt;/span&gt; in the &lt;span class="caps"&gt;HDF5&lt;/span&gt; format&amp;nbsp;(*.h5.feioutput).&lt;/p&gt;
+&lt;p&gt;VisIt can be obtained &lt;a href="https://wci.llnl.gov/simulation/computer-codes/visit/"&gt;here&lt;/a&gt;, and the plugin &lt;a href="https://github.com/jaabell/visitESSI"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;!-- more   --&gt;
+
+&lt;!-- https://www.youtube.com/watch?v=mrT5L4xsKs0 --&gt;
+
+&lt;div class="youtube" align="left"&gt;
+&lt;iframe width="640" height="480" src="//www.youtube.com/embed/mrT5L4xsKs0" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;</summary><category term="tutorial"></category><category term="essi"></category><category term="visitessi"></category><category term="postprocessing"></category><category term="movie"></category></entry></feed>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="author" content="Jose Abell">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <title>CS261 - HW # 0 : Describe a parallel application | Jose Abell's Research Blog</title>
+
+        <link rel="alternate" type="application/atom+xml" title="Jose Abell's Research Blog blog atom feed" href="/feeds/all.atom.xml" />
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+        <link rel="stylesheet" href="/theme/css/pygments.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
+
+<!-- Using MathJax, with the delimiters $ -->
+<!-- Conflict with pygments for the .mo and .mi -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  "HTML-CSS": {
+  styles: {
+  ".MathJax .mo, .MathJax .mi": {color: "black ! important"}}
+  },
+  tex2jax: {inlineMath: [['\\(','\\)'],['$','$'], ['\\\\(','\\\\)']],processEscapes: true}
+  });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    </head>
+
+    <body>
+        <header class="main-header" style="background: url('/images/header.png') no-repeat center center #DDD; background-size: 100%;">
+        <h1 id="title"> José Abell's research blog</h1>
+        <hr>
+        <nav>
+            <div class="container">
+            <ul>
+                <li><a href="/" title="Home">Home</a></li>
+                        <li><a href="http://www.joseabell.com/pages/01about.html">About</a></li>
+                        <li><a href="http://www.joseabell.com/pages/02research.html">Research</a></li>
+                        <li><a href="http://www.joseabell.com/pages/03teaching.html">Teaching</a></li>
+                        <li><a href="http://www.joseabell.com/pages/04publications.html">Publications</a></li>
+                        <li><a href="http://www.joseabell.com/pages/05tools.html">Tools</a></li>
+                        <li><a href="http://www.joseabell.com/pages/06cv.html">CV</a></li>
+                        <li><a href="http://www.joseabell.com/pages/07links.html">Links</a></li>
+            </ul>
+            </div>
+        </nav>
+        </header>
+
+<div class="container post">
+
+    <article>
+        <header>
+            <h1>CS261 - HW # 0 : Describe a parallel application</h1>
+            <time datetime="article.date.isoformat()" pubdate>Thu 29 January 2015</time>
+        </header>
+
+        <div class="article_content">
+            <p>by: José&nbsp;Abell</p>
+<h1 id="biography">Biography</h1>
+<p>I am a PhD student at UCDavis <a href="http://sokocalo.engr.ucdavis.edu/~jeremic/">CompGeoMech</a> since Sept 2011, working on our in-house high-performance <span class="caps">FEM</span> simulation system. I come from Chile, where I did my undergraduate studies in structural engineering, leading to a professional degree in the specialty, at Pontificia Universidad Católica de Chile. Then, I proceeded to do my <span class="caps">MS</span> at the same institution in Civil Engineering. My <span class="caps">MS</span> thesis was more focused into the hazard part of earthquake&nbsp;engineering. </p>
+<p>My current research focuses on high-performance Earthquake-Soil-Structure interaction (<span class="caps">ESSI</span>) simulation. In a nutshell, it consists in modeling the effect of earthquake on structures from the earthquake source rupture process all the way up to a structure and its contents. The idea is to find out how and when a more accurate <span class="caps">ESSI</span> simulation yields different results from what is currently done in practice, and if this leads to safer and more economical&nbsp;designs. </p>
+<p>Parallel, high-performance computing is an enabling technology in this endeavor and there are many opportunities along the process where leveraging parallelism is possible. Meshing, simulation, and post-processing are important examples of&nbsp;these. </p>
+<p>Out of <span class="caps">CS261</span> is would like to get insight into what it takes to get extreme-performance out of simulation software in different architectures. In particular, I would like to know more about the following&nbsp;topics:</p>
+<ul>
+<li><span class="caps">MPI</span> usage patterns, how they come up, when to apply them, and&nbsp;tradeoffs.</li>
+<li>Shared memory parallel programming models (pthreads, OpenMP) and recurring software&nbsp;patterns. </li>
+<li>Parallel I/O&nbsp;techniques. </li>
+</ul>
+<h1 id="application-essi-simulator">Application: <span class="caps">ESSI</span>&nbsp;Simulator</h1>
+<p>Introduction</p>
+<h6 id="_1"></h6>
+<p>The <a href="http://sokocalo.engr.ucdavis.edu/~jeremic/ESSI_Simulator/">Real <span class="caps">ESSI</span> Simulator</a>[<a href="#essiref">1</a> and <a href="#essiref2">2</a>]  is a system for simulation of <span class="caps">ESSI</span> problems developed at <span class="caps">UC</span> Davis. It consists of software, hardware (a parallel computer: <span class="caps">ESSI</span> simulator machine), and documentation covering theory, usage and examples for the&nbsp;system.</p>
+<p><span class="caps">ESSI</span> program is a parallel object-oriented finite element analysis (<span class="caps">FEA</span>) software for non-linear time domain analysis of <span class="caps">ESSI</span> systems. The program is written in C++, using several external libraries to accomplish its goals, most notably <a href="www.open-mpi.org/">OpenMPI</a> (message passing interface) is used to achieve parallelism. Other libraries used within <span class="caps">ESSI</span> include: <a href="http://www.mcs.anl.gov/petsc/">PETSc</a> for parallel solution of system of equations, <a href="http://glaros.dtc.umn.edu/gkhome/metis/metis/overview"><span class="caps">METIS</span></a> and <a href="http://glaros.dtc.umn.edu/gkhome/metis/parmetis/overview">Par-<span class="caps">METIS</span></a> for graph partitioning, [<span class="caps">HDF5</span>]phdf5 for parallel output. Input is controlled by a custom domain-specific language designed specifically for this&nbsp;program. </p>
+<p>The software is meant to target a range of platforms from personal computers (desktop, laptop) to high-performance clusters and&nbsp;supercomputers. </p>
+<p>Parallelism in <span class="caps">FEA</span></p>
+<h6 id="_2"></h6>
+<p><img alt="npp" src="/images/other/npp.png" title="Nuclear power plant model and its decomposition." /></p>
+<p><em>(Left and middle) Nuclear power plant model showing different areas, (right) domain decomposition of&nbsp;model.</em></p>
+<p>Two main sources of parallelism can be identified in the context of nonlinear, dynamic finite element simulation: (i) system of equation solution and (ii) element-level constitutive integration. The first of these consists in the solution of a large linear system of equations (<span class="caps">SOE</span>) which arises from the discretization of the continuum problem (expressed as a set of coupled partial differential equations) in the spatial domain. The second source, comes from advancing the constitutive rate equations within each element once a global displacement increment is obtained from the solution of the <span class="caps">SOE</span>. This last part can account for a large part of the computational time for large problems and is embarrassingly&nbsp;parallel.</p>
+<p>An additional source of parallelism in <span class="caps">ESSI</span> simulations is the storage of the large ammounts of output generated by these simulations. The philosophy adopted by the <span class="caps">ESSI</span> simulator is to independently store the information necessary to build the model and restart the simulation at any given point. This gives rise to possibly terabytes of data in even modest models, with the additional problem on how to handle this. In <span class="caps">ESSI</span> this is done by using a <a href="http://en.wikipedia.org/wiki/Network_File_System">network filesystem</a> (<span class="caps">NFS</span>) to create a virtual parallel unique disk and the <span class="caps">HDF5</span> format to store the data. In a nutshell, <span class="caps">HDF5</span> implements a format for storing scientific (array-oriented) data in a portable way, and also allowing parallel read/write (it uses <span class="caps">MPI</span> I/O under the&nbsp;hood).</p>
+<p>A particularity of non-linear (plasticity based) <span class="caps">FEA</span> simulation is the unknown parts of the domain may plastify during simulations, leading to increased time spent integrating constitutive equations in that portion of the domain. What this implies is that, given an initial partition that balances the loading, this partition might become unbalanced if the domain plastifies. An adaptation of the dynamic domain decomposition method termed the &#8220;plastic domain decomposition&#8221;[<a href="#pdd">3</a>] or <span class="caps">PDD</span>, which achieves computational load re-balancing by repartitioning the element graph using computational time as one of the weighting&nbsp;factors.</p>
+<p>Brief design&nbsp;description</p>
+<h6 id="_3"></h6>
+<p><span class="caps">PDD</span> is implemented in <span class="caps">ESSI</span> using the <a href="http://en.wikipedia.org/wiki/Actor_model">Actor/Shadow</a> model of concurrency. Actors are autonomous and concurrently executing objects which execute asynchronously. Actors can create new actors and can  send messages to other actors. The Actor model is an Object-Oriented version of message passing in which the Actors represent processes and the methods sent between Actors represent communications (verbatim from [<a href="#lecture_notes">4</a>]).</p>
+<p><img alt="shadowactor" src="/images/other/shadowactor.png" title="Shadow/actor model." /></p>
+<p>Shadow-actors are the means in which actors communicate. Shadow-actors are objects which represent each running actor (remote) in a particular machine&#8217;s local address space. Shadow actors are in charge of transmitting and receiving messages from other actors and effectively encapsulate all <span class="caps">MPI</span> calls. In the object-oriented design of <span class="caps">ESSI</span> this model allows reuse of code and modularity when programming using <span class="caps">MPI</span>. </p>
+<p>Performance</p>
+<h6 id="_4"></h6>
+<p>As seen in [<a href="#pdd">3</a>], plastic-domain-decomposition method provides a viable way to re-balance a plastifying domain and has seen a reasonable scaling for low number of processes. A comprehensive scaling study on different platforms has not been yet&nbsp;performed. </p>
+<p>Currently, <span class="caps">ESSI</span>&#8217;s parallelization is exclusively done using <span class="caps">MPI</span>. This implies that for the lower end of the platforms we intend to cover (PCs, laptops) there is a performance hit due to improper use of shared memory architecture. This problem could be solved using a mixed design with threads for shared memory nodes and <span class="caps">MPI</span> for&nbsp;network. </p>
+<p>Another big bottleneck currently present is that all input is loaded into the master process, partitioned and then distributed. This results in an unnecessary load to the main process at startup and imposes a cap on how big a model might be solved. In order to solve this issue the parser must be parallelized to some extent, so that different (pre-partitioned) model parts can be loaded into different processors on&nbsp;startup. </p>
+<p><img alt="npp_build" src="/images/other/npp_build.png" title="Different physical zones of the NPP." /></p>
+<h1 id="references">References</h1>
+<ol>
+<li>
+<p><a id="essiref"></a> Boris Jeremić, Robert Roche-Rivera, Annie Kammerer, Nima Tafazzoli, Jose Abell M., Babak Kamranimoghaddam, Federico Pisano, ChangGyun Jeong and Benjamin Aldridge The <span class="caps">NRC</span> <span class="caps">ESSI</span> Simulator Program, Current Status in Proceedings of the Structural Mechanics in Reactor Technology (SMiRT) 2013 Conference, San Francisco, August 18-23,&nbsp;2013.</p>
+</li>
+<li>
+<p><a id="essiref2"></a> Boris  Jeremić, Guanzhou Jie, Matthias Preisig and Nima Tafazzoli. Time domain simulation of soil-foundation-structure interaction in non-uniform soils. Earthquake Engineering and Structural Dynamics, Volume 38, Issue 5, pp 699-718,&nbsp;2009.</p>
+</li>
+<li>
+<p><a id="pdd"></a> Boris Jeremić and Guanzhou Jie. Plastic Domain Decomposition Method for Parallel Elastic–Plastic Finite Element Computations in Geomechanics Report <span class="caps">UCD</span> CompGeoMech&nbsp;03–2007.</p>
+</li>
+<li>
+<p><a id="lecture_notes"></a> Lecture Notes on Computational Geomechanics: Inelastic Finite Elements for Pressure Sensitive Materials, <span class="caps">UC</span> Davis, CompGeoMech&nbsp;group</p>
+</li>
+</ol>
+        </div>
+
+        <div class="meta">
+            <div>
+                    <a href="http://www.joseabell.com/tag/cs261.html" class="tag">cs261</a>
+                    <a href="http://www.joseabell.com/tag/parallel-computing.html" class="tag">parallel computing</a>
+            </div>
+            <div>
+                <a id="comments-button" class="comments_btn" href="#disqus_thread">Show comments</a>
+            </div>
+        </div>
+    </article>
+</div>
+
+<script type="text/javascript">
+(function () {
+    'use strict';
+
+    // Global object
+    var App = {};
+
+    // Create button
+    App.commentsButton = document.getElementById('comments-button');
+
+    App.commentsButton.onclick = function () {
+        // Remove button action on click
+        App.commentsButton.onclick = function () {
+        }
+
+        // Create comments container
+        App.disqusContainer = document.createElement('div');
+        App.disqusContainer.setAttribute('id', 'disqus_thread');
+        // App.disqusContainer.setAttribute('class', 'container');
+
+        // Append container to body or div
+        // document.body.appendChild( App.disqusContainer );
+        var container = document.getElementsByClassName('container post')[0];
+        container.appendChild(App.disqusContainer);
+
+        // Your Disqus shortname
+        App.disqus_shortname = '';
+
+        // Embed Disqus
+        var dsq = document.createElement('script');
+
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + App.disqus_shortname + '.disqus.com/embed.js';
+
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+        window.scrollTo(0, dsq.offsetTop - 200);
+    };
+})();
+</script>
+
+
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abell's Research Blog</title><link href="http://www.joseabell.com/" rel="alternate"></link><link href="http://www.joseabell.com/feeds/uncategorized.atom.xml" rel="self"></link><id>http://www.joseabell.com/</id><updated>2013-10-28T18:57:00-07:00</updated><entry><title>NTS (Note-To-Self): Creating dynamically linked libraries</title><link href="http://www.joseabell.com/nts-note-to-self-creating-dynamically-linked-libraries.html" rel="alternate"></link><updated>2013-10-28T18:57:00-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2013-10-28:nts-note-to-self-creating-dynamically-linked-libraries.html</id><summary type="html">&lt;p&gt;A nice extensive tutorial can be found &lt;a href="http://www.yolinux.com/TUTORIALS/LibraryArchives-StaticAndDynamic.html"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In a&amp;nbsp;nutshell:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;:::shell.BashLexer
+gcc -Wall -fPIC -c \*.c  
+gcc -shared -Wl,-soname,libctest.so.1 -o libctest.so.1.0 \*.o  
+mv libctest.so.1.0 /opt/lib  
+ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so.1  
+ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so
+&lt;/code&gt;&lt;/pre&gt;
+&lt;!--more--&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-Wall&lt;/code&gt;: include warnings. See man page for warnings&amp;nbsp;specified.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-fPIC&lt;/code&gt;: Compiler directive to output position independent code, a
+    characteristic required by shared libraries. Also see&amp;nbsp;&amp;#8220;-fpic&amp;#8221;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-shared&lt;/code&gt;: Produce a shared object which can then be linked with other objects
+    to form an&amp;nbsp;executable.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-Wl,options&lt;/code&gt;: Pass options to&amp;nbsp;linker.&lt;/li&gt;
+&lt;li&gt;In this example the options to be passed on to the linker are: &lt;code&gt;-soname
+    libctest.so.1&lt;/code&gt;. The name after the &lt;code&gt;-o&lt;/code&gt; option is passed to&amp;nbsp;gcc.&lt;/li&gt;
+&lt;li&gt;Option &lt;code&gt;-o&lt;/code&gt;:
+    Output of operation. In this case the name of the shared object to
+    be output will be &lt;code&gt;libctest.so.1.0&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;See note on &amp;#8220;Library&amp;nbsp;Paths&amp;#8221;&lt;/p&gt;</summary><category term="c++"></category><category term="coding"></category><category term="compiler"></category><category term="gcc"></category><category term="library"></category><category term="linux"></category><category term="note to self"></category><category term="programming"></category><category term="reminder"></category><category term="tutorial"></category></entry></feed>

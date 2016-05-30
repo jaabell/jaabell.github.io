@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="author" content="Jose Abell">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <title>Site now powered by pelican! | Jose Abell's Research Blog</title>
+
+        <link rel="alternate" type="application/atom+xml" title="Jose Abell's Research Blog blog atom feed" href="/feeds/all.atom.xml" />
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+        <link rel="stylesheet" href="/theme/css/pygments.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
+
+<!-- Using MathJax, with the delimiters $ -->
+<!-- Conflict with pygments for the .mo and .mi -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  "HTML-CSS": {
+  styles: {
+  ".MathJax .mo, .MathJax .mi": {color: "black ! important"}}
+  },
+  tex2jax: {inlineMath: [['\\(','\\)'],['$','$'], ['\\\\(','\\\\)']],processEscapes: true}
+  });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    </head>
+
+    <body>
+        <header class="main-header" style="background: url('/images/header.png') no-repeat center center #DDD; background-size: 100%;">
+        <h1 id="title"> José Abell's research blog</h1>
+        <hr>
+        <nav>
+            <div class="container">
+            <ul>
+                <li><a href="/" title="Home">Home</a></li>
+                        <li><a href="http://www.joseabell.com/pages/01about.html">About</a></li>
+                        <li><a href="http://www.joseabell.com/pages/02research.html">Research</a></li>
+                        <li><a href="http://www.joseabell.com/pages/03teaching.html">Teaching</a></li>
+                        <li><a href="http://www.joseabell.com/pages/04publications.html">Publications</a></li>
+                        <li><a href="http://www.joseabell.com/pages/05tools.html">Tools</a></li>
+                        <li><a href="http://www.joseabell.com/pages/06cv.html">CV</a></li>
+                        <li><a href="http://www.joseabell.com/pages/07links.html">Links</a></li>
+            </ul>
+            </div>
+        </nav>
+        </header>
+
+<div class="container post">
+
+    <article>
+        <header>
+            <h1>Site now powered by pelican!</h1>
+            <time datetime="article.date.isoformat()" pubdate>Tue 24 June 2014</time>
+        </header>
+
+        <div class="article_content">
+            <p>I finally completed the transition from WordPress to <a href="www.getpelican.com">Pelican</a>. The moment was right. Pelican is more
+appropriate for me as it is much simpler to manage (I host my own webpage), more flexible in terms
+of what I can do with the blog, requires no php or database&nbsp;knowledge. </p>
+<p>Pelican is a python powered static <span class="caps">HTML</span> generator. I set-up a heierarchy of folders where I store
+my content. Web content is generated using the Markdown text syntax. Pelican uses these <a href="http://daringfireball.net/projects/markdown/">markdown</a>
+files and the folder structure to generate the website <span class="caps">HTML</span>. </p>
+<p>Static <span class="caps">HTML</span> has some advantages over a database with server-side logic based website. The most
+important for me is speed and low memory usage, because I want to host my own&nbsp;website. </p>
+<p>Also, it makes it easier to share code as I can include code snippets directly in the markdown text
+file and it gets highlighted using pygments (python&nbsp;module).</p>
+<p>Thanks to <a href="http://danielfrg.com/blog/2013/02/16/blogging-pelican-ipython-notebook/">this</a> I can
+also now (to do) use python notebooks to blog directly. This is a nice feature as I will be
+blogging mainly about scientific computing, showing some example here and there and&nbsp;such.</p>
+<p>Finally, I can version control the website using <a href="http://git-scm.com/">git</a> and automate site
+updating using a git-hook on the server (thank <a href="http://www.textandhubris.com/automate-pelican-with-git.html">this post</a>).
+This means I can clone my git repo, make changes and push them and the server will automatically
+generate the website and deploy&nbsp;it!</p>
+<p>I love&nbsp;pelican!</p>
+        </div>
+
+        <div class="meta">
+            <div>
+                    <a href="http://www.joseabell.com/tag/pelican.html" class="tag">pelican</a>
+                    <a href="http://www.joseabell.com/tag/blog.html" class="tag">blog</a>
+                    <a href="http://www.joseabell.com/tag/hacker.html" class="tag">hacker</a>
+            </div>
+            <div>
+                <a id="comments-button" class="comments_btn" href="#disqus_thread">Show comments</a>
+            </div>
+        </div>
+    </article>
+</div>
+
+<script type="text/javascript">
+(function () {
+    'use strict';
+
+    // Global object
+    var App = {};
+
+    // Create button
+    App.commentsButton = document.getElementById('comments-button');
+
+    App.commentsButton.onclick = function () {
+        // Remove button action on click
+        App.commentsButton.onclick = function () {
+        }
+
+        // Create comments container
+        App.disqusContainer = document.createElement('div');
+        App.disqusContainer.setAttribute('id', 'disqus_thread');
+        // App.disqusContainer.setAttribute('class', 'container');
+
+        // Append container to body or div
+        // document.body.appendChild( App.disqusContainer );
+        var container = document.getElementsByClassName('container post')[0];
+        container.appendChild(App.disqusContainer);
+
+        // Your Disqus shortname
+        App.disqus_shortname = '';
+
+        // Embed Disqus
+        var dsq = document.createElement('script');
+
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + App.disqus_shortname + '.disqus.com/embed.js';
+
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+        window.scrollTo(0, dsq.offsetTop - 200);
+    };
+})();
+</script>
+
+
+    </body>
+</html>
