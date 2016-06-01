@@ -6,7 +6,7 @@
         <meta name="author" content="Jose Abell">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        <title>Jose Abell's Research Blog - Articles by jaabell | Jose Abell's Research Blog</title>
+        <title>Home | Jose Abell's Research Blog</title>
 
         <link rel="alternate" type="application/atom+xml" title="Jose Abell's Research Blog blog atom feed" href="/feeds/all.atom.xml" />
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
@@ -200,37 +200,6 @@ move forward in terms of the power of analysis available to&nbsp;engineers. </p>
   <div class="separator">&equiv;</div>
   <article>
     <header>
-      <h2><a href="/site-moved-to-pelican.html">Site now powered by pelican!</a></h2>
-      <time datetime="" title="2014-06-24T10:48:59-07:00" pubdate>Tue 24 June 2014</time>
-    </header>
-
-    <div class="article_content">
-      <p>I finally completed the transition from WordPress to <a href="www.getpelican.com">Pelican</a>. The moment was right. Pelican is more
-appropriate for me as it is much simpler to manage (I host my own webpage), more flexible in terms
-of what I can do with the blog, requires no php or database&nbsp;knowledge. </p>
-<p>Pelican is a python powered static <span class="caps">HTML</span> generator. I set-up a heierarchy of folders where I store
-my content. Web content is generated using the Markdown text syntax. Pelican uses these <a href="http://daringfireball.net/projects/markdown/">markdown</a>
-files and the folder structure to generate the website <span class="caps">HTML</span>. </p>
-<p>Static <span class="caps">HTML</span> has some advantages over a database with ...</p>
-    </div>
-
-    <div class="meta">
-      <div>
-        <a href="/site-moved-to-pelican.html" class="read_more">Read more &#8594;</a>
-      </div>
-
-      <div>
-            <a href="/tag/pelican.html" class="tag">pelican</a>
-            <a href="/tag/blog.html" class="tag">blog</a>
-            <a href="/tag/hacker.html" class="tag">hacker</a>
-      </div>
-
-    </div>
-
-  </article>
-  <div class="separator">&equiv;</div>
-  <article>
-    <header>
       <h2><a href="/07links.html">Links</a></h2>
       <time datetime="" title="2014-06-23T18:09:00-07:00" pubdate>Mon 23 June 2014</time>
     </header>
@@ -263,142 +232,6 @@ Misc. Programming&nbsp;Links</p>
       </div>
 
       <div>
-      </div>
-
-    </div>
-
-  </article>
-  <div class="separator">&equiv;</div>
-  <article>
-    <header>
-      <h2><a href="/sne-01-example-of-essi-simulation-and-visualization-with-visitessi.html">SNE # 01. Example of ESSI simulation and visualization with visitESSI</a></h2>
-      <time datetime="" title="2014-05-16T19:37:00-07:00" pubdate>Fri 16 May 2014</time>
-    </header>
-
-    <div class="article_content">
-      <p>These are the results of a simple elastic-domain simulation. Mesh
-consists&nbsp;of</p>
-<ul>
-<li><span style="line-height: 14px;">154523 Nodes (46359&nbsp;DOFs)</span></li>
-<li>1250 27 node bricks (<span class="caps">LT</span>&nbsp;formulation)</li>
-<li>1200 time-steps (dt =&nbsp;0.01s)</li>
-</ul>
-<p>Results were stored in the new format of output for <span class="caps">ESSI</span> simulator and
-visualized in VisIt post-processor where the movie was created.<br />
-<!--more--><br />
-<!--http://youtu.be/VURohwb-OJQ--></p>
-<div class="youtube" align="left">
-<iframe width="640" height="480" src="https://www.youtube.com/embed/VURohwb-OJQ" frameborder="0"></iframe>
-</div>
-    </div>
-
-    <div class="meta">
-      <div>
-        <a href="/sne-01-example-of-essi-simulation-and-visualization-with-visitessi.html" class="read_more">Read more &#8594;</a>
-      </div>
-
-      <div>
-            <a href="/tag/animation.html" class="tag">animation</a>
-            <a href="/tag/c.html" class="tag">c++</a>
-            <a href="/tag/essi.html" class="tag">ESSI</a>
-            <a href="/tag/linux.html" class="tag">linux</a>
-            <a href="/tag/post-processing.html" class="tag">post-processing</a>
-            <a href="/tag/small-numerical-experiments.html" class="tag">small numerical experiments</a>
-            <a href="/tag/sne.html" class="tag">sne</a>
-            <a href="/tag/visitessi.html" class="tag">visitESSI</a>
-            <a href="/tag/movie.html" class="tag">movie</a>
-      </div>
-
-    </div>
-
-  </article>
-  <div class="separator">&equiv;</div>
-  <article>
-    <header>
-      <h2><a href="/nts-note-to-self-creating-dynamically-linked-libraries.html">NTS (Note-To-Self): Creating dynamically linked libraries</a></h2>
-      <time datetime="" title="2013-10-28T18:57:00-07:00" pubdate>Mon 28 October 2013</time>
-    </header>
-
-    <div class="article_content">
-      <p>A nice extensive tutorial can be found <a href="http://www.yolinux.com/TUTORIALS/LibraryArchives-StaticAndDynamic.html">here</a>.</p>
-<p>In a&nbsp;nutshell:</p>
-<pre><code>:::shell.BashLexer
-gcc -Wall -fPIC -c \*.c  
-gcc -shared -Wl,-soname,libctest.so.1 -o libctest.so.1.0 \*.o  
-mv libctest.so.1.0 /opt/lib  
-ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so.1  
-ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so
-</code></pre>
-<!--more-->
-
-<ul>
-<li><code>-Wall</code>: include warnings. See man page for warnings&nbsp;specified.</li>
-<li><code>-fPIC</code>: Compiler directive to output position independent code, a
-    characteristic required by shared libraries. Also see&nbsp;&#8220;-fpic&#8221;.</li>
-<li><code>-shared</code>: Produce a shared object which can then be linked with ...</li></ul></!--more-->
-    </div>
-
-    <div class="meta">
-      <div>
-        <a href="/nts-note-to-self-creating-dynamically-linked-libraries.html" class="read_more">Read more &#8594;</a>
-      </div>
-
-      <div>
-            <a href="/tag/c.html" class="tag">c++</a>
-            <a href="/tag/coding.html" class="tag">coding</a>
-            <a href="/tag/compiler.html" class="tag">compiler</a>
-            <a href="/tag/gcc.html" class="tag">gcc</a>
-            <a href="/tag/library.html" class="tag">library</a>
-            <a href="/tag/linux.html" class="tag">linux</a>
-            <a href="/tag/note-to-self.html" class="tag">note to self</a>
-            <a href="/tag/programming.html" class="tag">programming</a>
-            <a href="/tag/reminder.html" class="tag">reminder</a>
-            <a href="/tag/tutorial.html" class="tag">tutorial</a>
-      </div>
-
-    </div>
-
-  </article>
-  <div class="separator">&equiv;</div>
-  <article>
-    <header>
-      <h2><a href="/sne-0-stochastic-inverse-pendulum.html">SNE # 0. Stochastic inverse pendulum</a></h2>
-      <time datetime="" title="2013-10-09T20:37:00-07:00" pubdate>Wed 09 October 2013</time>
-    </header>
-
-    <div class="article_content">
-      <p>This is the first installment of &#8220;Small Numerical Experiments&#8221; (<span class="caps">SNE</span>), a
-section where I upload and comment (briefly) some small numerical
-example. The purpose is to prove a point to myself, test some code,
-ideas,&nbsp;etc.</p>
-<p><a href="/images/sne/01/pendulum_medium.png"><img alt="pendulum" src="/images/sne/01/pendulum_medium.png" /></a></p>
-<p>In this first post I will explore the response of a <em>stochastic inverse
-pendulum.</em> What I mean in this case is an inverse pendulum (shown left)
-with a random initial condition. The purpose is to obtain the
-time-evolving probability density function (<span class="caps">PDF</span>) of the pendulum&#8217;s
-position. I will be doing Monte-Carlo simulations to obtain an
-approximation to this <span class="caps">PDF</span>.<br />
-<!--more--><br />
-The response of the ...</!--more--></p>
-    </div>
-
-    <div class="meta">
-      <div>
-        <a href="/sne-0-stochastic-inverse-pendulum.html" class="read_more">Read more &#8594;</a>
-      </div>
-
-      <div>
-            <a href="/tag/animation.html" class="tag">animation</a>
-            <a href="/tag/bimodal.html" class="tag">bimodal</a>
-            <a href="/tag/matplotlib.html" class="tag">matplotlib</a>
-            <a href="/tag/monte-carlo.html" class="tag">Monte-Carlo</a>
-            <a href="/tag/multimodal.html" class="tag">multimodal</a>
-            <a href="/tag/ode.html" class="tag">ode</a>
-            <a href="/tag/python.html" class="tag">python</a>
-            <a href="/tag/scipy.html" class="tag">scipy</a>
-            <a href="/tag/small-numerical-experiments.html" class="tag">small numerical experiments</a>
-            <a href="/tag/sne.html" class="tag">sne</a>
-            <a href="/tag/stochastic.html" class="tag">stochastic</a>
       </div>
 
     </div>
