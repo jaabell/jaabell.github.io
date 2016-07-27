@@ -57,17 +57,16 @@
     <article>
         <header>
             <h1>Elementos Finitos - 2nd. Sem. 2016</h1>
-                <time datetime="page.date.isoformat()" pubdate>Fri 22 July 2016</time>
+                <time datetime="page.date.isoformat()" pubdate>Wed 27 July 2016</time>
         </header>
 
         <div class="article_content">
-            <h1 id="programa">Programa</h1>
-<h2 id="descripcion">Descripción</h2>
-<p>Curso de nivel graduado (profesional o magíster) introductorio al método de elementos finítos. El enfoque del curso es práctico orientado al modelamiento de sistemas físicos, con énfasis de que el alumno aprenda a <em>implementar</em> programas de elementos finitos con especial atención a problemas de sólidos y, en menor medida, fluídos. Se le entregará al alumno una mirada crítica, con base en teoría de elementos finitos lineales, que le permitirá conocer las fortalezas y limitaciones de las técnicas&nbsp;aprendidas. </p>
+            <h2 id="descripcion">Descripción</h2>
+<p>Curso introductorio al método de elementos finítos. El enfoque del curso es práctico orientado al modelamiento de sistemas físicos, con énfasis de que el alumno aprenda a <em>implementar</em> programas de elementos finitos con especial atención a problemas de sólidos y, en menor medida, fluídos. Se le entregará al alumno una mirada crítica, con base en teoría de elementos finitos lineales, que le permitirá conocer las fortalezas y limitaciones de las técnicas&nbsp;aprendidas. </p>
 <p>Requiere aptitud o disposición para programar, solo y en&nbsp;equipo. </p>
 <h2 id="generalidades">Generalidades</h2>
 <ul>
-<li>Creditos: 6 (\<mathjax>$ 6 / 18 \approx 10 \$</mathjax> horas&nbsp;semanales)</li>
+<li>Creditos: 6 (<mathjax>$ \frac{6 \text{creditos} \cdot 30 \text{horas/credito} }{ 18 \text{semanas}} \approx 10 $</mathjax> horas&nbsp;semanales)</li>
 <li>Clases: L-W 10:30-12:20 (L: C-13&nbsp;W:H-03)</li>
 <li>Profesor: José Abell&nbsp;(jaabell@miuandes.cl)</li>
 <li>Horario de oficina: Por&nbsp;definir.</li>
@@ -82,9 +81,9 @@
 </ul>
 <h2 id="evaluacion">Evaluación</h2>
 <ul>
-<li><strong> (60%) </strong> 6 Tareas grupales (dos personas) Tareas son cada dos semanas, se entregan los&nbsp;Miércoles. </li>
+<li><strong> (60%) </strong> 7 Tareas grupales (dos personas) Tareas son cada dos semanas, se entregan los&nbsp;Miércoles. </li>
 <li><strong> (30%) </strong> Un proyecto de modelamiento con&nbsp;presentaciones. </li>
-<li><strong> (10%) </strong> Lectura semanal (breve control todos los Lunes, 10 a 12 controles en&nbsp;total) </li>
+<li><strong> (10%) </strong> Lectura semanal (control online en sistema <span class="caps">SAF</span>) </li>
 </ul>
 <h1 id="calendario">Calendario</h1>
 <iframe src="https://calendar.google.com/calendar/embed?src=68hj1a9pjm988hq9avip7ggus0%40group.calendar.google.com&ctz=America/Santiago" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
@@ -95,18 +94,35 @@
 <li>Introducción: Discretización de elementos finitos: nodos y grados de libertad.                    <strong>(1&nbsp;clase)</strong></li>
 <li>Método de rigidez directa (repaso).                                                               <strong>(2&nbsp;clases)</strong></li>
 <li>Forma débil y formulación variacional (teoría de elementos finitos).                              <strong>(4&nbsp;clases)</strong></li>
-<li>Elementos finitos para problemas sólidos                                                          <strong>(8&nbsp;clases)</strong></li>
+<li>Elementos finitos para problemas sólidos                                                          <strong>(8 clases)</strong><ul>
 <li>Reticulado y viga de Bernoulli como elementos finitos (2d y 3d)                                 <strong>[2&nbsp;clases]</strong></li>
 <li>Elementos para análisis 2-D (triángulos y cuadriláteros de primer y segundo órden)              <strong>[2&nbsp;clases]</strong></li>
 <li>Elementos para análisis 3-D (tetrahedros y hexaédros de primer y segundo órden)                 <strong>[2&nbsp;clases]</strong></li>
 <li>Elementos para flexión bidimensional (plate theory)                                             <strong>[2&nbsp;Clases]</strong></li>
+</ul>
+</li>
 <li>Propagación de ondas con elementos finitos (elementos finitos dinámicos).                         <strong>(6&nbsp;clases)</strong></li>
 <li>Problemas de fluídos.                                                                             <strong>(3&nbsp;clases)</strong></li>
-<li>(Si alcanza el tiempo) Elementos para análisis acoplado (fase fluída y fase sólida) de medios porosos. <strong>(2&nbsp;clases)</strong></li>
+<li>Elementos para análisis acoplado (fase fluída y fase sólida) de medios porosos.                   <strong>(2&nbsp;clases)</strong></li>
 </ul>
 <h1 id="lectura-personal">Lectura&nbsp;Personal</h1>
 <ol>
-<li><a href="http://www.colorado.edu/engineering/CAS/courses.d/IFEM.d/IFEM.Ch06.d/IFEM.Ch06.pdf"><span class="caps">FEM</span> Modeling:&nbsp;Introduction</a> </li>
+<li>
+<p>8 de&nbsp;Agosto:</p>
+<ul>
+<li><a href="http://www.colorado.edu/engineering/CAS/courses.d/IFEM.d/IFEM.Ch02.d/IFEM.Ch02.pdf">Libro de Felippa. Chapter 2. Direct Stiffness Method I</a>.</li>
+<li><a href="http://www.colorado.edu/engineering/CAS/courses.d/IFEM.d/IFEM.Ch06.d/IFEM.Ch06.pdf">Libro de Felippa. Chapter 6. <span class="caps">FEM</span> Modeling: Introduction</a>.</li>
+<li><a href="http://www.colorado.edu/engineering/CAS/courses.d/IFEM.d/IFEM.Ch07.d/IFEM.Ch07.pdf">Libro de Felippa. Chapter 7. <span class="caps">FEM</span> Modeling: Mesh, Loads and BCs</a> Solo Secciones 7.1, 7.2 y&nbsp;7.3</li>
+<li><a href="https://en.wikipedia.org/wiki/Types_of_mesh">Wikipedia: Types of&nbsp;mesh</a></li>
+</ul>
+</li>
+<li>
+<p>15 de&nbsp;Agosto:</p>
+<ul>
+<li><a href="http://www.colorado.edu/engineering/CAS/courses.d/IFEM.d/IFEM.Ch07.d/IFEM.Ch07.pdf">Libro de Felippa. Chapter 7. <span class="caps">FEM</span> Modeling: Mesh, Loads and BCs</a> Secciones 7.4 en&nbsp;adelante. </li>
+<li><a href="http://www.colorado.edu/engineering/CAS/courses.d/IFEM.d/IFEM.Ch02.d/IFEM.Ch02.pdf">Libro de Felippa. Chapter 2. Direct Stiffness Method I</a>.</li>
+</ul>
+</li>
 </ol>
 <h1 id="tareas">Tareas</h1>
 <ul>
