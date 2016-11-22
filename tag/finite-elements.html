@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="author" content="Jose Abell">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <title>Jose Abell's Research Blog - Finite Elements | Jose Abell's Research Blog</title>
+
+        <link rel="alternate" type="application/atom+xml" title="Jose Abell's Research Blog blog atom feed" href="/feeds/all.atom.xml" />
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+        <link rel="stylesheet" href="/theme/css/pygments.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
+
+
+    </head>
+
+    <body>
+        <header class="main-header" style="background: url('/images/header.png') no-repeat center center #DDD; background-size: 100%;">
+        <h1 id="title"> José Abell's research blog</h1>
+        <hr>
+        <nav>
+            <div class="container">
+            <ul>
+                <li><a href="/" title="Home">Home</a></li>
+                        <li><a href="http://www.joseabell.com/pages/01about.html">About</a></li>
+                        <li><a href="http://www.joseabell.com/pages/02research.html">Research</a></li>
+                        <li><a href="http://www.joseabell.com/pages/03teaching.html">Teaching</a></li>
+                        <li><a href="http://www.joseabell.com/pages/04publications.html">Publications</a></li>
+                        <li><a href="http://www.joseabell.com/pages/05tools.html">Tools</a></li>
+                        <li><a href="http://www.joseabell.com/pages/06cv.html"><span class="caps">CV</span></a></li>
+                        <li><a href="http://www.joseabell.com/pages/07links.html">Links</a></li>
+            </ul>
+            </div>
+        </nav>
+        </header>
+
+<div class="container index">
+
+  <article>
+    <header>
+      <h2><a href="http://www.joseabell.com/finite-elements-for-shallow-water-equations.html">Finite Elements for Shallow Water&nbsp;Equations</a></h2>
+      <time datetime="" title="2016-11-22T14:55:42-08:00" pubdate>Tue 22 November 2016</time>
+    </header>
+
+    <div class="article_content">
+      <p>The linear <a href="https://en.wikipedia.org/wiki/Shallow_water_equations">shallow water equations</a> (<span class="caps">SWE</span>) are used extensively to model propagation of waves in situations where lateral domain dimensions are much greater than fluid height and, at the same time, wave perturbation height are much smaller than the fluid height. This finds useful applications in the case of tsunami-wave propagation modeling in deep-sea. The equations, after heavy linearization, are given&nbsp;by:</p>
+<div class="math">$$\begin{aligned}
+\pardiff{u}{t} -  f v = -g \pardiff{h}{x} \\ 
+\pardiff{v}{t} +  f v = -g \pardiff{h}{y} \\
+\pardiff{h}{t} = -H \pare{  \pardiff{u}{x} + \pardiff{v}{y}  }\end{aligned}$$</div>
+<p>Where</p>
+<ul>
+<li>
+<p><span class="math">\(u\)</span> is the speed ...</p></li></ul><script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {pare: ['\\\\left( #1 \\\\right)', 1], brak: ['\\\\left[ #1 \\\\right]', 1], brac: ['\\\\left\\\\lbrace #1 \\\\right\\\\rbrace', 1], absol: ['\\\\left\\\\vert #1 \\\\right\\\\vert', 1], overbar: ['\\\\mkern 1.5mu\\\\overline{\\\\mkern-1.5mu#1\\\\mkern-1.5mu}\\\\mkern 1.5mu', 1], EE: ['\\\\times 10^{#1}', 1], eqand: '\\\\, \\\\text{and} \\\\,', qeqand: '\\\\quad \\\\text{and} \\\\quad', qqeqand: '\\\\qquad \\\\text{and} \\\\qquad', HRule: '\\\\rule{\\\\linewidth}{0.2mm}', vect: ['\\\\boldsymbol{#1}', 1], uv: ['\\\\hat{\\\\boldsymbol{#1}}', 1], ud: '\\\\,\\\\mathrm{d}', matorvec: ['\\\\left[\\\\begin{array}{#1}    #2\\\\end{array}\\\\right]', 2], pardiff: ['\\\\dfrac{\\\\partial\\\\, #1}{\\\\partial\\\\, #2}', 2], pp: ['\\\\frac{\\\\partial #1}{\\\\partial #2}', 2], totdiff: ['\\\\dfrac{\\\\ud #1}{\\\\ud #2}', 2], rint: '\\\\pare{R}\\\\hspace{-0.5em} \\\\int ', expon: ['\\\\exp \\\\left\\\\lbrace #1 \\\\right\\\\rbrace', 1], unit: ['   \\\\, \\\\mathrm{#1}                }', 1], bunit: ['  \\\\, \\\\left[ \\\\mathrm{#1} \\\\right] }', 1], funit: ['  \\\\, \\\\mathrm{ \\\\frac{#1}{#2} }   }', 2], bfunit: ['  \\\\, \\\\left[ \\\\mathrm{ {#1}/{#2} } \\\\right]   }', 2], mts: '\\\\bunit{m}', cmts: '\\\\bunit{cm}', mmts: '\\\\bunit{mm}', kmts: '\\\\bunit{km}', mps: '\\\\bfunit{m}{s}', cmpt: '\\\\bfunit{cm}{s}', mmps: '\\\\bfunit{mm}{s}', kmps: '\\\\bfunit{km}{s}', Newt: '\\\\bunit{N}', kNewt: '\\\\bunit{kN}', MNewt: '\\\\bunit{MN}', Pa: '\\\\bunit{Pa}', kPa: '\\\\bunit{kPa}', MPa: '\\\\bunit{MPa}', GPa: '\\\\bunit{GPa}', kNmm: '\\\\bfunit{kN}{m^2}', Nmm: '\\\\bfunit{N}{m^2}', kgmmm: '\\\\bfunit{kg}{m^3}', Mgmmm: '\\\\bfunit{Mg}{m^3}', grcmcmcm: '\\\\bfunit{g}{cm^3}', kNmmm: '\\\\bfunit{kN}{m^3}', gr: '\\\\bunit{g}', mgr: '\\\\bunit{mg}', kgr: '\\\\bunit{kg}', Mgr: '\\\\bunit{Mg}', seg: '\\\\bunit{s}', msec: '\\\\bunit{ms}', musec: '\\\\bunit{\\\\mu s}', mo: '\\\\bunit{month}', mos: '\\\\bunit{months}', days: '\\\\bunit{days}', gs: '\\\\bunit{g}', mss: '\\\\bfunit{m}{s^2}', cmss: '\\\\bfunit{cm}{s^2}', Hz: '\\\\bunit{Hz}', MHz: '\\\\bunit{MHz}', GHz: '\\\\bunit{GHz}', THz: '\\\\bunit{THz}', dgr: '\\\\unit{^{\\\\circ}}', rads: '\\\\bunit{rad}', kips: '\\\\unit{kips}', ksi: '\\\\unit{ksi}', inch: '\\\\unit{in}'} }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+    </div>
+
+    <div class="meta">
+      <div>
+        <a href="http://www.joseabell.com/finite-elements-for-shallow-water-equations.html" class="read_more">Read more &#8594;</a>
+      </div>
+
+      <div>
+            <a href="http://www.joseabell.com/tag/finite-elements.html" class="tag">Finite Elements</a>
+            <a href="http://www.joseabell.com/tag/fluids.html" class="tag">Fluids</a>
+            <a href="http://www.joseabell.com/tag/shallow-water-equations.html" class="tag">Shallow water equations</a>
+            <a href="http://www.joseabell.com/tag/tutorial.html" class="tag">Tutorial</a>
+      </div>
+
+    </div>
+
+  </article>
+  <div class="separator">&equiv;</div>
+
+  <nav class="pagination row">
+    <div class="col-xs-6 left">
+    </div>
+    <div class="col-xs-6 right">
+    </div>
+  </nav>
+
+  </div>
+
+</div>
+
+
+<center>
+<div class="textwidget">
+  <div id="clustrmaps-widget"></div>
+  <script type="text/javascript">var _clustrmaps = {'url' : 'http://www.joseabell.com', 'user' : 1114615, 'server' : '2', 'id' : 'clustrmaps-widget', 'version' : 1, 'date' : '2013-09-27', 'lang' : 'en', 'corners' : 'square' };(function (){ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'http://www2.clustrmaps.com/counter/map.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);})();
+  </script>
+  <noscript>
+    <a href="http://www2.clustrmaps.com/user/ba61101f7"><img src="http://www2.clustrmaps.com/stats/maps-no_clusters/www.joseabell.com-thumb.jpg" alt="Locations of visitors to this page" />
+    </a>
+  </noscript>
+</div>
+</center>
+
+
+        <!-- Github buttons. -->
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+    </body>
+</html>
