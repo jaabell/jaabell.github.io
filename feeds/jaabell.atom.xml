@@ -1,8 +1,322 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abell's Research Blog</title><link href="http://www.joseabell.com/" rel="alternate"></link><link href="http://www.joseabell.com/feeds/jaabell.atom.xml" rel="self"></link><id>http://www.joseabell.com/</id><updated>2016-11-18T09:53:17-08:00</updated><entry><title>Talk Given at IngeoKring 2016 - Physics-Based Earthquake-Soil-Structure Interaction for Near-Field Induced Seismicity</title><link href="http://www.joseabell.com/talk-given-at-ingeokring-2016-ESSI-DRM.html" rel="alternate"></link><updated>2016-11-18T09:53:17-08:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2016-11-18:talk-given-at-ingeokring-2016-ESSI-DRM.html</id><summary type="html">&lt;p&gt;This is a talk given at the IngeoKring 2016 Autumn symposium, hosted at &lt;span class="caps"&gt;TU&lt;/span&gt;&amp;nbsp;Delft. &lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abell's Research Blog</title><link href="http://www.joseabell.com/" rel="alternate"></link><link href="http://www.joseabell.com/feeds/jaabell.atom.xml" rel="self"></link><id>http://www.joseabell.com/</id><updated>2016-11-22T14:55:42-08:00</updated><entry><title>Finite Elements for Shallow Water Equations</title><link href="http://www.joseabell.com/finite-elements-for-shallow-water-equations.html" rel="alternate"></link><published>2016-11-22T14:55:42-08:00</published><updated>2016-11-22T14:55:42-08:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2016-11-22:finite-elements-for-shallow-water-equations.html</id><summary type="html">&lt;p&gt;The linear &lt;a href="https://en.wikipedia.org/wiki/Shallow_water_equations"&gt;shallow water equations&lt;/a&gt; (&lt;span class="caps"&gt;SWE&lt;/span&gt;) are used extensively to model propagation of waves in situations where lateral domain dimensions are much greater than fluid height and, at the same time, wave perturbation height are much smaller than the fluid height. This finds useful applications in the case of tsunami-wave propagation modeling in deep-sea. The equations, after heavy linearization, are given&amp;nbsp;by:&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\pardiff{u}{t} -  f v = -g \pardiff{h}{x} \\ 
+\pardiff{v}{t} +  f v = -g \pardiff{h}{y} \\
+\pardiff{h}{t} = -H \pare{  \pardiff{u}{x} + \pardiff{v}{y}  }\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Where&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(u\)&lt;/span&gt; is the speed in &lt;span class="math"&gt;\(x\)&lt;/span&gt;&amp;nbsp;direction.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(v\)&lt;/span&gt; is the speed in &lt;span class="math"&gt;\(y\)&lt;/span&gt;&amp;nbsp;direction.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(h\)&lt;/span&gt; wave perturbation height. (Free surface is at &lt;span class="math"&gt;\(h+H\)&lt;/span&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(f\)&lt;/span&gt; Coriolis force, given&amp;nbsp;by:&lt;/p&gt;
+&lt;p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+    f = 2 \Omega \sin \phi
+    \end{aligned}$$&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;where &lt;span class="math"&gt;\(\Omega\)&lt;/span&gt; is Earth&amp;#8217;s angular velocity (&lt;span class="math"&gt;\(\pi/12 \, \brak{\mathrm{rad/h}}\)&lt;/span&gt;) and &lt;span class="math"&gt;\(\phi\)&lt;/span&gt; is&amp;nbsp;latitude. &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(g\)&lt;/span&gt; acceleration due to gravity at given point in&amp;nbsp;Earth.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(H\)&lt;/span&gt; fluid free surface height at&amp;nbsp;repose. &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To complete the formulation, appropriate boundary conditions are&amp;nbsp;needed. &lt;/p&gt;
+&lt;p&gt;These equations will be discretized using Galerkin finite-element formulation. For this purpose we will be using the first order triangle finite element (see Felippa&amp;#8217;s chapter 15 &lt;a href="http://www.colorado.edu/engineering/CAS/courses.d/IFEM.d/IFEM.Ch15.d/IFEM.Ch15.index.html"&gt;here&lt;/a&gt; for basic notation and details regarding triangular shape&amp;nbsp;functions).&lt;/p&gt;
+&lt;p&gt;The &lt;span class="caps"&gt;SWE&lt;/span&gt; represent the space-time evolution of three scalar fields, namely &lt;span class="math"&gt;\(h\)&lt;/span&gt;, &lt;span class="math"&gt;\(u\)&lt;/span&gt;, and &lt;span class="math"&gt;\(v\)&lt;/span&gt;. These three independent variables are the 3 degrees-of-freedom (&lt;span class="caps"&gt;DOF&lt;/span&gt;) of the problem. Therefore, each node will have information about these three&amp;nbsp;DOFs. &lt;/p&gt;
+&lt;p&gt;Using the basic 3-node triangle with interpolation functions given by the triangular coordinates (see Felippa &lt;span class="caps"&gt;IFEM&lt;/span&gt; Ch. 15 and &lt;a href="https://en.wikipedia.org/wiki/Barycentric_coordinate_system"&gt;this&lt;/a&gt; for more info), these fields are interpolated as&amp;nbsp;follows.&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+h = \sum N_i h_i = \vect{N} \vect{h} = \matorvec{ccc}{ \zeta_1 &amp;amp; \zeta_2 &amp;amp; \zeta_3 } \matorvec{c}{h_1\\h_2\\h_3}  \\ 
+u = \sum N_i u_i = \vect{N} \vect{u} = \matorvec{ccc}{ \zeta_1 &amp;amp; \zeta_2 &amp;amp; \zeta_3 } \matorvec{c}{u_1\\u_2\\u_3} \\
+v = \sum N_i v_i = \vect{N} \vect{v} = \matorvec{ccc}{ \zeta_1 &amp;amp; \zeta_2 &amp;amp; \zeta_3 } \matorvec{c}{v_1\\v_2\\v_3} \end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Where &lt;span class="math"&gt;\(\zeta_i\)&lt;/span&gt; are triangular coordinates and &lt;span class="math"&gt;\(u_i\)&lt;/span&gt;, &lt;span class="math"&gt;\(v_i\)&lt;/span&gt;, and
+&lt;span class="math"&gt;\(h_i\)&lt;/span&gt; the nodal values of the scalar fields at node &lt;span class="math"&gt;\(i\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;As typical, we multiply the equations by a trial shape function &lt;span class="math"&gt;\(N_j\)&lt;/span&gt; and integrate over the domain of the element &lt;span class="math"&gt;\(\Omega^e\)&lt;/span&gt;, carrying out integration by parts. We arrive at the weak form of the &lt;span class="caps"&gt;SWE&lt;/span&gt;. &lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\pare{ \int_{\Omega^e}  N_i N_j \ud \Omega^e} \dot{h}_j - 
+\pare{ \int_{\Omega^e}  H \pardiff{N_i}{x} N_j \ud \Omega^e} u_j -
+\pare{ \int_{\Omega^e}  H \pardiff{N_i}{y} N_j \ud \Omega^e} v_j = 0 \\
+\pare{ \int_{\Omega^e}  N_i N_j \ud \Omega^e} \dot{u}_j -
+\pare{ \int_{\Omega^e}  f N_i N_j \ud \Omega^e} v_j + 
+\pare{ \int_{\Omega^e}  g N_i \pardiff{N_j}{x}  \ud \Omega^e} h_j = 0 \\
+\pare{ \int_{\Omega^e}  N_i N_j \ud \Omega^e} \dot{v}_j +
+\pare{ \int_{\Omega^e}  f N_i N_j \ud \Omega^e} u_j + 
+\pare{ \int_{\Omega^e}  g N_i \pardiff{N_j}{y}  \ud \Omega^e} h_j = 0 \end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Here, for the first order triangle, we simply have that 1 &lt;span class="math"&gt;\(N_i = \zeta_i\)&lt;/span&gt;. Defining the vector of nodal freedoms &lt;span class="math"&gt;\(\vect{z}\)&lt;/span&gt;&amp;nbsp;as:&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\vect{z}^T = \matorvec{ccccccccc}{h_1 &amp;amp; h_2 &amp;amp; h_3 &amp;amp; u_1 &amp;amp; u_2 &amp;amp; u_3 &amp;amp; v_1 &amp;amp; v_2 &amp;amp; v_3 }^T\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;The above equations can be re-written as&amp;nbsp;follows:&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\matorvec{ccc}
+{
+    \vect{M} &amp;amp; \vect{0} &amp;amp; \vect{0} \\
+    \vect{0} &amp;amp; \vect{M} &amp;amp; \vect{0} \\
+    \vect{0} &amp;amp; \vect{0} &amp;amp; \vect{M} 
+} \dot{\vect{z}}  + 
+\matorvec{ccc}
+{
+    \vect{0}        &amp;amp; -\vect{K}_{hu} &amp;amp; \vect{K}_{hv} \\
+    \vect{K}_{uh}   &amp;amp; \vect{0} &amp;amp; -\vect{K}_{uv} \\
+    \vect{K}_{vh}   &amp;amp; \vect{K}_{vu} &amp;amp; \vect{0} 
+} \vect{z}
+=
+\matorvec{c}
+{
+    \vect{0} \\ \vect{0} \\ \vect{0}
+} \\ 
+\vect{A} \dot{\vect{z}} + B  \vect{z} = \vect{0}\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Where the involved sub-matrices are given by the following matrix&amp;nbsp;integrals:&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+     &amp;amp; \vect{M} = \int_{\Omega^e} \vect{N}^T \vect{N} \ud \Omega^e \\
+     &amp;amp; \vect{K}_{hu} = \int_{\Omega^e} H \vect{N}^T \pardiff{\vect{N}}{x} \ud \Omega^e \\
+     &amp;amp; \vect{K}_{hv} = \int_{\Omega^e} H \vect{N}^T \pardiff{\vect{N}}{y} \ud \Omega^e \\
+     &amp;amp; \vect{K}_{uh} = \int_{\Omega^e} g \vect{N}^T \pardiff{\vect{N}}{x} \ud \Omega^e \\
+     &amp;amp; \vect{K}_{vh} = \int_{\Omega^e} g \vect{N}^T \pardiff{\vect{N}}{y} \ud \Omega^e \\
+     &amp;amp; \vect{K}_{uv} = \int_{\Omega^e} f \vect{N}^T \vect{N} \ud \Omega^e \\
+     &amp;amp; \vect{K}_{vu} = \int_{\Omega^e} f \vect{N}^T \vect{N} \ud \Omega^e \end{aligned}$$&lt;/div&gt;
+&lt;p&gt;The derivatives &lt;span class="math"&gt;\(\pardiff{\vect{N}}{x}\)&lt;/span&gt; y &lt;span class="math"&gt;\(\pardiff{\vect{N}}{y}\)&lt;/span&gt; can be evaluated component-wise (again, see Felippa&amp;#8217;s&amp;nbsp;work):&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\matorvec{c}
+{
+    \pardiff{N_i}{x} \\
+    \pardiff{N_i}{y} 
+} = 
+\dfrac{1}{2A}
+\matorvec{ccc}
+{
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} \\
+    x_{32} &amp;amp; x_{13} &amp;amp; x_{21} 
+}
+\matorvec{c}
+{
+    \pardiff{N_i}{\zeta_1} \\
+    \pardiff{N_i}{\zeta_2} \\
+    \pardiff{N_i}{\zeta_3}
+}\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;For example, for &lt;span class="math"&gt;\(N_1\)&lt;/span&gt;:&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\matorvec{c}
+{
+    \pardiff{N_1}{x} \\
+    \pardiff{N_1}{y} 
+} = 
+\matorvec{c}
+{
+    \pardiff{\zeta_1}{x} \\
+    \pardiff{\zeta_1}{y} 
+} = 
+\dfrac{1}{2A}
+\matorvec{ccc}
+{
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} \\
+    x_{32} &amp;amp; x_{13} &amp;amp; x_{21} 
+}
+\matorvec{c}
+{
+    \pardiff{\zeta_1}{\zeta_1} \\
+    \pardiff{\zeta_1}{\zeta_2} \\
+    \pardiff{\zeta_1}{\zeta_3}
+}
+=
+\dfrac{1}{2A}
+\matorvec{ccc}
+{
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} \\
+    x_{32} &amp;amp; x_{13} &amp;amp; x_{21} 
+}
+\matorvec{c}
+{
+    1 \\
+    0 \\
+    0
+}
+= 
+\dfrac{1}{2A}
+\matorvec{c}
+{
+    y_{23} \\
+    x_{32} 
+}\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;It is clear that,&amp;nbsp;therefore&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\pardiff{\vect{N}}{x} = \dfrac{1}{2A}
+\matorvec{ccc}
+{
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} 
+} \\ 
+\pardiff{\vect{N}}{y} = \dfrac{1}{2A}
+\matorvec{ccc}
+{
+    x_{32} &amp;amp; x_{13} &amp;amp; x_{21} 
+}\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Note that these derivatives are constant within each trinagle (hence the name, constant strain triangle although the interpretation is not strain in this case). In this context we have that &lt;span class="math"&gt;\(x_{ij} = x_i - x_j\)&lt;/span&gt; where  &lt;span class="math"&gt;\(x_i\)&lt;/span&gt; is the &lt;span class="math"&gt;\(x\)&lt;/span&gt; coordinate of the &lt;span class="math"&gt;\(i\)&lt;/span&gt;-th element node. Similarly for &lt;span class="math"&gt;\(y_{ij} = y_i - y_j\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;If we further assume that the gravity field &lt;span class="math"&gt;\(g\)&lt;/span&gt;, the local depth at the finite element and the Coriolis force &lt;span class="math"&gt;\(f\)&lt;/span&gt; are constant (probably a bad assumption for this variable for some applications which span the globe) &lt;em&gt;within an element&lt;/em&gt; we can further reduce the discretized equations&amp;nbsp;to:&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\vect{I}_{1} &amp;amp;= \int_{\Omega^e} \vect{N}^T \vect{N} \ud \Omega^e  \\
+\vect{I}_{2} &amp;amp;= \int_{\Omega^e} \vect{N}^T \pardiff{\vect{N}}{x} \ud \Omega^e \\
+\vect{I}_{3} &amp;amp;= \int_{\Omega^e} \vect{N}^T \pardiff{\vect{N}}{y} \ud \Omega^e\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Working on the first&amp;nbsp;integral&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+       \vect{I}_1 &amp;amp;= \int_{\Omega^e} \matorvec{c}{ \zeta_1 \\ \zeta_2 \\ \zeta_3 } \matorvec{ccc}{ \zeta_1 &amp;amp; \zeta_2 &amp;amp; \zeta_3 } \ud \Omega^e\\
+       &amp;amp;=
+       \int_{\Omega^e}  
+        \matorvec{ccc}
+        { 
+            {\zeta_1}^2 &amp;amp; \zeta_2\zeta_1 &amp;amp; \zeta_3 \zeta_1 \\
+            \zeta_1\zeta_2 &amp;amp; {\zeta_2}^2 &amp;amp; \zeta_3\zeta_2  \\
+            \zeta_1\zeta_3 &amp;amp; \zeta_2\zeta_3 &amp;amp; {\zeta_3}^2  \\
+        } 
+        \ud \Omega^e \end{aligned}$$&lt;/div&gt;
+&lt;p&gt;We can use the following formula for the integration within a triangle of the monomials (again, from &lt;a href="feli"&gt;here&lt;/a&gt;)&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\int_{\Omega^e} {\zeta_1}^p{\zeta_2}^q{\zeta_2}^r \ud \Omega^e = \dfrac{2 A p!\, q!\, r!}{\pare{p+q+r+2}!}\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;With this, the integral for &lt;span class="math"&gt;\(\vect{I}_1\)&lt;/span&gt; is evaluated&amp;nbsp;to&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\vect{I}_1 = \dfrac{A}{12} \matorvec{ccc}
+        { 
+            2 &amp;amp; 1 &amp;amp; 1 \\
+            1 &amp;amp; 2 &amp;amp; 1 \\
+            1 &amp;amp; 1 &amp;amp; 2
+        } \end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Proceeding with the next&amp;nbsp;integral:&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\vect{I}_{2} &amp;amp;= \int_{\Omega^e} \vect{N}^T \pardiff{\vect{N}}{x} \ud \Omega^e \\ 
+ &amp;amp;= \int_{\Omega^e} \matorvec{c}{ \zeta_1 \\ \zeta_2 \\ \zeta_3 } 
+\dfrac{1}{2A}
+\matorvec{ccc}
+{
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} 
+}  \ud \Omega^e = 
+\int_{\Omega^e} \matorvec{c}{ \zeta_1 \\ \zeta_2 \\ \zeta_3 }  \ud \Omega^e
+\cdot 
+\dfrac{1}{2A}
+\matorvec{ccc}
+{
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} 
+}\\ \end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Utilizing the same identity as before to evaluate the integrals we arrive&amp;nbsp;at:&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\vect{I}_2 = \dfrac{A}{3} \matorvec{c}{ 1 \\ 1 \\ 1 }\dfrac{1}{2A}
+\matorvec{ccc}
+{
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} 
+} = 
+\dfrac{1}{6}
+\matorvec{ccc}
+{
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12}  \\
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} \\
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} 
+}\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Analogously for &lt;span class="math"&gt;\(\vect{I}_3\)&lt;/span&gt; we&amp;nbsp;have:&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\vect{I}_{3} &amp;amp;= \int_{\Omega^e} \vect{N}^T \pardiff{\vect{N}}{y} \ud \Omega^e = \dfrac{1}{6}
+\matorvec{ccc}
+{
+    x_{32} &amp;amp; x_{13} &amp;amp; x_{21} \\
+    x_{32} &amp;amp; x_{13} &amp;amp; x_{21} \\
+    x_{32} &amp;amp; x_{13} &amp;amp; x_{21} 
+}\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;And finally we can write the sub-matrices as&amp;nbsp;follows. &lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+ \vect{M} &amp;amp;= \vect{I}_1 \\
+ \vect{K}_{hu} &amp;amp;=  H \cdot \vect{I}_2 &amp;amp; \vect{K}_{hv} &amp;amp;=  H \cdot \vect{I}_3 \\
+ \vect{K}_{uh} &amp;amp;=  g \cdot \vect{I}_2 &amp;amp; \vect{K}_{vh} &amp;amp;=  g \cdot \vect{I}_3 \\
+ \vect{K}_{uv} &amp;amp;=  f \cdot \vect{I}_1 &amp;amp; \vect{K}_{vu} &amp;amp;=  f \cdot \vect{I}_1 \end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Which can be replaced&amp;nbsp;into 
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\matorvec{ccc}
+{
+    \vect{M} &amp;amp; \vect{0} &amp;amp; \vect{0} \\
+    \vect{0} &amp;amp; \vect{M} &amp;amp; \vect{0} \\
+    \vect{0} &amp;amp; \vect{0} &amp;amp; \vect{M} 
+} \dot{\vect{z}}  + 
+\matorvec{ccc}
+{
+    \vect{0}        &amp;amp; -\vect{K}_{hu} &amp;amp; \vect{K}_{hv} \\
+    \vect{K}_{uh}   &amp;amp; \vect{0} &amp;amp; -\vect{K}_{uv} \\
+    \vect{K}_{vh}   &amp;amp; \vect{K}_{vu} &amp;amp; \vect{0} 
+} \vect{z}
+=
+\matorvec{c}
+{
+    \vect{0} \\ \vect{0} \\ \vect{0}
+} \\ 
+\vect{A} \dot{\vect{z}} + B  \vect{z} = \vect{0}\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;
+to generate the discretized &lt;span class="caps"&gt;SWE&lt;/span&gt;. &lt;/p&gt;
+&lt;p&gt;A future post will discuss the python implementation of this finite element and its application to a basic&amp;nbsp;problem. &lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {pare: ['\\\\left( #1 \\\\right)', 1], brak: ['\\\\left[ #1 \\\\right]', 1], brac: ['\\\\left\\\\lbrace #1 \\\\right\\\\rbrace', 1], absol: ['\\\\left\\\\vert #1 \\\\right\\\\vert', 1], overbar: ['\\\\mkern 1.5mu\\\\overline{\\\\mkern-1.5mu#1\\\\mkern-1.5mu}\\\\mkern 1.5mu', 1], EE: ['\\\\times 10^{#1}', 1], eqand: '\\\\, \\\\text{and} \\\\,', qeqand: '\\\\quad \\\\text{and} \\\\quad', qqeqand: '\\\\qquad \\\\text{and} \\\\qquad', HRule: '\\\\rule{\\\\linewidth}{0.2mm}', vect: ['\\\\boldsymbol{#1}', 1], uv: ['\\\\hat{\\\\boldsymbol{#1}}', 1], ud: '\\\\,\\\\mathrm{d}', matorvec: ['\\\\left[\\\\begin{array}{#1}    #2\\\\end{array}\\\\right]', 2], pardiff: ['\\\\dfrac{\\\\partial\\\\, #1}{\\\\partial\\\\, #2}', 2], pp: ['\\\\frac{\\\\partial #1}{\\\\partial #2}', 2], totdiff: ['\\\\dfrac{\\\\ud #1}{\\\\ud #2}', 2], rint: '\\\\pare{R}\\\\hspace{-0.5em} \\\\int ', expon: ['\\\\exp \\\\left\\\\lbrace #1 \\\\right\\\\rbrace', 1], unit: ['   \\\\, \\\\mathrm{#1}                }', 1], bunit: ['  \\\\, \\\\left[ \\\\mathrm{#1} \\\\right] }', 1], funit: ['  \\\\, \\\\mathrm{ \\\\frac{#1}{#2} }   }', 2], bfunit: ['  \\\\, \\\\left[ \\\\mathrm{ {#1}/{#2} } \\\\right]   }', 2], mts: '\\\\bunit{m}', cmts: '\\\\bunit{cm}', mmts: '\\\\bunit{mm}', kmts: '\\\\bunit{km}', mps: '\\\\bfunit{m}{s}', cmpt: '\\\\bfunit{cm}{s}', mmps: '\\\\bfunit{mm}{s}', kmps: '\\\\bfunit{km}{s}', Newt: '\\\\bunit{N}', kNewt: '\\\\bunit{kN}', MNewt: '\\\\bunit{MN}', Pa: '\\\\bunit{Pa}', kPa: '\\\\bunit{kPa}', MPa: '\\\\bunit{MPa}', GPa: '\\\\bunit{GPa}', kNmm: '\\\\bfunit{kN}{m^2}', Nmm: '\\\\bfunit{N}{m^2}', kgmmm: '\\\\bfunit{kg}{m^3}', Mgmmm: '\\\\bfunit{Mg}{m^3}', grcmcmcm: '\\\\bfunit{g}{cm^3}', kNmmm: '\\\\bfunit{kN}{m^3}', gr: '\\\\bunit{g}', mgr: '\\\\bunit{mg}', kgr: '\\\\bunit{kg}', Mgr: '\\\\bunit{Mg}', seg: '\\\\bunit{s}', msec: '\\\\bunit{ms}', musec: '\\\\bunit{\\\\mu s}', mo: '\\\\bunit{month}', mos: '\\\\bunit{months}', days: '\\\\bunit{days}', gs: '\\\\bunit{g}', mss: '\\\\bfunit{m}{s^2}', cmss: '\\\\bfunit{cm}{s^2}', Hz: '\\\\bunit{Hz}', MHz: '\\\\bunit{MHz}', GHz: '\\\\bunit{GHz}', THz: '\\\\bunit{THz}', dgr: '\\\\unit{^{\\\\circ}}', rads: '\\\\bunit{rad}', kips: '\\\\unit{kips}', ksi: '\\\\unit{ksi}', inch: '\\\\unit{in}'} }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><category term="Finite Elements"></category><category term="Fluids"></category><category term="Shallow water equations"></category><category term="Tutorial"></category></entry><entry><title>Talk Given at IngeoKring 2016 - Physics-Based Earthquake-Soil-Structure Interaction for Near-Field Induced Seismicity</title><link href="http://www.joseabell.com/talk-given-at-ingeokring-2016-ESSI-DRM.html" rel="alternate"></link><published>2016-11-18T09:53:17-08:00</published><updated>2016-11-18T09:53:17-08:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2016-11-18:talk-given-at-ingeokring-2016-ESSI-DRM.html</id><summary type="html">&lt;p&gt;This is a talk given at the IngeoKring 2016 Autumn symposium, hosted at &lt;span class="caps"&gt;TU&lt;/span&gt;&amp;nbsp;Delft. &lt;/p&gt;
 &lt;div class="youtube" align="left"&gt;
 &lt;iframe width="640" height="480" src="//www.youtube.com/embed/qxVxgyVmPd4" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
-&lt;/div&gt;</summary><category term="Talks"></category><category term="Presentations"></category><category term="DRM"></category><category term="ESSI"></category></entry><entry><title>Site now powered by pelican!</title><link href="http://www.joseabell.com/site-moved-to-pelican.html" rel="alternate"></link><updated>2014-06-24T10:48:59-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2014-06-24:site-moved-to-pelican.html</id><summary type="html">&lt;p&gt;I finally completed the transition from WordPress to &lt;a href="www.getpelican.com"&gt;Pelican&lt;/a&gt;. The moment was right. Pelican is more
+&lt;/div&gt;</summary><category term="Talks"></category><category term="Presentations"></category><category term="DRM"></category><category term="ESSI"></category></entry><entry><title>Site now powered by pelican!</title><link href="http://www.joseabell.com/site-moved-to-pelican.html" rel="alternate"></link><published>2014-06-24T10:48:59-07:00</published><updated>2014-06-24T10:48:59-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2014-06-24:site-moved-to-pelican.html</id><summary type="html">&lt;p&gt;I finally completed the transition from WordPress to &lt;a href="www.getpelican.com"&gt;Pelican&lt;/a&gt;. The moment was right. Pelican is more
 appropriate for me as it is much simpler to manage (I host my own webpage), more flexible in terms
 of what I can do with the blog, requires no php or database&amp;nbsp;knowledge. &lt;/p&gt;
 &lt;p&gt;Pelican is a python powered static &lt;span class="caps"&gt;HTML&lt;/span&gt; generator. I set-up a heierarchy of folders where I store
@@ -19,7 +333,7 @@ blogging mainly about scientific computing, showing some example here and there 
 updating using a git-hook on the server (thank &lt;a href="http://www.textandhubris.com/automate-pelican-with-git.html"&gt;this post&lt;/a&gt;).
 This means I can clone my git repo, make changes and push them and the server will automatically
 generate the website and deploy&amp;nbsp;it!&lt;/p&gt;
-&lt;p&gt;I love&amp;nbsp;pelican!&lt;/p&gt;</summary><category term="pelican"></category><category term="blog"></category><category term="hacker"></category></entry><entry><title>SNE # 01. Example of ESSI simulation and visualization with visitESSI</title><link href="http://www.joseabell.com/sne-01-example-of-essi-simulation-and-visualization-with-visitessi.html" rel="alternate"></link><updated>2014-05-16T19:37:00-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2014-05-16:sne-01-example-of-essi-simulation-and-visualization-with-visitessi.html</id><summary type="html">&lt;p&gt;These are the results of a simple elastic-domain simulation. Mesh
+&lt;p&gt;I love&amp;nbsp;pelican!&lt;/p&gt;</summary><category term="pelican"></category><category term="blog"></category><category term="hacker"></category></entry><entry><title>SNE # 01. Example of ESSI simulation and visualization with visitESSI</title><link href="http://www.joseabell.com/sne-01-example-of-essi-simulation-and-visualization-with-visitessi.html" rel="alternate"></link><published>2014-05-16T19:37:00-07:00</published><updated>2014-05-16T19:37:00-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2014-05-16:sne-01-example-of-essi-simulation-and-visualization-with-visitessi.html</id><summary type="html">&lt;p&gt;These are the results of a simple elastic-domain simulation. Mesh
 consists&amp;nbsp;of&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;span style="line-height: 14px;"&gt;154523 Nodes (46359&amp;nbsp;DOFs)&lt;/span&gt;&lt;/li&gt;
@@ -32,7 +346,7 @@ visualized in VisIt post-processor where the movie was created.&lt;br /&gt;
 &lt;!--http://youtu.be/VURohwb-OJQ--&gt;&lt;/p&gt;
 &lt;div class="youtube" align="left"&gt;
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/VURohwb-OJQ" frameborder="0"&gt;&lt;/iframe&gt;
-&lt;/div&gt;</summary><category term="animation"></category><category term="c++"></category><category term="ESSI"></category><category term="linux"></category><category term="post-processing"></category><category term="small numerical experiments"></category><category term="sne"></category><category term="visitESSI"></category><category term="movie"></category></entry><entry><title>NTS (Note-To-Self): Creating dynamically linked libraries</title><link href="http://www.joseabell.com/nts-note-to-self-creating-dynamically-linked-libraries.html" rel="alternate"></link><updated>2013-10-28T18:57:00-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2013-10-28:nts-note-to-self-creating-dynamically-linked-libraries.html</id><summary type="html">&lt;p&gt;A nice extensive tutorial can be found &lt;a href="http://www.yolinux.com/TUTORIALS/LibraryArchives-StaticAndDynamic.html"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;</summary><category term="animation"></category><category term="c++"></category><category term="ESSI"></category><category term="linux"></category><category term="post-processing"></category><category term="small numerical experiments"></category><category term="sne"></category><category term="visitESSI"></category><category term="movie"></category></entry><entry><title>NTS (Note-To-Self): Creating dynamically linked libraries</title><link href="http://www.joseabell.com/nts-note-to-self-creating-dynamically-linked-libraries.html" rel="alternate"></link><published>2013-10-28T18:57:00-07:00</published><updated>2013-10-28T18:57:00-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2013-10-28:nts-note-to-self-creating-dynamically-linked-libraries.html</id><summary type="html">&lt;p&gt;A nice extensive tutorial can be found &lt;a href="http://www.yolinux.com/TUTORIALS/LibraryArchives-StaticAndDynamic.html"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;In a&amp;nbsp;nutshell:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;:::shell.BashLexer
 gcc -Wall -fPIC -c \*.c  
@@ -56,7 +370,7 @@ ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so
     Output of operation. In this case the name of the shared object to
     be output will be &lt;code&gt;libctest.so.1.0&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;See note on &amp;#8220;Library&amp;nbsp;Paths&amp;#8221;&lt;/p&gt;</summary><category term="c++"></category><category term="coding"></category><category term="compiler"></category><category term="gcc"></category><category term="library"></category><category term="linux"></category><category term="note to self"></category><category term="programming"></category><category term="reminder"></category><category term="tutorial"></category></entry><entry><title>SNE # 0. Stochastic inverse pendulum</title><link href="http://www.joseabell.com/sne-0-stochastic-inverse-pendulum.html" rel="alternate"></link><updated>2013-10-09T20:37:00-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2013-10-09:sne-0-stochastic-inverse-pendulum.html</id><summary type="html">&lt;p&gt;This is the first installment of &amp;#8220;Small Numerical Experiments&amp;#8221; (&lt;span class="caps"&gt;SNE&lt;/span&gt;), a
+&lt;p&gt;See note on &amp;#8220;Library&amp;nbsp;Paths&amp;#8221;&lt;/p&gt;</summary><category term="c++"></category><category term="coding"></category><category term="compiler"></category><category term="gcc"></category><category term="library"></category><category term="linux"></category><category term="note to self"></category><category term="programming"></category><category term="reminder"></category><category term="tutorial"></category></entry><entry><title>SNE # 0. Stochastic inverse pendulum</title><link href="http://www.joseabell.com/sne-0-stochastic-inverse-pendulum.html" rel="alternate"></link><published>2013-10-09T20:37:00-07:00</published><updated>2013-10-09T20:37:00-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2013-10-09:sne-0-stochastic-inverse-pendulum.html</id><summary type="html">&lt;p&gt;This is the first installment of &amp;#8220;Small Numerical Experiments&amp;#8221; (&lt;span class="caps"&gt;SNE&lt;/span&gt;), a
 section where I upload and comment (briefly) some small numerical
 example. The purpose is to prove a point to myself, test some code,
 ideas,&amp;nbsp;etc.&lt;/p&gt;
@@ -70,17 +384,23 @@ approximation to this &lt;span class="caps"&gt;PDF&lt;/span&gt;.&lt;br /&gt;
 &lt;!--more--&gt;&lt;br /&gt;
 The response of the system is governed by the following nonlinear
 ordinary differential equation in terms of the angular displacement
-&lt;mathjax&gt;$\theta$&lt;/mathjax&gt; with respect to the&amp;nbsp;vertical:&lt;/p&gt;
-&lt;p&gt;&lt;mathjax&gt;$$
+&lt;span class="math"&gt;\(\theta\)&lt;/span&gt; with respect to the&amp;nbsp;vertical:&lt;/p&gt;
+&lt;div class="math"&gt;$$
  m l^2 \ddot{\theta} + c \dot{\theta} - mgl \sin \theta = 0
-$$&lt;/mathjax&gt;&lt;/p&gt;
-&lt;p&gt;Subject to an initial condition &lt;mathjax&gt;$$ \theta(0) = \theta_0$$&lt;/mathjax&gt; and
-&lt;mathjax&gt;$$ \dot{\theta}(0) =\dot{\theta}_0$$&lt;/mathjax&gt;. In this case, the initial
+$$&lt;/div&gt;
+&lt;p&gt;Subject to an initial&amp;nbsp;condition &lt;/p&gt;
+&lt;div class="math"&gt;$$ \theta(0) = \theta_0$$&lt;/div&gt;
+&lt;p&gt; and
+&lt;/p&gt;
+&lt;div class="math"&gt;$$ \dot{\theta}(0) =\dot{\theta}_0$$&lt;/div&gt;
+&lt;p&gt;. In this case, the initial
 angular velocity is set to zero and the initial angular displacement is
 set to have a Gaussian random distribution with mean zero and standard
 deviation of 10 degrees. The linear damping constant is set to 10%
 critical damping the system would have in the case of small oscillations
-about the final equilibrium point &lt;mathjax&gt;$$\theta = 180^{\circ}$$&lt;/mathjax&gt;.&lt;/p&gt;
+about the final equilibrium&amp;nbsp;point &lt;/p&gt;
+&lt;div class="math"&gt;$$\theta = 180^{\circ}$$&lt;/div&gt;
+&lt;p&gt;.&lt;/p&gt;
 &lt;p&gt;The example is coded in python and solved using the &lt;em&gt;odeint &lt;/em&gt;solver
 available in &lt;a href="http://www.scipy.org"&gt;scipy&lt;/a&gt;. Here is an example response for a given nonzero
 initial&amp;nbsp;condition.&lt;/p&gt;
@@ -92,7 +412,7 @@ the right. This would result in a bimodal distribution and is a mere
 artifact of the mathematical model used. Indeed, what the model
 perceives as two distinct equilibrium points are actually the same
 position for the pendulum. This arises because of the periodicity in the
-&lt;mathjax&gt;$\sin()$&lt;/mathjax&gt; function.&lt;/p&gt;
+&lt;span class="math"&gt;\(\sin()\)&lt;/span&gt;&amp;nbsp;function.&lt;/p&gt;
 &lt;p&gt;From this set of motions a &lt;span class="caps"&gt;PDF&lt;/span&gt; may be computed for each time and
 animated to show the evolution of the &lt;span class="caps"&gt;PDF&lt;/span&gt; with&amp;nbsp;time.&lt;/p&gt;
 &lt;div class="youtube" align="left"&gt;
@@ -231,34 +551,61 @@ plt.show()
 #plt.yticks(sp.linspace(-270,270,num=13))  
 #plt.xlabel("$t$")  
 #plt.ylabel("$\\\theta(t)$")
-&lt;/code&gt;&lt;/pre&gt;&lt;script type= "text/javascript"&gt;
-    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-        var mathjaxscript = document.createElement('script');
-        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-        mathjaxscript.type = 'text/javascript';
-        mathjaxscript.src = 'https:' == document.location.protocol
-                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
-                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-            "MathJax.Hub.Config({" +
-            "    config: ['MMLorHTML.js']," +
-            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-            "    displayAlign: 'center'," +
-            "    displayIndent: '0em'," +
-            "    showMathMenu: true," +
-            "    tex2jax: { " +
-            "        inlineMath: [ ['$','$'] ], " +
-            "        displayMath: [ ['$$','$$'] ]," +
-            "        processEscapes: true," +
-            "        preview: 'TeX'," +
-            "    }, " +
-            "    'HTML-CSS': { " +
-            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-            "    } " +
-            "}); ";
-        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
     }
-&lt;/script&gt;
-</summary><category term="animation"></category><category term="bimodal"></category><category term="matplotlib"></category><category term="Monte-Carlo"></category><category term="multimodal"></category><category term="ode"></category><category term="python"></category><category term="scipy"></category><category term="small numerical experiments"></category><category term="sne"></category><category term="stochastic"></category></entry></feed>
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {pare: ['\\\\left( #1 \\\\right)', 1], brak: ['\\\\left[ #1 \\\\right]', 1], brac: ['\\\\left\\\\lbrace #1 \\\\right\\\\rbrace', 1], absol: ['\\\\left\\\\vert #1 \\\\right\\\\vert', 1], overbar: ['\\\\mkern 1.5mu\\\\overline{\\\\mkern-1.5mu#1\\\\mkern-1.5mu}\\\\mkern 1.5mu', 1], EE: ['\\\\times 10^{#1}', 1], eqand: '\\\\, \\\\text{and} \\\\,', qeqand: '\\\\quad \\\\text{and} \\\\quad', qqeqand: '\\\\qquad \\\\text{and} \\\\qquad', HRule: '\\\\rule{\\\\linewidth}{0.2mm}', vect: ['\\\\boldsymbol{#1}', 1], uv: ['\\\\hat{\\\\boldsymbol{#1}}', 1], ud: '\\\\,\\\\mathrm{d}', matorvec: ['\\\\left[\\\\begin{array}{#1}    #2\\\\end{array}\\\\right]', 2], pardiff: ['\\\\dfrac{\\\\partial\\\\, #1}{\\\\partial\\\\, #2}', 2], pp: ['\\\\frac{\\\\partial #1}{\\\\partial #2}', 2], totdiff: ['\\\\dfrac{\\\\ud #1}{\\\\ud #2}', 2], rint: '\\\\pare{R}\\\\hspace{-0.5em} \\\\int ', expon: ['\\\\exp \\\\left\\\\lbrace #1 \\\\right\\\\rbrace', 1], unit: ['   \\\\, \\\\mathrm{#1}                }', 1], bunit: ['  \\\\, \\\\left[ \\\\mathrm{#1} \\\\right] }', 1], funit: ['  \\\\, \\\\mathrm{ \\\\frac{#1}{#2} }   }', 2], bfunit: ['  \\\\, \\\\left[ \\\\mathrm{ {#1}/{#2} } \\\\right]   }', 2], mts: '\\\\bunit{m}', cmts: '\\\\bunit{cm}', mmts: '\\\\bunit{mm}', kmts: '\\\\bunit{km}', mps: '\\\\bfunit{m}{s}', cmpt: '\\\\bfunit{cm}{s}', mmps: '\\\\bfunit{mm}{s}', kmps: '\\\\bfunit{km}{s}', Newt: '\\\\bunit{N}', kNewt: '\\\\bunit{kN}', MNewt: '\\\\bunit{MN}', Pa: '\\\\bunit{Pa}', kPa: '\\\\bunit{kPa}', MPa: '\\\\bunit{MPa}', GPa: '\\\\bunit{GPa}', kNmm: '\\\\bfunit{kN}{m^2}', Nmm: '\\\\bfunit{N}{m^2}', kgmmm: '\\\\bfunit{kg}{m^3}', Mgmmm: '\\\\bfunit{Mg}{m^3}', grcmcmcm: '\\\\bfunit{g}{cm^3}', kNmmm: '\\\\bfunit{kN}{m^3}', gr: '\\\\bunit{g}', mgr: '\\\\bunit{mg}', kgr: '\\\\bunit{kg}', Mgr: '\\\\bunit{Mg}', seg: '\\\\bunit{s}', msec: '\\\\bunit{ms}', musec: '\\\\bunit{\\\\mu s}', mo: '\\\\bunit{month}', mos: '\\\\bunit{months}', days: '\\\\bunit{days}', gs: '\\\\bunit{g}', mss: '\\\\bfunit{m}{s^2}', cmss: '\\\\bfunit{cm}{s^2}', Hz: '\\\\bunit{Hz}', MHz: '\\\\bunit{MHz}', GHz: '\\\\bunit{GHz}', THz: '\\\\bunit{THz}', dgr: '\\\\unit{^{\\\\circ}}', rads: '\\\\bunit{rad}', kips: '\\\\unit{kips}', ksi: '\\\\unit{ksi}', inch: '\\\\unit{in}'} }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><category term="animation"></category><category term="bimodal"></category><category term="matplotlib"></category><category term="Monte-Carlo"></category><category term="multimodal"></category><category term="ode"></category><category term="python"></category><category term="scipy"></category><category term="small numerical experiments"></category><category term="sne"></category><category term="stochastic"></category></entry></feed>

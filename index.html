@@ -16,19 +16,6 @@
         <link rel="stylesheet" href="/theme/css/pygments.css">
         <link rel="stylesheet" href="/theme/css/main.css">
 
-<!-- Using MathJax, with the delimiters $ -->
-<!-- Conflict with pygments for the .mo and .mi -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-  "HTML-CSS": {
-  styles: {
-  ".MathJax .mo, .MathJax .mi": {color: "black ! important"}}
-  },
-  tex2jax: {inlineMath: [['\\(','\\)'],['$','$'], ['\\\\(','\\\\)']],processEscapes: true}
-  });
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 
     </head>
 
@@ -45,7 +32,7 @@
                         <li><a href="http://www.joseabell.com/pages/03teaching.html">Teaching</a></li>
                         <li><a href="http://www.joseabell.com/pages/04publications.html">Publications</a></li>
                         <li><a href="http://www.joseabell.com/pages/05tools.html">Tools</a></li>
-                        <li><a href="http://www.joseabell.com/pages/06cv.html">CV</a></li>
+                        <li><a href="http://www.joseabell.com/pages/06cv.html"><span class="caps">CV</span></a></li>
                         <li><a href="http://www.joseabell.com/pages/07links.html">Links</a></li>
             </ul>
             </div>
@@ -56,7 +43,97 @@
 
   <article>
     <header>
-      <h2><a href="http://www.joseabell.com/talk-given-at-ingeokring-2016-ESSI-DRM.html">Talk Given at IngeoKring 2016 - Physics-Based Earthquake-Soil-Structure Interaction for Near-Field Induced Seismicity</a></h2>
+      <h2><a href="http://www.joseabell.com/finite-elements-for-shallow-water-equations.html">Finite Elements for Shallow Water&nbsp;Equations</a></h2>
+      <time datetime="" title="2016-11-22T14:55:42-08:00" pubdate>Tue 22 November 2016</time>
+    </header>
+
+    <div class="article_content">
+      <p>The linear <a href="https://en.wikipedia.org/wiki/Shallow_water_equations">shallow water equations</a> (<span class="caps">SWE</span>) are used extensively to model propagation of waves in situations where lateral domain dimensions are much greater than fluid height and, at the same time, wave perturbation height are much smaller than the fluid height. This finds useful applications in the case of tsunami-wave propagation modeling in deep-sea. The equations, after heavy linearization, are given&nbsp;by:</p>
+<div class="math">$$\begin{aligned}
+\pardiff{u}{t} -  f v = -g \pardiff{h}{x} \\ 
+\pardiff{v}{t} +  f v = -g \pardiff{h}{y} \\
+\pardiff{h}{t} = -H \pare{  \pardiff{u}{x} + \pardiff{v}{y}  }\end{aligned}$$</div>
+<p>Where</p>
+<ul>
+<li>
+<p><span class="math">\(u\)</span> is the speed ...</p></li></ul><script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {pare: ['\\\\left( #1 \\\\right)', 1], brak: ['\\\\left[ #1 \\\\right]', 1], brac: ['\\\\left\\\\lbrace #1 \\\\right\\\\rbrace', 1], absol: ['\\\\left\\\\vert #1 \\\\right\\\\vert', 1], overbar: ['\\\\mkern 1.5mu\\\\overline{\\\\mkern-1.5mu#1\\\\mkern-1.5mu}\\\\mkern 1.5mu', 1], EE: ['\\\\times 10^{#1}', 1], eqand: '\\\\, \\\\text{and} \\\\,', qeqand: '\\\\quad \\\\text{and} \\\\quad', qqeqand: '\\\\qquad \\\\text{and} \\\\qquad', HRule: '\\\\rule{\\\\linewidth}{0.2mm}', vect: ['\\\\boldsymbol{#1}', 1], uv: ['\\\\hat{\\\\boldsymbol{#1}}', 1], ud: '\\\\,\\\\mathrm{d}', matorvec: ['\\\\left[\\\\begin{array}{#1}    #2\\\\end{array}\\\\right]', 2], pardiff: ['\\\\dfrac{\\\\partial\\\\, #1}{\\\\partial\\\\, #2}', 2], pp: ['\\\\frac{\\\\partial #1}{\\\\partial #2}', 2], totdiff: ['\\\\dfrac{\\\\ud #1}{\\\\ud #2}', 2], rint: '\\\\pare{R}\\\\hspace{-0.5em} \\\\int ', expon: ['\\\\exp \\\\left\\\\lbrace #1 \\\\right\\\\rbrace', 1], unit: ['   \\\\, \\\\mathrm{#1}                }', 1], bunit: ['  \\\\, \\\\left[ \\\\mathrm{#1} \\\\right] }', 1], funit: ['  \\\\, \\\\mathrm{ \\\\frac{#1}{#2} }   }', 2], bfunit: ['  \\\\, \\\\left[ \\\\mathrm{ {#1}/{#2} } \\\\right]   }', 2], mts: '\\\\bunit{m}', cmts: '\\\\bunit{cm}', mmts: '\\\\bunit{mm}', kmts: '\\\\bunit{km}', mps: '\\\\bfunit{m}{s}', cmpt: '\\\\bfunit{cm}{s}', mmps: '\\\\bfunit{mm}{s}', kmps: '\\\\bfunit{km}{s}', Newt: '\\\\bunit{N}', kNewt: '\\\\bunit{kN}', MNewt: '\\\\bunit{MN}', Pa: '\\\\bunit{Pa}', kPa: '\\\\bunit{kPa}', MPa: '\\\\bunit{MPa}', GPa: '\\\\bunit{GPa}', kNmm: '\\\\bfunit{kN}{m^2}', Nmm: '\\\\bfunit{N}{m^2}', kgmmm: '\\\\bfunit{kg}{m^3}', Mgmmm: '\\\\bfunit{Mg}{m^3}', grcmcmcm: '\\\\bfunit{g}{cm^3}', kNmmm: '\\\\bfunit{kN}{m^3}', gr: '\\\\bunit{g}', mgr: '\\\\bunit{mg}', kgr: '\\\\bunit{kg}', Mgr: '\\\\bunit{Mg}', seg: '\\\\bunit{s}', msec: '\\\\bunit{ms}', musec: '\\\\bunit{\\\\mu s}', mo: '\\\\bunit{month}', mos: '\\\\bunit{months}', days: '\\\\bunit{days}', gs: '\\\\bunit{g}', mss: '\\\\bfunit{m}{s^2}', cmss: '\\\\bfunit{cm}{s^2}', Hz: '\\\\bunit{Hz}', MHz: '\\\\bunit{MHz}', GHz: '\\\\bunit{GHz}', THz: '\\\\bunit{THz}', dgr: '\\\\unit{^{\\\\circ}}', rads: '\\\\bunit{rad}', kips: '\\\\unit{kips}', ksi: '\\\\unit{ksi}', inch: '\\\\unit{in}'} }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+    </div>
+
+    <div class="meta">
+      <div>
+        <a href="http://www.joseabell.com/finite-elements-for-shallow-water-equations.html" class="read_more">Read more &#8594;</a>
+      </div>
+
+      <div>
+            <a href="http://www.joseabell.com/tag/finite-elements.html" class="tag">Finite Elements</a>
+            <a href="http://www.joseabell.com/tag/fluids.html" class="tag">Fluids</a>
+            <a href="http://www.joseabell.com/tag/shallow-water-equations.html" class="tag">Shallow water equations</a>
+            <a href="http://www.joseabell.com/tag/tutorial.html" class="tag">Tutorial</a>
+      </div>
+
+    </div>
+
+  </article>
+  <div class="separator">&equiv;</div>
+  <article>
+    <header>
+      <h2><a href="http://www.joseabell.com/talk-given-at-ingeokring-2016-ESSI-DRM.html">Talk Given at IngeoKring 2016 - Physics-Based Earthquake-Soil-Structure Interaction for Near-Field Induced&nbsp;Seismicity</a></h2>
       <time datetime="" title="2016-11-18T09:53:17-08:00" pubdate>Fri 18 November 2016</time>
     </header>
 
@@ -85,12 +162,12 @@
   <div class="separator">&equiv;</div>
   <article>
     <header>
-      <h2><a href="http://www.joseabell.com/paralelism-in-the-realessi-simulator.html">Paralelism in the RealESSI Simulator</a></h2>
+      <h2><a href="http://www.joseabell.com/paralelism-in-the-realessi-simulator.html">Paralelism in the RealESSI&nbsp;Simulator</a></h2>
       <time datetime="" title="2016-11-17T15:36:31-08:00" pubdate>Thu 17 November 2016</time>
     </header>
 
     <div class="article_content">
-      <p>A brief description of parallelism in RealESSI Simuator</p>
+      <p>A brief description of parallelism in RealESSI&nbsp;Simuator</p>
     </div>
 
     <div class="meta">
@@ -110,7 +187,7 @@
   <div class="separator">&equiv;</div>
   <article>
     <header>
-      <h2><a href="http://www.joseabell.com/simulation-of-a-surface-wave-English.html">Simulation of a surface wave (Rayleigh)</a></h2>
+      <h2><a href="http://www.joseabell.com/simulation-of-a-surface-wave-English.html">Simulation of a surface wave&nbsp;(Rayleigh)</a></h2>
       <time datetime="" title="2014-11-30T22:42:13-08:00" pubdate>Sun 30 November 2014</time>
     </header>
 
@@ -144,7 +221,7 @@
   <div class="separator">&equiv;</div>
   <article>
     <header>
-      <h2><a href="http://www.joseabell.com/visualizing-essi-output-with-visit-essi-English.html">Visualizing ESSI output with VisIt-ESSI</a></h2>
+      <h2><a href="http://www.joseabell.com/visualizing-essi-output-with-visit-essi-English.html">Visualizing <span class="caps">ESSI</span> output with VisIt-<span class="caps">ESSI</span></a></h2>
       <time datetime="" title="2014-11-23T11:34:38-08:00" pubdate>Sun 23 November 2014</time>
     </header>
 
@@ -181,7 +258,7 @@ by <span class="caps">ESSI</span> in the <span class="caps">HDF5</span> format&n
   <div class="separator">&equiv;</div>
   <article>
     <header>
-      <h2><a href="http://www.joseabell.com/site-moved-to-pelican.html">Site now powered by pelican!</a></h2>
+      <h2><a href="http://www.joseabell.com/site-moved-to-pelican.html">Site now powered by&nbsp;pelican!</a></h2>
       <time datetime="" title="2014-06-24T10:48:59-07:00" pubdate>Tue 24 June 2014</time>
     </header>
 
@@ -212,7 +289,7 @@ files and the folder structure to generate the website <span class="caps">HTML</
   <div class="separator">&equiv;</div>
   <article>
     <header>
-      <h2><a href="http://www.joseabell.com/sne-01-example-of-essi-simulation-and-visualization-with-visitessi.html">SNE # 01. Example of ESSI simulation and visualization with visitESSI</a></h2>
+      <h2><a href="http://www.joseabell.com/sne-01-example-of-essi-simulation-and-visualization-with-visitessi.html"><span class="caps">SNE</span> # 01. Example of <span class="caps">ESSI</span> simulation and visualization with&nbsp;visitESSI</a></h2>
       <time datetime="" title="2014-05-16T19:37:00-07:00" pubdate>Fri 16 May 2014</time>
     </header>
 
@@ -256,7 +333,7 @@ visualized in VisIt post-processor where the movie was created.<br />
   <div class="separator">&equiv;</div>
   <article>
     <header>
-      <h2><a href="http://www.joseabell.com/nts-note-to-self-creating-dynamically-linked-libraries.html">NTS (Note-To-Self): Creating dynamically linked libraries</a></h2>
+      <h2><a href="http://www.joseabell.com/nts-note-to-self-creating-dynamically-linked-libraries.html"><span class="caps">NTS</span> (Note-To-Self): Creating dynamically linked&nbsp;libraries</a></h2>
       <time datetime="" title="2013-10-28T18:57:00-07:00" pubdate>Mon 28 October 2013</time>
     </header>
 
@@ -303,7 +380,7 @@ ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so
   <div class="separator">&equiv;</div>
   <article>
     <header>
-      <h2><a href="http://www.joseabell.com/sne-0-stochastic-inverse-pendulum.html">SNE # 0. Stochastic inverse pendulum</a></h2>
+      <h2><a href="http://www.joseabell.com/sne-0-stochastic-inverse-pendulum.html"><span class="caps">SNE</span> # 0. Stochastic inverse&nbsp;pendulum</a></h2>
       <time datetime="" title="2013-10-09T20:37:00-07:00" pubdate>Wed 09 October 2013</time>
     </header>
 

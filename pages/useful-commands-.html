@@ -6,7 +6,7 @@
         <meta name="author" content="Jose Abell">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        <title>Useful Commands | Jose Abell's Research Blog</title>
+        <title>Useful&nbsp;Commands | Jose Abell's Research Blog</title>
 
         <link rel="alternate" type="application/atom+xml" title="Jose Abell's Research Blog blog atom feed" href="/feeds/all.atom.xml" />
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
@@ -16,19 +16,6 @@
         <link rel="stylesheet" href="/theme/css/pygments.css">
         <link rel="stylesheet" href="/theme/css/main.css">
 
-<!-- Using MathJax, with the delimiters $ -->
-<!-- Conflict with pygments for the .mo and .mi -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-  "HTML-CSS": {
-  styles: {
-  ".MathJax .mo, .MathJax .mi": {color: "black ! important"}}
-  },
-  tex2jax: {inlineMath: [['\\(','\\)'],['$','$'], ['\\\\(','\\\\)']],processEscapes: true}
-  });
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 
     </head>
 
@@ -45,7 +32,7 @@
                         <li><a href="http://www.joseabell.com/pages/03teaching.html">Teaching</a></li>
                         <li><a href="http://www.joseabell.com/pages/04publications.html">Publications</a></li>
                         <li><a href="http://www.joseabell.com/pages/05tools.html">Tools</a></li>
-                        <li><a href="http://www.joseabell.com/pages/06cv.html">CV</a></li>
+                        <li><a href="http://www.joseabell.com/pages/06cv.html"><span class="caps">CV</span></a></li>
                         <li><a href="http://www.joseabell.com/pages/07links.html">Links</a></li>
             </ul>
             </div>
@@ -56,7 +43,7 @@
 
     <article>
         <header>
-            <h1>Useful Commands</h1>
+            <h1>Useful&nbsp;Commands</h1>
                 <time datetime="page.date.isoformat()" pubdate>Wed 25 June 2014</time>
         </header>
 
@@ -515,8 +502,8 @@ make install # copy libs to install dir
     INSTALL_INCLUDE =&nbsp;/home/jaabell/Programs/include</p>
 <p><span class="caps">BLAS</span> and <span class="caps">LAPACK</span> come from <span class="caps">ATLAS</span>&#8230;
     ESSI_DEPEND_DIR = /home/jaabell/Repositories/essi_dependencies
-    <span class="caps">BLAS</span> = <mathjax>$(ESSI_DEPEND_DIR)/lib/libcblas.a $</mathjax>(ESSI_DEPEND_DIR)/lib/libf77blas.a <mathjax>$(ESSI_DEPEND_DIR)/lib/libatlas.a -lgfortran
-    LAPACK = $</mathjax>(ESSI_DEPEND_DIR)/lib/liblapack.a</p>
+    <span class="caps">BLAS</span> = $(ESSI_DEPEND_DIR)/lib/libcblas.a $(ESSI_DEPEND_DIR)/lib/libf77blas.a $(ESSI_DEPEND_DIR)/lib/libatlas.a -lgfortran
+    <span class="caps">LAPACK</span> =&nbsp;$(ESSI_DEPEND_DIR)/lib/liblapack.a</p>
 <h2 id="other-cool-stuff">Other cool&nbsp;stuff</h2>
 <h3 id="making-videos-of-stuff">Making videos of&nbsp;stuff</h3>
 <h4 id="screen-capture-streaming-making-desktop-videos-with-audio">Screen capture / streaming / making desktop videos with&nbsp;audio</h4>
@@ -665,37 +652,7 @@ has been&nbsp;created.</p>
 </code></pre>
 <p><strong>Example 2</strong> Apply the best compression (<span class="caps">GZIP</span>) to all arrays in a&nbsp;file:</p>
 <pre><code>h5repack -v -f GZIP=9 FILENAME_IN.h5.feioutput  FILENAME_IN.h5.gzip.feioutput
-</code></pre><script type= "text/javascript">
-    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-        var mathjaxscript = document.createElement('script');
-        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-        mathjaxscript.type = 'text/javascript';
-        mathjaxscript.src = 'https:' == document.location.protocol
-                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
-                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-            "MathJax.Hub.Config({" +
-            "    config: ['MMLorHTML.js']," +
-            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-            "    displayAlign: 'center'," +
-            "    displayIndent: '0em'," +
-            "    showMathMenu: true," +
-            "    tex2jax: { " +
-            "        inlineMath: [ ['$','$'] ], " +
-            "        displayMath: [ ['$$','$$'] ]," +
-            "        processEscapes: true," +
-            "        preview: 'TeX'," +
-            "    }, " +
-            "    'HTML-CSS': { " +
-            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-            "    } " +
-            "}); ";
-        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-    }
-</script>
-
+</code></pre>
         </div>
 
     </article>
