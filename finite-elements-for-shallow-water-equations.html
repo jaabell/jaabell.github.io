@@ -114,7 +114,7 @@ v = \sum N_i v_i = \vect{N} \vect{v} = \matorvec{ccc}{ \zeta_1 &amp; \zeta_2 &am
 } \dot{\vect{z}}  + 
 \matorvec{ccc}
 {
-    \vect{0}        &amp; -\vect{K}_{hu} &amp; \vect{K}_{hv} \\
+    \vect{0}        &amp; -\vect{K}_{hu} &amp; -\vect{K}_{hv} \\
     \vect{K}_{uh}   &amp; \vect{0} &amp; -\vect{K}_{uv} \\
     \vect{K}_{vh}   &amp; \vect{K}_{vu} &amp; \vect{0} 
 } \vect{z}
@@ -279,7 +279,7 @@ v = \sum N_i v_i = \vect{N} \vect{v} = \matorvec{ccc}{ \zeta_1 &amp; \zeta_2 &am
 <p>And finally we can write the sub-matrices as&nbsp;follows. </p>
 <div class="math">$$\begin{aligned}
  \vect{M} &amp;= \vect{I}_1 \\
- \vect{K}_{hu} &amp;=  H \cdot \vect{I}_2 &amp; \vect{K}_{hv} &amp;=  H \cdot \vect{I}_3 \\
+ \vect{K}_{hu} &amp;=  H \cdot {\vect{I}_2}^T &amp; \vect{K}_{hv} &amp;=  H \cdot {\vect{I}_3}^T \\
  \vect{K}_{uh} &amp;=  g \cdot \vect{I}_2 &amp; \vect{K}_{vh} &amp;=  g \cdot \vect{I}_3 \\
  \vect{K}_{uv} &amp;=  f \cdot \vect{I}_1 &amp; \vect{K}_{vu} &amp;=  f \cdot \vect{I}_1 \end{aligned}$$</div>
 <p>Which can be replaced&nbsp;into 

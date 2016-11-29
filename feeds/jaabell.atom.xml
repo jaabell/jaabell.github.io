@@ -65,7 +65,7 @@ v = \sum N_i v_i = \vect{N} \vect{v} = \matorvec{ccc}{ \zeta_1 &amp;amp; \zeta_2
 } \dot{\vect{z}}  + 
 \matorvec{ccc}
 {
-    \vect{0}        &amp;amp; -\vect{K}_{hu} &amp;amp; \vect{K}_{hv} \\
+    \vect{0}        &amp;amp; -\vect{K}_{hu} &amp;amp; -\vect{K}_{hv} \\
     \vect{K}_{uh}   &amp;amp; \vect{0} &amp;amp; -\vect{K}_{uv} \\
     \vect{K}_{vh}   &amp;amp; \vect{K}_{vu} &amp;amp; \vect{0} 
 } \vect{z}
@@ -230,7 +230,7 @@ v = \sum N_i v_i = \vect{N} \vect{v} = \matorvec{ccc}{ \zeta_1 &amp;amp; \zeta_2
 &lt;p&gt;And finally we can write the sub-matrices as&amp;nbsp;follows. &lt;/p&gt;
 &lt;div class="math"&gt;$$\begin{aligned}
  \vect{M} &amp;amp;= \vect{I}_1 \\
- \vect{K}_{hu} &amp;amp;=  H \cdot \vect{I}_2 &amp;amp; \vect{K}_{hv} &amp;amp;=  H \cdot \vect{I}_3 \\
+ \vect{K}_{hu} &amp;amp;=  H \cdot {\vect{I}_2}^T &amp;amp; \vect{K}_{hv} &amp;amp;=  H \cdot {\vect{I}_3}^T \\
  \vect{K}_{uh} &amp;amp;=  g \cdot \vect{I}_2 &amp;amp; \vect{K}_{vh} &amp;amp;=  g \cdot \vect{I}_3 \\
  \vect{K}_{uv} &amp;amp;=  f \cdot \vect{I}_1 &amp;amp; \vect{K}_{vu} &amp;amp;=  f \cdot \vect{I}_1 \end{aligned}$$&lt;/div&gt;
 &lt;p&gt;Which can be replaced&amp;nbsp;into 
