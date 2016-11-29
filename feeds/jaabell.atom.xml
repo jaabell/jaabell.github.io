@@ -78,8 +78,8 @@ v = \sum N_i v_i = \vect{N} \vect{v} = \matorvec{ccc}{ \zeta_1 &amp;amp; \zeta_2
 &lt;p&gt;Where the involved sub-matrices are given by the following matrix&amp;nbsp;integrals:&lt;/p&gt;
 &lt;div class="math"&gt;$$\begin{aligned}
      &amp;amp; \vect{M} = \int_{\Omega^e} \vect{N}^T \vect{N} \ud \Omega^e \\
-     &amp;amp; \vect{K}_{hu} = \int_{\Omega^e} H \vect{N}^T \pardiff{\vect{N}}{x} \ud \Omega^e \\
-     &amp;amp; \vect{K}_{hv} = \int_{\Omega^e} H \vect{N}^T \pardiff{\vect{N}}{y} \ud \Omega^e \\
+     &amp;amp; \vect{K}_{hu} = \int_{\Omega^e} H \pare{\pardiff{\vect{N}}{x}}^T \vect{N}  \ud \Omega^e \\
+     &amp;amp; \vect{K}_{hv} = \int_{\Omega^e} H \pare{\pardiff{\vect{N}}{y}}^T \vect{N}  \ud \Omega^e \\
      &amp;amp; \vect{K}_{uh} = \int_{\Omega^e} g \vect{N}^T \pardiff{\vect{N}}{x} \ud \Omega^e \\
      &amp;amp; \vect{K}_{vh} = \int_{\Omega^e} g \vect{N}^T \pardiff{\vect{N}}{y} \ud \Omega^e \\
      &amp;amp; \vect{K}_{uv} = \int_{\Omega^e} f \vect{N}^T \vect{N} \ud \Omega^e \\
