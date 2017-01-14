@@ -1,5 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abell's Research Blog</title><link href="http://www.joseabell.com/" rel="alternate"></link><link href="http://www.joseabell.com/feeds/jaabell.atom.xml" rel="self"></link><id>http://www.joseabell.com/</id><updated>2016-11-22T14:55:42-08:00</updated><entry><title>Finite Elements for Shallow Water Equations</title><link href="http://www.joseabell.com/finite-elements-for-shallow-water-equations.html" rel="alternate"></link><published>2016-11-22T14:55:42-08:00</published><updated>2016-11-22T14:55:42-08:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2016-11-22:finite-elements-for-shallow-water-equations.html</id><summary type="html">&lt;div class="youtube" align="left"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abell's Research Blog</title><link href="http://www.joseabell.com/" rel="alternate"></link><link href="http://www.joseabell.com/feeds/jaabell.atom.xml" rel="self"></link><id>http://www.joseabell.com/</id><updated>2017-01-14T16:21:43-08:00</updated><entry><title>OpenSees coming to python!</title><link href="http://www.joseabell.com/opensees-coming-to-python.html" rel="alternate"></link><published>2017-01-14T16:21:43-08:00</published><updated>2017-01-14T16:21:43-08:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2017-01-14:opensees-coming-to-python.html</id><summary type="html">&lt;p&gt;One of the gripes a lot of people have with &lt;a href="http://opensees.berkeley.edu/"&gt;OpenSees&lt;/a&gt; is that it adopts &lt;span class="caps"&gt;TCL&lt;/span&gt; as its interpreter language. Originally, OpenSees was conceived as a &lt;em&gt;framework&lt;/em&gt;, this is apparent from the main page of the &lt;a href="http://opensees.berkeley.edu/wiki/index.php/Main_Page"&gt;wiki&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;OpenSees, the Open System for Earthquake Engineering Simulation, is an object-oriented, open source software framework. It allows users to create both serial and parallel finite element computer applications for&amp;nbsp;simulating&amp;#8230;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;So, it was meant to be a neat way to &lt;em&gt;build&lt;/em&gt; new &lt;span class="caps"&gt;FEM&lt;/span&gt; software. For years the only actual (known) application to use the OpenSees framework was what came to be known as OpenSees proper, a &lt;a href="https://en.wikipedia.org/wiki/Tcl"&gt;&lt;span class="caps"&gt;TCL&lt;/span&gt;&lt;/a&gt; interpreter extended with OpenSees modeling commands. Talking with Frank McKenna, the mind behind OpenSees, this stemmed from then need to show an actual application which could demonstrate the idea of the OpenSees framework in a quick and dirty way. The vision was that people would get the OpenSees source and build new and exciting finite-element software. It was &amp;#8220;up to the skills of the user&amp;#8221;, like the main wiki page still&amp;nbsp;reads. &lt;/p&gt;
+&lt;p&gt;Sadly, civil engineers are not very code-savvy and no (useful) new applications came. Therefore it came to pass that the OpenSees extension of the &lt;span class="caps"&gt;TCL&lt;/span&gt; interpreter became OpenSees and this is what everyone&amp;nbsp;uses. &lt;/p&gt;
+&lt;p&gt;Now &lt;span class="caps"&gt;TCL&lt;/span&gt; is an awkward language for a scientific application, mainly due to syntax and lack of a complete library for scientific computing. Python, on the other hand, has proven in the recent years to be a worthy replacement of the mighty Matlab. Many of us started scientific computing in Matlab and then migrated to the free world of Python. It was just logical that OpenSees would benefit much more from using Python as its language of choice rather than &lt;span class="caps"&gt;TCL&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;It has finally happened, and this blog post celebrates my joy. Behold the following analysis case written in&amp;nbsp;Python.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;:::PythonLexer
+import opensees as ops
+
+ops.wipe()
+
+ops.model('basic', '-ndm', 3, '-ndf', 3)
+
+for e in range(3):
+    ops.node(1+4*e, 0., 0., 1.*e)
+    ops.node(2+4*e, 1., 0., 1.*e)
+    ops.node(3+4*e, 1., 1., 1.*e)
+    ops.node(4+4*e, 0., 1., 1.*e)
+
+ops.fix(1, 1, 1, 1)
+ops.fix(2, 1, 1, 1)
+ops.fix(3, 1, 1, 1)
+ops.fix(4, 1, 1, 1)
+
+ops.nDMaterial("ElasticIsotropic3D", 1, 2100., 0.3, 0.0)
+
+ops.element("stdBrick",1,1,2,3,4,5,6,7,8,1)
+ops.element("stdBrick",2,5,6,7,8,9,10,11,12,1)
+
+ops.timeSeries("Linear", 1)
+ops.pattern("Plain", 1, 1, "-fact", 1.0)
+ops.load(1+4*e, 0., 0., -50.)  # Load at the first of the top nodes.
+
+ops.system("BandSPD")
+ops.numberer("RCM")
+ops.constraints("Plain")
+ops.algorithm("Linear")
+ops.integrator("LoadControl", 1.0)
+ops.analysis("Static")
+ops.analyze(1)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This example just stacks two bricks and applies a downward load on one of the top nodes. The interesting part is that now you can interact with all of the rich tools available in python. Just as a taste of what&amp;#8217;s to come, here is a plot of the deformed shape of the example above created using matplotlib&amp;#8217;s 3-D plotting&amp;nbsp;capabilities. &lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/blogposts/opensees-coming-to-python/twobricks.png"&gt;&lt;img alt="twobricks" src="/images/blogposts/opensees-coming-to-python/twobricks.png" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;And here&amp;#8217;s the code that achieves&amp;nbsp;this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;:::PythonLexer
+
+### Plot bricks in the domain
+import scipy as sp
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+for e in ops.getEleTags():
+
+    nodes = ops.eleNodes(e)
+    Nnodes = len(nodes)
+
+    xyz = sp.zeros((Nnodes,3), dtype=sp.double)
+    uu   = sp.zeros((Nnodes,3), dtype=sp.double)
+    for i in range(Nnodes):
+        xyz[i,:] = ops.nodeCoord(nodes[i])
+        uu[i,:] = ops.nodeDisp(nodes[i])
+
+    print
+
+    x = sp.zeros(12,dtype=sp.double)
+    y = sp.zeros(12,dtype=sp.double)
+    z = sp.zeros(12,dtype=sp.double)
+    u = sp.zeros(12,dtype=sp.double)
+    v = sp.zeros(12,dtype=sp.double)
+    w = sp.zeros(12,dtype=sp.double)
+
+    conec = [0, 1, -1, \
+    1, 2, -1,\
+    2, 3, -1,\
+    3, 0, -1,\
+    4, 5, -1,\
+    5, 6, -1,\
+    6, 7, -1,\
+    7, 4, -1,\
+    0, 4, -1,\
+    1, 5, -1,\
+    2, 6, -1,\
+    3, 7
+    ]
+
+    x = xyz[conec,0]
+    y = xyz[conec,1]
+    z = xyz[conec,2]
+    x[2::3] = sp.nan
+    y[2::3] = sp.nan
+    z[2::3] = sp.nan
+
+    factor = 1.
+    u = xyz[conec,0] + factor*uu[conec,0]
+    v = xyz[conec,1] + factor*uu[conec,1]
+    w = xyz[conec,2] + factor*uu[conec,2]
+    u[2::3] = sp.nan
+    v[2::3] = sp.nan
+    w[2::3] = sp.nan
+
+    ax.plot(x,y,z,"-ob")
+    ax.plot(u,v,w,"-or")
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A &lt;a href="https://www.dropbox.com/s/lt4ghlkj9ypy0nm/opensees-coming-to-python-example.py?dl=0"&gt;simple extension&lt;/a&gt; to the above example generalizes the stack to an arbitrary number of bricks. And the visualization just&amp;nbsp;works. &lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/blogposts/opensees-coming-to-python/fivebricks.png"&gt;&lt;img alt="fivebricks" src="/images/blogposts/opensees-coming-to-python/fivebricks.png" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Currently, I have to manually compile a python module extension on my Ubuntu linux laptop for this to work. I have no idea if it will be available to windows users as an easy-to-download binary in the near future. I will post on how to get this working on linux though. For those of you adventurous&amp;nbsp;enough. &lt;/p&gt;</summary><category term="FEM"></category><category term="opensees"></category><category term="nerdynews"></category></entry><entry><title>Finite Elements for Shallow Water Equations</title><link href="http://www.joseabell.com/finite-elements-for-shallow-water-equations.html" rel="alternate"></link><published>2016-11-22T14:55:42-08:00</published><updated>2016-11-22T14:55:42-08:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2016-11-22:finite-elements-for-shallow-water-equations.html</id><summary type="html">&lt;div class="youtube" align="left"&gt;
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/ghdvW-2XzKA" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 

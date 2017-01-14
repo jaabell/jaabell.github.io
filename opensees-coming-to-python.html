@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="author" content="Jose Abell">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <title>OpenSees coming to&nbsp;python! | Jose Abell's Research Blog</title>
+
+        <link rel="alternate" type="application/atom+xml" title="Jose Abell's Research Blog blog atom feed" href="/feeds/all.atom.xml" />
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+        <link rel="stylesheet" href="/theme/css/pygments.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
+
+
+    </head>
+
+    <body>
+        <header class="main-header" style="background: url('/images/header.png') no-repeat center center #DDD; background-size: 100%;">
+        <h1 id="title"> José Abell's research blog</h1>
+        <hr>
+        <nav>
+            <div class="container">
+            <ul>
+                <li><a href="/" title="Home">Home</a></li>
+                        <li><a href="http://www.joseabell.com/pages/01about.html">About</a></li>
+                        <li><a href="http://www.joseabell.com/pages/02research.html">Research</a></li>
+                        <li><a href="http://www.joseabell.com/pages/03teaching.html">Teaching</a></li>
+                        <li><a href="http://www.joseabell.com/pages/04publications.html">Publications</a></li>
+                        <li><a href="http://www.joseabell.com/pages/05tools.html">Tools</a></li>
+                        <li><a href="http://www.joseabell.com/pages/06cv.html"><span class="caps">CV</span></a></li>
+                        <li><a href="http://www.joseabell.com/pages/07links.html">Links</a></li>
+            </ul>
+            </div>
+        </nav>
+        </header>
+
+<div class="container post">
+
+    <article>
+        <header>
+            <h1>OpenSees coming to&nbsp;python!</h1>
+            <time datetime="article.date.isoformat()" pubdate>Sat 14 January 2017</time>
+        </header>
+
+        <div class="article_content">
+            <p>One of the gripes a lot of people have with <a href="http://opensees.berkeley.edu/">OpenSees</a> is that it adopts <span class="caps">TCL</span> as its interpreter language. Originally, OpenSees was conceived as a <em>framework</em>, this is apparent from the main page of the <a href="http://opensees.berkeley.edu/wiki/index.php/Main_Page">wiki</a>:</p>
+<blockquote>
+<p>OpenSees, the Open System for Earthquake Engineering Simulation, is an object-oriented, open source software framework. It allows users to create both serial and parallel finite element computer applications for&nbsp;simulating&#8230;</p>
+</blockquote>
+<p>So, it was meant to be a neat way to <em>build</em> new <span class="caps">FEM</span> software. For years the only actual (known) application to use the OpenSees framework was what came to be known as OpenSees proper, a <a href="https://en.wikipedia.org/wiki/Tcl"><span class="caps">TCL</span></a> interpreter extended with OpenSees modeling commands. Talking with Frank McKenna, the mind behind OpenSees, this stemmed from then need to show an actual application which could demonstrate the idea of the OpenSees framework in a quick and dirty way. The vision was that people would get the OpenSees source and build new and exciting finite-element software. It was &#8220;up to the skills of the user&#8221;, like the main wiki page still&nbsp;reads. </p>
+<p>Sadly, civil engineers are not very code-savvy and no (useful) new applications came. Therefore it came to pass that the OpenSees extension of the <span class="caps">TCL</span> interpreter became OpenSees and this is what everyone&nbsp;uses. </p>
+<p>Now <span class="caps">TCL</span> is an awkward language for a scientific application, mainly due to syntax and lack of a complete library for scientific computing. Python, on the other hand, has proven in the recent years to be a worthy replacement of the mighty Matlab. Many of us started scientific computing in Matlab and then migrated to the free world of Python. It was just logical that OpenSees would benefit much more from using Python as its language of choice rather than <span class="caps">TCL</span>.</p>
+<p>It has finally happened, and this blog post celebrates my joy. Behold the following analysis case written in&nbsp;Python.</p>
+<pre><code>:::PythonLexer
+import opensees as ops
+
+ops.wipe()
+
+ops.model('basic', '-ndm', 3, '-ndf', 3)
+
+for e in range(3):
+    ops.node(1+4*e, 0., 0., 1.*e)
+    ops.node(2+4*e, 1., 0., 1.*e)
+    ops.node(3+4*e, 1., 1., 1.*e)
+    ops.node(4+4*e, 0., 1., 1.*e)
+
+ops.fix(1, 1, 1, 1)
+ops.fix(2, 1, 1, 1)
+ops.fix(3, 1, 1, 1)
+ops.fix(4, 1, 1, 1)
+
+ops.nDMaterial("ElasticIsotropic3D", 1, 2100., 0.3, 0.0)
+
+ops.element("stdBrick",1,1,2,3,4,5,6,7,8,1)
+ops.element("stdBrick",2,5,6,7,8,9,10,11,12,1)
+
+ops.timeSeries("Linear", 1)
+ops.pattern("Plain", 1, 1, "-fact", 1.0)
+ops.load(1+4*e, 0., 0., -50.)  # Load at the first of the top nodes.
+
+ops.system("BandSPD")
+ops.numberer("RCM")
+ops.constraints("Plain")
+ops.algorithm("Linear")
+ops.integrator("LoadControl", 1.0)
+ops.analysis("Static")
+ops.analyze(1)
+</code></pre>
+<p>This example just stacks two bricks and applies a downward load on one of the top nodes. The interesting part is that now you can interact with all of the rich tools available in python. Just as a taste of what&#8217;s to come, here is a plot of the deformed shape of the example above created using matplotlib&#8217;s 3-D plotting&nbsp;capabilities. </p>
+<p><a href="/images/blogposts/opensees-coming-to-python/twobricks.png"><img alt="twobricks" src="/images/blogposts/opensees-coming-to-python/twobricks.png" /></a></p>
+<p>And here&#8217;s the code that achieves&nbsp;this:</p>
+<pre><code>:::PythonLexer
+
+### Plot bricks in the domain
+import scipy as sp
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+for e in ops.getEleTags():
+
+    nodes = ops.eleNodes(e)
+    Nnodes = len(nodes)
+
+    xyz = sp.zeros((Nnodes,3), dtype=sp.double)
+    uu   = sp.zeros((Nnodes,3), dtype=sp.double)
+    for i in range(Nnodes):
+        xyz[i,:] = ops.nodeCoord(nodes[i])
+        uu[i,:] = ops.nodeDisp(nodes[i])
+
+    print
+
+    x = sp.zeros(12,dtype=sp.double)
+    y = sp.zeros(12,dtype=sp.double)
+    z = sp.zeros(12,dtype=sp.double)
+    u = sp.zeros(12,dtype=sp.double)
+    v = sp.zeros(12,dtype=sp.double)
+    w = sp.zeros(12,dtype=sp.double)
+
+    conec = [0, 1, -1, \
+    1, 2, -1,\
+    2, 3, -1,\
+    3, 0, -1,\
+    4, 5, -1,\
+    5, 6, -1,\
+    6, 7, -1,\
+    7, 4, -1,\
+    0, 4, -1,\
+    1, 5, -1,\
+    2, 6, -1,\
+    3, 7
+    ]
+
+    x = xyz[conec,0]
+    y = xyz[conec,1]
+    z = xyz[conec,2]
+    x[2::3] = sp.nan
+    y[2::3] = sp.nan
+    z[2::3] = sp.nan
+
+    factor = 1.
+    u = xyz[conec,0] + factor*uu[conec,0]
+    v = xyz[conec,1] + factor*uu[conec,1]
+    w = xyz[conec,2] + factor*uu[conec,2]
+    u[2::3] = sp.nan
+    v[2::3] = sp.nan
+    w[2::3] = sp.nan
+
+    ax.plot(x,y,z,"-ob")
+    ax.plot(u,v,w,"-or")
+plt.show()
+</code></pre>
+<p>A <a href="https://www.dropbox.com/s/lt4ghlkj9ypy0nm/opensees-coming-to-python-example.py?dl=0">simple extension</a> to the above example generalizes the stack to an arbitrary number of bricks. And the visualization just&nbsp;works. </p>
+<p><a href="/images/blogposts/opensees-coming-to-python/fivebricks.png"><img alt="fivebricks" src="/images/blogposts/opensees-coming-to-python/fivebricks.png" /></a></p>
+<p>Currently, I have to manually compile a python module extension on my Ubuntu linux laptop for this to work. I have no idea if it will be available to windows users as an easy-to-download binary in the near future. I will post on how to get this working on linux though. For those of you adventurous&nbsp;enough. </p>
+        </div>
+
+        <div class="meta">
+            <div>
+                    <a href="http://www.joseabell.com/tag/fem.html" class="tag">FEM</a>
+                    <a href="http://www.joseabell.com/tag/opensees.html" class="tag">opensees</a>
+                    <a href="http://www.joseabell.com/tag/nerdynews.html" class="tag">nerdynews</a>
+            </div>
+            <!-- <div>
+                <a id="comments-button" class="comments_btn" href="#disqus_thread">Comments</a>
+            </div> -->
+        </div>
+    </article>
+</div>
+
+
+<script type="text/javascript">
+(function () {
+    'use strict';
+
+    // Global object
+    var App = {};
+
+    // Create button
+    // App.commentsButton = document.getElementById('comments-button');
+
+    // App.commentsButton.onclick = function () {
+    //     // Remove button action on click
+        // App.commentsButton.onclick = function () {
+        // }
+
+        // Create comments container
+        App.disqusContainer = document.createElement('div');
+        App.disqusContainer.setAttribute('id', 'disqus_thread');
+        // App.disqusContainer.setAttribute('class', 'container');
+
+        // Append container to body or div
+        // document.body.appendChild( App.disqusContainer );
+        var container = document.getElementsByClassName('container post')[0];
+        container.appendChild(App.disqusContainer);
+
+        // Your Disqus shortname
+        App.disqus_shortname = 'joseabell';
+
+        // Embed Disqus
+        var dsq = document.createElement('script');
+
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + App.disqus_shortname + '.disqus.com/embed.js';
+
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+    //     window.scrollTo(0, dsq.offsetTop - 200);
+    // };
+})();
+</script>
+
+
+<!-- 
+<script type="text/javascript">
+    var disqus_shortname = 'joseabell';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(s);
+    }());
+</script>
+ -->
+
+
+
+        <!-- Github buttons. -->
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+    </body>
+</html>
