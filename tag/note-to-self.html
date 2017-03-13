@@ -6,7 +6,7 @@
         <meta name="author" content="Jose Abell">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        <title>Jose Abell's Research Blog - note to self | Jose Abell's Research Blog</title>
+        <title>Jose Abell's Research Blog - Note to self | Jose Abell's Research Blog</title>
 
         <link rel="alternate" type="application/atom+xml" title="Jose Abell's Research Blog blog atom feed" href="/feeds/all.atom.xml" />
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
@@ -34,6 +34,68 @@
 
 <div class="container index">
 
+  <article>
+    <header>
+      <h2><a href="http://www.joseabell.com/nts-02-rayleigh-damping.html"><span class="caps">NTS</span>-02. On Rayleigh damping coefficients for <span class="caps">FE</span>&nbsp;analysis</a></h2>
+      <time datetime="" title="2014-09-30T10:46:38-07:00" pubdate>Tue 30 September 2014</time>
+    </header>
+
+    <div class="article_content">
+      
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note to self. How to compute Rayleigh damping coefficients for given damping ratios $\xi_1$ and $\xi_2$ at frequencies $f_1$ and&nbsp;$f_2$.</p>
+<p>This is textbook content, I just need to remind myself too often how this is done and end up re-deriving the&nbsp;equations.</p>
+<p>Given the second-order system of differential equations representing the <span class="caps">FE</span>&nbsp;model</p>
+$$
+M \ddot{u} + C \dot{u} + K u = F(t)
+$$<p>The damping matrix $C$ can be written as a Rayleigh damping&nbsp;matrix:</p>
+$$
+C = a_0 M + a_1 K
+$$<p>$a_0$ and $a_1$ are Rayleigh damping coefficients found by&nbsp;solving</p>
+$$
+\left[
+\begin{array}{cc}
+\dfrac{1}{2\pi f_1} <span class="amp">&amp;</span> 2 \pi f_1 &#92;
+\dfrac{1}{2\pi f_2} <span class="amp">&amp;</span> 2 \pi f_2 
+\end{array}
+\right]
+\left[
+\begin{array}{c}
+a_0 &#92;
+a_1
+\end{array}
+\right]
+=
+\left[
+\begin{array}{c}
+\xi_1 &#92;
+\xi_2
+\end{array}
+\right]
+$$<p>Which I do in the following&nbsp;code:</p>
+    </div>
+
+    <div class="meta">
+      <div>
+        <a href="http://www.joseabell.com/nts-02-rayleigh-damping.html" class="read_more">Read more &#8594;</a>
+      </div>
+
+      <div>
+            <a href="http://www.joseabell.com/tag/note-to-self.html" class="tag">Note to self</a>
+            <a href="http://www.joseabell.com/tag/reminder.html" class="tag">reminder</a>
+            <a href="http://www.joseabell.com/tag/tutorial.html" class="tag">tutorial</a>
+            <a href="http://www.joseabell.com/tag/essi.html" class="tag">essi</a>
+            <a href="http://www.joseabell.com/tag/finite-elements.html" class="tag">finite elements</a>
+      </div>
+
+    </div>
+
+  </article>
+  <div class="separator">&equiv;</div>
   <article>
     <header>
       <h2><a href="http://www.joseabell.com/nts-note-to-self-creating-dynamically-linked-libraries.html"><span class="caps">NTS</span> (Note-To-Self): Creating dynamically linked&nbsp;libraries</a></h2>
