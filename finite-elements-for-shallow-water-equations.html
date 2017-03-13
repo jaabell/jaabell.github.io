@@ -27,13 +27,6 @@
             <div class="container">
             <ul>
                 <li><a href="/" title="Home">Home</a></li>
-                        <li><a href="http://www.joseabell.com/pages/01about.html">About</a></li>
-                        <li><a href="http://www.joseabell.com/pages/02research.html">Research</a></li>
-                        <li><a href="http://www.joseabell.com/pages/03teaching.html">Teaching</a></li>
-                        <li><a href="http://www.joseabell.com/pages/04publications.html">Publications</a></li>
-                        <li><a href="http://www.joseabell.com/pages/05tools.html">Tools</a></li>
-                        <li><a href="http://www.joseabell.com/pages/06cv.html"><span class="caps">CV</span></a></li>
-                        <li><a href="http://www.joseabell.com/pages/07links.html">Links</a></li>
             </ul>
             </div>
         </nav>
@@ -53,320 +46,253 @@
 </div>
 
 <p>The linear <a href="https://en.wikipedia.org/wiki/Shallow_water_equations">shallow water equations</a> (<span class="caps">SWE</span>) are used extensively to model propagation of waves in situations where lateral domain dimensions are much greater than fluid height and, at the same time, wave perturbation height are much smaller than the fluid height. This finds useful applications in the case of tsunami-wave propagation modeling in deep-sea. The equations, after heavy linearization, are given&nbsp;by:</p>
-<div class="math">$$\begin{aligned}
-\pardiff{u}{t} -  f v = -g \pardiff{h}{x} \\ 
-\pardiff{v}{t} +  f v = -g \pardiff{h}{y} \\
-\pardiff{h}{t} = -H \pare{  \pardiff{u}{x} + \pardiff{v}{y}  }\end{aligned}$$</div>
+<p>$$\begin{aligned}
+\pardiff{u}{t} -  f v = -g \pardiff{h}{x} \ 
+\pardiff{v}{t} +  f v = -g \pardiff{h}{y} \
+\pardiff{h}{t} = -H \pare{  \pardiff{u}{x} + \pardiff{v}{y}&nbsp;}\end{aligned}$$</p>
 <p>Where</p>
 <ul>
 <li>
-<p><span class="math">\(u\)</span> is the speed in <span class="math">\(x\)</span>&nbsp;direction.</p>
+<p>$u$ is the speed in $x$&nbsp;direction.</p>
 </li>
 <li>
-<p><span class="math">\(v\)</span> is the speed in <span class="math">\(y\)</span>&nbsp;direction.</p>
+<p>$v$ is the speed in $y$&nbsp;direction.</p>
 </li>
 <li>
-<p><span class="math">\(h\)</span> wave perturbation height. (Free surface is at <span class="math">\(h+H\)</span>)</p>
+<p>$h$ wave perturbation height. (Free surface is at&nbsp;$h+H$)</p>
 </li>
 <li>
-<p><span class="math">\(f\)</span> Coriolis force, given&nbsp;by:</p>
-<p>
-<div class="math">$$\begin{aligned}
-    f = 2 \Omega \sin \phi
-    \end{aligned}$$</div>
-</p>
-<p>where <span class="math">\(\Omega\)</span> is Earth&#8217;s angular velocity (<span class="math">\(\pi/12 \, \brak{\mathrm{rad/h}}\)</span>) and <span class="math">\(\phi\)</span> is&nbsp;latitude. </p>
+<p>$f$ Coriolis force, given&nbsp;by:</p>
+<p>$$\begin{aligned}
+    f = 2 \Omega \sin \phi&nbsp;\end{aligned}$$</p>
+<p>where $\Omega$ is Earth&#8217;s angular velocity ($\pi/12 \, \brak{\mathrm{rad/h}}$) and $\phi$ is&nbsp;latitude. </p>
 </li>
 <li>
-<p><span class="math">\(g\)</span> acceleration due to gravity at given point in&nbsp;Earth.</p>
+<p>$g$ acceleration due to gravity at given point in&nbsp;Earth.</p>
 </li>
 <li>
-<p><span class="math">\(H\)</span> fluid free surface height at&nbsp;repose. </p>
+<p>$H$ fluid free surface height at&nbsp;repose. </p>
 </li>
 </ul>
 <p>To complete the formulation, appropriate boundary conditions are&nbsp;needed. </p>
 <p>These equations will be discretized using Galerkin finite-element formulation. For this purpose we will be using the first order triangle finite element (see Felippa&#8217;s chapter 15 <a href="http://www.colorado.edu/engineering/CAS/courses.d/IFEM.d/IFEM.Ch15.d/IFEM.Ch15.index.html">here</a> for basic notation and details regarding triangular shape&nbsp;functions).</p>
-<p>The <span class="caps">SWE</span> represent the space-time evolution of three scalar fields, namely <span class="math">\(h\)</span>, <span class="math">\(u\)</span>, and <span class="math">\(v\)</span>. These three independent variables are the 3 degrees-of-freedom (<span class="caps">DOF</span>) of the problem. Therefore, each node will have information about these three&nbsp;DOFs. </p>
+<p>The <span class="caps">SWE</span> represent the space-time evolution of three scalar fields, namely $h$, $u$, and $v$. These three independent variables are the 3 degrees-of-freedom (<span class="caps">DOF</span>) of the problem. Therefore, each node will have information about these three&nbsp;DOFs. </p>
 <p>Using the basic 3-node triangle with interpolation functions given by the triangular coordinates (see Felippa <span class="caps">IFEM</span> Ch. 15 and <a href="https://en.wikipedia.org/wiki/Barycentric_coordinate_system">this</a> for more info), these fields are interpolated as&nbsp;follows.</p>
-<div class="math">$$\begin{aligned}
-h = \sum N_i h_i = \vect{N} \vect{h} = \matorvec{ccc}{ \zeta_1 &amp; \zeta_2 &amp; \zeta_3 } \matorvec{c}{h_1\\h_2\\h_3}  \\ 
-u = \sum N_i u_i = \vect{N} \vect{u} = \matorvec{ccc}{ \zeta_1 &amp; \zeta_2 &amp; \zeta_3 } \matorvec{c}{u_1\\u_2\\u_3} \\
-v = \sum N_i v_i = \vect{N} \vect{v} = \matorvec{ccc}{ \zeta_1 &amp; \zeta_2 &amp; \zeta_3 } \matorvec{c}{v_1\\v_2\\v_3} \end{aligned}$$</div>
-<p>Where <span class="math">\(\zeta_i\)</span> are triangular coordinates and <span class="math">\(u_i\)</span>, <span class="math">\(v_i\)</span>, and
-<span class="math">\(h_i\)</span> the nodal values of the scalar fields at node <span class="math">\(i\)</span>.</p>
-<p>As typical, we multiply the equations by a trial shape function <span class="math">\(N_j\)</span> and integrate over the domain of the element <span class="math">\(\Omega^e\)</span>, carrying out integration by parts. We arrive at the weak form of the <span class="caps">SWE</span>. </p>
-<div class="math">$$\begin{aligned}
-\pare{ \int_{\Omega^e}  N_i N_j \ud \Omega^e} \dot{h}_j - 
-\pare{ \int_{\Omega^e}  H \pardiff{N_i}{x} N_j \ud \Omega^e} u_j -
-\pare{ \int_{\Omega^e}  H \pardiff{N_i}{y} N_j \ud \Omega^e} v_j = 0 \\
-\pare{ \int_{\Omega^e}  N_i N_j \ud \Omega^e} \dot{u}_j -
-\pare{ \int_{\Omega^e}  f N_i N_j \ud \Omega^e} v_j + 
-\pare{ \int_{\Omega^e}  g N_i \pardiff{N_j}{x}  \ud \Omega^e} h_j = 0 \\
-\pare{ \int_{\Omega^e}  N_i N_j \ud \Omega^e} \dot{v}_j +
-\pare{ \int_{\Omega^e}  f N_i N_j \ud \Omega^e} u_j + 
-\pare{ \int_{\Omega^e}  g N_i \pardiff{N_j}{y}  \ud \Omega^e} h_j = 0 \end{aligned}$$</div>
-<p>Here, for the first order triangle, we simply have that 1 <span class="math">\(N_i = \zeta_i\)</span>. Defining the vector of nodal freedoms <span class="math">\(\vect{z}\)</span>&nbsp;as:</p>
-<div class="math">$$\begin{aligned}
-\vect{z}^T = \matorvec{ccccccccc}{h_1 &amp; h_2 &amp; h_3 &amp; u_1 &amp; u_2 &amp; u_3 &amp; v_1 &amp; v_2 &amp; v_3 }^T\end{aligned}$$</div>
+<p>$$\begin{aligned}
+h = \sum N_i h_i = \vect{N} \vect{h} = \matorvec{ccc}{ \zeta_1 <span class="amp">&amp;</span> \zeta_2 <span class="amp">&amp;</span> \zeta_3 } \matorvec{c}{h_1\h_2\h_3}  \ 
+u = \sum N_i u_i = \vect{N} \vect{u} = \matorvec{ccc}{ \zeta_1 <span class="amp">&amp;</span> \zeta_2 <span class="amp">&amp;</span> \zeta_3 } \matorvec{c}{u_1\u_2\u_3} \
+v = \sum N_i v_i = \vect{N} \vect{v} = \matorvec{ccc}{ \zeta_1 <span class="amp">&amp;</span> \zeta_2 <span class="amp">&amp;</span> \zeta_3 } \matorvec{c}{v_1\v_2\v_3}&nbsp;\end{aligned}$$</p>
+<p>Where $\zeta_i$ are triangular coordinates and $u_i$, $v_i$, and
+$h_i$ the nodal values of the scalar fields at node&nbsp;$i$.</p>
+<p>As typical, we multiply the equations by a trial shape function $N_j$ and integrate over the domain of the element $\Omega^e$, carrying out integration by parts. We arrive at the weak form of the <span class="caps">SWE</span>. </p>
+<p>$$\begin{aligned}
+\pare{ \int_{\Omega^e}  N_i N_j \ud \Omega^e} \dot{h}<em _Omega_e="\Omega^e">j - 
+\pare{ \int</em>  H \pardiff{N_i}{x} N_j \ud \Omega^e} u_j -
+\pare{ \int_{\Omega^e}  H \pardiff{N_i}{y} N_j \ud \Omega^e} v_j = 0 \
+\pare{ \int_{\Omega^e}  N_i N_j \ud \Omega^e} \dot{u}<em _Omega_e="\Omega^e">j -
+\pare{ \int</em>  f N_i N_j \ud \Omega^e} v_j + 
+\pare{ \int_{\Omega^e}  g N_i \pardiff{N_j}{x}  \ud \Omega^e} h_j = 0 \
+\pare{ \int_{\Omega^e}  N_i N_j \ud \Omega^e} \dot{v}<em _Omega_e="\Omega^e">j +
+\pare{ \int</em>  f N_i N_j \ud \Omega^e} u_j + 
+\pare{ \int_{\Omega^e}  g N_i \pardiff{N_j}{y}  \ud \Omega^e} h_j = 0&nbsp;\end{aligned}$$</p>
+<p>Here, for the first order triangle, we simply have that 1 $N_i = \zeta_i$. Defining the vector of nodal freedoms $\vect{z}$&nbsp;as:</p>
+<p>$$\begin{aligned}
+\vect{z}^T = \matorvec{ccccccccc}{h_1 <span class="amp">&amp;</span> h_2 <span class="amp">&amp;</span> h_3 <span class="amp">&amp;</span> u_1 <span class="amp">&amp;</span> u_2 <span class="amp">&amp;</span> u_3 <span class="amp">&amp;</span> v_1 <span class="amp">&amp;</span> v_2 <span class="amp">&amp;</span> v_3&nbsp;}^T\end{aligned}$$</p>
 <p>The above equations can be re-written as&nbsp;follows:</p>
-<div class="math">$$\begin{aligned}
+<p>$$\begin{aligned}
 \matorvec{ccc}
 {
-    \vect{M} &amp; \vect{0} &amp; \vect{0} \\
-    \vect{0} &amp; \vect{M} &amp; \vect{0} \\
-    \vect{0} &amp; \vect{0} &amp; \vect{M} 
+    \vect{M} <span class="amp">&amp;</span> \vect{0} <span class="amp">&amp;</span> \vect{0} \
+    \vect{0} <span class="amp">&amp;</span> \vect{M} <span class="amp">&amp;</span> \vect{0} \
+    \vect{0} <span class="amp">&amp;</span> \vect{0} <span class="amp">&amp;</span> \vect{M} 
 } \dot{\vect{z}}  + 
 \matorvec{ccc}
 {
-    \vect{0}        &amp; -\vect{K}_{hu} &amp; -\vect{K}_{hv} \\
-    \vect{K}_{uh}   &amp; \vect{0} &amp; -\vect{K}_{uv} \\
-    \vect{K}_{vh}   &amp; \vect{K}_{vu} &amp; \vect{0} 
+    \vect{0}        <span class="amp">&amp;</span> -\vect{K}<em hv>{hu} <span class="amp">&amp;</span> -\vect{K}</em> \
+    \vect{K}<em uv>{uh}   <span class="amp">&amp;</span> \vect{0} <span class="amp">&amp;</span> -\vect{K}</em> \
+    \vect{K}<em vu>{vh}   <span class="amp">&amp;</span> \vect{K}</em> <span class="amp">&amp;</span> \vect{0} 
 } \vect{z}
 =
 \matorvec{c}
 {
-    \vect{0} \\ \vect{0} \\ \vect{0}
-} \\ 
-\vect{A} \dot{\vect{z}} + \vect{B}  \vect{z} = \vect{0}\end{aligned}$$</div>
+    \vect{0} \ \vect{0} \ \vect{0}
+} \ 
+\vect{A} \dot{\vect{z}} + \vect{B}  \vect{z} =&nbsp;\vect{0}\end{aligned}$$</p>
 <p>Where the involved sub-matrices are given by the following matrix&nbsp;integrals:</p>
-<div class="math">$$\begin{aligned}
-     &amp; \vect{M} = \int_{\Omega^e} \vect{N}^T \vect{N} \ud \Omega^e \\
-     &amp; \vect{K}_{hu} = \int_{\Omega^e} H \pare{\pardiff{\vect{N}}{x}}^T \vect{N}  \ud \Omega^e \\
-     &amp; \vect{K}_{hv} = \int_{\Omega^e} H \pare{\pardiff{\vect{N}}{y}}^T \vect{N}  \ud \Omega^e \\
-     &amp; \vect{K}_{uh} = \int_{\Omega^e} g \vect{N}^T \pardiff{\vect{N}}{x} \ud \Omega^e \\
-     &amp; \vect{K}_{vh} = \int_{\Omega^e} g \vect{N}^T \pardiff{\vect{N}}{y} \ud \Omega^e \\
-     &amp; \vect{K}_{uv} = \int_{\Omega^e} f \vect{N}^T \vect{N} \ud \Omega^e \\
-     &amp; \vect{K}_{vu} = \int_{\Omega^e} f \vect{N}^T \vect{N} \ud \Omega^e \end{aligned}$$</div>
-<p>The derivatives <span class="math">\(\pardiff{\vect{N}}{x}\)</span> y <span class="math">\(\pardiff{\vect{N}}{y}\)</span> can be evaluated component-wise (again, see Felippa&#8217;s&nbsp;work):</p>
-<div class="math">$$\begin{aligned}
+<p>$$\begin{aligned}
+     <span class="amp">&amp;</span> \vect{M} = \int_{\Omega^e} \vect{N}^T \vect{N} \ud \Omega^e \
+     <span class="amp">&amp;</span> \vect{K}<em _Omega_e="\Omega^e">{hu} = \int</em> H \pare{\pardiff{\vect{N}}{x}}^T \vect{N}  \ud \Omega^e \
+     <span class="amp">&amp;</span> \vect{K}<em _Omega_e="\Omega^e">{hv} = \int</em> H \pare{\pardiff{\vect{N}}{y}}^T \vect{N}  \ud \Omega^e \
+     <span class="amp">&amp;</span> \vect{K}<em _Omega_e="\Omega^e">{uh} = \int</em> g \vect{N}^T \pardiff{\vect{N}}{x} \ud \Omega^e \
+     <span class="amp">&amp;</span> \vect{K}<em _Omega_e="\Omega^e">{vh} = \int</em> g \vect{N}^T \pardiff{\vect{N}}{y} \ud \Omega^e \
+     <span class="amp">&amp;</span> \vect{K}<em _Omega_e="\Omega^e">{uv} = \int</em> f \vect{N}^T \vect{N} \ud \Omega^e \
+     <span class="amp">&amp;</span> \vect{K}<em _Omega_e="\Omega^e">{vu} = \int</em> f \vect{N}^T \vect{N} \ud \Omega^e&nbsp;\end{aligned}$$</p>
+<p>The derivatives $\pardiff{\vect{N}}{x}$ y $\pardiff{\vect{N}}{y}$ can be evaluated component-wise (again, see Felippa&#8217;s&nbsp;work):</p>
+<p>$$\begin{aligned}
 \matorvec{c}
 {
-    \pardiff{N_i}{x} \\
+    \pardiff{N_i}{x} \
     \pardiff{N_i}{y} 
 } = 
 \dfrac{1}{2A}
 \matorvec{ccc}
 {
-    y_{23} &amp; y_{31} &amp; y_{12} \\
-    x_{32} &amp; x_{13} &amp; x_{21} 
+    y_{23} <span class="amp">&amp;</span> y_{31} <span class="amp">&amp;</span> y_{12} \
+    x_{32} <span class="amp">&amp;</span> x_{13} <span class="amp">&amp;</span> x_{21} 
 }
 \matorvec{c}
 {
-    \pardiff{N_i}{\zeta_1} \\
-    \pardiff{N_i}{\zeta_2} \\
-    \pardiff{N_i}{\zeta_3}
-}\end{aligned}$$</div>
-<p>For example, for <span class="math">\(N_1\)</span>:</p>
-<div class="math">$$\begin{aligned}
+    \pardiff{N_i}{\zeta_1} \
+    \pardiff{N_i}{\zeta_2} \
+    \pardiff{N_i}{\zeta_3}&nbsp;}\end{aligned}$$</p>
+<p>For example, for&nbsp;$N_1$:</p>
+<p>$$\begin{aligned}
 \matorvec{c}
 {
-    \pardiff{N_1}{x} \\
+    \pardiff{N_1}{x} \
     \pardiff{N_1}{y} 
 } = 
 \matorvec{c}
 {
-    \pardiff{\zeta_1}{x} \\
+    \pardiff{\zeta_1}{x} \
     \pardiff{\zeta_1}{y} 
 } = 
 \dfrac{1}{2A}
 \matorvec{ccc}
 {
-    y_{23} &amp; y_{31} &amp; y_{12} \\
-    x_{32} &amp; x_{13} &amp; x_{21} 
+    y_{23} <span class="amp">&amp;</span> y_{31} <span class="amp">&amp;</span> y_{12} \
+    x_{32} <span class="amp">&amp;</span> x_{13} <span class="amp">&amp;</span> x_{21} 
 }
 \matorvec{c}
 {
-    \pardiff{\zeta_1}{\zeta_1} \\
-    \pardiff{\zeta_1}{\zeta_2} \\
+    \pardiff{\zeta_1}{\zeta_1} \
+    \pardiff{\zeta_1}{\zeta_2} \
     \pardiff{\zeta_1}{\zeta_3}
 }
 =
 \dfrac{1}{2A}
 \matorvec{ccc}
 {
-    y_{23} &amp; y_{31} &amp; y_{12} \\
-    x_{32} &amp; x_{13} &amp; x_{21} 
+    y_{23} <span class="amp">&amp;</span> y_{31} <span class="amp">&amp;</span> y_{12} \
+    x_{32} <span class="amp">&amp;</span> x_{13} <span class="amp">&amp;</span> x_{21} 
 }
 \matorvec{c}
 {
-    1 \\
-    0 \\
+    1 \
+    0 \
     0
 }
 = 
 \dfrac{1}{2A}
 \matorvec{c}
 {
-    y_{23} \\
-    x_{32} 
-}\end{aligned}$$</div>
+    y_{23} \
+    x_{32}&nbsp;}\end{aligned}$$</p>
 <p>It is clear that,&nbsp;therefore</p>
-<div class="math">$$\begin{aligned}
+<p>$$\begin{aligned}
 \pardiff{\vect{N}}{x} = \dfrac{1}{2A}
 \matorvec{ccc}
 {
-    y_{23} &amp; y_{31} &amp; y_{12} 
-} \\ 
+    y_{23} <span class="amp">&amp;</span> y_{31} <span class="amp">&amp;</span> y_{12} 
+} \ 
 \pardiff{\vect{N}}{y} = \dfrac{1}{2A}
 \matorvec{ccc}
 {
-    x_{32} &amp; x_{13} &amp; x_{21} 
-}\end{aligned}$$</div>
-<p>Note that these derivatives are constant within each trinagle (hence the name, constant strain triangle although the interpretation is not strain in this case). In this context we have that <span class="math">\(x_{ij} = x_i - x_j\)</span> where  <span class="math">\(x_i\)</span> is the <span class="math">\(x\)</span> coordinate of the <span class="math">\(i\)</span>-th element node. Similarly for <span class="math">\(y_{ij} = y_i - y_j\)</span>.</p>
-<p>If we further assume that the gravity field <span class="math">\(g\)</span>, the local depth at the finite element and the Coriolis force <span class="math">\(f\)</span> are constant (probably a bad assumption for this variable for some applications which span the globe) <em>within an element</em> we can further reduce the discretized equations&nbsp;to:</p>
-<div class="math">$$\begin{aligned}
-\vect{I}_{1} &amp;= \int_{\Omega^e} \vect{N}^T \vect{N} \ud \Omega^e  \\
-\vect{I}_{2} &amp;= \int_{\Omega^e} \vect{N}^T \pardiff{\vect{N}}{x} \ud \Omega^e \\
-\vect{I}_{3} &amp;= \int_{\Omega^e} \vect{N}^T \pardiff{\vect{N}}{y} \ud \Omega^e\end{aligned}$$</div>
+    x_{32} <span class="amp">&amp;</span> x_{13} <span class="amp">&amp;</span> x_{21}&nbsp;}\end{aligned}$$</p>
+<p>Note that these derivatives are constant within each trinagle (hence the name, constant strain triangle although the interpretation is not strain in this case). In this context we have that $x_{ij} = x_i - x_j$ where  $x_i$ is the $x$ coordinate of the $i$-th element node. Similarly for $y_{ij} = y_i -&nbsp;y_j$.</p>
+<p>If we further assume that the gravity field $g$, the local depth at the finite element and the Coriolis force $f$ are constant (probably a bad assumption for this variable for some applications which span the globe) <em>within an element</em> we can further reduce the discretized equations&nbsp;to:</p>
+<p>$$\begin{aligned}
+\vect{I}<em _Omega_e="\Omega^e">{1} &amp;= \int</em> \vect{N}^T \vect{N} \ud \Omega^e  \
+\vect{I}<em _Omega_e="\Omega^e">{2} &amp;= \int</em> \vect{N}^T \pardiff{\vect{N}}{x} \ud \Omega^e \
+\vect{I}<em _Omega_e="\Omega^e">{3} &amp;= \int</em> \vect{N}^T \pardiff{\vect{N}}{y} \ud&nbsp;\Omega^e\end{aligned}$$</p>
 <p>Working on the first&nbsp;integral</p>
-<div class="math">$$\begin{aligned}
-       \vect{I}_1 &amp;= \int_{\Omega^e} \matorvec{c}{ \zeta_1 \\ \zeta_2 \\ \zeta_3 } \matorvec{ccc}{ \zeta_1 &amp; \zeta_2 &amp; \zeta_3 } \ud \Omega^e\\
+<p>$$\begin{aligned}
+       \vect{I}<em _Omega_e="\Omega^e">1 &amp;= \int</em> \matorvec{c}{ \zeta_1 \ \zeta_2 \ \zeta_3 } \matorvec{ccc}{ \zeta_1 <span class="amp">&amp;</span> \zeta_2 <span class="amp">&amp;</span> \zeta_3 } \ud \Omega^e\
        &amp;=
-       \int_{\Omega^e}  
+       \int_{\Omega^e}<br>
         \matorvec{ccc}
         { 
-            {\zeta_1}^2 &amp; \zeta_2\zeta_1 &amp; \zeta_3 \zeta_1 \\
-            \zeta_1\zeta_2 &amp; {\zeta_2}^2 &amp; \zeta_3\zeta_2  \\
-            \zeta_1\zeta_3 &amp; \zeta_2\zeta_3 &amp; {\zeta_3}^2  \\
+            {\zeta_1}^2 <span class="amp">&amp;</span> \zeta_2\zeta_1 <span class="amp">&amp;</span> \zeta_3 \zeta_1 \
+            \zeta_1\zeta_2 <span class="amp">&amp;</span> {\zeta_2}^2 <span class="amp">&amp;</span> \zeta_3\zeta_2  \
+            \zeta_1\zeta_3 <span class="amp">&amp;</span> \zeta_2\zeta_3 <span class="amp">&amp;</span> {\zeta_3}^2  \
         } 
-        \ud \Omega^e \end{aligned}$$</div>
+        \ud \Omega^e&nbsp;\end{aligned}$$</p>
 <p>We can use the following formula for the integration within a triangle of the monomials (again, from <a href="feli">here</a>)</p>
-<div class="math">$$\begin{aligned}
-\int_{\Omega^e} {\zeta_1}^p{\zeta_2}^q{\zeta_2}^r \ud \Omega^e = \dfrac{2 A p!\, q!\, r!}{\pare{p+q+r+2}!}\end{aligned}$$</div>
-<p>With this, the integral for <span class="math">\(\vect{I}_1\)</span> is evaluated&nbsp;to</p>
-<div class="math">$$\begin{aligned}
+<p>$$\begin{aligned}
+\int_{\Omega^e} {\zeta_1}^p{\zeta_2}^q{\zeta_2}^r \ud \Omega^e = \dfrac{2 A p!\, q!\,&nbsp;r!}{\pare{p+q+r+2}!}\end{aligned}$$</p>
+<p>With this, the integral for $\vect{I}_1$ is evaluated&nbsp;to</p>
+<p>$$\begin{aligned}
 \vect{I}_1 = \dfrac{A}{12} \matorvec{ccc}
         { 
-            2 &amp; 1 &amp; 1 \\
-            1 &amp; 2 &amp; 1 \\
-            1 &amp; 1 &amp; 2
-        } \end{aligned}$$</div>
+            2 <span class="amp">&amp;</span> 1 <span class="amp">&amp;</span> 1 \
+            1 <span class="amp">&amp;</span> 2 <span class="amp">&amp;</span> 1 \
+            1 <span class="amp">&amp;</span> 1 <span class="amp">&amp;</span> 2
+        }&nbsp;\end{aligned}$$</p>
 <p>Proceeding with the next&nbsp;integral:</p>
-<div class="math">$$\begin{aligned}
-\vect{I}_{2} &amp;= \int_{\Omega^e} \vect{N}^T \pardiff{\vect{N}}{x} \ud \Omega^e \\ 
- &amp;= \int_{\Omega^e} \matorvec{c}{ \zeta_1 \\ \zeta_2 \\ \zeta_3 } 
+<p>$$\begin{aligned}
+\vect{I}<em _Omega_e="\Omega^e">{2} &amp;= \int</em> \vect{N}^T \pardiff{\vect{N}}{x} \ud \Omega^e \ 
+ &amp;= \int_{\Omega^e} \matorvec{c}{ \zeta_1 \ \zeta_2 \ \zeta_3 } 
 \dfrac{1}{2A}
 \matorvec{ccc}
 {
-    y_{23} &amp; y_{31} &amp; y_{12} 
+    y_{23} <span class="amp">&amp;</span> y_{31} <span class="amp">&amp;</span> y_{12} 
 }  \ud \Omega^e = 
-\int_{\Omega^e} \matorvec{c}{ \zeta_1 \\ \zeta_2 \\ \zeta_3 }  \ud \Omega^e
+\int_{\Omega^e} \matorvec{c}{ \zeta_1 \ \zeta_2 \ \zeta_3 }  \ud \Omega^e
 \cdot 
 \dfrac{1}{2A}
 \matorvec{ccc}
 {
-    y_{23} &amp; y_{31} &amp; y_{12} 
-}\\ \end{aligned}$$</div>
+    y_{23} <span class="amp">&amp;</span> y_{31} <span class="amp">&amp;</span> y_{12} 
+}\&nbsp;\end{aligned}$$</p>
 <p>Utilizing the same identity as before to evaluate the integrals we arrive&nbsp;at:</p>
-<div class="math">$$\begin{aligned}
-\vect{I}_2 = \dfrac{A}{3} \matorvec{c}{ 1 \\ 1 \\ 1 }\dfrac{1}{2A}
+<p>$$\begin{aligned}
+\vect{I}<em 23>2 = \dfrac{A}{3} \matorvec{c}{ 1 \ 1 \ 1 }\dfrac{1}{2A}
 \matorvec{ccc}
 {
-    y_{23} &amp; y_{31} &amp; y_{12} 
+    y</em> <span class="amp">&amp;</span> y_{31} <span class="amp">&amp;</span> y_{12} 
 } = 
 \dfrac{1}{6}
 \matorvec{ccc}
 {
-    y_{23} &amp; y_{31} &amp; y_{12}  \\
-    y_{23} &amp; y_{31} &amp; y_{12} \\
-    y_{23} &amp; y_{31} &amp; y_{12} 
-}\end{aligned}$$</div>
-<p>Analogously for <span class="math">\(\vect{I}_3\)</span> we&nbsp;have:</p>
-<div class="math">$$\begin{aligned}
-\vect{I}_{3} &amp;= \int_{\Omega^e} \vect{N}^T \pardiff{\vect{N}}{y} \ud \Omega^e = \dfrac{1}{6}
+    y_{23} <span class="amp">&amp;</span> y_{31} <span class="amp">&amp;</span> y_{12}  \
+    y_{23} <span class="amp">&amp;</span> y_{31} <span class="amp">&amp;</span> y_{12} \
+    y_{23} <span class="amp">&amp;</span> y_{31} <span class="amp">&amp;</span> y_{12}&nbsp;}\end{aligned}$$</p>
+<p>Analogously for $\vect{I}_3$ we&nbsp;have:</p>
+<p>$$\begin{aligned}
+\vect{I}<em _Omega_e="\Omega^e">{3} &amp;= \int</em> \vect{N}^T \pardiff{\vect{N}}{y} \ud \Omega^e = \dfrac{1}{6}
 \matorvec{ccc}
 {
-    x_{32} &amp; x_{13} &amp; x_{21} \\
-    x_{32} &amp; x_{13} &amp; x_{21} \\
-    x_{32} &amp; x_{13} &amp; x_{21} 
-}\end{aligned}$$</div>
+    x_{32} <span class="amp">&amp;</span> x_{13} <span class="amp">&amp;</span> x_{21} \
+    x_{32} <span class="amp">&amp;</span> x_{13} <span class="amp">&amp;</span> x_{21} \
+    x_{32} <span class="amp">&amp;</span> x_{13} <span class="amp">&amp;</span> x_{21}&nbsp;}\end{aligned}$$</p>
 <p>And finally we can write the sub-matrices as&nbsp;follows. </p>
-<div class="math">$$\begin{aligned}
- \vect{M} &amp;= \vect{I}_1 \\
- \vect{K}_{hu} &amp;=  H \cdot {\vect{I}_2}^T &amp; \vect{K}_{hv} &amp;=  H \cdot {\vect{I}_3}^T \\
- \vect{K}_{uh} &amp;=  g \cdot \vect{I}_2 &amp; \vect{K}_{vh} &amp;=  g \cdot \vect{I}_3 \\
- \vect{K}_{uv} &amp;=  f \cdot \vect{I}_1 &amp; \vect{K}_{vu} &amp;=  f \cdot \vect{I}_1 \end{aligned}$$</div>
-<p>Which can be replaced&nbsp;into 
-</p>
-<div class="math">$$\begin{aligned}
+<p>$$\begin{aligned}
+ \vect{M} &amp;= \vect{I}<em hu>1 \
+ \vect{K}</em> &amp;=  H \cdot {\vect{I}<em hv>2}^T <span class="amp">&amp;</span> \vect{K}</em> &amp;=  H \cdot {\vect{I}<em uh>3}^T \
+ \vect{K}</em> &amp;=  g \cdot \vect{I}<em vh>2 <span class="amp">&amp;</span> \vect{K}</em> &amp;=  g \cdot \vect{I}<em uv>3 \
+ \vect{K}</em> &amp;=  f \cdot \vect{I}<em vu>1 <span class="amp">&amp;</span> \vect{K}</em> &amp;=  f \cdot \vect{I}_1&nbsp;\end{aligned}$$</p>
+<p>Which can be replaced into 
+$$\begin{aligned}
 \matorvec{ccc}
 {
-    \vect{M} &amp; \vect{0} &amp; \vect{0} \\
-    \vect{0} &amp; \vect{M} &amp; \vect{0} \\
-    \vect{0} &amp; \vect{0} &amp; \vect{M} 
+    \vect{M} <span class="amp">&amp;</span> \vect{0} <span class="amp">&amp;</span> \vect{0} \
+    \vect{0} <span class="amp">&amp;</span> \vect{M} <span class="amp">&amp;</span> \vect{0} \
+    \vect{0} <span class="amp">&amp;</span> \vect{0} <span class="amp">&amp;</span> \vect{M} 
 } \dot{\vect{z}}  + 
 \matorvec{ccc}
 {
-    \vect{0}        &amp; -\vect{K}_{hu} &amp; -\vect{K}_{hv} \\
-    \vect{K}_{uh}   &amp; \vect{0} &amp; -\vect{K}_{uv} \\
-    \vect{K}_{vh}   &amp; \vect{K}_{vu} &amp; \vect{0} 
+    \vect{0}        <span class="amp">&amp;</span> -\vect{K}<em hv>{hu} <span class="amp">&amp;</span> -\vect{K}</em> \
+    \vect{K}<em uv>{uh}   <span class="amp">&amp;</span> \vect{0} <span class="amp">&amp;</span> -\vect{K}</em> \
+    \vect{K}<em vu>{vh}   <span class="amp">&amp;</span> \vect{K}</em> <span class="amp">&amp;</span> \vect{0} 
 } \vect{z}
 =
 \matorvec{c}
 {
-    \vect{0} \\ \vect{0} \\ \vect{0}
-} \\ 
-\vect{A} \dot{\vect{z}} + \vect{B}  \vect{z} = \vect{0}\end{aligned}$$</div>
-<p>
+    \vect{0} \ \vect{0} \ \vect{0}
+} \ 
+\vect{A} \dot{\vect{z}} + \vect{B}  \vect{z} = \vect{0}\end{aligned}$$
 to generate the discretized <span class="caps">SWE</span>. </p>
 <p>A future post will discuss the python implementation of this finite element and its application to a basic&nbsp;problem. </p>
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "left",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    var location_protocol = (false) ? 'https' : document.location.protocol;
-    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {pare: ['\\\\left( #1 \\\\right)', 1], brak: ['\\\\left[ #1 \\\\right]', 1], brac: ['\\\\left\\\\lbrace #1 \\\\right\\\\rbrace', 1], absol: ['\\\\left\\\\vert #1 \\\\right\\\\vert', 1], overbar: ['\\\\mkern 1.5mu\\\\overline{\\\\mkern-1.5mu#1\\\\mkern-1.5mu}\\\\mkern 1.5mu', 1], EE: ['\\\\times 10^{#1}', 1], eqand: '\\\\, \\\\text{and} \\\\,', qeqand: '\\\\quad \\\\text{and} \\\\quad', qqeqand: '\\\\qquad \\\\text{and} \\\\qquad', HRule: '\\\\rule{\\\\linewidth}{0.2mm}', vect: ['\\\\boldsymbol{#1}', 1], uv: ['\\\\hat{\\\\boldsymbol{#1}}', 1], ud: '\\\\,\\\\mathrm{d}', matorvec: ['\\\\left[\\\\begin{array}{#1}    #2\\\\end{array}\\\\right]', 2], pardiff: ['\\\\dfrac{\\\\partial\\\\, #1}{\\\\partial\\\\, #2}', 2], pp: ['\\\\frac{\\\\partial #1}{\\\\partial #2}', 2], totdiff: ['\\\\dfrac{\\\\ud #1}{\\\\ud #2}', 2], rint: '\\\\pare{R}\\\\hspace{-0.5em} \\\\int ', expon: ['\\\\exp \\\\left\\\\lbrace #1 \\\\right\\\\rbrace', 1], unit: ['   \\\\, \\\\mathrm{#1}                }', 1], bunit: ['  \\\\, \\\\left[ \\\\mathrm{#1} \\\\right] }', 1], funit: ['  \\\\, \\\\mathrm{ \\\\frac{#1}{#2} }   }', 2], bfunit: ['  \\\\, \\\\left[ \\\\mathrm{ {#1}/{#2} } \\\\right]   }', 2], mts: '\\\\bunit{m}', cmts: '\\\\bunit{cm}', mmts: '\\\\bunit{mm}', kmts: '\\\\bunit{km}', mps: '\\\\bfunit{m}{s}', cmpt: '\\\\bfunit{cm}{s}', mmps: '\\\\bfunit{mm}{s}', kmps: '\\\\bfunit{km}{s}', Newt: '\\\\bunit{N}', kNewt: '\\\\bunit{kN}', MNewt: '\\\\bunit{MN}', Pa: '\\\\bunit{Pa}', kPa: '\\\\bunit{kPa}', MPa: '\\\\bunit{MPa}', GPa: '\\\\bunit{GPa}', kNmm: '\\\\bfunit{kN}{m^2}', Nmm: '\\\\bfunit{N}{m^2}', kgmmm: '\\\\bfunit{kg}{m^3}', Mgmmm: '\\\\bfunit{Mg}{m^3}', grcmcmcm: '\\\\bfunit{g}{cm^3}', kNmmm: '\\\\bfunit{kN}{m^3}', gr: '\\\\bunit{g}', mgr: '\\\\bunit{mg}', kgr: '\\\\bunit{kg}', Mgr: '\\\\bunit{Mg}', seg: '\\\\bunit{s}', msec: '\\\\bunit{ms}', musec: '\\\\bunit{\\\\mu s}', mo: '\\\\bunit{month}', mos: '\\\\bunit{months}', days: '\\\\bunit{days}', gs: '\\\\bunit{g}', mss: '\\\\bfunit{m}{s^2}', cmss: '\\\\bfunit{cm}{s^2}', Hz: '\\\\bunit{Hz}', MHz: '\\\\bunit{MHz}', GHz: '\\\\bunit{GHz}', THz: '\\\\bunit{THz}', dgr: '\\\\unit{^{\\\\circ}}', rads: '\\\\bunit{rad}', kips: '\\\\unit{kips}', ksi: '\\\\unit{ksi}', inch: '\\\\unit{in}'} }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script>
         </div>
 
         <div class="meta">
