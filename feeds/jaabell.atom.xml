@@ -3711,7 +3711,7 @@ initial&amp;nbsp;condition.&lt;/p&gt;
 &lt;p&gt;&lt;a href="/images/sne/01/one.png"&gt;&lt;img alt="one" src="/images/sne/01/one.png"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Doing 5000 Monte-Carlo draws and plotting all the responses together we
 get:&lt;a href="/images/sne/01/ensemble.png"&gt;&lt;img alt="ensemble" src="/images/sne/01/ensemble.png"&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;About half of the the pendulums swing to the left and the other half to
+&lt;p&gt;-About half of the the pendulums swing to the left and the other half to
 the right. This would result in a bimodal distribution and is a mere
 artifact of the mathematical model used. Indeed, what the model
 perceives as two distinct equilibrium points are actually the same
