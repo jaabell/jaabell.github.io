@@ -45,182 +45,172 @@
     <article>
         <header>
             <h1>Elementos Finitos - 2nd. Sem.&nbsp;2016</h1>
-                <time datetime="page.date.isoformat()" pubdate>Thu 04 August 2016</time>
+                <time datetime="page.date.isoformat()" pubdate>Tue 01 August 2017</time>
         </header>
 
         <div class="article_content">
-            <h2>Descripción</h2>
-<p>Curso introductorio al método de elementos finítos. El enfoque del curso es práctico orientado al modelamiento de sistemas físicos, con énfasis de que el alumno aprenda a <em>implementar</em> programas de elementos finitos con especial atención a problemas de sólidos y, en menor medida, fluídos. Se le entregará al alumno una mirada crítica, con base en teoría de elementos finitos lineales, que le permitirá conocer las fortalezas y limitaciones de las técnicas&nbsp;aprendidas. </p>
-<p>Requiere aptitud o disposición para programar, solo y en&nbsp;equipo. </p>
-<h2>Generalidades</h2>
+            <h2>Description</h2>
+<p>This is a graduate level course in the Finite Element Method. The course is practically focused, with some important mathematical insights, oriented to the modeling of physical systems. The student will learn the typical work-flow of finite element software by implementing his/her own linear solver including several typical elements. Aspects of meshing and post-processing are also thoroughly discussed and practiced. Special attention is given to mechanics oriented problems (linear elasto-statics and elasto-dynamics) as well as some other problems such as incompressible laminar flow, flow nets, shallow-wave equations, coupled elements, to name a&nbsp;few. </p>
+<p>A critical view is encouraged, whereby the student is able to identify main modeling assumption and understand the limitations of his/her results and the overall range of applicability of linear <span class="caps">FEM</span>&nbsp;methods. </p>
+<h2>General&nbsp;information</h2>
 <ul>
-<li>Creditos: 6 ($ \frac{6 \text{creditos} \cdot 30 \text{horas/credito} }{ 18 \text{semanas}} \approx 10 $ horas&nbsp;semanales)</li>
-<li>Clases: L-W 10:30-12:20 (L: C-13&nbsp;W:H-03)</li>
-<li>Profesor: José Abell&nbsp;(jaabell@miuandes.cl)</li>
-<li>Horario de oficina: L-W (15:30 -&nbsp;17:30)</li>
-<li>29 - 31 clases&nbsp;expositivas.</li>
+<li>Credits: 6 <span class="caps">CDT</span> ($ \frac{6 \text{credits} \cdot 30 \text{hours/credit} }{ 18 \text{weeks}} \approx 10 $ hours a week of dedication are&nbsp;required)</li>
+<li>Clases meetings: M-J 13:30-15:20 (M: C-215 J:&nbsp;H-219)</li>
+<li>Instructor: José Abell&nbsp;(jaabell@miuandes.cl)</li>
+<li>Office Hours: (<span class="caps">TBD</span>)</li>
+<li>29 - 31&nbsp;lessons.</li>
 </ul>
-<h2>Competencias&nbsp;desarrolladas</h2>
+<h2>Developed&nbsp;competencies</h2>
 <ul>
-<li>Entender la teoría del método de elementos&nbsp;finitos.</li>
-<li>Desarrollar elementos finitos simples para problemas de&nbsp;elasticidad.</li>
-<li>Aprender técnicas de mallado para problemas de elementos&nbsp;finitos.</li>
-<li>Resolver problemas de propagación de ondas en elementos&nbsp;finitos.</li>
+<li>Completes and puts into practice the student&#8217;s modeling&nbsp;skills. </li>
+<li>To understand theory of the linear finite element&nbsp;method. </li>
+<li>To develop simple (classical) finite elements applied to diverse&nbsp;PDEs.</li>
+<li>Gain practical meshing and post-processing skills for <span class="caps">FEM</span> model&nbsp;development. </li>
 </ul>
-<h2>Evaluación</h2>
+<h2>Grading</h2>
 <ul>
-<li><strong> (60%) </strong> 7 Tareas grupales (dos personas) Tareas son cada dos semanas, se entregan los&nbsp;Miércoles. </li>
-<li><strong> (30%) </strong> Un proyecto de modelamiento con&nbsp;presentaciones. </li>
-<li><strong> (10%) </strong> Lectura semanal (control online en sistema <span class="caps">SAF</span>) </li>
+<li><strong> (50%) </strong> Group Homework Assignments (2 persons per&nbsp;group).</li>
+<li><strong> (20%) </strong> 2&nbsp;Midterms</li>
+<li><strong> (10%) </strong> Weekly reading&nbsp;assignments.</li>
+<li><strong> (20%) </strong> Term <span class="caps">FEM</span> modeling&nbsp;project. </li>
+<li>** Homework grade must be &gt; 4.0 for course approval. Homeworks are regraded for partial&nbsp;credit. </li>
 </ul>
-<h1>Calendario</h1>
+<!-- 
+Calendario 
+============
+
 <iframe src="https://calendar.google.com/calendar/embed?src=68hj1a9pjm988hq9avip7ggus0%40group.calendar.google.com&ctz=America/Santiago" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 
-<h1>Contenidos</h1>
+ -->
+
+<h1>Contents</h1>
 <p>29&nbsp;clases.</p>
 <ul>
-<li>Introducción: Discretización de elementos finitos: nodos y grados de libertad.                    <strong>(1&nbsp;clase)</strong></li>
-<li>Método de rigidez directa (repaso).                                                               <strong>(2&nbsp;clases)</strong></li>
-<li>Forma débil y formulación variacional (teoría de elementos finitos).                              <strong>(4&nbsp;clases)</strong></li>
-<li>Elementos finitos para problemas sólidos                                                          <strong>(8 clases)</strong><ul>
-<li>Reticulado y viga de Bernoulli como elementos finitos (2d y 3d)                                 <strong>[2&nbsp;clases]</strong></li>
-<li>Elementos para análisis 2-D (triángulos y cuadriláteros de primer y segundo órden)              <strong>[2&nbsp;clases]</strong></li>
-<li>Elementos para análisis 3-D (tetrahedros y hexaédros de primer y segundo órden)                 <strong>[2&nbsp;clases]</strong></li>
-<li>Elementos para flexión bidimensional (plate theory)                                             <strong>[2&nbsp;Clases]</strong></li>
-</ul>
-</li>
-<li>Propagación de ondas con elementos finitos (elementos finitos dinámicos).                         <strong>(6&nbsp;clases)</strong></li>
-<li>Problemas de fluídos.                                                                             <strong>(3&nbsp;clases)</strong></li>
-<li>Elementos para análisis acoplado (fase fluída y fase sólida) de medios porosos.                   <strong>(2&nbsp;clases)</strong></li>
-</ul>
-<h1>Lectura&nbsp;Personal</h1>
-<ol>
 <li>
-<p>8 de&nbsp;Agosto:</p>
-<ul>
-<li><a href="http://www.colorado.edu/engineering/CAS/courses.d/IFEM.d/IFEM.Ch02.d/IFEM.Ch02.pdf">Libro de Felippa. Chapter 2. Direct Stiffness Method I</a>.</li>
-<li><a href="http://www.colorado.edu/engineering/CAS/courses.d/IFEM.d/IFEM.Ch06.d/IFEM.Ch06.pdf">Libro de Felippa. Chapter 6. <span class="caps">FEM</span> Modeling: Introduction</a>.</li>
-<li><a href="http://www.colorado.edu/engineering/CAS/courses.d/IFEM.d/IFEM.Ch07.d/IFEM.Ch07.pdf">Libro de Felippa. Chapter 7. <span class="caps">FEM</span> Modeling: Mesh, Loads and BCs</a> Solo Secciones 7.1, 7.2 y&nbsp;7.3</li>
+<p>Introduction: Finite element Discretization: nodes and degrees of freedom, the direct stiffness&nbsp;method.</p>
+</li>
+<li>
+<p>Weak and variational form of partial differential equations. Linear <span class="caps">FEM</span>&nbsp;theory. </p>
+</li>
+<li>
+<p>A gallery of finite elements (1D, 2D,&nbsp;3D)</p>
+</li>
+<li>
+<p>Wave propagation&nbsp;problems. </p>
+</li>
+<li>
+<p>Special topics (multi-phase coupled <span class="caps">FEM</span>), shallow wave equations, thermoelasticity, domain reduction method for seismic&nbsp;input)</p>
+</li>
+</ul>
+<h1>Readings</h1>
+<ol>
+<li>8 de August:<ul>
+<li><a href="http://www.colorado.edu/engineering/CAS/courses.d/IFEM.d/IFEM.Ch02.d/IFEM.Ch02.pdf">Felippa&#8217;s lecture notes. Chapter 2. Direct Stiffness Method I</a>.</li>
+<li><a href="http://www.colorado.edu/engineering/CAS/courses.d/IFEM.d/IFEM.Ch06.d/IFEM.Ch06.pdf">Felippa&#8217;s lecture notes. Chapter 6. <span class="caps">FEM</span> Modeling: Introduction</a>.</li>
+<li><a href="http://www.colorado.edu/engineering/CAS/courses.d/IFEM.d/IFEM.Ch07.d/IFEM.Ch07.pdf">Felippa&#8217;s lecture notes. Chapter 7. <span class="caps">FEM</span> Modeling: Mesh, Loads and BCs</a> Sections 7.1, 7.2 y&nbsp;7.3</li>
 <li><a href="https://en.wikipedia.org/wiki/Types_of_mesh">Wikipedia: Types of&nbsp;mesh</a></li>
 </ul>
 </li>
-<li>
-<p>15 de&nbsp;Agosto:</p>
-<ul>
-<li><a href="http://www.colorado.edu/engineering/CAS/courses.d/IFEM.d/IFEM.Ch07.d/IFEM.Ch07.pdf">Libro de Felippa. Chapter 7. <span class="caps">FEM</span> Modeling: Mesh, Loads and BCs</a> Secciones 7.4 en&nbsp;adelante. </li>
-</ul>
-</li>
-<li>
-<p>22 de&nbsp;Agosto.</p>
-<ul>
-<li><a href="http://www.colorado.edu/engineering/CAS/courses.d/AFEM.d/AFEM.Ch01.d/AFEM.Ch01.pdf">Curso de <span class="caps">FEM</span> Avanzado de Felippa. Chapter 1: Introduction</a> Capitulo introductorio de interés general. Fijarse especialmente en el ejemplo del&nbsp;final. </li>
-<li><a href="http://www.colorado.edu/engineering/CAS/courses.d/AVMM.d/AVMM.Ch06.d/AVMM.Ch06.pdf">Curso de <span class="caps">FEM</span> Avanzado de Felippa. Chapter 6: Decomposition of Poisson Problems</a> hasta seccion&nbsp;6.4. </li>
-</ul>
-</li>
-<li>
-<p><s>29 de Agosto.</s> 31 de&nbsp;Agosto</p>
-<ul>
-<li><a href="http://www.colorado.edu/engineering/CAS/courses.d/IFEM.d/IFEM.Ch11.d/IFEM.Ch11.pdf">Libro de Felippa. Chapter 11: Variational Formulation of Bar&nbsp;Element</a></li>
-</ul>
-</li>
-<li>
-<p>5 de&nbsp;Septiembre.</p>
-<ul>
-<li><a href="http://www.colorado.edu/engineering/CAS/courses.d/IFEM.d/IFEM.Ch12.d/IFEM.Ch12.pdf">Libro de Felippa. Chapter 12: Variational Formulation of Plane Beam&nbsp;Element.</a></li>
-</ul>
-</li>
-<li>
-<p>12 de&nbsp;Septiembre.</p>
-<ul>
-<li><a href="http://www.colorado.edu/engineering/CAS/courses.d/IFEM.d/IFEM.Ch14.d/IFEM.Ch14.pdf">Libro de Felippa. Chapter 14: The Plane Stress&nbsp;Problem</a></li>
-</ul>
-</li>
-<li>
-<p>26 de&nbsp;Septiembre</p>
-<ul>
-<li><a href="http://www.colorado.edu/engineering/CAS/courses.d/IFEM.d/IFEM.Ch16.d/IFEM.Ch16.pdf">Libro de Felippa. Chapter 16: The Iso&#8217;Parametric&nbsp;Representation</a></li>
-<li><a href="http://www.colorado.edu/engineering/CAS/courses.d/IFEM.d/IFEM.Ch18.d/IFEM.Ch18.pdf">Libro de Felippa. Chapter 18: Shape Function&nbsp;Magic</a></li>
-</ul>
-</li>
-<li>
-<p>3 de&nbsp;Octubre</p>
-<ul>
-<li><a href="http://www.colorado.edu/engineering/CAS/courses.d/AFEM.d/AFEM.Ch20.d/AFEM.Ch20.pdf">Curso de <span class="caps">FEM</span> Avanzado de Felippa. Kirchoff Plates: Field&nbsp;Equations</a></li>
-</ul>
-</li>
-<li>
-<p>24 de&nbsp;Octubre </p>
-<ul>
-<li><a href="https://www.dropbox.com/s/h8gch2n30jxergt/Hilber_et_al-1977-Earthquake_Engineering_%26_Structural_Dynamics.pdf?dl=0">Paper 1977: Método de Integración Numérica <span class="caps">HHT</span> - Hilber-Hughes-Taylor</a> Esta es una extensión del método de Newmark para mayor control del la disipación&nbsp;numérica. </li>
-</ul>
-</li>
-<li>
-<p>4 de&nbsp;Noviembre</p>
-<ul>
-<li><a href="https://www.dropbox.com/s/14eikhimtgn9h82/Bielak%20et%20al.%20-%202003%20-%20Domain%20Reduction%20Method%20for%20Three--Dimensional%20Earthquake%20Modeling%20in%20Localized%20Regions.%20Part%20%7BI%7D%20Theory.pdf?dl=0">Paper 2003: Método de descomposición de dominio - Bielak et.&nbsp;al</a></li>
-</ul>
-</li>
 </ol>
-<h1>Ejemplos</h1>
+<!&#8212; 
+1. 15 de Agosto:
+    * [Libro de Felippa. Chapter 7. FEM Modeling: Mesh, Loads and BCs](http://www.colorado.edu/engineering/CAS/courses.d/IFEM.d/IFEM.Ch07.d/IFEM.Ch07.pdf) Secciones 7.4 en adelante.
+
+1. 22 de Agosto.
+    * [Curso de FEM Avanzado de Felippa. Chapter 1: Introduction](http://www.colorado.edu/engineering/CAS/courses.d/AFEM.d/AFEM.Ch01.d/AFEM.Ch01.pdf) Capitulo introductorio de interés general. Fijarse especialmente en el ejemplo del final. 
+    * [Curso de FEM Avanzado de Felippa. Chapter 6: Decomposition of Poisson Problems](http://www.colorado.edu/engineering/CAS/courses.d/AVMM.d/AVMM.Ch06.d/AVMM.Ch06.pdf) hasta seccion 6.4. 
+
+1. <s>29 de Agosto.</s> 31 de Agosto
+    * [Libro de Felippa. Chapter 11: Variational Formulation of Bar Element](http://www.colorado.edu/engineering/<span class="caps">CAS</span>/courses.d/<span class="caps">IFEM</span>.d/<span class="caps">IFEM</span>.Ch11.d/<span class="caps">IFEM</span>.Ch11.pdf)
+
+1. 5 de Septiembre.
+    * [Libro de Felippa. Chapter 12: Variational Formulation of Plane Beam Element.](http://www.colorado.edu/engineering/<span class="caps">CAS</span>/courses.d/<span class="caps">IFEM</span>.d/<span class="caps">IFEM</span>.Ch12.d/<span class="caps">IFEM</span>.Ch12.pdf)
+
+1. 12 de Septiembre.
+    * [Libro de Felippa. Chapter 14: The Plane Stress Problem](http://www.colorado.edu/engineering/<span class="caps">CAS</span>/courses.d/<span class="caps">IFEM</span>.d/<span class="caps">IFEM</span>.Ch14.d/<span class="caps">IFEM</span>.Ch14.pdf)
+
+1. 26 de Septiembre
+    * [Libro de Felippa. Chapter 16: The Iso&#8217;Parametric Representation](http://www.colorado.edu/engineering/<span class="caps">CAS</span>/courses.d/<span class="caps">IFEM</span>.d/<span class="caps">IFEM</span>.Ch16.d/<span class="caps">IFEM</span>.Ch16.pdf)
+    * [Libro de Felippa. Chapter 18: Shape Function Magic](http://www.colorado.edu/engineering/<span class="caps">CAS</span>/courses.d/<span class="caps">IFEM</span>.d/<span class="caps">IFEM</span>.Ch18.d/<span class="caps">IFEM</span>.Ch18.pdf)
+
+1. 3 de Octubre
+    * [Curso de <span class="caps">FEM</span> Avanzado de Felippa. Kirchoff Plates: Field Equations](http://www.colorado.edu/engineering/<span class="caps">CAS</span>/courses.d/<span class="caps">AFEM</span>.d/<span class="caps">AFEM</span>.Ch20.d/<span class="caps">AFEM</span>.Ch20.pdf)
+
+1. 24 de Octubre 
+    * [Paper 1977: Método de Integración Numérica <span class="caps">HHT</span> - Hilber-Hughes-Taylor](https://www.dropbox.com/s/h8gch2n30jxergt/Hilber_et_al-1977-Earthquake_Engineering_%26_Structural_Dynamics.pdf?dl=0) Esta es una extensión del método de Newmark para mayor control del la disipación numérica. 
+
+1. 4 de Noviembre
+    * [Paper 2003: Método de descomposición de dominio - Bielak et. al](https://www.dropbox.com/s/14eikhimtgn9h82/Bielak%20et%20al.%20-%202003%20-%20Domain%20Reduction%20Method%20for%20Three&#8212;Dimensional%20Earthquake%20Modeling%20in%20Localized%20Regions.%20Part%20%<span class="caps">7BI</span>%7D%20Theory.pdf?dl=0) 
+&#8212;>
+
+<h1>Examples</h1>
 <ul>
-<li>Introduccion: Ejemplo sobre <span class="caps">MRD</span> con la funcion de la tarea 1. Ejemplo completo con solucion del
-sistema y graficos. <a href="https://www.dropbox.com/s/vt2cazdop2ioqm4/ejemplo.py?dl=0">ejemplo.py</a></li>
-<li>Introducción. Hint para leer archivos <em>.msh</em> en python. 
-<a href="https://www.dropbox.com/s/q00xvko2zeoa4lq/ejemplo_leer_archivo.py?dl=0">ejemplo_leer_archivo.py</a></li>
-<li>Graficando polinomios de Hermite en python. <a href="https://www.dropbox.com/s/j3eqr09wnqz2osk/hermite.py?dl=0">hermite.py</a></li>
-<li>Para graficar resultados en gmsh. <a href="https://www.dropbox.com/s/hytpc5btq8fvjhl/export_to_gmsh.py?dl=0">export_to_gmsh.py</a></li>
-<li>Ejemplo de uso de las funciones de export_to_gmsh.<ul>
-<li><a href="https://www.dropbox.com/s/py7xjug1jcvt28q/ejemplo_write.py?dl=0">ejemplo_write.py</a>.</li>
-<li><a href="https://www.dropbox.com/s/ipou1eqkq3i45lx/viga.msh?dl=0">viga.msh</a>.</li>
-<li><a href="https://youtu.be/NYo4txhAmgI">Video tutorial</a>. </li>
+<li>Coming&nbsp;soon</li>
 </ul>
-</li>
-<li>Comparacion metodo de Newmark y Metodo de Variables de Estado<ul>
-<li><a href="https://www.dropbox.com/s/0mmkq0cnt1y3e18/metodo_de_estado.py?dl=0">metodo_de_estado.py</a>.</li>
-<li><a href="https://www.dropbox.com/s/kqhq7q19j6tex2i/ejemplo_dinamica.py?dl=0">ejemplo_dinamica.py</a>.</li>
-</ul>
-</li>
-<li>Viga-columna 3D (cortesía de Nicole Andrea y Francisco Hillman) <a href="https://www.dropbox.com/s/nj0bc2vfkujgji2/viga_columna_3d.py?dl=0">viga_columna.py</a>.</li>
-</ul>
-<h1>Tareas</h1>
-<p><strong>Instrucciones generales:</strong> las tareas se entregan en grupos de máximo 2 integrantes a través del sistema <span class="caps">SAF</span>. Debe entregar dos archivos: un <em>.pdf</em> con el informe y un <em>.zip</em> con todo el código fuente que reproduce sus resultados (archvios de geometría, malla, código de elementos finitos, resultados intermedios e imágenes incluidas en su informe deben estar en una estructura de carpetas coherente). Si el código no corre correctamente se considerará tarea no&nbsp;realizada.</p>
+<!-- 
+- Introduccion: Ejemplo sobre MRD con la funcion de la tarea 1. Ejemplo completo con solucion del
+sistema y graficos. [ejemplo.py](https://www.dropbox.com/s/vt2cazdop2ioqm4/ejemplo.py?dl=0)
+- Introducción. Hint para leer archivos *.msh* en python. 
+[ejemplo_leer_archivo.py](https://www.dropbox.com/s/q00xvko2zeoa4lq/ejemplo_leer_archivo.py?dl=0)
+- Graficando polinomios de Hermite en python. [hermite.py](https://www.dropbox.com/s/j3eqr09wnqz2osk/hermite.py?dl=0)
+- Para graficar resultados en gmsh. [export_to_gmsh.py](https://www.dropbox.com/s/hytpc5btq8fvjhl/export_to_gmsh.py?dl=0)
+- Ejemplo de uso de las funciones de export_to_gmsh.
+    - [ejemplo_write.py](https://www.dropbox.com/s/py7xjug1jcvt28q/ejemplo_write.py?dl=0).
+    - [viga.msh](https://www.dropbox.com/s/ipou1eqkq3i45lx/viga.msh?dl=0).
+    - [Video tutorial](https://youtu.be/NYo4txhAmgI). 
+- Comparacion metodo de Newmark y Metodo de Variables de Estado
+    - [metodo_de_estado.py](https://www.dropbox.com/s/0mmkq0cnt1y3e18/metodo_de_estado.py?dl=0).
+    - [ejemplo_dinamica.py](https://www.dropbox.com/s/kqhq7q19j6tex2i/ejemplo_dinamica.py?dl=0).
+- Viga-columna 3D (cortesía de Nicole Andrea y Francisco Hillman) [viga_columna.py](https://www.dropbox.com/s/nj0bc2vfkujgji2/viga_columna_3d.py?dl=0).
+ -->
+
+<h1>Homeworks</h1>
+<p><strong>General&nbsp;instructions:</strong> </p>
 <ul>
-<li><strong> Tarea 1 </strong> (17 Agosto)      - Método de rigidez directa. [<a href="https://www.dropbox.com/s/vquzh1qhfhoz9a0/t1.pdf?dl=0">Enunciado</a>]</li>
-<li><strong> Tarea 2 </strong> (31 Agosto)      - Teoría de Elementos Finitos y Más Método de Rigidez Directa. [<a href="https://www.dropbox.com/s/bmonzrj9tyk6fgn/t2.pdf?dl=0">Enunciado</a>]</li>
-<li><strong> Tarea 3 </strong> (14 Septiembre)  - Elementos Finitos 1D [<a href="https://www.dropbox.com/s/1vidv6lzhr6ahby/t3.pdf?dl=0">Enunciado</a>] </li>
-<li><strong> Tarea 4 </strong> (12 Octubre)  - Elementos Finitos 2D [<a href="https://www.dropbox.com/s/2cvpnxgvsqvmze1/t4.pdf?dl=0">Enunciado</a>]</li>
-<li><strong> Tarea 5 </strong> (2 Octubre)     - Propagación de Ondas [<a href="https://www.dropbox.com/s/9zj8dj4x4olnmd0/t5.pdf?dl=0">Enunciado</a>]</li>
-<li><strong> Tarea 6 </strong> (9 Noviembre)    - Problemas de&nbsp;fluidos   </li>
+<li>Homeworks are the most important part of this&nbsp;course. </li>
+<li>Homeworks are solved pairs (of two of course). Exceptionally, in the case of an odd enrollment, there may exist one group of 3 people, first come first served, from which more will be&nbsp;expected. </li>
+<li>All homeworks are typewritten and handed in on the due date at the beginning of the&nbsp;lesson. </li>
+<li>All source code (which replicates plots on the main text) is handed in via the <span class="caps">SAF</span> virtual learning environment (zip file). Non running code is exposed to minimum grade no matter what the report&nbsp;says. </li>
+<li>Additionally, on the due date each group may have to present a one <span class="caps">PPT</span> slide summary of their work to be presented within 2 minutes. This must be submitted to the instructor before the days&nbsp;lesson. </li>
+<li>Late work is accepted within 24 hours of due date with maximum grade of 4.0 and not eligible for&nbsp;re-grading.</li>
+<li>
+<p>Re-grading of homework is expected. An extra week of time will be given after homeworks are handed back for homework&nbsp;re-submission.</p>
+</li>
+<li>
+<p><strong> Tarea 1 </strong> (17 Agosto) - Direct stiffness&nbsp;method. </p>
+</li>
 </ul>
-<h1>Proyecto de&nbsp;Modelamiento</h1>
-<p><strong>Presentación (23 Noviembre)</strong>&nbsp;Posters!</p>
+<!-- - ** Tarea 1 ** (17 Agosto)      - Método de rigidez directa. [[Enunciado](https://www.dropbox.com/s/vquzh1qhfhoz9a0/t1.pdf?dl=0)]
+- ** Tarea 2 ** (31 Agosto)      - Teoría de Elementos Finitos y Más Método de Rigidez Directa. [[Enunciado](https://www.dropbox.com/s/bmonzrj9tyk6fgn/t2.pdf?dl=0)]
+- ** Tarea 3 ** (14 Septiembre)  - Elementos Finitos 1D [[Enunciado](https://www.dropbox.com/s/1vidv6lzhr6ahby/t3.pdf?dl=0)] 
+- ** Tarea 4 ** (12 Octubre)  - Elementos Finitos 2D [[Enunciado](https://www.dropbox.com/s/2cvpnxgvsqvmze1/t4.pdf?dl=0 )]
+- ** Tarea 5 ** (2 Octubre)     - Propagación de Ondas [[Enunciado](https://www.dropbox.com/s/9zj8dj4x4olnmd0/t5.pdf?dl=0)]
+- ** Tarea 6 ** (9 Noviembre)    - Problemas de fluidos   
+ -->
+
+<h1>Modeling&nbsp;project</h1>
+<p>Posters! Due date <span class="caps">TBA</span>.</p>
+<p>There are two possible&nbsp;formats </p>
 <ul>
 <li>
-<p><em>Formato 1</em> Consiste en modelar mediante elementos finitos, usando el código generado durante el semestre (u opcionalmente algún otro <em>código de fuente abierta</em> ), algun objecto dentro del campus de la&nbsp;universidad. </p>
 <ul>
-<li>Opción 1.1 - Comparar dos estrategias de modelamiento para el mismo problema. Una debe ser
-más detallada o precisa que la otra (incerteza en el&nbsp;modelamiento).</li>
-<li>Opción 1.2 - Hacer alguna medición de la respuesta del objeto y tratar de modelarla lo más
-preciso&nbsp;posible. </li>
+<li>
+<p>Format 1* Use <span class="caps">FEM</span> tools developed during the course to model some object within the campus&nbsp;grounds. </p>
+</li>
+<li>
+<p>Option 1.1 - Compare two or more modeling strategies for the same problem to evaluate modeling uncertainty. May use third-party software as an&nbsp;option.</p>
+</li>
+<li>Option 1.2 - Model an object and do some measurement of the object response to assess model suitability or to infer model parameters (inverse modeling). If the modeling task is complex enough, may use a licensed or open source third party software (e.g.&nbsp;OpenSees).</li>
 </ul>
 </li>
 <li>
-<p><em>Formato 2</em> Implementar alguna técnica que no se haya visto en el curso. Para esto ud. deberá
-referirse a la bibliografía del curso o a la investigación científica (con ayuda del profesor) para
-escoger la técnica a implementar. Se deberá presentar la implementaciómn y verificación de la&nbsp;técnica. </p>
+<p><em>Format 2</em>  Implement some strategy that has not been covered it full or at all during classes. s. Talk to instructor about possible alternatives. Should present main implementation (make it available to everyone) as well as a set of examples to verify&nbsp;i</p>
 </li>
 </ul>
-<p><strong>Ideas para&nbsp;proyecto</strong></p>
-<p><em>Entre corchetes [] el tipo de&nbsp;trabajo</em></p>
+<p><strong>Ideas</strong></p>
 <ul>
-<li>[1.2] Propagación de ondas en la fuente del edificio central. (ver <a href="https://en.wikipedia.org/wiki/Shallow_water_equations">Ecuaciones de aguas someras</a>) </li>
-<li>[1.2] Notas producidas por una copa o vaso (ver <a href="https://www.youtube.com/watch?v=MfzNJE4CK_s">Coffee Cup Vibrations</a>).</li>
-<li>[1.2] Vibraciones en el puente del edificio central. (Usar acelerómetro del&nbsp;celular).</li>
-<li>[1.2] Deformación de alguna baranda o posamanos al apoyarse en&nbsp;el. </li>
-<li>[1.2] Vibraciones libres y amortiguamiento en un arco de futbol (sometido a un&nbsp;pelozato). </li>
-<li>[ 2 ] Implementar elementos acoplados u-p-U. Modelar ensayos de&nbsp;consolidación. </li>
-<li>[ 2 ] Implementar elementos acoplados u-p-U. Modelar ensayos de&nbsp;consolidación. </li>
-<li>[ 2 ] Implementar elemento termoelástico. (Resolver problema de calor acoplado con&nbsp;elasticidad).</li>
+<li><a href="https://www.dropbox.com/sh/xklao0w07vh1fks/AADkFGeHOxXF7iwNRsNkraBda?dl=0">Previous semester posters</a>. </li>
+<li>More ideas&nbsp;soon</li>
 </ul>
 <h1>Links</h1>
 <ul>
