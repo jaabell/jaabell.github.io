@@ -6,7 +6,7 @@
         <meta name="author" content="Jose Abell">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        <title>Jose Abell's Research Blog - opensees | Jose Abell's Research Blog</title>
+        <title>Jose Abell's Research Blog - OpenSees | Jose Abell's Research Blog</title>
 
         <link rel="alternate" type="application/atom+xml" title="Jose Abell's Research Blog blog atom feed" href="/feeds/all.atom.xml" />
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
@@ -42,6 +42,39 @@
 
 <div class="container index">
 
+  <article>
+    <header>
+      <h2><a href="http://www.joseabell.com/new-cable-element-in-opensees-EN.html">New cable element in&nbsp;OpenSees</a></h2>
+      <time datetime="" title="2017-09-07T20:13:57-07:00" pubdate>Thu 07 September 2017</time>
+    </header>
+
+    <div class="article_content">
+      <p>We&#8217;ve implemented a new <a href="http://opensees.berkeley.edu/wiki/index.php/CatenaryCableElement">catenary cable element</a>. This element is based on the work by Salehi et&nbsp;al[1].</p>
+<p>The stiffness of this element is obtained using a flexibility formulation. Basically the shape of the cable is determined by the&nbsp;integral:</p>
+<p>$$\begin{aligned}
+\vect{x}(s) = -\int_0^s \dfrac{\vect{w}s + \vect{f}}{\Vert \vect{w}s + \vect{f} \Vert^2}\pare{\dfrac{\Vert \vect{w}s + \vect{f} \Vert}{<span class="caps">EA</span>} + \pare{1 + \alpha \Delta T}} \ud s \
+\vect{w} = \brak{w_1,\, w_2,\, w_3}^T \qquad
+\vect{f} = \brak{f_1,\, f_2,\, f_3}^T 
+}\end{aligned}&nbsp;$$</p>
+<p>Reference</p>
+<p>[1] Salehi …</p>
+    </div>
+
+    <div class="meta">
+      <div>
+        <a href="http://www.joseabell.com/new-cable-element-in-opensees-EN.html" class="read_more">Read more &#8594;</a>
+      </div>
+
+      <div>
+            <a href="http://www.joseabell.com/tag/opensees.html" class="tag">OpenSees</a>
+            <a href="http://www.joseabell.com/tag/cable.html" class="tag">Cable</a>
+            <a href="http://www.joseabell.com/tag/blender.html" class="tag">Blender</a>
+      </div>
+
+    </div>
+
+  </article>
+  <div class="separator">&equiv;</div>
   <article>
     <header>
       <h2><a href="http://www.joseabell.com/opensees-coming-to-python.html">OpenSees coming to&nbsp;python!</a></h2>
