@@ -49,14 +49,22 @@
         </header>
 
         <div class="article_content">
-            <p>We&#8217;ve implemented a new <a href="http://opensees.berkeley.edu/wiki/index.php/CatenaryCableElement">catenary cable element</a>. This element is based on the work by Salehi et&nbsp;al[1].</p>
+            <div class="youtube" align="left">
+<iframe width="640" height="480" src="https://www.youtube.com/embed/MX_--SI_vKg" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<p>With my student, Pablo Ibañez, we implemented a new <a href="http://opensees.berkeley.edu/wiki/index.php/CatenaryCableElement">catenary cable element</a> in OpenSees. This element is based on the work by Salehi et&nbsp;al[1].</p>
 <p>The stiffness of this element is obtained using a flexibility formulation. Basically the shape of the cable is determined by the&nbsp;integral:</p>
 <div class="math">$$
 \begin{align*}
-\mathbf{x}(s) = -\int_0^s 
+\vect{x}(s) = \vect{x}_1 - \int_0^s \dfrac{\vect{w}s + \vect{f}}{\Vert \vect{w}s + \vect{f} \Vert^2}\pare{\dfrac{\Vert \vect{w}s + \vect{f} \Vert}{EA} + \pare{1 + \alpha \Delta T}} \ud s \\
+\vect{w} = \brak{w_1,\, w_2,\, w_3}^T \qquad
+\vect{f} = \brak{f_1,\, f_2,\, f_3}^T 
 \end{align*}
 $$</div>
-<p>HEllo</p>
+<p>Where <span class="math">\(\vect{x_1}\)</span> is the position of the first node of the cable, <span class="math">\(\vect{w}\)</span> is the weight vector in each direction, <span class="math">\(EA\)</span> is the stiffness, <span class="math">\(\alpha \Delta T\)</span> is the change in strain due to temperature and <span class="math">\(\vect{f}\)</span> is the force vector at the start node. This equation is iterated (with the forces as variable) upon until the the shape of the cable matches the nodal postiions imposed by the finite element program (trial displacements). Then it is used to derive a stiffness&nbsp;matrix. </p>
+<p>The element, as is, passes all our static verification tests. With the additional assumption of a lumped-mass matrix, we&#8217;re currently working on a dynamic verification suite as well as some validation&nbsp;experiments. </p>
+<p>The animation above was created using <a href="http://opensees.berkeley.edu/">OpenSees</a> to simulate the cable and <a href="http://www.blender.org">Blender</a> to render&nbsp;it. </p>
 <p>Reference</p>
 <p>[1] Salehi Ahmad Abad, M., Shooshtari, A., Esmaeili, V., <span class="amp">&amp;</span> Naghavi Riabi, A. (2013). <em>Nonlinear analysis of cable structures under general loadings.</em> Finite Elements in Analysis and Design, 73, 11–19.&nbsp;https://doi.org/10.1016/j.finel.2013.05.002</p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {

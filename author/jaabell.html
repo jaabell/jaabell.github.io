@@ -49,18 +49,17 @@
     </header>
 
     <div class="article_content">
-      <p>We&#8217;ve implemented a new <a href="http://opensees.berkeley.edu/wiki/index.php/CatenaryCableElement">catenary cable element</a>. This element is based on the work by Salehi et&nbsp;al[1].</p>
+      <div class="youtube" align="left">
+<iframe width="640" height="480" src="https://www.youtube.com/embed/MX_--SI_vKg" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<p>With my student, Pablo Ibañez, we implemented a new <a href="http://opensees.berkeley.edu/wiki/index.php/CatenaryCableElement">catenary cable element</a> in OpenSees. This element is based on the work by Salehi et&nbsp;al[1].</p>
 <p>The stiffness of this element is obtained using a flexibility formulation. Basically the shape of the cable is determined by the&nbsp;integral:</p>
 <div class="math">$$
 \begin{align*}
-\mathbf{x}(s) = -\int_0^s 
-\end{align*}
-$$</div>
-<p>HEllo</p>
-<p>Reference</p>
-<p>[1] Salehi Ahmad Abad, M., Shooshtari, A., Esmaeili, V., <span class="amp">&amp;</span> Naghavi Riabi, A. (2013). <em>Nonlinear analysis of cable structures under general loadings.</em> Finite Elements in Analysis and Design, 73, 11–19.&nbsp;https://doi.org/10.1016/j.finel.2013.05.002</p>
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "left …</script>
+\vect{x}(s) = \vect{x}_1 - \int_0^s \dfrac{\vect{w}s + \vect{f}}{\Vert \vect{w}s + \vect{f} \Vert^2}\pare{\dfrac{\Vert \vect{w}s + \vect{f} \Vert}{EA} + \pare{1 + \alpha \Delta T}} \ud s \\
+\vect{w} = \brak{w_1,\, w_2,\, w_3}^T \qquad
+\vect{f} = \brak …</div>
     </div>
 
     <div class="meta">

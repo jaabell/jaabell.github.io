@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Jose Abell's Research Blog - jaabell</title><link>http://www.joseabell.com/</link><description></description><lastBuildDate>Thu, 07 Sep 2017 20:13:57 -0700</lastBuildDate><item><title>New cable element in OpenSees</title><link>http://www.joseabell.com/new-cable-element-in-opensees-EN.html</link><description>&lt;p&gt;We&amp;#8217;ve implemented a new &lt;a href="http://opensees.berkeley.edu/wiki/index.php/CatenaryCableElement"&gt;catenary cable element&lt;/a&gt;. This element is based on the work by Salehi et&amp;nbsp;al[1].&lt;/p&gt;
+<rss version="2.0"><channel><title>Jose Abell's Research Blog - jaabell</title><link>http://www.joseabell.com/</link><description></description><lastBuildDate>Thu, 07 Sep 2017 20:13:57 -0700</lastBuildDate><item><title>New cable element in OpenSees</title><link>http://www.joseabell.com/new-cable-element-in-opensees-EN.html</link><description>&lt;div class="youtube" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/MX_--SI_vKg" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;With my student, Pablo Ibañez, we implemented a new &lt;a href="http://opensees.berkeley.edu/wiki/index.php/CatenaryCableElement"&gt;catenary cable element&lt;/a&gt; in OpenSees. This element is based on the work by Salehi et&amp;nbsp;al[1].&lt;/p&gt;
 &lt;p&gt;The stiffness of this element is obtained using a flexibility formulation. Basically the shape of the cable is determined by the&amp;nbsp;integral:&lt;/p&gt;
 &lt;div class="math"&gt;$$
 \begin{align*}
-\mathbf{x}(s) = -\int_0^s 
-\end{align*}
-$$&lt;/div&gt;
-&lt;p&gt;HEllo&lt;/p&gt;
-&lt;p&gt;Reference&lt;/p&gt;
-&lt;p&gt;[1] Salehi Ahmad Abad, M., Shooshtari, A., Esmaeili, V., &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Naghavi Riabi, A. (2013). &lt;em&gt;Nonlinear analysis of cable structures under general loadings.&lt;/em&gt; Finite Elements in Analysis and Design, 73, 11–19.&amp;nbsp;https://doi.org/10.1016/j.finel.2013.05.002&lt;/p&gt;
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "left …&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">jaabell</dc:creator><pubDate>Thu, 07 Sep 2017 20:13:57 -0700</pubDate><guid isPermaLink="false">tag:www.joseabell.com,2017-09-07:/new-cable-element-in-opensees-EN.html</guid><category>OpenSees</category><category>Cable</category><category>Blender</category></item><item><title>OpenSees coming to python!</title><link>http://www.joseabell.com/opensees-coming-to-python.html</link><description>&lt;p&gt;One of the gripes a lot of people have with &lt;a href="http://opensees.berkeley.edu/"&gt;OpenSees&lt;/a&gt; is that it adopts &lt;span class="caps"&gt;TCL&lt;/span&gt; as its interpreter language. Originally, OpenSees was conceived as a &lt;em&gt;framework&lt;/em&gt;, this is apparent from the main page of the &lt;a href="http://opensees.berkeley.edu/wiki/index.php/Main_Page"&gt;wiki&lt;/a&gt;:&lt;/p&gt;
+\vect{x}(s) = \vect{x}_1 - \int_0^s \dfrac{\vect{w}s + \vect{f}}{\Vert \vect{w}s + \vect{f} \Vert^2}\pare{\dfrac{\Vert \vect{w}s + \vect{f} \Vert}{EA} + \pare{1 + \alpha \Delta T}} \ud s \\
+\vect{w} = \brak{w_1,\, w_2,\, w_3}^T \qquad
+\vect{f} = \brak …&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">jaabell</dc:creator><pubDate>Thu, 07 Sep 2017 20:13:57 -0700</pubDate><guid isPermaLink="false">tag:www.joseabell.com,2017-09-07:/new-cable-element-in-opensees-EN.html</guid><category>OpenSees</category><category>Cable</category><category>Blender</category></item><item><title>OpenSees coming to python!</title><link>http://www.joseabell.com/opensees-coming-to-python.html</link><description>&lt;p&gt;One of the gripes a lot of people have with &lt;a href="http://opensees.berkeley.edu/"&gt;OpenSees&lt;/a&gt; is that it adopts &lt;span class="caps"&gt;TCL&lt;/span&gt; as its interpreter language. Originally, OpenSees was conceived as a &lt;em&gt;framework&lt;/em&gt;, this is apparent from the main page of the &lt;a href="http://opensees.berkeley.edu/wiki/index.php/Main_Page"&gt;wiki&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;OpenSees, the Open System for Earthquake Engineering Simulation, is an object-oriented, open source software framework. It allows users to create both serial and parallel finite element computer applications for&amp;nbsp;simulating&amp;#8230;&lt;/p&gt;
 &lt;/blockquote&gt;

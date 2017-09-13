@@ -1,23 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abell's Research Blog - jaabell</title><link href="http://www.joseabell.com/" rel="alternate"></link><link href="http://www.joseabell.com/feeds/jaabell.atom.xml" rel="self"></link><id>http://www.joseabell.com/</id><updated>2017-09-07T20:13:57-07:00</updated><entry><title>New cable element in OpenSees</title><link href="http://www.joseabell.com/new-cable-element-in-opensees-EN.html" rel="alternate"></link><published>2017-09-07T20:13:57-07:00</published><updated>2017-09-07T20:13:57-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2017-09-07:/new-cable-element-in-opensees-EN.html</id><summary type="html">&lt;p&gt;We&amp;#8217;ve implemented a new &lt;a href="http://opensees.berkeley.edu/wiki/index.php/CatenaryCableElement"&gt;catenary cable element&lt;/a&gt;. This element is based on the work by Salehi et&amp;nbsp;al[1].&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abell's Research Blog - jaabell</title><link href="http://www.joseabell.com/" rel="alternate"></link><link href="http://www.joseabell.com/feeds/jaabell.atom.xml" rel="self"></link><id>http://www.joseabell.com/</id><updated>2017-09-07T20:13:57-07:00</updated><entry><title>New cable element in OpenSees</title><link href="http://www.joseabell.com/new-cable-element-in-opensees-EN.html" rel="alternate"></link><published>2017-09-07T20:13:57-07:00</published><updated>2017-09-07T20:13:57-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2017-09-07:/new-cable-element-in-opensees-EN.html</id><summary type="html">&lt;div class="youtube" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/MX_--SI_vKg" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;With my student, Pablo Ibañez, we implemented a new &lt;a href="http://opensees.berkeley.edu/wiki/index.php/CatenaryCableElement"&gt;catenary cable element&lt;/a&gt; in OpenSees. This element is based on the work by Salehi et&amp;nbsp;al[1].&lt;/p&gt;
 &lt;p&gt;The stiffness of this element is obtained using a flexibility formulation. Basically the shape of the cable is determined by the&amp;nbsp;integral:&lt;/p&gt;
 &lt;div class="math"&gt;$$
 \begin{align*}
-\mathbf{x}(s) = -\int_0^s 
-\end{align*}
-$$&lt;/div&gt;
-&lt;p&gt;HEllo&lt;/p&gt;
-&lt;p&gt;Reference&lt;/p&gt;
-&lt;p&gt;[1] Salehi Ahmad Abad, M., Shooshtari, A., Esmaeili, V., &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Naghavi Riabi, A. (2013). &lt;em&gt;Nonlinear analysis of cable structures under general loadings.&lt;/em&gt; Finite Elements in Analysis and Design, 73, 11–19.&amp;nbsp;https://doi.org/10.1016/j.finel.2013.05.002&lt;/p&gt;
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "left …&lt;/script&gt;</summary><content type="html">&lt;p&gt;We&amp;#8217;ve implemented a new &lt;a href="http://opensees.berkeley.edu/wiki/index.php/CatenaryCableElement"&gt;catenary cable element&lt;/a&gt;. This element is based on the work by Salehi et&amp;nbsp;al[1].&lt;/p&gt;
+\vect{x}(s) = \vect{x}_1 - \int_0^s \dfrac{\vect{w}s + \vect{f}}{\Vert \vect{w}s + \vect{f} \Vert^2}\pare{\dfrac{\Vert \vect{w}s + \vect{f} \Vert}{EA} + \pare{1 + \alpha \Delta T}} \ud s \\
+\vect{w} = \brak{w_1,\, w_2,\, w_3}^T \qquad
+\vect{f} = \brak …&lt;/div&gt;</summary><content type="html">&lt;div class="youtube" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/MX_--SI_vKg" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;With my student, Pablo Ibañez, we implemented a new &lt;a href="http://opensees.berkeley.edu/wiki/index.php/CatenaryCableElement"&gt;catenary cable element&lt;/a&gt; in OpenSees. This element is based on the work by Salehi et&amp;nbsp;al[1].&lt;/p&gt;
 &lt;p&gt;The stiffness of this element is obtained using a flexibility formulation. Basically the shape of the cable is determined by the&amp;nbsp;integral:&lt;/p&gt;
 &lt;div class="math"&gt;$$
 \begin{align*}
-\mathbf{x}(s) = -\int_0^s 
+\vect{x}(s) = \vect{x}_1 - \int_0^s \dfrac{\vect{w}s + \vect{f}}{\Vert \vect{w}s + \vect{f} \Vert^2}\pare{\dfrac{\Vert \vect{w}s + \vect{f} \Vert}{EA} + \pare{1 + \alpha \Delta T}} \ud s \\
+\vect{w} = \brak{w_1,\, w_2,\, w_3}^T \qquad
+\vect{f} = \brak{f_1,\, f_2,\, f_3}^T 
 \end{align*}
 $$&lt;/div&gt;
-&lt;p&gt;HEllo&lt;/p&gt;
+&lt;p&gt;Where &lt;span class="math"&gt;\(\vect{x_1}\)&lt;/span&gt; is the position of the first node of the cable, &lt;span class="math"&gt;\(\vect{w}\)&lt;/span&gt; is the weight vector in each direction, &lt;span class="math"&gt;\(EA\)&lt;/span&gt; is the stiffness, &lt;span class="math"&gt;\(\alpha \Delta T\)&lt;/span&gt; is the change in strain due to temperature and &lt;span class="math"&gt;\(\vect{f}\)&lt;/span&gt; is the force vector at the start node. This equation is iterated (with the forces as variable) upon until the the shape of the cable matches the nodal postiions imposed by the finite element program (trial displacements). Then it is used to derive a stiffness&amp;nbsp;matrix. &lt;/p&gt;
+&lt;p&gt;The element, as is, passes all our static verification tests. With the additional assumption of a lumped-mass matrix, we&amp;#8217;re currently working on a dynamic verification suite as well as some validation&amp;nbsp;experiments. &lt;/p&gt;
+&lt;p&gt;The animation above was created using &lt;a href="http://opensees.berkeley.edu/"&gt;OpenSees&lt;/a&gt; to simulate the cable and &lt;a href="http://www.blender.org"&gt;Blender&lt;/a&gt; to render&amp;nbsp;it. &lt;/p&gt;
 &lt;p&gt;Reference&lt;/p&gt;
 &lt;p&gt;[1] Salehi Ahmad Abad, M., Shooshtari, A., Esmaeili, V., &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Naghavi Riabi, A. (2013). &lt;em&gt;Nonlinear analysis of cable structures under general loadings.&lt;/em&gt; Finite Elements in Analysis and Design, 73, 11–19.&amp;nbsp;https://doi.org/10.1016/j.finel.2013.05.002&lt;/p&gt;
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
