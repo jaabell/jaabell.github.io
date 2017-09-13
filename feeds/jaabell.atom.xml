@@ -32,13 +32,15 @@ $$&lt;/div&gt;
     }
 
     var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {pare: ['\\\\left( #1 \\\\right)', 1], brak: ['\\\\left[ #1 \\\\right]', 1], brac: ['\\\\left\\\\lbrace #1 \\\\right\\\\rbrace', 1], absol: ['\\\\left\\\\vert #1 \\\\right\\\\vert', 1], overbar: ['\\\\mkern 1.5mu\\\\overline{\\\\mkern-1.5mu#1\\\\mkern-1.5mu}\\\\mkern 1.5mu', 1], EE: ['\\\\times 10^{#1}', 1], eqand: '\\\\, \\\\text{and} \\\\,', qeqand: '\\\\quad \\\\text{and} \\\\quad', qqeqand: '\\\\qquad \\\\text{and} \\\\qquad', HRule: '\\\\rule{\\\\linewidth}{0.2mm}', vect: ['\\\\boldsymbol{#1}', 1], uv: ['\\\\hat{\\\\boldsymbol{#1}}', 1], ud: '\\\\,\\\\mathrm{d}', matorvec: ['\\\\left[\\\\begin{array}{#1}    #2\\\\end{array}\\\\right]', 2], pardiff: ['\\\\dfrac{\\\\partial\\\\, #1}{\\\\partial\\\\, #2}', 2], pp: ['\\\\frac{\\\\partial #1}{\\\\partial #2}', 2], totdiff: ['\\\\dfrac{\\\\ud #1}{\\\\ud #2}', 2], rint: '\\\\pare{R}\\\\hspace{-0.5em} \\\\int ', expon: ['\\\\exp \\\\left\\\\lbrace #1 \\\\right\\\\rbrace', 1], unit: ['   \\\\, \\\\mathrm{#1}                }', 1], bunit: ['  \\\\, \\\\left[ \\\\mathrm{#1} \\\\right] }', 1], funit: ['  \\\\, \\\\mathrm{ \\\\frac{#1}{#2} }   }', 2], bfunit: ['  \\\\, \\\\left[ \\\\mathrm{ {#1}/{#2} } \\\\right]   }', 2], mts: '\\\\bunit{m}', cmts: '\\\\bunit{cm}', mmts: '\\\\bunit{mm}', kmts: '\\\\bunit{km}', mps: '\\\\bfunit{m}{s}', cmpt: '\\\\bfunit{cm}{s}', mmps: '\\\\bfunit{mm}{s}', kmps: '\\\\bfunit{km}{s}', Newt: '\\\\bunit{N}', kNewt: '\\\\bunit{kN}', MNewt: '\\\\bunit{MN}', Pa: '\\\\bunit{Pa}', kPa: '\\\\bunit{kPa}', MPa: '\\\\bunit{MPa}', GPa: '\\\\bunit{GPa}', kNmm: '\\\\bfunit{kN}{m^2}', Nmm: '\\\\bfunit{N}{m^2}', kgmmm: '\\\\bfunit{kg}{m^3}', Mgmmm: '\\\\bfunit{Mg}{m^3}', grcmcmcm: '\\\\bfunit{g}{cm^3}', kNmmm: '\\\\bfunit{kN}{m^3}', gr: '\\\\bunit{g}', mgr: '\\\\bunit{mg}', kgr: '\\\\bunit{kg}', Mgr: '\\\\bunit{Mg}', seg: '\\\\bunit{s}', msec: '\\\\bunit{ms}', musec: '\\\\bunit{\\\\mu s}', mo: '\\\\bunit{month}', mos: '\\\\bunit{months}', days: '\\\\bunit{days}', gs: '\\\\bunit{g}', mss: '\\\\bfunit{m}{s^2}', cmss: '\\\\bfunit{cm}{s^2}', Hz: '\\\\bunit{Hz}', MHz: '\\\\bunit{MHz}', GHz: '\\\\bunit{GHz}', THz: '\\\\bunit{THz}', dgr: '\\\\unit{^{\\\\circ}}', rads: '\\\\bunit{rad}', kips: '\\\\unit{kips}', ksi: '\\\\unit{ksi}', inch: '\\\\unit{in}'} }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -474,13 +476,15 @@ to generate the discretized &lt;span class="caps"&gt;SWE&lt;/span&gt;. &lt;/p&gt
     }
 
     var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {pare: ['\\\\left( #1 \\\\right)', 1], brak: ['\\\\left[ #1 \\\\right]', 1], brac: ['\\\\left\\\\lbrace #1 \\\\right\\\\rbrace', 1], absol: ['\\\\left\\\\vert #1 \\\\right\\\\vert', 1], overbar: ['\\\\mkern 1.5mu\\\\overline{\\\\mkern-1.5mu#1\\\\mkern-1.5mu}\\\\mkern 1.5mu', 1], EE: ['\\\\times 10^{#1}', 1], eqand: '\\\\, \\\\text{and} \\\\,', qeqand: '\\\\quad \\\\text{and} \\\\quad', qqeqand: '\\\\qquad \\\\text{and} \\\\qquad', HRule: '\\\\rule{\\\\linewidth}{0.2mm}', vect: ['\\\\boldsymbol{#1}', 1], uv: ['\\\\hat{\\\\boldsymbol{#1}}', 1], ud: '\\\\,\\\\mathrm{d}', matorvec: ['\\\\left[\\\\begin{array}{#1}    #2\\\\end{array}\\\\right]', 2], pardiff: ['\\\\dfrac{\\\\partial\\\\, #1}{\\\\partial\\\\, #2}', 2], pp: ['\\\\frac{\\\\partial #1}{\\\\partial #2}', 2], totdiff: ['\\\\dfrac{\\\\ud #1}{\\\\ud #2}', 2], rint: '\\\\pare{R}\\\\hspace{-0.5em} \\\\int ', expon: ['\\\\exp \\\\left\\\\lbrace #1 \\\\right\\\\rbrace', 1], unit: ['   \\\\, \\\\mathrm{#1}                }', 1], bunit: ['  \\\\, \\\\left[ \\\\mathrm{#1} \\\\right] }', 1], funit: ['  \\\\, \\\\mathrm{ \\\\frac{#1}{#2} }   }', 2], bfunit: ['  \\\\, \\\\left[ \\\\mathrm{ {#1}/{#2} } \\\\right]   }', 2], mts: '\\\\bunit{m}', cmts: '\\\\bunit{cm}', mmts: '\\\\bunit{mm}', kmts: '\\\\bunit{km}', mps: '\\\\bfunit{m}{s}', cmpt: '\\\\bfunit{cm}{s}', mmps: '\\\\bfunit{mm}{s}', kmps: '\\\\bfunit{km}{s}', Newt: '\\\\bunit{N}', kNewt: '\\\\bunit{kN}', MNewt: '\\\\bunit{MN}', Pa: '\\\\bunit{Pa}', kPa: '\\\\bunit{kPa}', MPa: '\\\\bunit{MPa}', GPa: '\\\\bunit{GPa}', kNmm: '\\\\bfunit{kN}{m^2}', Nmm: '\\\\bfunit{N}{m^2}', kgmmm: '\\\\bfunit{kg}{m^3}', Mgmmm: '\\\\bfunit{Mg}{m^3}', grcmcmcm: '\\\\bfunit{g}{cm^3}', kNmmm: '\\\\bfunit{kN}{m^3}', gr: '\\\\bunit{g}', mgr: '\\\\bunit{mg}', kgr: '\\\\bunit{kg}', Mgr: '\\\\bunit{Mg}', seg: '\\\\bunit{s}', msec: '\\\\bunit{ms}', musec: '\\\\bunit{\\\\mu s}', mo: '\\\\bunit{month}', mos: '\\\\bunit{months}', days: '\\\\bunit{days}', gs: '\\\\bunit{g}', mss: '\\\\bfunit{m}{s^2}', cmss: '\\\\bfunit{cm}{s^2}', Hz: '\\\\bunit{Hz}', MHz: '\\\\bunit{MHz}', GHz: '\\\\bunit{GHz}', THz: '\\\\bunit{THz}', dgr: '\\\\unit{^{\\\\circ}}', rads: '\\\\bunit{rad}', kips: '\\\\unit{kips}', ksi: '\\\\unit{ksi}', inch: '\\\\unit{in}'} }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -4012,13 +4016,15 @@ plt.show()
     }
 
     var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {pare: ['\\\\left( #1 \\\\right)', 1], brak: ['\\\\left[ #1 \\\\right]', 1], brac: ['\\\\left\\\\lbrace #1 \\\\right\\\\rbrace', 1], absol: ['\\\\left\\\\vert #1 \\\\right\\\\vert', 1], overbar: ['\\\\mkern 1.5mu\\\\overline{\\\\mkern-1.5mu#1\\\\mkern-1.5mu}\\\\mkern 1.5mu', 1], EE: ['\\\\times 10^{#1}', 1], eqand: '\\\\, \\\\text{and} \\\\,', qeqand: '\\\\quad \\\\text{and} \\\\quad', qqeqand: '\\\\qquad \\\\text{and} \\\\qquad', HRule: '\\\\rule{\\\\linewidth}{0.2mm}', vect: ['\\\\boldsymbol{#1}', 1], uv: ['\\\\hat{\\\\boldsymbol{#1}}', 1], ud: '\\\\,\\\\mathrm{d}', matorvec: ['\\\\left[\\\\begin{array}{#1}    #2\\\\end{array}\\\\right]', 2], pardiff: ['\\\\dfrac{\\\\partial\\\\, #1}{\\\\partial\\\\, #2}', 2], pp: ['\\\\frac{\\\\partial #1}{\\\\partial #2}', 2], totdiff: ['\\\\dfrac{\\\\ud #1}{\\\\ud #2}', 2], rint: '\\\\pare{R}\\\\hspace{-0.5em} \\\\int ', expon: ['\\\\exp \\\\left\\\\lbrace #1 \\\\right\\\\rbrace', 1], unit: ['   \\\\, \\\\mathrm{#1}                }', 1], bunit: ['  \\\\, \\\\left[ \\\\mathrm{#1} \\\\right] }', 1], funit: ['  \\\\, \\\\mathrm{ \\\\frac{#1}{#2} }   }', 2], bfunit: ['  \\\\, \\\\left[ \\\\mathrm{ {#1}/{#2} } \\\\right]   }', 2], mts: '\\\\bunit{m}', cmts: '\\\\bunit{cm}', mmts: '\\\\bunit{mm}', kmts: '\\\\bunit{km}', mps: '\\\\bfunit{m}{s}', cmpt: '\\\\bfunit{cm}{s}', mmps: '\\\\bfunit{mm}{s}', kmps: '\\\\bfunit{km}{s}', Newt: '\\\\bunit{N}', kNewt: '\\\\bunit{kN}', MNewt: '\\\\bunit{MN}', Pa: '\\\\bunit{Pa}', kPa: '\\\\bunit{kPa}', MPa: '\\\\bunit{MPa}', GPa: '\\\\bunit{GPa}', kNmm: '\\\\bfunit{kN}{m^2}', Nmm: '\\\\bfunit{N}{m^2}', kgmmm: '\\\\bfunit{kg}{m^3}', Mgmmm: '\\\\bfunit{Mg}{m^3}', grcmcmcm: '\\\\bfunit{g}{cm^3}', kNmmm: '\\\\bfunit{kN}{m^3}', gr: '\\\\bunit{g}', mgr: '\\\\bunit{mg}', kgr: '\\\\bunit{kg}', Mgr: '\\\\bunit{Mg}', seg: '\\\\bunit{s}', msec: '\\\\bunit{ms}', musec: '\\\\bunit{\\\\mu s}', mo: '\\\\bunit{month}', mos: '\\\\bunit{months}', days: '\\\\bunit{days}', gs: '\\\\bunit{g}', mss: '\\\\bfunit{m}{s^2}', cmss: '\\\\bfunit{cm}{s^2}', Hz: '\\\\bunit{Hz}', MHz: '\\\\bunit{MHz}', GHz: '\\\\bunit{GHz}', THz: '\\\\bunit{THz}', dgr: '\\\\unit{^{\\\\circ}}', rads: '\\\\bunit{rad}', kips: '\\\\unit{kips}', ksi: '\\\\unit{ksi}', inch: '\\\\unit{in}'} }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
