@@ -1,21 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abell's Research Blog - jaabell</title><link href="http://www.joseabell.com/" rel="alternate"></link><link href="http://www.joseabell.com/feeds/jaabell.atom.xml" rel="self"></link><id>http://www.joseabell.com/</id><updated>2017-09-07T20:13:57-07:00</updated><entry><title>New cable element in OpenSees</title><link href="http://www.joseabell.com/new-cable-element-in-opensees-EN.html" rel="alternate"></link><published>2017-09-07T20:13:57-07:00</published><updated>2017-09-07T20:13:57-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2017-09-07:/new-cable-element-in-opensees-EN.html</id><summary type="html">&lt;p&gt;We&amp;#8217;ve implemented a new &lt;a href="http://opensees.berkeley.edu/wiki/index.php/CatenaryCableElement"&gt;catenary cable element&lt;/a&gt;. This element is based on the work by Salehi et&amp;nbsp;al[1].&lt;/p&gt;
 &lt;p&gt;The stiffness of this element is obtained using a flexibility formulation. Basically the shape of the cable is determined by the&amp;nbsp;integral:&lt;/p&gt;
-&lt;p&gt;$$\begin{aligned}
-\vect{x}(s) = -\int_0^s \dfrac{\vect{w}s + \vect{f}}{\Vert \vect{w}s + \vect{f} \Vert^2}\pare{\dfrac{\Vert \vect{w}s + \vect{f} \Vert}{&lt;span class="caps"&gt;EA&lt;/span&gt;} + \pare{1 + \alpha \Delta T}} \ud s \
-\vect{w} = \brak{w_1,\, w_2,\, w_3}^T \qquad
-\vect{f} = \brak{f_1,\, f_2,\, f_3}^T 
-}\end{aligned}&amp;nbsp;$$&lt;/p&gt;
+&lt;div class="math"&gt;$$
+\begin{align*}
+\mathbf{x}(s) = -\int_0^s 
+\end{align*}
+$$&lt;/div&gt;
+&lt;p&gt;HEllo&lt;/p&gt;
 &lt;p&gt;Reference&lt;/p&gt;
-&lt;p&gt;[1] Salehi …&lt;/p&gt;</summary><content type="html">&lt;p&gt;We&amp;#8217;ve implemented a new &lt;a href="http://opensees.berkeley.edu/wiki/index.php/CatenaryCableElement"&gt;catenary cable element&lt;/a&gt;. This element is based on the work by Salehi et&amp;nbsp;al[1].&lt;/p&gt;
+&lt;p&gt;[1] Salehi Ahmad Abad, M., Shooshtari, A., Esmaeili, V., &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Naghavi Riabi, A. (2013). &lt;em&gt;Nonlinear analysis of cable structures under general loadings.&lt;/em&gt; Finite Elements in Analysis and Design, 73, 11–19.&amp;nbsp;https://doi.org/10.1016/j.finel.2013.05.002&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left …&lt;/script&gt;</summary><content type="html">&lt;p&gt;We&amp;#8217;ve implemented a new &lt;a href="http://opensees.berkeley.edu/wiki/index.php/CatenaryCableElement"&gt;catenary cable element&lt;/a&gt;. This element is based on the work by Salehi et&amp;nbsp;al[1].&lt;/p&gt;
 &lt;p&gt;The stiffness of this element is obtained using a flexibility formulation. Basically the shape of the cable is determined by the&amp;nbsp;integral:&lt;/p&gt;
-&lt;p&gt;$$\begin{aligned}
-\vect{x}(s) = -\int_0^s \dfrac{\vect{w}s + \vect{f}}{\Vert \vect{w}s + \vect{f} \Vert^2}\pare{\dfrac{\Vert \vect{w}s + \vect{f} \Vert}{&lt;span class="caps"&gt;EA&lt;/span&gt;} + \pare{1 + \alpha \Delta T}} \ud s \
-\vect{w} = \brak{w_1,\, w_2,\, w_3}^T \qquad
-\vect{f} = \brak{f_1,\, f_2,\, f_3}^T 
-}\end{aligned}&amp;nbsp;$$&lt;/p&gt;
+&lt;div class="math"&gt;$$
+\begin{align*}
+\mathbf{x}(s) = -\int_0^s 
+\end{align*}
+$$&lt;/div&gt;
+&lt;p&gt;HEllo&lt;/p&gt;
 &lt;p&gt;Reference&lt;/p&gt;
-&lt;p&gt;[1] Salehi Ahmad Abad, M., Shooshtari, A., Esmaeili, V., &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Naghavi Riabi, A. (2013). &lt;em&gt;Nonlinear analysis of cable structures under general loadings.&lt;/em&gt; Finite Elements in Analysis and Design, 73, 11–19.&amp;nbsp;https://doi.org/10.1016/j.finel.2013.05.002&lt;/p&gt;</content><category term="OpenSees"></category><category term="Cable"></category><category term="Blender"></category></entry><entry><title>OpenSees coming to python!</title><link href="http://www.joseabell.com/opensees-coming-to-python.html" rel="alternate"></link><published>2017-01-14T16:21:43-08:00</published><updated>2017-01-14T16:21:43-08:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2017-01-14:/opensees-coming-to-python.html</id><summary type="html">&lt;p&gt;One of the gripes a lot of people have with &lt;a href="http://opensees.berkeley.edu/"&gt;OpenSees&lt;/a&gt; is that it adopts &lt;span class="caps"&gt;TCL&lt;/span&gt; as its interpreter language. Originally, OpenSees was conceived as a &lt;em&gt;framework&lt;/em&gt;, this is apparent from the main page of the &lt;a href="http://opensees.berkeley.edu/wiki/index.php/Main_Page"&gt;wiki&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;[1] Salehi Ahmad Abad, M., Shooshtari, A., Esmaeili, V., &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Naghavi Riabi, A. (2013). &lt;em&gt;Nonlinear analysis of cable structures under general loadings.&lt;/em&gt; Finite Elements in Analysis and Design, 73, 11–19.&amp;nbsp;https://doi.org/10.1016/j.finel.2013.05.002&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="OpenSees"></category><category term="Cable"></category><category term="Blender"></category></entry><entry><title>OpenSees coming to python!</title><link href="http://www.joseabell.com/opensees-coming-to-python.html" rel="alternate"></link><published>2017-01-14T16:21:43-08:00</published><updated>2017-01-14T16:21:43-08:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2017-01-14:/opensees-coming-to-python.html</id><summary type="html">&lt;p&gt;One of the gripes a lot of people have with &lt;a href="http://opensees.berkeley.edu/"&gt;OpenSees&lt;/a&gt; is that it adopts &lt;span class="caps"&gt;TCL&lt;/span&gt; as its interpreter language. Originally, OpenSees was conceived as a &lt;em&gt;framework&lt;/em&gt;, this is apparent from the main page of the &lt;a href="http://opensees.berkeley.edu/wiki/index.php/Main_Page"&gt;wiki&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;OpenSees, the Open System for Earthquake Engineering Simulation, is an object-oriented, open source software framework. It allows users to create both serial and parallel finite element computer applications for&amp;nbsp;simulating&amp;#8230;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -27,373 +86,437 @@
 &lt;p&gt;Sadly, civil engineers are not very code-savvy and no (useful) new applications came. Therefore it came to pass that the OpenSees extension of the &lt;span class="caps"&gt;TCL&lt;/span&gt; interpreter became OpenSees and this is what everyone&amp;nbsp;uses. &lt;/p&gt;
 &lt;p&gt;Now &lt;span class="caps"&gt;TCL&lt;/span&gt; is an awkward language for a scientific application, mainly due to syntax and lack of a complete library for scientific computing. Python, on the other hand, has proven in the recent years to be a worthy replacement of the mighty Matlab. Many of us started scientific computing in Matlab and then migrated to the free world of Python. It was just logical that OpenSees would benefit much more from using Python as its language of choice rather than &lt;span class="caps"&gt;TCL&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;It has finally happened, and this blog post celebrates my joy. Behold the following analysis case written in&amp;nbsp;Python.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;opensees&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;ops&lt;/span&gt;
+&lt;pre&gt;&lt;code&gt;:::PythonLexer
+import opensees as ops
 
-&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;wipe&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+ops.wipe()
 
-&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;basic&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;-ndm&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;-ndf&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ops.model('basic', '-ndm', 3, '-ndf', 3)
 
-&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+for e in range(3):
+    ops.node(1+4*e, 0., 0., 1.*e)
+    ops.node(2+4*e, 1., 0., 1.*e)
+    ops.node(3+4*e, 1., 1., 1.*e)
+    ops.node(4+4*e, 0., 1., 1.*e)
 
-&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fix&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fix&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fix&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fix&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ops.fix(1, 1, 1, 1)
+ops.fix(2, 1, 1, 1)
+ops.fix(3, 1, 1, 1)
+ops.fix(4, 1, 1, 1)
 
-&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nDMaterial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;ElasticIsotropic3D&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;2100.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ops.nDMaterial("ElasticIsotropic3D", 1, 2100., 0.3, 0.0)
 
-&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;element&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;stdBrick&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;element&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;stdBrick&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ops.element("stdBrick",1,1,2,3,4,5,6,7,8,1)
+ops.element("stdBrick",2,5,6,7,8,9,10,11,12,1)
 
-&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;timeSeries&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Linear&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pattern&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Plain&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;-fact&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;load&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;50.&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# Load at the first of the top nodes.&lt;/span&gt;
+ops.timeSeries("Linear", 1)
+ops.pattern("Plain", 1, 1, "-fact", 1.0)
+ops.load(1+4*e, 0., 0., -50.)  # Load at the first of the top nodes.
 
-&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;system&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;BandSPD&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;numberer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;RCM&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;constraints&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Plain&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;algorithm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Linear&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;integrator&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;LoadControl&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;analysis&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Static&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;analyze&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
+ops.system("BandSPD")
+ops.numberer("RCM")
+ops.constraints("Plain")
+ops.algorithm("Linear")
+ops.integrator("LoadControl", 1.0)
+ops.analysis("Static")
+ops.analyze(1)
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This example just stacks two bricks and applies a downward load on one of the top nodes. The interesting part is that now you can interact with all of the rich tools available in python. Just as a taste of what&amp;#8217;s to come, here is a plot of the deformed shape of the example above created using matplotlib&amp;#8217;s 3-D plotting&amp;nbsp;capabilities. &lt;/p&gt;
-&lt;p&gt;&lt;a href="/images/blogposts/opensees-coming-to-python/twobricks.png"&gt;&lt;img alt="twobricks" src="/images/blogposts/opensees-coming-to-python/twobricks.png"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/blogposts/opensees-coming-to-python/twobricks.png"&gt;&lt;img alt="twobricks" src="/images/blogposts/opensees-coming-to-python/twobricks.png" /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;And here&amp;#8217;s the code that achieves&amp;nbsp;this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;### Plot bricks in the domain&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;scipy&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;sp&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;plt&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;mpl_toolkits.mplot3d&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Axes3D&lt;/span&gt;
-&lt;span class="n"&gt;fig&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;figure&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="n"&gt;ax&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_subplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;111&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;projection&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;3d&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;pre&gt;&lt;code&gt;:::PythonLexer
 
-&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getEleTags&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+### Plot bricks in the domain
+import scipy as sp
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
 
-    &lt;span class="n"&gt;nodes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eleNodes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;Nnodes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nodes&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+for e in ops.getEleTags():
 
-    &lt;span class="n"&gt;xyz&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zeros&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;Nnodes&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;double&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;uu&lt;/span&gt;   &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zeros&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;Nnodes&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;double&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Nnodes&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="n"&gt;xyz&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,:]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nodeCoord&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nodes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
-        &lt;span class="n"&gt;uu&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,:]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nodeDisp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nodes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+    nodes = ops.eleNodes(e)
+    Nnodes = len(nodes)
 
-    &lt;span class="k"&gt;print&lt;/span&gt;
+    xyz = sp.zeros((Nnodes,3), dtype=sp.double)
+    uu   = sp.zeros((Nnodes,3), dtype=sp.double)
+    for i in range(Nnodes):
+        xyz[i,:] = ops.nodeCoord(nodes[i])
+        uu[i,:] = ops.nodeDisp(nodes[i])
 
-    &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zeros&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;double&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zeros&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;double&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;z&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zeros&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;double&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;u&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zeros&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;double&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zeros&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;double&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;w&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zeros&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;double&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    print
 
-    &lt;span class="n"&gt;conec&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; \
-    &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;\
-    &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;\
-    &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;\
-    &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;\
-    &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;\
-    &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;\
-    &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;\
-    &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;\
-    &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;\
-    &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;\
-    &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;
-    &lt;span class="p"&gt;]&lt;/span&gt;
+    x = sp.zeros(12,dtype=sp.double)
+    y = sp.zeros(12,dtype=sp.double)
+    z = sp.zeros(12,dtype=sp.double)
+    u = sp.zeros(12,dtype=sp.double)
+    v = sp.zeros(12,dtype=sp.double)
+    w = sp.zeros(12,dtype=sp.double)
 
-    &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;xyz&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;conec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-    &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;xyz&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;conec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-    &lt;span class="n"&gt;z&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;xyz&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;conec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-    &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nan&lt;/span&gt;
-    &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nan&lt;/span&gt;
-    &lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nan&lt;/span&gt;
+    conec = [0, 1, -1, \
+    1, 2, -1,\
+    2, 3, -1,\
+    3, 0, -1,\
+    4, 5, -1,\
+    5, 6, -1,\
+    6, 7, -1,\
+    7, 4, -1,\
+    0, 4, -1,\
+    1, 5, -1,\
+    2, 6, -1,\
+    3, 7
+    ]
 
-    &lt;span class="n"&gt;factor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt;
-    &lt;span class="n"&gt;u&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;xyz&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;conec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;factor&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;uu&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;conec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-    &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;xyz&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;conec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;factor&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;uu&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;conec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-    &lt;span class="n"&gt;w&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;xyz&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;conec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;factor&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;uu&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;conec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-    &lt;span class="n"&gt;u&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nan&lt;/span&gt;
-    &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nan&lt;/span&gt;
-    &lt;span class="n"&gt;w&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nan&lt;/span&gt;
+    x = xyz[conec,0]
+    y = xyz[conec,1]
+    z = xyz[conec,2]
+    x[2::3] = sp.nan
+    y[2::3] = sp.nan
+    z[2::3] = sp.nan
 
-    &lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-ob&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;u&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;w&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-or&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+    factor = 1.
+    u = xyz[conec,0] + factor*uu[conec,0]
+    v = xyz[conec,1] + factor*uu[conec,1]
+    w = xyz[conec,2] + factor*uu[conec,2]
+    u[2::3] = sp.nan
+    v[2::3] = sp.nan
+    w[2::3] = sp.nan
 
-
+    ax.plot(x,y,z,"-ob")
+    ax.plot(u,v,w,"-or")
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;A &lt;a href="https://www.dropbox.com/s/lt4ghlkj9ypy0nm/opensees-coming-to-python-example.py?dl=0"&gt;simple extension&lt;/a&gt; to the above example generalizes the stack to an arbitrary number of bricks. And the visualization just&amp;nbsp;works. &lt;/p&gt;
-&lt;p&gt;&lt;a href="/images/blogposts/opensees-coming-to-python/fivebricks.png"&gt;&lt;img alt="fivebricks" src="/images/blogposts/opensees-coming-to-python/fivebricks.png"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/blogposts/opensees-coming-to-python/fivebricks.png"&gt;&lt;img alt="fivebricks" src="/images/blogposts/opensees-coming-to-python/fivebricks.png" /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Currently, I have to manually compile a python module extension on my Ubuntu linux laptop for this to work. I have no idea if it will be available to windows users as an easy-to-download binary in the near future. I will post on how to get this working on linux though. For those of you adventurous&amp;nbsp;enough. &lt;/p&gt;</content><category term="FEM"></category><category term="opensees"></category><category term="nerdynews"></category></entry><entry><title>Finite Elements for Shallow Water Equations</title><link href="http://www.joseabell.com/finite-elements-for-shallow-water-equations.html" rel="alternate"></link><published>2016-11-22T14:55:42-08:00</published><updated>2016-11-22T14:55:42-08:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2016-11-22:/finite-elements-for-shallow-water-equations.html</id><summary type="html">&lt;div class="youtube" align="left"&gt;
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/ghdvW-2XzKA" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 
 &lt;p&gt;The linear &lt;a href="https://en.wikipedia.org/wiki/Shallow_water_equations"&gt;shallow water equations&lt;/a&gt; (&lt;span class="caps"&gt;SWE&lt;/span&gt;) are used extensively to model propagation of waves in situations where lateral domain dimensions are much greater than fluid height and, at the same time, wave perturbation height are much smaller than the fluid height. This finds useful applications in the case of tsunami-wave propagation modeling in deep-sea. The equations, after heavy linearization, are given&amp;nbsp;by:&lt;/p&gt;
-&lt;p&gt;$$\begin{aligned}
-\pardiff{u}{t} -  f v = -g \pardiff{h}{x} \ 
-\pardiff{v}{t} +  f v = -g \pardiff{h}{y} \
-\pardiff{h}{t} = -H \pare{  \pardiff{u}{x} + \pardiff{v}{y}&amp;nbsp;}\end{aligned}$$&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\pardiff{u}{t} -  f v = -g \pardiff{h}{x} \\ 
+\pardiff{v}{t} +  f v = -g \pardiff{h}{y} \\
+\pardiff{h}{t} = -H \pare{  \pardiff{u}{x} + \pardiff{v}{y}  }\end{aligned}$$&lt;/div&gt;
 &lt;p&gt;Where&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;$u$ is the speed …&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;div class="youtube" align="left"&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(u\)&lt;/span&gt; is the speed …&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;div class="youtube" align="left"&gt;
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/ghdvW-2XzKA" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 
 &lt;p&gt;The linear &lt;a href="https://en.wikipedia.org/wiki/Shallow_water_equations"&gt;shallow water equations&lt;/a&gt; (&lt;span class="caps"&gt;SWE&lt;/span&gt;) are used extensively to model propagation of waves in situations where lateral domain dimensions are much greater than fluid height and, at the same time, wave perturbation height are much smaller than the fluid height. This finds useful applications in the case of tsunami-wave propagation modeling in deep-sea. The equations, after heavy linearization, are given&amp;nbsp;by:&lt;/p&gt;
-&lt;p&gt;$$\begin{aligned}
-\pardiff{u}{t} -  f v = -g \pardiff{h}{x} \ 
-\pardiff{v}{t} +  f v = -g \pardiff{h}{y} \
-\pardiff{h}{t} = -H \pare{  \pardiff{u}{x} + \pardiff{v}{y}&amp;nbsp;}\end{aligned}$$&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\pardiff{u}{t} -  f v = -g \pardiff{h}{x} \\ 
+\pardiff{v}{t} +  f v = -g \pardiff{h}{y} \\
+\pardiff{h}{t} = -H \pare{  \pardiff{u}{x} + \pardiff{v}{y}  }\end{aligned}$$&lt;/div&gt;
 &lt;p&gt;Where&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;$u$ is the speed in $x$&amp;nbsp;direction.&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(u\)&lt;/span&gt; is the speed in &lt;span class="math"&gt;\(x\)&lt;/span&gt;&amp;nbsp;direction.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;$v$ is the speed in $y$&amp;nbsp;direction.&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(v\)&lt;/span&gt; is the speed in &lt;span class="math"&gt;\(y\)&lt;/span&gt;&amp;nbsp;direction.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;$h$ wave perturbation height. (Free surface is at&amp;nbsp;$h+H$)&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(h\)&lt;/span&gt; wave perturbation height. (Free surface is at &lt;span class="math"&gt;\(h+H\)&lt;/span&gt;)&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;$f$ Coriolis force, given&amp;nbsp;by:&lt;/p&gt;
-&lt;p&gt;$$\begin{aligned}
-    f = 2 \Omega \sin \phi&amp;nbsp;\end{aligned}$$&lt;/p&gt;
-&lt;p&gt;where $\Omega$ is Earth&amp;#8217;s angular velocity ($\pi/12 \, \brak{\mathrm{rad/h}}$) and $\phi$ is&amp;nbsp;latitude. &lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(f\)&lt;/span&gt; Coriolis force, given&amp;nbsp;by:&lt;/p&gt;
+&lt;p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+    f = 2 \Omega \sin \phi
+    \end{aligned}$$&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;where &lt;span class="math"&gt;\(\Omega\)&lt;/span&gt; is Earth&amp;#8217;s angular velocity (&lt;span class="math"&gt;\(\pi/12 \, \brak{\mathrm{rad/h}}\)&lt;/span&gt;) and &lt;span class="math"&gt;\(\phi\)&lt;/span&gt; is&amp;nbsp;latitude. &lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;$g$ acceleration due to gravity at given point in&amp;nbsp;Earth.&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(g\)&lt;/span&gt; acceleration due to gravity at given point in&amp;nbsp;Earth.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;$H$ fluid free surface height at&amp;nbsp;repose. &lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(H\)&lt;/span&gt; fluid free surface height at&amp;nbsp;repose. &lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;To complete the formulation, appropriate boundary conditions are&amp;nbsp;needed. &lt;/p&gt;
 &lt;p&gt;These equations will be discretized using Galerkin finite-element formulation. For this purpose we will be using the first order triangle finite element (see Felippa&amp;#8217;s chapter 15 &lt;a href="http://www.colorado.edu/engineering/CAS/courses.d/IFEM.d/IFEM.Ch15.d/IFEM.Ch15.index.html"&gt;here&lt;/a&gt; for basic notation and details regarding triangular shape&amp;nbsp;functions).&lt;/p&gt;
-&lt;p&gt;The &lt;span class="caps"&gt;SWE&lt;/span&gt; represent the space-time evolution of three scalar fields, namely $h$, $u$, and $v$. These three independent variables are the 3 degrees-of-freedom (&lt;span class="caps"&gt;DOF&lt;/span&gt;) of the problem. Therefore, each node will have information about these three&amp;nbsp;DOFs. &lt;/p&gt;
+&lt;p&gt;The &lt;span class="caps"&gt;SWE&lt;/span&gt; represent the space-time evolution of three scalar fields, namely &lt;span class="math"&gt;\(h\)&lt;/span&gt;, &lt;span class="math"&gt;\(u\)&lt;/span&gt;, and &lt;span class="math"&gt;\(v\)&lt;/span&gt;. These three independent variables are the 3 degrees-of-freedom (&lt;span class="caps"&gt;DOF&lt;/span&gt;) of the problem. Therefore, each node will have information about these three&amp;nbsp;DOFs. &lt;/p&gt;
 &lt;p&gt;Using the basic 3-node triangle with interpolation functions given by the triangular coordinates (see Felippa &lt;span class="caps"&gt;IFEM&lt;/span&gt; Ch. 15 and &lt;a href="https://en.wikipedia.org/wiki/Barycentric_coordinate_system"&gt;this&lt;/a&gt; for more info), these fields are interpolated as&amp;nbsp;follows.&lt;/p&gt;
-&lt;p&gt;$$\begin{aligned}
-h = \sum N_i h_i = \vect{N} \vect{h} = \matorvec{ccc}{ \zeta_1 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \zeta_2 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \zeta_3 } \matorvec{c}{h_1\h_2\h_3}  \ 
-u = \sum N_i u_i = \vect{N} \vect{u} = \matorvec{ccc}{ \zeta_1 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \zeta_2 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \zeta_3 } \matorvec{c}{u_1\u_2\u_3} \
-v = \sum N_i v_i = \vect{N} \vect{v} = \matorvec{ccc}{ \zeta_1 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \zeta_2 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \zeta_3 } \matorvec{c}{v_1\v_2\v_3}&amp;nbsp;\end{aligned}$$&lt;/p&gt;
-&lt;p&gt;Where $\zeta_i$ are triangular coordinates and $u_i$, $v_i$, and
-$h_i$ the nodal values of the scalar fields at node&amp;nbsp;$i$.&lt;/p&gt;
-&lt;p&gt;As typical, we multiply the equations by a trial shape function $N_j$ and integrate over the domain of the element $\Omega^e$, carrying out integration by parts. We arrive at the weak form of the &lt;span class="caps"&gt;SWE&lt;/span&gt;. &lt;/p&gt;
-&lt;p&gt;$$\begin{aligned}
-\pare{ \int_{\Omega^e}  N_i N_j \ud \Omega^e} \dot{h}&lt;em _Omega_e="\Omega^e"&gt;j - 
-\pare{ \int&lt;/em&gt;  H \pardiff{N_i}{x} N_j \ud \Omega^e} u_j -
-\pare{ \int_{\Omega^e}  H \pardiff{N_i}{y} N_j \ud \Omega^e} v_j = 0 \
-\pare{ \int_{\Omega^e}  N_i N_j \ud \Omega^e} \dot{u}&lt;em _Omega_e="\Omega^e"&gt;j -
-\pare{ \int&lt;/em&gt;  f N_i N_j \ud \Omega^e} v_j + 
-\pare{ \int_{\Omega^e}  g N_i \pardiff{N_j}{x}  \ud \Omega^e} h_j = 0 \
-\pare{ \int_{\Omega^e}  N_i N_j \ud \Omega^e} \dot{v}&lt;em _Omega_e="\Omega^e"&gt;j +
-\pare{ \int&lt;/em&gt;  f N_i N_j \ud \Omega^e} u_j + 
-\pare{ \int_{\Omega^e}  g N_i \pardiff{N_j}{y}  \ud \Omega^e} h_j = 0&amp;nbsp;\end{aligned}$$&lt;/p&gt;
-&lt;p&gt;Here, for the first order triangle, we simply have that 1 $N_i = \zeta_i$. Defining the vector of nodal freedoms $\vect{z}$&amp;nbsp;as:&lt;/p&gt;
-&lt;p&gt;$$\begin{aligned}
-\vect{z}^T = \matorvec{ccccccccc}{h_1 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; h_2 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; h_3 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; u_1 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; u_2 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; u_3 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; v_1 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; v_2 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; v_3&amp;nbsp;}^T\end{aligned}$$&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+h = \sum N_i h_i = \vect{N} \vect{h} = \matorvec{ccc}{ \zeta_1 &amp;amp; \zeta_2 &amp;amp; \zeta_3 } \matorvec{c}{h_1\\h_2\\h_3}  \\ 
+u = \sum N_i u_i = \vect{N} \vect{u} = \matorvec{ccc}{ \zeta_1 &amp;amp; \zeta_2 &amp;amp; \zeta_3 } \matorvec{c}{u_1\\u_2\\u_3} \\
+v = \sum N_i v_i = \vect{N} \vect{v} = \matorvec{ccc}{ \zeta_1 &amp;amp; \zeta_2 &amp;amp; \zeta_3 } \matorvec{c}{v_1\\v_2\\v_3} \end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Where &lt;span class="math"&gt;\(\zeta_i\)&lt;/span&gt; are triangular coordinates and &lt;span class="math"&gt;\(u_i\)&lt;/span&gt;, &lt;span class="math"&gt;\(v_i\)&lt;/span&gt;, and
+&lt;span class="math"&gt;\(h_i\)&lt;/span&gt; the nodal values of the scalar fields at node &lt;span class="math"&gt;\(i\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;As typical, we multiply the equations by a trial shape function &lt;span class="math"&gt;\(N_j\)&lt;/span&gt; and integrate over the domain of the element &lt;span class="math"&gt;\(\Omega^e\)&lt;/span&gt;, carrying out integration by parts. We arrive at the weak form of the &lt;span class="caps"&gt;SWE&lt;/span&gt;. &lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\pare{ \int_{\Omega^e}  N_i N_j \ud \Omega^e} \dot{h}_j - 
+\pare{ \int_{\Omega^e}  H \pardiff{N_i}{x} N_j \ud \Omega^e} u_j -
+\pare{ \int_{\Omega^e}  H \pardiff{N_i}{y} N_j \ud \Omega^e} v_j = 0 \\
+\pare{ \int_{\Omega^e}  N_i N_j \ud \Omega^e} \dot{u}_j -
+\pare{ \int_{\Omega^e}  f N_i N_j \ud \Omega^e} v_j + 
+\pare{ \int_{\Omega^e}  g N_i \pardiff{N_j}{x}  \ud \Omega^e} h_j = 0 \\
+\pare{ \int_{\Omega^e}  N_i N_j \ud \Omega^e} \dot{v}_j +
+\pare{ \int_{\Omega^e}  f N_i N_j \ud \Omega^e} u_j + 
+\pare{ \int_{\Omega^e}  g N_i \pardiff{N_j}{y}  \ud \Omega^e} h_j = 0 \end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Here, for the first order triangle, we simply have that 1 &lt;span class="math"&gt;\(N_i = \zeta_i\)&lt;/span&gt;. Defining the vector of nodal freedoms &lt;span class="math"&gt;\(\vect{z}\)&lt;/span&gt;&amp;nbsp;as:&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\vect{z}^T = \matorvec{ccccccccc}{h_1 &amp;amp; h_2 &amp;amp; h_3 &amp;amp; u_1 &amp;amp; u_2 &amp;amp; u_3 &amp;amp; v_1 &amp;amp; v_2 &amp;amp; v_3 }^T\end{aligned}$$&lt;/div&gt;
 &lt;p&gt;The above equations can be re-written as&amp;nbsp;follows:&lt;/p&gt;
-&lt;p&gt;$$\begin{aligned}
+&lt;div class="math"&gt;$$\begin{aligned}
 \matorvec{ccc}
 {
-    \vect{M} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{0} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{0} \
-    \vect{0} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{M} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{0} \
-    \vect{0} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{0} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{M} 
+    \vect{M} &amp;amp; \vect{0} &amp;amp; \vect{0} \\
+    \vect{0} &amp;amp; \vect{M} &amp;amp; \vect{0} \\
+    \vect{0} &amp;amp; \vect{0} &amp;amp; \vect{M} 
 } \dot{\vect{z}}  + 
 \matorvec{ccc}
 {
-    \vect{0}        &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; -\vect{K}&lt;em hv&gt;{hu} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; -\vect{K}&lt;/em&gt; \
-    \vect{K}&lt;em uv&gt;{uh}   &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{0} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; -\vect{K}&lt;/em&gt; \
-    \vect{K}&lt;em vu&gt;{vh}   &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{K}&lt;/em&gt; &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{0} 
+    \vect{0}        &amp;amp; -\vect{K}_{hu} &amp;amp; -\vect{K}_{hv} \\
+    \vect{K}_{uh}   &amp;amp; \vect{0} &amp;amp; -\vect{K}_{uv} \\
+    \vect{K}_{vh}   &amp;amp; \vect{K}_{vu} &amp;amp; \vect{0} 
 } \vect{z}
 =
 \matorvec{c}
 {
-    \vect{0} \ \vect{0} \ \vect{0}
-} \ 
-\vect{A} \dot{\vect{z}} + \vect{B}  \vect{z} =&amp;nbsp;\vect{0}\end{aligned}$$&lt;/p&gt;
+    \vect{0} \\ \vect{0} \\ \vect{0}
+} \\ 
+\vect{A} \dot{\vect{z}} + \vect{B}  \vect{z} = \vect{0}\end{aligned}$$&lt;/div&gt;
 &lt;p&gt;Where the involved sub-matrices are given by the following matrix&amp;nbsp;integrals:&lt;/p&gt;
-&lt;p&gt;$$\begin{aligned}
-     &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{M} = \int_{\Omega^e} \vect{N}^T \vect{N} \ud \Omega^e \
-     &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{K}&lt;em _Omega_e="\Omega^e"&gt;{hu} = \int&lt;/em&gt; H \pare{\pardiff{\vect{N}}{x}}^T \vect{N}  \ud \Omega^e \
-     &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{K}&lt;em _Omega_e="\Omega^e"&gt;{hv} = \int&lt;/em&gt; H \pare{\pardiff{\vect{N}}{y}}^T \vect{N}  \ud \Omega^e \
-     &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{K}&lt;em _Omega_e="\Omega^e"&gt;{uh} = \int&lt;/em&gt; g \vect{N}^T \pardiff{\vect{N}}{x} \ud \Omega^e \
-     &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{K}&lt;em _Omega_e="\Omega^e"&gt;{vh} = \int&lt;/em&gt; g \vect{N}^T \pardiff{\vect{N}}{y} \ud \Omega^e \
-     &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{K}&lt;em _Omega_e="\Omega^e"&gt;{uv} = \int&lt;/em&gt; f \vect{N}^T \vect{N} \ud \Omega^e \
-     &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{K}&lt;em _Omega_e="\Omega^e"&gt;{vu} = \int&lt;/em&gt; f \vect{N}^T \vect{N} \ud \Omega^e&amp;nbsp;\end{aligned}$$&lt;/p&gt;
-&lt;p&gt;The derivatives $\pardiff{\vect{N}}{x}$ y $\pardiff{\vect{N}}{y}$ can be evaluated component-wise (again, see Felippa&amp;#8217;s&amp;nbsp;work):&lt;/p&gt;
-&lt;p&gt;$$\begin{aligned}
+&lt;div class="math"&gt;$$\begin{aligned}
+     &amp;amp; \vect{M} = \int_{\Omega^e} \vect{N}^T \vect{N} \ud \Omega^e \\
+     &amp;amp; \vect{K}_{hu} = \int_{\Omega^e} H \pare{\pardiff{\vect{N}}{x}}^T \vect{N}  \ud \Omega^e \\
+     &amp;amp; \vect{K}_{hv} = \int_{\Omega^e} H \pare{\pardiff{\vect{N}}{y}}^T \vect{N}  \ud \Omega^e \\
+     &amp;amp; \vect{K}_{uh} = \int_{\Omega^e} g \vect{N}^T \pardiff{\vect{N}}{x} \ud \Omega^e \\
+     &amp;amp; \vect{K}_{vh} = \int_{\Omega^e} g \vect{N}^T \pardiff{\vect{N}}{y} \ud \Omega^e \\
+     &amp;amp; \vect{K}_{uv} = \int_{\Omega^e} f \vect{N}^T \vect{N} \ud \Omega^e \\
+     &amp;amp; \vect{K}_{vu} = \int_{\Omega^e} f \vect{N}^T \vect{N} \ud \Omega^e \end{aligned}$$&lt;/div&gt;
+&lt;p&gt;The derivatives &lt;span class="math"&gt;\(\pardiff{\vect{N}}{x}\)&lt;/span&gt; y &lt;span class="math"&gt;\(\pardiff{\vect{N}}{y}\)&lt;/span&gt; can be evaluated component-wise (again, see Felippa&amp;#8217;s&amp;nbsp;work):&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
 \matorvec{c}
 {
-    \pardiff{N_i}{x} \
+    \pardiff{N_i}{x} \\
     \pardiff{N_i}{y} 
 } = 
 \dfrac{1}{2A}
 \matorvec{ccc}
 {
-    y_{23} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; y_{31} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; y_{12} \
-    x_{32} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; x_{13} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; x_{21} 
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} \\
+    x_{32} &amp;amp; x_{13} &amp;amp; x_{21} 
 }
 \matorvec{c}
 {
-    \pardiff{N_i}{\zeta_1} \
-    \pardiff{N_i}{\zeta_2} \
-    \pardiff{N_i}{\zeta_3}&amp;nbsp;}\end{aligned}$$&lt;/p&gt;
-&lt;p&gt;For example, for&amp;nbsp;$N_1$:&lt;/p&gt;
-&lt;p&gt;$$\begin{aligned}
+    \pardiff{N_i}{\zeta_1} \\
+    \pardiff{N_i}{\zeta_2} \\
+    \pardiff{N_i}{\zeta_3}
+}\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;For example, for &lt;span class="math"&gt;\(N_1\)&lt;/span&gt;:&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
 \matorvec{c}
 {
-    \pardiff{N_1}{x} \
+    \pardiff{N_1}{x} \\
     \pardiff{N_1}{y} 
 } = 
 \matorvec{c}
 {
-    \pardiff{\zeta_1}{x} \
+    \pardiff{\zeta_1}{x} \\
     \pardiff{\zeta_1}{y} 
 } = 
 \dfrac{1}{2A}
 \matorvec{ccc}
 {
-    y_{23} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; y_{31} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; y_{12} \
-    x_{32} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; x_{13} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; x_{21} 
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} \\
+    x_{32} &amp;amp; x_{13} &amp;amp; x_{21} 
 }
 \matorvec{c}
 {
-    \pardiff{\zeta_1}{\zeta_1} \
-    \pardiff{\zeta_1}{\zeta_2} \
+    \pardiff{\zeta_1}{\zeta_1} \\
+    \pardiff{\zeta_1}{\zeta_2} \\
     \pardiff{\zeta_1}{\zeta_3}
 }
 =
 \dfrac{1}{2A}
 \matorvec{ccc}
 {
-    y_{23} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; y_{31} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; y_{12} \
-    x_{32} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; x_{13} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; x_{21} 
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} \\
+    x_{32} &amp;amp; x_{13} &amp;amp; x_{21} 
 }
 \matorvec{c}
 {
-    1 \
-    0 \
+    1 \\
+    0 \\
     0
 }
 = 
 \dfrac{1}{2A}
 \matorvec{c}
 {
-    y_{23} \
-    x_{32}&amp;nbsp;}\end{aligned}$$&lt;/p&gt;
+    y_{23} \\
+    x_{32} 
+}\end{aligned}$$&lt;/div&gt;
 &lt;p&gt;It is clear that,&amp;nbsp;therefore&lt;/p&gt;
-&lt;p&gt;$$\begin{aligned}
+&lt;div class="math"&gt;$$\begin{aligned}
 \pardiff{\vect{N}}{x} = \dfrac{1}{2A}
 \matorvec{ccc}
 {
-    y_{23} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; y_{31} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; y_{12} 
-} \ 
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} 
+} \\ 
 \pardiff{\vect{N}}{y} = \dfrac{1}{2A}
 \matorvec{ccc}
 {
-    x_{32} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; x_{13} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; x_{21}&amp;nbsp;}\end{aligned}$$&lt;/p&gt;
-&lt;p&gt;Note that these derivatives are constant within each trinagle (hence the name, constant strain triangle although the interpretation is not strain in this case). In this context we have that $x_{ij} = x_i - x_j$ where  $x_i$ is the $x$ coordinate of the $i$-th element node. Similarly for $y_{ij} = y_i -&amp;nbsp;y_j$.&lt;/p&gt;
-&lt;p&gt;If we further assume that the gravity field $g$, the local depth at the finite element and the Coriolis force $f$ are constant (probably a bad assumption for this variable for some applications which span the globe) &lt;em&gt;within an element&lt;/em&gt; we can further reduce the discretized equations&amp;nbsp;to:&lt;/p&gt;
-&lt;p&gt;$$\begin{aligned}
-\vect{I}&lt;em _Omega_e="\Omega^e"&gt;{1} &amp;amp;= \int&lt;/em&gt; \vect{N}^T \vect{N} \ud \Omega^e  \
-\vect{I}&lt;em _Omega_e="\Omega^e"&gt;{2} &amp;amp;= \int&lt;/em&gt; \vect{N}^T \pardiff{\vect{N}}{x} \ud \Omega^e \
-\vect{I}&lt;em _Omega_e="\Omega^e"&gt;{3} &amp;amp;= \int&lt;/em&gt; \vect{N}^T \pardiff{\vect{N}}{y} \ud&amp;nbsp;\Omega^e\end{aligned}$$&lt;/p&gt;
+    x_{32} &amp;amp; x_{13} &amp;amp; x_{21} 
+}\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Note that these derivatives are constant within each trinagle (hence the name, constant strain triangle although the interpretation is not strain in this case). In this context we have that &lt;span class="math"&gt;\(x_{ij} = x_i - x_j\)&lt;/span&gt; where  &lt;span class="math"&gt;\(x_i\)&lt;/span&gt; is the &lt;span class="math"&gt;\(x\)&lt;/span&gt; coordinate of the &lt;span class="math"&gt;\(i\)&lt;/span&gt;-th element node. Similarly for &lt;span class="math"&gt;\(y_{ij} = y_i - y_j\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;If we further assume that the gravity field &lt;span class="math"&gt;\(g\)&lt;/span&gt;, the local depth at the finite element and the Coriolis force &lt;span class="math"&gt;\(f\)&lt;/span&gt; are constant (probably a bad assumption for this variable for some applications which span the globe) &lt;em&gt;within an element&lt;/em&gt; we can further reduce the discretized equations&amp;nbsp;to:&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\vect{I}_{1} &amp;amp;= \int_{\Omega^e} \vect{N}^T \vect{N} \ud \Omega^e  \\
+\vect{I}_{2} &amp;amp;= \int_{\Omega^e} \vect{N}^T \pardiff{\vect{N}}{x} \ud \Omega^e \\
+\vect{I}_{3} &amp;amp;= \int_{\Omega^e} \vect{N}^T \pardiff{\vect{N}}{y} \ud \Omega^e\end{aligned}$$&lt;/div&gt;
 &lt;p&gt;Working on the first&amp;nbsp;integral&lt;/p&gt;
-&lt;p&gt;$$\begin{aligned}
-       \vect{I}&lt;em _Omega_e="\Omega^e"&gt;1 &amp;amp;= \int&lt;/em&gt; \matorvec{c}{ \zeta_1 \ \zeta_2 \ \zeta_3 } \matorvec{ccc}{ \zeta_1 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \zeta_2 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \zeta_3 } \ud \Omega^e\
+&lt;div class="math"&gt;$$\begin{aligned}
+       \vect{I}_1 &amp;amp;= \int_{\Omega^e} \matorvec{c}{ \zeta_1 \\ \zeta_2 \\ \zeta_3 } \matorvec{ccc}{ \zeta_1 &amp;amp; \zeta_2 &amp;amp; \zeta_3 } \ud \Omega^e\\
        &amp;amp;=
-       \int_{\Omega^e}&lt;br&gt;
+       \int_{\Omega^e}  
         \matorvec{ccc}
         { 
-            {\zeta_1}^2 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \zeta_2\zeta_1 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \zeta_3 \zeta_1 \
-            \zeta_1\zeta_2 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; {\zeta_2}^2 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \zeta_3\zeta_2  \
-            \zeta_1\zeta_3 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \zeta_2\zeta_3 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; {\zeta_3}^2  \
+            {\zeta_1}^2 &amp;amp; \zeta_2\zeta_1 &amp;amp; \zeta_3 \zeta_1 \\
+            \zeta_1\zeta_2 &amp;amp; {\zeta_2}^2 &amp;amp; \zeta_3\zeta_2  \\
+            \zeta_1\zeta_3 &amp;amp; \zeta_2\zeta_3 &amp;amp; {\zeta_3}^2  \\
         } 
-        \ud \Omega^e&amp;nbsp;\end{aligned}$$&lt;/p&gt;
+        \ud \Omega^e \end{aligned}$$&lt;/div&gt;
 &lt;p&gt;We can use the following formula for the integration within a triangle of the monomials (again, from &lt;a href="feli"&gt;here&lt;/a&gt;)&lt;/p&gt;
-&lt;p&gt;$$\begin{aligned}
-\int_{\Omega^e} {\zeta_1}^p{\zeta_2}^q{\zeta_2}^r \ud \Omega^e = \dfrac{2 A p!\, q!\,&amp;nbsp;r!}{\pare{p+q+r+2}!}\end{aligned}$$&lt;/p&gt;
-&lt;p&gt;With this, the integral for $\vect{I}_1$ is evaluated&amp;nbsp;to&lt;/p&gt;
-&lt;p&gt;$$\begin{aligned}
+&lt;div class="math"&gt;$$\begin{aligned}
+\int_{\Omega^e} {\zeta_1}^p{\zeta_2}^q{\zeta_2}^r \ud \Omega^e = \dfrac{2 A p!\, q!\, r!}{\pare{p+q+r+2}!}\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;With this, the integral for &lt;span class="math"&gt;\(\vect{I}_1\)&lt;/span&gt; is evaluated&amp;nbsp;to&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
 \vect{I}_1 = \dfrac{A}{12} \matorvec{ccc}
         { 
-            2 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; 1 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; 1 \
-            1 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; 2 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; 1 \
-            1 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; 1 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; 2
-        }&amp;nbsp;\end{aligned}$$&lt;/p&gt;
+            2 &amp;amp; 1 &amp;amp; 1 \\
+            1 &amp;amp; 2 &amp;amp; 1 \\
+            1 &amp;amp; 1 &amp;amp; 2
+        } \end{aligned}$$&lt;/div&gt;
 &lt;p&gt;Proceeding with the next&amp;nbsp;integral:&lt;/p&gt;
-&lt;p&gt;$$\begin{aligned}
-\vect{I}&lt;em _Omega_e="\Omega^e"&gt;{2} &amp;amp;= \int&lt;/em&gt; \vect{N}^T \pardiff{\vect{N}}{x} \ud \Omega^e \ 
- &amp;amp;= \int_{\Omega^e} \matorvec{c}{ \zeta_1 \ \zeta_2 \ \zeta_3 } 
+&lt;div class="math"&gt;$$\begin{aligned}
+\vect{I}_{2} &amp;amp;= \int_{\Omega^e} \vect{N}^T \pardiff{\vect{N}}{x} \ud \Omega^e \\ 
+ &amp;amp;= \int_{\Omega^e} \matorvec{c}{ \zeta_1 \\ \zeta_2 \\ \zeta_3 } 
 \dfrac{1}{2A}
 \matorvec{ccc}
 {
-    y_{23} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; y_{31} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; y_{12} 
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} 
 }  \ud \Omega^e = 
-\int_{\Omega^e} \matorvec{c}{ \zeta_1 \ \zeta_2 \ \zeta_3 }  \ud \Omega^e
+\int_{\Omega^e} \matorvec{c}{ \zeta_1 \\ \zeta_2 \\ \zeta_3 }  \ud \Omega^e
 \cdot 
 \dfrac{1}{2A}
 \matorvec{ccc}
 {
-    y_{23} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; y_{31} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; y_{12} 
-}\&amp;nbsp;\end{aligned}$$&lt;/p&gt;
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} 
+}\\ \end{aligned}$$&lt;/div&gt;
 &lt;p&gt;Utilizing the same identity as before to evaluate the integrals we arrive&amp;nbsp;at:&lt;/p&gt;
-&lt;p&gt;$$\begin{aligned}
-\vect{I}&lt;em 23&gt;2 = \dfrac{A}{3} \matorvec{c}{ 1 \ 1 \ 1 }\dfrac{1}{2A}
+&lt;div class="math"&gt;$$\begin{aligned}
+\vect{I}_2 = \dfrac{A}{3} \matorvec{c}{ 1 \\ 1 \\ 1 }\dfrac{1}{2A}
 \matorvec{ccc}
 {
-    y&lt;/em&gt; &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; y_{31} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; y_{12} 
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} 
 } = 
 \dfrac{1}{6}
 \matorvec{ccc}
 {
-    y_{23} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; y_{31} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; y_{12}  \
-    y_{23} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; y_{31} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; y_{12} \
-    y_{23} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; y_{31} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; y_{12}&amp;nbsp;}\end{aligned}$$&lt;/p&gt;
-&lt;p&gt;Analogously for $\vect{I}_3$ we&amp;nbsp;have:&lt;/p&gt;
-&lt;p&gt;$$\begin{aligned}
-\vect{I}&lt;em _Omega_e="\Omega^e"&gt;{3} &amp;amp;= \int&lt;/em&gt; \vect{N}^T \pardiff{\vect{N}}{y} \ud \Omega^e = \dfrac{1}{6}
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12}  \\
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} \\
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} 
+}\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Analogously for &lt;span class="math"&gt;\(\vect{I}_3\)&lt;/span&gt; we&amp;nbsp;have:&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\vect{I}_{3} &amp;amp;= \int_{\Omega^e} \vect{N}^T \pardiff{\vect{N}}{y} \ud \Omega^e = \dfrac{1}{6}
 \matorvec{ccc}
 {
-    x_{32} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; x_{13} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; x_{21} \
-    x_{32} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; x_{13} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; x_{21} \
-    x_{32} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; x_{13} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; x_{21}&amp;nbsp;}\end{aligned}$$&lt;/p&gt;
+    x_{32} &amp;amp; x_{13} &amp;amp; x_{21} \\
+    x_{32} &amp;amp; x_{13} &amp;amp; x_{21} \\
+    x_{32} &amp;amp; x_{13} &amp;amp; x_{21} 
+}\end{aligned}$$&lt;/div&gt;
 &lt;p&gt;And finally we can write the sub-matrices as&amp;nbsp;follows. &lt;/p&gt;
-&lt;p&gt;$$\begin{aligned}
- \vect{M} &amp;amp;= \vect{I}&lt;em hu&gt;1 \
- \vect{K}&lt;/em&gt; &amp;amp;=  H \cdot {\vect{I}&lt;em hv&gt;2}^T &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{K}&lt;/em&gt; &amp;amp;=  H \cdot {\vect{I}&lt;em uh&gt;3}^T \
- \vect{K}&lt;/em&gt; &amp;amp;=  g \cdot \vect{I}&lt;em vh&gt;2 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{K}&lt;/em&gt; &amp;amp;=  g \cdot \vect{I}&lt;em uv&gt;3 \
- \vect{K}&lt;/em&gt; &amp;amp;=  f \cdot \vect{I}&lt;em vu&gt;1 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{K}&lt;/em&gt; &amp;amp;=  f \cdot \vect{I}_1&amp;nbsp;\end{aligned}$$&lt;/p&gt;
-&lt;p&gt;Which can be replaced into 
-$$\begin{aligned}
+&lt;div class="math"&gt;$$\begin{aligned}
+ \vect{M} &amp;amp;= \vect{I}_1 \\
+ \vect{K}_{hu} &amp;amp;=  H \cdot {\vect{I}_2}^T &amp;amp; \vect{K}_{hv} &amp;amp;=  H \cdot {\vect{I}_3}^T \\
+ \vect{K}_{uh} &amp;amp;=  g \cdot \vect{I}_2 &amp;amp; \vect{K}_{vh} &amp;amp;=  g \cdot \vect{I}_3 \\
+ \vect{K}_{uv} &amp;amp;=  f \cdot \vect{I}_1 &amp;amp; \vect{K}_{vu} &amp;amp;=  f \cdot \vect{I}_1 \end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Which can be replaced&amp;nbsp;into 
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
 \matorvec{ccc}
 {
-    \vect{M} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{0} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{0} \
-    \vect{0} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{M} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{0} \
-    \vect{0} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{0} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{M} 
+    \vect{M} &amp;amp; \vect{0} &amp;amp; \vect{0} \\
+    \vect{0} &amp;amp; \vect{M} &amp;amp; \vect{0} \\
+    \vect{0} &amp;amp; \vect{0} &amp;amp; \vect{M} 
 } \dot{\vect{z}}  + 
 \matorvec{ccc}
 {
-    \vect{0}        &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; -\vect{K}&lt;em hv&gt;{hu} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; -\vect{K}&lt;/em&gt; \
-    \vect{K}&lt;em uv&gt;{uh}   &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{0} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; -\vect{K}&lt;/em&gt; \
-    \vect{K}&lt;em vu&gt;{vh}   &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{K}&lt;/em&gt; &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; \vect{0} 
+    \vect{0}        &amp;amp; -\vect{K}_{hu} &amp;amp; -\vect{K}_{hv} \\
+    \vect{K}_{uh}   &amp;amp; \vect{0} &amp;amp; -\vect{K}_{uv} \\
+    \vect{K}_{vh}   &amp;amp; \vect{K}_{vu} &amp;amp; \vect{0} 
 } \vect{z}
 =
 \matorvec{c}
 {
-    \vect{0} \ \vect{0} \ \vect{0}
-} \ 
-\vect{A} \dot{\vect{z}} + \vect{B}  \vect{z} = \vect{0}\end{aligned}$$
+    \vect{0} \\ \vect{0} \\ \vect{0}
+} \\ 
+\vect{A} \dot{\vect{z}} + \vect{B}  \vect{z} = \vect{0}\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;
 to generate the discretized &lt;span class="caps"&gt;SWE&lt;/span&gt;. &lt;/p&gt;
-&lt;p&gt;A future post will discuss the python implementation of this finite element and its application to a basic&amp;nbsp;problem. &lt;/p&gt;</content><category term="Finite Elements"></category><category term="Fluids"></category><category term="Shallow water equations"></category><category term="Tutorial"></category></entry><entry><title>Talk Given at IngeoKring 2016 - Physics-Based Earthquake-Soil-Structure Interaction for Near-Field Induced Seismicity</title><link href="http://www.joseabell.com/talk-given-at-ingeokring-2016-ESSI-DRM.html" rel="alternate"></link><published>2016-11-18T09:53:17-08:00</published><updated>2016-11-18T09:53:17-08:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2016-11-18:/talk-given-at-ingeokring-2016-ESSI-DRM.html</id><summary type="html">&lt;p&gt;This is a talk given at the IngeoKring 2016 Autumn symposium, hosted at &lt;span class="caps"&gt;TU&lt;/span&gt;&amp;nbsp;Delft. &lt;/p&gt;
+&lt;p&gt;A future post will discuss the python implementation of this finite element and its application to a basic&amp;nbsp;problem. &lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="Finite Elements"></category><category term="Fluids"></category><category term="Shallow water equations"></category><category term="Tutorial"></category></entry><entry><title>Talk Given at IngeoKring 2016 - Physics-Based Earthquake-Soil-Structure Interaction for Near-Field Induced Seismicity</title><link href="http://www.joseabell.com/talk-given-at-ingeokring-2016-ESSI-DRM.html" rel="alternate"></link><published>2016-11-18T09:53:17-08:00</published><updated>2016-11-18T09:53:17-08:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2016-11-18:/talk-given-at-ingeokring-2016-ESSI-DRM.html</id><summary type="html">&lt;p&gt;This is a talk given at the IngeoKring 2016 Autumn symposium, hosted at &lt;span class="caps"&gt;TU&lt;/span&gt;&amp;nbsp;Delft. &lt;/p&gt;
 &lt;div class="youtube" align="left"&gt;
 &lt;iframe width="640" height="480" src="//www.youtube.com/embed/qxVxgyVmPd4" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;</summary><content type="html">&lt;p&gt;This is a talk given at the IngeoKring 2016 Autumn symposium, hosted at &lt;span class="caps"&gt;TU&lt;/span&gt;&amp;nbsp;Delft. &lt;/p&gt;
@@ -3626,8 +3749,8 @@ consists&amp;nbsp;of&lt;/p&gt;
 &lt;li&gt;1200 time-steps (dt =&amp;nbsp;0.01s)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Results were stored in the new format of output for &lt;span class="caps"&gt;ESSI&lt;/span&gt; simulator and
-visualized in VisIt post-processor where the movie was created.&lt;br&gt;
-&lt;!--more--&gt;&lt;br&gt;
+visualized in VisIt post-processor where the movie was created.&lt;br /&gt;
+&lt;!--more--&gt;&lt;br /&gt;
 &lt;!--http://youtu.be/VURohwb-OJQ--&gt;&lt;/p&gt;
 &lt;div class="youtube" align="left"&gt;
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/VURohwb-OJQ" frameborder="0"&gt;&lt;/iframe&gt;
@@ -3639,37 +3762,35 @@ consists&amp;nbsp;of&lt;/p&gt;
 &lt;li&gt;1200 time-steps (dt =&amp;nbsp;0.01s)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Results were stored in the new format of output for &lt;span class="caps"&gt;ESSI&lt;/span&gt; simulator and
-visualized in VisIt post-processor where the movie was created.&lt;br&gt;
-&lt;!--more--&gt;&lt;br&gt;
+visualized in VisIt post-processor where the movie was created.&lt;br /&gt;
+&lt;!--more--&gt;&lt;br /&gt;
 &lt;!--http://youtu.be/VURohwb-OJQ--&gt;&lt;/p&gt;
 &lt;div class="youtube" align="left"&gt;
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/VURohwb-OJQ" frameborder="0"&gt;&lt;/iframe&gt;
 &lt;/div&gt;</content><category term="animation"></category><category term="c++"></category><category term="ESSI"></category><category term="linux"></category><category term="post-processing"></category><category term="small numerical experiments"></category><category term="sne"></category><category term="visitESSI"></category><category term="movie"></category></entry><entry><title>NTS (Note-To-Self): Creating dynamically linked libraries</title><link href="http://www.joseabell.com/nts-note-to-self-creating-dynamically-linked-libraries.html" rel="alternate"></link><published>2013-10-28T18:57:00-07:00</published><updated>2013-10-28T18:57:00-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2013-10-28:/nts-note-to-self-creating-dynamically-linked-libraries.html</id><summary type="html">&lt;p&gt;A nice extensive tutorial can be found &lt;a href="http://www.yolinux.com/TUTORIALS/LibraryArchives-StaticAndDynamic.html"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;In a&amp;nbsp;nutshell:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;gcc -Wall -fPIC -c \*.c  
+&lt;pre&gt;&lt;code&gt;:::shell.BashLexer
+gcc -Wall -fPIC -c \*.c  
 gcc -shared -Wl,-soname,libctest.so.1 -o libctest.so.1.0 \*.o  
 mv libctest.so.1.0 /opt/lib  
 ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so.1  
 ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so
-&lt;/pre&gt;&lt;/div&gt;
-
-
+&lt;/code&gt;&lt;/pre&gt;
 &lt;!--more--&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;-Wall&lt;/code&gt;: include warnings. See man page for warnings&amp;nbsp;specified.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;-fPIC&lt;/code&gt;: Compiler directive to output position independent code, a
     characteristic required by shared libraries. Also see&amp;nbsp;&amp;#8220;-fpic&amp;#8221;.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;-shared&lt;/code&gt;: Produce a shared object which can then be linked with other objects …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;A nice extensive tutorial can be found &lt;a href="http://www.yolinux.com/TUTORIALS/LibraryArchives-StaticAndDynamic.html"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;li&gt;&lt;code&gt;-shared&lt;/code&gt;: Produce a shared object which can then be linked with …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;A nice extensive tutorial can be found &lt;a href="http://www.yolinux.com/TUTORIALS/LibraryArchives-StaticAndDynamic.html"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;In a&amp;nbsp;nutshell:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;gcc -Wall -fPIC -c \*.c  
+&lt;pre&gt;&lt;code&gt;:::shell.BashLexer
+gcc -Wall -fPIC -c \*.c  
 gcc -shared -Wl,-soname,libctest.so.1 -o libctest.so.1.0 \*.o  
 mv libctest.so.1.0 /opt/lib  
 ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so.1  
 ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so
-&lt;/pre&gt;&lt;/div&gt;
-
-
+&lt;/code&gt;&lt;/pre&gt;
 &lt;!--more--&gt;
 
 &lt;ul&gt;
@@ -3689,50 +3810,57 @@ ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so
 section where I upload and comment (briefly) some small numerical
 example. The purpose is to prove a point to myself, test some code,
 ideas,&amp;nbsp;etc.&lt;/p&gt;
-&lt;p&gt;&lt;a href="/images/sne/01/pendulum_medium.png"&gt;&lt;img alt="pendulum" src="/images/sne/01/pendulum_medium.png"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/sne/01/pendulum_medium.png"&gt;&lt;img alt="pendulum" src="/images/sne/01/pendulum_medium.png" /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;In this first post I will explore the response of a &lt;em&gt;stochastic inverse
 pendulum.&lt;/em&gt; What I mean in this case is an inverse pendulum (shown left)
 with a random initial condition. The purpose is to obtain the
 time-evolving probability density function (&lt;span class="caps"&gt;PDF&lt;/span&gt;) of the pendulum&amp;#8217;s
 position. I will be doing Monte-Carlo simulations to obtain an
-approximation to this &lt;span class="caps"&gt;PDF&lt;/span&gt;.&lt;br&gt;
-&lt;!--more--&gt;&lt;br&gt;
+approximation to this &lt;span class="caps"&gt;PDF&lt;/span&gt;.&lt;br /&gt;
+&lt;!--more--&gt;&lt;br /&gt;
 The response of the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is the first installment of &amp;#8220;Small Numerical Experiments&amp;#8221; (&lt;span class="caps"&gt;SNE&lt;/span&gt;), a
 section where I upload and comment (briefly) some small numerical
 example. The purpose is to prove a point to myself, test some code,
 ideas,&amp;nbsp;etc.&lt;/p&gt;
-&lt;p&gt;&lt;a href="/images/sne/01/pendulum_medium.png"&gt;&lt;img alt="pendulum" src="/images/sne/01/pendulum_medium.png"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/sne/01/pendulum_medium.png"&gt;&lt;img alt="pendulum" src="/images/sne/01/pendulum_medium.png" /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;In this first post I will explore the response of a &lt;em&gt;stochastic inverse
 pendulum.&lt;/em&gt; What I mean in this case is an inverse pendulum (shown left)
 with a random initial condition. The purpose is to obtain the
 time-evolving probability density function (&lt;span class="caps"&gt;PDF&lt;/span&gt;) of the pendulum&amp;#8217;s
 position. I will be doing Monte-Carlo simulations to obtain an
-approximation to this &lt;span class="caps"&gt;PDF&lt;/span&gt;.&lt;br&gt;
-&lt;!--more--&gt;&lt;br&gt;
+approximation to this &lt;span class="caps"&gt;PDF&lt;/span&gt;.&lt;br /&gt;
+&lt;!--more--&gt;&lt;br /&gt;
 The response of the system is governed by the following nonlinear
 ordinary differential equation in terms of the angular displacement
-$\theta$ with respect to the&amp;nbsp;vertical:&lt;/p&gt;
-&lt;p&gt;$$
- m l^2 \ddot{\theta} + c \dot{\theta} - mgl \sin \theta = 0&amp;nbsp;$$&lt;/p&gt;
-&lt;p&gt;Subject to an initial condition $$ \theta(0) = \theta_0$$ and
-$$ \dot{\theta}(0) =\dot{\theta}_0$$. In this case, the initial
+&lt;span class="math"&gt;\(\theta\)&lt;/span&gt; with respect to the&amp;nbsp;vertical:&lt;/p&gt;
+&lt;div class="math"&gt;$$
+ m l^2 \ddot{\theta} + c \dot{\theta} - mgl \sin \theta = 0
+$$&lt;/div&gt;
+&lt;p&gt;Subject to an initial&amp;nbsp;condition &lt;/p&gt;
+&lt;div class="math"&gt;$$ \theta(0) = \theta_0$$&lt;/div&gt;
+&lt;p&gt; and
+&lt;/p&gt;
+&lt;div class="math"&gt;$$ \dot{\theta}(0) =\dot{\theta}_0$$&lt;/div&gt;
+&lt;p&gt;. In this case, the initial
 angular velocity is set to zero and the initial angular displacement is
 set to have a Gaussian random distribution with mean zero and standard
 deviation of 10 degrees. The linear damping constant is set to 10%
 critical damping the system would have in the case of small oscillations
-about the final equilibrium point $$\theta =&amp;nbsp;180^{\circ}$$.&lt;/p&gt;
+about the final equilibrium&amp;nbsp;point &lt;/p&gt;
+&lt;div class="math"&gt;$$\theta = 180^{\circ}$$&lt;/div&gt;
+&lt;p&gt;.&lt;/p&gt;
 &lt;p&gt;The example is coded in python and solved using the &lt;em&gt;odeint &lt;/em&gt;solver
 available in &lt;a href="http://www.scipy.org"&gt;scipy&lt;/a&gt;. Here is an example response for a given nonzero
 initial&amp;nbsp;condition.&lt;/p&gt;
-&lt;p&gt;&lt;a href="/images/sne/01/one.png"&gt;&lt;img alt="one" src="/images/sne/01/one.png"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/sne/01/one.png"&gt;&lt;img alt="one" src="/images/sne/01/one.png" /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Doing 5000 Monte-Carlo draws and plotting all the responses together we
-get:&lt;a href="/images/sne/01/ensemble.png"&gt;&lt;img alt="ensemble" src="/images/sne/01/ensemble.png"&gt;&lt;/a&gt;&lt;/p&gt;
+get:&lt;a href="/images/sne/01/ensemble.png"&gt;&lt;img alt="ensemble" src="/images/sne/01/ensemble.png" /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;-About half of the the pendulums swing to the left and the other half to
 the right. This would result in a bimodal distribution and is a mere
 artifact of the mathematical model used. Indeed, what the model
 perceives as two distinct equilibrium points are actually the same
 position for the pendulum. This arises because of the periodicity in the
-$\sin()$&amp;nbsp;function.&lt;/p&gt;
+&lt;span class="math"&gt;\(\sin()\)&lt;/span&gt;&amp;nbsp;function.&lt;/p&gt;
 &lt;p&gt;From this set of motions a &lt;span class="caps"&gt;PDF&lt;/span&gt; may be computed for each time and
 animated to show the evolution of the &lt;span class="caps"&gt;PDF&lt;/span&gt; with&amp;nbsp;time.&lt;/p&gt;
 &lt;div class="youtube" align="left"&gt;
@@ -3748,126 +3876,182 @@ mathematical tool&amp;nbsp;used.&lt;/p&gt;
 &lt;p&gt;These spurious peaks generate unrealistic dispersion in the distribution
 of results. Is there a way to identify them and get rid of&amp;nbsp;them?&lt;/p&gt;
 &lt;p&gt;The following python code produces these&amp;nbsp;results.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#!/bin/python  &lt;/span&gt;
-&lt;span class="c1"&gt;# -*- coding: utf-8 -*-  &lt;/span&gt;
-&lt;span class="c1"&gt;# Small numerical experiments # 00  &lt;/span&gt;
-&lt;span class="s2"&gt;&amp;quot;&amp;quot;&amp;quot;  &lt;/span&gt;
-&lt;span class="s2"&gt;@SNE_number: 00  &lt;/span&gt;
-&lt;span class="s2"&gt;@Title: Stochastic inverse pendulum  &lt;/span&gt;
-&lt;span class="s2"&gt;@Idea: Show a case in which bifurcation behavior produces multimodal&lt;/span&gt;
-&lt;span class="s2"&gt;distribution.  &lt;/span&gt;
-&lt;span class="s2"&gt;@Tags: scipy, ode, stochastic, multimodal, bimodal, matplotlib,&lt;/span&gt;
-&lt;span class="s2"&gt;Monte-Carlo, animation, python  &lt;/span&gt;
-&lt;span class="s2"&gt;@Date: Created on Fri Oct 4 2013  &lt;/span&gt;
-&lt;span class="s2"&gt;@author: jaabell  &lt;/span&gt;
-&lt;span class="s2"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;pre&gt;&lt;code&gt;:::PythonLexer
+#!/bin/python  
+# -*- coding: utf-8 -*-  
+# Small numerical experiments # 00  
+"""  
+@SNE_number: 00  
+@Title: Stochastic inverse pendulum  
+@Idea: Show a case in which bifurcation behavior produces multimodal
+distribution.  
+@Tags: scipy, ode, stochastic, multimodal, bimodal, matplotlib,
+Monte-Carlo, animation, python  
+@Date: Created on Fri Oct 4 2013  
+@author: jaabell  
+"""
 
-&lt;span class="s s-Atom"&gt;import&lt;/span&gt; &lt;span class="s s-Atom"&gt;scipy&lt;/span&gt; &lt;span class="s s-Atom"&gt;as&lt;/span&gt; &lt;span class="s s-Atom"&gt;sp&lt;/span&gt;  
-&lt;span class="s s-Atom"&gt;import&lt;/span&gt; &lt;span class="s s-Atom"&gt;matplotlib&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s s-Atom"&gt;pylab&lt;/span&gt; &lt;span class="s s-Atom"&gt;as&lt;/span&gt; &lt;span class="s s-Atom"&gt;plt&lt;/span&gt;  
-&lt;span class="s s-Atom"&gt;from&lt;/span&gt; &lt;span class="s s-Atom"&gt;scipy&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s s-Atom"&gt;integrate&lt;/span&gt; &lt;span class="s s-Atom"&gt;import&lt;/span&gt; &lt;span class="s s-Atom"&gt;odeint&lt;/span&gt;
+import scipy as sp  
+import matplotlib.pylab as plt  
+from scipy.integrate import odeint
 
-&lt;span class="nv"&gt;N&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5000&lt;/span&gt; &lt;span class="s s-Atom"&gt;#&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="s s-Atom"&gt;number&lt;/span&gt; &lt;span class="s s-Atom"&gt;of&lt;/span&gt; &lt;span class="nv"&gt;Monte&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Carlo&lt;/span&gt; &lt;span class="s s-Atom"&gt;trials&lt;/span&gt;  
-&lt;span class="s s-Atom"&gt;mu_theta&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.0&lt;/span&gt; &lt;span class="s s-Atom"&gt;#&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;deg&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  
-&lt;span class="s s-Atom"&gt;sigma_theta&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt; &lt;span class="s s-Atom"&gt;#&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;deg&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  
-&lt;span class="s s-Atom"&gt;tmax&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt; &lt;span class="s s-Atom"&gt;#&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;s&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;Maximum&lt;/span&gt; &lt;span class="s s-Atom"&gt;time&lt;/span&gt; &lt;span class="s s-Atom"&gt;for&lt;/span&gt; &lt;span class="s s-Atom"&gt;simulation&lt;/span&gt;  
-&lt;span class="s s-Atom"&gt;dt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.01&lt;/span&gt; &lt;span class="s s-Atom"&gt;#&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;s&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;Time&lt;/span&gt; &lt;span class="s s-Atom"&gt;step&lt;/span&gt; &lt;span class="s s-Atom"&gt;for&lt;/span&gt; &lt;span class="s s-Atom"&gt;integration&lt;/span&gt;  
-&lt;span class="s s-Atom"&gt;m&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="s s-Atom"&gt;#&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt;  
-&lt;span class="s s-Atom"&gt;g&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;9.81&lt;/span&gt; &lt;span class="s s-Atom"&gt;#&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;m&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="s s-Atom"&gt;s\^&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  
-&lt;span class="s s-Atom"&gt;l&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.50&lt;/span&gt; &lt;span class="s s-Atom"&gt;#&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;m&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  
-&lt;span class="s s-Atom"&gt;xi&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.3&lt;/span&gt; &lt;span class="s s-Atom"&gt;#&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="nv"&gt;Ratio&lt;/span&gt; &lt;span class="s s-Atom"&gt;of&lt;/span&gt; &lt;span class="s s-Atom"&gt;critical&lt;/span&gt; &lt;span class="nf"&gt;damping&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;for&lt;/span&gt; &lt;span class="s s-Atom"&gt;a&lt;/span&gt; &lt;span class="s s-Atom"&gt;regular&lt;/span&gt; &lt;span class="s s-Atom"&gt;pendulum&lt;/span&gt; &lt;span class="s s-Atom"&gt;under&lt;/span&gt;
-&lt;span class="s s-Atom"&gt;small&lt;/span&gt; &lt;span class="s s-Atom"&gt;deflections&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
-&lt;span class="nv"&gt;Nbins&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;50&lt;/span&gt; &lt;span class="s s-Atom"&gt;#&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="nv"&gt;Number&lt;/span&gt; &lt;span class="s s-Atom"&gt;of&lt;/span&gt; &lt;span class="s s-Atom"&gt;bins&lt;/span&gt; &lt;span class="s s-Atom"&gt;for&lt;/span&gt; &lt;span class="s s-Atom"&gt;computing&lt;/span&gt; &lt;span class="s s-Atom"&gt;histograms&lt;/span&gt;  
-&lt;span class="s s-Atom"&gt;theta_0_dot&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.0&lt;/span&gt; &lt;span class="s s-Atom"&gt;#&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;deg&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="s s-Atom"&gt;sec&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="s s-Atom"&gt;initial&lt;/span&gt; &lt;span class="s s-Atom"&gt;angular&lt;/span&gt; &lt;span class="s s-Atom"&gt;velocity&lt;/span&gt; &lt;span class="s s-Atom"&gt;for&lt;/span&gt; &lt;span class="s s-Atom"&gt;pendulums&lt;/span&gt;
+N = 5000 #[] number of Monte-Carlo trials  
+mu_theta = 0.0 #[deg]  
+sigma_theta = 10 #[deg]  
+tmax = 10 #[s] Maximum time for simulation  
+dt = 0.01 #[s] Time step for integration  
+m = 1 #[]  
+g = 9.81 #[m/s\^2]  
+l = 0.50 #[m]  
+xi = 0.3 #[] Ratio of critical damping (for a regular pendulum under
+small deflections)  
+Nbins = 50 #[] Number of bins for computing histograms  
+theta_0_dot = 0.0 #[deg/sec] initial angular velocity for pendulums
 
-&lt;span class="s s-Atom"&gt;compute&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;False&lt;/span&gt; &lt;span class="s s-Atom"&gt;#&lt;/span&gt;&lt;span class="nv"&gt;Use&lt;/span&gt; &lt;span class="s s-Atom"&gt;this&lt;/span&gt; &lt;span class="s s-Atom"&gt;in&lt;/span&gt; &lt;span class="s s-Atom"&gt;an&lt;/span&gt; &lt;span class="s s-Atom"&gt;interactive&lt;/span&gt; &lt;span class="nf"&gt;session&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;ie&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="s s-Atom"&gt;spyder&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="s s-Atom"&gt;to&lt;/span&gt;
-&lt;span class="s s-Atom"&gt;avoid&lt;/span&gt; &lt;span class="s s-Atom"&gt;recomputing&lt;/span&gt; &lt;span class="s s-Atom"&gt;the&lt;/span&gt; &lt;span class="nv"&gt;Monte&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Carlo&lt;/span&gt; &lt;span class="s s-Atom"&gt;runs&lt;/span&gt;
+compute = False #Use this in an interactive session (ie. spyder) to
+avoid recomputing the Monte-Carlo runs
 
-&lt;span class="s s-Atom"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="s s-Atom"&gt;xi&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="s s-Atom"&gt;m&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="s s-Atom"&gt;l**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="s s-Atom"&gt;#&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;N&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="s s-Atom"&gt;m&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="s s-Atom"&gt;s&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="s s-Atom"&gt;rad&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;Damping&lt;/span&gt; &lt;span class="s s-Atom"&gt;constant&lt;/span&gt;  
-&lt;span class="nv"&gt;Nt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nf"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;tmax&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="s s-Atom"&gt;dt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="s s-Atom"&gt;#&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="nv"&gt;Number&lt;/span&gt; &lt;span class="s s-Atom"&gt;of&lt;/span&gt; &lt;span class="s s-Atom"&gt;simulation&lt;/span&gt; &lt;span class="s s-Atom"&gt;timesteps&lt;/span&gt;
+c = 2*xi*m*l**2 #[N*m*s/rad] Damping constant  
+Nt = int(tmax/dt) #[] Number of simulation timesteps
 
-&lt;span class="c1"&gt;#Generate parameters for Monte-Carlo trials  &lt;/span&gt;
-&lt;span class="s s-Atom"&gt;mu_theta_rad&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;mu_theta&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="s s-Atom"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s s-Atom"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;180&lt;/span&gt;  
-&lt;span class="s s-Atom"&gt;sigma_theta_rad&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;sigma_theta&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="s s-Atom"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s s-Atom"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;180&lt;/span&gt;  
-&lt;span class="s s-Atom"&gt;thetas&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;randn&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;N&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="s s-Atom"&gt;sigma_theta_rad&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s s-Atom"&gt;mu_theta_rad&lt;/span&gt;  
-&lt;span class="s s-Atom"&gt;t&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;arange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s s-Atom"&gt;tmax&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;dt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+#Generate parameters for Monte-Carlo trials  
+mu_theta_rad = mu_theta*sp.pi/180  
+sigma_theta_rad = sigma_theta*sp.pi/180  
+thetas = sp.randn((N))*sigma_theta_rad + mu_theta_rad  
+t = sp.arange(0,tmax, dt)
 
-&lt;span class="c1"&gt;#Recast problem as a set of first order ODEs  &lt;/span&gt;
-&lt;span class="s s-Atom"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="s s-Atom"&gt;c/&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;m&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="s s-Atom"&gt;l**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
-&lt;span class="s s-Atom"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;g&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="s s-Atom"&gt;l&lt;/span&gt;  
-&lt;span class="s s-Atom"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="s s-Atom"&gt;:&lt;/span&gt;  
-    &lt;span class="s s-Atom"&gt;return&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;y&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;&lt;span class="s s-Atom"&gt;a&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="s s-Atom"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;sin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;y&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s s-Atom"&gt;b&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="s s-Atom"&gt;y&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;
+#Recast problem as a set of first order ODEs  
+b = -c/(m*l**2)  
+a = g/l  
+def func(y, t):  
+    return [y[1],a*sp.sin(y[0]) + b*y[1] ]
 
-&lt;span class="s s-Atom"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;gradient&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s s-Atom"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="s s-Atom"&gt;:&lt;/span&gt;  
-    &lt;span class="s s-Atom"&gt;return&lt;/span&gt; &lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="mf"&gt;0.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="p"&gt;],[&lt;/span&gt;&lt;span class="s s-Atom"&gt;a&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="s s-Atom"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;cos&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;y&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]),&lt;/span&gt;&lt;span class="s s-Atom"&gt;b&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
+def gradient(y,t):  
+    return [[0.0,1.0],[a*sp.cos(y[0]),b]]
 
-&lt;span class="c1"&gt;#Do the Monte-Carlo runs  &lt;/span&gt;
-&lt;span class="s s-Atom"&gt;if&lt;/span&gt; &lt;span class="nn"&gt;compute&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;  
-    &lt;span class="s s-Atom"&gt;yall&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;zeros&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;Nt&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nv"&gt;N&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;  
-    &lt;span class="s s-Atom"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;  
-    &lt;span class="s s-Atom"&gt;for&lt;/span&gt; &lt;span class="s s-Atom"&gt;theta_0&lt;/span&gt; &lt;span class="s s-Atom"&gt;in&lt;/span&gt; &lt;span class="nn"&gt;thetas&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;  
-        &lt;span class="s s-Atom"&gt;y0&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;theta_0&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="s s-Atom"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s s-Atom"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;180&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;theta_0_dot&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="s s-Atom"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s s-Atom"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;180&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  
-        &lt;span class="s s-Atom"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nf"&gt;odeint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;func&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;y0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;Dfun&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s s-Atom"&gt;gradient&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
-        &lt;span class="s s-Atom"&gt;yall&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;:&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;y&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;:&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  
-        &lt;span class="s s-Atom"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Case {} of {}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nv"&gt;N&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
-        &lt;span class="s s-Atom"&gt;i+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+#Do the Monte-Carlo runs  
+if compute:  
+    yall = sp.zeros((Nt,N))  
+    i = 0  
+    for theta_0 in thetas:  
+        y0 = [theta_0*sp.pi/180, theta_0_dot*sp.pi/180]  
+        y = odeint(func, y0, t, Dfun=gradient)  
+        yall[:,i] = y[:,0]  
+        print "Case {} of {}".format(i,N)  
+        i+= 1
 
-&lt;span class="c1"&gt;# Some plotting (animation after a tutorial found in http://jakevdp.github.io/blog/2012/08/18/matplotlib-animation-tutorial/)  &lt;/span&gt;
-&lt;span class="c1"&gt;# Also look at http://matplotlib.org/api/animation_api.html  &lt;/span&gt;
-&lt;span class="s s-Atom"&gt;plt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;close&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;all&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+# Some plotting (animation after a tutorial found in http://jakevdp.github.io/blog/2012/08/18/matplotlib-animation-tutorial/)  
+# Also look at http://matplotlib.org/api/animation_api.html  
+plt.close("all")
 
-&lt;span class="s s-Atom"&gt;from&lt;/span&gt; &lt;span class="s s-Atom"&gt;matplotlib&lt;/span&gt; &lt;span class="s s-Atom"&gt;import&lt;/span&gt; &lt;span class="s s-Atom"&gt;animation&lt;/span&gt;
+from matplotlib import animation
 
-&lt;span class="c1"&gt;# First set up the figure, the axis, and the plot element we want to&lt;/span&gt;
-&lt;span class="s s-Atom"&gt;animate&lt;/span&gt;  
-&lt;span class="s s-Atom"&gt;fig&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;plt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;figure&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  
-&lt;span class="s s-Atom"&gt;ax&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;plt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;axes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;xlim=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;300&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;300&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s s-Atom"&gt;ylim=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;  
-&lt;span class="s s-Atom"&gt;ax&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  
-&lt;span class="s s-Atom"&gt;ax&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;set_xticks&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;linspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;270&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;270&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s s-Atom"&gt;num&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;  
-&lt;span class="s s-Atom"&gt;ax&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;set_xlabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;$&lt;/span&gt;&lt;span class="s s-Atom"&gt;\\\theta$&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;)  &lt;/span&gt;
-&lt;span class="s2"&gt;ax.set_ylabel(&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="s s-Atom"&gt;f_&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s s-Atom"&gt;\\\theta&lt;/span&gt;&lt;span class="p"&gt;}(&lt;/span&gt;&lt;span class="s s-Atom"&gt;\\\theta&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;)&lt;/span&gt;
+# First set up the figure, the axis, and the plot element we want to
+animate  
+fig = plt.figure()  
+ax = plt.axes(xlim=(-300, 300), ylim=(0, 10))  
+ax.grid()  
+ax.set_xticks(sp.linspace(-270,270,num=7))  
+ax.set_xlabel("$\\\theta$")  
+ax.set_ylabel("$f_{\\\theta}(\\\theta, t)$")
 
-&lt;span class="s2"&gt;line, = ax.plot([], [], lw=2)&lt;/span&gt;
+line, = ax.plot([], [], lw=2)
 
-&lt;span class="s2"&gt;time_text = ax.text(-270, 9, &amp;#39;&amp;#39;)#, transform=ax.transAxes)&lt;/span&gt;
+time_text = ax.text(-270, 9, '')#, transform=ax.transAxes)
 
-&lt;span class="s2"&gt;from scipy.interpolate import interp1d  &lt;/span&gt;
-&lt;span class="s2"&gt;probability_thresholds = sp.linspace(0,1,21)&lt;/span&gt;
+from scipy.interpolate import interp1d  
+probability_thresholds = sp.linspace(0,1,21)
 
-&lt;span class="s2"&gt;def myhistogram(y):  &lt;/span&gt;
-&lt;span class="s2"&gt;    yn = sp.array(y)  &lt;/span&gt;
-&lt;span class="s2"&gt;    yn.sort()  &lt;/span&gt;
-&lt;span class="s2"&gt;    cdf = sp.linspace(0,1,yn.size)  &lt;/span&gt;
-&lt;span class="s2"&gt;    y_bins = interp1d(cdf, yn, kind=&amp;#39;linear&amp;#39;, axis=-1, copy=True,&lt;/span&gt;
-&lt;span class="s2"&gt;    bounds_error=True)(probability_thresholds)  &lt;/span&gt;
-&lt;span class="s2"&gt;    return probability_thresholds, y_bins&lt;/span&gt;
+def myhistogram(y):  
+    yn = sp.array(y)  
+    yn.sort()  
+    cdf = sp.linspace(0,1,yn.size)  
+    y_bins = interp1d(cdf, yn, kind='linear', axis=-1, copy=True,
+    bounds_error=True)(probability_thresholds)  
+    return probability_thresholds, y_bins
 
-&lt;span class="s2"&gt;def init():  &lt;/span&gt;
-&lt;span class="s2"&gt;    line.set_data([],[])  &lt;/span&gt;
-&lt;span class="s2"&gt;    time_text.set_text(&amp;quot;&amp;quot;)  &lt;/span&gt;
-&lt;span class="s2"&gt;    return line, time_text&lt;/span&gt;
+def init():  
+    line.set_data([],[])  
+    time_text.set_text("")  
+    return line, time_text
 
-&lt;span class="s2"&gt;def animate(i):  &lt;/span&gt;
-&lt;span class="s2"&gt;    cdf, y_bins = myhistogram(yall[i,:])  &lt;/span&gt;
-&lt;span class="s2"&gt;    pdf = sp.diff(cdf) / sp.diff(y_bins)  &lt;/span&gt;
-&lt;span class="s2"&gt;    y_bins_centers = 0.5*(y_bins[0:-1] + y_bins[1::])  &lt;/span&gt;
-&lt;span class="s2"&gt;    # pdf, y_bins = sp.histogram(yall[i,:], bins = Nbins, density =&lt;/span&gt;
-&lt;span class="s2"&gt;    True)  &lt;/span&gt;
-&lt;span class="s2"&gt;    # y_bins_centers = 0.5*(y_bins[0:-1] + y_bins[1::])  &lt;/span&gt;
-&lt;span class="s2"&gt;    line.set_data(y_bins_centers*180/sp.pi, pdf)  &lt;/span&gt;
-&lt;span class="s2"&gt;    time_text.set_text(&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;Time&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="s s-Atom"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;4.2&lt;/span&gt;&lt;span class="s s-Atom"&gt;f&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="s s-Atom"&gt;s&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;.format(t[i]))  &lt;/span&gt;
-&lt;span class="s2"&gt;    return line, time_text&lt;/span&gt;
+def animate(i):  
+    cdf, y_bins = myhistogram(yall[i,:])  
+    pdf = sp.diff(cdf) / sp.diff(y_bins)  
+    y_bins_centers = 0.5*(y_bins[0:-1] + y_bins[1::])  
+    # pdf, y_bins = sp.histogram(yall[i,:], bins = Nbins, density =
+    True)  
+    # y_bins_centers = 0.5*(y_bins[0:-1] + y_bins[1::])  
+    line.set_data(y_bins_centers*180/sp.pi, pdf)  
+    time_text.set_text("Time = {0:4.2f} s".format(t[i]))  
+    return line, time_text
 
-&lt;span class="s2"&gt;anim = animation.FuncAnimation(fig, animate, init_func=init,  &lt;/span&gt;
-&lt;span class="s2"&gt;frames=1000, interval=1, blit=True)  &lt;/span&gt;
-&lt;span class="s2"&gt;#anim.save(&amp;#39;basic_animation.mp4&amp;#39;, fps=30, extra_args=[&amp;#39;-vcodec&amp;#39;,&lt;/span&gt;
-&lt;span class="s2"&gt;&amp;#39;libx264&amp;#39;])&lt;/span&gt;
+anim = animation.FuncAnimation(fig, animate, init_func=init,  
+frames=1000, interval=1, blit=True)  
+#anim.save('basic_animation.mp4', fps=30, extra_args=['-vcodec',
+'libx264'])
 
-&lt;span class="s2"&gt;plt.show()&lt;/span&gt;
+plt.show()
 
-&lt;span class="s2"&gt;#plt.figure()  &lt;/span&gt;
-&lt;span class="s2"&gt;#plt.plot(t,yall[:,0]*180/sp.pi)  &lt;/span&gt;
-&lt;span class="s2"&gt;#plt.grid()  &lt;/span&gt;
-&lt;span class="s2"&gt;#plt.yticks(sp.linspace(-270,270,num=13))  &lt;/span&gt;
-&lt;span class="s2"&gt;#plt.xlabel(&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="s s-Atom"&gt;t$&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;)  &lt;/span&gt;
-&lt;span class="s2"&gt;#plt.ylabel(&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="s s-Atom"&gt;\\\&lt;/span&gt;&lt;span class="nf"&gt;theta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;$&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="animation"></category><category term="bimodal"></category><category term="matplotlib"></category><category term="Monte-Carlo"></category><category term="multimodal"></category><category term="ode"></category><category term="python"></category><category term="scipy"></category><category term="small numerical experiments"></category><category term="sne"></category><category term="stochastic"></category></entry></feed>
+#plt.figure()  
+#plt.plot(t,yall[:,0]*180/sp.pi)  
+#plt.grid()  
+#plt.yticks(sp.linspace(-270,270,num=13))  
+#plt.xlabel("$t$")  
+#plt.ylabel("$\\\theta(t)$")
+&lt;/code&gt;&lt;/pre&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="animation"></category><category term="bimodal"></category><category term="matplotlib"></category><category term="Monte-Carlo"></category><category term="multimodal"></category><category term="ode"></category><category term="python"></category><category term="scipy"></category><category term="small numerical experiments"></category><category term="sne"></category><category term="stochastic"></category></entry></feed>

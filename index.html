@@ -51,13 +51,16 @@
     <div class="article_content">
       <p>We&#8217;ve implemented a new <a href="http://opensees.berkeley.edu/wiki/index.php/CatenaryCableElement">catenary cable element</a>. This element is based on the work by Salehi et&nbsp;al[1].</p>
 <p>The stiffness of this element is obtained using a flexibility formulation. Basically the shape of the cable is determined by the&nbsp;integral:</p>
-<p>$$\begin{aligned}
-\vect{x}(s) = -\int_0^s \dfrac{\vect{w}s + \vect{f}}{\Vert \vect{w}s + \vect{f} \Vert^2}\pare{\dfrac{\Vert \vect{w}s + \vect{f} \Vert}{<span class="caps">EA</span>} + \pare{1 + \alpha \Delta T}} \ud s \
-\vect{w} = \brak{w_1,\, w_2,\, w_3}^T \qquad
-\vect{f} = \brak{f_1,\, f_2,\, f_3}^T 
-}\end{aligned}&nbsp;$$</p>
+<div class="math">$$
+\begin{align*}
+\mathbf{x}(s) = -\int_0^s 
+\end{align*}
+$$</div>
+<p>HEllo</p>
 <p>Reference</p>
-<p>[1] Salehi …</p>
+<p>[1] Salehi Ahmad Abad, M., Shooshtari, A., Esmaeili, V., <span class="amp">&amp;</span> Naghavi Riabi, A. (2013). <em>Nonlinear analysis of cable structures under general loadings.</em> Finite Elements in Analysis and Design, 73, 11–19.&nbsp;https://doi.org/10.1016/j.finel.2013.05.002</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left …</script>
     </div>
 
     <div class="meta">
@@ -116,14 +119,14 @@
 </div>
 
 <p>The linear <a href="https://en.wikipedia.org/wiki/Shallow_water_equations">shallow water equations</a> (<span class="caps">SWE</span>) are used extensively to model propagation of waves in situations where lateral domain dimensions are much greater than fluid height and, at the same time, wave perturbation height are much smaller than the fluid height. This finds useful applications in the case of tsunami-wave propagation modeling in deep-sea. The equations, after heavy linearization, are given&nbsp;by:</p>
-<p>$$\begin{aligned}
-\pardiff{u}{t} -  f v = -g \pardiff{h}{x} \ 
-\pardiff{v}{t} +  f v = -g \pardiff{h}{y} \
-\pardiff{h}{t} = -H \pare{  \pardiff{u}{x} + \pardiff{v}{y}&nbsp;}\end{aligned}$$</p>
+<div class="math">$$\begin{aligned}
+\pardiff{u}{t} -  f v = -g \pardiff{h}{x} \\ 
+\pardiff{v}{t} +  f v = -g \pardiff{h}{y} \\
+\pardiff{h}{t} = -H \pare{  \pardiff{u}{x} + \pardiff{v}{y}  }\end{aligned}$$</div>
 <p>Where</p>
 <ul>
 <li>
-<p>$u$ is the speed …</p></li></ul>
+<p><span class="math">\(u\)</span> is the speed …</p></li></ul>
     </div>
 
     <div class="meta">
@@ -413,8 +416,8 @@ consists&nbsp;of</p>
 <li>1200 time-steps (dt =&nbsp;0.01s)</li>
 </ul>
 <p>Results were stored in the new format of output for <span class="caps">ESSI</span> simulator and
-visualized in VisIt post-processor where the movie was created.<br>
-<!--more--><br>
+visualized in VisIt post-processor where the movie was created.<br />
+<!--more--><br />
 <!--http://youtu.be/VURohwb-OJQ--></p>
 <div class="youtube" align="left">
 <iframe width="640" height="480" src="https://www.youtube.com/embed/VURohwb-OJQ" frameborder="0"></iframe>
@@ -451,21 +454,20 @@ visualized in VisIt post-processor where the movie was created.<br>
     <div class="article_content">
       <p>A nice extensive tutorial can be found <a href="http://www.yolinux.com/TUTORIALS/LibraryArchives-StaticAndDynamic.html">here</a>.</p>
 <p>In a&nbsp;nutshell:</p>
-<div class="highlight"><pre><span></span>gcc -Wall -fPIC -c \*.c  
+<pre><code>:::shell.BashLexer
+gcc -Wall -fPIC -c \*.c  
 gcc -shared -Wl,-soname,libctest.so.1 -o libctest.so.1.0 \*.o  
 mv libctest.so.1.0 /opt/lib  
 ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so.1  
 ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so
-</pre></div>
-
-
+</code></pre>
 <!--more-->
 
 <ul>
 <li><code>-Wall</code>: include warnings. See man page for warnings&nbsp;specified.</li>
 <li><code>-fPIC</code>: Compiler directive to output position independent code, a
     characteristic required by shared libraries. Also see&nbsp;&#8220;-fpic&#8221;.</li>
-<li><code>-shared</code>: Produce a shared object which can then be linked with other objects …</li></ul>
+<li><code>-shared</code>: Produce a shared object which can then be linked with …</li></ul>
     </div>
 
     <div class="meta">
@@ -501,14 +503,14 @@ ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so
 section where I upload and comment (briefly) some small numerical
 example. The purpose is to prove a point to myself, test some code,
 ideas,&nbsp;etc.</p>
-<p><a href="/images/sne/01/pendulum_medium.png"><img alt="pendulum" src="/images/sne/01/pendulum_medium.png"></a></p>
+<p><a href="/images/sne/01/pendulum_medium.png"><img alt="pendulum" src="/images/sne/01/pendulum_medium.png" /></a></p>
 <p>In this first post I will explore the response of a <em>stochastic inverse
 pendulum.</em> What I mean in this case is an inverse pendulum (shown left)
 with a random initial condition. The purpose is to obtain the
 time-evolving probability density function (<span class="caps">PDF</span>) of the pendulum&#8217;s
 position. I will be doing Monte-Carlo simulations to obtain an
-approximation to this <span class="caps">PDF</span>.<br>
-<!--more--><br>
+approximation to this <span class="caps">PDF</span>.<br />
+<!--more--><br />
 The response of the …</p>
     </div>
 
