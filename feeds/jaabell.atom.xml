@@ -3,11 +3,71 @@
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/_ye7wjjywSw" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 
-&lt;p&gt;More info&amp;nbsp;soon&amp;#8230;.&lt;/p&gt;</summary><content type="html">&lt;div class="youtube" align="left"&gt;
+&lt;p&gt;The &lt;span class="caps"&gt;RC&lt;/span&gt; shear-wall building is modeled in OpenSees using non-linear fiber based beam column elements. Soil is modeled as a continuum using quad elements and linear stress-strain relationship. Soil shear wave-speed is varied in depth such as to obtain a &lt;span class="math"&gt;\(V_{s30}\)&lt;/span&gt; consistent with a class B site according to chilean seismic code. Lysmer-Kulhemeyer dashpots are used along the soil boundary to model seismic radiation and earthquake wave-field&amp;nbsp;input.&lt;/p&gt;
+&lt;p&gt;The performance of the building will be assessed for varying site fundamental periods. This is an aspect of &lt;span class="caps"&gt;SSI&lt;/span&gt; that is not covered by the chilean seismic code, and has been …&lt;/p&gt;</summary><content type="html">&lt;div class="youtube" align="left"&gt;
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/_ye7wjjywSw" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 
-&lt;p&gt;More info&amp;nbsp;soon&amp;#8230;.&lt;/p&gt;</content><category term="OpenSees"></category><category term="Paraview"></category><category term="Building"></category><category term="FEM"></category></entry><entry><title>New cable element in OpenSees</title><link href="http://www.joseabell.com/new-cable-element-in-opensees-EN.html" rel="alternate"></link><published>2017-09-07T20:13:57-07:00</published><updated>2017-09-07T20:13:57-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2017-09-07:/new-cable-element-in-opensees-EN.html</id><summary type="html">&lt;div class="youtube" align="left"&gt;
+&lt;p&gt;The &lt;span class="caps"&gt;RC&lt;/span&gt; shear-wall building is modeled in OpenSees using non-linear fiber based beam column elements. Soil is modeled as a continuum using quad elements and linear stress-strain relationship. Soil shear wave-speed is varied in depth such as to obtain a &lt;span class="math"&gt;\(V_{s30}\)&lt;/span&gt; consistent with a class B site according to chilean seismic code. Lysmer-Kulhemeyer dashpots are used along the soil boundary to model seismic radiation and earthquake wave-field&amp;nbsp;input.&lt;/p&gt;
+&lt;p&gt;The performance of the building will be assessed for varying site fundamental periods. This is an aspect of &lt;span class="caps"&gt;SSI&lt;/span&gt; that is not covered by the chilean seismic code, and has been shown to be a problem in past&amp;nbsp;earthquakes. &lt;/p&gt;
+&lt;p&gt;This is part of an on-going study with Prof. &lt;a href="http://cigiden.cl/es/carolina-magna/"&gt;Carolina Magna&lt;/a&gt; from Adolfo Ibañez Unversity and her &lt;span class="caps"&gt;MS&lt;/span&gt; student Miguel Ángel Rodriguez from &lt;span class="caps"&gt;UDP&lt;/span&gt;. &lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {pare: ['\\\\left( #1 \\\\right)', 1], brak: ['\\\\left[ #1 \\\\right]', 1], brac: ['\\\\left\\\\lbrace #1 \\\\right\\\\rbrace', 1], absol: ['\\\\left\\\\vert #1 \\\\right\\\\vert', 1], overbar: ['\\\\mkern 1.5mu\\\\overline{\\\\mkern-1.5mu#1\\\\mkern-1.5mu}\\\\mkern 1.5mu', 1], EE: ['\\\\times 10^{#1}', 1], eqand: '\\\\, \\\\text{and} \\\\,', qeqand: '\\\\quad \\\\text{and} \\\\quad', qqeqand: '\\\\qquad \\\\text{and} \\\\qquad', HRule: '\\\\rule{\\\\linewidth}{0.2mm}', vect: ['\\\\boldsymbol{#1}', 1], uv: ['\\\\hat{\\\\boldsymbol{#1}}', 1], ud: '\\\\,\\\\mathrm{d}', matorvec: ['\\\\left[\\\\begin{array}{#1}    #2\\\\end{array}\\\\right]', 2], pardiff: ['\\\\dfrac{\\\\partial\\\\, #1}{\\\\partial\\\\, #2}', 2], pp: ['\\\\frac{\\\\partial #1}{\\\\partial #2}', 2], totdiff: ['\\\\dfrac{\\\\ud #1}{\\\\ud #2}', 2], rint: '\\\\pare{R}\\\\hspace{-0.5em} \\\\int ', expon: ['\\\\exp \\\\left\\\\lbrace #1 \\\\right\\\\rbrace', 1], unit: ['   \\\\, \\\\mathrm{#1}                }', 1], bunit: ['  \\\\, \\\\left[ \\\\mathrm{#1} \\\\right] }', 1], funit: ['  \\\\, \\\\mathrm{ \\\\frac{#1}{#2} }   }', 2], bfunit: ['  \\\\, \\\\left[ \\\\mathrm{ {#1}/{#2} } \\\\right]   }', 2], mts: '\\\\bunit{m}', cmts: '\\\\bunit{cm}', mmts: '\\\\bunit{mm}', kmts: '\\\\bunit{km}', mps: '\\\\bfunit{m}{s}', cmpt: '\\\\bfunit{cm}{s}', mmps: '\\\\bfunit{mm}{s}', kmps: '\\\\bfunit{km}{s}', Newt: '\\\\bunit{N}', kNewt: '\\\\bunit{kN}', MNewt: '\\\\bunit{MN}', Pa: '\\\\bunit{Pa}', kPa: '\\\\bunit{kPa}', MPa: '\\\\bunit{MPa}', GPa: '\\\\bunit{GPa}', kNmm: '\\\\bfunit{kN}{m^2}', Nmm: '\\\\bfunit{N}{m^2}', kgmmm: '\\\\bfunit{kg}{m^3}', Mgmmm: '\\\\bfunit{Mg}{m^3}', grcmcmcm: '\\\\bfunit{g}{cm^3}', kNmmm: '\\\\bfunit{kN}{m^3}', gr: '\\\\bunit{g}', mgr: '\\\\bunit{mg}', kgr: '\\\\bunit{kg}', Mgr: '\\\\bunit{Mg}', seg: '\\\\bunit{s}', msec: '\\\\bunit{ms}', musec: '\\\\bunit{\\\\mu s}', mo: '\\\\bunit{month}', mos: '\\\\bunit{months}', days: '\\\\bunit{days}', gs: '\\\\bunit{g}', mss: '\\\\bfunit{m}{s^2}', cmss: '\\\\bfunit{cm}{s^2}', Hz: '\\\\bunit{Hz}', MHz: '\\\\bunit{MHz}', GHz: '\\\\bunit{GHz}', THz: '\\\\bunit{THz}', dgr: '\\\\unit{^{\\\\circ}}', rads: '\\\\bunit{rad}', kips: '\\\\unit{kips}', ksi: '\\\\unit{ksi}', inch: '\\\\unit{in}'} }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="OpenSees"></category><category term="Paraview"></category><category term="Building"></category><category term="FEM"></category></entry><entry><title>New cable element in OpenSees</title><link href="http://www.joseabell.com/new-cable-element-in-opensees-EN.html" rel="alternate"></link><published>2017-09-07T20:13:57-07:00</published><updated>2017-09-07T20:13:57-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2017-09-07:/new-cable-element-in-opensees-EN.html</id><summary type="html">&lt;div class="youtube" align="left"&gt;
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/MX_--SI_vKg" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 
