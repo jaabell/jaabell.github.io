@@ -1643,24 +1643,23 @@ a_1
 \end{array}
 \right]
 $$&lt;p&gt;Which I do in the following&amp;nbsp;code:&lt;/p&gt;
-
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[6]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In [6]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
+&lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sympy&lt;/span&gt;  &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;sym&lt;/span&gt;
 
 
-&lt;span class="n"&gt;xi1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sym&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;xi_1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;xi2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sym&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;xi_2&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;xi&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sym&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;xi&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;xi1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sym&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"xi_1"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;xi2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sym&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"xi_2"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;xi&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sym&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"xi"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-&lt;span class="n"&gt;f1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sym&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;f_1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;f2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sym&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;f_2&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;f1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sym&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"f_1"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;f2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sym&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"f_2"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="n"&gt;w1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;sym&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;f1&lt;/span&gt;
 &lt;span class="n"&gt;w2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;sym&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;f2&lt;/span&gt;
@@ -1677,18 +1676,13 @@ $$&lt;p&gt;Which I do in the following&amp;nbsp;code:&lt;/p&gt;
 &lt;span class="nb"&gt;print&lt;/span&gt; &lt;span class="n"&gt;sym&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pretty&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sym&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simplify&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt;
 &lt;span class="nb"&gt;print&lt;/span&gt; &lt;span class="n"&gt;sym&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simplify&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
-
-
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;4⋅π⋅f₁⋅f₂⋅(f₁⋅ξ₂ - f₂⋅ξ₁)
 ─────────────────────────
@@ -1703,10 +1697,8 @@ f₁⋅ξ₁ - f₂⋅ξ₂
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
 &lt;/div&gt;
 &lt;/div&gt;
-
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
@@ -1730,15 +1722,14 @@ $$
 $$
 \xi(f) = \dfrac{a_0}{2\pi f} + \pi a_1 f
 $$&lt;p&gt;For example for $f_1 = 0.3$ Hz and $f_2 = 1.2$ Hz, and $\xi_1 = 0.05$, $\xi_2 =&amp;nbsp;0.02$.&lt;/p&gt;
-
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[25]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In [25]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
+&lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;scipy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;sp&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;plt&lt;/span&gt;
 
@@ -1756,27 +1747,20 @@ $$&lt;p&gt;For example for $f_1 = 0.3$ Hz and $f_2 = 1.2$ Hz, and $\xi_1 = 0.05$
 
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;figure&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_size_inches&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;&lt;span class="n"&gt;forward&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;xi&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;linewidth&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f_1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;xi_1&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;ro&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f_2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;xi_2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;ro&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xlabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$f$&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ylabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Damping Ratio, $\xi$, [&lt;/span&gt;&lt;span class="si"&gt;% o&lt;/span&gt;&lt;span class="s2"&gt;f critical]&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f_1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;xi_1&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"ro"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f_2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;xi_2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"ro"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xlabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s2"&gt;"$f$"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ylabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s2"&gt;"Damping Ratio, $\xi$, [&lt;/span&gt;&lt;span class="si"&gt;% o&lt;/span&gt;&lt;span class="s2"&gt;f critical]"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ylim&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
-
-
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-
-
-
 &lt;div class="output_png output_subarea "&gt;
 &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtUAAAGDCAYAAADkjOwcAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3XmcXGWZ6PFfp7MvJIRAIGwtYV/DOuy0oIQQQZFxGMQP
@@ -2011,17 +1995,12 @@ SdXWmHYAkqSKORGYTngN77yUY5EkSZKi9HvgMKAp5Tgkqe4NTDsASVLFDAWeSDsIScqCAWkHIEmq
 iM8Q2j7en3YgkpQF9lRLUn0aDKwBfpx2IJKUBc5US1J92g94Nu0gJCkrLKolqT7tj0W1JFWNRbUk
 1acJwGtpByFJWeHqH5JUXz5I6Kd+Ne1AJClLnKmWpPqyAdgZuCbtQCRJkiRJkiRJkiRJkiRJkiRJ
 kiRJkiRJkiRJkiRJkiRJkiRJkiRJkqRe/X/trtkQzUt/CgAAAABJRU5ErkJggg==
-"&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
+" /&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
 &lt;/div&gt;
- 
-
+&lt;/div&gt;
+&lt;/div&gt;
 
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var mathjaxscript = document.createElement('script');
@@ -2058,7 +2037,6 @@ kiRJkiRJkiRJkiRJkiRJkiRJkiRJkqRe/X/trtkQzUt/CgAAAABJRU5ErkJggg==
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;In this post I&amp;#8217;ll make a small example meant to test the &lt;a href="http://ipython.org/notebook.html"&gt;IPython notebook&lt;/a&gt; + &lt;a href="www.getpelican.org"&gt;Pelican&lt;/a&gt; integration thanks to the plugin created by &lt;a href="http://danielfrg.com/blog/2013/03/08/pelican-ipython-notebook-plugin/"&gt;danielfrg&lt;/a&gt; that can be found &lt;a href="https://github.com/danielfrg/pelican-ipythonnb"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Lets start out with some basic&amp;nbsp;plotting!&lt;/p&gt;
-
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -3042,44 +3020,31 @@ h6:hover .anchor-link {
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;In this post I&amp;#8217;ll make a small example meant to test the &lt;a href="http://ipython.org/notebook.html"&gt;IPython notebook&lt;/a&gt; + &lt;a href="www.getpelican.org"&gt;Pelican&lt;/a&gt; integration thanks to the plugin created by &lt;a href="http://danielfrg.com/blog/2013/03/08/pelican-ipython-notebook-plugin/"&gt;danielfrg&lt;/a&gt; that can be found &lt;a href="https://github.com/danielfrg/pelican-ipythonnb"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Lets start out with some basic&amp;nbsp;plotting!&lt;/p&gt;
-
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[1]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In [1]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
+&lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;  &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;linspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;sin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;pi&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
-
-
 &lt;div class="output_area"&gt;
 &lt;div class="prompt output_prompt"&gt;Out[1]:&lt;/div&gt;
-
-
-
 &lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;[&amp;lt;matplotlib.lines.Line2D at 0x2ff0d10&amp;gt;]&lt;/pre&gt;
+&lt;pre&gt;[&lt;matplotlib.lines.line2d at 0x2ff0d10&gt;]&lt;/pre&gt;
 &lt;/div&gt;
-
 &lt;/div&gt;
-
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-
-
-
 &lt;div class="output_png output_subarea "&gt;
 &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAX4AAAEACAYAAAC08h1NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3XmcU9X9//FXGEBFQURkk1UUEQUFZLGChkXFXURxK+BW
@@ -3252,14 +3217,11 @@ Qvkm0HkzmRu6yg9S9CQ3BzQhuWvREqtz9vQ0Mm+lepPf8+TurJ5krkV74D1s8LMONtjXwbsQPZPM
 tfgLcFfseWPsg6GBR/H5oTXJDe4GMm8muqHr2tgj7vHYz+dT9Vr/2a66a/EsNmA1N/aY5XWAHknm
 70RcLid+SO5a/AGb2bMAuMHT6LxV3bVoiK0ZNh+7Fpd6HaCHXsXGMn7CvvVdSf7mTRERERERERER
 ERERERERERERERERERERERGR4Pr/8oRk7ZOUtD4AAAAASUVORK5CYII=
-"&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
+" /&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
@@ -3267,45 +3229,32 @@ ERERERERERERERERERERERGR4Pr/8oRk7ZOUtD4AAAAASUVORK5CYII=
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Looks like everything is working fine. Let&amp;#8217;s try using &lt;span class="caps"&gt;XKCD&lt;/span&gt; plotting format!&amp;nbsp;:)&lt;/p&gt;
-
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[3]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In [3]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
+&lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;xkcd&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;xlabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Abscissa&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;ylabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Ordinate&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;xlabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Abscissa"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ylabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Ordinate"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
 &lt;div class="output_wrapper"&gt;
 &lt;div class="output"&gt;
-
-
 &lt;div class="output_area"&gt;
 &lt;div class="prompt output_prompt"&gt;Out[3]:&lt;/div&gt;
-
-
-
 &lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;&amp;lt;matplotlib.text.Text at 0x3531590&amp;gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;matplotlib.text.text at 0x3531590&gt;&lt;/pre&gt;
 &lt;/div&gt;
-
 &lt;/div&gt;
-
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-
-
-
 &lt;div class="output_png output_subarea "&gt;
 &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYkAAAERCAYAAACO6FuTAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsnXd8U/X+/1/Zq03aJLS0IKvIFhCQITIUZAiCyhBRhCuK
@@ -3735,14 +3684,11 @@ Uqng5uaGkpIShIaG4vnz52jfvj0UCgWioqIwZMgQAEBCQgImTJigs27u7u6YOXOmtE6CoA9iqHCh
 UUtKSsKiRYsQExNT49NH+hQbG4u0tDRMmzatxonmX0dGRgYsLS1hYWFRh9EJwt8TSUIQBEGokbhx
 LQiCINRIJAlBEAShRiJJCIIgCDUSSUIQBEGokUgSgiAIQo1EkhAEQRBq9H/okVRuBSmemwAAAABJ
 RU5ErkJggg==
-"&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
+" /&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
 &lt;div class="prompt input_prompt"&gt;
@@ -3750,25 +3696,20 @@ RU5ErkJggg==
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Cool! We&amp;#8217;re going to do some serious blogging&amp;nbsp;now.&lt;/p&gt;
-
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[&amp;nbsp;]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In [ ]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
+&lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; 
 &lt;/pre&gt;&lt;/div&gt;
-
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
 &lt;/div&gt;
- 
-
 
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var mathjaxscript = document.createElement('script');

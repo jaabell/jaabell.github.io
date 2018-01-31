@@ -1029,8 +1029,8 @@ h6:hover .anchor-link {
 <p>I was digesting the book by Ghanem and Spanos, <a href="http://www.amazon.com/Stochastic-Finite-Elements-Mechanical-Engineering/dp/0486428184">Stochastic Finite Elements</a>, for my PhD thesis. The language is complex and the theory very abstract. Right off the bat you come across the so-called Karhunen-Loeve expansion which formulation and wiki page are scary to someone like me with just basic normal engineering math background. But I came across a realization and,  lo-and-behold, <span class="caps">KL</span> just became&nbsp;clear.</p>
 <p>I want to share this realization, which might be obvious for all the knowledgeable scholars out there but, for some reason, nobody points it out. I will use an IPython notebook to show that the Karhunen-Loeve expansion is really just decorrelation of normal random variables for the continuous&nbsp;case.</p>
 <p>Lets&nbsp;go.</p>
-<h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h2><p>[<span class="caps">TOC</span>]</p>
-<h2 id="Preface.-Correlated-random-variables-and-how-to-de-correlate-them-(and-re-correlate-them)">Preface. Correlated random variables and how to de-correlate them (and re-correlate them)<a class="anchor-link" href="#Preface.-Correlated-random-variables-and-how-to-de-correlate-them-(and-re-correlate-them)">&#182;</a></h2><p>To begin, lets consider two correlated random variables $x_1$ and $x_2$. Furthermore, let&#8217;s make them normal (Gaussian) with means $\left< x_1 \right> = 1$ and $\left< x_2 \right> = -1$ and covariance matrix
+<h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h2><p>[<span class="caps">TOC</span>]</p>
+<h2 id="Preface.-Correlated-random-variables-and-how-to-de-correlate-them-(and-re-correlate-them)">Preface. Correlated random variables and how to de-correlate them (and re-correlate them)<a class="anchor-link" href="#Preface.-Correlated-random-variables-and-how-to-de-correlate-them-(and-re-correlate-them)">¶</a></h2><p>To begin, lets consider two correlated random variables $x_1$ and $x_2$. Furthermore, let&#8217;s make them normal (Gaussian) with means $\left< x_1 \right> = 1$ and $\left< x_2 \right> = -1$ and covariance matrix
 $$
 \mathbf{C} = \left[
 \begin{array}{rr}
@@ -1054,9 +1054,9 @@ $$
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">x_bar</span> <span class="o">=</span> <span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
 <span class="n">C</span> <span class="o">=</span> <span class="n">array</span><span class="p">([[</span><span class="mi">4</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
 <span class="n">Cm1</span> <span class="o">=</span> <span class="n">inv</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
@@ -1071,42 +1071,30 @@ $$
 <span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d.axes3d</span> <span class="k">import</span> <span class="n">Axes3D</span>
 <span class="n">figsize</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">figure</span><span class="p">()</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">projection</span><span class="o">=</span><span class="s1">'3d'</span><span class="p">)</span>
 <span class="c1">#ax.contour(X1,X2,f_x1x2,50)</span>
 <span class="n">p</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span><span class="n">X2</span><span class="p">,</span><span class="n">f_x1x2</span><span class="p">,</span><span class="n">rstride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cstride</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">antialiased</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$x_1$&quot;</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$x_2$&quot;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s2">"$x_1$"</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s2">"$x_2$"</span><span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">clevels</span> <span class="o">=</span> <span class="mf">0.001</span><span class="o">*</span><span class="n">array</span><span class="p">([</span><span class="mf">1e-14</span><span class="p">,</span><span class="mf">1e-9</span><span class="p">,</span><span class="mf">1e-6</span><span class="p">,</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
 <span class="n">p</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span><span class="n">X2</span><span class="p">,</span><span class="n">f_x1x2</span><span class="p">,</span><span class="n">clevels</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">antialiased</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$x_1$&quot;</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$x_2$&quot;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s2">"$x_1$"</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s2">"$x_2$"</span><span class="p">)</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
 <div class="prompt output_prompt">Out[1]:</div>
-
-
-
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.text.Text at 0x7fa21027ded0&gt;</pre>
+<pre><matplotlib.text.text at 0x7fa21027ded0></pre>
 </div>
-
 </div>
-
 <div class="output_area">
 <div class="prompt"></div>
-
-
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAxsAAAHrCAYAAACn04D5AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsnXd4VGXa/7/TS2ZSCC2dloQSSghNUEBdG6yAiA1FEXzt
@@ -4005,14 +3993,11 @@ pIRpA+wEfAEPYA9wDMg3sigRERERESk+3gb8f3W7L1DDoFpECoWr0QWIiIiIlDDtgSpAc+A0cA9Q
 DRiBlrhLMaNlVCIiIiJ31mNAbSAVKA9kANHAXcB3QJpxpYkULHejCxAREREpYd4wugCRO0XLqERE
 RESM5wM0BroZXYiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiI
 iIiIiIiIiIiIiIiIiIiIiDir/weNEUUzBG5ZUAAAAABJRU5ErkJggg==
-">
-</div>
-
-</div>
-
+" />
 </div>
 </div>
-
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -4024,51 +4009,38 @@ iIiIiIiIiIiIiIiIiIiIiDir/weNEUUzBG5ZUAAAAABJRU5ErkJggg==
 $$
 \mathbf{C} \mathbf{v}_i = \sigma^2_i \mathbf{v}_i \qquad \text{for}\,\, i = 1,2
 $$<p>Where the $i$-th eigenvector $\mathbf{v}_i$ points in the $i$-th principal direction of variance and $\sigma^2_i$ is the squared variance in that&nbsp;direction.</p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sigma2</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">eig</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">p</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span><span class="n">X2</span><span class="p">,</span><span class="n">f_x1x2</span><span class="p">,</span><span class="n">clevels</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">antialiased</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="n">x_bar</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">x_bar</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">width</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="n">x_bar</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">x_bar</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">width</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x_bar</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">x_bar</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;$x^*_1$&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x_bar</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">x_bar</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;$x^*_2$&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$x_1$&quot;</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$x_2$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="n">x_bar</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">x_bar</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">width</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">'r'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="n">x_bar</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">x_bar</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">width</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">'g'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x_bar</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">x_bar</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="s2">"$x^*_1$"</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">'r'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x_bar</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">x_bar</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="s2">"$x^*_2$"</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">'g'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s2">"$x_1$"</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s2">"$x_2$"</span><span class="p">)</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
 <div class="prompt output_prompt">Out[2]:</div>
-
-
-
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.text.Text at 0x7fa211e1c810&gt;</pre>
+<pre><matplotlib.text.text at 0x7fa211e1c810></pre>
 </div>
-
 </div>
-
 <div class="output_area">
 <div class="prompt"></div>
-
-
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAiYAAAHrCAYAAAD7UFaxAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xd0XPd95/33YIBB7733ToAg2EASJEGCvcIUZclWseQT
@@ -5341,14 +5313,11 @@ RERERERERERERETkh9JeLSJiJlfgSWAwRsvtccD/w2hAKCI9kKvZAYhIj5YAHAIGYOzNchg4C7SZ
 GZSIiIj0bH8Eou74eT4QalIsImIiF7MDEJEebSzGBorxGBtbPgz0A55FQ80iPZKGckTETCuASKAG
 8MfYzj0PGA6cBGrNC01EzOBmdgAi0qP9l9kBiIhj0VCOiDiaEGAYkGp2ICIiIiIiIiIiIiIiIiIi
 IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi3d//B8qOPQ3gTH3xAAAAAElFTkSuQmCC
-">
-</div>
-
-</div>
-
+" />
 </div>
 </div>
-
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -5358,38 +5327,30 @@ IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi3d//B8qOPQ3gTH3xAAAAAElFTkSuQmCC
 <p>Above, $x_1^*$ is the principal axis of variance (most variance) while $x_2^*$  is the axis of least variance. Once more, note that in these directions the random variables appear uncorrelated (no&nbsp;cross-covariance).</p>
 <p>We can use this to simulate the random variables (There is another, more efficient, way which involves Cholesky&#8217;s decomposition of $\mathbf{C}$ but misses the point i want to make further on). Given $\xi_1$ and $\xi_2$, un-correlated unit variance random variables we can use the eigenvectors $\mathbf{v}_i$ (columns of <code>v</code> array in the code) and the variances to re-correlate these random variables to generate the sought&nbsp;ones.</p>
 <p>By the way, the variances in each direction in the new axes are given by the eigenvalues of the&nbsp;problem.</p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="s2">&quot;sigma2_1 = </span><span class="si">{}</span><span class="s2">, sigma2_2 = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sigma2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">sigma2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="s2">"sigma2_1 = </span><span class="si">{}</span><span class="s2">, sigma2_2 = </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sigma2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">sigma2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
 <div class="prompt"></div>
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>sigma2_1 = 4.30277563773, sigma2_2 = 0.697224362268
 </pre>
 </div>
 </div>
-
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -5397,46 +5358,33 @@ IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi3d//B8qOPQ3gTH3xAAAAAElFTkSuQmCC
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>To generate the trials, we create realizations of independent unit Gaussian random variables $\xi_1$ and $\xi_2$, collecting them in vectors $\xi_1^{\text{trials}}$ and&nbsp;$\xi_2^{\text{trials}}$</p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Ntrials</span> <span class="o">=</span> <span class="mi">200</span>
 <span class="n">xi1_trials</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">Ntrials</span><span class="p">)</span>
 <span class="n">xi2_trials</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">Ntrials</span><span class="p">)</span>
 <span class="n">figsize</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
 <span class="n">scatter</span><span class="p">(</span><span class="n">xi1_trials</span><span class="p">,</span><span class="n">xi2_trials</span><span class="p">)</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
 <div class="prompt output_prompt">Out[4]:</div>
-
-
-
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.collections.PathCollection at 0x7fa210680690&gt;</pre>
+<pre><matplotlib.collections.pathcollection at 0x7fa210680690></pre>
 </div>
-
 </div>
-
 <div class="output_area">
 <div class="prompt"></div>
-
-
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXAAAAFwCAYAAAChGSA/AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xd4U9UbB/Bv0qx7k6aD7pa9QSpQ9ixT9hIQRKYsWSqo
@@ -5912,14 +5860,11 @@ wAdmBVKIP+O94x9ldiBFsAxob3YQ57HhHeXWAG9baKDexITgSOAWvElmitmBFCIKqOJ77ASWA9eZ
 F06huhCA32R3EbgJfDbeP5afgTkE7reE7Xin8F3v+3nd3HDy1Q/vlUQ63ptci8wN5wI34O0tsQPv
 FXgg+g9wAMjE+16a1ZxXmDi8TRM/c/Z38s+mRpS/VsBPeOPciLedOZB1oZBeKEoppZRSSimllFJK
 KaWUUkoppZRSSimllFJKKaWUUkqpMvD/PwKmnFM0QcYAAAAASUVORK5CYII=
-">
-</div>
-
-</div>
-
+" />
 </div>
 </div>
-
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -5945,46 +5890,33 @@ $$
     \end{array}
 \right] + \bar{\mathbf{x}}
 $$<p>We can plot these trials along with our previous countour plots of the&nbsp;PDFs.</p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sigma</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">sigma2</span><span class="p">)</span>
 <span class="n">x1_trials</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">xi1_trials</span> <span class="o">+</span> <span class="n">sigma</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">xi2_trials</span> <span class="o">+</span> <span class="n">x_bar</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">x2_trials</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">xi1_trials</span> <span class="o">+</span> <span class="n">sigma</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">xi2_trials</span> <span class="o">+</span> <span class="n">x_bar</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">scatter</span><span class="p">(</span><span class="n">x1_trials</span><span class="p">,</span><span class="n">x2_trials</span><span class="p">)</span>
 <span class="n">contour</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span><span class="n">X2</span><span class="p">,</span><span class="n">f_x1x2</span><span class="p">,</span><span class="n">clevels</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">antialiased</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
 <div class="prompt output_prompt">Out[5]:</div>
-
-
-
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.contour.QuadContourSet instance at 0x7fa2106b02d8&gt;</pre>
+<pre><matplotlib.contour.quadcontourset instance at 0x7fa2106b02d8></pre>
 </div>
-
 </div>
-
 <div class="output_area">
 <div class="prompt"></div>
-
-
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAW4AAAFrCAYAAADxb2M8AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3XdYU9f/B/A3G8LeyJa9FRFQUaQqaqtStbXuUa1fraOO
@@ -6841,14 +6773,11 @@ qx8wPunv5YG7JowlPXLSGHcLjBUPLqYO5BUsAH+Mww1W5JzJSQ3GpDfT1IGkUxNyxhg3wAGM+QJg
 HDmrGi1XsARWAheB0+Scj2tP3CTnJO7rwB2MH4vPAvNNG06KWmKsyriB8Y47J2iEcZz4HP++xi1M
 GlHaNCHnVJXUwDhMkhNKW1UqlUqlUqlUKpVKpVKpVCqVSqVSqVQqlUqlUqlUKpVKpVKpVCqVSqVS
 qVQq1cv8H1vOPTLyXU3AAAAAAElFTkSuQmCC
-">
-</div>
-
-</div>
-
+" />
 </div>
 </div>
-
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -6856,45 +6785,37 @@ qVQq1cv8H1vOPTLyXU3AAAAAAElFTkSuQmCC
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>It is important to check whether these variables have the statistics we seek. Check the ensemble means and&nbsp;variances.</p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">x1_ensemble_mean</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">x1_trials</span><span class="p">)</span>
 <span class="n">x2_ensemble_mean</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">x2_trials</span><span class="p">)</span>
-<span class="n">x1_ensemble_sigma</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="n">x1_trials</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1">#ddof = 1 because we&#39;re computing variance from samples</span>
+<span class="n">x1_ensemble_sigma</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="n">x1_trials</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1">#ddof = 1 because we're computing variance from samples</span>
 <span class="n">x2_ensemble_sigma</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="n">x2_trials</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="nb">print</span> <span class="s2">&quot;Simulated x_1 mean: </span><span class="si">{}</span><span class="s2">   sigma: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x1_ensemble_mean</span><span class="p">,</span> <span class="n">x1_ensemble_sigma</span><span class="p">)</span>
-<span class="nb">print</span> <span class="s2">&quot;Simulated x_2 mean: </span><span class="si">{}</span><span class="s2">   sigma: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x2_ensemble_mean</span><span class="p">,</span> <span class="n">x2_ensemble_sigma</span><span class="p">)</span>
+<span class="nb">print</span> <span class="s2">"Simulated x_1 mean: </span><span class="si">{}</span><span class="s2">   sigma: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x1_ensemble_mean</span><span class="p">,</span> <span class="n">x1_ensemble_sigma</span><span class="p">)</span>
+<span class="nb">print</span> <span class="s2">"Simulated x_2 mean: </span><span class="si">{}</span><span class="s2">   sigma: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x2_ensemble_mean</span><span class="p">,</span> <span class="n">x2_ensemble_sigma</span><span class="p">)</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
 <div class="prompt"></div>
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Simulated x_1 mean: 1.07021969423   sigma: 4.6025402451
 Simulated x_2 mean: -1.09902466619   sigma: 1.12316743216
 </pre>
 </div>
 </div>
-
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -6917,42 +6838,35 @@ $$
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">SIG</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">*</span><span class="n">matrix</span><span class="p">(</span><span class="n">C</span><span class="p">)</span><span class="o">*</span><span class="n">matrix</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 <span class="n">Cnew</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">matrix</span><span class="p">(</span><span class="n">diag</span><span class="p">(</span><span class="n">sigma2</span><span class="p">))</span><span class="o">*</span><span class="n">matrix</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
 <span class="nb">print</span> <span class="n">C</span> <span class="o">-</span> <span class="n">Cnew</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
 <div class="prompt"></div>
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[[  4.44089210e-16  -1.11022302e-16]
  [ -1.11022302e-16   0.00000000e+00]]
 </pre>
 </div>
 </div>
-
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="The-KL-expansion">The <span class="caps">KL</span> expansion<a class="anchor-link" href="#The-KL-expansion">&#182;</a></h2><p>Now if you have $N$ correlated random variables arranged in a vector, we can no longer plot these for $N>3$ but the procedure to generate them is the same. Given that we have means and a covariance matrix which will be an $N\times N$ symmetric positive definite&nbsp;matrix.</p>
+<h2 id="The-KL-expansion">The <span class="caps">KL</span> expansion<a class="anchor-link" href="#The-KL-expansion">¶</a></h2><p>Now if you have $N$ correlated random variables arranged in a vector, we can no longer plot these for $N>3$ but the procedure to generate them is the same. Given that we have means and a covariance matrix which will be an $N\times N$ symmetric positive definite&nbsp;matrix.</p>
 <p>Such a vector might represent a sampled <em>stochastic process</em>, that is a continuously indexed collection of correlated random variables. Continuously indexed just means that one uses a continuous variable (e.g. time) to identify points (the indexing set). Stochastic processes may be thought like <em>random functions</em>, i.e. for each value of $t$ the value of $f(t)$ is random but possibly correlated to neighboring&nbsp;values.</p>
 <p>In the case of a random vector we had a correlation <em>matrix</em> giving us the cross-covariance between two components. For stochastic processes we (might) have a correlation <em>function</em> that correlates two&nbsp;points.</p>
 <p>Lets say we have a second-order stationary stochastic process $w(t)$. This means that the covariance function $c(t_1,t_2)$ exists and dependes only on $\tau = t_2 - t_1$. In the previous section we saw that we could <em>simulate</em> a random vector by generating unit normal random variables and combining them using the information gained in an eigenvalue analysis. In other words, we could <em>expand</em> the correlated random vector into a sequence of un-correlated random vectors. <span class="caps">KL</span> explansion solves the same problem when you have a continuous indexing set as oposed to a discrete&nbsp;one.</p>
@@ -6964,15 +6878,14 @@ $$<p>Here I follow closely the notation in the previous section, $\xi_i$ is an c
 $$
 \int_D C(t - \tau) v_i(\tau) \,\mathrm{d} \tau = \sigma_i^2 v_i(t)
 $$<p>Which <code>#ThanksToMaths</code> we know that it is a <a href="http://en.wikipedia.org/wiki/Fredholm_integral_equation">homogeneous Fredholm integral equation of the second kind</a>. Let&#8217;s say that $\bar{w}(t) = t$ and $C(\tau) = \exp \left\lbrace  -\vert \tau \vert / b\right\rbrace$ for $t \in [-a,\, a]$. The parameter $b$ is called the correlation time because it can be interpreted as the time interval for which the variables are correlated significantly. Such a model correlation function (or kernel function in Fredholm mathy-talk) represents Markov processes. The function looks like&nbsp;this.</p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[79]:</div>
+<div class="prompt input_prompt">In [79]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="mf">1.</span>
 <span class="n">a</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="n">c</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="n">b</span>
@@ -6981,34 +6894,22 @@ $$<p>Which <code>#ThanksToMaths</code> we know that it is a <a href="http://en.w
 <span class="n">cov</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="nb">abs</span><span class="p">(</span><span class="n">tau</span><span class="p">)</span><span class="o">/</span><span class="n">b</span><span class="p">)</span>
 <span class="n">figsize</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">tau</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\tau$&#39;</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$c(\tau)$&quot;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">'$\tau$'</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"$c(\tau)$"</span><span class="p">)</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
 <div class="prompt output_prompt">Out[79]:</div>
-
-
-
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.text.Text at 0x7fa1d1d3ec90&gt;</pre>
+<pre><matplotlib.text.text at 0x7fa1d1d3ec90></pre>
 </div>
-
 </div>
-
 <div class="output_area">
 <div class="prompt"></div>
-
-
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAnEAAAEPCAYAAAAtTZIUAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3XmczXX7x/HX2HchUihuyd0ilRIRJ5UQoUKoLJFC2pNf
@@ -7241,14 +7142,11 @@ EREREREREREREREREREREREREREREREREREREREREREREREREREREREREREhwXUAIiIeUAnbq7Yy
 8Cu2CXg74KDLoERERETk1OoGP2e0p6SIiBO5XAcgIuIBc4Ofz3YahYhIGkriRERCUxn403UQIiLH
 KIkTEQnN1cBC10GIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIhI
 Dvl/oTZvCHJCQGcAAAAASUVORK5CYII=
-">
-</div>
-
-</div>
-
+" />
 </div>
 </div>
-
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -7298,15 +7196,14 @@ $$
 f_1(\omega) = c - \omega \tan (\omega a) = 0 &#92;
 f_2(\omega^*) = \omega^* - c \tan (\omega^* a) = 0 
 $$<p>Lets compute a bunch of these&nbsp;values</p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[80]:</div>
+<div class="prompt input_prompt">In [80]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#==== Begin copy-paste code from the web!==================================================================</span>
 <span class="c1"># From http://stackoverflow.com/questions/13054758/python-finding-multiple-roots-of-nonlinear-equation</span>
 <span class="c1"># With modifications that supress print output and use brentq instead of custom bisection method</span>
@@ -7318,11 +7215,11 @@ $$<p>Lets compute a bunch of these&nbsp;values</p>
 <span class="k">def</span> <span class="nf">rootsearch</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">dx</span><span class="p">):</span> 
     <span class="c1">#Gets new sub-interval, returns None on exit.</span>
     <span class="c1">#Ensures there is a sign change in the returned sub-interval</span>
-    <span class="c1">#if there&#39;s no sign change, advance to next interval</span>
+    <span class="c1">#if there's no sign change, advance to next interval</span>
     <span class="n">x1</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span> <span class="n">f1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
     <span class="n">x2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">dx</span><span class="p">;</span> <span class="n">f2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
-    <span class="k">while</span> <span class="n">f1</span><span class="o">*</span><span class="n">f2</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">x1</span> <span class="o">&gt;=</span> <span class="n">b</span><span class="p">:</span>
+    <span class="k">while</span> <span class="n">f1</span><span class="o">*</span><span class="n">f2</span> <span class="o">></span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x1</span> <span class="o">>=</span> <span class="n">b</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span><span class="p">,</span><span class="kc">None</span>
         <span class="n">x1</span> <span class="o">=</span> <span class="n">x2</span><span class="p">;</span> <span class="n">f1</span> <span class="o">=</span> <span class="n">f2</span>
         <span class="n">x2</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">dx</span><span class="p">;</span> <span class="n">f2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
@@ -7343,17 +7240,15 @@ $$<p>Lets compute a bunch of these&nbsp;values</p>
             <span class="k">return</span> <span class="n">rootlist</span>
 <span class="c1">#==== End copy-paste code from the web!==================================================================</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[94]:</div>
+<div class="prompt input_prompt">In [94]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Search for roots within this range</span>
 <span class="n">wmin</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">wmax</span> <span class="o">=</span> <span class="mi">32</span><span class="o">*</span><span class="n">c</span>
@@ -7370,12 +7265,12 @@ $$<p>Lets compute a bunch of these&nbsp;values</p>
 <span class="n">w_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">wstar_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">w_list_</span><span class="p">:</span>
-    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f1</span><span class="p">(</span><span class="n">w</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">tol</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f1</span><span class="p">(</span><span class="n">w</span><span class="p">))</span> <span class="o">></span> <span class="n">tol</span><span class="p">:</span>
         <span class="k">pass</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">w_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">wstar_list_</span><span class="p">:</span>
-    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f2</span><span class="p">(</span><span class="n">w</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">tol</span> <span class="ow">or</span> <span class="nb">abs</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f2</span><span class="p">(</span><span class="n">w</span><span class="p">))</span> <span class="o">></span> <span class="n">tol</span> <span class="ow">or</span> <span class="nb">abs</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o"><</span> <span class="n">tol</span><span class="p">:</span>
         <span class="k">pass</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">wstar_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
@@ -7383,53 +7278,39 @@ $$<p>Lets compute a bunch of these&nbsp;values</p>
 <span class="n">wstar_list</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="n">wstar_list</span><span class="p">)</span>
 
 <span class="c1">#Plotting</span>
-<span class="nb">print</span> <span class="s2">&quot;Found </span><span class="si">{}</span><span class="s2"> roots for w in [</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">w_list</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">wstar_list</span><span class="p">),</span> <span class="n">wmin</span><span class="p">,</span> <span class="n">wmax</span><span class="p">)</span>
+<span class="nb">print</span> <span class="s2">"Found </span><span class="si">{}</span><span class="s2"> roots for w in [</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">]"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">w_list</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">wstar_list</span><span class="p">),</span> <span class="n">wmin</span><span class="p">,</span> <span class="n">wmax</span><span class="p">)</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">w</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="n">wmin</span><span class="p">,</span><span class="n">wmax</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">f1</span><span class="p">(</span><span class="n">w</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;$f_1(\omega)$&quot;</span><span class="p">)</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">f2</span><span class="p">(</span><span class="n">w</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;$f_2(\omega^*)$&quot;</span><span class="p">)</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="mi">0</span><span class="o">*</span><span class="n">w</span><span class="p">,</span><span class="s2">&quot;k--&quot;</span><span class="p">)</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">w_list</span><span class="p">,</span><span class="n">w_list</span><span class="o">*</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;bo&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Roots of $f_1$&quot;</span><span class="p">)</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">wstar_list</span><span class="p">,</span><span class="n">wstar_list</span><span class="o">*</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;go&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Roots of $f_2$&quot;</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$\omega$&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">f1</span><span class="p">(</span><span class="n">w</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">"$f_1(\omega)$"</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">f2</span><span class="p">(</span><span class="n">w</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">"$f_2(\omega^*)$"</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="mi">0</span><span class="o">*</span><span class="n">w</span><span class="p">,</span><span class="s2">"k--"</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">w_list</span><span class="p">,</span><span class="n">w_list</span><span class="o">*</span><span class="mi">0</span><span class="p">,</span><span class="s2">"bo"</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">"Roots of $f_1$"</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">wstar_list</span><span class="p">,</span><span class="n">wstar_list</span><span class="o">*</span><span class="mi">0</span><span class="p">,</span><span class="s2">"go"</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">"Roots of $f_2$"</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s2">"$\omega$"</span><span class="p">)</span>
 <span class="n">yl</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">ylim</span><span class="p">((</span><span class="o">-</span><span class="n">yl</span><span class="p">,</span><span class="n">yl</span><span class="p">))</span>
 <span class="n">legend</span><span class="p">()</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
 <div class="prompt"></div>
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Found 11 roots for w in [0,32.0]
 </pre>
 </div>
 </div>
-
 <div class="output_area">
 <div class="prompt output_prompt">Out[94]:</div>
-
-
-
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.legend.Legend at 0x7fa1d1b6dc90&gt;</pre>
+<pre><matplotlib.legend.legend at 0x7fa1d1b6dc90></pre>
 </div>
-
 </div>
-
 <div class="output_area">
 <div class="prompt"></div>
-
-
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABIcAAAEPCAYAAADYqqSJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3XlcVPX6wPHPmRlWAQVBQAERFBMQKBPcck+6uaW3Muua
@@ -7923,14 +7804,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg5vpIajjucwslJS3EAgAAEJqE
 gPaNkBRIulzSGknTJf3ZakQAAAAhIDkEAADQvlpJKyW9JGmFpEslPW41IgAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKA9/x9cu2FB
 HO/cPQAAAABJRU5ErkJggg==
-">
-</div>
-
-</div>
-
+" />
 </div>
 </div>
-
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -7945,15 +7823,14 @@ $$
     {\sigma_i^*}^2 = \dfrac{2c}{\omega_i^{*2} + c^2} <span class="amp">&amp;</span> 
     v_i^*(t) = \dfrac{\sin (\omega_i^* t)}{ \sqrt{ a - \dfrac{\sin (2\omega_i^* a)}{2 \omega_i^* }} } 
 \end{array}&nbsp;$$</p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[95]:</div>
+<div class="prompt input_prompt">In [95]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sigma2</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">c</span><span class="o">/</span><span class="p">(</span><span class="n">w_list</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">sigma2_star</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">c</span><span class="o">/</span><span class="p">(</span><span class="n">wstar_list</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">vi</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">w</span><span class="p">,</span><span class="n">t</span><span class="p">:</span> <span class="n">cos</span><span class="p">(</span><span class="n">w</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">w</span><span class="p">))</span>
@@ -7965,44 +7842,32 @@ $$
 <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">w_list</span><span class="p">:</span>
     <span class="n">vi_eval</span> <span class="o">=</span> <span class="n">vi</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
-    <span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">vi_eval</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;$f_{&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;}(t)$&quot;</span><span class="p">)</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">vi_eval</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">"$f_{"</span><span class="o">+</span><span class="s2">"</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s2">"}(t)$"</span><span class="p">)</span>
     <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="n">legend</span><span class="p">()</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$t$&quot;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s2">"$t$"</span><span class="p">)</span>
 <span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">wstar_list</span><span class="p">:</span>
     <span class="n">vi_eval</span> <span class="o">=</span> <span class="n">vi_star</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
-    <span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">vi_eval</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;$f_{&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;}(t)$&quot;</span><span class="p">)</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">vi_eval</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">"$f_{"</span><span class="o">+</span><span class="s2">"</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s2">"}(t)$"</span><span class="p">)</span>
     <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$t$&quot;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s2">"$t$"</span><span class="p">)</span>
 <span class="n">legend</span><span class="p">()</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
 <div class="prompt output_prompt">Out[95]:</div>
-
-
-
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.legend.Legend at 0x7fa1e8afb610&gt;</pre>
+<pre><matplotlib.legend.legend at 0x7fa1e8afb610></pre>
 </div>
-
 </div>
-
 <div class="output_area">
 <div class="prompt"></div>
-
-
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABIwAAAFICAYAAAAyF2WqAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xd8U+X+wPFP0rTNbtPd0pa9Clg2KCoIigNEUBBF4brR
@@ -9992,14 +9857,11 @@ CCGEEOI4I+MvIUTCZIaREKItFAD727oRQgghhBDHERl/CSGaRNfWDRBCHJfGAU6U9yAHUNe2zRFC
 CCGEOObJ+EsI0SQyw0gI0Rb2AR0AE1Ddxm0RQgghhDgeyPhLCCGEEEIIIYQQQgghhBBCCCGEEEII
 IYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGE
 EEIIIYQQQgghhBBCCCGEEEIIIYQQQgghxJHv/wHZydoGpXrg+gAAAABJRU5ErkJggg==
-">
-</div>
-
-</div>
-
+" />
 </div>
 </div>
-
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -10013,15 +9875,14 @@ C = \mathbf{v}^T \mathbf{\Sigma} \mathbf{v}
 $$<p>For the continuous case the correlation function can be re-constructed (or expanded, depending on how we need to view this) via 
 $$
 c(t_1,t_2) = \sum_{k=1}^{\infty} \Big[ \sigma_k^2 f_k(t_1) f_k(t_2) +  {\sigma_k^*}^2 f_k^*(t_1) f_k^*(t_2)  \Big]&nbsp;$$</p>
-
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[99]:</div>
+<div class="prompt input_prompt">In [99]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">T1</span><span class="p">,</span><span class="n">T2</span> <span class="o">=</span> <span class="n">meshgrid</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
 <span class="n">C</span> <span class="o">=</span> <span class="mi">0</span><span class="o">*</span><span class="n">T1</span>
 
@@ -10037,49 +9898,35 @@ c(t_1,t_2) = \sum_{k=1}^{\infty} \Big[ \sigma_k^2 f_k(t_1) f_k(t_2) +  {\sigma_k
         <span class="n">sigma2</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">c</span><span class="o">/</span><span class="p">(</span><span class="n">w</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
         <span class="n">C</span> <span class="o">+=</span> <span class="n">sigma2</span><span class="o">*</span><span class="n">vi_star</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">T1</span><span class="p">)</span><span class="o">*</span><span class="n">vi_star</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">T2</span><span class="p">)</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[100]:</div>
+<div class="prompt input_prompt">In [100]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">projection</span><span class="o">=</span><span class="s1">'3d'</span><span class="p">)</span>
 <span class="c1">#ax.contour(X1,X2,f_x1x2,50)</span>
 <span class="n">p</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span><span class="n">T2</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">rstride</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">cstride</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">antialiased</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$T_1$&quot;</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$T_2$&quot;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s2">"$T_1$"</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s2">"$T_2$"</span><span class="p">)</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
 <div class="prompt output_prompt">Out[100]:</div>
-
-
-
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.text.Text at 0x7fa1ca4f1210&gt;</pre>
+<pre><matplotlib.text.text at 0x7fa1ca4f1210></pre>
 </div>
-
 </div>
-
 <div class="output_area">
 <div class="prompt"></div>
-
-
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABGoAAAI8CAYAAACpsE3WAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3VmMZNl93/nvuVvkXnt1V1UvVd3NbjZ30s2hPJSgGdu0
@@ -16626,22 +16473,19 @@ jY2Nys/PV2RkpIs6BgCgZ2FFDQAAAO4Zs9mszZs3a9q0abLb7Zo/f74iIiK0detWSdLChQsVHh6u
 mJgYjRo1Sm5ubkpMTCSoAQDg/91yE7FhGIazGgEAAAAAAOgLTLcY6sbWJwAAAAAAgB6CoAYAAAAA
 AKCHIKgBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 cLv+Dw3kjOU1Nei4AAAAAElFTkSuQmCC
-">
-</div>
-
-</div>
-
+" />
 </div>
 </div>
-
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[101]:</div>
+<div class="prompt input_prompt">In [101]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="c1">#,projection=&#39;3d&#39;)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="c1">#,projection='3d')</span>
 <span class="n">tau_</span> <span class="o">=</span> <span class="n">diag</span><span class="p">(</span><span class="n">T1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
 <span class="n">C_approx</span> <span class="o">=</span> <span class="n">diag</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
 
@@ -16649,20 +16493,13 @@ cLv+Dw3kjOU1Nei4AAAAAElFTkSuQmCC
 <span class="n">p1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tau_</span><span class="p">,</span><span class="n">C_approx</span><span class="p">)</span>
 <span class="n">p2</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tau_</span><span class="p">,</span><span class="n">C_exact</span><span class="p">)</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
 <div class="prompt"></div>
-
-
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABIoAAAJPCAYAAAAT5D/IAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Wd0VFUfhfENhN5BBKnSBJReQhE0CCJFOoogSG8KiCgK
@@ -17257,51 +17094,36 @@ dsq/0bByqIaK7r80zCj6TvVnixwjPFXj5PkbGlos72oohN7Z8FcMmBXj5HnVF6sHq1809E+fvIgx
 wvZ6S8NulPdVZ44ee9/ottH5o+e/3aYPXTBL5srzFzS8b/+sYZXF/Q0t8zBL5srzSxq+MG/8PH77
 YgcIEzBXnp9e3d2Q4zdVv7vYAQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AACwA/s/B1eUCOM8308AAAAASUVORK5CYII=
-">
-</div>
-
-</div>
-
+" />
 </div>
 </div>
-
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="prompt input_prompt">In [50]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sigma2</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">c</span><span class="o">/</span><span class="p">(</span><span class="n">w_list</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">sigma2star</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">c</span><span class="o">/</span><span class="p">(</span><span class="n">wstar_list</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">sigma2</span><span class="p">)</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">sigma2star</span><span class="p">)</span>
 </pre></div>
-
 </div>
 </div>
 </div>
-
 <div class="output_wrapper">
 <div class="output">
-
-
 <div class="output_area">
 <div class="prompt output_prompt">Out[50]:</div>
-
-
-
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;matplotlib.lines.Line2D at 0x7fa1ed70e450&gt;]</pre>
+<pre>[<matplotlib.lines.line2d at 0x7fa1ed70e450>]</pre>
 </div>
-
 </div>
-
 <div class="output_area">
 <div class="prompt"></div>
-
-
-
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABIIAAAEACAYAAADP1d0YAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3Xd8VfX9x/HXXUmAAIoiU8WqSKlIHeBAawQFcW+x7mq1
@@ -17548,69 +17370,56 @@ B2KPIKk+vQJ0z2yPAP6YvVKkZqM34RtqWxD+/+dIYGhWK5Katm58v1l06Rvah9MAmkUDDCZsHjaH
 8LWCkurH/oT9Sd4lnKLyDnBoViuSmp8D8a1hUn3qTTgi6D3CUQm+NUyqH1dQ/vr4kYSj0iXVvscI
 e3EVE/ZjPpuwYftEGtDr4yVJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJ
 kiRJkiRJkiRJkiRJkiRJkiRJkhqd/wdZrvSK0unwSgAAAABJRU5ErkJggg==
-">
-</div>
-
-</div>
-
+" />
 </div>
 </div>
-
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[73]:</div>
+<div class="prompt input_prompt">In [73]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
-
 </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[73]:</div>
+<div class="prompt input_prompt">In [73]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
-
 </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[73]:</div>
+<div class="prompt input_prompt">In [73]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
-
 </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-    <div class="input_area">
+<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
-
 </div>
 </div>
 </div>
-
 </div>
- 
-
 
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var mathjaxscript = document.createElement('script');

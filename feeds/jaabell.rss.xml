@@ -76,7 +76,6 @@ $$&lt;p&gt;Which I do in the following&amp;nbsp;code:&lt;/p&gt;</description><dc
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;In this post I&amp;#8217;ll make a small example meant to test the &lt;a href="http://ipython.org/notebook.html"&gt;IPython notebook&lt;/a&gt; + &lt;a href="www.getpelican.org"&gt;Pelican&lt;/a&gt; integration thanks to the plugin created by &lt;a href="http://danielfrg.com/blog/2013/03/08/pelican-ipython-notebook-plugin/"&gt;danielfrg&lt;/a&gt; that can be found &lt;a href="https://github.com/danielfrg/pelican-ipythonnb"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Lets start out with some basic&amp;nbsp;plotting!&lt;/p&gt;
-
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
