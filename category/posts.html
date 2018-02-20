@@ -44,17 +44,17 @@
 
   <article>
     <header>
-      <h2><a href="http://www.joseabell.com/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations.html">Paper03 - Earthquake Soil Structure Interaction of Nuclear Power Plants, differences in response to 3-D, 3 × 1-D, and 1-D&nbsp;excitations</a></h2>
+      <h2><a href="http://www.joseabell.com/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations-EN.html">Paper03 - Earthquake Soil Structure Interaction of Nuclear Power Plants, differences in response to 3-D, 3 × 1-D, and 1-D&nbsp;excitations</a></h2>
       <time datetime="" title="2018-02-20T10:50:00-08:00" pubdate>Tue 20 February 2018</time>
     </header>
 
     <div class="article_content">
-      
+      <p><strong>Finally!</strong> First paper since PhD was accepted for publication. I&#8217;ll take this opportunity to start a tradition and review my own papers here. I think its important that I do this for several reasons. First, there are discussions that come up during peer review that are important but don&#8217;t make it into the paper. Misconceptions about the presented work can be clarified to a broader audience here. Also, I can say whatever I want, specially opinions and thoughts that come from intuition and might not make it through peer-review, I&#8217;ll be as critical as possible about these …</p>
     </div>
 
     <div class="meta">
       <div>
-        <a href="http://www.joseabell.com/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations.html" class="read_more">Read more &#8594;</a>
+        <a href="http://www.joseabell.com/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations-EN.html" class="read_more">Read more &#8594;</a>
       </div>
 
       <div>
@@ -92,6 +92,41 @@
             <a href="http://www.joseabell.com/tag/paraview.html" class="tag">Paraview</a>
             <a href="http://www.joseabell.com/tag/building.html" class="tag">Building</a>
             <a href="http://www.joseabell.com/tag/fem.html" class="tag">FEM</a>
+      </div>
+
+    </div>
+
+  </article>
+  <div class="separator">&equiv;</div>
+  <article>
+    <header>
+      <h2><a href="http://www.joseabell.com/new-cable-element-in-opensees-EN.html">New cable element in&nbsp;OpenSees</a></h2>
+      <time datetime="" title="2017-09-07T20:13:57-07:00" pubdate>Thu 07 September 2017</time>
+    </header>
+
+    <div class="article_content">
+      <div class="youtube" align="left">
+<iframe width="640" height="480" src="https://www.youtube.com/embed/MX_--SI_vKg" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<p>With my student, Pablo Ibañez, we implemented a new <a href="http://opensees.berkeley.edu/wiki/index.php/CatenaryCableElement">catenary cable element</a> in OpenSees. This element is based on the work by Salehi et&nbsp;al[1].</p>
+<p>The stiffness of this element is obtained using a flexibility formulation. Basically the shape of the cable is determined by the&nbsp;integral:</p>
+<div class="math">$$
+\begin{align*}
+\vect{x}(s) = \vect{x}_1 - \int_0^s \dfrac{\vect{w}s + \vect{f}}{\Vert \vect{w}s + \vect{f} \Vert^2}\pare{\dfrac{\Vert \vect{w}s + \vect{f} \Vert}{EA} + \pare{1 + \alpha \Delta T}} \ud s \\
+\vect{w} = \brak{w_1,\, w_2,\, w_3}^T \qquad
+\vect{f} = \brak …</div>
+    </div>
+
+    <div class="meta">
+      <div>
+        <a href="http://www.joseabell.com/new-cable-element-in-opensees-EN.html" class="read_more">Read more &#8594;</a>
+      </div>
+
+      <div>
+            <a href="http://www.joseabell.com/tag/opensees.html" class="tag">OpenSees</a>
+            <a href="http://www.joseabell.com/tag/cable.html" class="tag">Cable</a>
+            <a href="http://www.joseabell.com/tag/blender.html" class="tag">Blender</a>
       </div>
 
     </div>
