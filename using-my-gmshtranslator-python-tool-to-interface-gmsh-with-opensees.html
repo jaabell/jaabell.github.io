@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="author" content="Jose Abell">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <title>Using my gmshtranslator python tool to interface gmsh with&nbsp;opensees. | Jose Abell's Research Blog</title>
+
+        <link rel="alternate" type="application/atom+xml" title="Jose Abell's Research Blog blog atom feed" href="/feeds/all.atom.xml" />
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+        <link rel="stylesheet" href="/theme/css/pygments.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
+
+
+    </head>
+
+    <body>
+        <header class="main-header" style="background: url('/images/header.png') no-repeat center center #DDD; background-size: 100%;">
+        <h1 id="title"> José Abell's research blog</h1>
+        <hr>
+        <nav>
+            <div class="container">
+            <ul>
+                <li><a href="/" title="Home">Home</a></li>
+                        <li><a href="http://www.joseabell.com/pages/01about.html">About</a></li>
+                        <li><a href="http://www.joseabell.com/pages/02research.html">Research</a></li>
+                        <li><a href="http://www.joseabell.com/pages/03teaching.html">Teaching</a></li>
+                        <li><a href="http://www.joseabell.com/pages/04publications.html">Publications</a></li>
+                        <li><a href="http://www.joseabell.com/pages/05tools.html">Tools</a></li>
+                        <li><a href="http://www.joseabell.com/pages/06cv.html"><span class="caps">CV</span></a></li>
+                        <li><a href="http://www.joseabell.com/pages/07links.html">Links</a></li>
+                        <li><a href="http://www.joseabell.com/pages/08prospective-students.html">Prospective&nbsp;Students</a></li>
+            </ul>
+            </div>
+        </nav>
+        </header>
+
+<div class="container post">
+
+    <article>
+        <header>
+            <h1>Using my gmshtranslator python tool to interface gmsh with&nbsp;opensees.</h1>
+            <time datetime="article.date.isoformat()" pubdate>Mon 26 February 2018</time>
+        </header>
+
+        <div class="article_content">
+            <p>I wrote the <a href="https://github.com/jaabell/gmshtranslator"><em>gmshtranslator</em></a> tool a while back during my PhD, to easily parse <a href="http://gmsh.info/"><em>gmsh</em></a> <code>msh</code> files to any other format. I&#8217;ve been using it for years now with not much change for both research and consulting, and have been contacted by other researchers that want to use it. I will soon write a tool, powered by <em>gmshtranslator</em>, to more easily translate from <em>gmsh</em> into OpenSees. Meanwhile, here is a short example on how to use gmshtranslator to create <a href="opensees.berkeley.edu"><em>OpenSees</em></a> models. The example assumes you know <em>gmsh</em> formats (<code>.geo</code> and <code>.msh</code>) and&nbsp;python. </p>
+<p>The example consists on the simple cantilever beam shown in the following&nbsp;figure.</p>
+<p><img alt="Beam" src="https://www.dropbox.com/s/96dqfc5r6su4pjd/beam.png?raw=1" /></p>
+<p>The beam is fixed at the right end, and has node-by-node forcing on the right end. The following <em>gmsh</em> <code>.geo.</code> script prepares the&nbsp;domain. </p>
+<p><strong><code>beam.geo :</code></strong></p>
+<pre><code>LX = 5; LY = 0.5; Nx = 40; Ny = 5;
+
+Point(1) = {0, 0, 0, 1};
+Point(2) = {LX, 0, 0, 1};
+Point(3) = {LX, LY, 0, 1};
+Point(4) = {0, LY, 0, 1};
+Line(1) = {1, 2};
+Line(2) = {2, 3};
+Line(3) = {3, 4};
+Line(4) = {4, 1};
+Line Loop(1) = {1, 2, 3, 4};
+Plane Surface(1) = {1};
+
+Transfinite Line {1,3} = Nx+1;
+Transfinite Line {2,4} = Ny+1;
+Transfinite Surface{1};
+Recombine Surface{1};
+
+Physical Line("Fixed") = {4};
+Physical Line("Forcing") = {2};
+Physical Surface("Beam") = {1};
+
+Mesh(2);
+</code></pre>
+<p>3 physical groups are defined: <em>fixed</em> to identify the fixed nodes, <em>forcing</em> to identify the nodes that will carry loads, and <em>beam</em> contains all the quad elements to represent the body of the beam. Note the optional use of the transfinite meshing algorithm. Once this script is executed in <em>gmsh</em> the <code>.msh</code> file can be exported. The resulting <code>.msh</code> file can be found <a href="https://www.dropbox.com/s/3d44h0ttdrm67gz/beam.msh?dl=0">here</a>. </p>
+<p><em>gmshtranslator</em> parses the <code>.msh</code> file, executing code depending on certain user-defined rules. What we want to do is define an opensees node command for each node in the <code>.msh</code> file, fix the nodes contained in the <em>fixed</em> physical group, generate forces for the nodes in the <em>forcing</em> physical group, and add quad elements for each quad in the <code>.msh</code> file. </p>
+<p>First, import the <code>beam.msh</code> file into <em>gmshtranslator</em> and open files to be written that will contain the opensees&nbsp;code. </p>
+<pre><code>from gmshtranslator import gmshTranslator
+
+mshfname = "beam.msh"
+
+gt = gmshTranslator(mshfname)
+
+fid_nodes =    open(mshfname.replace(".msh", ".nodes.tcl"),"w")
+fid_elements = open(mshfname.replace(".msh", ".elements.tcl"),"w")
+fid_fixities = open(mshfname.replace(".msh", ".fixities.tcl"),"w")
+fid_loads = open(mshfname.replace(".msh", ".loads.tcl"),"w")
+</code></pre>
+<p>I like writing different things (nodes, elements, etc.) in separate files for debugging. Your style might be different. <em>gmshtranslator</em> parses the file and evaluates <em>rules</em>. A rule is composed of a <em>condition</em> that must be met and an <em>action</em> to be executed, these are both python functions. There are rules for nodes and for&nbsp;elements. </p>
+<p>The syntax for node and element conditions&nbsp;are:</p>
+<pre><code>def node_condition(tag,x,y,z,physgroups): 
+def element_condition(eletag,eletype,physgrp,nodes):
+</code></pre>
+<p>These are functions that evaluate to <code>true</code> or <code>false</code> depending on the inputs. Then the syntax for <em>actions</em>&nbsp;are:</p>
+<pre><code>def node_action(tag,x,y,z):
+def element_action(eletag,eletype,physgrp,nodes):
+</code></pre>
+<p>These functions don&#8217;t return anything, instead excecute whatever code should be executed if the <em>condition</em> of the rule is met. Rules are added to the parser by using the <code>add_nodes_rule</code> or <code>add_elements_rule</code> function of <em>gmshtranslator</em> and are excecuted whenever the <code>parse()</code> method is&nbsp;called. </p>
+<p>For example, the rule to add all nodes to the opensees domain would&nbsp;be:</p>
+<pre><code>def is_node(tag,x,y,z,physgroups):
+    return True
+
+def add_node(tag,x,y,z):
+    fid_nodes.write("node {} {} {}\n".format(tag, x, y))
+
+gt.add_nodes_rule(is_node, add_node)
+</code></pre>
+<p>The node <em>condition</em> (<code>is_node</code>) function always returns <code>true</code>, that is this rule will execute for all nodes. The <em>action</em> function is <code>add_node</code> and will write the appropriate text into the nodes file. The <em>rule</em> is added into the parser by using the <code>gt.add_nodes_rule</code> function which accepts two python functions as arguments: a condition and an&nbsp;action. </p>
+<p>The code for the rest of the example&nbsp;is:</p>
+<pre><code>def fix_node(tag,x,y,z):
+    fid_fixities.write("fix {} 1 1\n".format(tag))
+
+def add_load(eletag,eletype,physgrp,nodes):
+    fid_loads.write("load {} $fx $fy\n".format(nodes[0]))
+    fid_loads.write("load {} $fx $fy\n".format(nodes[1]))
+
+def add_element(eletag,eletype,physgrp,nodes):
+    fid_elements.write("element quad {} {} {} {} {} $thick PlaneStress $mat_tag\n".format(eletag, nodes[0], nodes[1], nodes[2], nodes[3]))
+
+
+gt.add_nodes_rule(gt.is_node_in("Fixed"), fix_node)
+
+gt.add_elements_rule(gt.is_element_in("Forcing"), add_load)
+gt.add_elements_rule(gt.is_element_in("Beam"), add_element)
+</code></pre>
+<p>Note that we didn&#8217;t write a condition for the <code>fix_node</code> action, instead we used some of the simple conditions contained in <em>gmshtranslator</em> that can simplify some typical situations. In this case the <code>gt.is_node_in()</code> function takes a physical group name and evaluates whether each node is in that physical group. An equivalent <code>python</code> code for this would&nbsp;be:</p>
+<pre><code>Fixed = 1  # Physical group number assigned by gmsh to the 'Fixed' group
+def is_node_in_Fixed(tag, x, y, z, physgroups):
+    return Fixed in physgroups
+</code></pre>
+<p>Or using <em>gmstranslator</em>s internal&nbsp;mapping.</p>
+<pre><code>def is_node_in_Fixed(tag, x, y, z, physgroups):
+    return gt.physical_groups_by_name['Fixed'] in physgroups\
+</code></pre>
+<p>The same holds true for the <code>add_load</code> and <code>add_element</code> rules, I just opted to use the simple function but could have written a condition function from scratch.  Add all rules to the parser by callig the <code>add_X_rule</code> functions. Finally, call parse to execute and generate all output&nbsp;files. </p>
+<pre><code>gt.parse()
+</code></pre>
+<p>Don&#8217;t forget to close files&nbsp;people!</p>
+<pre><code>fid_nodes.close()
+fid_elements.close()
+fid_fixities.close()
+fid_loads.close()
+</code></pre>
+<p>Run the python script and, voillá! Meshing&nbsp;done. </p>
+<p>Finally, for completeness, here is the OpenSees tcl code that runs the complete example. I used elastic-isotropic material and a simple static analysis. I added only vertical loading on the tip of the&nbsp;beam. </p>
+<pre><code>model BasicBuilder -ndm 2 -ndf 2
+
+set thick 1.0
+
+set mat_tag 1
+set E 200.e9
+set nu 0.3
+
+nDMaterial ElasticIsotropic $mat_tag $E $nu
+
+source "beam.nodes.tcl"
+source "beam.fixities.tcl"
+source "beam.elements.tcl"
+
+set tstag 1
+timeSeries Linear $tstag 1.0
+
+set Ly 0.5
+set Ny 5
+set dy [expr $Ly/$Ny]
+
+set fx [expr 0*$dy/2]
+set fy [expr -10.*$dy/2]
+
+pattern Plain 1 "Linear" {
+    source "beam.loads.tcl"
+}
+
+recorder pvd disp disp
+
+constraints Plain
+numberer RCM
+system UmfPack
+test NormDispIncr 1.0e-9 10
+algorithm Newton
+integrator LoadControl 1
+analysis Static
+analyze 1
+</code></pre>
+<p>The <code>pvd</code> recorder is used to generate a nice output file that can be viewed using <a href="https://www.paraview.org/">paraview</a>. </p>
+<p><img alt="Deflections" src="https://www.dropbox.com/s/24tkmfk1y1r0wz5/disp.png?raw=1" /></p>
+        </div>
+
+        <div class="meta">
+            <div>
+                    <a href="http://www.joseabell.com/tag/opensees.html" class="tag">opensees</a>
+                    <a href="http://www.joseabell.com/tag/gmsh.html" class="tag">gmsh</a>
+                    <a href="http://www.joseabell.com/tag/gmshtranslator.html" class="tag">gmshtranslator</a>
+                    <a href="http://www.joseabell.com/tag/python.html" class="tag">python</a>
+                    <a href="http://www.joseabell.com/tag/pre-proceesing.html" class="tag">pre-proceesing</a>
+                    <a href="http://www.joseabell.com/tag/meshing.html" class="tag">meshing</a>
+            </div>
+            <!-- <div>
+                <a id="comments-button" class="comments_btn" href="#disqus_thread">Comments</a>
+            </div> -->
+        </div>
+    </article>
+</div>
+
+
+<script type="text/javascript">
+(function () {
+    'use strict';
+
+    // Global object
+    var App = {};
+
+    // Create button
+    // App.commentsButton = document.getElementById('comments-button');
+
+    // App.commentsButton.onclick = function () {
+    //     // Remove button action on click
+        // App.commentsButton.onclick = function () {
+        // }
+
+        // Create comments container
+        App.disqusContainer = document.createElement('div');
+        App.disqusContainer.setAttribute('id', 'disqus_thread');
+        // App.disqusContainer.setAttribute('class', 'container');
+
+        // Append container to body or div
+        // document.body.appendChild( App.disqusContainer );
+        var container = document.getElementsByClassName('container post')[0];
+        container.appendChild(App.disqusContainer);
+
+        // Your Disqus shortname
+        App.disqus_shortname = 'joseabell';
+
+        // Embed Disqus
+        var dsq = document.createElement('script');
+
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + App.disqus_shortname + '.disqus.com/embed.js';
+
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+    //     window.scrollTo(0, dsq.offsetTop - 200);
+    // };
+})();
+</script>
+
+
+<!-- 
+<script type="text/javascript">
+    var disqus_shortname = 'joseabell';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(s);
+    }());
+</script>
+ -->
+
+
+
+        <!-- Github buttons. -->
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+    </body>
+</html>

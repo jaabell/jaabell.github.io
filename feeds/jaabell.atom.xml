@@ -1,5 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abell's Research Blog - jaabell</title><link href="http://www.joseabell.com/" rel="alternate"></link><link href="http://www.joseabell.com/feeds/jaabell.atom.xml" rel="self"></link><id>http://www.joseabell.com/</id><updated>2018-02-20T10:50:00-08:00</updated><entry><title>Paper03 - Earthquake Soil Structure Interaction of Nuclear Power Plants, differences in response to 3-D, 3 × 1-D, and 1-D excitations</title><link href="http://www.joseabell.com/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations.html" rel="alternate"></link><published>2018-02-20T10:50:00-08:00</published><updated>2018-02-20T10:50:00-08:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2018-02-20:/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Finally!&lt;/strong&gt; First paper since PhD was accepted for publication. I&amp;#8217;ll take this opportunity to start a tradition and review my own papers here. I think its important that I do this for several reasons. First, there are discussions that come up during peer review that are important but don&amp;#8217;t make it into the paper. Misconceptions about the presented work can be clarified to a broader audience here. Also, I can say whatever I want, specially opinions and thoughts that come from intuition and might not make it through peer-review, I&amp;#8217;ll be as critical as possible about these …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Finally!&lt;/strong&gt; First paper since PhD was accepted for publication. I&amp;#8217;ll take this opportunity to start a tradition and review my own papers here. I think its important that I do this for several reasons. First, there are discussions that come up during peer review that are important but don&amp;#8217;t make it into the paper. Misconceptions about the presented work can be clarified to a broader audience here. Also, I can say whatever I want, specially opinions and thoughts that come from intuition and might not make it through peer-review, I&amp;#8217;ll be as critical as possible about these too and hope that my readers can discuss with me. I can post videos and other additional content here and make them available to everyone for free. And, finally, this post will have a Disqus thread where we can all&amp;nbsp;interact. &lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abell's Research Blog - jaabell</title><link href="http://www.joseabell.com/" rel="alternate"></link><link href="http://www.joseabell.com/feeds/jaabell.atom.xml" rel="self"></link><id>http://www.joseabell.com/</id><updated>2018-02-26T13:55:13-08:00</updated><entry><title>Using my gmshtranslator python tool to interface gmsh with opensees.</title><link href="http://www.joseabell.com/using-my-gmshtranslator-python-tool-to-interface-gmsh-with-opensees.html" rel="alternate"></link><published>2018-02-26T13:55:13-08:00</published><updated>2018-02-26T13:55:13-08:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2018-02-26:/using-my-gmshtranslator-python-tool-to-interface-gmsh-with-opensees.html</id><summary type="html">&lt;p&gt;I wrote the &lt;a href="https://github.com/jaabell/gmshtranslator"&gt;&lt;em&gt;gmshtranslator&lt;/em&gt;&lt;/a&gt; tool a while back during my PhD, to easily parse &lt;a href="http://gmsh.info/"&gt;&lt;em&gt;gmsh&lt;/em&gt;&lt;/a&gt; &lt;code&gt;msh&lt;/code&gt; files to any other format. I&amp;#8217;ve been using it for years now with not much change for both research and consulting, and have been contacted by other researchers that want to use it. I will soon write a tool, powered by &lt;em&gt;gmshtranslator&lt;/em&gt;, to more easily translate from &lt;em&gt;gmsh&lt;/em&gt; into OpenSees. Meanwhile, here is a short example on how to use gmshtranslator to create &lt;a href="opensees.berkeley.edu"&gt;&lt;em&gt;OpenSees&lt;/em&gt;&lt;/a&gt; models. The example assumes you know &lt;em&gt;gmsh&lt;/em&gt; formats (&lt;code&gt;.geo&lt;/code&gt; and &lt;code&gt;.msh&lt;/code&gt;) and&amp;nbsp;python. &lt;/p&gt;
+&lt;p&gt;The example consists on the simple …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I wrote the &lt;a href="https://github.com/jaabell/gmshtranslator"&gt;&lt;em&gt;gmshtranslator&lt;/em&gt;&lt;/a&gt; tool a while back during my PhD, to easily parse &lt;a href="http://gmsh.info/"&gt;&lt;em&gt;gmsh&lt;/em&gt;&lt;/a&gt; &lt;code&gt;msh&lt;/code&gt; files to any other format. I&amp;#8217;ve been using it for years now with not much change for both research and consulting, and have been contacted by other researchers that want to use it. I will soon write a tool, powered by &lt;em&gt;gmshtranslator&lt;/em&gt;, to more easily translate from &lt;em&gt;gmsh&lt;/em&gt; into OpenSees. Meanwhile, here is a short example on how to use gmshtranslator to create &lt;a href="opensees.berkeley.edu"&gt;&lt;em&gt;OpenSees&lt;/em&gt;&lt;/a&gt; models. The example assumes you know &lt;em&gt;gmsh&lt;/em&gt; formats (&lt;code&gt;.geo&lt;/code&gt; and &lt;code&gt;.msh&lt;/code&gt;) and&amp;nbsp;python. &lt;/p&gt;
+&lt;p&gt;The example consists on the simple cantilever beam shown in the following&amp;nbsp;figure.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Beam" src="https://www.dropbox.com/s/96dqfc5r6su4pjd/beam.png?raw=1" /&gt;&lt;/p&gt;
+&lt;p&gt;The beam is fixed at the right end, and has node-by-node forcing on the right end. The following &lt;em&gt;gmsh&lt;/em&gt; &lt;code&gt;.geo.&lt;/code&gt; script prepares the&amp;nbsp;domain. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;beam.geo :&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;LX = 5; LY = 0.5; Nx = 40; Ny = 5;
+
+Point(1) = {0, 0, 0, 1};
+Point(2) = {LX, 0, 0, 1};
+Point(3) = {LX, LY, 0, 1};
+Point(4) = {0, LY, 0, 1};
+Line(1) = {1, 2};
+Line(2) = {2, 3};
+Line(3) = {3, 4};
+Line(4) = {4, 1};
+Line Loop(1) = {1, 2, 3, 4};
+Plane Surface(1) = {1};
+
+Transfinite Line {1,3} = Nx+1;
+Transfinite Line {2,4} = Ny+1;
+Transfinite Surface{1};
+Recombine Surface{1};
+
+Physical Line("Fixed") = {4};
+Physical Line("Forcing") = {2};
+Physical Surface("Beam") = {1};
+
+Mesh(2);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;3 physical groups are defined: &lt;em&gt;fixed&lt;/em&gt; to identify the fixed nodes, &lt;em&gt;forcing&lt;/em&gt; to identify the nodes that will carry loads, and &lt;em&gt;beam&lt;/em&gt; contains all the quad elements to represent the body of the beam. Note the optional use of the transfinite meshing algorithm. Once this script is executed in &lt;em&gt;gmsh&lt;/em&gt; the &lt;code&gt;.msh&lt;/code&gt; file can be exported. The resulting &lt;code&gt;.msh&lt;/code&gt; file can be found &lt;a href="https://www.dropbox.com/s/3d44h0ttdrm67gz/beam.msh?dl=0"&gt;here&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;gmshtranslator&lt;/em&gt; parses the &lt;code&gt;.msh&lt;/code&gt; file, executing code depending on certain user-defined rules. What we want to do is define an opensees node command for each node in the &lt;code&gt;.msh&lt;/code&gt; file, fix the nodes contained in the &lt;em&gt;fixed&lt;/em&gt; physical group, generate forces for the nodes in the &lt;em&gt;forcing&lt;/em&gt; physical group, and add quad elements for each quad in the &lt;code&gt;.msh&lt;/code&gt; file. &lt;/p&gt;
+&lt;p&gt;First, import the &lt;code&gt;beam.msh&lt;/code&gt; file into &lt;em&gt;gmshtranslator&lt;/em&gt; and open files to be written that will contain the opensees&amp;nbsp;code. &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from gmshtranslator import gmshTranslator
+
+mshfname = "beam.msh"
+
+gt = gmshTranslator(mshfname)
+
+fid_nodes =    open(mshfname.replace(".msh", ".nodes.tcl"),"w")
+fid_elements = open(mshfname.replace(".msh", ".elements.tcl"),"w")
+fid_fixities = open(mshfname.replace(".msh", ".fixities.tcl"),"w")
+fid_loads = open(mshfname.replace(".msh", ".loads.tcl"),"w")
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I like writing different things (nodes, elements, etc.) in separate files for debugging. Your style might be different. &lt;em&gt;gmshtranslator&lt;/em&gt; parses the file and evaluates &lt;em&gt;rules&lt;/em&gt;. A rule is composed of a &lt;em&gt;condition&lt;/em&gt; that must be met and an &lt;em&gt;action&lt;/em&gt; to be executed, these are both python functions. There are rules for nodes and for&amp;nbsp;elements. &lt;/p&gt;
+&lt;p&gt;The syntax for node and element conditions&amp;nbsp;are:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def node_condition(tag,x,y,z,physgroups): 
+def element_condition(eletag,eletype,physgrp,nodes):
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;These are functions that evaluate to &lt;code&gt;true&lt;/code&gt; or &lt;code&gt;false&lt;/code&gt; depending on the inputs. Then the syntax for &lt;em&gt;actions&lt;/em&gt;&amp;nbsp;are:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def node_action(tag,x,y,z):
+def element_action(eletag,eletype,physgrp,nodes):
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;These functions don&amp;#8217;t return anything, instead excecute whatever code should be executed if the &lt;em&gt;condition&lt;/em&gt; of the rule is met. Rules are added to the parser by using the &lt;code&gt;add_nodes_rule&lt;/code&gt; or &lt;code&gt;add_elements_rule&lt;/code&gt; function of &lt;em&gt;gmshtranslator&lt;/em&gt; and are excecuted whenever the &lt;code&gt;parse()&lt;/code&gt; method is&amp;nbsp;called. &lt;/p&gt;
+&lt;p&gt;For example, the rule to add all nodes to the opensees domain would&amp;nbsp;be:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def is_node(tag,x,y,z,physgroups):
+    return True
+
+def add_node(tag,x,y,z):
+    fid_nodes.write("node {} {} {}\n".format(tag, x, y))
+
+gt.add_nodes_rule(is_node, add_node)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The node &lt;em&gt;condition&lt;/em&gt; (&lt;code&gt;is_node&lt;/code&gt;) function always returns &lt;code&gt;true&lt;/code&gt;, that is this rule will execute for all nodes. The &lt;em&gt;action&lt;/em&gt; function is &lt;code&gt;add_node&lt;/code&gt; and will write the appropriate text into the nodes file. The &lt;em&gt;rule&lt;/em&gt; is added into the parser by using the &lt;code&gt;gt.add_nodes_rule&lt;/code&gt; function which accepts two python functions as arguments: a condition and an&amp;nbsp;action. &lt;/p&gt;
+&lt;p&gt;The code for the rest of the example&amp;nbsp;is:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def fix_node(tag,x,y,z):
+    fid_fixities.write("fix {} 1 1\n".format(tag))
+
+def add_load(eletag,eletype,physgrp,nodes):
+    fid_loads.write("load {} $fx $fy\n".format(nodes[0]))
+    fid_loads.write("load {} $fx $fy\n".format(nodes[1]))
+
+def add_element(eletag,eletype,physgrp,nodes):
+    fid_elements.write("element quad {} {} {} {} {} $thick PlaneStress $mat_tag\n".format(eletag, nodes[0], nodes[1], nodes[2], nodes[3]))
+
+
+gt.add_nodes_rule(gt.is_node_in("Fixed"), fix_node)
+
+gt.add_elements_rule(gt.is_element_in("Forcing"), add_load)
+gt.add_elements_rule(gt.is_element_in("Beam"), add_element)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note that we didn&amp;#8217;t write a condition for the &lt;code&gt;fix_node&lt;/code&gt; action, instead we used some of the simple conditions contained in &lt;em&gt;gmshtranslator&lt;/em&gt; that can simplify some typical situations. In this case the &lt;code&gt;gt.is_node_in()&lt;/code&gt; function takes a physical group name and evaluates whether each node is in that physical group. An equivalent &lt;code&gt;python&lt;/code&gt; code for this would&amp;nbsp;be:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Fixed = 1  # Physical group number assigned by gmsh to the 'Fixed' group
+def is_node_in_Fixed(tag, x, y, z, physgroups):
+    return Fixed in physgroups
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Or using &lt;em&gt;gmstranslator&lt;/em&gt;s internal&amp;nbsp;mapping.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def is_node_in_Fixed(tag, x, y, z, physgroups):
+    return gt.physical_groups_by_name['Fixed'] in physgroups\
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The same holds true for the &lt;code&gt;add_load&lt;/code&gt; and &lt;code&gt;add_element&lt;/code&gt; rules, I just opted to use the simple function but could have written a condition function from scratch.  Add all rules to the parser by callig the &lt;code&gt;add_X_rule&lt;/code&gt; functions. Finally, call parse to execute and generate all output&amp;nbsp;files. &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gt.parse()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Don&amp;#8217;t forget to close files&amp;nbsp;people!&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;fid_nodes.close()
+fid_elements.close()
+fid_fixities.close()
+fid_loads.close()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Run the python script and, voillá! Meshing&amp;nbsp;done. &lt;/p&gt;
+&lt;p&gt;Finally, for completeness, here is the OpenSees tcl code that runs the complete example. I used elastic-isotropic material and a simple static analysis. I added only vertical loading on the tip of the&amp;nbsp;beam. &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;model BasicBuilder -ndm 2 -ndf 2
+
+set thick 1.0
+
+set mat_tag 1
+set E 200.e9
+set nu 0.3
+
+nDMaterial ElasticIsotropic $mat_tag $E $nu
+
+source "beam.nodes.tcl"
+source "beam.fixities.tcl"
+source "beam.elements.tcl"
+
+set tstag 1
+timeSeries Linear $tstag 1.0
+
+set Ly 0.5
+set Ny 5
+set dy [expr $Ly/$Ny]
+
+set fx [expr 0*$dy/2]
+set fy [expr -10.*$dy/2]
+
+pattern Plain 1 "Linear" {
+    source "beam.loads.tcl"
+}
+
+recorder pvd disp disp
+
+constraints Plain
+numberer RCM
+system UmfPack
+test NormDispIncr 1.0e-9 10
+algorithm Newton
+integrator LoadControl 1
+analysis Static
+analyze 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;pvd&lt;/code&gt; recorder is used to generate a nice output file that can be viewed using &lt;a href="https://www.paraview.org/"&gt;paraview&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Deflections" src="https://www.dropbox.com/s/24tkmfk1y1r0wz5/disp.png?raw=1" /&gt;&lt;/p&gt;</content><category term="opensees"></category><category term="gmsh"></category><category term="gmshtranslator"></category><category term="python"></category><category term="pre-proceesing"></category><category term="meshing"></category></entry><entry><title>Paper03 - Earthquake Soil Structure Interaction of Nuclear Power Plants, differences in response to 3-D, 3 × 1-D, and 1-D excitations</title><link href="http://www.joseabell.com/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations.html" rel="alternate"></link><published>2018-02-20T10:50:00-08:00</published><updated>2018-02-20T10:50:00-08:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2018-02-20:/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Finally!&lt;/strong&gt; First paper since PhD was accepted for publication. I&amp;#8217;ll take this opportunity to start a tradition and review my own papers here. I think its important that I do this for several reasons. First, there are discussions that come up during peer review that are important but don&amp;#8217;t make it into the paper. Misconceptions about the presented work can be clarified to a broader audience here. Also, I can say whatever I want, specially opinions and thoughts that come from intuition and might not make it through peer-review, I&amp;#8217;ll be as critical as possible about these …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Finally!&lt;/strong&gt; First paper since PhD was accepted for publication. I&amp;#8217;ll take this opportunity to start a tradition and review my own papers here. I think its important that I do this for several reasons. First, there are discussions that come up during peer review that are important but don&amp;#8217;t make it into the paper. Misconceptions about the presented work can be clarified to a broader audience here. Also, I can say whatever I want, specially opinions and thoughts that come from intuition and might not make it through peer-review, I&amp;#8217;ll be as critical as possible about these too and hope that my readers can discuss with me. I can post videos and other additional content here and make them available to everyone for free. And, finally, this post will have a Disqus thread where we can all&amp;nbsp;interact. &lt;/p&gt;
 &lt;p&gt;Lets get to it! Here is the citation so far (I still don&amp;#8217;t have an issue assign, going through editorial process): &lt;strong&gt;Abell Mena J A&lt;/strong&gt;, Orbović N, McCallen D B, Jeremic B. &lt;em&gt;Earthquake soil-structure interaction of nuclear power plants, differences in response to 3-D, 3×1-D, and 1-D excitations.&lt;/em&gt; Earthquake Engng Struct Dyn. 2018;1–18.&amp;nbsp;[https://doi.org/10.1002/eqe.3026].&lt;/p&gt;
 &lt;p&gt;The idea is simple: to show that the 3-D character of seismic motions has an impact on the structural response of a nuclear power-plant by comparing the response to 3-D motions with the one produced by an equivalent 1-D (1 component: horizontal) or 3×1-D (3 components) motion. Here is the &lt;span class="caps"&gt;NPP&lt;/span&gt; model used in the&amp;nbsp;article:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="NPP" src="https://www.dropbox.com/s/dj6ruypv0722qh2/fem_mesh.png?raw=1" /&gt;&lt;/p&gt;
