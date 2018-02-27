@@ -54,7 +54,8 @@
 <p><img alt="Beam" src="https://www.dropbox.com/s/96dqfc5r6su4pjd/beam.png?raw=1" /></p>
 <p>The beam is fixed at the right end, and has node-by-node forcing on the right end. The following <em>gmsh</em> <code>.geo.</code> script prepares the&nbsp;domain. </p>
 <p><strong><code>beam.geo :</code></strong></p>
-<pre><code>LX = 5; LY = 0.5; Nx = 40; Ny = 5;
+<pre><code>#!c
+LX = 5; LY = 0.5; Nx = 40; Ny = 5;
 
 Point(1) = {0, 0, 0, 1};
 Point(2) = {LX, 0, 0, 1};
@@ -81,7 +82,8 @@ Mesh(2);
 <p>3 physical groups are defined: <em>fixed</em> to identify the fixed nodes, <em>forcing</em> to identify the nodes that will carry loads, and <em>beam</em> contains all the quad elements to represent the body of the beam. Note the optional use of the transfinite meshing algorithm. Once this script is executed in <em>gmsh</em> the <code>.msh</code> file can be exported. The resulting <code>.msh</code> file can be found <a href="https://www.dropbox.com/s/3d44h0ttdrm67gz/beam.msh?dl=0">here</a>. </p>
 <p><em>gmshtranslator</em> parses the <code>.msh</code> file, executing code depending on certain user-defined rules. What we want to do is define an opensees node command for each node in the <code>.msh</code> file, fix the nodes contained in the <em>fixed</em> physical group, generate forces for the nodes in the <em>forcing</em> physical group, and add quad elements for each quad in the <code>.msh</code> file. </p>
 <p>First, import the <code>beam.msh</code> file into <em>gmshtranslator</em> and open files to be written that will contain the opensees&nbsp;code. </p>
-<pre><code>from gmshtranslator import gmshTranslator
+<pre><code>#!python
+from gmshtranslator import gmshTranslator
 
 mshfname = "beam.msh"
 
@@ -94,16 +96,19 @@ fid_loads = open(mshfname.replace(".msh", ".loads.tcl"),"w")
 </code></pre>
 <p>I like writing different things (nodes, elements, etc.) in separate files for debugging. Your style might be different. <em>gmshtranslator</em> parses the file and evaluates <em>rules</em>. A rule is composed of a <em>condition</em> that must be met and an <em>action</em> to be executed, these are both python functions. There are rules for nodes and for&nbsp;elements. </p>
 <p>The syntax for node and element conditions&nbsp;are:</p>
-<pre><code>def node_condition(tag,x,y,z,physgroups): 
+<pre><code>#!python
+def node_condition(tag,x,y,z,physgroups): 
 def element_condition(eletag,eletype,physgrp,nodes):
 </code></pre>
 <p>These are functions that evaluate to <code>true</code> or <code>false</code> depending on the inputs. Then the syntax for <em>actions</em>&nbsp;are:</p>
-<pre><code>def node_action(tag,x,y,z):
+<pre><code>#!python
+def node_action(tag,x,y,z):
 def element_action(eletag,eletype,physgrp,nodes):
 </code></pre>
 <p>These functions don&#8217;t return anything, instead excecute whatever code should be executed if the <em>condition</em> of the rule is met. Rules are added to the parser by using the <code>add_nodes_rule</code> or <code>add_elements_rule</code> function of <em>gmshtranslator</em> and are excecuted whenever the <code>parse()</code> method is&nbsp;called. </p>
 <p>For example, the rule to add all nodes to the opensees domain would&nbsp;be:</p>
-<pre><code>def is_node(tag,x,y,z,physgroups):
+<pre><code>#!python
+def is_node(tag,x,y,z,physgroups):
     return True
 
 def add_node(tag,x,y,z):
@@ -113,7 +118,8 @@ gt.add_nodes_rule(is_node, add_node)
 </code></pre>
 <p>The node <em>condition</em> (<code>is_node</code>) function always returns <code>true</code>, that is this rule will execute for all nodes. The <em>action</em> function is <code>add_node</code> and will write the appropriate text into the nodes file. The <em>rule</em> is added into the parser by using the <code>gt.add_nodes_rule</code> function which accepts two python functions as arguments: a condition and an&nbsp;action. </p>
 <p>The code for the rest of the example&nbsp;is:</p>
-<pre><code>def fix_node(tag,x,y,z):
+<pre><code>#!python
+def fix_node(tag,x,y,z):
     fid_fixities.write("fix {} 1 1\n".format(tag))
 
 def add_load(eletag,eletype,physgrp,nodes):
@@ -130,26 +136,31 @@ gt.add_elements_rule(gt.is_element_in("Forcing"), add_load)
 gt.add_elements_rule(gt.is_element_in("Beam"), add_element)
 </code></pre>
 <p>Note that we didn&#8217;t write a condition for the <code>fix_node</code> action, instead we used some of the simple conditions contained in <em>gmshtranslator</em> that can simplify some typical situations. In this case the <code>gt.is_node_in()</code> function takes a physical group name and evaluates whether each node is in that physical group. An equivalent <code>python</code> code for this would&nbsp;be:</p>
-<pre><code>Fixed = 1  # Physical group number assigned by gmsh to the 'Fixed' group
+<pre><code>#!python
+Fixed = 1  # Physical group number assigned by gmsh to the 'Fixed' group
 def is_node_in_Fixed(tag, x, y, z, physgroups):
     return Fixed in physgroups
 </code></pre>
 <p>Or using <em>gmstranslator</em>s internal&nbsp;mapping.</p>
-<pre><code>def is_node_in_Fixed(tag, x, y, z, physgroups):
+<pre><code>#!python
+def is_node_in_Fixed(tag, x, y, z, physgroups):
     return gt.physical_groups_by_name['Fixed'] in physgroups\
 </code></pre>
 <p>The same holds true for the <code>add_load</code> and <code>add_element</code> rules, I just opted to use the simple function but could have written a condition function from scratch.  Add all rules to the parser by callig the <code>add_X_rule</code> functions. Finally, call parse to execute and generate all output&nbsp;files. </p>
-<pre><code>gt.parse()
+<pre><code>#!python
+gt.parse()
 </code></pre>
 <p>Don&#8217;t forget to close files&nbsp;people!</p>
-<pre><code>fid_nodes.close()
+<pre><code>#!python
+fid_nodes.close()
 fid_elements.close()
 fid_fixities.close()
 fid_loads.close()
 </code></pre>
 <p>Run the python script and, voillá! Meshing&nbsp;done. </p>
 <p>Finally, for completeness, here is the OpenSees tcl code that runs the complete example. I used elastic-isotropic material and a simple static analysis. I added only vertical loading on the tip of the&nbsp;beam. </p>
-<pre><code>model BasicBuilder -ndm 2 -ndf 2
+<pre><code>#!tcl
+model BasicBuilder -ndm 2 -ndf 2
 
 set thick 1.0
 

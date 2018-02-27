@@ -5,7 +5,8 @@
 &lt;p&gt;&lt;img alt="Beam" src="https://www.dropbox.com/s/96dqfc5r6su4pjd/beam.png?raw=1" /&gt;&lt;/p&gt;
 &lt;p&gt;The beam is fixed at the right end, and has node-by-node forcing on the right end. The following &lt;em&gt;gmsh&lt;/em&gt; &lt;code&gt;.geo.&lt;/code&gt; script prepares the&amp;nbsp;domain. &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;code&gt;beam.geo :&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;LX = 5; LY = 0.5; Nx = 40; Ny = 5;
+&lt;pre&gt;&lt;code&gt;#!c
+LX = 5; LY = 0.5; Nx = 40; Ny = 5;
 
 Point(1) = {0, 0, 0, 1};
 Point(2) = {LX, 0, 0, 1};
@@ -32,7 +33,8 @@ Mesh(2);
 &lt;p&gt;3 physical groups are defined: &lt;em&gt;fixed&lt;/em&gt; to identify the fixed nodes, &lt;em&gt;forcing&lt;/em&gt; to identify the nodes that will carry loads, and &lt;em&gt;beam&lt;/em&gt; contains all the quad elements to represent the body of the beam. Note the optional use of the transfinite meshing algorithm. Once this script is executed in &lt;em&gt;gmsh&lt;/em&gt; the &lt;code&gt;.msh&lt;/code&gt; file can be exported. The resulting &lt;code&gt;.msh&lt;/code&gt; file can be found &lt;a href="https://www.dropbox.com/s/3d44h0ttdrm67gz/beam.msh?dl=0"&gt;here&lt;/a&gt;. &lt;/p&gt;
 &lt;p&gt;&lt;em&gt;gmshtranslator&lt;/em&gt; parses the &lt;code&gt;.msh&lt;/code&gt; file, executing code depending on certain user-defined rules. What we want to do is define an opensees node command for each node in the &lt;code&gt;.msh&lt;/code&gt; file, fix the nodes contained in the &lt;em&gt;fixed&lt;/em&gt; physical group, generate forces for the nodes in the &lt;em&gt;forcing&lt;/em&gt; physical group, and add quad elements for each quad in the &lt;code&gt;.msh&lt;/code&gt; file. &lt;/p&gt;
 &lt;p&gt;First, import the &lt;code&gt;beam.msh&lt;/code&gt; file into &lt;em&gt;gmshtranslator&lt;/em&gt; and open files to be written that will contain the opensees&amp;nbsp;code. &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;from gmshtranslator import gmshTranslator
+&lt;pre&gt;&lt;code&gt;#!python
+from gmshtranslator import gmshTranslator
 
 mshfname = "beam.msh"
 
@@ -45,16 +47,19 @@ fid_loads = open(mshfname.replace(".msh", ".loads.tcl"),"w")
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;I like writing different things (nodes, elements, etc.) in separate files for debugging. Your style might be different. &lt;em&gt;gmshtranslator&lt;/em&gt; parses the file and evaluates &lt;em&gt;rules&lt;/em&gt;. A rule is composed of a &lt;em&gt;condition&lt;/em&gt; that must be met and an &lt;em&gt;action&lt;/em&gt; to be executed, these are both python functions. There are rules for nodes and for&amp;nbsp;elements. &lt;/p&gt;
 &lt;p&gt;The syntax for node and element conditions&amp;nbsp;are:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;def node_condition(tag,x,y,z,physgroups): 
+&lt;pre&gt;&lt;code&gt;#!python
+def node_condition(tag,x,y,z,physgroups): 
 def element_condition(eletag,eletype,physgrp,nodes):
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;These are functions that evaluate to &lt;code&gt;true&lt;/code&gt; or &lt;code&gt;false&lt;/code&gt; depending on the inputs. Then the syntax for &lt;em&gt;actions&lt;/em&gt;&amp;nbsp;are:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;def node_action(tag,x,y,z):
+&lt;pre&gt;&lt;code&gt;#!python
+def node_action(tag,x,y,z):
 def element_action(eletag,eletype,physgrp,nodes):
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;These functions don&amp;#8217;t return anything, instead excecute whatever code should be executed if the &lt;em&gt;condition&lt;/em&gt; of the rule is met. Rules are added to the parser by using the &lt;code&gt;add_nodes_rule&lt;/code&gt; or &lt;code&gt;add_elements_rule&lt;/code&gt; function of &lt;em&gt;gmshtranslator&lt;/em&gt; and are excecuted whenever the &lt;code&gt;parse()&lt;/code&gt; method is&amp;nbsp;called. &lt;/p&gt;
 &lt;p&gt;For example, the rule to add all nodes to the opensees domain would&amp;nbsp;be:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;def is_node(tag,x,y,z,physgroups):
+&lt;pre&gt;&lt;code&gt;#!python
+def is_node(tag,x,y,z,physgroups):
     return True
 
 def add_node(tag,x,y,z):
@@ -64,7 +69,8 @@ gt.add_nodes_rule(is_node, add_node)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The node &lt;em&gt;condition&lt;/em&gt; (&lt;code&gt;is_node&lt;/code&gt;) function always returns &lt;code&gt;true&lt;/code&gt;, that is this rule will execute for all nodes. The &lt;em&gt;action&lt;/em&gt; function is &lt;code&gt;add_node&lt;/code&gt; and will write the appropriate text into the nodes file. The &lt;em&gt;rule&lt;/em&gt; is added into the parser by using the &lt;code&gt;gt.add_nodes_rule&lt;/code&gt; function which accepts two python functions as arguments: a condition and an&amp;nbsp;action. &lt;/p&gt;
 &lt;p&gt;The code for the rest of the example&amp;nbsp;is:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;def fix_node(tag,x,y,z):
+&lt;pre&gt;&lt;code&gt;#!python
+def fix_node(tag,x,y,z):
     fid_fixities.write("fix {} 1 1\n".format(tag))
 
 def add_load(eletag,eletype,physgrp,nodes):
@@ -81,26 +87,31 @@ gt.add_elements_rule(gt.is_element_in("Forcing"), add_load)
 gt.add_elements_rule(gt.is_element_in("Beam"), add_element)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Note that we didn&amp;#8217;t write a condition for the &lt;code&gt;fix_node&lt;/code&gt; action, instead we used some of the simple conditions contained in &lt;em&gt;gmshtranslator&lt;/em&gt; that can simplify some typical situations. In this case the &lt;code&gt;gt.is_node_in()&lt;/code&gt; function takes a physical group name and evaluates whether each node is in that physical group. An equivalent &lt;code&gt;python&lt;/code&gt; code for this would&amp;nbsp;be:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Fixed = 1  # Physical group number assigned by gmsh to the 'Fixed' group
+&lt;pre&gt;&lt;code&gt;#!python
+Fixed = 1  # Physical group number assigned by gmsh to the 'Fixed' group
 def is_node_in_Fixed(tag, x, y, z, physgroups):
     return Fixed in physgroups
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Or using &lt;em&gt;gmstranslator&lt;/em&gt;s internal&amp;nbsp;mapping.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;def is_node_in_Fixed(tag, x, y, z, physgroups):
+&lt;pre&gt;&lt;code&gt;#!python
+def is_node_in_Fixed(tag, x, y, z, physgroups):
     return gt.physical_groups_by_name['Fixed'] in physgroups\
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The same holds true for the &lt;code&gt;add_load&lt;/code&gt; and &lt;code&gt;add_element&lt;/code&gt; rules, I just opted to use the simple function but could have written a condition function from scratch.  Add all rules to the parser by callig the &lt;code&gt;add_X_rule&lt;/code&gt; functions. Finally, call parse to execute and generate all output&amp;nbsp;files. &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;gt.parse()
+&lt;pre&gt;&lt;code&gt;#!python
+gt.parse()
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Don&amp;#8217;t forget to close files&amp;nbsp;people!&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;fid_nodes.close()
+&lt;pre&gt;&lt;code&gt;#!python
+fid_nodes.close()
 fid_elements.close()
 fid_fixities.close()
 fid_loads.close()
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Run the python script and, voillá! Meshing&amp;nbsp;done. &lt;/p&gt;
 &lt;p&gt;Finally, for completeness, here is the OpenSees tcl code that runs the complete example. I used elastic-isotropic material and a simple static analysis. I added only vertical loading on the tip of the&amp;nbsp;beam. &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;model BasicBuilder -ndm 2 -ndf 2
+&lt;pre&gt;&lt;code&gt;#!tcl
+model BasicBuilder -ndm 2 -ndf 2
 
 set thick 1.0
 
