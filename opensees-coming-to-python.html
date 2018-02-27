@@ -57,108 +57,109 @@
 <p>Sadly, civil engineers are not very code-savvy and no (useful) new applications came. Therefore it came to pass that the OpenSees extension of the <span class="caps">TCL</span> interpreter became OpenSees and this is what everyone&nbsp;uses. </p>
 <p>Now <span class="caps">TCL</span> is an awkward language for a scientific application, mainly due to syntax and lack of a complete library for scientific computing. Python, on the other hand, has proven in the recent years to be a worthy replacement of the mighty Matlab. Many of us started scientific computing in Matlab and then migrated to the free world of Python. It was just logical that OpenSees would benefit much more from using Python as its language of choice rather than <span class="caps">TCL</span>.</p>
 <p>It has finally happened, and this blog post celebrates my joy. Behold the following analysis case written in&nbsp;Python.</p>
-<pre><code>:::PythonLexer
-import opensees as ops
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">opensees</span> <span class="kn">as</span> <span class="nn">ops</span>
 
-ops.wipe()
+<span class="n">ops</span><span class="o">.</span><span class="n">wipe</span><span class="p">()</span>
 
-ops.model('basic', '-ndm', 3, '-ndf', 3)
+<span class="n">ops</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="s1">&#39;basic&#39;</span><span class="p">,</span> <span class="s1">&#39;-ndm&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;-ndf&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 
-for e in range(3):
-    ops.node(1+4*e, 0., 0., 1.*e)
-    ops.node(2+4*e, 1., 0., 1.*e)
-    ops.node(3+4*e, 1., 1., 1.*e)
-    ops.node(4+4*e, 0., 1., 1.*e)
+<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">ops</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">4</span><span class="o">*</span><span class="n">e</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="o">*</span><span class="n">e</span><span class="p">)</span>
+    <span class="n">ops</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="mi">4</span><span class="o">*</span><span class="n">e</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="o">*</span><span class="n">e</span><span class="p">)</span>
+    <span class="n">ops</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="mi">3</span><span class="o">+</span><span class="mi">4</span><span class="o">*</span><span class="n">e</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="o">*</span><span class="n">e</span><span class="p">)</span>
+    <span class="n">ops</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="mi">4</span><span class="o">+</span><span class="mi">4</span><span class="o">*</span><span class="n">e</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="o">*</span><span class="n">e</span><span class="p">)</span>
 
-ops.fix(1, 1, 1, 1)
-ops.fix(2, 1, 1, 1)
-ops.fix(3, 1, 1, 1)
-ops.fix(4, 1, 1, 1)
+<span class="n">ops</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ops</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ops</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ops</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-ops.nDMaterial("ElasticIsotropic3D", 1, 2100., 0.3, 0.0)
+<span class="n">ops</span><span class="o">.</span><span class="n">nDMaterial</span><span class="p">(</span><span class="s2">&quot;ElasticIsotropic3D&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">2100.</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
 
-ops.element("stdBrick",1,1,2,3,4,5,6,7,8,1)
-ops.element("stdBrick",2,5,6,7,8,9,10,11,12,1)
+<span class="n">ops</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="s2">&quot;stdBrick&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ops</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="s2">&quot;stdBrick&quot;</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
-ops.timeSeries("Linear", 1)
-ops.pattern("Plain", 1, 1, "-fact", 1.0)
-ops.load(1+4*e, 0., 0., -50.)  # Load at the first of the top nodes.
+<span class="n">ops</span><span class="o">.</span><span class="n">timeSeries</span><span class="p">(</span><span class="s2">&quot;Linear&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ops</span><span class="o">.</span><span class="n">pattern</span><span class="p">(</span><span class="s2">&quot;Plain&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;-fact&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">ops</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">4</span><span class="o">*</span><span class="n">e</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.</span><span class="p">)</span>  <span class="c1"># Load at the first of the top nodes.</span>
 
-ops.system("BandSPD")
-ops.numberer("RCM")
-ops.constraints("Plain")
-ops.algorithm("Linear")
-ops.integrator("LoadControl", 1.0)
-ops.analysis("Static")
-ops.analyze(1)
-</code></pre>
+<span class="n">ops</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;BandSPD&quot;</span><span class="p">)</span>
+<span class="n">ops</span><span class="o">.</span><span class="n">numberer</span><span class="p">(</span><span class="s2">&quot;RCM&quot;</span><span class="p">)</span>
+<span class="n">ops</span><span class="o">.</span><span class="n">constraints</span><span class="p">(</span><span class="s2">&quot;Plain&quot;</span><span class="p">)</span>
+<span class="n">ops</span><span class="o">.</span><span class="n">algorithm</span><span class="p">(</span><span class="s2">&quot;Linear&quot;</span><span class="p">)</span>
+<span class="n">ops</span><span class="o">.</span><span class="n">integrator</span><span class="p">(</span><span class="s2">&quot;LoadControl&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">ops</span><span class="o">.</span><span class="n">analysis</span><span class="p">(</span><span class="s2">&quot;Static&quot;</span><span class="p">)</span>
+<span class="n">ops</span><span class="o">.</span><span class="n">analyze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+
 <p>This example just stacks two bricks and applies a downward load on one of the top nodes. The interesting part is that now you can interact with all of the rich tools available in python. Just as a taste of what&#8217;s to come, here is a plot of the deformed shape of the example above created using matplotlib&#8217;s 3-D plotting&nbsp;capabilities. </p>
-<p><a href="/images/blogposts/opensees-coming-to-python/twobricks.png"><img alt="twobricks" src="/images/blogposts/opensees-coming-to-python/twobricks.png" /></a></p>
+<p><a href="/images/blogposts/opensees-coming-to-python/twobricks.png"><img alt="twobricks" src="/images/blogposts/opensees-coming-to-python/twobricks.png"></a></p>
 <p>And here&#8217;s the code that achieves&nbsp;this:</p>
-<pre><code>:::PythonLexer
+<div class="highlight"><pre><span></span><span class="c1">### Plot bricks in the domain</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="kn">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
 
-### Plot bricks in the domain
-import scipy as sp
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
+<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">ops</span><span class="o">.</span><span class="n">getEleTags</span><span class="p">():</span>
 
-for e in ops.getEleTags():
+    <span class="n">nodes</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">eleNodes</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    <span class="n">Nnodes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
 
-    nodes = ops.eleNodes(e)
-    Nnodes = len(nodes)
+    <span class="n">xyz</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">Nnodes</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+    <span class="n">uu</span>   <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">Nnodes</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Nnodes</span><span class="p">):</span>
+        <span class="n">xyz</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">nodeCoord</span><span class="p">(</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">uu</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">nodeDisp</span><span class="p">(</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 
-    xyz = sp.zeros((Nnodes,3), dtype=sp.double)
-    uu   = sp.zeros((Nnodes,3), dtype=sp.double)
-    for i in range(Nnodes):
-        xyz[i,:] = ops.nodeCoord(nodes[i])
-        uu[i,:] = ops.nodeDisp(nodes[i])
+    <span class="k">print</span>
 
-    print
+    <span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
 
-    x = sp.zeros(12,dtype=sp.double)
-    y = sp.zeros(12,dtype=sp.double)
-    z = sp.zeros(12,dtype=sp.double)
-    u = sp.zeros(12,dtype=sp.double)
-    v = sp.zeros(12,dtype=sp.double)
-    w = sp.zeros(12,dtype=sp.double)
+    <span class="n">conec</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> \
+    <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>\
+    <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>\
+    <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>\
+    <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>\
+    <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>\
+    <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>\
+    <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>\
+    <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>\
+    <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>\
+    <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>\
+    <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span>
+    <span class="p">]</span>
 
-    conec = [0, 1, -1, \
-    1, 2, -1,\
-    2, 3, -1,\
-    3, 0, -1,\
-    4, 5, -1,\
-    5, 6, -1,\
-    6, 7, -1,\
-    7, 4, -1,\
-    0, 4, -1,\
-    1, 5, -1,\
-    2, 6, -1,\
-    3, 7
-    ]
+    <span class="n">x</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="n">conec</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="n">conec</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="n">conec</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">::</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">::</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">z</span><span class="p">[</span><span class="mi">2</span><span class="p">::</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">nan</span>
 
-    x = xyz[conec,0]
-    y = xyz[conec,1]
-    z = xyz[conec,2]
-    x[2::3] = sp.nan
-    y[2::3] = sp.nan
-    z[2::3] = sp.nan
+    <span class="n">factor</span> <span class="o">=</span> <span class="mf">1.</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="n">conec</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">factor</span><span class="o">*</span><span class="n">uu</span><span class="p">[</span><span class="n">conec</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="n">conec</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">factor</span><span class="o">*</span><span class="n">uu</span><span class="p">[</span><span class="n">conec</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="n">conec</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">factor</span><span class="o">*</span><span class="n">uu</span><span class="p">[</span><span class="n">conec</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">u</span><span class="p">[</span><span class="mi">2</span><span class="p">::</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">::</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">w</span><span class="p">[</span><span class="mi">2</span><span class="p">::</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">nan</span>
 
-    factor = 1.
-    u = xyz[conec,0] + factor*uu[conec,0]
-    v = xyz[conec,1] + factor*uu[conec,1]
-    w = xyz[conec,2] + factor*uu[conec,2]
-    u[2::3] = sp.nan
-    v[2::3] = sp.nan
-    w[2::3] = sp.nan
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="s2">&quot;-ob&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="s2">&quot;-or&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
 
-    ax.plot(x,y,z,"-ob")
-    ax.plot(u,v,w,"-or")
-plt.show()
-</code></pre>
+
 <p>A <a href="https://www.dropbox.com/s/lt4ghlkj9ypy0nm/opensees-coming-to-python-example.py?dl=0">simple extension</a> to the above example generalizes the stack to an arbitrary number of bricks. And the visualization just&nbsp;works. </p>
-<p><a href="/images/blogposts/opensees-coming-to-python/fivebricks.png"><img alt="fivebricks" src="/images/blogposts/opensees-coming-to-python/fivebricks.png" /></a></p>
+<p><a href="/images/blogposts/opensees-coming-to-python/fivebricks.png"><img alt="fivebricks" src="/images/blogposts/opensees-coming-to-python/fivebricks.png"></a></p>
 <p>Currently, I have to manually compile a python module extension on my Ubuntu linux laptop for this to work. I have no idea if it will be available to windows users as an easy-to-download binary in the near future. I will post on how to get this working on linux though. For those of you adventurous&nbsp;enough. </p>
         </div>
 

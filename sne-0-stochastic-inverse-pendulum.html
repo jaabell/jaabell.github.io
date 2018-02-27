@@ -53,14 +53,14 @@
 section where I upload and comment (briefly) some small numerical
 example. The purpose is to prove a point to myself, test some code,
 ideas,&nbsp;etc.</p>
-<p><a href="/images/sne/01/pendulum_medium.png"><img alt="pendulum" src="/images/sne/01/pendulum_medium.png" /></a></p>
+<p><a href="/images/sne/01/pendulum_medium.png"><img alt="pendulum" src="/images/sne/01/pendulum_medium.png"></a></p>
 <p>In this first post I will explore the response of a <em>stochastic inverse
 pendulum.</em> What I mean in this case is an inverse pendulum (shown left)
 with a random initial condition. The purpose is to obtain the
 time-evolving probability density function (<span class="caps">PDF</span>) of the pendulum&#8217;s
 position. I will be doing Monte-Carlo simulations to obtain an
-approximation to this <span class="caps">PDF</span>.<br />
-<!--more--><br />
+approximation to this <span class="caps">PDF</span>.<br>
+<!--more--><br>
 The response of the system is governed by the following nonlinear
 ordinary differential equation in terms of the angular displacement
 <span class="math">\(\theta\)</span> with respect to the&nbsp;vertical:</p>
@@ -83,9 +83,9 @@ about the final equilibrium&nbsp;point </p>
 <p>The example is coded in python and solved using the <em>odeint </em>solver
 available in <a href="http://www.scipy.org">scipy</a>. Here is an example response for a given nonzero
 initial&nbsp;condition.</p>
-<p><a href="/images/sne/01/one.png"><img alt="one" src="/images/sne/01/one.png" /></a></p>
+<p><a href="/images/sne/01/one.png"><img alt="one" src="/images/sne/01/one.png"></a></p>
 <p>Doing 5000 Monte-Carlo draws and plotting all the responses together we
-get:<a href="/images/sne/01/ensemble.png"><img alt="ensemble" src="/images/sne/01/ensemble.png" /></a></p>
+get:<a href="/images/sne/01/ensemble.png"><img alt="ensemble" src="/images/sne/01/ensemble.png"></a></p>
 <p>-About half of the the pendulums swing to the left and the other half to
 the right. This would result in a bimodal distribution and is a mere
 artifact of the mathematical model used. Indeed, what the model
@@ -107,130 +107,131 @@ mathematical tool&nbsp;used.</p>
 <p>These spurious peaks generate unrealistic dispersion in the distribution
 of results. Is there a way to identify them and get rid of&nbsp;them?</p>
 <p>The following python code produces these&nbsp;results.</p>
-<pre><code>:::PythonLexer
-#!/bin/python  
-# -*- coding: utf-8 -*-  
-# Small numerical experiments # 00  
-"""  
-@SNE_number: 00  
-@Title: Stochastic inverse pendulum  
-@Idea: Show a case in which bifurcation behavior produces multimodal
-distribution.  
-@Tags: scipy, ode, stochastic, multimodal, bimodal, matplotlib,
-Monte-Carlo, animation, python  
-@Date: Created on Fri Oct 4 2013  
-@author: jaabell  
-"""
+<div class="highlight"><pre><span></span><span class="c1">#!/bin/python  </span>
+<span class="c1"># -*- coding: utf-8 -*-  </span>
+<span class="c1"># Small numerical experiments # 00  </span>
+<span class="s2">&quot;&quot;&quot;  </span>
+<span class="s2">@SNE_number: 00  </span>
+<span class="s2">@Title: Stochastic inverse pendulum  </span>
+<span class="s2">@Idea: Show a case in which bifurcation behavior produces multimodal</span>
+<span class="s2">distribution.  </span>
+<span class="s2">@Tags: scipy, ode, stochastic, multimodal, bimodal, matplotlib,</span>
+<span class="s2">Monte-Carlo, animation, python  </span>
+<span class="s2">@Date: Created on Fri Oct 4 2013  </span>
+<span class="s2">@author: jaabell  </span>
+<span class="s2">&quot;&quot;&quot;</span>
 
-import scipy as sp  
-import matplotlib.pylab as plt  
-from scipy.integrate import odeint
+<span class="s s-Atom">import</span> <span class="s s-Atom">scipy</span> <span class="s s-Atom">as</span> <span class="s s-Atom">sp</span>  
+<span class="s s-Atom">import</span> <span class="s s-Atom">matplotlib</span><span class="p">.</span><span class="s s-Atom">pylab</span> <span class="s s-Atom">as</span> <span class="s s-Atom">plt</span>  
+<span class="s s-Atom">from</span> <span class="s s-Atom">scipy</span><span class="p">.</span><span class="s s-Atom">integrate</span> <span class="s s-Atom">import</span> <span class="s s-Atom">odeint</span>
 
-N = 5000 #[] number of Monte-Carlo trials  
-mu_theta = 0.0 #[deg]  
-sigma_theta = 10 #[deg]  
-tmax = 10 #[s] Maximum time for simulation  
-dt = 0.01 #[s] Time step for integration  
-m = 1 #[]  
-g = 9.81 #[m/s\^2]  
-l = 0.50 #[m]  
-xi = 0.3 #[] Ratio of critical damping (for a regular pendulum under
-small deflections)  
-Nbins = 50 #[] Number of bins for computing histograms  
-theta_0_dot = 0.0 #[deg/sec] initial angular velocity for pendulums
+<span class="nv">N</span> <span class="o">=</span> <span class="mi">5000</span> <span class="s s-Atom">#</span><span class="p">[]</span> <span class="s s-Atom">number</span> <span class="s s-Atom">of</span> <span class="nv">Monte</span><span class="o">-</span><span class="nv">Carlo</span> <span class="s s-Atom">trials</span>  
+<span class="s s-Atom">mu_theta</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="s s-Atom">#</span><span class="p">[</span><span class="s s-Atom">deg</span><span class="p">]</span>  
+<span class="s s-Atom">sigma_theta</span> <span class="o">=</span> <span class="mi">10</span> <span class="s s-Atom">#</span><span class="p">[</span><span class="s s-Atom">deg</span><span class="p">]</span>  
+<span class="s s-Atom">tmax</span> <span class="o">=</span> <span class="mi">10</span> <span class="s s-Atom">#</span><span class="p">[</span><span class="s s-Atom">s</span><span class="p">]</span> <span class="nv">Maximum</span> <span class="s s-Atom">time</span> <span class="s s-Atom">for</span> <span class="s s-Atom">simulation</span>  
+<span class="s s-Atom">dt</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="s s-Atom">#</span><span class="p">[</span><span class="s s-Atom">s</span><span class="p">]</span> <span class="nv">Time</span> <span class="s s-Atom">step</span> <span class="s s-Atom">for</span> <span class="s s-Atom">integration</span>  
+<span class="s s-Atom">m</span> <span class="o">=</span> <span class="mi">1</span> <span class="s s-Atom">#</span><span class="p">[]</span>  
+<span class="s s-Atom">g</span> <span class="o">=</span> <span class="mf">9.81</span> <span class="s s-Atom">#</span><span class="p">[</span><span class="s s-Atom">m</span><span class="o">/</span><span class="s s-Atom">s\^</span><span class="mi">2</span><span class="p">]</span>  
+<span class="s s-Atom">l</span> <span class="o">=</span> <span class="mf">0.50</span> <span class="s s-Atom">#</span><span class="p">[</span><span class="s s-Atom">m</span><span class="p">]</span>  
+<span class="s s-Atom">xi</span> <span class="o">=</span> <span class="mf">0.3</span> <span class="s s-Atom">#</span><span class="p">[]</span> <span class="nv">Ratio</span> <span class="s s-Atom">of</span> <span class="s s-Atom">critical</span> <span class="nf">damping</span> <span class="p">(</span><span class="s s-Atom">for</span> <span class="s s-Atom">a</span> <span class="s s-Atom">regular</span> <span class="s s-Atom">pendulum</span> <span class="s s-Atom">under</span>
+<span class="s s-Atom">small</span> <span class="s s-Atom">deflections</span><span class="p">)</span>  
+<span class="nv">Nbins</span> <span class="o">=</span> <span class="mi">50</span> <span class="s s-Atom">#</span><span class="p">[]</span> <span class="nv">Number</span> <span class="s s-Atom">of</span> <span class="s s-Atom">bins</span> <span class="s s-Atom">for</span> <span class="s s-Atom">computing</span> <span class="s s-Atom">histograms</span>  
+<span class="s s-Atom">theta_0_dot</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="s s-Atom">#</span><span class="p">[</span><span class="s s-Atom">deg</span><span class="o">/</span><span class="s s-Atom">sec</span><span class="p">]</span> <span class="s s-Atom">initial</span> <span class="s s-Atom">angular</span> <span class="s s-Atom">velocity</span> <span class="s s-Atom">for</span> <span class="s s-Atom">pendulums</span>
 
-compute = False #Use this in an interactive session (ie. spyder) to
-avoid recomputing the Monte-Carlo runs
+<span class="s s-Atom">compute</span> <span class="o">=</span> <span class="nv">False</span> <span class="s s-Atom">#</span><span class="nv">Use</span> <span class="s s-Atom">this</span> <span class="s s-Atom">in</span> <span class="s s-Atom">an</span> <span class="s s-Atom">interactive</span> <span class="nf">session</span> <span class="p">(</span><span class="s s-Atom">ie</span><span class="p">.</span> <span class="s s-Atom">spyder</span><span class="p">)</span> <span class="s s-Atom">to</span>
+<span class="s s-Atom">avoid</span> <span class="s s-Atom">recomputing</span> <span class="s s-Atom">the</span> <span class="nv">Monte</span><span class="o">-</span><span class="nv">Carlo</span> <span class="s s-Atom">runs</span>
 
-c = 2*xi*m*l**2 #[N*m*s/rad] Damping constant  
-Nt = int(tmax/dt) #[] Number of simulation timesteps
+<span class="s s-Atom">c</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="s s-Atom">xi</span><span class="o">*</span><span class="s s-Atom">m</span><span class="o">*</span><span class="s s-Atom">l**</span><span class="mi">2</span> <span class="s s-Atom">#</span><span class="p">[</span><span class="nv">N</span><span class="o">*</span><span class="s s-Atom">m</span><span class="o">*</span><span class="s s-Atom">s</span><span class="o">/</span><span class="s s-Atom">rad</span><span class="p">]</span> <span class="nv">Damping</span> <span class="s s-Atom">constant</span>  
+<span class="nv">Nt</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="s s-Atom">tmax</span><span class="o">/</span><span class="s s-Atom">dt</span><span class="p">)</span> <span class="s s-Atom">#</span><span class="p">[]</span> <span class="nv">Number</span> <span class="s s-Atom">of</span> <span class="s s-Atom">simulation</span> <span class="s s-Atom">timesteps</span>
 
-#Generate parameters for Monte-Carlo trials  
-mu_theta_rad = mu_theta*sp.pi/180  
-sigma_theta_rad = sigma_theta*sp.pi/180  
-thetas = sp.randn((N))*sigma_theta_rad + mu_theta_rad  
-t = sp.arange(0,tmax, dt)
+<span class="c1">#Generate parameters for Monte-Carlo trials  </span>
+<span class="s s-Atom">mu_theta_rad</span> <span class="o">=</span> <span class="s s-Atom">mu_theta</span><span class="o">*</span><span class="s s-Atom">sp</span><span class="p">.</span><span class="s s-Atom">pi</span><span class="o">/</span><span class="mi">180</span>  
+<span class="s s-Atom">sigma_theta_rad</span> <span class="o">=</span> <span class="s s-Atom">sigma_theta</span><span class="o">*</span><span class="s s-Atom">sp</span><span class="p">.</span><span class="s s-Atom">pi</span><span class="o">/</span><span class="mi">180</span>  
+<span class="s s-Atom">thetas</span> <span class="o">=</span> <span class="s s-Atom">sp</span><span class="p">.</span><span class="nf">randn</span><span class="p">((</span><span class="nv">N</span><span class="p">))</span><span class="o">*</span><span class="s s-Atom">sigma_theta_rad</span> <span class="o">+</span> <span class="s s-Atom">mu_theta_rad</span>  
+<span class="s s-Atom">t</span> <span class="o">=</span> <span class="s s-Atom">sp</span><span class="p">.</span><span class="nf">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s s-Atom">tmax</span><span class="p">,</span> <span class="s s-Atom">dt</span><span class="p">)</span>
 
-#Recast problem as a set of first order ODEs  
-b = -c/(m*l**2)  
-a = g/l  
-def func(y, t):  
-    return [y[1],a*sp.sin(y[0]) + b*y[1] ]
+<span class="c1">#Recast problem as a set of first order ODEs  </span>
+<span class="s s-Atom">b</span> <span class="o">=</span> <span class="o">-</span><span class="s s-Atom">c/</span><span class="p">(</span><span class="s s-Atom">m</span><span class="o">*</span><span class="s s-Atom">l**</span><span class="mi">2</span><span class="p">)</span>  
+<span class="s s-Atom">a</span> <span class="o">=</span> <span class="s s-Atom">g</span><span class="o">/</span><span class="s s-Atom">l</span>  
+<span class="s s-Atom">def</span> <span class="nf">func</span><span class="p">(</span><span class="s s-Atom">y</span><span class="p">,</span> <span class="s s-Atom">t</span><span class="p">)</span><span class="s s-Atom">:</span>  
+    <span class="s s-Atom">return</span> <span class="p">[</span><span class="s s-Atom">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="s s-Atom">a</span><span class="o">*</span><span class="s s-Atom">sp</span><span class="p">.</span><span class="nf">sin</span><span class="p">(</span><span class="s s-Atom">y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="s s-Atom">b</span><span class="o">*</span><span class="s s-Atom">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">]</span>
 
-def gradient(y,t):  
-    return [[0.0,1.0],[a*sp.cos(y[0]),b]]
+<span class="s s-Atom">def</span> <span class="nf">gradient</span><span class="p">(</span><span class="s s-Atom">y</span><span class="p">,</span><span class="s s-Atom">t</span><span class="p">)</span><span class="s s-Atom">:</span>  
+    <span class="s s-Atom">return</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">],[</span><span class="s s-Atom">a</span><span class="o">*</span><span class="s s-Atom">sp</span><span class="p">.</span><span class="nf">cos</span><span class="p">(</span><span class="s s-Atom">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="s s-Atom">b</span><span class="p">]]</span>
 
-#Do the Monte-Carlo runs  
-if compute:  
-    yall = sp.zeros((Nt,N))  
-    i = 0  
-    for theta_0 in thetas:  
-        y0 = [theta_0*sp.pi/180, theta_0_dot*sp.pi/180]  
-        y = odeint(func, y0, t, Dfun=gradient)  
-        yall[:,i] = y[:,0]  
-        print "Case {} of {}".format(i,N)  
-        i+= 1
+<span class="c1">#Do the Monte-Carlo runs  </span>
+<span class="s s-Atom">if</span> <span class="nn">compute</span><span class="p">:</span>  
+    <span class="s s-Atom">yall</span> <span class="o">=</span> <span class="s s-Atom">sp</span><span class="p">.</span><span class="nf">zeros</span><span class="p">((</span><span class="nv">Nt</span><span class="p">,</span><span class="nv">N</span><span class="p">))</span>  
+    <span class="s s-Atom">i</span> <span class="o">=</span> <span class="mi">0</span>  
+    <span class="s s-Atom">for</span> <span class="s s-Atom">theta_0</span> <span class="s s-Atom">in</span> <span class="nn">thetas</span><span class="p">:</span>  
+        <span class="s s-Atom">y0</span> <span class="o">=</span> <span class="p">[</span><span class="s s-Atom">theta_0</span><span class="o">*</span><span class="s s-Atom">sp</span><span class="p">.</span><span class="s s-Atom">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">,</span> <span class="s s-Atom">theta_0_dot</span><span class="o">*</span><span class="s s-Atom">sp</span><span class="p">.</span><span class="s s-Atom">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">]</span>  
+        <span class="s s-Atom">y</span> <span class="o">=</span> <span class="nf">odeint</span><span class="p">(</span><span class="s s-Atom">func</span><span class="p">,</span> <span class="s s-Atom">y0</span><span class="p">,</span> <span class="s s-Atom">t</span><span class="p">,</span> <span class="nv">Dfun</span><span class="o">=</span><span class="s s-Atom">gradient</span><span class="p">)</span>  
+        <span class="s s-Atom">yall</span><span class="p">[</span><span class="s s-Atom">:</span><span class="p">,</span><span class="s s-Atom">i</span><span class="p">]</span> <span class="o">=</span> <span class="s s-Atom">y</span><span class="p">[</span><span class="s s-Atom">:</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>  
+        <span class="s s-Atom">print</span> <span class="s2">&quot;Case {} of {}&quot;</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="s s-Atom">i</span><span class="p">,</span><span class="nv">N</span><span class="p">)</span>  
+        <span class="s s-Atom">i+=</span> <span class="mi">1</span>
 
-# Some plotting (animation after a tutorial found in http://jakevdp.github.io/blog/2012/08/18/matplotlib-animation-tutorial/)  
-# Also look at http://matplotlib.org/api/animation_api.html  
-plt.close("all")
+<span class="c1"># Some plotting (animation after a tutorial found in http://jakevdp.github.io/blog/2012/08/18/matplotlib-animation-tutorial/)  </span>
+<span class="c1"># Also look at http://matplotlib.org/api/animation_api.html  </span>
+<span class="s s-Atom">plt</span><span class="p">.</span><span class="nf">close</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
 
-from matplotlib import animation
+<span class="s s-Atom">from</span> <span class="s s-Atom">matplotlib</span> <span class="s s-Atom">import</span> <span class="s s-Atom">animation</span>
 
-# First set up the figure, the axis, and the plot element we want to
-animate  
-fig = plt.figure()  
-ax = plt.axes(xlim=(-300, 300), ylim=(0, 10))  
-ax.grid()  
-ax.set_xticks(sp.linspace(-270,270,num=7))  
-ax.set_xlabel("$\\\theta$")  
-ax.set_ylabel("$f_{\\\theta}(\\\theta, t)$")
+<span class="c1"># First set up the figure, the axis, and the plot element we want to</span>
+<span class="s s-Atom">animate</span>  
+<span class="s s-Atom">fig</span> <span class="o">=</span> <span class="s s-Atom">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">()</span>  
+<span class="s s-Atom">ax</span> <span class="o">=</span> <span class="s s-Atom">plt</span><span class="p">.</span><span class="nf">axes</span><span class="p">(</span><span class="s s-Atom">xlim=</span><span class="p">(</span><span class="o">-</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span> <span class="s s-Atom">ylim=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>  
+<span class="s s-Atom">ax</span><span class="p">.</span><span class="nf">grid</span><span class="p">()</span>  
+<span class="s s-Atom">ax</span><span class="p">.</span><span class="nf">set_xticks</span><span class="p">(</span><span class="s s-Atom">sp</span><span class="p">.</span><span class="nf">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">270</span><span class="p">,</span><span class="mi">270</span><span class="p">,</span><span class="s s-Atom">num</span><span class="o">=</span><span class="mi">7</span><span class="p">))</span>  
+<span class="s s-Atom">ax</span><span class="p">.</span><span class="nf">set_xlabel</span><span class="p">(</span><span class="err">&quot;$</span><span class="s s-Atom">\\\theta$</span><span class="s2">&quot;)  </span>
+<span class="s2">ax.set_ylabel(&quot;</span><span class="err">$</span><span class="s s-Atom">f_</span><span class="p">{</span><span class="s s-Atom">\\\theta</span><span class="p">}(</span><span class="s s-Atom">\\\theta</span><span class="p">,</span> <span class="s s-Atom">t</span><span class="p">)</span><span class="err">$</span><span class="s2">&quot;)</span>
 
-line, = ax.plot([], [], lw=2)
+<span class="s2">line, = ax.plot([], [], lw=2)</span>
 
-time_text = ax.text(-270, 9, '')#, transform=ax.transAxes)
+<span class="s2">time_text = ax.text(-270, 9, &#39;&#39;)#, transform=ax.transAxes)</span>
 
-from scipy.interpolate import interp1d  
-probability_thresholds = sp.linspace(0,1,21)
+<span class="s2">from scipy.interpolate import interp1d  </span>
+<span class="s2">probability_thresholds = sp.linspace(0,1,21)</span>
 
-def myhistogram(y):  
-    yn = sp.array(y)  
-    yn.sort()  
-    cdf = sp.linspace(0,1,yn.size)  
-    y_bins = interp1d(cdf, yn, kind='linear', axis=-1, copy=True,
-    bounds_error=True)(probability_thresholds)  
-    return probability_thresholds, y_bins
+<span class="s2">def myhistogram(y):  </span>
+<span class="s2">    yn = sp.array(y)  </span>
+<span class="s2">    yn.sort()  </span>
+<span class="s2">    cdf = sp.linspace(0,1,yn.size)  </span>
+<span class="s2">    y_bins = interp1d(cdf, yn, kind=&#39;linear&#39;, axis=-1, copy=True,</span>
+<span class="s2">    bounds_error=True)(probability_thresholds)  </span>
+<span class="s2">    return probability_thresholds, y_bins</span>
 
-def init():  
-    line.set_data([],[])  
-    time_text.set_text("")  
-    return line, time_text
+<span class="s2">def init():  </span>
+<span class="s2">    line.set_data([],[])  </span>
+<span class="s2">    time_text.set_text(&quot;&quot;)  </span>
+<span class="s2">    return line, time_text</span>
 
-def animate(i):  
-    cdf, y_bins = myhistogram(yall[i,:])  
-    pdf = sp.diff(cdf) / sp.diff(y_bins)  
-    y_bins_centers = 0.5*(y_bins[0:-1] + y_bins[1::])  
-    # pdf, y_bins = sp.histogram(yall[i,:], bins = Nbins, density =
-    True)  
-    # y_bins_centers = 0.5*(y_bins[0:-1] + y_bins[1::])  
-    line.set_data(y_bins_centers*180/sp.pi, pdf)  
-    time_text.set_text("Time = {0:4.2f} s".format(t[i]))  
-    return line, time_text
+<span class="s2">def animate(i):  </span>
+<span class="s2">    cdf, y_bins = myhistogram(yall[i,:])  </span>
+<span class="s2">    pdf = sp.diff(cdf) / sp.diff(y_bins)  </span>
+<span class="s2">    y_bins_centers = 0.5*(y_bins[0:-1] + y_bins[1::])  </span>
+<span class="s2">    # pdf, y_bins = sp.histogram(yall[i,:], bins = Nbins, density =</span>
+<span class="s2">    True)  </span>
+<span class="s2">    # y_bins_centers = 0.5*(y_bins[0:-1] + y_bins[1::])  </span>
+<span class="s2">    line.set_data(y_bins_centers*180/sp.pi, pdf)  </span>
+<span class="s2">    time_text.set_text(&quot;</span><span class="nv">Time</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="s s-Atom">:</span><span class="mf">4.2</span><span class="s s-Atom">f</span><span class="p">}</span> <span class="s s-Atom">s</span><span class="s2">&quot;.format(t[i]))  </span>
+<span class="s2">    return line, time_text</span>
 
-anim = animation.FuncAnimation(fig, animate, init_func=init,  
-frames=1000, interval=1, blit=True)  
-#anim.save('basic_animation.mp4', fps=30, extra_args=['-vcodec',
-'libx264'])
+<span class="s2">anim = animation.FuncAnimation(fig, animate, init_func=init,  </span>
+<span class="s2">frames=1000, interval=1, blit=True)  </span>
+<span class="s2">#anim.save(&#39;basic_animation.mp4&#39;, fps=30, extra_args=[&#39;-vcodec&#39;,</span>
+<span class="s2">&#39;libx264&#39;])</span>
 
-plt.show()
+<span class="s2">plt.show()</span>
 
-#plt.figure()  
-#plt.plot(t,yall[:,0]*180/sp.pi)  
-#plt.grid()  
-#plt.yticks(sp.linspace(-270,270,num=13))  
-#plt.xlabel("$t$")  
-#plt.ylabel("$\\\theta(t)$")
-</code></pre>
+<span class="s2">#plt.figure()  </span>
+<span class="s2">#plt.plot(t,yall[:,0]*180/sp.pi)  </span>
+<span class="s2">#plt.grid()  </span>
+<span class="s2">#plt.yticks(sp.linspace(-270,270,num=13))  </span>
+<span class="s2">#plt.xlabel(&quot;</span><span class="err">$</span><span class="s s-Atom">t$</span><span class="s2">&quot;)  </span>
+<span class="s2">#plt.ylabel(&quot;</span><span class="err">$</span><span class="s s-Atom">\\\</span><span class="nf">theta</span><span class="p">(</span><span class="s s-Atom">t</span><span class="p">)</span><span class="err">$&quot;</span><span class="p">)</span>
+</pre></div>
+
+
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "left",
         indent = "0em",

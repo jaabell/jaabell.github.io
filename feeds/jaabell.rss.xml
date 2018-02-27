@@ -95,36 +95,37 @@ consists&amp;nbsp;of&lt;/p&gt;
 &lt;li&gt;1200 time-steps (dt =&amp;nbsp;0.01s)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Results were stored in the new format of output for &lt;span class="caps"&gt;ESSI&lt;/span&gt; simulator and
-visualized in VisIt post-processor where the movie was created.&lt;br /&gt;
-&lt;!--more--&gt;&lt;br /&gt;
+visualized in VisIt post-processor where the movie was created.&lt;br&gt;
+&lt;!--more--&gt;&lt;br&gt;
 &lt;!--http://youtu.be/VURohwb-OJQ--&gt;&lt;/p&gt;
 &lt;div class="youtube" align="left"&gt;
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/VURohwb-OJQ" frameborder="0"&gt;&lt;/iframe&gt;
 &lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">jaabell</dc:creator><pubDate>Fri, 16 May 2014 19:37:00 -0700</pubDate><guid isPermaLink="false">tag:www.joseabell.com,2014-05-16:/sne-01-example-of-essi-simulation-and-visualization-with-visitessi.html</guid><category>animation</category><category>c++</category><category>ESSI</category><category>linux</category><category>post-processing</category><category>small numerical experiments</category><category>sne</category><category>visitESSI</category><category>movie</category></item><item><title>NTS (Note-To-Self): Creating dynamically linked libraries</title><link>http://www.joseabell.com/nts-note-to-self-creating-dynamically-linked-libraries.html</link><description>&lt;p&gt;A nice extensive tutorial can be found &lt;a href="http://www.yolinux.com/TUTORIALS/LibraryArchives-StaticAndDynamic.html"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;In a&amp;nbsp;nutshell:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;:::shell.BashLexer
-gcc -Wall -fPIC -c \*.c  
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;gcc -Wall -fPIC -c \*.c  
 gcc -shared -Wl,-soname,libctest.so.1 -o libctest.so.1.0 \*.o  
 mv libctest.so.1.0 /opt/lib  
 ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so.1  
 ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;!--more--&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;-Wall&lt;/code&gt;: include warnings. See man page for warnings&amp;nbsp;specified.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;-fPIC&lt;/code&gt;: Compiler directive to output position independent code, a
     characteristic required by shared libraries. Also see&amp;nbsp;&amp;#8220;-fpic&amp;#8221;.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;-shared&lt;/code&gt;: Produce a shared object which can then be linked with …&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">jaabell</dc:creator><pubDate>Mon, 28 Oct 2013 18:57:00 -0700</pubDate><guid isPermaLink="false">tag:www.joseabell.com,2013-10-28:/nts-note-to-self-creating-dynamically-linked-libraries.html</guid><category>c++</category><category>coding</category><category>compiler</category><category>gcc</category><category>library</category><category>linux</category><category>note to self</category><category>programming</category><category>reminder</category><category>tutorial</category></item><item><title>SNE # 0. Stochastic inverse pendulum</title><link>http://www.joseabell.com/sne-0-stochastic-inverse-pendulum.html</link><description>&lt;p&gt;This is the first installment of &amp;#8220;Small Numerical Experiments&amp;#8221; (&lt;span class="caps"&gt;SNE&lt;/span&gt;), a
+&lt;li&gt;&lt;code&gt;-shared&lt;/code&gt;: Produce a shared object which can then be linked with other objects …&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">jaabell</dc:creator><pubDate>Mon, 28 Oct 2013 18:57:00 -0700</pubDate><guid isPermaLink="false">tag:www.joseabell.com,2013-10-28:/nts-note-to-self-creating-dynamically-linked-libraries.html</guid><category>c++</category><category>coding</category><category>compiler</category><category>gcc</category><category>library</category><category>linux</category><category>note to self</category><category>programming</category><category>reminder</category><category>tutorial</category></item><item><title>SNE # 0. Stochastic inverse pendulum</title><link>http://www.joseabell.com/sne-0-stochastic-inverse-pendulum.html</link><description>&lt;p&gt;This is the first installment of &amp;#8220;Small Numerical Experiments&amp;#8221; (&lt;span class="caps"&gt;SNE&lt;/span&gt;), a
 section where I upload and comment (briefly) some small numerical
 example. The purpose is to prove a point to myself, test some code,
 ideas,&amp;nbsp;etc.&lt;/p&gt;
-&lt;p&gt;&lt;a href="/images/sne/01/pendulum_medium.png"&gt;&lt;img alt="pendulum" src="/images/sne/01/pendulum_medium.png" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/sne/01/pendulum_medium.png"&gt;&lt;img alt="pendulum" src="/images/sne/01/pendulum_medium.png"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;In this first post I will explore the response of a &lt;em&gt;stochastic inverse
 pendulum.&lt;/em&gt; What I mean in this case is an inverse pendulum (shown left)
 with a random initial condition. The purpose is to obtain the
 time-evolving probability density function (&lt;span class="caps"&gt;PDF&lt;/span&gt;) of the pendulum&amp;#8217;s
 position. I will be doing Monte-Carlo simulations to obtain an
-approximation to this &lt;span class="caps"&gt;PDF&lt;/span&gt;.&lt;br /&gt;
-&lt;!--more--&gt;&lt;br /&gt;
+approximation to this &lt;span class="caps"&gt;PDF&lt;/span&gt;.&lt;br&gt;
+&lt;!--more--&gt;&lt;br&gt;
 The response of the …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">jaabell</dc:creator><pubDate>Wed, 09 Oct 2013 20:37:00 -0700</pubDate><guid isPermaLink="false">tag:www.joseabell.com,2013-10-09:/sne-0-stochastic-inverse-pendulum.html</guid><category>animation</category><category>bimodal</category><category>matplotlib</category><category>Monte-Carlo</category><category>multimodal</category><category>ode</category><category>python</category><category>scipy</category><category>small numerical experiments</category><category>sne</category><category>stochastic</category></item></channel></rss>
