@@ -45,7 +45,7 @@
   <article>
     <header>
       <h2><a href="http://www.joseabell.com/finite-elements-for-shallow-water-equations.html">Finite Elements for Shallow Water&nbsp;Equations</a></h2>
-      <time datetime="" title="2016-11-22T14:55:42-08:00" pubdate>Tue 22 November 2016</time>
+      <time datetime="" title="2016-11-22T14:55:42-08:00" pubdate>mar 22 noviembre 2016</time>
     </header>
 
     <div class="article_content">
@@ -83,26 +83,25 @@
   <article>
     <header>
       <h2><a href="http://www.joseabell.com/nts-02-rayleigh-damping.html"><span class="caps">NTS</span>-02. On Rayleigh damping coefficients for <span class="caps">FE</span>&nbsp;analysis</a></h2>
-      <time datetime="" title="2014-09-30T10:46:38-07:00" pubdate>Tue 30 September 2014</time>
+      <time datetime="" title="2014-09-30T10:46:38-07:00" pubdate>mar 30 septiembre 2014</time>
     </header>
 
     <div class="article_content">
       
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Note to self. How to compute Rayleigh damping coefficients for given damping ratios $\xi_1$ and $\xi_2$ at frequencies $f_1$ and&nbsp;$f_2$.</p>
 <p>This is textbook content, I just need to remind myself too often how this is done and end up re-deriving the&nbsp;equations.</p>
 <p>Given the second-order system of differential equations representing the <span class="caps">FE</span>&nbsp;model</p>
-$$
-M \ddot{u} + C \dot{u} + K u = F(t)
-$$<p>The damping matrix $C$ can be written as a Rayleigh damping&nbsp;matrix:</p>
-$$
-C = a_0 M + a_1 K
-$$<p>$a_0$ and $a_1$ are Rayleigh damping coefficients found by&nbsp;solving</p>
-$$
+<p>$$
+M \ddot{u} + C \dot{u} + K u = F(t)&nbsp;$$</p>
+<p>The damping matrix $C$ can be written as a Rayleigh damping&nbsp;matrix:</p>
+<p>$$
+C = a_0 M + a_1 K&nbsp;$$</p>
+<p>$a_0$ and $a_1$ are Rayleigh damping coefficients found by&nbsp;solving</p>
+<p>$$
 \left[
 \begin{array}{cc}
 \dfrac{1}{2\pi f_1} <span class="amp">&amp;</span> 2 \pi f_1 &#92;
@@ -112,17 +111,7 @@ $$
 \left[
 \begin{array}{c}
 a_0 &#92;
-a_1
-\end{array}
-\right]
-=
-\left[
-\begin{array}{c}
-\xi_1 &#92;
-\xi_2
-\end{array}
-\right]
-$$<p>Which I do in the following&nbsp;code:</p>
+a_1&nbsp;\end{array}</p>
     </div>
 
     <div class="meta">

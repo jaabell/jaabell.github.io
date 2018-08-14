@@ -882,21 +882,20 @@ to generate the discretized &lt;span class="caps"&gt;SWE&lt;/span&gt;. &lt;/p&gt
 &lt;div class="youtube" align="left"&gt;
 &lt;iframe width="640" height="480" src="//www.youtube.com/embed/qxVxgyVmPd4" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;</content><category term="Talks"></category><category term="Presentations"></category><category term="DRM"></category><category term="ESSI"></category></entry><entry><title>NTS-02. On Rayleigh damping coefficients for FE analysis</title><link href="http://www.joseabell.com/nts-02-rayleigh-damping.html" rel="alternate"></link><published>2014-09-30T10:46:38-07:00</published><updated>2014-09-30T10:46:38-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2014-09-30:/nts-02-rayleigh-damping.html</id><summary type="html">
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Note to self. How to compute Rayleigh damping coefficients for given damping ratios $\xi_1$ and $\xi_2$ at frequencies $f_1$ and&amp;nbsp;$f_2$.&lt;/p&gt;
 &lt;p&gt;This is textbook content, I just need to remind myself too often how this is done and end up re-deriving the&amp;nbsp;equations.&lt;/p&gt;
 &lt;p&gt;Given the second-order system of differential equations representing the &lt;span class="caps"&gt;FE&lt;/span&gt;&amp;nbsp;model&lt;/p&gt;
-$$
-M \ddot{u} + C \dot{u} + K u = F(t)
-$$&lt;p&gt;The damping matrix $C$ can be written as a Rayleigh damping&amp;nbsp;matrix:&lt;/p&gt;
-$$
-C = a_0 M + a_1 K
-$$&lt;p&gt;$a_0$ and $a_1$ are Rayleigh damping coefficients found by&amp;nbsp;solving&lt;/p&gt;
-$$
+&lt;p&gt;$$
+M \ddot{u} + C \dot{u} + K u = F(t)&amp;nbsp;$$&lt;/p&gt;
+&lt;p&gt;The damping matrix $C$ can be written as a Rayleigh damping&amp;nbsp;matrix:&lt;/p&gt;
+&lt;p&gt;$$
+C = a_0 M + a_1 K&amp;nbsp;$$&lt;/p&gt;
+&lt;p&gt;$a_0$ and $a_1$ are Rayleigh damping coefficients found by&amp;nbsp;solving&lt;/p&gt;
+&lt;p&gt;$$
 \left[
 \begin{array}{cc}
 \dfrac{1}{2\pi f_1} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; 2 \pi f_1 &amp;#92;
@@ -906,17 +905,7 @@ $$
 \left[
 \begin{array}{c}
 a_0 &amp;#92;
-a_1
-\end{array}
-\right]
-=
-\left[
-\begin{array}{c}
-\xi_1 &amp;#92;
-\xi_2
-\end{array}
-\right]
-$$&lt;p&gt;Which I do in the following&amp;nbsp;code:&lt;/p&gt;</summary><content type="html">&lt;style type="text/css"&gt;/*!
+a_1&amp;nbsp;\end{array}&lt;/p&gt;</summary><content type="html">&lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
 *
@@ -1888,21 +1877,20 @@ h6:hover .anchor-link {
 
 .ansi-bold { font-weight: bold; }
 &lt;/style&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Note to self. How to compute Rayleigh damping coefficients for given damping ratios $\xi_1$ and $\xi_2$ at frequencies $f_1$ and&amp;nbsp;$f_2$.&lt;/p&gt;
 &lt;p&gt;This is textbook content, I just need to remind myself too often how this is done and end up re-deriving the&amp;nbsp;equations.&lt;/p&gt;
 &lt;p&gt;Given the second-order system of differential equations representing the &lt;span class="caps"&gt;FE&lt;/span&gt;&amp;nbsp;model&lt;/p&gt;
-$$
-M \ddot{u} + C \dot{u} + K u = F(t)
-$$&lt;p&gt;The damping matrix $C$ can be written as a Rayleigh damping&amp;nbsp;matrix:&lt;/p&gt;
-$$
-C = a_0 M + a_1 K
-$$&lt;p&gt;$a_0$ and $a_1$ are Rayleigh damping coefficients found by&amp;nbsp;solving&lt;/p&gt;
-$$
+&lt;p&gt;$$
+M \ddot{u} + C \dot{u} + K u = F(t)&amp;nbsp;$$&lt;/p&gt;
+&lt;p&gt;The damping matrix $C$ can be written as a Rayleigh damping&amp;nbsp;matrix:&lt;/p&gt;
+&lt;p&gt;$$
+C = a_0 M + a_1 K&amp;nbsp;$$&lt;/p&gt;
+&lt;p&gt;$a_0$ and $a_1$ are Rayleigh damping coefficients found by&amp;nbsp;solving&lt;/p&gt;
+&lt;p&gt;$$
 \left[
 \begin{array}{cc}
 \dfrac{1}{2\pi f_1} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; 2 \pi f_1 &amp;#92;
@@ -1912,17 +1900,14 @@ $$
 \left[
 \begin{array}{c}
 a_0 &amp;#92;
-a_1
-\end{array}
-\right]
-=
-\left[
+a_1&amp;nbsp;\end{array}&lt;/p&gt;
+&lt;h1 id="\right]"&gt;\right]&lt;a class="anchor-link" href="#\right]"&gt;¶&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;\left[
 \begin{array}{c}
 \xi_1 &amp;#92;
 \xi_2
 \end{array}
-\right]
-$$&lt;p&gt;Which I do in the following&amp;nbsp;code:&lt;/p&gt;
+\right]&amp;nbsp;$$&lt;/p&gt;
+&lt;p&gt;Which I do in the following&amp;nbsp;code:&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1980,28 +1965,26 @@ f₁⋅ξ₁ - f₂⋅ξ₂
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-$$
+&lt;p&gt;$$
 a_0 = \frac{4 \pi f_{1} f_{2}}{f_{1}^{2} - f_{2}^{2}} \left(f_{1} \xi_{2} - f_{2} \xi_{1}\right)
-$$$$
-a_1 = \frac{f_{1} \xi_{1} - f_{2} \xi_{2}}{\pi \left(f_{1}^{2} - f_{2}^{2}\right)}
 $$
+$$
+a_1 = \frac{f_{1} \xi_{1} - f_{2} \xi_{2}}{\pi \left(f_{1}^{2} - f_{2}^{2}\right)}&amp;nbsp;$$&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Damping at other frequencies is given&amp;nbsp;by,&lt;/p&gt;
-$$
-\xi(f) = \dfrac{a_0}{2\pi f} + \pi a_1 f
-$$&lt;p&gt;For example for $f_1 = 0.3$ Hz and $f_2 = 1.2$ Hz, and $\xi_1 = 0.05$, $\xi_2 =&amp;nbsp;0.02$.&lt;/p&gt;
+&lt;p&gt;$$
+\xi(f) = \dfrac{a_0}{2\pi f} + \pi a_1 f&amp;nbsp;$$&lt;/p&gt;
+&lt;p&gt;For example for $f_1 = 0.3$ Hz and $f_2 = 1.2$ Hz, and $\xi_1 = 0.05$, $\xi_2 =&amp;nbsp;0.02$.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2310,8 +2293,7 @@ kiRJkiRJkiRJkiRJkiRJkiRJkiRJkqRe/X/trtkQzUt/CgAAAABJRU5ErkJggg==
 }
 &lt;/script&gt;
 </content><category term="Note to self"></category><category term="reminder"></category><category term="tutorial"></category><category term="essi"></category><category term="finite elements"></category></entry><entry><title>Testing IPython Notebook integration into Pelican</title><link href="http://www.joseabell.com/test_ipythonnb_plugin.html" rel="alternate"></link><published>2014-06-24T13:40:25-07:00</published><updated>2014-06-24T13:40:25-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2014-06-24:/test_ipythonnb_plugin.html</id><summary type="html">
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -3293,8 +3275,7 @@ h6:hover .anchor-link {
 
 .ansi-bold { font-weight: bold; }
 &lt;/style&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -3503,8 +3484,7 @@ ERERERERERERERERERERERGR4Pr/8oRk7ZOUtD4AAAAASUVORK5CYII=
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -3970,23 +3950,11 @@ RU5ErkJggg==
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Cool! We&amp;#8217;re going to do some serious blogging&amp;nbsp;now.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [ ]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; 
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;

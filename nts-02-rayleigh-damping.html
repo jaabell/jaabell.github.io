@@ -45,7 +45,7 @@
     <article>
         <header>
             <h1><span class="caps">NTS</span>-02. On Rayleigh damping coefficients for <span class="caps">FE</span>&nbsp;analysis</h1>
-            <time datetime="article.date.isoformat()" pubdate>Tue 30 September 2014</time>
+            <time datetime="article.date.isoformat()" pubdate>mar 30 septiembre 2014</time>
         </header>
 
         <div class="article_content">
@@ -1021,21 +1021,20 @@ h6:hover .anchor-link {
 
 .ansi-bold { font-weight: bold; }
 </style>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Note to self. How to compute Rayleigh damping coefficients for given damping ratios $\xi_1$ and $\xi_2$ at frequencies $f_1$ and&nbsp;$f_2$.</p>
 <p>This is textbook content, I just need to remind myself too often how this is done and end up re-deriving the&nbsp;equations.</p>
 <p>Given the second-order system of differential equations representing the <span class="caps">FE</span>&nbsp;model</p>
-$$
-M \ddot{u} + C \dot{u} + K u = F(t)
-$$<p>The damping matrix $C$ can be written as a Rayleigh damping&nbsp;matrix:</p>
-$$
-C = a_0 M + a_1 K
-$$<p>$a_0$ and $a_1$ are Rayleigh damping coefficients found by&nbsp;solving</p>
-$$
+<p>$$
+M \ddot{u} + C \dot{u} + K u = F(t)&nbsp;$$</p>
+<p>The damping matrix $C$ can be written as a Rayleigh damping&nbsp;matrix:</p>
+<p>$$
+C = a_0 M + a_1 K&nbsp;$$</p>
+<p>$a_0$ and $a_1$ are Rayleigh damping coefficients found by&nbsp;solving</p>
+<p>$$
 \left[
 \begin{array}{cc}
 \dfrac{1}{2\pi f_1} <span class="amp">&amp;</span> 2 \pi f_1 &#92;
@@ -1045,17 +1044,14 @@ $$
 \left[
 \begin{array}{c}
 a_0 &#92;
-a_1
-\end{array}
-\right]
-=
-\left[
+a_1&nbsp;\end{array}</p>
+<h1 id="\right]">\right]<a class="anchor-link" href="#\right]">¶</a></h1><p>\left[
 \begin{array}{c}
 \xi_1 &#92;
 \xi_2
 \end{array}
-\right]
-$$<p>Which I do in the following&nbsp;code:</p>
+\right]&nbsp;$$</p>
+<p>Which I do in the following&nbsp;code:</p>
 </div>
 </div>
 </div>
@@ -1113,28 +1109,26 @@ f₁⋅ξ₁ - f₂⋅ξ₂
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$
+<p>$$
 a_0 = \frac{4 \pi f_{1} f_{2}}{f_{1}^{2} - f_{2}^{2}} \left(f_{1} \xi_{2} - f_{2} \xi_{1}\right)
-$$$$
-a_1 = \frac{f_{1} \xi_{1} - f_{2} \xi_{2}}{\pi \left(f_{1}^{2} - f_{2}^{2}\right)}
 $$
+$$
+a_1 = \frac{f_{1} \xi_{1} - f_{2} \xi_{2}}{\pi \left(f_{1}^{2} - f_{2}^{2}\right)}&nbsp;$$</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Damping at other frequencies is given&nbsp;by,</p>
-$$
-\xi(f) = \dfrac{a_0}{2\pi f} + \pi a_1 f
-$$<p>For example for $f_1 = 0.3$ Hz and $f_2 = 1.2$ Hz, and $\xi_1 = 0.05$, $\xi_2 =&nbsp;0.02$.</p>
+<p>$$
+\xi(f) = \dfrac{a_0}{2\pi f} + \pi a_1 f&nbsp;$$</p>
+<p>For example for $f_1 = 0.3$ Hz and $f_2 = 1.2$ Hz, and $\xi_1 = 0.05$, $\xi_2 =&nbsp;0.02$.</p>
 </div>
 </div>
 </div>

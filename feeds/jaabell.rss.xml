@@ -35,21 +35,20 @@
 &lt;div class="youtube" align="left"&gt;
 &lt;iframe width="640" height="480" src="//www.youtube.com/embed/qxVxgyVmPd4" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">jaabell</dc:creator><pubDate>Fri, 18 Nov 2016 09:53:17 -0800</pubDate><guid isPermaLink="false">tag:www.joseabell.com,2016-11-18:/talk-given-at-ingeokring-2016-ESSI-DRM.html</guid><category>Talks</category><category>Presentations</category><category>DRM</category><category>ESSI</category></item><item><title>NTS-02. On Rayleigh damping coefficients for FE analysis</title><link>http://www.joseabell.com/nts-02-rayleigh-damping.html</link><description>
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Note to self. How to compute Rayleigh damping coefficients for given damping ratios $\xi_1$ and $\xi_2$ at frequencies $f_1$ and&amp;nbsp;$f_2$.&lt;/p&gt;
 &lt;p&gt;This is textbook content, I just need to remind myself too often how this is done and end up re-deriving the&amp;nbsp;equations.&lt;/p&gt;
 &lt;p&gt;Given the second-order system of differential equations representing the &lt;span class="caps"&gt;FE&lt;/span&gt;&amp;nbsp;model&lt;/p&gt;
-$$
-M \ddot{u} + C \dot{u} + K u = F(t)
-$$&lt;p&gt;The damping matrix $C$ can be written as a Rayleigh damping&amp;nbsp;matrix:&lt;/p&gt;
-$$
-C = a_0 M + a_1 K
-$$&lt;p&gt;$a_0$ and $a_1$ are Rayleigh damping coefficients found by&amp;nbsp;solving&lt;/p&gt;
-$$
+&lt;p&gt;$$
+M \ddot{u} + C \dot{u} + K u = F(t)&amp;nbsp;$$&lt;/p&gt;
+&lt;p&gt;The damping matrix $C$ can be written as a Rayleigh damping&amp;nbsp;matrix:&lt;/p&gt;
+&lt;p&gt;$$
+C = a_0 M + a_1 K&amp;nbsp;$$&lt;/p&gt;
+&lt;p&gt;$a_0$ and $a_1$ are Rayleigh damping coefficients found by&amp;nbsp;solving&lt;/p&gt;
+&lt;p&gt;$$
 \left[
 \begin{array}{cc}
 \dfrac{1}{2\pi f_1} &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; 2 \pi f_1 &amp;#92;
@@ -59,19 +58,8 @@ $$
 \left[
 \begin{array}{c}
 a_0 &amp;#92;
-a_1
-\end{array}
-\right]
-=
-\left[
-\begin{array}{c}
-\xi_1 &amp;#92;
-\xi_2
-\end{array}
-\right]
-$$&lt;p&gt;Which I do in the following&amp;nbsp;code:&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">jaabell</dc:creator><pubDate>Tue, 30 Sep 2014 10:46:38 -0700</pubDate><guid isPermaLink="false">tag:www.joseabell.com,2014-09-30:/nts-02-rayleigh-damping.html</guid><category>Note to self</category><category>reminder</category><category>tutorial</category><category>essi</category><category>finite elements</category></item><item><title>Testing IPython Notebook integration into Pelican</title><link>http://www.joseabell.com/test_ipythonnb_plugin.html</link><description>
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
+a_1&amp;nbsp;\end{array}&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">jaabell</dc:creator><pubDate>Tue, 30 Sep 2014 10:46:38 -0700</pubDate><guid isPermaLink="false">tag:www.joseabell.com,2014-09-30:/nts-02-rayleigh-damping.html</guid><category>Note to self</category><category>reminder</category><category>tutorial</category><category>essi</category><category>finite elements</category></item><item><title>Testing IPython Notebook integration into Pelican</title><link>http://www.joseabell.com/test_ipythonnb_plugin.html</link><description>
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;

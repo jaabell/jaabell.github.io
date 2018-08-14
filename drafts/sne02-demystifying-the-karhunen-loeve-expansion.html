@@ -45,7 +45,7 @@
     <article>
         <header>
             <h1><span class="caps">SNE</span>#02. Demystifying the Karhunen-Loeve&nbsp;expansion</h1>
-            <time datetime="article.date.isoformat()" pubdate>Wed 25 June 2014</time>
+            <time datetime="article.date.isoformat()" pubdate>mié 25 junio 2014</time>
         </header>
 
         <div class="article_content">
@@ -1021,8 +1021,7 @@ h6:hover .anchor-link {
 
 .ansi-bold { font-weight: bold; }
 </style>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -1041,14 +1040,13 @@ $$
 \end{array}
 \right]&nbsp;$$</p>
 <p>The joint probability density function $f_{x_1x_2}(x_1,x_2)$ of these variables looks&nbsp;like</p>
-$$
+<p>$$
 f_{x_1x_2}(x_1,x_2) = 
 \dfrac{1}{(2\pi)^2 \det{\mathbf{C}}} 
 \exp 
 \left( 
     -\dfrac{1}{2} (\mathbf{x} - \bar{\mathbf{x}})^T \mathbf{C}^{-1} (\mathbf{x} - \bar{\mathbf{x}})
-\right)
-$$
+\right)&nbsp;$$</p>
 </div>
 </div>
 </div>
@@ -3999,16 +3997,15 @@ iIiIiIiIiIiIiIiIiIiIiDir/weNEUUzBG5ZUAAAAABJRU5ErkJggg==
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Notice that if we view the distribution from a different coordinate system that is rotated so that the above (right) ellipses are horizonal, we are viewing a uncorrelated set of (normal) random variables. Rotating the coordinate system is a <em>coordinate transformation</em>, or change of variable. In this case this is called de-correlation of the random&nbsp;variables.</p>
 <p>It turns out that finding the axes $(x^*_1,x^*_2)$ that make the variables look un-correlated is related to an eigenvalue problem. Indeed the eigen-vectors of the inverse correlation matrix give the directions of these&nbsp;axes.</p>
-$$
-\mathbf{C} \mathbf{v}_i = \sigma^2_i \mathbf{v}_i \qquad \text{for}\,\, i = 1,2
-$$<p>Where the $i$-th eigenvector $\mathbf{v}_i$ points in the $i$-th principal direction of variance and $\sigma^2_i$ is the squared variance in that&nbsp;direction.</p>
+<p>$$
+\mathbf{C} \mathbf{v}_i = \sigma^2_i \mathbf{v}_i \qquad \text{for}\,\, i = 1,2&nbsp;$$</p>
+<p>Where the $i$-th eigenvector $\mathbf{v}_i$ points in the $i$-th principal direction of variance and $\sigma^2_i$ is the squared variance in that&nbsp;direction.</p>
 </div>
 </div>
 </div>
@@ -5319,8 +5316,7 @@ IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi3d//B8qOPQ3gTH3xAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -5352,8 +5348,7 @@ IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi3d//B8qOPQ3gTH3xAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -5866,13 +5861,12 @@ KaWUUkoppZRSSimllFJKKaWUUkqpMvD/PwKmnFM0QcYAAAAASUVORK5CYII=
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Nice! Now form the new variables by projecting with the above eigenvectors and the standard-deviations (remember we have the  variances up there), and then offsetting by the&nbsp;means.</p>
-$$
+<p>$$
 \mathbf{x}^{\text{trial}} =
 \left[
     \begin{array}{c}
@@ -5889,7 +5883,8 @@ $$
         \xi_1^{\text{trial}} &#92; \xi_2^{\text{trial}}
     \end{array}
 \right] + \bar{\mathbf{x}}
-$$<p>We can plot these trials along with our previous countour plots of the&nbsp;PDFs.</p>
+$$
+We can plot these trials along with our previous countour plots of the&nbsp;PDFs.</p>
 </div>
 </div>
 </div>
@@ -6779,8 +6774,7 @@ qVQq1cv8H1vOPTLyXU3AAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -6817,22 +6811,20 @@ Simulated x_2 mean: -1.09902466619   sigma: 1.12316743216
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Recall the means are supposed to be 1 and -1 while the variances were 4 and&nbsp;1.</p>
 <p>Also note that, due to the orthogonality property of eigenvectors, we can recombine the eigenvalues and vectors to form $C$ again&nbsp;by</p>
-$$
+<p>$$
 C = \mathbf{v}^T \mathbf{\Sigma} \mathbf{v} \qquad \text{with}\,\, 
 \mathbf{\Sigma} = 
 \left[
     \begin{array}{cc}
         \sigma_1^2 <span class="amp">&amp;</span> 0 &#92; 0 <span class="amp">&amp;</span> \sigma_2^2
     \end{array}
-\right]
-$$
+\right]&nbsp;$$</p>
 </div>
 </div>
 </div>
@@ -6861,8 +6853,7 @@ $$
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -6871,13 +6862,13 @@ $$
 <p>In the case of a random vector we had a correlation <em>matrix</em> giving us the cross-covariance between two components. For stochastic processes we (might) have a correlation <em>function</em> that correlates two&nbsp;points.</p>
 <p>Lets say we have a second-order stationary stochastic process $w(t)$. This means that the covariance function $c(t_1,t_2)$ exists and dependes only on $\tau = t_2 - t_1$. In the previous section we saw that we could <em>simulate</em> a random vector by generating unit normal random variables and combining them using the information gained in an eigenvalue analysis. In other words, we could <em>expand</em> the correlated random vector into a sequence of un-correlated random vectors. <span class="caps">KL</span> explansion solves the same problem when you have a continuous indexing set as oposed to a discrete&nbsp;one.</p>
 <p><span class="caps">KL</span> expansion claims that $w(t)$ can be expanded&nbsp;into</p>
-$$
-w(t) = \sum_{i=1}^{\infty} \sigma_i v_i(t) \xi_i + \bar{w}(t) 
-$$<p>Here I follow closely the notation in the previous section, $\xi_i$ is an countably infinite set of independent zero mean unit variance random variables, and $v_i(t)$ are corresponding functions that act as eigenvectors of the expansion (they are eigenfunctions :}). $\bar{w}(t) = \left< w(t) \right>$ is a mean function that just reflects the trend in $w(t)$. Finally, $\sigma_i$ is the standard-deviation associated with the $i$-th component. Since we use computers to do real life work this expansion will be truncated after, say,  $N$ terms. Evaluating the truncation error becomes an issue which we kindly forward to our mathematician friends, lets just say that <span class="caps">KL</span> expansion is the expansion out of all the possible expansions that minimizes the truncation&nbsp;error.</p>
+<p>$$
+w(t) = \sum_{i=1}^{\infty} \sigma_i v_i(t) \xi_i + \bar{w}(t)&nbsp;$$</p>
+<p>Here I follow closely the notation in the previous section, $\xi_i$ is an countably infinite set of independent zero mean unit variance random variables, and $v_i(t)$ are corresponding functions that act as eigenvectors of the expansion (they are eigenfunctions :}). $\bar{w}(t) = \left< w(t) \right>$ is a mean function that just reflects the trend in $w(t)$. Finally, $\sigma_i$ is the standard-deviation associated with the $i$-th component. Since we use computers to do real life work this expansion will be truncated after, say,  $N$ terms. Evaluating the truncation error becomes an issue which we kindly forward to our mathematician friends, lets just say that <span class="caps">KL</span> expansion is the expansion out of all the possible expansions that minimizes the truncation&nbsp;error.</p>
 <p>Anyway, the associated eigenvalue/eigenfunction problem&nbsp;is</p>
-$$
-\int_D C(t - \tau) v_i(\tau) \,\mathrm{d} \tau = \sigma_i^2 v_i(t)
-$$<p>Which <code>#ThanksToMaths</code> we know that it is a <a href="http://en.wikipedia.org/wiki/Fredholm_integral_equation">homogeneous Fredholm integral equation of the second kind</a>. Let&#8217;s say that $\bar{w}(t) = t$ and $C(\tau) = \exp \left\lbrace  -\vert \tau \vert / b\right\rbrace$ for $t \in [-a,\, a]$. The parameter $b$ is called the correlation time because it can be interpreted as the time interval for which the variables are correlated significantly. Such a model correlation function (or kernel function in Fredholm mathy-talk) represents Markov processes. The function looks like&nbsp;this.</p>
+<p>$$
+\int_D C(t - \tau) v_i(\tau) \,\mathrm{d} \tau = \sigma_i^2 v_i(t)&nbsp;$$</p>
+<p>Which <code>#ThanksToMaths</code> we know that it is a <a href="http://en.wikipedia.org/wiki/Fredholm_integral_equation">homogeneous Fredholm integral equation of the second kind</a>. Let&#8217;s say that $\bar{w}(t) = t$ and $C(\tau) = \exp \left\lbrace  -\vert \tau \vert / b\right\rbrace$ for $t \in [-a,\, a]$. The parameter $b$ is called the correlation time because it can be interpreted as the time interval for which the variables are correlated significantly. Such a model correlation function (or kernel function in Fredholm mathy-talk) represents Markov processes. The function looks like&nbsp;this.</p>
 </div>
 </div>
 </div>
@@ -7148,8 +7139,7 @@ Dvl/oTZvCHJCQGcAAAAASUVORK5CYII=
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -7160,42 +7150,38 @@ $$
 \int_D C(t - \tau) v_i^k H_j(\tau) H_k(t) \,\mathrm{d} \tau \mathrm{d} t = \sigma_i^2 v_i^k H_j(t)  H_k(t)
 $$
 Now, pre-multiply&nbsp;by</p>
-$$
-\int_D \int_D C(t - \tau) \delta v_j(t) v_i(\tau) \,\mathrm{d} \tau \mathrm{d} t= \sigma_i^2 \int_D   \delta v_j(t) v_i(t)\,\mathrm{d} t 
-$$
+<p>$$
+\int_D \int_D C(t - \tau) \delta v_j(t) v_i(\tau) \,\mathrm{d} \tau \mathrm{d} t= \sigma_i^2 \int_D   \delta v_j(t) v_i(t)\,\mathrm{d} t&nbsp;$$</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Using this function (read Ghanem and Spanos&#8217;s book) the process can be expanded&nbsp;into.</p>
-$$
-w(t) = t + \sum_{i = 1}^{\infty}\Big[ \sigma_i v_i(t) \xi_i + \sigma_i^* v_i^*(t) \xi_i^* \Big]
-$$<p>Where, due to a technicism in the solution process, we have two countably infinite sets of eigen-values/functions instead of one (which is a countably infinite set of functions anyway). Defining $c =&nbsp;1/b$</p>
-$$
+<p>$$
+w(t) = t + \sum_{i = 1}^{\infty}\Big[ \sigma_i v_i(t) \xi_i + \sigma_i^* v_i^*(t) \xi_i^* \Big]&nbsp;$$</p>
+<p>Where, due to a technicism in the solution process, we have two countably infinite sets of eigen-values/functions instead of one (which is a countably infinite set of functions anyway). Defining $c =&nbsp;1/b$</p>
+<p>$$
 \begin{array}{cc}
     \sigma_i^2 = \dfrac{2c}{\omega_i^2 + c^2} <span class="amp">&amp;</span> 
     v_i(t) = \dfrac{\cos (\omega_i t)}{ \sqrt{ a + \dfrac{\sin (2\omega_i a)}{2 \omega_i }} } &#92;
     \sigma_i^2 = \dfrac{2c}{\omega_i^{*2} + c^2} <span class="amp">&amp;</span> 
     v_i^*(t) = \dfrac{\sin (\omega_i^* t)}{ \sqrt{ a - \dfrac{\sin (2\omega_i^* a)}{2 \omega_i^* }} } 
-\end{array}
-$$
+\end{array}&nbsp;$$</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And the pairs $(\omega_i,\,\omega^*_i)$ are the $i$-th solutions to the nonlinear&nbsp;equations</p>
-$$
+<p>$$
 f_1(\omega) = c - \omega \tan (\omega a) = 0 &#92;
-f_2(\omega^*) = \omega^* - c \tan (\omega^* a) = 0 
-$$<p>Lets compute a bunch of these&nbsp;values</p>
+f_2(\omega^*) = \omega^* - c \tan (\omega^* a) = 0&nbsp;$$</p>
+<p>Lets compute a bunch of these&nbsp;values</p>
 </div>
 </div>
 </div>
@@ -7810,8 +7796,7 @@ HO/cPQAAAABJRU5ErkJggg==
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -9863,16 +9848,15 @@ EEIIIYQQQgghhBBCCCGEEEIIIYQQQgghxJHv/wHZydoGpXrg+gAAAABJRU5ErkJggg==
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>One consequence of eigenvalue decomposition in linear algebra is that you can re-compose the original matrix using the eigenvectors and eigen values as was shown before. This is true also for eigenfunctions. We can re-build the correlation function $C(\tau)$ due to a limited number of eigenfunctions&nbsp;(truncation).</p>
 <p>In the discrete case we&nbsp;did:</p>
-$$
-C = \mathbf{v}^T \mathbf{\Sigma} \mathbf{v} 
-$$<p>For the continuous case the correlation function can be re-constructed (or expanded, depending on how we need to view this) via 
+<p>$$
+C = \mathbf{v}^T \mathbf{\Sigma} \mathbf{v}&nbsp;$$</p>
+<p>For the continuous case the correlation function can be re-constructed (or expanded, depending on how we need to view this) via 
 $$
 c(t_1,t_2) = \sum_{k=1}^{\infty} \Big[ \sigma_k^2 f_k(t_1) f_k(t_2) +  {\sigma_k^*}^2 f_k^*(t_1) f_k^*(t_2)  \Big]&nbsp;$$</p>
 </div>
@@ -17372,50 +17356,6 @@ e3EVE/ZjPpuwYftEGtDr4yVJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJ
 kiRJkiRJkiRJkiRJkiRJkiRJkhqd/wdZrvSK0unwSgAAAABJRU5ErkJggg==
 " />
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [73]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [73]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [73]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
 </div>
 </div>
 </div>
