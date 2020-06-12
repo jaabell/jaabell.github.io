@@ -1,328 +1,1007 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abell's Research Blog</title><link href="http://www.joseabell.com/" rel="alternate"></link><link href="http://www.joseabell.com/feeds/all.atom.xml" rel="self"></link><id>http://www.joseabell.com/</id><updated>2015-01-29T16:57:28-08:00</updated><entry><title>CS261 - HW # 0 : Describe a parallel application</title><link href="http://www.joseabell.com/cs261-hw-0-describe-a-parallel-application.html" rel="alternate"></link><updated>2015-01-29T16:57:28-08:00</updated><author><name>Jose Abell</name></author><id>tag:www.joseabell.com,2015-01-29:cs261-hw-0-describe-a-parallel-application.html</id><summary type="html">&lt;p&gt;by: José&amp;nbsp;Abell&lt;/p&gt;
-&lt;h1 id="biography"&gt;Biography&lt;/h1&gt;
-&lt;p&gt;I am a PhD student at UCDavis &lt;a href="http://sokocalo.engr.ucdavis.edu/~jeremic/"&gt;CompGeoMech&lt;/a&gt; since Sept 2011, working on our in-house high-performance &lt;span class="caps"&gt;FEM&lt;/span&gt; simulation system. I come from Chile, where I did my undergraduate studies in structural engineering, leading to a professional degree in the specialty, at Pontificia Universidad Católica de Chile. Then, I proceeded to do my &lt;span class="caps"&gt;MS&lt;/span&gt; at the same institution in Civil Engineering. My &lt;span class="caps"&gt;MS&lt;/span&gt; thesis was more focused into the hazard part of earthquake&amp;nbsp;engineering. &lt;/p&gt;
-&lt;p&gt;My current research focuses on high-performance Earthquake-Soil-Structure interaction (&lt;span class="caps"&gt;ESSI&lt;/span&gt;) simulation. In a nutshell, it consists in modeling the effect of earthquake on structures from the earthquake source rupture process all the way up to a structure and its contents. The idea is to find out how and when a more accurate &lt;span class="caps"&gt;ESSI&lt;/span&gt; simulation yields different results from what is currently done in practice, and if this leads to safer and more economical&amp;nbsp;designs. &lt;/p&gt;
-&lt;p&gt;Parallel, high-performance computing is an enabling technology in this endeavor and there are many opportunities along the process where leveraging parallelism is possible. Meshing, simulation, and post-processing are important examples of&amp;nbsp;these. &lt;/p&gt;
-&lt;p&gt;Out of &lt;span class="caps"&gt;CS261&lt;/span&gt; is would like to get insight into what it takes to get extreme-performance out of simulation software in different architectures. In particular, I would like to know more about the following&amp;nbsp;topics:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;span class="caps"&gt;MPI&lt;/span&gt; usage patterns, how they come up, when to apply them, and&amp;nbsp;tradeoffs.&lt;/li&gt;
-&lt;li&gt;Shared memory parallel programming models (pthreads, OpenMP) and recurring software&amp;nbsp;patterns. &lt;/li&gt;
-&lt;li&gt;Parallel I/O&amp;nbsp;techniques. &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id="application-essi-simulator"&gt;Application: &lt;span class="caps"&gt;ESSI&lt;/span&gt;&amp;nbsp;Simulator&lt;/h1&gt;
-&lt;p&gt;Introduction&lt;/p&gt;
-&lt;h6 id="_1"&gt;&lt;/h6&gt;
-&lt;p&gt;The &lt;a href="http://sokocalo.engr.ucdavis.edu/~jeremic/ESSI_Simulator/"&gt;Real &lt;span class="caps"&gt;ESSI&lt;/span&gt; Simulator&lt;/a&gt;[&lt;a href="#essiref"&gt;1&lt;/a&gt; and &lt;a href="#essiref2"&gt;2&lt;/a&gt;]  is a system for simulation of &lt;span class="caps"&gt;ESSI&lt;/span&gt; problems developed at &lt;span class="caps"&gt;UC&lt;/span&gt; Davis. It consists of software, hardware (a parallel computer: &lt;span class="caps"&gt;ESSI&lt;/span&gt; simulator machine), and documentation covering theory, usage and examples for the&amp;nbsp;system.&lt;/p&gt;
-&lt;p&gt;&lt;span class="caps"&gt;ESSI&lt;/span&gt; program is a parallel object-oriented finite element analysis (&lt;span class="caps"&gt;FEA&lt;/span&gt;) software for non-linear time domain analysis of &lt;span class="caps"&gt;ESSI&lt;/span&gt; systems. The program is written in C++, using several external libraries to accomplish its goals, most notably &lt;a href="www.open-mpi.org/"&gt;OpenMPI&lt;/a&gt; (message passing interface) is used to achieve parallelism. Other libraries used within &lt;span class="caps"&gt;ESSI&lt;/span&gt; include: &lt;a href="http://www.mcs.anl.gov/petsc/"&gt;PETSc&lt;/a&gt; for parallel solution of system of equations, &lt;a href="http://glaros.dtc.umn.edu/gkhome/metis/metis/overview"&gt;&lt;span class="caps"&gt;METIS&lt;/span&gt;&lt;/a&gt; and &lt;a href="http://glaros.dtc.umn.edu/gkhome/metis/parmetis/overview"&gt;Par-&lt;span class="caps"&gt;METIS&lt;/span&gt;&lt;/a&gt; for graph partitioning, [&lt;span class="caps"&gt;HDF5&lt;/span&gt;]phdf5 for parallel output. Input is controlled by a custom domain-specific language designed specifically for this&amp;nbsp;program. &lt;/p&gt;
-&lt;p&gt;The software is meant to target a range of platforms from personal computers (desktop, laptop) to high-performance clusters and&amp;nbsp;supercomputers. &lt;/p&gt;
-&lt;p&gt;Parallelism in &lt;span class="caps"&gt;FEA&lt;/span&gt;&lt;/p&gt;
-&lt;h6 id="_2"&gt;&lt;/h6&gt;
-&lt;p&gt;&lt;img alt="npp" src="/images/other/npp.png" title="Nuclear power plant model and its decomposition." /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;(Left and middle) Nuclear power plant model showing different areas, (right) domain decomposition of&amp;nbsp;model.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Two main sources of parallelism can be identified in the context of nonlinear, dynamic finite element simulation: (i) system of equation solution and (ii) element-level constitutive integration. The first of these consists in the solution of a large linear system of equations (&lt;span class="caps"&gt;SOE&lt;/span&gt;) which arises from the discretization of the continuum problem (expressed as a set of coupled partial differential equations) in the spatial domain. The second source, comes from advancing the constitutive rate equations within each element once a global displacement increment is obtained from the solution of the &lt;span class="caps"&gt;SOE&lt;/span&gt;. This last part can account for a large part of the computational time for large problems and is embarrassingly&amp;nbsp;parallel.&lt;/p&gt;
-&lt;p&gt;An additional source of parallelism in &lt;span class="caps"&gt;ESSI&lt;/span&gt; simulations is the storage of the large ammounts of output generated by these simulations. The philosophy adopted by the &lt;span class="caps"&gt;ESSI&lt;/span&gt; simulator is to independently store the information necessary to build the model and restart the simulation at any given point. This gives rise to possibly terabytes of data in even modest models, with the additional problem on how to handle this. In &lt;span class="caps"&gt;ESSI&lt;/span&gt; this is done by using a &lt;a href="http://en.wikipedia.org/wiki/Network_File_System"&gt;network filesystem&lt;/a&gt; (&lt;span class="caps"&gt;NFS&lt;/span&gt;) to create a virtual parallel unique disk and the &lt;span class="caps"&gt;HDF5&lt;/span&gt; format to store the data. In a nutshell, &lt;span class="caps"&gt;HDF5&lt;/span&gt; implements a format for storing scientific (array-oriented) data in a portable way, and also allowing parallel read/write (it uses &lt;span class="caps"&gt;MPI&lt;/span&gt; I/O under the&amp;nbsp;hood).&lt;/p&gt;
-&lt;p&gt;A particularity of non-linear (plasticity based) &lt;span class="caps"&gt;FEA&lt;/span&gt; simulation is the unknown parts of the domain may plastify during simulations, leading to increased time spent integrating constitutive equations in that portion of the domain. What this implies is that, given an initial partition that balances the loading, this partition might become unbalanced if the domain plastifies. An adaptation of the dynamic domain decomposition method termed the &amp;#8220;plastic domain decomposition&amp;#8221;[&lt;a href="#pdd"&gt;3&lt;/a&gt;] or &lt;span class="caps"&gt;PDD&lt;/span&gt;, which achieves computational load re-balancing by repartitioning the element graph using computational time as one of the weighting&amp;nbsp;factors.&lt;/p&gt;
-&lt;p&gt;Brief design&amp;nbsp;description&lt;/p&gt;
-&lt;h6 id="_3"&gt;&lt;/h6&gt;
-&lt;p&gt;&lt;span class="caps"&gt;PDD&lt;/span&gt; is implemented in &lt;span class="caps"&gt;ESSI&lt;/span&gt; using the &lt;a href="http://en.wikipedia.org/wiki/Actor_model"&gt;Actor/Shadow&lt;/a&gt; model of concurrency. Actors are autonomous and concurrently executing objects which execute asynchronously. Actors can create new actors and can  send messages to other actors. The Actor model is an Object-Oriented version of message passing in which the Actors represent processes and the methods sent between Actors represent communications (verbatim from [&lt;a href="#lecture_notes"&gt;4&lt;/a&gt;]).&lt;/p&gt;
-&lt;p&gt;&lt;img alt="shadowactor" src="/images/other/shadowactor.png" title="Shadow/actor model." /&gt;&lt;/p&gt;
-&lt;p&gt;Shadow-actors are the means in which actors communicate. Shadow-actors are objects which represent each running actor (remote) in a particular machine&amp;#8217;s local address space. Shadow actors are in charge of transmitting and receiving messages from other actors and effectively encapsulate all &lt;span class="caps"&gt;MPI&lt;/span&gt; calls. In the object-oriented design of &lt;span class="caps"&gt;ESSI&lt;/span&gt; this model allows reuse of code and modularity when programming using &lt;span class="caps"&gt;MPI&lt;/span&gt;. &lt;/p&gt;
-&lt;p&gt;Performance&lt;/p&gt;
-&lt;h6 id="_4"&gt;&lt;/h6&gt;
-&lt;p&gt;As seen in [&lt;a href="#pdd"&gt;3&lt;/a&gt;], plastic-domain-decomposition method provides a viable way to re-balance a plastifying domain and has seen a reasonable scaling for low number of processes. A comprehensive scaling study on different platforms has not been yet&amp;nbsp;performed. &lt;/p&gt;
-&lt;p&gt;Currently, &lt;span class="caps"&gt;ESSI&lt;/span&gt;&amp;#8217;s parallelization is exclusively done using &lt;span class="caps"&gt;MPI&lt;/span&gt;. This implies that for the lower end of the platforms we intend to cover (PCs, laptops) there is a performance hit due to improper use of shared memory architecture. This problem could be solved using a mixed design with threads for shared memory nodes and &lt;span class="caps"&gt;MPI&lt;/span&gt; for&amp;nbsp;network. &lt;/p&gt;
-&lt;p&gt;Another big bottleneck currently present is that all input is loaded into the master process, partitioned and then distributed. This results in an unnecessary load to the main process at startup and imposes a cap on how big a model might be solved. In order to solve this issue the parser must be parallelized to some extent, so that different (pre-partitioned) model parts can be loaded into different processors on&amp;nbsp;startup. &lt;/p&gt;
-&lt;p&gt;&lt;img alt="npp_build" src="/images/other/npp_build.png" title="Different physical zones of the NPP." /&gt;&lt;/p&gt;
-&lt;h1 id="references"&gt;References&lt;/h1&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a id="essiref"&gt;&lt;/a&gt; Boris Jeremić, Robert Roche-Rivera, Annie Kammerer, Nima Tafazzoli, Jose Abell M., Babak Kamranimoghaddam, Federico Pisano, ChangGyun Jeong and Benjamin Aldridge The &lt;span class="caps"&gt;NRC&lt;/span&gt; &lt;span class="caps"&gt;ESSI&lt;/span&gt; Simulator Program, Current Status in Proceedings of the Structural Mechanics in Reactor Technology (SMiRT) 2013 Conference, San Francisco, August 18-23,&amp;nbsp;2013.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a id="essiref2"&gt;&lt;/a&gt; Boris  Jeremić, Guanzhou Jie, Matthias Preisig and Nima Tafazzoli. Time domain simulation of soil-foundation-structure interaction in non-uniform soils. Earthquake Engineering and Structural Dynamics, Volume 38, Issue 5, pp 699-718,&amp;nbsp;2009.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a id="pdd"&gt;&lt;/a&gt; Boris Jeremić and Guanzhou Jie. Plastic Domain Decomposition Method for Parallel Elastic–Plastic Finite Element Computations in Geomechanics Report &lt;span class="caps"&gt;UCD&lt;/span&gt; CompGeoMech&amp;nbsp;03–2007.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a id="lecture_notes"&gt;&lt;/a&gt; Lecture Notes on Computational Geomechanics: Inelastic Finite Elements for Pressure Sensitive Materials, &lt;span class="caps"&gt;UC&lt;/span&gt; Davis, CompGeoMech&amp;nbsp;group&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;</summary><category term="cs261"></category><category term="parallel computing"></category></entry><entry><title>Simulation of a surface wave (Rayleigh)</title><link href="http://www.joseabell.com/simulation-of-a-surface-wave-English.html" rel="alternate"></link><updated>2014-11-30T22:42:13-08:00</updated><author><name>Jose Abell</name></author><id>tag:www.joseabell.com,2014-11-30:simulation-of-a-surface-wave-English.html</id><summary type="html">&lt;p&gt;This simulation, done in the &lt;span class="caps"&gt;UCD&lt;/span&gt; &lt;span class="caps"&gt;ESSI&lt;/span&gt; simulator and visualized in VisIt using VisIt-&lt;span class="caps"&gt;ESSI&lt;/span&gt; plugin, shows the passage of a surface wave (Rayleigh wave). The simulation consists on a surface impact on an elastic domain of 900m by 1800m depth, and a shear wave velocity of 1000km/s. Elliptical-retrograde motion can be seen as an illustration of Rayleigh&amp;nbsp;waves.&lt;/p&gt;
-&lt;p&gt;VisIt can be obtained &lt;a href="https://wci.llnl.gov/simulation/computer-codes/visit/"&gt;here&lt;/a&gt;, and the plugin &lt;a href="https://github.com/jaabell/visitESSI"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;!-- more   --&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog</title><link href="http://www.joseabell.com/" rel="alternate"></link><link href="http://www.joseabell.com/feeds/all.atom.xml" rel="self"></link><id>http://www.joseabell.com/</id><updated>2018-02-26T13:55:13-08:00</updated><entry><title>Using my gmshtranslator python tool to interface gmsh with opensees.</title><link href="http://www.joseabell.com/using-my-gmshtranslator-python-tool-to-interface-gmsh-with-opensees.html" rel="alternate"></link><published>2018-02-26T13:55:13-08:00</published><updated>2018-02-26T13:55:13-08:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2018-02-26:/using-my-gmshtranslator-python-tool-to-interface-gmsh-with-opensees.html</id><summary type="html">
+&lt;p&gt;I wrote the &lt;a href="https://github.com/jaabell/gmshtranslator"&gt;&lt;em&gt;gmshtranslator&lt;/em&gt;&lt;/a&gt; tool a while back during my PhD, to easily parse &lt;a href="http://gmsh.info/"&gt;&lt;em&gt;gmsh&lt;/em&gt;&lt;/a&gt; &lt;code&gt;msh&lt;/code&gt; files to any other format. I've been using it for years now with not much change for both research and consulting, and have been contacted by other researchers that want to use it. I will soon write a tool, powered by &lt;em&gt;gmshtranslator&lt;/em&gt;, to more easily translate from &lt;em&gt;gmsh&lt;/em&gt; into OpenSees. Meanwhile, here is a short example on how to use gmshtranslator to create &lt;a href="opensees.berkeley.edu"&gt;&lt;em&gt;OpenSees&lt;/em&gt;&lt;/a&gt; models. The example assumes you know &lt;em&gt;gmsh&lt;/em&gt; formats (&lt;code&gt;.geo&lt;/code&gt; and &lt;code&gt;.msh&lt;/code&gt;) and python. &lt;/p&gt;
+&lt;p&gt;The example consists on the simple cantilever beam shown in the following figure.&lt;/p&gt;
+</summary><content type="html">&lt;!-- SUMMARY BEGIN --&gt;
 
-&lt;!-- https://www.youtube.com/watch?v=mrT5L4xsKs0 --&gt;
+&lt;p&gt;I wrote the &lt;a href="https://github.com/jaabell/gmshtranslator"&gt;&lt;em&gt;gmshtranslator&lt;/em&gt;&lt;/a&gt; tool a while back during my PhD, to easily parse &lt;a href="http://gmsh.info/"&gt;&lt;em&gt;gmsh&lt;/em&gt;&lt;/a&gt; &lt;code&gt;msh&lt;/code&gt; files to any other format. I've been using it for years now with not much change for both research and consulting, and have been contacted by other researchers that want to use it. I will soon write a tool, powered by &lt;em&gt;gmshtranslator&lt;/em&gt;, to more easily translate from &lt;em&gt;gmsh&lt;/em&gt; into OpenSees. Meanwhile, here is a short example on how to use gmshtranslator to create &lt;a href="opensees.berkeley.edu"&gt;&lt;em&gt;OpenSees&lt;/em&gt;&lt;/a&gt; models. The example assumes you know &lt;em&gt;gmsh&lt;/em&gt; formats (&lt;code&gt;.geo&lt;/code&gt; and &lt;code&gt;.msh&lt;/code&gt;) and python. &lt;/p&gt;
+&lt;p&gt;The example consists on the simple cantilever beam shown in the following figure.&lt;/p&gt;
+&lt;!-- SUMMARY END --&gt;
 
-&lt;div class="youtube" align="left"&gt;
-&lt;iframe width="640" height="480" src="//www.youtube.com/embed/a1xBlIL6ZOM" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
-&lt;/div&gt;</summary><category term="essi"></category><category term="visitessi"></category><category term="postprocessing"></category><category term="movie"></category></entry><entry><title>Visualizing ESSI output with VisIt-ESSI</title><link href="http://www.joseabell.com/visualizing-essi-output-with-visit-essi-English.html" rel="alternate"></link><updated>2014-11-23T11:34:38-08:00</updated><author><name>Jose Abell</name></author><id>tag:www.joseabell.com,2014-11-23:visualizing-essi-output-with-visit-essi-English.html</id><summary type="html">&lt;p&gt;VisIt-&lt;span class="caps"&gt;ESSI&lt;/span&gt; is a plugin for the VisIt post-processor created my CompGeoMech. 
-It allows for remote (soon parallel also) visualization of outputs produced
-by &lt;span class="caps"&gt;ESSI&lt;/span&gt; in the &lt;span class="caps"&gt;HDF5&lt;/span&gt; format&amp;nbsp;(*.h5.feioutput).&lt;/p&gt;
-&lt;p&gt;VisIt can be obtained &lt;a href="https://wci.llnl.gov/simulation/computer-codes/visit/"&gt;here&lt;/a&gt;, and the plugin &lt;a href="https://github.com/jaabell/visitESSI"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;!-- more   --&gt;
+&lt;p&gt;&lt;img src="https://www.dropbox.com/s/96dqfc5r6su4pjd/beam.png?raw=1" /&gt;&lt;/p&gt;
+&lt;p&gt;The beam is fixed at the right end, and has node-by-node forcing on the right end. The following &lt;em&gt;gmsh&lt;/em&gt; &lt;code&gt;.geo.&lt;/code&gt; script prepares the domain. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;beam.geo :&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;LX&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;LY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;Nx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;40&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;Ny&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-&lt;!-- https://www.youtube.com/watch?v=mrT5L4xsKs0 --&gt;
+&lt;span class="n"&gt;Point&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="n"&gt;Point&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;LX&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="n"&gt;Point&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;LX&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;LY&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="n"&gt;Point&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;LY&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="n"&gt;Line&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="n"&gt;Line&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="n"&gt;Line&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="n"&gt;Line&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="n"&gt;Line&lt;/span&gt; &lt;span class="nf"&gt;Loop&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="n"&gt;Plane&lt;/span&gt; &lt;span class="nf"&gt;Surface&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
 
-&lt;div class="youtube" align="left"&gt;
-&lt;iframe width="640" height="480" src="//www.youtube.com/embed/mrT5L4xsKs0" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
-&lt;/div&gt;</summary><category term="tutorial"></category><category term="essi"></category><category term="visitessi"></category><category term="postprocessing"></category><category term="movie"></category></entry><entry><title>Site now powered by pelican!</title><link href="http://www.joseabell.com/site-moved-to-pelican.html" rel="alternate"></link><updated>2014-06-24T10:48:59-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2014-06-24:site-moved-to-pelican.html</id><summary type="html">&lt;p&gt;I finally completed the transition from WordPress to &lt;a href="www.getpelican.com"&gt;Pelican&lt;/a&gt;. The moment was right. Pelican is more
-appropriate for me as it is much simpler to manage (I host my own webpage), more flexible in terms
-of what I can do with the blog, requires no php or database&amp;nbsp;knowledge. &lt;/p&gt;
-&lt;p&gt;Pelican is a python powered static &lt;span class="caps"&gt;HTML&lt;/span&gt; generator. I set-up a heierarchy of folders where I store
-my content. Web content is generated using the Markdown text syntax. Pelican uses these &lt;a href="http://daringfireball.net/projects/markdown/"&gt;markdown&lt;/a&gt;
-files and the folder structure to generate the website &lt;span class="caps"&gt;HTML&lt;/span&gt;. &lt;/p&gt;
-&lt;p&gt;Static &lt;span class="caps"&gt;HTML&lt;/span&gt; has some advantages over a database with server-side logic based website. The most
-important for me is speed and low memory usage, because I want to host my own&amp;nbsp;website. &lt;/p&gt;
-&lt;p&gt;Also, it makes it easier to share code as I can include code snippets directly in the markdown text
-file and it gets highlighted using pygments (python&amp;nbsp;module).&lt;/p&gt;
-&lt;p&gt;Thanks to &lt;a href="http://danielfrg.com/blog/2013/02/16/blogging-pelican-ipython-notebook/"&gt;this&lt;/a&gt; I can
-also now (to do) use python notebooks to blog directly. This is a nice feature as I will be
-blogging mainly about scientific computing, showing some example here and there and&amp;nbsp;such.&lt;/p&gt;
-&lt;p&gt;Finally, I can version control the website using &lt;a href="http://git-scm.com/"&gt;git&lt;/a&gt; and automate site
-updating using a git-hook on the server (thank &lt;a href="http://www.textandhubris.com/automate-pelican-with-git.html"&gt;this post&lt;/a&gt;).
-This means I can clone my git repo, make changes and push them and the server will automatically
-generate the website and deploy&amp;nbsp;it!&lt;/p&gt;
-&lt;p&gt;I love&amp;nbsp;pelican!&lt;/p&gt;</summary><category term="pelican"></category><category term="blog"></category><category term="hacker"></category></entry><entry><title>SNE # 01. Example of ESSI simulation and visualization with visitESSI</title><link href="http://www.joseabell.com/sne-01-example-of-essi-simulation-and-visualization-with-visitessi.html" rel="alternate"></link><updated>2014-05-16T19:37:00-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2014-05-16:sne-01-example-of-essi-simulation-and-visualization-with-visitessi.html</id><summary type="html">&lt;p&gt;These are the results of a simple elastic-domain simulation. Mesh
-consists&amp;nbsp;of&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;span style="line-height: 14px;"&gt;154523 Nodes (46359&amp;nbsp;DOFs)&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;1250 27 node bricks (&lt;span class="caps"&gt;LT&lt;/span&gt;&amp;nbsp;formulation)&lt;/li&gt;
-&lt;li&gt;1200 time-steps (dt =&amp;nbsp;0.01s)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Results were stored in the new format of output for &lt;span class="caps"&gt;ESSI&lt;/span&gt; simulator and
-visualized in VisIt post-processor where the movie was created.&lt;br /&gt;
-&lt;!--more--&gt;&lt;br /&gt;
-&lt;!--http://youtu.be/VURohwb-OJQ--&gt;&lt;/p&gt;
-&lt;div class="youtube" align="left"&gt;
-&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/VURohwb-OJQ" frameborder="0"&gt;&lt;/iframe&gt;
-&lt;/div&gt;</summary><category term="animation"></category><category term="c++"></category><category term="ESSI"></category><category term="linux"></category><category term="post-processing"></category><category term="small numerical experiments"></category><category term="sne"></category><category term="visitESSI"></category><category term="movie"></category></entry><entry><title>NTS (Note-To-Self): Creating dynamically linked libraries</title><link href="http://www.joseabell.com/nts-note-to-self-creating-dynamically-linked-libraries.html" rel="alternate"></link><updated>2013-10-28T18:57:00-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2013-10-28:nts-note-to-self-creating-dynamically-linked-libraries.html</id><summary type="html">&lt;p&gt;A nice extensive tutorial can be found &lt;a href="http://www.yolinux.com/TUTORIALS/LibraryArchives-StaticAndDynamic.html"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;In a&amp;nbsp;nutshell:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;:::shell.BashLexer
-gcc -Wall -fPIC -c \*.c  
-gcc -shared -Wl,-soname,libctest.so.1 -o libctest.so.1.0 \*.o  
-mv libctest.so.1.0 /opt/lib  
-ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so.1  
-ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so
-&lt;/code&gt;&lt;/pre&gt;
-&lt;!--more--&gt;
+&lt;span class="n"&gt;Transfinite&lt;/span&gt; &lt;span class="n"&gt;Line&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Nx&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;Transfinite&lt;/span&gt; &lt;span class="n"&gt;Line&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Ny&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;Transfinite&lt;/span&gt; &lt;span class="n"&gt;Surface&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="n"&gt;Recombine&lt;/span&gt; &lt;span class="n"&gt;Surface&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;-Wall&lt;/code&gt;: include warnings. See man page for warnings&amp;nbsp;specified.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;-fPIC&lt;/code&gt;: Compiler directive to output position independent code, a
-    characteristic required by shared libraries. Also see&amp;nbsp;&amp;#8220;-fpic&amp;#8221;.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;-shared&lt;/code&gt;: Produce a shared object which can then be linked with other objects
-    to form an&amp;nbsp;executable.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;-Wl,options&lt;/code&gt;: Pass options to&amp;nbsp;linker.&lt;/li&gt;
-&lt;li&gt;In this example the options to be passed on to the linker are: &lt;code&gt;-soname
-    libctest.so.1&lt;/code&gt;. The name after the &lt;code&gt;-o&lt;/code&gt; option is passed to&amp;nbsp;gcc.&lt;/li&gt;
-&lt;li&gt;Option &lt;code&gt;-o&lt;/code&gt;:
-    Output of operation. In this case the name of the shared object to
-    be output will be &lt;code&gt;libctest.so.1.0&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;See note on &amp;#8220;Library&amp;nbsp;Paths&amp;#8221;&lt;/p&gt;</summary><category term="c++"></category><category term="coding"></category><category term="compiler"></category><category term="gcc"></category><category term="library"></category><category term="linux"></category><category term="note to self"></category><category term="programming"></category><category term="reminder"></category><category term="tutorial"></category></entry><entry><title>SNE # 0. Stochastic inverse pendulum</title><link href="http://www.joseabell.com/sne-0-stochastic-inverse-pendulum.html" rel="alternate"></link><updated>2013-10-09T20:37:00-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2013-10-09:sne-0-stochastic-inverse-pendulum.html</id><summary type="html">&lt;p&gt;This is the first installment of &amp;#8220;Small Numerical Experiments&amp;#8221; (&lt;span class="caps"&gt;SNE&lt;/span&gt;), a
-section where I upload and comment (briefly) some small numerical
-example. The purpose is to prove a point to myself, test some code,
-ideas,&amp;nbsp;etc.&lt;/p&gt;
-&lt;p&gt;&lt;a href="/images/sne/01/pendulum_medium.png"&gt;&lt;img alt="pendulum" src="/images/sne/01/pendulum_medium.png" /&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;In this first post I will explore the response of a &lt;em&gt;stochastic inverse
-pendulum.&lt;/em&gt; What I mean in this case is an inverse pendulum (shown left)
-with a random initial condition. The purpose is to obtain the
-time-evolving probability density function (&lt;span class="caps"&gt;PDF&lt;/span&gt;) of the pendulum&amp;#8217;s
-position. I will be doing Monte-Carlo simulations to obtain an
-approximation to this &lt;span class="caps"&gt;PDF&lt;/span&gt;.&lt;br /&gt;
-&lt;!--more--&gt;&lt;br /&gt;
-The response of the system is governed by the following nonlinear
-ordinary differential equation in terms of the angular displacement
-&lt;mathjax&gt;$\theta$&lt;/mathjax&gt; with respect to the&amp;nbsp;vertical:&lt;/p&gt;
-&lt;p&gt;&lt;mathjax&gt;$$
- m l^2 \ddot{\theta} + c \dot{\theta} - mgl \sin \theta = 0
-$$&lt;/mathjax&gt;&lt;/p&gt;
-&lt;p&gt;Subject to an initial condition &lt;mathjax&gt;$$ \theta(0) = \theta_0$$&lt;/mathjax&gt; and
-&lt;mathjax&gt;$$ \dot{\theta}(0) =\dot{\theta}_0$$&lt;/mathjax&gt;. In this case, the initial
-angular velocity is set to zero and the initial angular displacement is
-set to have a Gaussian random distribution with mean zero and standard
-deviation of 10 degrees. The linear damping constant is set to 10%
-critical damping the system would have in the case of small oscillations
-about the final equilibrium point &lt;mathjax&gt;$$\theta = 180^{\circ}$$&lt;/mathjax&gt;.&lt;/p&gt;
-&lt;p&gt;The example is coded in python and solved using the &lt;em&gt;odeint &lt;/em&gt;solver
-available in &lt;a href="http://www.scipy.org"&gt;scipy&lt;/a&gt;. Here is an example response for a given nonzero
-initial&amp;nbsp;condition.&lt;/p&gt;
-&lt;p&gt;&lt;a href="/images/sne/01/one.png"&gt;&lt;img alt="one" src="/images/sne/01/one.png" /&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Doing 5000 Monte-Carlo draws and plotting all the responses together we
-get:&lt;a href="/images/sne/01/ensemble.png"&gt;&lt;img alt="ensemble" src="/images/sne/01/ensemble.png" /&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;About half of the the pendulums swing to the left and the other half to
-the right. This would result in a bimodal distribution and is a mere
-artifact of the mathematical model used. Indeed, what the model
-perceives as two distinct equilibrium points are actually the same
-position for the pendulum. This arises because of the periodicity in the
-&lt;mathjax&gt;$\sin()$&lt;/mathjax&gt; function.&lt;/p&gt;
-&lt;p&gt;From this set of motions a &lt;span class="caps"&gt;PDF&lt;/span&gt; may be computed for each time and
-animated to show the evolution of the &lt;span class="caps"&gt;PDF&lt;/span&gt; with&amp;nbsp;time.&lt;/p&gt;
-&lt;div class="youtube" align="left"&gt;
-&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/7nzB6LfW2ys" frameborder="0"&gt;&lt;/iframe&gt;
+&lt;span class="n"&gt;Physical&lt;/span&gt; &lt;span class="nf"&gt;Line&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Fixed&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="n"&gt;Physical&lt;/span&gt; &lt;span class="nf"&gt;Line&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Forcing&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="n"&gt;Physical&lt;/span&gt; &lt;span class="nf"&gt;Surface&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Beam&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
+
+&lt;span class="n"&gt;Mesh&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;3 physical groups are defined: &lt;em&gt;fixed&lt;/em&gt; to identify the fixed nodes, &lt;em&gt;forcing&lt;/em&gt; to identify the nodes that will carry loads, and &lt;em&gt;beam&lt;/em&gt; contains all the quad elements to represent the body of the beam. Note the optional use of the transfinite meshing algorithm. Once this script is executed in &lt;em&gt;gmsh&lt;/em&gt; the &lt;code&gt;.msh&lt;/code&gt; file can be exported. The resulting &lt;code&gt;.msh&lt;/code&gt; file can be found &lt;a href="https://www.dropbox.com/s/3d44h0ttdrm67gz/beam.msh?dl=0"&gt;here&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;gmshtranslator&lt;/em&gt; parses the &lt;code&gt;.msh&lt;/code&gt; file, executing code depending on certain user-defined rules. What we want to do is define an opensees node command for each node in the &lt;code&gt;.msh&lt;/code&gt; file, fix the nodes contained in the &lt;em&gt;fixed&lt;/em&gt; physical group, generate forces for the nodes in the &lt;em&gt;forcing&lt;/em&gt; physical group, and add quad elements for each quad in the &lt;code&gt;.msh&lt;/code&gt; file. &lt;/p&gt;
+&lt;p&gt;First, import the &lt;code&gt;beam.msh&lt;/code&gt; file into &lt;em&gt;gmshtranslator&lt;/em&gt; and open files to be written that will contain the opensees code. &lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;gmshtranslator&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;gmshTranslator&lt;/span&gt;
+
+&lt;span class="n"&gt;mshfname&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;beam.msh&amp;quot;&lt;/span&gt;
+
+&lt;span class="n"&gt;gt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;gmshTranslator&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mshfname&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;fid_nodes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;    &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mshfname&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;.msh&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;.nodes.tcl&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;w&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;fid_elements&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mshfname&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;.msh&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;.elements.tcl&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;w&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;fid_fixities&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mshfname&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;.msh&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;.fixities.tcl&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;w&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;fid_loads&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mshfname&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;.msh&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;.loads.tcl&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;w&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;I like writing different things (nodes, elements, etc.) in separate files for debugging. Your style might be different. &lt;em&gt;gmshtranslator&lt;/em&gt; parses the file and evaluates &lt;em&gt;rules&lt;/em&gt;. A rule is composed of a &lt;em&gt;condition&lt;/em&gt; that must be met and an &lt;em&gt;action&lt;/em&gt; to be executed, these are both python functions. There are rules for nodes and for elements. &lt;/p&gt;
+&lt;p&gt;The syntax for node and element conditions are:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;node_condition&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tag&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;physgroups&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; 
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;element_condition&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;eletag&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;eletype&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;physgrp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;nodes&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;These are functions that evaluate to &lt;code&gt;true&lt;/code&gt; or &lt;code&gt;false&lt;/code&gt; depending on the inputs. Then the syntax for &lt;em&gt;actions&lt;/em&gt; are:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;node_action&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tag&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;element_action&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;eletag&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;eletype&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;physgrp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;nodes&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;These functions don't return anything, instead excecute whatever code should be executed if the &lt;em&gt;condition&lt;/em&gt; of the rule is met. Rules are added to the parser by using the &lt;code&gt;add_nodes_rule&lt;/code&gt; or &lt;code&gt;add_elements_rule&lt;/code&gt; function of &lt;em&gt;gmshtranslator&lt;/em&gt; and are excecuted whenever the &lt;code&gt;parse()&lt;/code&gt; method is called. &lt;/p&gt;
+&lt;p&gt;For example, the rule to add all nodes to the opensees domain would be:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;is_node&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tag&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;physgroups&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;add_node&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tag&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;fid_nodes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;node &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt; &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt; &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tag&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_nodes_rule&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;is_node&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;add_node&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;The node &lt;em&gt;condition&lt;/em&gt; (&lt;code&gt;is_node&lt;/code&gt;) function always returns &lt;code&gt;true&lt;/code&gt;, that is this rule will execute for all nodes. The &lt;em&gt;action&lt;/em&gt; function is &lt;code&gt;add_node&lt;/code&gt; and will write the appropriate text into the nodes file. The &lt;em&gt;rule&lt;/em&gt; is added into the parser by using the &lt;code&gt;gt.add_nodes_rule&lt;/code&gt; function which accepts two python functions as arguments: a condition and an action. &lt;/p&gt;
+&lt;p&gt;The code for the rest of the example is:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fix_node&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tag&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;fid_fixities&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;fix &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt; 1 1&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tag&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;add_load&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;eletag&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;eletype&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;physgrp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;nodes&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;fid_loads&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;load &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt; $fx $fy&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nodes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt;
+    &lt;span class="n"&gt;fid_loads&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;load &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt; $fx $fy&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nodes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;add_element&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;eletag&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;eletype&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;physgrp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;nodes&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;fid_elements&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;element quad &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt; &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt; &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt; &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt; &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt; $thick PlaneStress $mat_tag&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;eletag&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nodes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;nodes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;nodes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;nodes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt;
+
+
+&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_nodes_rule&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;is_node_in&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Fixed&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;fix_node&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_elements_rule&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;is_element_in&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Forcing&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;add_load&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_elements_rule&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;is_element_in&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Beam&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;add_element&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Note that we didn't write a condition for the &lt;code&gt;fix_node&lt;/code&gt; action, instead we used some of the simple conditions contained in &lt;em&gt;gmshtranslator&lt;/em&gt; that can simplify some typical situations. In this case the &lt;code&gt;gt.is_node_in()&lt;/code&gt; function takes a physical group name and evaluates whether each node is in that physical group. An equivalent &lt;code&gt;python&lt;/code&gt; code for this would be:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Fixed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;  &lt;span class="c1"&gt;# Physical group number assigned by gmsh to the &amp;#39;Fixed&amp;#39; group&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;is_node_in_Fixed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tag&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;physgroups&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Fixed&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;physgroups&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Or using &lt;em&gt;gmstranslator&lt;/em&gt;s internal mapping.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;is_node_in_Fixed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tag&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;physgroups&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;physical_groups_by_name&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Fixed&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;physgroups&lt;/span&gt;\
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;The same holds true for the &lt;code&gt;add_load&lt;/code&gt; and &lt;code&gt;add_element&lt;/code&gt; rules, I just opted to use the simple function but could have written a condition function from scratch.  Add all rules to the parser by callig the &lt;code&gt;add_X_rule&lt;/code&gt; functions. Finally, call parse to execute and generate all output files. &lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parse&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Don't forget to close files people!&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;fid_nodes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;fid_elements&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;fid_fixities&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;fid_loads&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Run the python script and, voillá! Meshing done. &lt;/p&gt;
+&lt;p&gt;Finally, for completeness, here is the OpenSees tcl code that runs the complete example. I used elastic-isotropic material and a simple static analysis. I added only vertical loading on the tip of the beam. &lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;model&lt;/span&gt; BasicBuilder &lt;span class="o"&gt;-&lt;/span&gt;ndm &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;ndf &lt;span class="mi"&gt;2&lt;/span&gt;
+
+&lt;span class="k"&gt;set&lt;/span&gt; thick &lt;span class="mf"&gt;1.0&lt;/span&gt;
+
+&lt;span class="k"&gt;set&lt;/span&gt; mat_tag &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="k"&gt;set&lt;/span&gt; E &lt;span class="mi"&gt;200&lt;/span&gt;.e9
+&lt;span class="k"&gt;set&lt;/span&gt; nu &lt;span class="mf"&gt;0.3&lt;/span&gt;
+
+&lt;span class="nv"&gt;nDMaterial&lt;/span&gt; ElasticIsotropic &lt;span class="nv"&gt;$mat_tag&lt;/span&gt; &lt;span class="nv"&gt;$E&lt;/span&gt; &lt;span class="nv"&gt;$nu&lt;/span&gt;
+
+&lt;span class="nb"&gt;source&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;beam.nodes.tcl&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;source&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;beam.fixities.tcl&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;source&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;beam.elements.tcl&amp;quot;&lt;/span&gt;
+
+&lt;span class="k"&gt;set&lt;/span&gt; tstag &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="nv"&gt;timeSeries&lt;/span&gt; Linear &lt;span class="nv"&gt;$tstag&lt;/span&gt; &lt;span class="mf"&gt;1.0&lt;/span&gt;
+
+&lt;span class="k"&gt;set&lt;/span&gt; Ly &lt;span class="mf"&gt;0.5&lt;/span&gt;
+&lt;span class="k"&gt;set&lt;/span&gt; Ny &lt;span class="mi"&gt;5&lt;/span&gt;
+&lt;span class="k"&gt;set&lt;/span&gt; dy &lt;span class="k"&gt;[expr&lt;/span&gt; &lt;span class="nv"&gt;$Ly&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;$Ny&lt;/span&gt;&lt;span class="k"&gt;]&lt;/span&gt;
+
+&lt;span class="k"&gt;set&lt;/span&gt; fx &lt;span class="k"&gt;[expr&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nv"&gt;$dy&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="k"&gt;]&lt;/span&gt;
+&lt;span class="k"&gt;set&lt;/span&gt; fy &lt;span class="k"&gt;[expr&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;.&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nv"&gt;$dy&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="k"&gt;]&lt;/span&gt;
+
+&lt;span class="nv"&gt;pattern&lt;/span&gt; Plain &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Linear&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;{&lt;/span&gt;
+    &lt;span class="nb"&gt;source&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;beam.loads.tcl&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;}&lt;/span&gt;
+
+&lt;span class="nv"&gt;recorder&lt;/span&gt; pvd disp disp
+
+&lt;span class="nv"&gt;constraints&lt;/span&gt; Plain
+&lt;span class="nv"&gt;numberer&lt;/span&gt; RCM
+&lt;span class="nv"&gt;system&lt;/span&gt; UmfPack
+&lt;span class="nv"&gt;test&lt;/span&gt; NormDispIncr &lt;span class="mf"&gt;1.0&lt;/span&gt;e-9 &lt;span class="mi"&gt;10&lt;/span&gt;
+&lt;span class="nv"&gt;algorithm&lt;/span&gt; Newton
+&lt;span class="nv"&gt;integrator&lt;/span&gt; LoadControl &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="nv"&gt;analysis&lt;/span&gt; Static
+&lt;span class="nv"&gt;analyze&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;The &lt;code&gt;pvd&lt;/code&gt; recorder is used to generate a nice output file that can be viewed using &lt;a href="https://www.paraview.org/"&gt;paraview&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Deflections" src="https://www.dropbox.com/s/24tkmfk1y1r0wz5/disp.png?raw=1"&gt;&lt;/p&gt;</content><category term="misc"></category><category term="OpenSees"></category><category term="gmsh"></category><category term="gmshtranslator"></category><category term="python"></category><category term="pre-proceesing"></category><category term="meshing"></category></entry><entry><title>Paper03 - Earthquake Soil Structure Interaction of Nuclear Power Plants, differences in response to 3-D, 3 × 1-D, and 1-D excitations</title><link href="http://www.joseabell.com/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations.html" rel="alternate"></link><published>2018-02-20T10:50:00-08:00</published><updated>2018-02-20T10:50:00-08:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2018-02-20:/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations.html</id><summary type="html">
+&lt;p&gt;&lt;strong&gt;Finally!&lt;/strong&gt; First paper since PhD was accepted for publication. I'll take this opportunity to start a tradition and review my own papers here. I think its important that I do this for several reasons. First, there are discussions that come up during peer review that are important but don't make it into the paper. Misconceptions about the presented work can be clarified to a broader audience here. Also, I can say whatever I want, specially opinions and thoughts that come from intuition and might not make it through peer-review, I'll be as critical as possible about these too and hope that my readers can discuss with me. I can post videos and other additional content here and make them available to everyone for free. And, finally, this post will have a Disqus thread where we can all interact. &lt;/p&gt;
+</summary><content type="html">&lt;!-- SUMMARY BEGIN --&gt;
+
+&lt;p&gt;&lt;strong&gt;Finally!&lt;/strong&gt; First paper since PhD was accepted for publication. I'll take this opportunity to start a tradition and review my own papers here. I think its important that I do this for several reasons. First, there are discussions that come up during peer review that are important but don't make it into the paper. Misconceptions about the presented work can be clarified to a broader audience here. Also, I can say whatever I want, specially opinions and thoughts that come from intuition and might not make it through peer-review, I'll be as critical as possible about these too and hope that my readers can discuss with me. I can post videos and other additional content here and make them available to everyone for free. And, finally, this post will have a Disqus thread where we can all interact. &lt;/p&gt;
+&lt;!-- SUMMARY END --&gt;
+
+&lt;p&gt;Lets get to it! Here is the citation so far (I still don't have an issue assign, going through editorial process): &lt;strong&gt;Abell Mena J A&lt;/strong&gt;, Orbović N, McCallen D B, Jeremic B. &lt;em&gt;Earthquake soil-structure interaction of nuclear power plants, differences in response to 3-D, 3×1-D, and 1-D excitations.&lt;/em&gt; Earthquake Engng Struct Dyn. 2018;1–18. [https://doi.org/10.1002/eqe.3026].&lt;/p&gt;
+&lt;p&gt;The idea is simple: to show that the 3-D character of seismic motions has an impact on the structural response of a nuclear power-plant by comparing the response to 3-D motions with the one produced by an equivalent 1-D (1 component: horizontal) or 3×1-D (3 components) motion. Here is the NPP model used in the article:&lt;/p&gt;
+&lt;p&gt;&lt;img width="100%" src="https://www.dropbox.com/s/dj6ruypv0722qh2/fem_mesh.png?raw=1" alt="NPP" /&gt;&lt;/p&gt;
+&lt;p&gt;And its fixed-base eigenmodes:&lt;/p&gt;
+&lt;p&gt;&lt;img width="100%" src="https://www.dropbox.com/s/01pkei2pibg3nws/containment_modes.png?raw=1" alt="Containment building modes" /&gt;
+&lt;img width="100%" src="https://www.dropbox.com/s/9d2um509pcrot7r/auxilliary_modes.png?raw=1" alt="Auxiliary building modes" /&gt;&lt;/p&gt;
+&lt;p&gt;I was required by the peer-reviewers to include these fixed-base modes in the article. These are interesting, but they're not too relevant to the SSI system. SSI significantly changes the participation of the modes. I've found it useful to stop thinking in terms of eigen modes for these kind of problems, it is better to think in terms of the requirements of wave-propagation. &lt;/p&gt;
+&lt;p&gt;In the paper, I use the domain reduction method (DRM) to couple a 3-D seismic simulation of the wave propagation from source to site with a local site and structure model. This &lt;em&gt;domain split&lt;/em&gt; allows the fully 3-D modeling of the motions into the structure, accurately. Also, importantly, it allows the separation of the seismic and NPP simulation, using separate dedicated programs for each task as opposed to one big complex simulation. This reduces the computational cost dramatically and allows more modeling freedom. From the &lt;em&gt;free-field&lt;/em&gt; response of the site (e.g. with no NPP on top) equivalent 1-D and 3×1-D motions were developed using 1-D site deconvolutions in Shake and input into the model for comparison. Here's a plot of what the differences look like for the top of the containment building. &lt;/p&gt;
+&lt;p&gt;&lt;img width="30%" src="https://www.dropbox.com/s/zl0nuu76pfhbcr3/positions_top_of_containment.png?raw=1" alt="Top of containment" /&gt;
+&lt;img width="30%" src="https://www.dropbox.com/s/18y3foxfrxcw1mq/node_733_disp.png?raw=1" alt="Displacement response" /&gt;
+&lt;img width="30%" src="https://www.dropbox.com/s/aahcmkkr8zvzhf9/node_733_acce.png?raw=1" alt="Acceleration response" /&gt;&lt;/p&gt;
+&lt;p&gt;1-D or 3×1-D waves deliver energy in-phase to the foundation of the structure, resulting in enhanced response when compared to a full 3-D response.  In this particular case, it would be &lt;em&gt;conservative&lt;/em&gt; (looking at response accelerations and displacements) to use 1-D modeling of the seismic input. But, here is a point that couldn't be made in the article, &lt;strong&gt;this depends on the system&lt;/strong&gt; and I have &lt;a href="http://sokocalo.engr.ucdavis.edu/~jeremic/6D_vs_1D_ESSI_for_NPPs/"&gt;found cases&lt;/a&gt; where the results are opposite: it is &lt;strong&gt;nonconservative&lt;/strong&gt; to ignore 3-D ground motions effects. This point needs to be made more clearly (future work), for different seismic settings and structures. &lt;/p&gt;
+&lt;p&gt;I also ran this model using a non-linear constitutive model for the soil. Check out what the energy dissipation looks like under the NPP (not part of the paper).
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480"
+ src="https://www.youtube.com/embed/Kjwi_pmLgdI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;This was submitted for review Jan 6 2017, it took over a year to get acceptance! Three iterations of peer-review were done. Admittedly, I did take too much time to answer. Tough year was 2017. Although the reviewers were very picky, which led to article improvement--especially the introduction--, the main content of the article changed little. We have the same results and conclusions. &lt;/p&gt;
+&lt;p&gt;Where from here?&lt;/p&gt;
+&lt;p&gt;It think DRM-based SSI analysis is &lt;em&gt;the&lt;/em&gt; methodology to produce the highest-possible fidelity modeling of SSI. But generating these DRM motions is costly, we need supercomputers for that. Highly-detailed modeling of seismic motions is currently underway, it would be rather cheap for the researchers doing these simulations to also generate DRM-compatible motions for future exploration, making these simulations even more relevant. There needs to be an agreed format for the distribution of DRM motions, and a repository of validated motions to be used for modeling. &lt;/p&gt;
+&lt;p&gt;Is it worthwhile? That's a research question in of itself. Clearly we can build to withstand earthquakes, so its not a safety-critical issue to use advanced SSI modeling. Might be an economic one. Maybe some case-studies can be reinterpreted in the light of 3-D motions to suggest that they were to blame in unexpected performance of existing infrastructure. Some structures will be more sensitive to these effects than others, which? how much so? under what conditions? is it necessary to model them in this way? There is great value in high-fidelity SSI modeling, is there a way to bring this into practice? All questions I want to answer in the years to come. &lt;/p&gt;</content><category term="misc"></category><category term="Papers"></category><category term="DRM"></category><category term="ESSI"></category></entry><entry><title>Video of 2-D SSI model of an RC Shear Wall Building</title><link href="http://www.joseabell.com/video-of-2-d-ssi-model-of-an-rc-shear-wall-building.html" rel="alternate"></link><published>2017-11-09T13:21:21-08:00</published><updated>2017-11-09T13:21:21-08:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2017-11-09:/video-of-2-d-ssi-model-of-an-rc-shear-wall-building.html</id><summary type="html">
+&lt;p&gt;The RC shear-wall building is modeled in OpenSees using non-linear fiber based beam column elements. Soil is modeled as a continuum using quad elements and linear stress-strain relationship. Soil shear wave-speed is varied in depth such as to obtain a &lt;span class="math"&gt;\(V_{s30}\)&lt;/span&gt; consistent with a class B site according to chilean seismic code. Lysmer-Kulhemeyer dashpots are used along the soil boundary to model seismic radiation and earthquake wave-field input.&lt;/p&gt;
+</summary><content type="html">&lt;!-- SUMMARY BEGIN --&gt;
+
+&lt;p&gt;The RC shear-wall building is modeled in OpenSees using non-linear fiber based beam column elements. Soil is modeled as a continuum using quad elements and linear stress-strain relationship. Soil shear wave-speed is varied in depth such as to obtain a &lt;span class="math"&gt;\(V_{s30}\)&lt;/span&gt; consistent with a class B site according to chilean seismic code. Lysmer-Kulhemeyer dashpots are used along the soil boundary to model seismic radiation and earthquake wave-field input.&lt;/p&gt;
+&lt;!-- SUMMARY END --&gt;
+
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/_ye7wjjywSw" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 
-&lt;p&gt;The bimodal distribution obtained at the end is, therefore, an artifact,
-as the peaks correspond to the same final configuration for the system.
-In a more complex case it might not be possible to distinguish between
-peaks in PDFs which are real, ie. correspond to physically different
-configurations, from those that arise from deficiencies in the
-mathematical tool&amp;nbsp;used.&lt;/p&gt;
-&lt;p&gt;These spurious peaks generate unrealistic dispersion in the distribution
-of results. Is there a way to identify them and get rid of&amp;nbsp;them?&lt;/p&gt;
-&lt;p&gt;The following python code produces these&amp;nbsp;results.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;:::PythonLexer
-#!/bin/python  
-# -*- coding: utf-8 -*-  
-# Small numerical experiments # 00  
-"""  
-@SNE_number: 00  
-@Title: Stochastic inverse pendulum  
-@Idea: Show a case in which bifurcation behavior produces multimodal
-distribution.  
-@Tags: scipy, ode, stochastic, multimodal, bimodal, matplotlib,
-Monte-Carlo, animation, python  
-@Date: Created on Fri Oct 4 2013  
-@author: jaabell  
-"""
+&lt;p&gt;The performance of the building will be assessed for varying site fundamental periods. This is an aspect of SSI that is not covered by the chilean seismic code, and has been shown to be a problem in past earthquakes. &lt;/p&gt;
+&lt;p&gt;This is part of an on-going study with Prof. &lt;a href="http://cigiden.cl/es/carolina-magna/"&gt;Carolina Magna&lt;/a&gt; from Adolfo Ibañez Unversity and her MS student Miguel Ángel Rodriguez from UDP. &lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "0em",
+        linebreak = "false";
 
-import scipy as sp  
-import matplotlib.pylab as plt  
-from scipy.integrate import odeint
-
-N = 5000 #[] number of Monte-Carlo trials  
-mu_theta = 0.0 #[deg]  
-sigma_theta = 10 #[deg]  
-tmax = 10 #[s] Maximum time for simulation  
-dt = 0.01 #[s] Time step for integration  
-m = 1 #[]  
-g = 9.81 #[m/s\^2]  
-l = 0.50 #[m]  
-xi = 0.3 #[] Ratio of critical damping (for a regular pendulum under
-small deflections)  
-Nbins = 50 #[] Number of bins for computing histograms  
-theta_0_dot = 0.0 #[deg/sec] initial angular velocity for pendulums
-
-compute = False #Use this in an interactive session (ie. spyder) to
-avoid recomputing the Monte-Carlo runs
-
-c = 2*xi*m*l**2 #[N*m*s/rad] Damping constant  
-Nt = int(tmax/dt) #[] Number of simulation timesteps
-
-#Generate parameters for Monte-Carlo trials  
-mu_theta_rad = mu_theta*sp.pi/180  
-sigma_theta_rad = sigma_theta*sp.pi/180  
-thetas = sp.randn((N))*sigma_theta_rad + mu_theta_rad  
-t = sp.arange(0,tmax, dt)
-
-#Recast problem as a set of first order ODEs  
-b = -c/(m*l**2)  
-a = g/l  
-def func(y, t):  
-    return [y[1],a*sp.sin(y[0]) + b*y[1] ]
-
-def gradient(y,t):  
-    return [[0.0,1.0],[a*sp.cos(y[0]),b]]
-
-#Do the Monte-Carlo runs  
-if compute:  
-    yall = sp.zeros((Nt,N))  
-    i = 0  
-    for theta_0 in thetas:  
-        y0 = [theta_0*sp.pi/180, theta_0_dot*sp.pi/180]  
-        y = odeint(func, y0, t, Dfun=gradient)  
-        yall[:,i] = y[:,0]  
-        print "Case {} of {}".format(i,N)  
-        i+= 1
-
-# Some plotting (animation after a tutorial found in http://jakevdp.github.io/blog/2012/08/18/matplotlib-animation-tutorial/)  
-# Also look at http://matplotlib.org/api/animation_api.html  
-plt.close("all")
-
-from matplotlib import animation
-
-# First set up the figure, the axis, and the plot element we want to
-animate  
-fig = plt.figure()  
-ax = plt.axes(xlim=(-300, 300), ylim=(0, 10))  
-ax.grid()  
-ax.set_xticks(sp.linspace(-270,270,num=7))  
-ax.set_xlabel("$\\\theta$")  
-ax.set_ylabel("$f_{\\\theta}(\\\theta, t)$")
-
-line, = ax.plot([], [], lw=2)
-
-time_text = ax.text(-270, 9, '')#, transform=ax.transAxes)
-
-from scipy.interpolate import interp1d  
-probability_thresholds = sp.linspace(0,1,21)
-
-def myhistogram(y):  
-    yn = sp.array(y)  
-    yn.sort()  
-    cdf = sp.linspace(0,1,yn.size)  
-    y_bins = interp1d(cdf, yn, kind='linear', axis=-1, copy=True,
-    bounds_error=True)(probability_thresholds)  
-    return probability_thresholds, y_bins
-
-def init():  
-    line.set_data([],[])  
-    time_text.set_text("")  
-    return line, time_text
-
-def animate(i):  
-    cdf, y_bins = myhistogram(yall[i,:])  
-    pdf = sp.diff(cdf) / sp.diff(y_bins)  
-    y_bins_centers = 0.5*(y_bins[0:-1] + y_bins[1::])  
-    # pdf, y_bins = sp.histogram(yall[i,:], bins = Nbins, density =
-    True)  
-    # y_bins_centers = 0.5*(y_bins[0:-1] + y_bins[1::])  
-    line.set_data(y_bins_centers*180/sp.pi, pdf)  
-    time_text.set_text("Time = {0:4.2f} s".format(t[i]))  
-    return line, time_text
-
-anim = animation.FuncAnimation(fig, animate, init_func=init,  
-frames=1000, interval=1, blit=True)  
-#anim.save('basic_animation.mp4', fps=30, extra_args=['-vcodec',
-'libx264'])
-
-plt.show()
-
-#plt.figure()  
-#plt.plot(t,yall[:,0]*180/sp.pi)  
-#plt.grid()  
-#plt.yticks(sp.linspace(-270,270,num=13))  
-#plt.xlabel("$t$")  
-#plt.ylabel("$\\\theta(t)$")
-&lt;/code&gt;&lt;/pre&gt;&lt;script type= "text/javascript"&gt;
-    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-        var mathjaxscript = document.createElement('script');
-        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-        mathjaxscript.type = 'text/javascript';
-        mathjaxscript.src = 'https:' == document.location.protocol
-                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
-                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-            "MathJax.Hub.Config({" +
-            "    config: ['MMLorHTML.js']," +
-            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-            "    displayAlign: 'center'," +
-            "    displayIndent: '0em'," +
-            "    showMathMenu: true," +
-            "    tex2jax: { " +
-            "        inlineMath: [ ['$','$'] ], " +
-            "        displayMath: [ ['$$','$$'] ]," +
-            "        processEscapes: true," +
-            "        preview: 'TeX'," +
-            "    }, " +
-            "    'HTML-CSS': { " +
-            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-            "    } " +
-            "}); ";
-        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
     }
-&lt;/script&gt;
-</summary><category term="animation"></category><category term="bimodal"></category><category term="matplotlib"></category><category term="Monte-Carlo"></category><category term="multimodal"></category><category term="ode"></category><category term="python"></category><category term="scipy"></category><category term="small numerical experiments"></category><category term="sne"></category><category term="stochastic"></category></entry></feed>
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js','color.js','mhchem.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="misc"></category><category term="OpenSees"></category><category term="Paraview"></category><category term="Building"></category><category term="FEM"></category></entry><entry><title>New cable element in OpenSees</title><link href="http://www.joseabell.com/new-cable-element-in-opensees.html" rel="alternate"></link><published>2017-09-07T20:13:57-07:00</published><updated>2017-09-07T20:13:57-07:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2017-09-07:/new-cable-element-in-opensees.html</id><summary type="html">
+&lt;div align="left" class="videoWrapper"&gt;
+&lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/MX_--SI_vKg" width="640"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;p&gt;With my student, Pablo Ibañez, we implemented a new &lt;a href="http://opensees.berkeley.edu/wiki/index.php/CatenaryCableElement"&gt;catenary cable element&lt;/a&gt; in OpenSees. This element is based on the work by Salehi et al[1].&lt;/p&gt;
+&lt;p&gt;The stiffness of this element is obtained using a flexibility formulation. Basically the shape of the cable is determined by the integral:&lt;/p&gt;
+&lt;div class="math"&gt;$$
+\newcommand{\pare}[1]{\left( #1 \right)}
+\newcommand{\brak}[1]{\left[ #1 \right]}
+\newcommand{\brac}[1]{\left\lbrace #1 \right\rbrace}
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+\newcommand{\uv}[1]{\hat{\boldsymbol{#1}}}
+\newcommand{\ud}{\,\mathrm{d}}
+\begin{align*}
+\vect{x}(s) = \vect{x}_1 - \int_0^s \dfrac{\vect{w}s + \vect{f}}{\Vert \vect{w}s + \vect{f} \Vert^2}\pare{\dfrac{\Vert \vect{w}s + \vect{f} \Vert}{EA} + \pare{1 + \alpha \Delta T}} \ud s \\
+\vect{w} = \brak{w_1,\, w_2,\, w_3}^T \qquad
+\vect{f} = \brak{f_1,\, f_2,\, f_3}^T 
+\end{align*}
+$$&lt;/div&gt;
+</summary><content type="html">&lt;!-- SUMMARY BEGIN --&gt;
+
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/MX_--SI_vKg" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;With my student, Pablo Ibañez, we implemented a new &lt;a href="http://opensees.berkeley.edu/wiki/index.php/CatenaryCableElement"&gt;catenary cable element&lt;/a&gt; in OpenSees. This element is based on the work by Salehi et al[1].&lt;/p&gt;
+&lt;p&gt;The stiffness of this element is obtained using a flexibility formulation. Basically the shape of the cable is determined by the integral:&lt;/p&gt;
+&lt;div class="math"&gt;$$
+\newcommand{\pare}[1]{\left( #1 \right)}
+\newcommand{\brak}[1]{\left[ #1 \right]}
+\newcommand{\brac}[1]{\left\lbrace #1 \right\rbrace}
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+\newcommand{\uv}[1]{\hat{\boldsymbol{#1}}}
+\newcommand{\ud}{\,\mathrm{d}}
+\begin{align*}
+\vect{x}(s) = \vect{x}_1 - \int_0^s \dfrac{\vect{w}s + \vect{f}}{\Vert \vect{w}s + \vect{f} \Vert^2}\pare{\dfrac{\Vert \vect{w}s + \vect{f} \Vert}{EA} + \pare{1 + \alpha \Delta T}} \ud s \\
+\vect{w} = \brak{w_1,\, w_2,\, w_3}^T \qquad
+\vect{f} = \brak{f_1,\, f_2,\, f_3}^T 
+\end{align*}
+$$&lt;/div&gt;
+&lt;!-- SUMMARY END --&gt;
+
+&lt;p&gt;Where &lt;span class="math"&gt;\(\vect{x_1}\)&lt;/span&gt; is the position of the first node of the cable, &lt;span class="math"&gt;\(\vect{w}\)&lt;/span&gt; is the weight vector in each direction, &lt;span class="math"&gt;\(EA\)&lt;/span&gt; is the stiffness, &lt;span class="math"&gt;\(\alpha \Delta T\)&lt;/span&gt; is the change in strain due to temperature and &lt;span class="math"&gt;\(\vect{f}\)&lt;/span&gt; is the force vector at the start node. This equation is iterated (with the forces as variable) upon until the the shape of the cable matches the nodal postiions imposed by the finite element program (trial displacements). Then it is used to derive a stiffness matrix. &lt;/p&gt;
+&lt;p&gt;The element, as is, passes all our static verification tests. With the additional assumption of a lumped-mass matrix, we're currently working on a dynamic verification suite as well as some validation experiments. &lt;/p&gt;
+&lt;p&gt;The animation above was created using &lt;a href="http://opensees.berkeley.edu/"&gt;OpenSees&lt;/a&gt; to simulate the cable and &lt;a href="http://www.blender.org"&gt;Blender&lt;/a&gt; to render it. &lt;/p&gt;
+&lt;p&gt;Reference&lt;/p&gt;
+&lt;p&gt;[1] Salehi Ahmad Abad, M., Shooshtari, A., Esmaeili, V., &amp;amp; Naghavi Riabi, A. (2013). &lt;em&gt;Nonlinear analysis of cable structures under general loadings.&lt;/em&gt; Finite Elements in Analysis and Design, 73, 11–19. https://doi.org/10.1016/j.finel.2013.05.002&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js','color.js','mhchem.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="Coding"></category><category term="OpenSees"></category><category term="Cable"></category><category term="Blender"></category></entry><entry><title>OpenSees coming to python!</title><link href="http://www.joseabell.com/opensees-coming-to-python.html" rel="alternate"></link><published>2017-01-14T16:21:43-08:00</published><updated>2017-01-14T16:21:43-08:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2017-01-14:/opensees-coming-to-python.html</id><summary type="html">&lt;p&gt;One of the gripes a lot of people have with &lt;a href="http://opensees.berkeley.edu/"&gt;OpenSees&lt;/a&gt; is that it adopts TCL as its interpreter language …&lt;/p&gt;</summary><content type="html">&lt;p&gt;One of the gripes a lot of people have with &lt;a href="http://opensees.berkeley.edu/"&gt;OpenSees&lt;/a&gt; is that it adopts TCL as its interpreter language. Originally, OpenSees was conceived as a &lt;em&gt;framework&lt;/em&gt;, this is apparent from the main page of the &lt;a href="http://opensees.berkeley.edu/wiki/index.php/Main_Page"&gt;wiki&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;OpenSees, the Open System for Earthquake Engineering Simulation, is an object-oriented, open source software framework. It allows users to create both serial and parallel finite element computer applications for simulating...&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;So, it was meant to be a neat way to &lt;em&gt;build&lt;/em&gt; new FEM software. For years the only actual (known) application to use the OpenSees framework was what came to be known as OpenSees proper, a &lt;a href="https://en.wikipedia.org/wiki/Tcl"&gt;TCL&lt;/a&gt; interpreter extended with OpenSees modeling commands. Talking with Frank McKenna, the mind behind OpenSees, this stemmed from then need to show an actual application which could demonstrate the idea of the OpenSees framework in a quick and dirty way. The vision was that people would get the OpenSees source and build new and exciting finite-element software. It was "up to the skills of the user", like the main wiki page still reads. &lt;/p&gt;
+&lt;p&gt;Sadly, civil engineers are not very code-savvy and no (useful) new applications came. Therefore it came to pass that the OpenSees extension of the TCL interpreter became OpenSees and this is what everyone uses. &lt;/p&gt;
+&lt;p&gt;Now TCL is an awkward language for a scientific application, mainly due to syntax and lack of a complete library for scientific computing. Python, on the other hand, has proven in the recent years to be a worthy replacement of the mighty Matlab. Many of us started scientific computing in Matlab and then migrated to the free world of Python. It was just logical that OpenSees would benefit much more from using Python as its language of choice rather than TCL.&lt;/p&gt;
+&lt;p&gt;It has finally happened, and this blog post celebrates my joy. Behold the following analysis case written in Python.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;opensees&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;ops&lt;/span&gt;
+
+&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;wipe&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;basic&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;-ndm&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;-ndf&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fix&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fix&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fix&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fix&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nDMaterial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;ElasticIsotropic3D&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;2100.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;element&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;stdBrick&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;element&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;stdBrick&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;timeSeries&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Linear&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pattern&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Plain&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;-fact&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;load&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;50.&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# Load at the first of the top nodes.&lt;/span&gt;
+
+&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;system&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;BandSPD&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;numberer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;RCM&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;constraints&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Plain&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;algorithm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Linear&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;integrator&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;LoadControl&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;analysis&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Static&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;analyze&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This example just stacks two bricks and applies a downward load on one of the top nodes. The interesting part is that now you can interact with all of the rich tools available in python. Just as a taste of what's to come, here is a plot of the deformed shape of the example above created using matplotlib's 3-D plotting capabilities. &lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/blogposts/opensees-coming-to-python/twobricks.png"&gt;&lt;img alt="twobricks" src="/images/blogposts/opensees-coming-to-python/twobricks.png"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;And here's the code that achieves this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;### Plot bricks in the domain&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;scipy&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;sp&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;plt&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;mpl_toolkits.mplot3d&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Axes3D&lt;/span&gt;
+&lt;span class="n"&gt;fig&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;figure&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;ax&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_subplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;111&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;projection&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;3d&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getEleTags&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+
+    &lt;span class="n"&gt;nodes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eleNodes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;Nnodes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nodes&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;xyz&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zeros&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;Nnodes&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;double&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;uu&lt;/span&gt;   &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zeros&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;Nnodes&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;double&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Nnodes&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;xyz&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,:]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nodeCoord&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nodes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+        &lt;span class="n"&gt;uu&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,:]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ops&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nodeDisp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nodes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+
+    &lt;span class="k"&gt;print&lt;/span&gt;
+
+    &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zeros&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;double&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zeros&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;double&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;z&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zeros&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;double&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;u&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zeros&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;double&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zeros&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;double&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;w&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zeros&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;double&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;conec&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; \
+    &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;\
+    &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;\
+    &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;\
+    &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;\
+    &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;\
+    &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;\
+    &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;\
+    &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;\
+    &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;\
+    &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;\
+    &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;
+    &lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;xyz&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;conec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;xyz&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;conec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="n"&gt;z&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;xyz&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;conec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nan&lt;/span&gt;
+    &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nan&lt;/span&gt;
+    &lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nan&lt;/span&gt;
+
+    &lt;span class="n"&gt;factor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt;
+    &lt;span class="n"&gt;u&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;xyz&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;conec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;factor&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;uu&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;conec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;xyz&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;conec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;factor&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;uu&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;conec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="n"&gt;w&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;xyz&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;conec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;factor&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;uu&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;conec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="n"&gt;u&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nan&lt;/span&gt;
+    &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nan&lt;/span&gt;
+    &lt;span class="n"&gt;w&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nan&lt;/span&gt;
+
+    &lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-ob&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;u&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;w&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-or&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;A &lt;a href="https://www.dropbox.com/s/lt4ghlkj9ypy0nm/opensees-coming-to-python-example.py?dl=0"&gt;simple extension&lt;/a&gt; to the above example generalizes the stack to an arbitrary number of bricks. And the visualization just works. &lt;/p&gt;
+&lt;p&gt;&lt;a href="/images/blogposts/opensees-coming-to-python/fivebricks.png"&gt;&lt;img alt="fivebricks" src="/images/blogposts/opensees-coming-to-python/fivebricks.png"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Currently, I have to manually compile a python module extension on my Ubuntu linux laptop for this to work. I have no idea if it will be available to windows users as an easy-to-download binary in the near future. I will post on how to get this working on linux though. For those of you adventurous enough. &lt;/p&gt;</content><category term="Blog"></category><category term="FEM"></category><category term="opensees"></category><category term="nerdynews"></category></entry><entry><title>Finite Elements for Shallow Water Equations</title><link href="http://www.joseabell.com/finite-elements-for-shallow-water-equations.html" rel="alternate"></link><published>2016-11-22T14:55:42-08:00</published><updated>2016-11-22T14:55:42-08:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2016-11-22:/finite-elements-for-shallow-water-equations.html</id><summary type="html">&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/ghdvW-2XzKA" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;div class="math"&gt;$$
+\newcommand{\pare}[1]{\left( #1 \right)}
+\newcommand{\brak}[1]{\left[ #1 \right]}
+\newcommand{\brac}[1]{\left\lbrace #1 \right\rbrace …&lt;/div&gt;</summary><content type="html">&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/ghdvW-2XzKA" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;div class="math"&gt;$$
+\newcommand{\pare}[1]{\left( #1 \right)}
+\newcommand{\brak}[1]{\left[ #1 \right]}
+\newcommand{\brac}[1]{\left\lbrace #1 \right\rbrace}
+\newcommand{\absol}[1]{\left\vert #1 \right\vert}
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+\newcommand{\EE}[1]{\times 10^{#1}}
+\newcommand{\eqand}{\, \text{and} \,}
+\newcommand{\qeqand}{\quad \text{and} \quad}
+\newcommand{\qqeqand}{\qquad \text{and} \qquad}
+\newcommand{\HRule}{\rule{\linewidth}{0.2mm}}
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+\newcommand{\uv}[1]{\hat{\boldsymbol{#1}}}
+\newcommand{\ud}{\,\mathrm{d}}
+\newcommand{\matorvec}[2]{\left[\begin{array}{#1}    #2\end{array}\right]}
+\newcommand{\pardiff}[2]{\dfrac{\partial\, #1}{\partial\, #2}}
+\newcommand{\pp}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\totdiff}[2]{\dfrac{\ud #1}{\ud #2}}
+\newcommand{\rint}{\pare{R}\hspace{-0.5em} \int }
+\newcommand{\expon}[1]{\exp \left\lbrace #1 \right\rbrace}
+\newcommand{\unit}[1]{   \, \mathrm{#1}                } 
+\newcommand{\bunit}[1]{  \, \left[ \mathrm{#1} \right] } 
+\newcommand{\funit}[2]{  \, \mathrm{ \frac{#1}{#2} }   } 
+\newcommand{\bfunit}[2]{  \, \left[ \mathrm{ {#1}/{#2} } \right]   } 
+\newcommand{\mts}{\bunit{m}}
+\newcommand{\cmts}{\bunit{cm}}
+\newcommand{\mmts}{\bunit{mm}}
+\newcommand{\kmts}{\bunit{km}}
+\newcommand{\mps}{\bfunit{m}{s}}
+\newcommand{\cmpt}{\bfunit{cm}{s}}
+\newcommand{\mmps}{\bfunit{mm}{s}}
+\newcommand{\kmps}{\bfunit{km}{s}}
+\newcommand{\Newt}{\bunit{N}}
+\newcommand{\kNewt}{\bunit{kN}}
+\newcommand{\MNewt}{\bunit{MN}}
+\newcommand{\Pa}{\bunit{Pa}}
+\newcommand{\kPa}{\bunit{kPa}}
+\newcommand{\MPa}{\bunit{MPa}}
+\newcommand{\GPa}{\bunit{GPa}}
+\newcommand{\kNmm}{\bfunit{kN}{m^2}}
+\newcommand{\Nmm}{\bfunit{N}{m^2}}
+\newcommand{\kgmmm}{\bfunit{kg}{m^3}}
+\newcommand{\Mgmmm}{\bfunit{Mg}{m^3}}
+\newcommand{\grcmcmcm}{\bfunit{g}{cm^3}}
+\newcommand{\kNmmm}{\bfunit{kN}{m^3}}
+\newcommand{\gr}{\bunit{g}}
+\newcommand{\mgr}{\bunit{mg}}
+\newcommand{\kgr}{\bunit{kg}}
+\newcommand{\Mgr}{\bunit{Mg}}
+\newcommand{\seg}{\bunit{s}}
+\newcommand{\msec}{\bunit{ms}}
+\newcommand{\musec}{\bunit{\mu s}}
+\newcommand{\mo}{\bunit{month}}
+\newcommand{\mos}{\bunit{months}}
+\newcommand{\days}{\bunit{days}}
+\newcommand{\gs}{\bunit{g}}
+\newcommand{\mss}{\bfunit{m}{s^2}}
+\newcommand{\cmss}{\bfunit{cm}{s^2}}
+\newcommand{\Hz}{\bunit{Hz}}
+\newcommand{\MHz}{\bunit{MHz}}
+\newcommand{\GHz}{\bunit{GHz}}
+\newcommand{\THz}{\bunit{THz}}
+\newcommand{\dgr}{\unit{^{\circ}}}
+\newcommand{\rads}{\bunit{rad}}
+\newcommand{\kips}{\unit{kips}}
+\newcommand{\ksi}{\unit{ksi}}
+\newcommand{\inch}{\unit{in}}
+$$&lt;/div&gt;
+&lt;p&gt;The linear &lt;a href="https://en.wikipedia.org/wiki/Shallow_water_equations"&gt;shallow water equations&lt;/a&gt; (SWE) are used extensively to model propagation of waves in situations where lateral domain dimensions are much greater than fluid height and, at the same time, wave perturbation height are much smaller than the fluid height. This finds useful applications in the case of tsunami-wave propagation modeling in deep-sea. The equations, after heavy linearization, are given by:&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\pardiff{u}{t} -  f v = -g \pardiff{h}{x} \\ 
+\pardiff{v}{t} +  f v = -g \pardiff{h}{y} \\
+\pardiff{h}{t} = -H \pare{  \pardiff{u}{x} + \pardiff{v}{y}  }\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Where&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(u\)&lt;/span&gt; is the speed in &lt;span class="math"&gt;\(x\)&lt;/span&gt; direction.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(v\)&lt;/span&gt; is the speed in &lt;span class="math"&gt;\(y\)&lt;/span&gt; direction.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(h\)&lt;/span&gt; wave perturbation height. (Free surface is at &lt;span class="math"&gt;\(h+H\)&lt;/span&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(f\)&lt;/span&gt; Coriolis force, given by:&lt;/p&gt;
+&lt;p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+    f = 2 \Omega \sin \phi
+    \end{aligned}$$&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;where &lt;span class="math"&gt;\(\Omega\)&lt;/span&gt; is Earth's angular velocity (&lt;span class="math"&gt;\(\pi/12 \, \brak{\mathrm{rad/h}}\)&lt;/span&gt;) and &lt;span class="math"&gt;\(\phi\)&lt;/span&gt; is latitude. &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(g\)&lt;/span&gt; acceleration due to gravity at given point in Earth.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(H\)&lt;/span&gt; fluid free surface height at repose. &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To complete the formulation, appropriate boundary conditions are needed. &lt;/p&gt;
+&lt;p&gt;These equations will be discretized using Galerkin finite-element formulation. For this purpose we will be using the first order triangle finite element (see Felippa's chapter 15 &lt;a href="http://www.colorado.edu/engineering/CAS/courses.d/IFEM.d/IFEM.Ch15.d/IFEM.Ch15.index.html"&gt;here&lt;/a&gt; for basic notation and details regarding triangular shape functions).&lt;/p&gt;
+&lt;p&gt;The SWE represent the space-time evolution of three scalar fields, namely &lt;span class="math"&gt;\(h\)&lt;/span&gt;, &lt;span class="math"&gt;\(u\)&lt;/span&gt;, and &lt;span class="math"&gt;\(v\)&lt;/span&gt;. These three independent variables are the 3 degrees-of-freedom (DOF) of the problem. Therefore, each node will have information about these three DOFs. &lt;/p&gt;
+&lt;p&gt;Using the basic 3-node triangle with interpolation functions given by the triangular coordinates (see Felippa IFEM Ch. 15 and &lt;a href="https://en.wikipedia.org/wiki/Barycentric_coordinate_system"&gt;this&lt;/a&gt; for more info), these fields are interpolated as follows.&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+h = \sum N_i h_i = \vect{N} \vect{h} = \matorvec{ccc}{ \zeta_1 &amp;amp; \zeta_2 &amp;amp; \zeta_3 } \matorvec{c}{h_1\\h_2\\h_3}  \\ 
+u = \sum N_i u_i = \vect{N} \vect{u} = \matorvec{ccc}{ \zeta_1 &amp;amp; \zeta_2 &amp;amp; \zeta_3 } \matorvec{c}{u_1\\u_2\\u_3} \\
+v = \sum N_i v_i = \vect{N} \vect{v} = \matorvec{ccc}{ \zeta_1 &amp;amp; \zeta_2 &amp;amp; \zeta_3 } \matorvec{c}{v_1\\v_2\\v_3} \end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Where &lt;span class="math"&gt;\(\zeta_i\)&lt;/span&gt; are triangular coordinates and &lt;span class="math"&gt;\(u_i\)&lt;/span&gt;, &lt;span class="math"&gt;\(v_i\)&lt;/span&gt;, and
+&lt;span class="math"&gt;\(h_i\)&lt;/span&gt; the nodal values of the scalar fields at node &lt;span class="math"&gt;\(i\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;As typical, we multiply the equations by a trial shape function &lt;span class="math"&gt;\(N_j\)&lt;/span&gt; and integrate over the domain of the element &lt;span class="math"&gt;\(\Omega^e\)&lt;/span&gt;, carrying out integration by parts. We arrive at the weak form of the SWE. &lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\pare{ \int_{\Omega^e}  N_i N_j \ud \Omega^e} \dot{h}_j - 
+\pare{ \int_{\Omega^e}  H \pardiff{N_i}{x} N_j \ud \Omega^e} u_j -
+\pare{ \int_{\Omega^e}  H \pardiff{N_i}{y} N_j \ud \Omega^e} v_j = 0 \\
+\pare{ \int_{\Omega^e}  N_i N_j \ud \Omega^e} \dot{u}_j -
+\pare{ \int_{\Omega^e}  f N_i N_j \ud \Omega^e} v_j + 
+\pare{ \int_{\Omega^e}  g N_i \pardiff{N_j}{x}  \ud \Omega^e} h_j = 0 \\
+\pare{ \int_{\Omega^e}  N_i N_j \ud \Omega^e} \dot{v}_j +
+\pare{ \int_{\Omega^e}  f N_i N_j \ud \Omega^e} u_j + 
+\pare{ \int_{\Omega^e}  g N_i \pardiff{N_j}{y}  \ud \Omega^e} h_j = 0 \end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Here, for the first order triangle, we simply have that 1 &lt;span class="math"&gt;\(N_i = \zeta_i\)&lt;/span&gt;. Defining the vector of nodal freedoms &lt;span class="math"&gt;\(\vect{z}\)&lt;/span&gt; as:&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\vect{z}^T = \matorvec{ccccccccc}{h_1 &amp;amp; h_2 &amp;amp; h_3 &amp;amp; u_1 &amp;amp; u_2 &amp;amp; u_3 &amp;amp; v_1 &amp;amp; v_2 &amp;amp; v_3 }^T\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;The above equations can be re-written as follows:&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\matorvec{ccc}
+{
+    \vect{M} &amp;amp; \vect{0} &amp;amp; \vect{0} \\
+    \vect{0} &amp;amp; \vect{M} &amp;amp; \vect{0} \\
+    \vect{0} &amp;amp; \vect{0} &amp;amp; \vect{M} 
+} \dot{\vect{z}}  + 
+\matorvec{ccc}
+{
+    \vect{0}        &amp;amp; -\vect{K}_{hu} &amp;amp; -\vect{K}_{hv} \\
+    \vect{K}_{uh}   &amp;amp; \vect{0} &amp;amp; -\vect{K}_{uv} \\
+    \vect{K}_{vh}   &amp;amp; \vect{K}_{vu} &amp;amp; \vect{0} 
+} \vect{z}
+=
+\matorvec{c}
+{
+    \vect{0} \\ \vect{0} \\ \vect{0}
+} \\ 
+\vect{A} \dot{\vect{z}} + \vect{B}  \vect{z} = \vect{0}\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Where the involved sub-matrices are given by the following matrix integrals:&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+     &amp;amp; \vect{M} = \int_{\Omega^e} \vect{N}^T \vect{N} \ud \Omega^e \\
+     &amp;amp; \vect{K}_{hu} = \int_{\Omega^e} H \pare{\pardiff{\vect{N}}{x}}^T \vect{N}  \ud \Omega^e \\
+     &amp;amp; \vect{K}_{hv} = \int_{\Omega^e} H \pare{\pardiff{\vect{N}}{y}}^T \vect{N}  \ud \Omega^e \\
+     &amp;amp; \vect{K}_{uh} = \int_{\Omega^e} g \vect{N}^T \pardiff{\vect{N}}{x} \ud \Omega^e \\
+     &amp;amp; \vect{K}_{vh} = \int_{\Omega^e} g \vect{N}^T \pardiff{\vect{N}}{y} \ud \Omega^e \\
+     &amp;amp; \vect{K}_{uv} = \int_{\Omega^e} f \vect{N}^T \vect{N} \ud \Omega^e \\
+     &amp;amp; \vect{K}_{vu} = \int_{\Omega^e} f \vect{N}^T \vect{N} \ud \Omega^e \end{aligned}$$&lt;/div&gt;
+&lt;p&gt;The derivatives &lt;span class="math"&gt;\(\pardiff{\vect{N}}{x}\)&lt;/span&gt; y &lt;span class="math"&gt;\(\pardiff{\vect{N}}{y}\)&lt;/span&gt; can be evaluated component-wise (again, see Felippa's work):&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\matorvec{c}
+{
+    \pardiff{N_i}{x} \\
+    \pardiff{N_i}{y} 
+} = 
+\dfrac{1}{2A}
+\matorvec{ccc}
+{
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} \\
+    x_{32} &amp;amp; x_{13} &amp;amp; x_{21} 
+}
+\matorvec{c}
+{
+    \pardiff{N_i}{\zeta_1} \\
+    \pardiff{N_i}{\zeta_2} \\
+    \pardiff{N_i}{\zeta_3}
+}\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;For example, for &lt;span class="math"&gt;\(N_1\)&lt;/span&gt;:&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\matorvec{c}
+{
+    \pardiff{N_1}{x} \\
+    \pardiff{N_1}{y} 
+} = 
+\matorvec{c}
+{
+    \pardiff{\zeta_1}{x} \\
+    \pardiff{\zeta_1}{y} 
+} = 
+\dfrac{1}{2A}
+\matorvec{ccc}
+{
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} \\
+    x_{32} &amp;amp; x_{13} &amp;amp; x_{21} 
+}
+\matorvec{c}
+{
+    \pardiff{\zeta_1}{\zeta_1} \\
+    \pardiff{\zeta_1}{\zeta_2} \\
+    \pardiff{\zeta_1}{\zeta_3}
+}
+=
+\dfrac{1}{2A}
+\matorvec{ccc}
+{
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} \\
+    x_{32} &amp;amp; x_{13} &amp;amp; x_{21} 
+}
+\matorvec{c}
+{
+    1 \\
+    0 \\
+    0
+}
+= 
+\dfrac{1}{2A}
+\matorvec{c}
+{
+    y_{23} \\
+    x_{32} 
+}\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;It is clear that, therefore&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\pardiff{\vect{N}}{x} = \dfrac{1}{2A}
+\matorvec{ccc}
+{
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} 
+} \\ 
+\pardiff{\vect{N}}{y} = \dfrac{1}{2A}
+\matorvec{ccc}
+{
+    x_{32} &amp;amp; x_{13} &amp;amp; x_{21} 
+}\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Note that these derivatives are constant within each trinagle (hence the name, constant strain triangle although the interpretation is not strain in this case). In this context we have that &lt;span class="math"&gt;\(x_{ij} = x_i - x_j\)&lt;/span&gt; where  &lt;span class="math"&gt;\(x_i\)&lt;/span&gt; is the &lt;span class="math"&gt;\(x\)&lt;/span&gt; coordinate of the &lt;span class="math"&gt;\(i\)&lt;/span&gt;-th element node. Similarly for &lt;span class="math"&gt;\(y_{ij} = y_i - y_j\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;If we further assume that the gravity field &lt;span class="math"&gt;\(g\)&lt;/span&gt;, the local depth at the finite element and the Coriolis force &lt;span class="math"&gt;\(f\)&lt;/span&gt; are constant (probably a bad assumption for this variable for some applications which span the globe) &lt;em&gt;within an element&lt;/em&gt; we can further reduce the discretized equations to:&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\vect{I}_{1} &amp;amp;= \int_{\Omega^e} \vect{N}^T \vect{N} \ud \Omega^e  \\
+\vect{I}_{2} &amp;amp;= \int_{\Omega^e} \vect{N}^T \pardiff{\vect{N}}{x} \ud \Omega^e \\
+\vect{I}_{3} &amp;amp;= \int_{\Omega^e} \vect{N}^T \pardiff{\vect{N}}{y} \ud \Omega^e\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Working on the first integral&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+       \vect{I}_1 &amp;amp;= \int_{\Omega^e} \matorvec{c}{ \zeta_1 \\ \zeta_2 \\ \zeta_3 } \matorvec{ccc}{ \zeta_1 &amp;amp; \zeta_2 &amp;amp; \zeta_3 } \ud \Omega^e\\
+       &amp;amp;=
+       \int_{\Omega^e}  
+        \matorvec{ccc}
+        { 
+            {\zeta_1}^2 &amp;amp; \zeta_2\zeta_1 &amp;amp; \zeta_3 \zeta_1 \\
+            \zeta_1\zeta_2 &amp;amp; {\zeta_2}^2 &amp;amp; \zeta_3\zeta_2  \\
+            \zeta_1\zeta_3 &amp;amp; \zeta_2\zeta_3 &amp;amp; {\zeta_3}^2  \\
+        } 
+        \ud \Omega^e \end{aligned}$$&lt;/div&gt;
+&lt;p&gt;We can use the following formula for the integration within a triangle of the monomials (again, from &lt;a href="feli"&gt;here&lt;/a&gt;)&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\int_{\Omega^e} {\zeta_1}^p{\zeta_2}^q{\zeta_2}^r \ud \Omega^e = \dfrac{2 A p!\, q!\, r!}{\pare{p+q+r+2}!}\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;With this, the integral for &lt;span class="math"&gt;\(\vect{I}_1\)&lt;/span&gt; is evaluated to&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\vect{I}_1 = \dfrac{A}{12} \matorvec{ccc}
+        { 
+            2 &amp;amp; 1 &amp;amp; 1 \\
+            1 &amp;amp; 2 &amp;amp; 1 \\
+            1 &amp;amp; 1 &amp;amp; 2
+        } \end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Proceeding with the next integral:&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\vect{I}_{2} &amp;amp;= \int_{\Omega^e} \vect{N}^T \pardiff{\vect{N}}{x} \ud \Omega^e \\ 
+ &amp;amp;= \int_{\Omega^e} \matorvec{c}{ \zeta_1 \\ \zeta_2 \\ \zeta_3 } 
+\dfrac{1}{2A}
+\matorvec{ccc}
+{
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} 
+}  \ud \Omega^e = 
+\int_{\Omega^e} \matorvec{c}{ \zeta_1 \\ \zeta_2 \\ \zeta_3 }  \ud \Omega^e
+\cdot 
+\dfrac{1}{2A}
+\matorvec{ccc}
+{
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} 
+}\\ \end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Utilizing the same identity as before to evaluate the integrals we arrive at:&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\vect{I}_2 = \dfrac{A}{3} \matorvec{c}{ 1 \\ 1 \\ 1 }\dfrac{1}{2A}
+\matorvec{ccc}
+{
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} 
+} = 
+\dfrac{1}{6}
+\matorvec{ccc}
+{
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12}  \\
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} \\
+    y_{23} &amp;amp; y_{31} &amp;amp; y_{12} 
+}\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Analogously for &lt;span class="math"&gt;\(\vect{I}_3\)&lt;/span&gt; we have:&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\vect{I}_{3} &amp;amp;= \int_{\Omega^e} \vect{N}^T \pardiff{\vect{N}}{y} \ud \Omega^e = \dfrac{1}{6}
+\matorvec{ccc}
+{
+    x_{32} &amp;amp; x_{13} &amp;amp; x_{21} \\
+    x_{32} &amp;amp; x_{13} &amp;amp; x_{21} \\
+    x_{32} &amp;amp; x_{13} &amp;amp; x_{21} 
+}\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;And finally we can write the sub-matrices as follows. &lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+ \vect{M} &amp;amp;= \vect{I}_1 \\
+ \vect{K}_{hu} &amp;amp;=  H \cdot {\vect{I}_2}^T &amp;amp; \vect{K}_{hv} &amp;amp;=  H \cdot {\vect{I}_3}^T \\
+ \vect{K}_{uh} &amp;amp;=  g \cdot \vect{I}_2 &amp;amp; \vect{K}_{vh} &amp;amp;=  g \cdot \vect{I}_3 \\
+ \vect{K}_{uv} &amp;amp;=  f \cdot \vect{I}_1 &amp;amp; \vect{K}_{vu} &amp;amp;=  f \cdot \vect{I}_1 \end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Which can be replaced into 
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\matorvec{ccc}
+{
+    \vect{M} &amp;amp; \vect{0} &amp;amp; \vect{0} \\
+    \vect{0} &amp;amp; \vect{M} &amp;amp; \vect{0} \\
+    \vect{0} &amp;amp; \vect{0} &amp;amp; \vect{M} 
+} \dot{\vect{z}}  + 
+\matorvec{ccc}
+{
+    \vect{0}        &amp;amp; -\vect{K}_{hu} &amp;amp; -\vect{K}_{hv} \\
+    \vect{K}_{uh}   &amp;amp; \vect{0} &amp;amp; -\vect{K}_{uv} \\
+    \vect{K}_{vh}   &amp;amp; \vect{K}_{vu} &amp;amp; \vect{0} 
+} \vect{z}
+=
+\matorvec{c}
+{
+    \vect{0} \\ \vect{0} \\ \vect{0}
+} \\ 
+\vect{A} \dot{\vect{z}} + \vect{B}  \vect{z} = \vect{0}\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;
+to generate the discretized SWE. &lt;/p&gt;
+&lt;p&gt;A future post will discuss the python implementation of this finite element and its application to a basic problem. &lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js','color.js','mhchem.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="Finite elements"></category><category term="Finite Elements"></category><category term="Fluids"></category><category term="Shallow water equations"></category><category term="Tutorial"></category></entry><entry><title>Talk Given at IngeoKring 2016 - Physics-Based Earthquake-Soil-Structure Interaction for Near-Field Induced Seismicity</title><link href="http://www.joseabell.com/talk-given-at-ingeokring-2016-ESSI-DRM.html" rel="alternate"></link><published>2016-11-18T09:53:17-08:00</published><updated>2016-11-18T09:53:17-08:00</updated><author><name>jaabell</name></author><id>tag:www.joseabell.com,2016-11-18:/talk-given-at-ingeokring-2016-ESSI-DRM.html</id><content type="html">&lt;p&gt;This is a talk given at the IngeoKring 2016 Autumn symposium, hosted at TU Delft. &lt;/p&gt;
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="//www.youtube.com/embed/qxVxgyVmPd4" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;</content><category term="Talks"></category><category term="Talks"></category><category term="Presentations"></category><category term="DRM"></category><category term="ESSI"></category></entry><entry><title>Simulation of a surface wave (Rayleigh)</title><link href="http://www.joseabell.com/simulation-of-a-surface-wave-English.html" rel="alternate"></link><published>2014-11-30T22:42:13-08:00</published><updated>2014-11-30T22:42:13-08:00</updated><author><name>Jose Abell</name></author><id>tag:www.joseabell.com,2014-11-30:/simulation-of-a-surface-wave-English.html</id><summary type="html">&lt;p&gt;This simulation, done in the UCD ESSI simulator and visualized in VisIt using VisIt-ESSI plugin, shows the passage of a …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This simulation, done in the UCD ESSI simulator and visualized in VisIt using VisIt-ESSI plugin, shows the passage of a surface wave (Rayleigh wave). The simulation consists on a surface impact on an elastic domain of 900m by 1800m depth, and a shear wave velocity of 1000km/s. Elliptical-retrograde motion can be seen as an illustration of Rayleigh waves.&lt;/p&gt;
+&lt;p&gt;VisIt can be obtained &lt;a href="https://wci.llnl.gov/simulation/computer-codes/visit/"&gt;here&lt;/a&gt;, and the plugin &lt;a href="https://github.com/jaabell/visitESSI"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;!-- more   --&gt;
+
+&lt;!-- https://www.youtube.com/watch?v=mrT5L4xsKs0 --&gt;
+
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="//www.youtube.com/embed/a1xBlIL6ZOM" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;</content><category term="misc"></category><category term="essi"></category><category term="visitessi"></category><category term="postprocessing"></category><category term="movie"></category></entry><entry><title>Visualizing ESSI output with VisIt-ESSI</title><link href="http://www.joseabell.com/visualizing-essi-output-with-visit-essi-English.html" rel="alternate"></link><published>2014-11-23T11:34:38-08:00</published><updated>2014-11-23T11:34:38-08:00</updated><author><name>Jose Abell</name></author><id>tag:www.joseabell.com,2014-11-23:/visualizing-essi-output-with-visit-essi-English.html</id><summary type="html">&lt;p&gt;VisIt-ESSI is a plugin for the VisIt post-processor created my CompGeoMech. 
+It allows for remote (soon parallel also) visualization of …&lt;/p&gt;</summary><content type="html">&lt;p&gt;VisIt-ESSI is a plugin for the VisIt post-processor created my CompGeoMech. 
+It allows for remote (soon parallel also) visualization of outputs produced
+by ESSI in the HDF5 format (*.h5.feioutput).&lt;/p&gt;
+&lt;p&gt;VisIt can be obtained &lt;a href="https://wci.llnl.gov/simulation/computer-codes/visit/"&gt;here&lt;/a&gt;, and the plugin &lt;a href="https://github.com/jaabell/visitESSI"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;!-- more   --&gt;
+
+&lt;!-- https://www.youtube.com/watch?v=mrT5L4xsKs0 --&gt;
+
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="//www.youtube.com/embed/mrT5L4xsKs0" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;</content><category term="misc"></category><category term="tutorial"></category><category term="essi"></category><category term="visitessi"></category><category term="postprocessing"></category><category term="movie"></category></entry></feed>
