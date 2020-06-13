@@ -19,13 +19,13 @@ body {
 }
 
 a {
-  color: #228896;
+  color: #1E7CB1;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
 }
 a:hover, a:active, a:focus {
-  color: #228896;
+  color: #1E7CB1;
   outline: none;
   text-decoration: none !important;
 }
@@ -62,17 +62,17 @@ figure figcaption {
 
 ::-webkit-selection {
   color: #fff;
-  background: #228896;
+  background: #1E7CB1;
 }
 
 ::-moz-selection {
   color: #fff;
-  background: #228896;
+  background: #1E7CB1;
 }
 
 ::selection {
   color: #fff;
-  background: #228896;
+  background: #1E7CB1;
 }
 
 #fh5co-page {
@@ -82,7 +82,7 @@ figure figcaption {
 }
 
 #fh5co-aside {
-  padding-top: 60px;
+  padding-top: 40px;
   padding-bottom: 40px;
   width: 20%;
   position: fixed;
@@ -118,14 +118,14 @@ figure figcaption {
   text-align: center;
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 700;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   text-transform: uppercase;
   font-size: 38px;
 }
 
 
 #fh5co-aside #fh5co-logo img {
-  width: 150px;
+  width: 200px;
 }
 
 #fh5co-aside #fh5co-logo a {
@@ -185,7 +185,7 @@ figure figcaption {
   bottom: 7px;
   left: 10px;
   right: 10px;
-  background-color: #228896;
+  background-color: #1E7CB1;
   visibility: hidden;
   -webkit-transform: scaleX(0);
   -moz-transform: scaleX(0);
@@ -243,6 +243,7 @@ figure figcaption {
 
 
 
+
 #fh5co-aside #social [class^="icon-"], [class*=" icon-"] {
   font-size: 2em;
 }
@@ -265,8 +266,26 @@ figure figcaption {
 #fh5co-aside #social li a:hover, #fh5co-aside #social li a:active, #fh5co-aside #social li a:focus {
   text-decoration: none;
   outline: none;
-  color: #228896;
+  color: #1E7CB1;
 }
+
+
+#fh5co-aside #map [class^="icon-"], [class*=" icon-"] {
+  font-size: 2em;
+}
+#fh5co-aside #map {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  margin-top: 50px;
+}
+#fh5co-aside #map li {
+  padding: 0;
+  margin: 0;
+  display: inline;
+  list-style: none;
+}
+
 
 #fh5co-main {
   width: 80%;
@@ -287,7 +306,7 @@ figure figcaption {
 }
 #fh5co-main .fh5co-narrow-content {
   position: relative;
-  width: 93%;
+  width: 90%;
   margin: 0 auto;
   padding: 4em 0;
   clear: both;
@@ -358,7 +377,7 @@ figure figcaption {
 #fh5co-hero .flexslider .flex-control-nav li a.flex-active {
   cursor: pointer;
   background: transparent;
-  border: 2px solid #228896;
+  border: 2px solid #1E7CB1;
 }
 #fh5co-hero .flexslider .flex-direction-nav {
   display: none;
@@ -636,7 +655,7 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
 }
 
 .fh5co-heading-colored {
-  color: #228896;
+  color: #1E7CB1;
   font-size: 30px;
 }
 
@@ -696,7 +715,7 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
 
 .fh5co-counter .fh5co-number {
   font-size: 100px;
-  color: #228896;
+  color: #1E7CB1;
   font-weight: 400;
   margin: 0;
   padding: 0;
@@ -766,12 +785,12 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
   }
 }
 .fh5co-social li a:hover {
-  color: #228896;
+  color: #1E7CB1;
 }
 .fh5co-social li a:hover, .fh5co-social li a:active, .fh5co-social li a:focus {
   outline: none;
   text-decoration: none;
-  color: #228896;
+  color: #1E7CB1;
 }
 
 #map {
@@ -812,7 +831,7 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
 .fh5co-feature .fh5co-icon i {
   display: table-cell;
   vertical-align: middle;
-  color: #228896;
+  color: #1E7CB1;
   font-size: 40px;
   height: 100px;
 }
@@ -841,7 +860,7 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
   margin-top: 30px;
 }
 .fh5co-feature.fh5co-feature-sm .fh5co-icon i {
-  color: #228896;
+  color: #1E7CB1;
   font-size: 40px;
 }
 @media screen and (max-width: 1200px) {
@@ -894,9 +913,9 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
 }
 
 .btn-primary {
-  background: #228896;
+  background: #1E7CB1;
   color: #fff;
-  border: 2px solid #228896;
+  border: 2px solid #1E7CB1;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
   background: #279bab !important;
@@ -904,11 +923,11 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
 }
 .btn-primary.btn-outline {
   background: transparent;
-  color: #228896;
-  border: 2px solid #228896;
+  color: #1E7CB1;
+  border: 2px solid #1E7CB1;
 }
 .btn-primary.btn-outline:hover, .btn-primary.btn-outline:focus, .btn-primary.btn-outline:active {
-  background: #228896;
+  background: #1E7CB1;
   color: #fff;
 }
 
@@ -1018,7 +1037,7 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
 .form-control:active, .form-control:focus {
   outline: none;
   box-shadow: none;
-  border-color: #228896;
+  border-color: #1E7CB1;
 }
 
 #message {

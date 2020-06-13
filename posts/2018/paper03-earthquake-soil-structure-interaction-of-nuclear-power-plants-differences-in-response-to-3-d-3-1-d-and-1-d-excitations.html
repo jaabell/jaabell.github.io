@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Paper03 - Earthquake Soil Structure Interaction of Nuclear Power Plants, differences in response to 3-D, 3 × 1-D, and 1-D excitations</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content="jaabell" />
+    <meta name="description" content="Finally! First paper since PhD was accepted for publication. I'll take this opportunity to start a tradition and review my own papers here. I think its important that I do this for several reasons. First, there are discussions that come up during peer review that are important but don't make it into the paper. Misconceptions about the presented work can be clarified to a broader audience here. Also, I can say whatever I want, specially opinions and thoughts that come from intuition and might not make it through peer-review, I'll be as critical as possible about these too and hope that my readers can discuss with me. I can post videos" />
+    <meta name="keywords" content="Papers, DRM, ESSI">
+<!-- Facebook and Twitter integration -->
+<meta property="og:site_name" content="Jose Abells Reasearch Blog"/>
+<meta property="og:title" content="Paper03 - Earthquake Soil Structure Interaction of Nuclear Power Plants, differences in response to 3-D, 3 × 1-D, and 1-D excitations"/>
+<meta property="og:description" content="Finally! First paper since PhD was accepted for publication. I'll take this opportunity to start a tradition and review my own papers here. I think its important that I do this for several reasons. First, there are discussions that come up during peer review that are important but don't make it into the paper. Misconceptions about the presented work can be clarified to a broader audience here. Also, I can say whatever I want, specially opinions and thoughts that come from intuition and might not make it through peer-review, I'll be as critical as possible about these too and hope that my readers can discuss with me. I can post videos"/>
+<meta property="og:url" content="https://joseabell.com/posts/2018/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-02-20 10:50:00-08:00"/>
+<meta property="article:modified_time" content="2018-02-20 10:50:00-08:00"/>
+<meta property="article:author" content="https://joseabell.com/author/jaabell.html">
+<meta property="article:section" content="misc"/>
+    <meta property="article:tag" content="Papers"/>
+    <meta property="article:tag" content="DRM"/>
+    <meta property="article:tag" content="ESSI"/>
+    <meta property="og:image" content="https://joseabell.com/https://www.dropbox.com/s/dj6ruypv0722qh2/fem_mesh.png?raw=1">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/icomoon.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/bootstrap.css">
+    <!-- Flexslider  -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/flexslider.css">
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/style.css">
+    <!-- Custom style  -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/custom.css">
+    <!-- pygments code highlight -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/pygments.css">
+    <!-- tipue search -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/tipuesearch/css/tipuesearch.css">
+    <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" > -->
+    <script src="https://kit.fontawesome.com/2dfe6f2f70.js" crossorigin="anonymous"></script>
+
+
+    <!-- Modernizr JS -->
+    <script src="https://joseabell.com/theme/js/modernizr-2.6.2.min.js"></script>
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+    <script src="/theme/js/respond.min.js"></script>
+    <![endif]-->
+        <link href="https://joseabell.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Jose Abells Reasearch Blog Atom">
+
+
+
+    </head>
+    <body>
+    <div id="fh5co-page">
+        <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+        <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
+
+
+            <nav class="fh5co-main-menu" role="navigation">
+            </nav>
+
+
+            
+            <div class="clearfix"></div>
+            <h1  id="fh5co-logo">
+                <a href="https://joseabell.com/index.html">
+                    <img src="/images/sitelogo.svg" />
+                </a>
+            </h1>
+
+
+            <nav class="fh5co-main-menu" role="navigation">
+
+<ul>
+    <!-- home link -->
+    <li><a href="https://joseabell.com/">Home</a></li>
+
+    <!-- page links -->
+            <li><a href="https://joseabell.com/pages/01about.html">About</a></li>
+            <li><a href="https://joseabell.com/pages/04publications.html">Publications</a></li>
+            <li><a href="https://joseabell.com/pages/05tools.html">Tools</a></li>
+
+    <!-- categories -->
+        <li><a href="https://joseabell.com/categories.html">Categories</a></li>
+
+    <!-- tags -->
+        <li><a href="https://joseabell.com/tags.html">Tags</a></li>
+
+    <!-- additional menu items from config -->
+
+</ul><!--                 <ul><li><form id="searchform" action="https://joseabell.com/search.html">
+    <input id="tipue_search_input" data-siteurl="https://joseabell.com" type="text" size="60" class="form-control search-field" name="q">
+
+    <button type="submit" class="btn btn-primary search-submit"><i class="icon-search4"></i></button>
+</form></li></ul> -->
+
+
+
+<ul id="social"><li>
+            <li><a href="https://www.github.com/jaabell" alt="Github"><i class="fab fa-github fa-2x"></i></a></li>
+            <li><a href="https://www.twitter.com/jose_abell" alt="Twitter"><i class="fab fa-twitter fa-2x"></i></a></li>
+
+            <li><a href="https://www.instagram.com/ja.abell" alt="Instagram"><i class="fab fa-instagram fa-2x"></i></a></li>
+
+            <li><a href="https://www.youtube.com/user/eivelinsar" alt="Youtube"><i class="fab fa-youtube fa-2x"></i></a></li>
+
+            <li><a href="https://www.researchgate.net/profile/Jose_Abell/" alt="researchgate"><i class="fab fa-researchgate fa-2x"></i></a></li>
+
+</li>
+</ul>            
+            <ul id="map">
+                <li>
+                Visitors come from
+                <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=b3b3b3&w=250&t=n&d=XCjx4HKZp-atwA8u2pe4wbQt9_6FCkYMlpMpnxG6qMU&co=f5f5f5&cmo=027aae&cmn=a03338&ct=808080"></script>
+                </li>
+            </ul>
+            </nav>
+
+        </aside>
+
+        <div id="fh5co-main">
+
+    <div class="fh5co-narrow-content article-content">
+        <h1 class="fh5co-heading-colored">Paper03 - Earthquake Soil Structure Interaction of Nuclear Power Plants, differences in response to 3-D, 3 × 1-D, and 1-D excitations</h1>
+
+        <div>by
+                <a href="author/jaabell.html">jaabell</a> - Tue, 20 Feb 2018
+        </div>
+
+            <div><span>Tags: </span>
+                    <span><a href="https://joseabell.com/tag/papers.html">#Papers</a> </span>
+                    <span><a href="https://joseabell.com/tag/drm.html">#DRM</a> </span>
+                    <span><a href="https://joseabell.com/tag/essi.html">#ESSI</a> </span>
+            </div>
+
+        <div class="animate-box" data-animate-effect="fadeInLeft">
+            <p class="animate-box" data-animate-effect="fadeInLeft"><p><strong>Finally!</strong> First paper since PhD was accepted for publication. I'll take this opportunity to start a tradition and review my own papers here. I think its important that I do this for several reasons. First, there are discussions that come up during peer review that are important but don't make it into the paper. Misconceptions about the presented work can be clarified to a broader audience here. Also, I can say whatever I want, specially opinions and thoughts that come from intuition and might not make it through peer-review, I'll be as critical as possible about these too and hope that my readers can discuss with me. I can post videos and other additional content here and make them available to everyone for free. And, finally, this post will have a Disqus thread </p>
+<p>Lets get to it! Here is the citation so far (I still don't have an issue assign, going through editorial process): <strong>Abell Mena J A</strong>, Orbović N, McCallen D B, Jeremic B. <em>Earthquake soil-structure interaction of nuclear power plants, differences in response to 3-D, 3×1-D, and 1-D excitations.</em> Earthquake Engng Struct Dyn. 2018;1–18. [https://doi.org/10.1002/eqe.3026].</p>
+<p>The idea is simple: to show that the 3-D character of seismic motions has an impact on the structural response of a nuclear power-plant by comparing the response to 3-D motions with the one produced by an equivalent 1-D (1 component: horizontal) or 3×1-D (3 components) motion. Here is the NPP model used in the article:</p>
+<p><img width="100%" src="https://www.dropbox.com/s/dj6ruypv0722qh2/fem_mesh.png?raw=1" alt="NPP" /></p>
+<p>And its fixed-base eigenmodes:</p>
+<p><img width="100%" src="https://www.dropbox.com/s/01pkei2pibg3nws/containment_modes.png?raw=1" alt="Containment building modes" />
+<img width="100%" src="https://www.dropbox.com/s/9d2um509pcrot7r/auxilliary_modes.png?raw=1" alt="Auxiliary building modes" /></p>
+<p>I was required by the peer-reviewers to include these fixed-base modes in the article. These are interesting, but they're not too relevant to the SSI system. SSI significantly changes the participation of the modes. I've found it useful to stop thinking in terms of eigen modes for these kind of problems, it is better to think in terms of the requirements of wave-propagation. </p>
+<p>In the paper, I use the domain reduction method (DRM) to couple a 3-D seismic simulation of the wave propagation from source to site with a local site and structure model. This <em>domain split</em> allows the fully 3-D modeling of the motions into the structure, accurately. Also, importantly, it allows the separation of the seismic and NPP simulation, using separate dedicated programs for each task as opposed to one big complex simulation. This reduces the computational cost dramatically and allows more modeling freedom. From the <em>free-field</em> response of the site (e.g. with no NPP on top) equivalent 1-D and 3×1-D motions were developed using 1-D site deconvolutions in Shake and input into the model for comparison. Here's a plot of what the differences look like for the top of the containment building. </p>
+<p><img width="30%" src="https://www.dropbox.com/s/zl0nuu76pfhbcr3/positions_top_of_containment.png?raw=1" alt="Top of containment" />
+<img width="30%" src="https://www.dropbox.com/s/18y3foxfrxcw1mq/node_733_disp.png?raw=1" alt="Displacement response" />
+<img width="30%" src="https://www.dropbox.com/s/aahcmkkr8zvzhf9/node_733_acce.png?raw=1" alt="Acceleration response" /></p>
+<p>1-D or 3×1-D waves deliver energy in-phase to the foundation of the structure, resulting in enhanced response when compared to a full 3-D response.  In this particular case, it would be <em>conservative</em> (looking at response accelerations and displacements) to use 1-D modeling of the seismic input. But, here is a point that couldn't be made in the article, <strong>this depends on the system</strong> and I have <a href="http://sokocalo.engr.ucdavis.edu/~jeremic/6D_vs_1D_ESSI_for_NPPs/">found cases</a> where the results are opposite: it is <strong>nonconservative</strong> to ignore 3-D ground motions effects. This point needs to be made more clearly (future work), for different seismic settings and structures. </p>
+<p>I also ran this model using a non-linear constitutive model for the soil. Check out what the energy dissipation looks like under the NPP (not part of the paper).
+<div class="videoWrapper" align="left">
+<iframe width="640" height="480"
+ src="https://www.youtube.com/embed/Kjwi_pmLgdI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div></p>
+<p>This was submitted for review Jan 6 2017, it took over a year to get acceptance! Three iterations of peer-review were done. Admittedly, I did take too much time to answer. Tough year was 2017. Although the reviewers were very picky, which led to article improvement--especially the introduction--, the main content of the article changed little. We have the same results and conclusions. </p>
+<p>Where from here?</p>
+<p>It think DRM-based SSI analysis is <em>the</em> methodology to produce the highest-possible fidelity modeling of SSI. But generating these DRM motions is costly, we need supercomputers for that. Highly-detailed modeling of seismic motions is currently underway, it would be rather cheap for the researchers doing these simulations to also generate DRM-compatible motions for future exploration, making these simulations even more relevant. There needs to be an agreed format for the distribution of DRM motions, and a repository of validated motions to be used for modeling. </p>
+<p>Is it worthwhile? That's a research question in of itself. Clearly we can build to withstand earthquakes, so its not a safety-critical issue to use advanced SSI modeling. Might be an economic one. Maybe some case-studies can be reinterpreted in the light of 3-D motions to suggest that they were to blame in unexpected performance of existing infrastructure. Some structures will be more sensitive to these effects than others, which? how much so? under what conditions? is it necessary to model them in this way? There is great value in high-fidelity SSI modeling, is there a way to bring this into practice? All questions I want to answer in the years to come. </p></p>
+        </div>
+    </div>
+
+<div class="fh5co-narrow-content">
+<div class="animate-box" data-animate-effect="fadeInLeft">
+    <h2><!-- <i class="icon-speech-bubble"></i>  -->Comments</h2>
+</div>
+<div class="animate-box" data-animate-effect="fadeInLeft">
+    <div id="disqus_thread"></div>
+</div>
+
+<script>
+var disqus_config = function () { 
+  this.language = "en";
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript><a href="https://disqus.com/?ref_noscript">Please enable JavaScript to view the comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://joseabell.com/theme/js/jquery.min.js"></script>
+    <!-- jQuery Easing -->
+    <script src="https://joseabell.com/theme/js/jquery.easing.1.3.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://joseabell.com/theme/js/bootstrap.min.js"></script>
+    <!-- Waypoints -->
+    <script src="https://joseabell.com/theme/js/jquery.waypoints.min.js"></script>
+    <!-- Flexslider -->
+    <script src="https://joseabell.com/theme/js/jquery.flexslider-min.js"></script>
+
+    
+
+    <!-- MAIN JS -->
+    <script src="https://joseabell.com/theme/js/main.js"></script>
+    
+    </body>
+</html>
