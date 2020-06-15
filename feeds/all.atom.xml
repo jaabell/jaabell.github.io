@@ -1,5 +1,361 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/all.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2018-02-26T13:55:13-08:00</updated><entry><title>Using my gmshtranslator python tool to interface gmsh with opensees.</title><link href="https://joseabell.com/posts/2018/using-my-gmshtranslator-python-tool-to-interface-gmsh-with-opensees.html" rel="alternate"></link><published>2018-02-26T13:55:13-08:00</published><updated>2018-02-26T13:55:13-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2018-02-26:/posts/2018/using-my-gmshtranslator-python-tool-to-interface-gmsh-with-opensees.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/all.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2020-06-12T18:03:54-07:00</updated><entry><title>#EngineeringWizardry | 00 | new series</title><link href="https://joseabell.com/posts/2020/engineeringwizardry-00-new-series.html" rel="alternate"></link><published>2020-06-12T18:03:54-07:00</published><updated>2020-06-12T18:03:54-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-06-12:/posts/2020/engineeringwizardry-00-new-series.html</id><summary type="html">
+&lt;div align="left" class="videoWrapper"&gt;
+&lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/F5xoTIT2uW4" width="640"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;p&gt;Stuck teaching during COVID-19 lockdowns in Chile has reminded me one crucial thing 
+about statics (the class I’m teaching this first semester in the southern hemisphere): &lt;strong&gt;it can be very frustrating for students&lt;/strong&gt;. This frustriation comes from unmet expectations. They’re just finishing their early maths and physics formation (Calculus, Linear Algebra, Differential Equations, physics etc. ), an ideal world where problems have nice answers such as $\sqrt{2}  \pi$ or no answer at all. Then, along comes statics, and the world seems upside down. &lt;/p&gt;
+</summary><content type="html">&lt;article class="markdown-body"&gt;&lt;!-- SUMMARY BEGIN --&gt;
+
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/F5xoTIT2uW4" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Stuck teaching during COVID-19 lockdowns in Chile has reminded me one crucial thing 
+about statics (the class I&amp;rsquo;m teaching this first semester in the southern hemisphere): &lt;strong&gt;it can be very frustrating for students&lt;/strong&gt;. This frustriation comes from unmet expectations. They&amp;rsquo;re just finishing their early maths and physics formation (Calculus, Linear Algebra, Differential Equations, physics etc. ), an ideal world where problems have nice answers such as $\sqrt{2}  \pi$ or no answer at all. Then, along comes statics, and the world seems upside down. &lt;/p&gt;
+&lt;!-- SUMMARY END --&gt;
+
+&lt;p&gt;Not only are the contents of statics deceptively simple ($\sum F=0$ pretty much sums it up&amp;hellip; get it?&amp;hellip; sums?&amp;hellip; ok), the only way through is through exercising&amp;hellip; a lot. This cannot be over-emphasized. &lt;/p&gt;
+&lt;p&gt;The biggest hurdle through this is, ironically, maths. Yes! The very thing they&amp;rsquo;ve been becoming experts at. Take this example:&lt;/p&gt;
+&lt;!-- ![problem1](/images/engineering-wizardry/engineering-wizardry-00-new-series-fig00.svg) --&gt;
+
+&lt;div class="responsive-image" align="left"&gt;
+&lt;img src="/images/engineering-wizardry/engineering-wizardry-00-new-series-fig00.svg"&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The problem comes in two flavors depending what you ask for: &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Given how much you want the vertex node to move (that is, give values to $u_x$ and $u_y$), find the forces $F_x$ and $F_y$ that need to be applied. &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Given the forces $F_x$ and $F_y$ find out the displacement of the vertex node ($u_x$ and $u_y$).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;One of this forms is easier thant the other. Which one? Think about it&amp;hellip; take your time.&lt;/p&gt;
+&lt;p&gt;&lt;details markdown="1"&gt;
+&lt;summary&gt;Click to know the answer&amp;hellip;&lt;/summary&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NUMBER 2&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Why? Glad you asked!  In #2 you &lt;em&gt;fix the geometry&lt;/em&gt; of the problem. Finding the change in length of the springs is trivial.From that you can find the forces carried by each spring and from that the force applied comes from stating a simple particle force equilibrium at the vertex. &lt;/p&gt;
+&lt;p&gt;Form #1 fixes the applied forces. This means that the geometry is unknown, which leads to a &lt;em&gt;nonlinear system of equations&lt;/em&gt; that needs to be solved so that the displacements $u_x$ and $u_y$ result in spring stretches such that the equilibrium is satisfied. &lt;/p&gt;
+&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;
+The form of the problem notwidthstanding, to me as a teacher what&amp;rsquo;s important about this problem is:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Stating the single-particle equilibrium where the springs meet. &lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Drawing&lt;/em&gt; a free body diagram. &lt;/li&gt;
+&lt;li&gt;This is the same for both forms.&lt;/li&gt;
+&lt;li&gt;Expressing the forces of the springs as a function of the stretch. &lt;/li&gt;
+&lt;li&gt;Expressing the direction of the forces as a function of the point displacements. &lt;/li&gt;
+&lt;li&gt;Writing down equilibrium&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Getting an answer and &lt;em&gt;check whether it makes sense&lt;/em&gt;. &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Part 1 can be done, with experience, in under 5 minutes. Part 2, on the other hand, can take about 10 to 15 minutes if form 1 is used. If form 2 is used all bets are off, the students can&amp;rsquo;t be expected to solve those equations in a quiz/midterm/exam setting. (This is another subtle issue, that easy-to-state problems can easily derail into a mathematical nightmare if one is not careful).&lt;/p&gt;
+&lt;p&gt;The main problem, then, is that students spend &lt;em&gt;a lot of time&lt;/em&gt; doing maths instead of statics. Since answers are important, to check whether the results make sense, gain experience and because otherwise nothing would make sense; the effort of solving problems must be addressed. If the way to study statics is solving as many problems as one can, but the math/geometry is what takes up all the time and is least important to becoming a good engineering modeler, how to avoid this?&lt;/p&gt;
+&lt;p&gt;Programming is a way to go. But, as much as I regret it, that does not come easy to all students at this point of their formation: would result in two problems instead of one. &lt;/p&gt;
+&lt;p&gt;But there is hope: behold &lt;a href="/home/jaabell/Dropbox/homefolder/www/blog2/content/posts/EngineeringWizardry/geogebra.org"&gt;geogebra&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s a powerful and intuitive set of apps for the PC, cellphone, through the browser, etc. I&amp;rsquo;m planning on using this to bridge the math gap and accelerate student learning. &lt;/p&gt;
+&lt;p&gt;After this long roundabout, I can finally state that this is my motivation behind the #EngineeringWizardry youtube series I intent to develop in the next months. I hope it helps you and my students. &lt;/p&gt;&lt;/article&gt;</content><category term="EngineeringWizardry"></category><category term="video EngineeringWizardry youtube teaching opensource programming geogebra"></category></entry><entry><title>#EngineeringWizardry | 00 | new series</title><link href="https://joseabell.com/posts/2020/engineeringwizardry-00-new-series.html" rel="alternate"></link><published>2020-06-12T18:03:54-07:00</published><updated>2020-06-12T18:03:54-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-06-12:/posts/2020/engineeringwizardry-00-new-series.html</id><summary type="html">
+&lt;div align="left" class="videoWrapper"&gt;
+&lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/F5xoTIT2uW4" width="640"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;p&gt;Stuck teaching during COVID-19 lockdowns in Chile has reminded me one crucial thing 
+about statics (the class I'm teaching this first semester in the southern hemisphere): &lt;strong&gt;it can be very frustrating for students&lt;/strong&gt;. This frustriation comes from unmet expectations. They're just finishing their early maths and physics formation (Calculus, Linear Algebra, Differential Equations, physics etc. ), an ideal world where problems have nice answers such as &lt;span class="math"&gt;\(\sqrt{2}  \pi\)&lt;/span&gt; or no answer at all. Then, along comes statics, and the world seems upside down. &lt;/p&gt;
+</summary><content type="html">&lt;!-- SUMMARY BEGIN --&gt;
+
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/F5xoTIT2uW4" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Stuck teaching during COVID-19 lockdowns in Chile has reminded me one crucial thing 
+about statics (the class I'm teaching this first semester in the southern hemisphere): &lt;strong&gt;it can be very frustrating for students&lt;/strong&gt;. This frustriation comes from unmet expectations. They're just finishing their early maths and physics formation (Calculus, Linear Algebra, Differential Equations, physics etc. ), an ideal world where problems have nice answers such as &lt;span class="math"&gt;\(\sqrt{2}  \pi\)&lt;/span&gt; or no answer at all. Then, along comes statics, and the world seems upside down. &lt;/p&gt;
+&lt;!-- SUMMARY END --&gt;
+
+&lt;p&gt;Not only are the contents of statics deceptively simple (&lt;span class="math"&gt;\(\sum F=0\)&lt;/span&gt; pretty much sums it up... get it?... sums?... ok), the only way through is through exercising... a lot. This cannot be over-emphasized. &lt;/p&gt;
+&lt;p&gt;The biggest hurdle through this is, ironically, maths. Yes! The very thing they've been becoming experts at. Take this example:&lt;/p&gt;
+&lt;!-- ![problem1](/images/engineering-wizardry/engineering-wizardry-00-new-series-fig00.svg) --&gt;
+
+&lt;div class="responsive-image" align="left"&gt;
+&lt;img src="/images/engineering-wizardry/engineering-wizardry-00-new-series-fig00.svg"&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The problem comes in two flavors depending what you ask for: &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Given how much you want the vertex node to move (that is, give values to &lt;span class="math"&gt;\(u_x\)&lt;/span&gt; and &lt;span class="math"&gt;\(u_y\)&lt;/span&gt;), find the forces &lt;span class="math"&gt;\(F_x\)&lt;/span&gt; and &lt;span class="math"&gt;\(F_y\)&lt;/span&gt; that need to be applied. &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Given the forces &lt;span class="math"&gt;\(F_x\)&lt;/span&gt; and &lt;span class="math"&gt;\(F_y\)&lt;/span&gt; find out the displacement of the vertex node (&lt;span class="math"&gt;\(u_x\)&lt;/span&gt; and &lt;span class="math"&gt;\(u_y\)&lt;/span&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;One of this forms is easier thant the other. Which one? Think about it... take your time.&lt;/p&gt;
+&lt;details&gt;
+&lt;p&gt;&lt;summary&gt;Click to know the answer...&lt;/summary&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NUMBER 2&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Why? Glad you asked!  In #2 you &lt;em&gt;fix the geometry&lt;/em&gt; of the problem. Finding the change in length of the springs is trivial.From that you can find the forces carried by each spring and from that the force applied comes from stating a simple particle force equilibrium at the vertex. &lt;/p&gt;
+&lt;p&gt;Form #1 fixes the applied forces. This means that the geometry is unknown, which leads to a &lt;em&gt;nonlinear system of equations&lt;/em&gt; that needs to be solved so that the displacements &lt;span class="math"&gt;\(u_x\)&lt;/span&gt; and &lt;span class="math"&gt;\(u_y\)&lt;/span&gt; result in spring stretches such that the equilibrium is satisfied. &lt;/p&gt;
+&lt;/details&gt;
+&lt;p&gt;&lt;br&gt;
+The form of the problem notwidthstanding, to me as a teacher what's important about this problem is:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Stating the single-particle equilibrium where the springs meet. &lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Drawing&lt;/em&gt; a free body diagram. &lt;/li&gt;
+&lt;li&gt;This is the same for both forms.&lt;/li&gt;
+&lt;li&gt;Expressing the forces of the springs as a function of the stretch. &lt;/li&gt;
+&lt;li&gt;Expressing the direction of the forces as a function of the point displacements. &lt;/li&gt;
+&lt;li&gt;Writing down equilibrium&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Getting an answer and &lt;em&gt;check whether it makes sense&lt;/em&gt;. &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Part 1 can be done, with experience, in under 5 minutes. Part 2, on the other hand, can take about 10 to 15 minutes if form 1 is used. If form 2 is used all bets are off, the students can't be expected to solve those equations in a quiz/midterm/exam setting. (This is another subtle issue, that easy-to-state problems can easily derail into a mathematical nightmare if one is not careful).&lt;/p&gt;
+&lt;p&gt;The main problem, then, is that students spend &lt;em&gt;a lot of time&lt;/em&gt; doing maths instead of statics. Since answers are important, to check whether the results make sense, gain experience and because otherwise nothing would make sense; the effort of solving problems must be addressed. If the way to study statics is solving as many problems as one can, but the math/geometry is what takes up all the time and is least important to becoming a good engineering modeler, how to avoid this?&lt;/p&gt;
+&lt;p&gt;Programming is a way to go. But, as much as I regret it, that does not come easy to all students at this point of their formation: would result in two problems instead of one. &lt;/p&gt;
+&lt;p&gt;But there is hope: behold &lt;a href="geogebra.org"&gt;geogebra&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;It's a powerful and intuitive set of apps for the PC, cellphone, through the browser, etc. I'm planning on using this to bridge the math gap and accelerate student learning. &lt;/p&gt;
+&lt;p&gt;After this long roundabout, I can finally state that this is my motivation behind the #EngineeringWizardry youtube series I intent to develop in the next months. I hope it helps you and my students. &lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js','color.js','mhchem.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="EngineeringWizardry"></category><category term="video EngineeringWizardry youtube teaching opensource programming geogebra"></category></entry><entry><title>#EngineeringWizardry | 00 | new series</title><link href="https://joseabell.com/posts/2020/engineeringwizardry-00-new-series.html" rel="alternate"></link><published>2020-06-12T18:03:54-07:00</published><updated>2020-06-12T18:03:54-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-06-12:/posts/2020/engineeringwizardry-00-new-series.html</id><summary type="html">
+&lt;div align="left" class="videoWrapper"&gt;
+&lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/F5xoTIT2uW4" width="640"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;p&gt;Stuck teaching during COVID-19 lockdowns in Chile has reminded me one crucial thing 
+about statics (the class I'm teaching this first semester in the southern hemisphere): &lt;strong&gt;it can be very frustrating for students&lt;/strong&gt;. This frustriation comes from unmet expectations. They're just finishing their early maths and physics formation (Calculus, Linear Algebra, Differential Equations, physics etc. ), an ideal world where problems have nice answers such as &lt;span class="math"&gt;\(\sqrt{2}  \pi\)&lt;/span&gt; or no answer at all. Then, along comes statics, and the world seems upside down. &lt;/p&gt;
+</summary><content type="html">&lt;!-- SUMMARY BEGIN --&gt;
+
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/F5xoTIT2uW4" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Stuck teaching during COVID-19 lockdowns in Chile has reminded me one crucial thing 
+about statics (the class I'm teaching this first semester in the southern hemisphere): &lt;strong&gt;it can be very frustrating for students&lt;/strong&gt;. This frustriation comes from unmet expectations. They're just finishing their early maths and physics formation (Calculus, Linear Algebra, Differential Equations, physics etc. ), an ideal world where problems have nice answers such as &lt;span class="math"&gt;\(\sqrt{2}  \pi\)&lt;/span&gt; or no answer at all. Then, along comes statics, and the world seems upside down. &lt;/p&gt;
+&lt;!-- SUMMARY END --&gt;
+
+&lt;p&gt;Not only are the contents of statics deceptively simple (&lt;span class="math"&gt;\(\sum F=0\)&lt;/span&gt; pretty much sums it up... get it?... sums?... ok), the only way through is through exercising... a lot. This cannot be over-emphasized. &lt;/p&gt;
+&lt;p&gt;The biggest hurdle through this is, ironically, maths. Yes! The very thing they've been becoming experts at. Take this example:&lt;/p&gt;
+&lt;!-- ![problem1](/images/engineering-wizardry/engineering-wizardry-00-new-series-fig00.svg) --&gt;
+
+&lt;div class="responsive-image" align="left"&gt;
+&lt;img src="/images/engineering-wizardry/engineering-wizardry-00-new-series-fig00.svg"&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The problem comes in two flavors depending what you ask for: &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Given how much you want the vertex node to move (that is, give values to &lt;span class="math"&gt;\(u_x\)&lt;/span&gt; and &lt;span class="math"&gt;\(u_y\)&lt;/span&gt;), find the forces &lt;span class="math"&gt;\(F_x\)&lt;/span&gt; and &lt;span class="math"&gt;\(F_y\)&lt;/span&gt; that need to be applied. &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Given the forces &lt;span class="math"&gt;\(F_x\)&lt;/span&gt; and &lt;span class="math"&gt;\(F_y\)&lt;/span&gt; find out the displacement of the vertex node (&lt;span class="math"&gt;\(u_x\)&lt;/span&gt; and &lt;span class="math"&gt;\(u_y\)&lt;/span&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;One of this forms is easier thant the other. Which one? Think about it... take your time.&lt;/p&gt;
+&lt;details&gt;
+&lt;p&gt;&lt;summary&gt;Click to know the answer...&lt;/summary&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NUMBER 2&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Why? Glad you asked!  In #2 you &lt;em&gt;fix the geometry&lt;/em&gt; of the problem. Finding the change in length of the springs is trivial.From that you can find the forces carried by each spring and from that the force applied comes from stating a simple particle force equilibrium at the vertex. &lt;/p&gt;
+&lt;p&gt;Form #1 fixes the applied forces. This means that the geometry is unknown, which leads to a &lt;em&gt;nonlinear system of equations&lt;/em&gt; that needs to be solved so that the displacements &lt;span class="math"&gt;\(u_x\)&lt;/span&gt; and &lt;span class="math"&gt;\(u_y\)&lt;/span&gt; result in spring stretches such that the equilibrium is satisfied. &lt;/p&gt;
+&lt;/details&gt;
+&lt;p&gt;&lt;br&gt;
+The form of the problem notwidthstanding, to me as a teacher what's important about this problem is:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Stating the single-particle equilibrium where the springs meet. &lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Drawing&lt;/em&gt; a free body diagram. &lt;/li&gt;
+&lt;li&gt;This is the same for both forms.&lt;/li&gt;
+&lt;li&gt;Expressing the forces of the springs as a function of the stretch. &lt;/li&gt;
+&lt;li&gt;Expressing the direction of the forces as a function of the point displacements. &lt;/li&gt;
+&lt;li&gt;Writing down equilibrium&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Getting an answer and &lt;em&gt;check whether it makes sense&lt;/em&gt;. &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Part 1 can be done, with experience, in under 5 minutes. Part 2, on the other hand, can take about 10 to 15 minutes if form 1 is used. If form 2 is used all bets are off, the students can't be expected to solve those equations in a quiz/midterm/exam setting. (This is another subtle issue, that easy-to-state problems can easily derail into a mathematical nightmare if one is not careful).&lt;/p&gt;
+&lt;p&gt;The main problem, then, is that students spend &lt;em&gt;a lot of time&lt;/em&gt; doing maths instead of statics. Since answers are important, to check whether the results make sense, gain experience and because otherwise nothing would make sense; the effort of solving problems must be addressed. If the way to study statics is solving as many problems as one can, but the math/geometry is what takes up all the time and is least important to becoming a good engineering modeler, how to avoid this?&lt;/p&gt;
+&lt;p&gt;Programming is a way to go. But, as much as I regret it, that does not come easy to all students at this point of their formation: would result in two problems instead of one. &lt;/p&gt;
+&lt;p&gt;But there is hope: behold &lt;a href="geogebra.org"&gt;geogebra&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;It's a powerful and intuitive set of apps for the PC, cellphone, through the browser, etc. I'm planning on using this to bridge the math gap and accelerate student learning. &lt;/p&gt;
+&lt;p&gt;After this long roundabout, I can finally state that this is my motivation behind the #EngineeringWizardry youtube series I intent to develop in the next months. I hope it helps you and my students. &lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js','color.js','mhchem.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="EngineeringWizardry"></category><category term="video EngineeringWizardry youtube teaching opensource programming geogebra"></category></entry><entry><title>#EngineeringWizardry | 00 | new series</title><link href="https://joseabell.com/posts/2020/engineeringwizardry-00-new-series.html" rel="alternate"></link><published>2020-06-12T18:03:54-07:00</published><updated>2020-06-12T18:03:54-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-06-12:/posts/2020/engineeringwizardry-00-new-series.html</id><summary type="html">
+&lt;div align="left" class="videoWrapper"&gt;
+&lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/F5xoTIT2uW4" width="640"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;p&gt;Stuck teaching during COVID-19 lockdowns in Chile has reminded me one crucial thing 
+about statics (the class I’m teaching this first semester in the southern hemisphere): &lt;strong&gt;it can be very frustrating for students&lt;/strong&gt;. This frustriation comes from unmet expectations. They’re just finishing their early maths and physics formation (Calculus, Linear Algebra, Differential Equations, physics etc. ), an ideal world where problems have nice answers such as $\sqrt{2}  \pi$ or no answer at all. Then, along comes statics, and the world seems upside down. &lt;/p&gt;
+</summary><content type="html">&lt;article class="markdown-body"&gt;&lt;!-- SUMMARY BEGIN --&gt;
+
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/F5xoTIT2uW4" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Stuck teaching during COVID-19 lockdowns in Chile has reminded me one crucial thing 
+about statics (the class I&amp;rsquo;m teaching this first semester in the southern hemisphere): &lt;strong&gt;it can be very frustrating for students&lt;/strong&gt;. This frustriation comes from unmet expectations. They&amp;rsquo;re just finishing their early maths and physics formation (Calculus, Linear Algebra, Differential Equations, physics etc. ), an ideal world where problems have nice answers such as $\sqrt{2}  \pi$ or no answer at all. Then, along comes statics, and the world seems upside down. &lt;/p&gt;
+&lt;!-- SUMMARY END --&gt;
+
+&lt;p&gt;Not only are the contents of statics deceptively simple ($\sum F=0$ pretty much sums it up&amp;hellip; get it?&amp;hellip; sums?&amp;hellip; ok), the only way through is through exercising&amp;hellip; a lot. This cannot be over-emphasized. &lt;/p&gt;
+&lt;p&gt;The biggest hurdle through this is, ironically, maths. Yes! The very thing they&amp;rsquo;ve been becoming experts at. Take this example:&lt;/p&gt;
+&lt;!-- ![problem1](/images/engineering-wizardry/engineering-wizardry-00-new-series-fig00.svg) --&gt;
+
+&lt;div class="responsive-image" align="left"&gt;
+&lt;img src="/images/engineering-wizardry/engineering-wizardry-00-new-series-fig00.svg"&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The problem comes in two flavors depending what you ask for: &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Given how much you want the vertex node to move (that is, give values to $u_x$ and $u_y$), find the forces $F_x$ and $F_y$ that need to be applied. &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Given the forces $F_x$ and $F_y$ find out the displacement of the vertex node ($u_x$ and $u_y$).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;One of this forms is easier thant the other. Which one? Think about it&amp;hellip; take your time.&lt;/p&gt;
+&lt;p&gt;&lt;details markdown="1"&gt;
+&lt;summary&gt;Click to know the answer&amp;hellip;&lt;/summary&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NUMBER 2&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Why? Glad you asked!  In #2 you &lt;em&gt;fix the geometry&lt;/em&gt; of the problem. Finding the change in length of the springs is trivial.From that you can find the forces carried by each spring and from that the force applied comes from stating a simple particle force equilibrium at the vertex. &lt;/p&gt;
+&lt;p&gt;Form #1 fixes the applied forces. This means that the geometry is unknown, which leads to a &lt;em&gt;nonlinear system of equations&lt;/em&gt; that needs to be solved so that the displacements $u_x$ and $u_y$ result in spring stretches such that the equilibrium is satisfied. &lt;/p&gt;
+&lt;p&gt;&lt;/details&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;
+The form of the problem notwidthstanding, to me as a teacher what&amp;rsquo;s important about this problem is:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Stating the single-particle equilibrium where the springs meet. &lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Drawing&lt;/em&gt; a free body diagram. &lt;/li&gt;
+&lt;li&gt;This is the same for both forms.&lt;/li&gt;
+&lt;li&gt;Expressing the forces of the springs as a function of the stretch. &lt;/li&gt;
+&lt;li&gt;Expressing the direction of the forces as a function of the point displacements. &lt;/li&gt;
+&lt;li&gt;Writing down equilibrium&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Getting an answer and &lt;em&gt;check whether it makes sense&lt;/em&gt;. &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Part 1 can be done, with experience, in under 5 minutes. Part 2, on the other hand, can take about 10 to 15 minutes if form 1 is used. If form 2 is used all bets are off, the students can&amp;rsquo;t be expected to solve those equations in a quiz/midterm/exam setting. (This is another subtle issue, that easy-to-state problems can easily derail into a mathematical nightmare if one is not careful).&lt;/p&gt;
+&lt;p&gt;The main problem, then, is that students spend &lt;em&gt;a lot of time&lt;/em&gt; doing maths instead of statics. Since answers are important, to check whether the results make sense, gain experience and because otherwise nothing would make sense; the effort of solving problems must be addressed. If the way to study statics is solving as many problems as one can, but the math/geometry is what takes up all the time and is least important to becoming a good engineering modeler, how to avoid this?&lt;/p&gt;
+&lt;p&gt;Programming is a way to go. But, as much as I regret it, that does not come easy to all students at this point of their formation: would result in two problems instead of one. &lt;/p&gt;
+&lt;p&gt;But there is hope: behold &lt;a href="/home/jaabell/Dropbox/homefolder/www/blog2/content/posts/EngineeringWizardry/geogebra.org"&gt;geogebra&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s a powerful and intuitive set of apps for the PC, cellphone, through the browser, etc. I&amp;rsquo;m planning on using this to bridge the math gap and accelerate student learning. &lt;/p&gt;
+&lt;p&gt;After this long roundabout, I can finally state that this is my motivation behind the #EngineeringWizardry youtube series I intent to develop in the next months. I hope it helps you and my students. &lt;/p&gt;&lt;/article&gt;</content><category term="EngineeringWizardry"></category><category term="video EngineeringWizardry youtube teaching opensource programming geogebra"></category></entry><entry><title>Using my gmshtranslator python tool to interface gmsh with opensees.</title><link href="https://joseabell.com/posts/2018/using-my-gmshtranslator-python-tool-to-interface-gmsh-with-opensees.html" rel="alternate"></link><published>2018-02-26T13:55:13-08:00</published><updated>2018-02-26T13:55:13-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2018-02-26:/posts/2018/using-my-gmshtranslator-python-tool-to-interface-gmsh-with-opensees.html</id><summary type="html">
 &lt;p&gt;I wrote the &lt;a href="https://github.com/jaabell/gmshtranslator"&gt;&lt;em&gt;gmshtranslator&lt;/em&gt;&lt;/a&gt; tool a while back during my PhD, to easily parse &lt;a href="http://gmsh.info/"&gt;&lt;em&gt;gmsh&lt;/em&gt;&lt;/a&gt; &lt;code&gt;msh&lt;/code&gt; files to any other format. I've been using it for years now with not much change for both research and consulting, and have been contacted by other researchers that want to use it. I will soon write a tool, powered by &lt;em&gt;gmshtranslator&lt;/em&gt;, to more easily translate from &lt;em&gt;gmsh&lt;/em&gt; into OpenSees. Meanwhile, here is a short example on how to use gmshtranslator to create &lt;a href="opensees.berkeley.edu"&gt;&lt;em&gt;OpenSees&lt;/em&gt;&lt;/a&gt; models. The example assumes you know &lt;em&gt;gmsh&lt;/em&gt; formats (&lt;code&gt;.geo&lt;/code&gt; and &lt;code&gt;.msh&lt;/code&gt;) and python. &lt;/p&gt;
 &lt;p&gt;The example consists on the simple cantilever beam shown in the following figure.&lt;/p&gt;
 </summary><content type="html">&lt;!-- SUMMARY BEGIN --&gt;
@@ -264,7 +620,8 @@
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;The &lt;code&gt;pvd&lt;/code&gt; recorder is used to generate a nice output file that can be viewed using &lt;a href="https://www.paraview.org/"&gt;paraview&lt;/a&gt;. &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Deflections" src="https://www.dropbox.com/s/24tkmfk1y1r0wz5/disp.png?raw=1"&gt;&lt;/p&gt;</content><category term="misc"></category><category term="OpenSees"></category><category term="gmsh"></category><category term="gmshtranslator"></category><category term="python"></category><category term="pre-proceesing"></category><category term="meshing"></category></entry><entry><title>Paper03 - Earthquake Soil Structure Interaction of Nuclear Power Plants, differences in response to 3-D, 3 × 1-D, and 1-D excitations</title><link href="https://joseabell.com/posts/2018/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations.html" rel="alternate"></link><published>2018-02-20T10:50:00-08:00</published><updated>2018-02-20T10:50:00-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2018-02-20:/posts/2018/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Finally!&lt;/strong&gt; First paper since PhD was accepted for publication. I'll take this opportunity to start a tradition and review my own papers here. I think its important that I do this for several reasons. First, there are discussions that come up during peer review that are important but don't make it into the paper. Misconceptions about the presented work can be clarified to a broader audience here. Also, I can say whatever I want, specially opinions and thoughts that come from intuition and might not make it through peer-review, I'll be as critical as possible about these too and hope that my readers can discuss with me. I can post videos&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Finally!&lt;/strong&gt; First paper since PhD was accepted for publication. I'll take this opportunity to start a tradition and review my own papers here. I think its important that I do this for several reasons. First, there are discussions that come up during peer review that are important but don't make it into the paper. Misconceptions about the presented work can be clarified to a broader audience here. Also, I can say whatever I want, specially opinions and thoughts that come from intuition and might not make it through peer-review, I'll be as critical as possible about these too and hope that my readers can discuss with me. I can post videos and other additional content here and make them available to everyone for free. And, finally, this post will have a Disqus thread &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Deflections" src="https://www.dropbox.com/s/24tkmfk1y1r0wz5/disp.png?raw=1"&gt;&lt;/p&gt;</content><category term="misc"></category><category term="OpenSees"></category><category term="gmsh"></category><category term="gmshtranslator"></category><category term="python"></category><category term="pre-proceesing"></category><category term="meshing"></category></entry><entry><title>Paper03 - Earthquake Soil Structure Interaction of Nuclear Power Plants, differences in response to 3-D, 3 × 1-D, and 1-D excitations</title><link href="https://joseabell.com/posts/2018/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations.html" rel="alternate"></link><published>2018-02-20T10:50:00-08:00</published><updated>2018-02-20T10:50:00-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2018-02-20:/posts/2018/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations.html</id><summary type="html">&lt;p&gt;Summary: &lt;strong&gt;Finally!&lt;/strong&gt; First paper since PhD was accepted for publication …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Summary: &lt;strong&gt;Finally!&lt;/strong&gt; First paper since PhD was accepted for publication. I'll take this opportunity to start a tradition and review my own papers here. I think its important that I do this for several reasons. First, there are discussions that come up during peer review that are important but don't make it into the paper. Misconceptions about the presented work can be clarified to a broader audience here. Also, I can say whatever I want, specially opinions and thoughts that come from intuition and might not make it through peer-review, I'll be as critical as possible about these too and hope that my readers can discuss with me. I can post videos...&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Finally!&lt;/strong&gt; First paper since PhD was accepted for publication. I'll take this opportunity to start a tradition and review my own papers here. I think its important that I do this for several reasons. First, there are discussions that come up during peer review that are important but don't make it into the paper. Misconceptions about the presented work can be clarified to a broader audience here. Also, I can say whatever I want, specially opinions and thoughts that come from intuition and might not make it through peer-review, I'll be as critical as possible about these too and hope that my readers can discuss with me. I can post videos and other additional content here and make them available to everyone for free. And, finally, this post will have a Disqus thread &lt;/p&gt;
 &lt;p&gt;Lets get to it! Here is the citation so far (I still don't have an issue assign, going through editorial process): &lt;strong&gt;Abell Mena J A&lt;/strong&gt;, Orbović N, McCallen D B, Jeremic B. &lt;em&gt;Earthquake soil-structure interaction of nuclear power plants, differences in response to 3-D, 3×1-D, and 1-D excitations.&lt;/em&gt; Earthquake Engng Struct Dyn. 2018;1–18. [https://doi.org/10.1002/eqe.3026].&lt;/p&gt;
 &lt;p&gt;The idea is simple: to show that the 3-D character of seismic motions has an impact on the structural response of a nuclear power-plant by comparing the response to 3-D motions with the one produced by an equivalent 1-D (1 component: horizontal) or 3×1-D (3 components) motion. Here is the NPP model used in the article:&lt;/p&gt;
 &lt;p&gt;&lt;img width="100%" src="https://www.dropbox.com/s/dj6ruypv0722qh2/fem_mesh.png?raw=1" alt="NPP" /&gt;&lt;/p&gt;

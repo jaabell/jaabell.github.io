@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>#EngineeringWizardry | 00 | new series</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content="jaabell" />
+    <meta name="description" content="Stuck teaching during COVID-19 lockdowns in Chile has reminded me one crucial thing about statics (the class I’m teaching this first semester in the southern hemisphere): it can be very frustrating for students. This frustriation comes from unmet expectations. They’re just finishing their early maths and physics formation (Calculus, Linear Algebra, Differential Equations, physics etc. ), an ideal world where problems have nice answers such as $\sqrt{2} \pi$ or no answer at all. Then, along comes statics, and the world seems upside down." />
+    <meta name="keywords" content="video EngineeringWizardry youtube teaching opensource programming geogebra">
+<!-- Facebook and Twitter integration -->
+<meta property="og:site_name" content="Jose Abells Reasearch Blog"/>
+<meta property="og:title" content="#EngineeringWizardry | 00 | new series"/>
+<meta property="og:description" content="Stuck teaching during COVID-19 lockdowns in Chile has reminded me one crucial thing about statics (the class I’m teaching this first semester in the southern hemisphere): it can be very frustrating for students. This frustriation comes from unmet expectations. They’re just finishing their early maths and physics formation (Calculus, Linear Algebra, Differential Equations, physics etc. ), an ideal world where problems have nice answers such as $\sqrt{2} \pi$ or no answer at all. Then, along comes statics, and the world seems upside down."/>
+<meta property="og:url" content="https://joseabell.com/./posts/2020/engineeringwizardry-00-new-series.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2020-06-12 18:03:54-07:00"/>
+<meta property="article:modified_time" content="2020-06-12 18:03:54-07:00"/>
+<meta property="article:author" content="https://joseabell.com/author/jaabell.html">
+<meta property="article:section" content="EngineeringWizardry"/>
+    <meta property="article:tag" content="video EngineeringWizardry youtube teaching opensource programming geogebra"/>
+    <meta property="og:image" content="/images/sitelogo.svg">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/icomoon.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/bootstrap.css">
+    <!-- Flexslider  -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/flexslider.css">
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/style.css">
+    <!-- Custom style  -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/custom.css">
+    <!-- pygments code highlight -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/pygments.css">
+    <!-- tipue search -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/tipuesearch/css/tipuesearch.css">
+    <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" > -->
+    <script src="https://kit.fontawesome.com/2dfe6f2f70.js" crossorigin="anonymous"></script>
+
+
+    <!-- Modernizr JS -->
+    <script src="https://joseabell.com/theme/js/modernizr-2.6.2.min.js"></script>
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+    <script src="/theme/js/respond.min.js"></script>
+    <![endif]-->
+        <link href="https://joseabell.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Jose Abells Reasearch Blog Atom">
+
+
+
+    </head>
+    <body>
+    <div id="fh5co-page">
+        <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+        <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
+
+
+            <nav class="fh5co-main-menu" role="navigation">
+            </nav>
+
+
+            
+            <div class="clearfix"></div>
+            <h1  id="fh5co-logo">
+                <a href="https://joseabell.com/index.html">
+                    <img src="/images/sitelogo.svg" />
+                </a>
+            </h1>
+
+
+            <nav class="fh5co-main-menu" role="navigation">
+
+<ul>
+    <!-- home link -->
+    <li><a href="https://joseabell.com/">Home</a></li>
+
+    <!-- page links -->
+            <li><a href="https://joseabell.com/pages/01about.html">About</a></li>
+            <li><a href="https://joseabell.com/pages/04publications.html">Publications</a></li>
+            <li><a href="https://joseabell.com/pages/05tools.html">Tools</a></li>
+
+    <!-- categories -->
+        <li><a href="https://joseabell.com/categories.html">Categories</a></li>
+
+    <!-- tags -->
+        <li><a href="https://joseabell.com/tags.html">Tags</a></li>
+
+    <!-- additional menu items from config -->
+
+</ul><!--                 <ul><li><form id="searchform" action="https://joseabell.com/search.html">
+    <input id="tipue_search_input" data-siteurl="https://joseabell.com" type="text" size="60" class="form-control search-field" name="q">
+
+    <button type="submit" class="btn btn-primary search-submit"><i class="icon-search4"></i></button>
+</form></li></ul> -->
+
+
+
+<ul id="social"><li>
+            <li><a href="https://www.github.com/jaabell" alt="Github"><i class="fab fa-github fa-2x"></i></a></li>
+            <li><a href="https://www.twitter.com/jose_abell" alt="Twitter"><i class="fab fa-twitter fa-2x"></i></a></li>
+
+            <li><a href="https://www.instagram.com/ja.abell" alt="Instagram"><i class="fab fa-instagram fa-2x"></i></a></li>
+
+            <li><a href="https://www.youtube.com/user/eivelinsar" alt="Youtube"><i class="fab fa-youtube fa-2x"></i></a></li>
+
+            <li><a href="https://www.researchgate.net/profile/Jose_Abell/" alt="researchgate"><i class="fab fa-researchgate fa-2x"></i></a></li>
+
+</li>
+</ul>            
+            <ul id="map">
+                <li>
+                Visitors come from
+                <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=b3b3b3&w=250&t=n&d=XCjx4HKZp-atwA8u2pe4wbQt9_6FCkYMlpMpnxG6qMU&co=f5f5f5&cmo=027aae&cmn=a03338&ct=808080"></script>
+                </li>
+            </ul>
+            </nav>
+
+        </aside>
+
+        <div id="fh5co-main">
+
+    <div class="fh5co-narrow-content article-content">
+        <h1 class="fh5co-heading-colored">#EngineeringWizardry | 00 | new series</h1>
+
+        <div>by
+                <a href="author/jaabell.html">jaabell</a> - Fri, 12 Jun 2020
+        </div>
+
+            <div><span>Tags: </span>
+                    <span><a href="https://joseabell.com/tag/video-engineeringwizardry-youtube-teaching-opensource-programming-geogebra.html">#video EngineeringWizardry youtube teaching opensource programming geogebra</a> </span>
+            </div>
+
+        <div class="animate-box" data-animate-effect="fadeInLeft">
+            <p class="animate-box" data-animate-effect="fadeInLeft"><article class="markdown-body"><!-- SUMMARY BEGIN -->
+
+<div class="videoWrapper" align="left">
+<iframe width="640" height="480" src="https://www.youtube.com/embed/F5xoTIT2uW4" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<p>Stuck teaching during COVID-19 lockdowns in Chile has reminded me one crucial thing 
+about statics (the class I&rsquo;m teaching this first semester in the southern hemisphere): <strong>it can be very frustrating for students</strong>. This frustriation comes from unmet expectations. They&rsquo;re just finishing their early maths and physics formation (Calculus, Linear Algebra, Differential Equations, physics etc. ), an ideal world where problems have nice answers such as $\sqrt{2}  \pi$ or no answer at all. Then, along comes statics, and the world seems upside down. </p>
+<!-- SUMMARY END -->
+
+<p>Not only are the contents of statics deceptively simple ($\sum F=0$ pretty much sums it up&hellip; get it?&hellip; sums?&hellip; ok), the only way through is through exercising&hellip; a lot. This cannot be over-emphasized. </p>
+<p>The biggest hurdle through this is, ironically, maths. Yes! The very thing they&rsquo;ve been becoming experts at. Take this example:</p>
+<!-- ![problem1](/images/engineering-wizardry/engineering-wizardry-00-new-series-fig00.svg) -->
+
+<div class="responsive-image" align="left">
+<img src="/images/engineering-wizardry/engineering-wizardry-00-new-series-fig00.svg">
+</div>
+
+<p>The problem comes in two flavors depending what you ask for: </p>
+<ol>
+<li>
+<p>Given how much you want the vertex node to move (that is, give values to $u_x$ and $u_y$), find the forces $F_x$ and $F_y$ that need to be applied. </p>
+</li>
+<li>
+<p>Given the forces $F_x$ and $F_y$ find out the displacement of the vertex node ($u_x$ and $u_y$).</p>
+</li>
+</ol>
+<p>One of this forms is easier thant the other. Which one? Think about it&hellip; take your time.</p>
+<p><details markdown="1">
+<summary>Click to know the answer&hellip;</summary></p>
+<p><strong>NUMBER 2</strong></p>
+<p>Why? Glad you asked!  In #2 you <em>fix the geometry</em> of the problem. Finding the change in length of the springs is trivial.From that you can find the forces carried by each spring and from that the force applied comes from stating a simple particle force equilibrium at the vertex. </p>
+<p>Form #1 fixes the applied forces. This means that the geometry is unknown, which leads to a <em>nonlinear system of equations</em> that needs to be solved so that the displacements $u_x$ and $u_y$ result in spring stretches such that the equilibrium is satisfied. </p>
+<p></details></p>
+<p><br>
+The form of the problem notwidthstanding, to me as a teacher what&rsquo;s important about this problem is:</p>
+<ol>
+<li>Stating the single-particle equilibrium where the springs meet. <ul>
+<li><em>Drawing</em> a free body diagram. </li>
+<li>This is the same for both forms.</li>
+<li>Expressing the forces of the springs as a function of the stretch. </li>
+<li>Expressing the direction of the forces as a function of the point displacements. </li>
+<li>Writing down equilibrium</li>
+</ul>
+</li>
+<li>Getting an answer and <em>check whether it makes sense</em>. </li>
+</ol>
+<p>Part 1 can be done, with experience, in under 5 minutes. Part 2, on the other hand, can take about 10 to 15 minutes if form 1 is used. If form 2 is used all bets are off, the students can&rsquo;t be expected to solve those equations in a quiz/midterm/exam setting. (This is another subtle issue, that easy-to-state problems can easily derail into a mathematical nightmare if one is not careful).</p>
+<p>The main problem, then, is that students spend <em>a lot of time</em> doing maths instead of statics. Since answers are important, to check whether the results make sense, gain experience and because otherwise nothing would make sense; the effort of solving problems must be addressed. If the way to study statics is solving as many problems as one can, but the math/geometry is what takes up all the time and is least important to becoming a good engineering modeler, how to avoid this?</p>
+<p>Programming is a way to go. But, as much as I regret it, that does not come easy to all students at this point of their formation: would result in two problems instead of one. </p>
+<p>But there is hope: behold <a href="/home/jaabell/Dropbox/homefolder/www/blog2/content/posts/EngineeringWizardry/geogebra.org">geogebra</a>!</p>
+<p>It&rsquo;s a powerful and intuitive set of apps for the PC, cellphone, through the browser, etc. I&rsquo;m planning on using this to bridge the math gap and accelerate student learning. </p>
+<p>After this long roundabout, I can finally state that this is my motivation behind the #EngineeringWizardry youtube series I intent to develop in the next months. I hope it helps you and my students. </p></article></p>
+        </div>
+    </div>
+
+<div class="fh5co-narrow-content">
+<div class="animate-box" data-animate-effect="fadeInLeft">
+    <h2><!-- <i class="icon-speech-bubble"></i>  -->Comments</h2>
+</div>
+<div class="animate-box" data-animate-effect="fadeInLeft">
+    <div id="disqus_thread"></div>
+</div>
+
+<script>
+var disqus_config = function () { 
+  this.language = "en";
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript><a href="https://disqus.com/?ref_noscript">Please enable JavaScript to view the comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://joseabell.com/theme/js/jquery.min.js"></script>
+    <!-- jQuery Easing -->
+    <script src="https://joseabell.com/theme/js/jquery.easing.1.3.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://joseabell.com/theme/js/bootstrap.min.js"></script>
+    <!-- Waypoints -->
+    <script src="https://joseabell.com/theme/js/jquery.waypoints.min.js"></script>
+    <!-- Flexslider -->
+    <script src="https://joseabell.com/theme/js/jquery.flexslider-min.js"></script>
+
+    
+
+    <!-- MAIN JS -->
+    <script src="https://joseabell.com/theme/js/main.js"></script>
+    
+    </body>
+</html>
