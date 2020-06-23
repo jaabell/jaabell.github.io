@@ -7,7 +7,7 @@
 &lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;The magnitude I gave came from the Tsunami threat record. &lt;a href="https://t.co/2h5dppVLLQ"&gt;pic.twitter.com/2h5dppVLLQ&lt;/a&gt;&lt;/p&gt;&amp;mdash; José A. Abell 🇻🇦🇨🇱 (@jose_abell) &lt;a href="https://twitter.com/jose_abell/status/1275464037069991944?ref_src=twsrc%5Etfw"&gt;June 23, 2020&lt;/a&gt;&lt;/blockquote&gt;
 
 &lt;p&gt;&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;&lt;/p&gt;
-&lt;!-- SUMMARY END --&gt;</content><category term="misc"></category><category term="Earthquakes"></category><category term="tsunami"></category><category term="twitter"></category></entry><entry><title>#EngineeringWizardry | 00 | new series</title><link href="https://joseabell.com/posts/2020/engineeringwizardry-00-new-series.html" rel="alternate"></link><published>2020-06-12T18:03:54-07:00</published><updated>2020-06-12T18:03:54-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-06-12:/posts/2020/engineeringwizardry-00-new-series.html</id><summary type="html">
+&lt;!-- SUMMARY END --&gt;</content><category term="Earthquakes"></category><category term="Earthquakes"></category><category term="tsunami"></category><category term="twitter"></category></entry><entry><title>#EngineeringWizardry | 00 | new series</title><link href="https://joseabell.com/posts/2020/engineeringwizardry-00-new-series.html" rel="alternate"></link><published>2020-06-12T18:03:54-07:00</published><updated>2020-06-12T18:03:54-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-06-12:/posts/2020/engineeringwizardry-00-new-series.html</id><summary type="html">
 &lt;div align="left" class="videoWrapper"&gt;
 &lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/F5xoTIT2uW4" width="640"&gt;&lt;/iframe&gt;
 &lt;/div&gt;
@@ -392,7 +392,7 @@ The form of the problem notwidthstanding, to me as a teacher what's important ab
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;The &lt;code&gt;pvd&lt;/code&gt; recorder is used to generate a nice output file that can be viewed using &lt;a href="https://www.paraview.org/"&gt;paraview&lt;/a&gt;. &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Deflections" src="https://www.dropbox.com/s/24tkmfk1y1r0wz5/disp.png?raw=1"&gt;&lt;/p&gt;</content><category term="misc"></category><category term="OpenSees"></category><category term="gmsh"></category><category term="gmshtranslator"></category><category term="python"></category><category term="pre-proceesing"></category><category term="meshing"></category></entry><entry><title>Paper03 - Earthquake Soil Structure Interaction of Nuclear Power Plants, differences in response to 3-D, 3 × 1-D, and 1-D excitations</title><link href="https://joseabell.com/posts/2018/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations.html" rel="alternate"></link><published>2018-02-20T10:50:00-08:00</published><updated>2018-02-20T10:50:00-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2018-02-20:/posts/2018/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations.html</id><summary type="html">&lt;p&gt;Summary: &lt;strong&gt;Finally!&lt;/strong&gt; First paper since PhD was accepted for publication …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Summary: &lt;strong&gt;Finally!&lt;/strong&gt; First paper since PhD was accepted for publication. I'll take this opportunity to start a tradition and review my own papers here. I think its important that I do this for several reasons. First, there are discussions that come up during peer review that are important but don't make it into the paper. Misconceptions about the presented work can be clarified to a broader audience here. Also, I can say whatever I want, specially opinions and thoughts that come from intuition and might not make it through peer-review, I'll be as critical as possible about these too and hope that my readers can discuss with me. I can post videos...&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Deflections" src="https://www.dropbox.com/s/24tkmfk1y1r0wz5/disp.png?raw=1"&gt;&lt;/p&gt;</content><category term="Tutorials"></category><category term="OpenSees"></category><category term="gmsh"></category><category term="gmshtranslator"></category><category term="python"></category><category term="pre-proceesing"></category><category term="meshing"></category></entry><entry><title>Paper03 - Earthquake Soil Structure Interaction of Nuclear Power Plants, differences in response to 3-D, 3 × 1-D, and 1-D excitations</title><link href="https://joseabell.com/posts/2018/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations.html" rel="alternate"></link><published>2018-02-20T10:50:00-08:00</published><updated>2018-02-20T10:50:00-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2018-02-20:/posts/2018/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations.html</id><summary type="html">&lt;p&gt;Summary: &lt;strong&gt;Finally!&lt;/strong&gt; First paper since PhD was accepted for publication …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Summary: &lt;strong&gt;Finally!&lt;/strong&gt; First paper since PhD was accepted for publication. I'll take this opportunity to start a tradition and review my own papers here. I think its important that I do this for several reasons. First, there are discussions that come up during peer review that are important but don't make it into the paper. Misconceptions about the presented work can be clarified to a broader audience here. Also, I can say whatever I want, specially opinions and thoughts that come from intuition and might not make it through peer-review, I'll be as critical as possible about these too and hope that my readers can discuss with me. I can post videos...&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Finally!&lt;/strong&gt; First paper since PhD was accepted for publication. I'll take this opportunity to start a tradition and review my own papers here. I think its important that I do this for several reasons. First, there are discussions that come up during peer review that are important but don't make it into the paper. Misconceptions about the presented work can be clarified to a broader audience here. Also, I can say whatever I want, specially opinions and thoughts that come from intuition and might not make it through peer-review, I'll be as critical as possible about these too and hope that my readers can discuss with me. I can post videos and other additional content here and make them available to everyone for free. And, finally, this post will have a Disqus thread &lt;/p&gt;
 &lt;p&gt;Lets get to it! Here is the citation so far (I still don't have an issue assign, going through editorial process): &lt;strong&gt;Abell Mena J A&lt;/strong&gt;, Orbović N, McCallen D B, Jeremic B. &lt;em&gt;Earthquake soil-structure interaction of nuclear power plants, differences in response to 3-D, 3×1-D, and 1-D excitations.&lt;/em&gt; Earthquake Engng Struct Dyn. 2018;1–18. [https://doi.org/10.1002/eqe.3026].&lt;/p&gt;
 &lt;p&gt;The idea is simple: to show that the 3-D character of seismic motions has an impact on the structural response of a nuclear power-plant by comparing the response to 3-D motions with the one produced by an equivalent 1-D (1 component: horizontal) or 3×1-D (3 components) motion. Here is the NPP model used in the article:&lt;/p&gt;
@@ -414,7 +414,7 @@ The form of the problem notwidthstanding, to me as a teacher what's important ab
 &lt;p&gt;This was submitted for review Jan 6 2017, it took over a year to get acceptance! Three iterations of peer-review were done. Admittedly, I did take too much time to answer. Tough year was 2017. Although the reviewers were very picky, which led to article improvement--especially the introduction--, the main content of the article changed little. We have the same results and conclusions. &lt;/p&gt;
 &lt;p&gt;Where from here?&lt;/p&gt;
 &lt;p&gt;It think DRM-based SSI analysis is &lt;em&gt;the&lt;/em&gt; methodology to produce the highest-possible fidelity modeling of SSI. But generating these DRM motions is costly, we need supercomputers for that. Highly-detailed modeling of seismic motions is currently underway, it would be rather cheap for the researchers doing these simulations to also generate DRM-compatible motions for future exploration, making these simulations even more relevant. There needs to be an agreed format for the distribution of DRM motions, and a repository of validated motions to be used for modeling. &lt;/p&gt;
-&lt;p&gt;Is it worthwhile? That's a research question in of itself. Clearly we can build to withstand earthquakes, so its not a safety-critical issue to use advanced SSI modeling. Might be an economic one. Maybe some case-studies can be reinterpreted in the light of 3-D motions to suggest that they were to blame in unexpected performance of existing infrastructure. Some structures will be more sensitive to these effects than others, which? how much so? under what conditions? is it necessary to model them in this way? There is great value in high-fidelity SSI modeling, is there a way to bring this into practice? All questions I want to answer in the years to come. &lt;/p&gt;</content><category term="misc"></category><category term="Papers"></category><category term="DRM"></category><category term="ESSI"></category></entry><entry><title>Video of 2-D SSI model of an RC Shear Wall Building</title><link href="https://joseabell.com/posts/2017/video-of-2-d-ssi-model-of-an-rc-shear-wall-building.html" rel="alternate"></link><published>2017-11-09T13:21:21-08:00</published><updated>2017-11-09T13:21:21-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2017-11-09:/posts/2017/video-of-2-d-ssi-model-of-an-rc-shear-wall-building.html</id><summary type="html">
+&lt;p&gt;Is it worthwhile? That's a research question in of itself. Clearly we can build to withstand earthquakes, so its not a safety-critical issue to use advanced SSI modeling. Might be an economic one. Maybe some case-studies can be reinterpreted in the light of 3-D motions to suggest that they were to blame in unexpected performance of existing infrastructure. Some structures will be more sensitive to these effects than others, which? how much so? under what conditions? is it necessary to model them in this way? There is great value in high-fidelity SSI modeling, is there a way to bring this into practice? All questions I want to answer in the years to come. &lt;/p&gt;</content><category term="Publications"></category><category term="Papers"></category><category term="DRM"></category><category term="ESSI"></category></entry><entry><title>Video of 2-D SSI model of an RC Shear Wall Building</title><link href="https://joseabell.com/posts/2017/video-of-2-d-ssi-model-of-an-rc-shear-wall-building.html" rel="alternate"></link><published>2017-11-09T13:21:21-08:00</published><updated>2017-11-09T13:21:21-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2017-11-09:/posts/2017/video-of-2-d-ssi-model-of-an-rc-shear-wall-building.html</id><summary type="html">
 &lt;div align="left" class="videoWrapper"&gt;
 &lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/_ye7wjjywSw" width="640"&gt;&lt;/iframe&gt;
 &lt;/div&gt;
@@ -493,7 +493,244 @@ The form of the problem notwidthstanding, to me as a teacher what's important ab
     (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content><category term="misc"></category><category term="OpenSees"></category><category term="Paraview"></category><category term="Building"></category><category term="FEM"></category></entry><entry><title>New cable element in OpenSees</title><link href="https://joseabell.com/posts/2017/new-cable-element-in-opensees.html" rel="alternate"></link><published>2017-09-07T20:13:57-07:00</published><updated>2017-09-07T20:13:57-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2017-09-07:/posts/2017/new-cable-element-in-opensees.html</id><summary type="html">
+&lt;/script&gt;</content><category term="ResearchHighlight"></category><category term="OpenSees"></category><category term="Paraview"></category><category term="Building"></category><category term="FEM"></category></entry><entry><title>Video of 2-D SSI model of an RC Shear Wall Building</title><link href="https://joseabell.com/posts/2017/video-of-2-d-ssi-model-of-an-rc-shear-wall-building.html" rel="alternate"></link><published>2017-11-09T13:21:21-08:00</published><updated>2017-11-09T13:21:21-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2017-11-09:/posts/2017/video-of-2-d-ssi-model-of-an-rc-shear-wall-building.html</id><summary type="html">
+&lt;div align="left" class="videoWrapper"&gt;
+&lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/_ye7wjjywSw" width="640"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;p&gt;The RC shear-wall building is modeled in OpenSees using non-linear fiber based beam column elements. Soil is modeled as a continuum using quad elements and linear stress-strain relationship. Soil shear wave-speed is varied in depth such as to obtain a &lt;span class="math"&gt;\(V_{s30}\)&lt;/span&gt; consistent with a class B site according to chilean seismic code. Lysmer-Kulhemeyer dashpots are used along the soil boundary to model seismic radiation and earthquake wave-field input.&lt;/p&gt;
+</summary><content type="html">&lt;!-- Image: https://www.dropbox.com/s/24tkmfk1y1r0wz5/disp.png?raw=1 --&gt;
+
+&lt;!-- SUMMARY BEGIN --&gt;
+
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/_ye7wjjywSw" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The RC shear-wall building is modeled in OpenSees using non-linear fiber based beam column elements. Soil is modeled as a continuum using quad elements and linear stress-strain relationship. Soil shear wave-speed is varied in depth such as to obtain a &lt;span class="math"&gt;\(V_{s30}\)&lt;/span&gt; consistent with a class B site according to chilean seismic code. Lysmer-Kulhemeyer dashpots are used along the soil boundary to model seismic radiation and earthquake wave-field input.&lt;/p&gt;
+&lt;!-- SUMMARY END --&gt;
+
+&lt;p&gt;The performance of the building will be assessed for varying site fundamental periods. This is an aspect of SSI that is not covered by the chilean seismic code, and has been shown to be a problem in past earthquakes. &lt;/p&gt;
+&lt;p&gt;This is part of an on-going study with Prof. &lt;a href="http://cigiden.cl/es/carolina-magna/"&gt;Carolina Magna&lt;/a&gt; from Adolfo Ibañez Unversity and her MS student Miguel Ángel Rodriguez from UDP. &lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js','color.js','mhchem.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="Research"></category><category term="OpenSees"></category><category term="Paraview"></category><category term="Building"></category><category term="FEM"></category></entry><entry><title>Video of 2-D SSI model of an RC Shear Wall Building</title><link href="https://joseabell.com/posts/2017/video-of-2-d-ssi-model-of-an-rc-shear-wall-building.html" rel="alternate"></link><published>2017-11-09T13:21:21-08:00</published><updated>2017-11-09T13:21:21-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2017-11-09:/posts/2017/video-of-2-d-ssi-model-of-an-rc-shear-wall-building.html</id><summary type="html">
+&lt;div align="left" class="videoWrapper"&gt;
+&lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/_ye7wjjywSw" width="640"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;p&gt;The RC shear-wall building is modeled in OpenSees using non-linear fiber based beam column elements. Soil is modeled as a continuum using quad elements and linear stress-strain relationship. Soil shear wave-speed is varied in depth such as to obtain a &lt;span class="math"&gt;\(V_{s30}\)&lt;/span&gt; consistent with a class B site according to chilean seismic code. Lysmer-Kulhemeyer dashpots are used along the soil boundary to model seismic radiation and earthquake wave-field input.&lt;/p&gt;
+</summary><content type="html">&lt;!-- Image: https://www.dropbox.com/s/24tkmfk1y1r0wz5/disp.png?raw=1 --&gt;
+
+&lt;!-- SUMMARY BEGIN --&gt;
+
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/_ye7wjjywSw" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The RC shear-wall building is modeled in OpenSees using non-linear fiber based beam column elements. Soil is modeled as a continuum using quad elements and linear stress-strain relationship. Soil shear wave-speed is varied in depth such as to obtain a &lt;span class="math"&gt;\(V_{s30}\)&lt;/span&gt; consistent with a class B site according to chilean seismic code. Lysmer-Kulhemeyer dashpots are used along the soil boundary to model seismic radiation and earthquake wave-field input.&lt;/p&gt;
+&lt;!-- SUMMARY END --&gt;
+
+&lt;p&gt;The performance of the building will be assessed for varying site fundamental periods. This is an aspect of SSI that is not covered by the chilean seismic code, and has been shown to be a problem in past earthquakes. &lt;/p&gt;
+&lt;p&gt;This is part of an on-going study with Prof. &lt;a href="http://cigiden.cl/es/carolina-magna/"&gt;Carolina Magna&lt;/a&gt; from Adolfo Ibañez Unversity and her MS student Miguel Ángel Rodriguez from UDP. &lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js','color.js','mhchem.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="Research"></category><category term="OpenSees"></category><category term="Paraview"></category><category term="Building"></category><category term="FEM"></category></entry><entry><title>Video of 2-D SSI model of an RC Shear Wall Building</title><link href="https://joseabell.com/posts/2017/video-of-2-d-ssi-model-of-an-rc-shear-wall-building.html" rel="alternate"></link><published>2017-11-09T13:21:21-08:00</published><updated>2017-11-09T13:21:21-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2017-11-09:/posts/2017/video-of-2-d-ssi-model-of-an-rc-shear-wall-building.html</id><summary type="html">
+&lt;div align="left" class="videoWrapper"&gt;
+&lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/_ye7wjjywSw" width="640"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;p&gt;The RC shear-wall building is modeled in OpenSees using non-linear fiber based beam column elements. Soil is modeled as a continuum using quad elements and linear stress-strain relationship. Soil shear wave-speed is varied in depth such as to obtain a &lt;span class="math"&gt;\(V_{s30}\)&lt;/span&gt; consistent with a class B site according to chilean seismic code. Lysmer-Kulhemeyer dashpots are used along the soil boundary to model seismic radiation and earthquake wave-field input.&lt;/p&gt;
+</summary><content type="html">&lt;!-- Image: https://www.dropbox.com/s/24tkmfk1y1r0wz5/disp.png?raw=1 --&gt;
+
+&lt;!-- SUMMARY BEGIN --&gt;
+
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/_ye7wjjywSw" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The RC shear-wall building is modeled in OpenSees using non-linear fiber based beam column elements. Soil is modeled as a continuum using quad elements and linear stress-strain relationship. Soil shear wave-speed is varied in depth such as to obtain a &lt;span class="math"&gt;\(V_{s30}\)&lt;/span&gt; consistent with a class B site according to chilean seismic code. Lysmer-Kulhemeyer dashpots are used along the soil boundary to model seismic radiation and earthquake wave-field input.&lt;/p&gt;
+&lt;!-- SUMMARY END --&gt;
+
+&lt;p&gt;The performance of the building will be assessed for varying site fundamental periods. This is an aspect of SSI that is not covered by the chilean seismic code, and has been shown to be a problem in past earthquakes. &lt;/p&gt;
+&lt;p&gt;This is part of an on-going study with Prof. &lt;a href="http://cigiden.cl/es/carolina-magna/"&gt;Carolina Magna&lt;/a&gt; from Adolfo Ibañez Unversity and her MS student Miguel Ángel Rodriguez from UDP. &lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js','color.js','mhchem.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="ResearchHighlight"></category><category term="OpenSees"></category><category term="Paraview"></category><category term="Building"></category><category term="FEM"></category></entry><entry><title>New cable element in OpenSees</title><link href="https://joseabell.com/posts/2017/new-cable-element-in-opensees.html" rel="alternate"></link><published>2017-09-07T20:13:57-07:00</published><updated>2017-09-07T20:13:57-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2017-09-07:/posts/2017/new-cable-element-in-opensees.html</id><summary type="html">
 &lt;div align="left" class="videoWrapper"&gt;
 &lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/MX_--SI_vKg" width="640"&gt;&lt;/iframe&gt;
 &lt;/div&gt;
@@ -588,7 +825,7 @@ $$&lt;/div&gt;
     (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content><category term="Coding"></category><category term="OpenSees"></category><category term="Cable"></category><category term="Blender"></category></entry><entry><title>OpenSees coming to python!</title><link href="https://joseabell.com/posts/2017/opensees-coming-to-python.html" rel="alternate"></link><published>2017-01-14T16:21:43-08:00</published><updated>2017-01-14T16:21:43-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2017-01-14:/posts/2017/opensees-coming-to-python.html</id><summary type="html">&lt;p&gt;One of the gripes a lot of people have with …&lt;/p&gt;</summary><content type="html">&lt;p&gt;One of the gripes a lot of people have with &lt;a href="http://opensees.berkeley.edu/"&gt;OpenSees&lt;/a&gt; is that it adopts TCL as its interpreter language. Originally, OpenSees was conceived as a &lt;em&gt;framework&lt;/em&gt;, this is apparent from the main page of the &lt;a href="http://opensees.berkeley.edu/wiki/index.php/Main_Page"&gt;wiki&lt;/a&gt;:&lt;/p&gt;
+&lt;/script&gt;</content><category term="ResearchHighlight"></category><category term="OpenSees"></category><category term="Cable"></category><category term="Blender"></category></entry><entry><title>OpenSees coming to python!</title><link href="https://joseabell.com/posts/2017/opensees-coming-to-python.html" rel="alternate"></link><published>2017-01-14T16:21:43-08:00</published><updated>2017-01-14T16:21:43-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2017-01-14:/posts/2017/opensees-coming-to-python.html</id><summary type="html">&lt;p&gt;One of the gripes a lot of people have with …&lt;/p&gt;</summary><content type="html">&lt;p&gt;One of the gripes a lot of people have with &lt;a href="http://opensees.berkeley.edu/"&gt;OpenSees&lt;/a&gt; is that it adopts TCL as its interpreter language. Originally, OpenSees was conceived as a &lt;em&gt;framework&lt;/em&gt;, this is apparent from the main page of the &lt;a href="http://opensees.berkeley.edu/wiki/index.php/Main_Page"&gt;wiki&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;OpenSees, the Open System for Earthquake Engineering Simulation, is an object-oriented, open source software framework. It allows users to create both serial and parallel finite element computer applications for simulating...&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1096,10 +1333,10 @@ to generate the discretized SWE. &lt;/p&gt;
     (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content><category term="Finite elements"></category><category term="Finite Elements"></category><category term="Fluids"></category><category term="Shallow water equations"></category><category term="Tutorial"></category></entry><entry><title>Talk Given at IngeoKring 2016 - Physics-Based Earthquake-Soil-Structure Interaction for Near-Field Induced Seismicity</title><link href="https://joseabell.com/posts/2016/talk-given-at-ingeokring-2016-ESSI-DRM.html" rel="alternate"></link><published>2016-11-18T09:53:17-08:00</published><updated>2016-11-18T09:53:17-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2016-11-18:/posts/2016/talk-given-at-ingeokring-2016-ESSI-DRM.html</id><summary type="html">&lt;p&gt;This is a talk given at the IngeoKring 2016 Autumn …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is a talk given at the IngeoKring 2016 Autumn symposium, hosted at TU Delft. &lt;/p&gt;
+&lt;/script&gt;</content><category term="Teaching"></category><category term="Finite Elements"></category><category term="Fluids"></category><category term="Shallow water equations"></category><category term="Tutorial"></category></entry><entry><title>Talk Given at IngeoKring 2016 - Physics-Based Earthquake-Soil-Structure Interaction for Near-Field Induced Seismicity</title><link href="https://joseabell.com/posts/2016/talk-given-at-ingeokring-2016-ESSI-DRM.html" rel="alternate"></link><published>2016-11-18T09:53:17-08:00</published><updated>2016-11-18T09:53:17-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2016-11-18:/posts/2016/talk-given-at-ingeokring-2016-ESSI-DRM.html</id><summary type="html">&lt;p&gt;This is a talk given at the IngeoKring 2016 Autumn …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is a talk given at the IngeoKring 2016 Autumn symposium, hosted at TU Delft. &lt;/p&gt;
 &lt;div class="videoWrapper" align="left"&gt;
 &lt;iframe width="640" height="480" src="//www.youtube.com/embed/qxVxgyVmPd4" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
-&lt;/div&gt;</content><category term="Talks"></category><category term="Talks"></category><category term="Presentations"></category><category term="DRM"></category><category term="ESSI"></category></entry><entry><title>Simulation of a surface wave (Rayleigh)</title><link href="https://joseabell.com/simulation-of-a-surface-wave-English.html" rel="alternate"></link><published>2014-11-30T22:42:13-08:00</published><updated>2014-11-30T22:42:13-08:00</updated><author><name>Jose Abell</name></author><id>tag:joseabell.com,2014-11-30:/simulation-of-a-surface-wave-English.html</id><summary type="html">&lt;p&gt;This simulation, done in the UCD ESSI simulator and visualized …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This simulation, done in the UCD ESSI simulator and visualized in VisIt using VisIt-ESSI plugin, shows the passage of a surface wave (Rayleigh wave). The simulation consists on a surface impact on an elastic domain of 900m by 1800m depth, and a shear wave velocity of 1000km/s. Elliptical-retrograde motion can be seen as an illustration of Rayleigh waves.&lt;/p&gt;
+&lt;/div&gt;</content><category term="ResearchHighlight"></category><category term="Talks"></category><category term="Presentations"></category><category term="DRM"></category><category term="ESSI"></category></entry><entry><title>Simulation of a surface wave (Rayleigh)</title><link href="https://joseabell.com/simulation-of-a-surface-wave-English.html" rel="alternate"></link><published>2014-11-30T22:42:13-08:00</published><updated>2014-11-30T22:42:13-08:00</updated><author><name>Jose Abell</name></author><id>tag:joseabell.com,2014-11-30:/simulation-of-a-surface-wave-English.html</id><summary type="html">&lt;p&gt;This simulation, done in the UCD ESSI simulator and visualized …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This simulation, done in the UCD ESSI simulator and visualized in VisIt using VisIt-ESSI plugin, shows the passage of a surface wave (Rayleigh wave). The simulation consists on a surface impact on an elastic domain of 900m by 1800m depth, and a shear wave velocity of 1000km/s. Elliptical-retrograde motion can be seen as an illustration of Rayleigh waves.&lt;/p&gt;
 &lt;p&gt;VisIt can be obtained &lt;a href="https://wci.llnl.gov/simulation/computer-codes/visit/"&gt;here&lt;/a&gt;, and the plugin &lt;a href="https://github.com/jaabell/visitESSI"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;!-- more   --&gt;
 
@@ -1107,7 +1344,7 @@ to generate the discretized SWE. &lt;/p&gt;
 
 &lt;div class="videoWrapper" align="left"&gt;
 &lt;iframe width="640" height="480" src="//www.youtube.com/embed/a1xBlIL6ZOM" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
-&lt;/div&gt;</content><category term="misc"></category><category term="essi"></category><category term="visitessi"></category><category term="postprocessing"></category><category term="movie"></category></entry><entry><title>Visualizing ESSI output with VisIt-ESSI</title><link href="https://joseabell.com/visualizing-essi-output-with-visit-essi-English.html" rel="alternate"></link><published>2014-11-23T11:34:38-08:00</published><updated>2014-11-23T11:34:38-08:00</updated><author><name>Jose Abell</name></author><id>tag:joseabell.com,2014-11-23:/visualizing-essi-output-with-visit-essi-English.html</id><summary type="html">&lt;p&gt;VisIt-ESSI is a plugin for the VisIt post-processor created my …&lt;/p&gt;</summary><content type="html">&lt;p&gt;VisIt-ESSI is a plugin for the VisIt post-processor created my CompGeoMech. 
+&lt;/div&gt;</content><category term="ResearchHighlight"></category><category term="essi"></category><category term="visitessi"></category><category term="postprocessing"></category><category term="movie"></category></entry><entry><title>Visualizing ESSI output with VisIt-ESSI</title><link href="https://joseabell.com/visualizing-essi-output-with-visit-essi-English.html" rel="alternate"></link><published>2014-11-23T11:34:38-08:00</published><updated>2014-11-23T11:34:38-08:00</updated><author><name>Jose Abell</name></author><id>tag:joseabell.com,2014-11-23:/visualizing-essi-output-with-visit-essi-English.html</id><summary type="html">&lt;p&gt;VisIt-ESSI is a plugin for the VisIt post-processor created my …&lt;/p&gt;</summary><content type="html">&lt;p&gt;VisIt-ESSI is a plugin for the VisIt post-processor created my CompGeoMech. 
 It allows for remote (soon parallel also) visualization of outputs produced
 by ESSI in the HDF5 format (*.h5.feioutput).&lt;/p&gt;
 &lt;p&gt;VisIt can be obtained &lt;a href="https://wci.llnl.gov/simulation/computer-codes/visit/"&gt;here&lt;/a&gt;, and the plugin &lt;a href="https://github.com/jaabell/visitESSI"&gt;here&lt;/a&gt;.&lt;/p&gt;
@@ -1117,4 +1354,4 @@ by ESSI in the HDF5 format (*.h5.feioutput).&lt;/p&gt;
 
 &lt;div class="videoWrapper" align="left"&gt;
 &lt;iframe width="640" height="480" src="//www.youtube.com/embed/mrT5L4xsKs0" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
-&lt;/div&gt;</content><category term="misc"></category><category term="tutorial"></category><category term="essi"></category><category term="visitessi"></category><category term="postprocessing"></category><category term="movie"></category></entry></feed>
+&lt;/div&gt;</content><category term="Tutorials"></category><category term="tutorial"></category><category term="essi"></category><category term="visitessi"></category><category term="postprocessing"></category><category term="movie"></category></entry></feed>
