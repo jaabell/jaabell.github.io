@@ -4,12 +4,12 @@ h2, h3, h4, h5, h6 {
 }
 
 h2 {
-    font: 300 26px/1.7 Roboto, sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+  font: 300 26px/1.7 Roboto, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 a:hover h2 {
-    color: #228896;
+  color: #228896;
 }
 
 h3, h4, h5, h6 {
@@ -17,45 +17,45 @@ h3, h4, h5, h6 {
 }
 
 .archive h2 {
-    margin-bottom: 4px;
+  margin-bottom: 4px;
 }
 
 #fh5co-hero .flexslider .flex-control-nav {
-    bottom: 60px;
+  bottom: 60px;
 }
 
 /* about */
 .about-image {
-    width: 100px;
-    border-radius: 50%;
-    float: left;
+  width: 100px;
+  border-radius: 50%;
+  float: left;
 }
 /* pages overview */
 .overview-link .wrapper .fh5co-feature {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .overview-link .wrapper {
-    background: whitesmoke;
-    padding: 20px;
-    margin-bottom: 30px;
-    display:block;
+  background: whitesmoke;
+  padding: 20px;
+  margin-bottom: 30px;
+  display:block;
 }
 
 .overview-link:hover .wrapper {
-    background: #fff;
+  background: #fff;
 }
 
 .overview-link .wrapper h3 {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .overview-link p {
-    color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .clearfix {
-    clear: both;
+  clear: both;
 }
 
 
@@ -64,39 +64,39 @@ h3, h4, h5, h6 {
 
 /* some fixes */
 @media screen and (max-width: 768px) {
-    #fh5co-hero .flexslider .slider-text {
-       width: 100%;
-    }
+  #fh5co-hero .flexslider .slider-text {
+   width: 100%;
+ }
 }
 
 /* search and form */
 .search-field {
-    width: 205px;
-    background: white;
+  width: 205px;
+  background: white;
 
 }
 
 .search-submit {
-    font-size: 25px !important;
-    color: white !important;
-    border-radius: 6px;
-    height: 54px;
-    margin-top: -2px;
+  font-size: 25px !important;
+  color: white !important;
+  border-radius: 6px;
+  height: 54px;
+  margin-top: -2px;
 }
 
 .search-submit:after, .search-submit:hover:after {
-    visibility: hidden !important;
+  visibility: hidden !important;
 }
 
 /* contact form */
 .form-loading {
-    background: whitesmoke;
-    opacity: 0.5;
-    z-index: 10;
-    position: absolute;
-    width: 100%;
-    height: 420px;
-    display: none;
+  background: whitesmoke;
+  opacity: 0.5;
+  z-index: 10;
+  position: absolute;
+  width: 100%;
+  height: 420px;
+  display: none;
 }
 
 .form-success {
@@ -173,39 +173,54 @@ h3, h4, h5, h6 {
   padding-left: 15px;
 }
 
+.featuredVideos {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 0px;
+  height: 0;
+}
+.featuredVideos iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
 .videoWrapper {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
-    padding-top: 25px;
-    height: 0;
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
 }
 .videoWrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /* max-width: 480px 768px y 992px */
 /*@media screen and (max-width: 480px) {*/
-.article-content .videoWrapper {
+  .article-content .videoWrapper {
     position: relative !important;
     margin: 0 auto !important;
     padding-bottom: 45% !important; /* 16:9 */
     padding-top: 20px !important;
     width: 80% !important;
     height: 80% !important;
-}
+  }
 
-.article-content  .videoWrapper iframe {
+  .article-content  .videoWrapper iframe {
     position: absolute;
     top: 0;
     left: 0;
     width: 80%;
     height: 80%;
-}
-/* max-width: 480px 768px y 992px */
+  }
+  /* max-width: 480px 768px y 992px */
 /*@media screen and (max-width: 992) {
   .article-content .videoWrapper {
     position: relative !important ;
