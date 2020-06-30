@@ -7,12 +7,33 @@
     <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Jose Abells Reasearch Blog - python</title>
+    <title>SNE # 01. Example of ESSI simulation and visualization with visitESSI</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <meta name="description" content="" />
-        <meta name="author" content="Jose Abell" />
+    <meta name="author" content="jaabell" />
+    <meta name="description" content="These are the results of a simple elastic-domain simulation. Mesh …" />
+    <meta name="keywords" content="animation, c++, ESSI, linux, post-processing, small numerical experiments, sne, visitESSI, movie">
+<!-- Facebook and Twitter integration -->
+<meta property="og:site_name" content="Jose Abells Reasearch Blog"/>
+<meta property="og:title" content="SNE # 01. Example of ESSI simulation and visualization with visitESSI"/>
+<meta property="og:description" content="These are the results of a simple elastic-domain simulation. Mesh …"/>
+<meta property="og:url" content="https://joseabell.com/posts/2014/sne-01-example-of-essi-simulation-and-visualization-with-visitessi.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2014-05-16 19:37:00-07:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://joseabell.com/author/jaabell.html">
+<meta property="article:section" content="Small Numerical Experiments"/>
+    <meta property="article:tag" content="animation"/>
+    <meta property="article:tag" content="c++"/>
+    <meta property="article:tag" content="ESSI"/>
+    <meta property="article:tag" content="linux"/>
+    <meta property="article:tag" content="post-processing"/>
+    <meta property="article:tag" content="small numerical experiments"/>
+    <meta property="article:tag" content="sne"/>
+    <meta property="article:tag" content="visitESSI"/>
+    <meta property="article:tag" content="movie"/>
+    <meta property="og:image" content="/images/sitelogo.svg">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
 
@@ -116,33 +137,64 @@
         </aside>
 
         <div id="fh5co-main">
-    <div class="fh5co-narrow-content">
-        <h1 class="fh5co-heading-colored"><i class="icon-folder"></i> python</h1>
-<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-    <div class="blog-entry">
-            <a href="https://joseabell.com/posts/2018/using-my-gmshtranslator-python-tool-to-interface-gmsh-with-opensees.html" class="blog-img"><img src="https://www.dropbox.com/s/24tkmfk1y1r0wz5/disp.png?raw=1" class="img-responsive" alt="Using my gmshtranslator python tool to interface gmsh with opensees."></a>
-        <div class="desc">
-            <h3><a href="https://joseabell.com/posts/2018/using-my-gmshtranslator-python-tool-to-interface-gmsh-with-opensees.html">Using my gmshtranslator python tool to interface gmsh with opensees.</a></h3>
-            <span><small>Mon, 26 Feb 2018</small></span>
-            <span><small>by jaabell</small> / <small>Tutorials</small></span>
-            <p>
-<p>I wrote the <a href="https://github.com/jaabell/gmshtranslator"><em>gmshtranslator</em></a> tool a while back during my PhD, to easily parse <a href="http://gmsh.info/"><em>gmsh</em></a> <code>msh</code> files to any other format. I've been using it for years now with not much change for both research and consulting, and have been contacted by other researchers that want to use it. I will soon write a tool, powered by <em>gmshtranslator</em>, to more easily translate from <em>gmsh</em> into OpenSees. Meanwhile, here is a short example on how to use gmshtranslator to create <a href="opensees.berkeley.edu"><em>OpenSees</em></a> models. The example assumes you know <em>gmsh</em> formats (<code>.geo</code> and <code>.msh</code>) and python. </p>
-<p>The example consists on the simple cantilever beam shown in the following figure.</p>
-</p>
-            <a href="https://joseabell.com/posts/2018/using-my-gmshtranslator-python-tool-to-interface-gmsh-with-opensees.html" class="btn btn-primary">Read more <i class="icon-arrow-right3"></i></a>
+
+    <div class="fh5co-narrow-content article-content">
+        <h1 class="fh5co-heading-colored">SNE # 01. Example of ESSI simulation and visualization with visitESSI</h1>
+
+        <div>by
+                <a href="author/jaabell.html">jaabell</a> - Fri, 16 May 2014
+        </div>
+
+            <div><span>Tags: </span>
+                    <span><a href="https://joseabell.com/tag/animation.html">#animation</a> </span>
+                    <span><a href="https://joseabell.com/tag/c.html">#c++</a> </span>
+                    <span><a href="https://joseabell.com/tag/essi.html">#ESSI</a> </span>
+                    <span><a href="https://joseabell.com/tag/linux.html">#linux</a> </span>
+                    <span><a href="https://joseabell.com/tag/post-processing.html">#post-processing</a> </span>
+                    <span><a href="https://joseabell.com/tag/small-numerical-experiments.html">#small numerical experiments</a> </span>
+                    <span><a href="https://joseabell.com/tag/sne.html">#sne</a> </span>
+                    <span><a href="https://joseabell.com/tag/visitessi.html">#visitESSI</a> </span>
+                    <span><a href="https://joseabell.com/tag/movie.html">#movie</a> </span>
+            </div>
+
+        <div class="animate-box" data-animate-effect="fadeInLeft">
+            <p class="animate-box" data-animate-effect="fadeInLeft"><p>These are the results of a simple elastic-domain simulation. Mesh
+consists of</p>
+<ul>
+<li><span style="line-height: 14px;">154523 Nodes (46359 DOFs)</span></li>
+<li>1250 27 node bricks (LT formulation)</li>
+<li>1200 time-steps (dt = 0.01s)</li>
+</ul>
+<p>Results were stored in the new format of output for ESSI simulator and
+visualized in VisIt post-processor where the movie was created.<br>
+<!--more--><br>
+<!--http://youtu.be/VURohwb-OJQ--></p>
+<div class="youtube" align="left">
+<iframe width="640" height="480" src="https://www.youtube.com/embed/VURohwb-OJQ" frameborder="0"></iframe>
+</div></p>
         </div>
     </div>
-</div><div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-    <div class="blog-entry">
-        <div class="desc">
-            <h3><a href="https://joseabell.com/posts/2013/sne-0-stochastic-inverse-pendulum.html">SNE # 0. Stochastic inverse pendulum</a></h3>
-            <span><small>Wed, 09 Oct 2013</small></span>
-            <span><small>by jaabell</small> / <small>Small Numerical Experiments</small></span>
-            <p><p>This is the first installment of "Small Numerical Experiments" (SNE …</p></p>
-            <a href="https://joseabell.com/posts/2013/sne-0-stochastic-inverse-pendulum.html" class="btn btn-primary">Read more <i class="icon-arrow-right3"></i></a>
-        </div>
-    </div>
-</div>    </div>
+
+<div class="fh5co-narrow-content">
+<div class="animate-box" data-animate-effect="fadeInLeft">
+    <h2><!-- <i class="icon-speech-bubble"></i>  -->Comments</h2>
+</div>
+<div class="animate-box" data-animate-effect="fadeInLeft">
+    <div id="disqus_thread"></div>
+</div>
+
+<script>
+var disqus_config = function () { 
+  this.language = "en";
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript><a href="https://disqus.com/?ref_noscript">Please enable JavaScript to view the comments powered by Disqus.</a></noscript>
         </div>
     </div>
 

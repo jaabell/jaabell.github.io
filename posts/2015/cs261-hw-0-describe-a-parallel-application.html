@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CS261 - HW # 0 : Describe a parallel application</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content="Jose Abell" />
+    <meta name="description" content="This is homework # 1 for UC Berkeley class CS261: Application of Parallel Computers" />
+    <meta name="keywords" content="cs261, parallel computing">
+<!-- Facebook and Twitter integration -->
+<meta property="og:site_name" content="Jose Abells Reasearch Blog"/>
+<meta property="og:title" content="CS261 - HW # 0 : Describe a parallel application"/>
+<meta property="og:description" content="This is homework # 1 for UC Berkeley class CS261: Application of Parallel Computers"/>
+<meta property="og:url" content="https://joseabell.com/posts/2015/cs261-hw-0-describe-a-parallel-application.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-01-29 16:57:28-08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://joseabell.com/author/jose-abell.html">
+<meta property="article:section" content="CS261 Homeworks"/>
+    <meta property="article:tag" content="cs261"/>
+    <meta property="article:tag" content="parallel computing"/>
+    <meta property="og:image" content="/images/sitelogo.svg">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/icomoon.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/bootstrap.css">
+    <!-- Flexslider  -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/flexslider.css">
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/style.css">
+    <!-- Custom style  -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/custom.css">
+    <!-- pygments code highlight -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/pygments.css">
+    <!-- tipue search -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/tipuesearch/css/tipuesearch.css">
+    <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" > -->
+    <script src="https://kit.fontawesome.com/2dfe6f2f70.js" crossorigin="anonymous"></script>
+
+
+    <!-- Modernizr JS -->
+    <script src="https://joseabell.com/theme/js/modernizr-2.6.2.min.js"></script>
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+    <script src="/theme/js/respond.min.js"></script>
+    <![endif]-->
+        <link href="https://joseabell.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Jose Abells Reasearch Blog Atom">
+
+
+
+    </head>
+    <body>
+    <div id="fh5co-page">
+        <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+        <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
+
+
+            <nav class="fh5co-main-menu" role="navigation">
+            </nav>
+
+
+            
+            <div class="clearfix"></div>
+            <h1  id="fh5co-logo">
+                <a href="https://joseabell.com/index.html">
+                    <img src="/images/sitelogo.svg" />
+                </a>
+            </h1>
+
+
+            <nav class="fh5co-main-menu" role="navigation">
+
+<ul>
+    <!-- home link -->
+    <li><a href="https://joseabell.com/">Home</a></li>
+
+    <!-- page links -->
+            <li><a href="https://joseabell.com/pages/01about.html">About</a></li>
+            <li><a href="https://joseabell.com/pages/04publications.html">Publications</a></li>
+            <li><a href="https://joseabell.com/pages/05tools.html">Tools</a></li>
+
+    <!-- categories -->
+        <li><a href="https://joseabell.com/categories.html">Categories</a></li>
+
+    <!-- tags -->
+        <li><a href="https://joseabell.com/tags.html">Tags</a></li>
+
+    <!-- additional menu items from config -->
+
+</ul><!--                 <ul><li><form id="searchform" action="https://joseabell.com/search.html">
+    <input id="tipue_search_input" data-siteurl="https://joseabell.com" type="text" size="60" class="form-control search-field" name="q">
+
+    <button type="submit" class="btn btn-primary search-submit"><i class="icon-search4"></i></button>
+</form></li></ul> -->
+
+
+
+<ul id="social"><li>
+            <li><a href="https://www.github.com/jaabell" alt="Github"><i class="fab fa-github fa-2x"></i></a></li>
+            <li><a href="https://www.twitter.com/RealJoseAbell" alt="Twitter"><i class="fab fa-twitter fa-2x"></i></a></li>
+
+            <li><a href="https://www.instagram.com/ja.abell" alt="Instagram"><i class="fab fa-instagram fa-2x"></i></a></li>
+
+            <li><a href="https://www.youtube.com/user/eivelinsar" alt="Youtube"><i class="fab fa-youtube fa-2x"></i></a></li>
+
+            <li><a href="https://www.researchgate.net/profile/Jose_Abell/" alt="researchgate"><i class="fab fa-researchgate fa-2x"></i></a></li>
+
+</li>
+</ul>            
+            <ul id="map">
+                <li>
+                Visitors come from
+                <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=b3b3b3&w=250&t=n&d=XCjx4HKZp-atwA8u2pe4wbQt9_6FCkYMlpMpnxG6qMU&co=f5f5f5&cmo=027aae&cmn=a03338&ct=808080"></script>
+                </li>
+            </ul>
+            </nav>
+
+        </aside>
+
+        <div id="fh5co-main">
+
+    <div class="fh5co-narrow-content article-content">
+        <h1 class="fh5co-heading-colored">CS261 - HW # 0 : Describe a parallel application</h1>
+
+        <div>by
+                <a href="author/jose-abell.html">Jose Abell</a> - Thu, 29 Jan 2015
+        </div>
+
+            <div><span>Tags: </span>
+                    <span><a href="https://joseabell.com/tag/cs261.html">#cs261</a> </span>
+                    <span><a href="https://joseabell.com/tag/parallel-computing.html">#parallel computing</a> </span>
+            </div>
+
+        <div class="animate-box" data-animate-effect="fadeInLeft">
+            <p class="animate-box" data-animate-effect="fadeInLeft"><p>by: José Abell</p>
+<h1>Biography</h1>
+<p>I am a PhD student at UCDavis <a href="http://sokocalo.engr.ucdavis.edu/~jeremic/">CompGeoMech</a> since Sept 2011, working on our in-house high-performance FEM simulation system. I come from Chile, where I did my undergraduate studies in structural engineering, leading to a professional degree in the specialty, at Pontificia Universidad Católica de Chile. Then, I proceeded to do my MS at the same institution in Civil Engineering. My MS thesis was more focused into the hazard part of earthquake engineering. </p>
+<p>My current research focuses on high-performance Earthquake-Soil-Structure interaction (ESSI) simulation. In a nutshell, it consists in modeling the effect of earthquake on structures from the earthquake source rupture process all the way up to a structure and its contents. The idea is to find out how and when a more accurate ESSI simulation yields different results from what is currently done in practice, and if this leads to safer and more economical designs. </p>
+<p>Parallel, high-performance computing is an enabling technology in this endeavor and there are many opportunities along the process where leveraging parallelism is possible. Meshing, simulation, and post-processing are important examples of these. </p>
+<p>Out of CS261 is would like to get insight into what it takes to get extreme-performance out of simulation software in different architectures. In particular, I would like to know more about the following topics:</p>
+<ul>
+<li>MPI usage patterns, how they come up, when to apply them, and tradeoffs.</li>
+<li>Shared memory parallel programming models (pthreads, OpenMP) and recurring software patterns. </li>
+<li>Parallel I/O techniques. </li>
+</ul>
+<h1>Application: ESSI Simulator</h1>
+<p>Introduction</p>
+<h6></h6>
+<p>The <a href="http://sokocalo.engr.ucdavis.edu/~jeremic/ESSI_Simulator/">Real ESSI Simulator</a>[<a href="#essiref">1</a> and <a href="#essiref2">2</a>]  is a system for simulation of ESSI problems developed at UC Davis. It consists of software, hardware (a parallel computer: ESSI simulator machine), and documentation covering theory, usage and examples for the system.</p>
+<p>ESSI program is a parallel object-oriented finite element analysis (FEA) software for non-linear time domain analysis of ESSI systems. The program is written in C++, using several external libraries to accomplish its goals, most notably <a href="www.open-mpi.org/">OpenMPI</a> (message passing interface) is used to achieve parallelism. Other libraries used within ESSI include: <a href="http://www.mcs.anl.gov/petsc/">PETSc</a> for parallel solution of system of equations, <a href="http://glaros.dtc.umn.edu/gkhome/metis/metis/overview">METIS</a> and <a href="http://glaros.dtc.umn.edu/gkhome/metis/parmetis/overview">Par-METIS</a> for graph partitioning, [HDF5]phdf5 for parallel output. Input is controlled by a custom domain-specific language designed specifically for this program. </p>
+<p>The software is meant to target a range of platforms from personal computers (desktop, laptop) to high-performance clusters and supercomputers. </p>
+<p>Parallelism in FEA</p>
+<h6></h6>
+<p><img alt="npp" src="/images/other/npp.png" title="Nuclear power plant model and its decomposition."></p>
+<p><em>(Left and middle) Nuclear power plant model showing different areas, (right) domain decomposition of model.</em></p>
+<p>Two main sources of parallelism can be identified in the context of nonlinear, dynamic finite element simulation: (i) system of equation solution and (ii) element-level constitutive integration. The first of these consists in the solution of a large linear system of equations (SOE) which arises from the discretization of the continuum problem (expressed as a set of coupled partial differential equations) in the spatial domain. The second source, comes from advancing the constitutive rate equations within each element once a global displacement increment is obtained from the solution of the SOE. This last part can account for a large part of the computational time for large problems and is embarrassingly parallel.</p>
+<p>An additional source of parallelism in ESSI simulations is the storage of the large ammounts of output generated by these simulations. The philosophy adopted by the ESSI simulator is to independently store the information necessary to build the model and restart the simulation at any given point. This gives rise to possibly terabytes of data in even modest models, with the additional problem on how to handle this. In ESSI this is done by using a <a href="http://en.wikipedia.org/wiki/Network_File_System">network filesystem</a> (NFS) to create a virtual parallel unique disk and the HDF5 format to store the data. In a nutshell, HDF5 implements a format for storing scientific (array-oriented) data in a portable way, and also allowing parallel read/write (it uses MPI I/O under the hood).</p>
+<p>A particularity of non-linear (plasticity based) FEA simulation is the unknown parts of the domain may plastify during simulations, leading to increased time spent integrating constitutive equations in that portion of the domain. What this implies is that, given an initial partition that balances the loading, this partition might become unbalanced if the domain plastifies. An adaptation of the dynamic domain decomposition method termed the "plastic domain decomposition"[<a href="#pdd">3</a>] or PDD, which achieves computational load re-balancing by repartitioning the element graph using computational time as one of the weighting factors.</p>
+<p>Brief design description</p>
+<h6></h6>
+<p>PDD is implemented in ESSI using the <a href="http://en.wikipedia.org/wiki/Actor_model">Actor/Shadow</a> model of concurrency. Actors are autonomous and concurrently executing objects which execute asynchronously. Actors can create new actors and can  send messages to other actors. The Actor model is an Object-Oriented version of message passing in which the Actors represent processes and the methods sent between Actors represent communications (verbatim from [<a href="#lecture_notes">4</a>]).</p>
+<p><img alt="shadowactor" src="/images/other/shadowactor.png" title="Shadow/actor model."></p>
+<p>Shadow-actors are the means in which actors communicate. Shadow-actors are objects which represent each running actor (remote) in a particular machine's local address space. Shadow actors are in charge of transmitting and receiving messages from other actors and effectively encapsulate all MPI calls. In the object-oriented design of ESSI this model allows reuse of code and modularity when programming using MPI. </p>
+<p>Performance</p>
+<h6></h6>
+<p>As seen in [<a href="#pdd">3</a>], plastic-domain-decomposition method provides a viable way to re-balance a plastifying domain and has seen a reasonable scaling for low number of processes. A comprehensive scaling study on different platforms has not been yet performed. </p>
+<p>Currently, ESSI's parallelization is exclusively done using MPI. This implies that for the lower end of the platforms we intend to cover (PCs, laptops) there is a performance hit due to improper use of shared memory architecture. This problem could be solved using a mixed design with threads for shared memory nodes and MPI for network. </p>
+<p>Another big bottleneck currently present is that all input is loaded into the master process, partitioned and then distributed. This results in an unnecessary load to the main process at startup and imposes a cap on how big a model might be solved. In order to solve this issue the parser must be parallelized to some extent, so that different (pre-partitioned) model parts can be loaded into different processors on startup. </p>
+<p><img alt="npp_build" src="/images/other/npp_build.png" title="Different physical zones of the NPP."></p>
+<h1>References</h1>
+<ol>
+<li>
+<p><a id="essiref"></a> Boris Jeremić, Robert Roche-Rivera, Annie Kammerer, Nima Tafazzoli, Jose Abell M., Babak Kamranimoghaddam, Federico Pisano, ChangGyun Jeong and Benjamin Aldridge The NRC ESSI Simulator Program, Current Status in Proceedings of the Structural Mechanics in Reactor Technology (SMiRT) 2013 Conference, San Francisco, August 18-23, 2013.</p>
+</li>
+<li>
+<p><a id="essiref2"></a> Boris  Jeremić, Guanzhou Jie, Matthias Preisig and Nima Tafazzoli. Time domain simulation of soil-foundation-structure interaction in non-uniform soils. Earthquake Engineering and Structural Dynamics, Volume 38, Issue 5, pp 699-718, 2009.</p>
+</li>
+<li>
+<p><a id="pdd"></a> Boris Jeremić and Guanzhou Jie. Plastic Domain Decomposition Method for Parallel Elastic–Plastic Finite Element Computations in Geomechanics Report UCD CompGeoMech 03–2007.</p>
+</li>
+<li>
+<p><a id="lecture_notes"></a> Lecture Notes on Computational Geomechanics: Inelastic Finite Elements for Pressure Sensitive Materials, UC Davis, CompGeoMech group</p>
+</li>
+</ol></p>
+        </div>
+    </div>
+
+<div class="fh5co-narrow-content">
+<div class="animate-box" data-animate-effect="fadeInLeft">
+    <h2><!-- <i class="icon-speech-bubble"></i>  -->Comments</h2>
+</div>
+<div class="animate-box" data-animate-effect="fadeInLeft">
+    <div id="disqus_thread"></div>
+</div>
+
+<script>
+var disqus_config = function () { 
+  this.language = "en";
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript><a href="https://disqus.com/?ref_noscript">Please enable JavaScript to view the comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://joseabell.com/theme/js/jquery.min.js"></script>
+    <!-- jQuery Easing -->
+    <script src="https://joseabell.com/theme/js/jquery.easing.1.3.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://joseabell.com/theme/js/bootstrap.min.js"></script>
+    <!-- Waypoints -->
+    <script src="https://joseabell.com/theme/js/jquery.waypoints.min.js"></script>
+    <!-- Flexslider -->
+    <script src="https://joseabell.com/theme/js/jquery.flexslider-min.js"></script>
+
+    
+
+    <!-- MAIN JS -->
+    <script src="https://joseabell.com/theme/js/main.js"></script>
+    
+    </body>
+</html>

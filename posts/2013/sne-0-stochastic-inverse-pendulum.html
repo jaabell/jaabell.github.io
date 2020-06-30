@@ -1,0 +1,453 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SNE # 0. Stochastic inverse pendulum</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content="jaabell" />
+    <meta name="description" content="This is the first installment of "Small Numerical Experiments" (SNE …" />
+    <meta name="keywords" content="animation, bimodal, matplotlib, Monte-Carlo, multimodal, ode, python, scipy, small numerical experiments, sne, stochastic">
+<!-- Facebook and Twitter integration -->
+<meta property="og:site_name" content="Jose Abells Reasearch Blog"/>
+<meta property="og:title" content="SNE # 0. Stochastic inverse pendulum"/>
+<meta property="og:description" content="This is the first installment of "Small Numerical Experiments" (SNE …"/>
+<meta property="og:url" content="https://joseabell.com/posts/2013/sne-0-stochastic-inverse-pendulum.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2013-10-09 20:37:00-07:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://joseabell.com/author/jaabell.html">
+<meta property="article:section" content="Small Numerical Experiments"/>
+    <meta property="article:tag" content="animation"/>
+    <meta property="article:tag" content="bimodal"/>
+    <meta property="article:tag" content="matplotlib"/>
+    <meta property="article:tag" content="Monte-Carlo"/>
+    <meta property="article:tag" content="multimodal"/>
+    <meta property="article:tag" content="ode"/>
+    <meta property="article:tag" content="python"/>
+    <meta property="article:tag" content="scipy"/>
+    <meta property="article:tag" content="small numerical experiments"/>
+    <meta property="article:tag" content="sne"/>
+    <meta property="article:tag" content="stochastic"/>
+    <meta property="og:image" content="/images/sitelogo.svg">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/icomoon.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/bootstrap.css">
+    <!-- Flexslider  -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/flexslider.css">
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/style.css">
+    <!-- Custom style  -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/custom.css">
+    <!-- pygments code highlight -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/pygments.css">
+    <!-- tipue search -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/tipuesearch/css/tipuesearch.css">
+    <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" > -->
+    <script src="https://kit.fontawesome.com/2dfe6f2f70.js" crossorigin="anonymous"></script>
+
+
+    <!-- Modernizr JS -->
+    <script src="https://joseabell.com/theme/js/modernizr-2.6.2.min.js"></script>
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+    <script src="/theme/js/respond.min.js"></script>
+    <![endif]-->
+        <link href="https://joseabell.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Jose Abells Reasearch Blog Atom">
+
+
+
+    </head>
+    <body>
+    <div id="fh5co-page">
+        <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+        <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
+
+
+            <nav class="fh5co-main-menu" role="navigation">
+            </nav>
+
+
+            
+            <div class="clearfix"></div>
+            <h1  id="fh5co-logo">
+                <a href="https://joseabell.com/index.html">
+                    <img src="/images/sitelogo.svg" />
+                </a>
+            </h1>
+
+
+            <nav class="fh5co-main-menu" role="navigation">
+
+<ul>
+    <!-- home link -->
+    <li><a href="https://joseabell.com/">Home</a></li>
+
+    <!-- page links -->
+            <li><a href="https://joseabell.com/pages/01about.html">About</a></li>
+            <li><a href="https://joseabell.com/pages/04publications.html">Publications</a></li>
+            <li><a href="https://joseabell.com/pages/05tools.html">Tools</a></li>
+
+    <!-- categories -->
+        <li><a href="https://joseabell.com/categories.html">Categories</a></li>
+
+    <!-- tags -->
+        <li><a href="https://joseabell.com/tags.html">Tags</a></li>
+
+    <!-- additional menu items from config -->
+
+</ul><!--                 <ul><li><form id="searchform" action="https://joseabell.com/search.html">
+    <input id="tipue_search_input" data-siteurl="https://joseabell.com" type="text" size="60" class="form-control search-field" name="q">
+
+    <button type="submit" class="btn btn-primary search-submit"><i class="icon-search4"></i></button>
+</form></li></ul> -->
+
+
+
+<ul id="social"><li>
+            <li><a href="https://www.github.com/jaabell" alt="Github"><i class="fab fa-github fa-2x"></i></a></li>
+            <li><a href="https://www.twitter.com/RealJoseAbell" alt="Twitter"><i class="fab fa-twitter fa-2x"></i></a></li>
+
+            <li><a href="https://www.instagram.com/ja.abell" alt="Instagram"><i class="fab fa-instagram fa-2x"></i></a></li>
+
+            <li><a href="https://www.youtube.com/user/eivelinsar" alt="Youtube"><i class="fab fa-youtube fa-2x"></i></a></li>
+
+            <li><a href="https://www.researchgate.net/profile/Jose_Abell/" alt="researchgate"><i class="fab fa-researchgate fa-2x"></i></a></li>
+
+</li>
+</ul>            
+            <ul id="map">
+                <li>
+                Visitors come from
+                <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=b3b3b3&w=250&t=n&d=XCjx4HKZp-atwA8u2pe4wbQt9_6FCkYMlpMpnxG6qMU&co=f5f5f5&cmo=027aae&cmn=a03338&ct=808080"></script>
+                </li>
+            </ul>
+            </nav>
+
+        </aside>
+
+        <div id="fh5co-main">
+
+    <div class="fh5co-narrow-content article-content">
+        <h1 class="fh5co-heading-colored">SNE # 0. Stochastic inverse pendulum</h1>
+
+        <div>by
+                <a href="author/jaabell.html">jaabell</a> - Wed, 09 Oct 2013
+        </div>
+
+            <div><span>Tags: </span>
+                    <span><a href="https://joseabell.com/tag/animation.html">#animation</a> </span>
+                    <span><a href="https://joseabell.com/tag/bimodal.html">#bimodal</a> </span>
+                    <span><a href="https://joseabell.com/tag/matplotlib.html">#matplotlib</a> </span>
+                    <span><a href="https://joseabell.com/tag/monte-carlo.html">#Monte-Carlo</a> </span>
+                    <span><a href="https://joseabell.com/tag/multimodal.html">#multimodal</a> </span>
+                    <span><a href="https://joseabell.com/tag/ode.html">#ode</a> </span>
+                    <span><a href="https://joseabell.com/tag/python.html">#python</a> </span>
+                    <span><a href="https://joseabell.com/tag/scipy.html">#scipy</a> </span>
+                    <span><a href="https://joseabell.com/tag/small-numerical-experiments.html">#small numerical experiments</a> </span>
+                    <span><a href="https://joseabell.com/tag/sne.html">#sne</a> </span>
+                    <span><a href="https://joseabell.com/tag/stochastic.html">#stochastic</a> </span>
+            </div>
+
+        <div class="animate-box" data-animate-effect="fadeInLeft">
+            <p class="animate-box" data-animate-effect="fadeInLeft"><p>This is the first installment of "Small Numerical Experiments" (SNE), a
+section where I upload and comment (briefly) some small numerical
+example. The purpose is to prove a point to myself, test some code,
+ideas, etc.</p>
+<p><a href="/images/sne/01/pendulum_medium.png"><img alt="pendulum" src="/images/sne/01/pendulum_medium.png"></a></p>
+<p>In this first post I will explore the response of a <em>stochastic inverse
+pendulum.</em> What I mean in this case is an inverse pendulum (shown left)
+with a random initial condition. The purpose is to obtain the
+time-evolving probability density function (PDF) of the pendulum's
+position. I will be doing Monte-Carlo simulations to obtain an
+approximation to this PDF.<br>
+<!--more--><br>
+The response of the system is governed by the following nonlinear
+ordinary differential equation in terms of the angular displacement
+<span class="math">\(\theta\)</span> with respect to the vertical:</p>
+<div class="math">$$
+ m l^2 \ddot{\theta} + c \dot{\theta} - mgl \sin \theta = 0
+$$</div>
+<p>Subject to an initial condition </p>
+<div class="math">$$ \theta(0) = \theta_0$$</div>
+<p> and
+</p>
+<div class="math">$$ \dot{\theta}(0) =\dot{\theta}_0$$</div>
+<p>. In this case, the initial
+angular velocity is set to zero and the initial angular displacement is
+set to have a Gaussian random distribution with mean zero and standard
+deviation of 10 degrees. The linear damping constant is set to 10%
+critical damping the system would have in the case of small oscillations
+about the final equilibrium point </p>
+<div class="math">$$\theta = 180^{\circ}$$</div>
+<p>.</p>
+<p>The example is coded in python and solved using the <em>odeint </em>solver
+available in <a href="http://www.scipy.org">scipy</a>. Here is an example response for a given nonzero
+initial condition.</p>
+<p><a href="/images/sne/01/one.png"><img alt="one" src="/images/sne/01/one.png"></a></p>
+<p>Doing 5000 Monte-Carlo draws and plotting all the responses together we
+get:<a href="/images/sne/01/ensemble.png"><img alt="ensemble" src="/images/sne/01/ensemble.png"></a></p>
+<p>-About half of the the pendulums swing to the left and the other half to
+the right. This would result in a bimodal distribution and is a mere
+artifact of the mathematical model used. Indeed, what the model
+perceives as two distinct equilibrium points are actually the same
+position for the pendulum. This arises because of the periodicity in the
+<span class="math">\(\sin()\)</span> function.</p>
+<p>From this set of motions a PDF may be computed for each time and
+animated to show the evolution of the PDF with time.</p>
+<div class="youtube" align="left">
+<iframe width="640" height="480" src="https://www.youtube.com/embed/7nzB6LfW2ys" frameborder="0"></iframe>
+</div>
+
+<p>The bimodal distribution obtained at the end is, therefore, an artifact,
+as the peaks correspond to the same final configuration for the system.
+In a more complex case it might not be possible to distinguish between
+peaks in PDFs which are real, ie. correspond to physically different
+configurations, from those that arise from deficiencies in the
+mathematical tool used.</p>
+<p>These spurious peaks generate unrealistic dispersion in the distribution
+of results. Is there a way to identify them and get rid of them?</p>
+<p>The following python code produces these results.</p>
+<div class="highlight"><pre><span></span><span class="s s-Atom">#</span><span class="p">!</span><span class="o">/</span><span class="s s-Atom">bin</span><span class="o">/</span><span class="s s-Atom">python</span>  
+<span class="s s-Atom">#</span> <span class="s s-Atom">-*-</span> <span class="nn">coding</span><span class="p">:</span> <span class="s s-Atom">utf</span><span class="o">-</span><span class="mi">8</span> <span class="s s-Atom">-*-</span>  
+<span class="s s-Atom">#</span> <span class="nv">Small</span> <span class="s s-Atom">numerical</span> <span class="s s-Atom">experiments</span> <span class="s s-Atom">#</span> <span class="mi">00</span>  
+<span class="s2">&quot;&quot;&quot;  </span>
+<span class="s2">@SNE_number: 00  </span>
+<span class="s2">@Title: Stochastic inverse pendulum  </span>
+<span class="s2">@Idea: Show a case in which bifurcation behavior produces multimodal</span>
+<span class="s2">distribution.  </span>
+<span class="s2">@Tags: scipy, ode, stochastic, multimodal, bimodal, matplotlib,</span>
+<span class="s2">Monte-Carlo, animation, python  </span>
+<span class="s2">@Date: Created on Fri Oct 4 2013  </span>
+<span class="s2">@author: jaabell  </span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s s-Atom">import</span> <span class="s s-Atom">scipy</span> <span class="s s-Atom">as</span> <span class="s s-Atom">sp</span>  
+<span class="s s-Atom">import</span> <span class="s s-Atom">matplotlib</span><span class="p">.</span><span class="s s-Atom">pylab</span> <span class="s s-Atom">as</span> <span class="s s-Atom">plt</span>  
+<span class="s s-Atom">from</span> <span class="s s-Atom">scipy</span><span class="p">.</span><span class="s s-Atom">integrate</span> <span class="s s-Atom">import</span> <span class="s s-Atom">odeint</span>
+
+<span class="nv">N</span> <span class="o">=</span> <span class="mi">5000</span> <span class="s s-Atom">#</span><span class="p">[]</span> <span class="s s-Atom">number</span> <span class="s s-Atom">of</span> <span class="nv">Monte</span><span class="o">-</span><span class="nv">Carlo</span> <span class="s s-Atom">trials</span>  
+<span class="s s-Atom">mu_theta</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="s s-Atom">#</span><span class="p">[</span><span class="s s-Atom">deg</span><span class="p">]</span>  
+<span class="s s-Atom">sigma_theta</span> <span class="o">=</span> <span class="mi">10</span> <span class="s s-Atom">#</span><span class="p">[</span><span class="s s-Atom">deg</span><span class="p">]</span>  
+<span class="s s-Atom">tmax</span> <span class="o">=</span> <span class="mi">10</span> <span class="s s-Atom">#</span><span class="p">[</span><span class="s s-Atom">s</span><span class="p">]</span> <span class="nv">Maximum</span> <span class="s s-Atom">time</span> <span class="s s-Atom">for</span> <span class="s s-Atom">simulation</span>  
+<span class="s s-Atom">dt</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="s s-Atom">#</span><span class="p">[</span><span class="s s-Atom">s</span><span class="p">]</span> <span class="nv">Time</span> <span class="s s-Atom">step</span> <span class="s s-Atom">for</span> <span class="s s-Atom">integration</span>  
+<span class="s s-Atom">m</span> <span class="o">=</span> <span class="mi">1</span> <span class="s s-Atom">#</span><span class="p">[]</span>  
+<span class="s s-Atom">g</span> <span class="o">=</span> <span class="mf">9.81</span> <span class="s s-Atom">#</span><span class="p">[</span><span class="s s-Atom">m</span><span class="o">/</span><span class="s s-Atom">s\^</span><span class="mi">2</span><span class="p">]</span>  
+<span class="s s-Atom">l</span> <span class="o">=</span> <span class="mf">0.50</span> <span class="s s-Atom">#</span><span class="p">[</span><span class="s s-Atom">m</span><span class="p">]</span>  
+<span class="s s-Atom">xi</span> <span class="o">=</span> <span class="mf">0.3</span> <span class="s s-Atom">#</span><span class="p">[]</span> <span class="nv">Ratio</span> <span class="s s-Atom">of</span> <span class="s s-Atom">critical</span> <span class="nf">damping</span> <span class="p">(</span><span class="s s-Atom">for</span> <span class="s s-Atom">a</span> <span class="s s-Atom">regular</span> <span class="s s-Atom">pendulum</span> <span class="s s-Atom">under</span>
+<span class="s s-Atom">small</span> <span class="s s-Atom">deflections</span><span class="p">)</span>  
+<span class="nv">Nbins</span> <span class="o">=</span> <span class="mi">50</span> <span class="s s-Atom">#</span><span class="p">[]</span> <span class="nv">Number</span> <span class="s s-Atom">of</span> <span class="s s-Atom">bins</span> <span class="s s-Atom">for</span> <span class="s s-Atom">computing</span> <span class="s s-Atom">histograms</span>  
+<span class="s s-Atom">theta_0_dot</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="s s-Atom">#</span><span class="p">[</span><span class="s s-Atom">deg</span><span class="o">/</span><span class="s s-Atom">sec</span><span class="p">]</span> <span class="s s-Atom">initial</span> <span class="s s-Atom">angular</span> <span class="s s-Atom">velocity</span> <span class="s s-Atom">for</span> <span class="s s-Atom">pendulums</span>
+
+<span class="s s-Atom">compute</span> <span class="o">=</span> <span class="nv">False</span> <span class="s s-Atom">#</span><span class="nv">Use</span> <span class="s s-Atom">this</span> <span class="s s-Atom">in</span> <span class="s s-Atom">an</span> <span class="s s-Atom">interactive</span> <span class="nf">session</span> <span class="p">(</span><span class="s s-Atom">ie</span><span class="p">.</span> <span class="s s-Atom">spyder</span><span class="p">)</span> <span class="s s-Atom">to</span>
+<span class="s s-Atom">avoid</span> <span class="s s-Atom">recomputing</span> <span class="s s-Atom">the</span> <span class="nv">Monte</span><span class="o">-</span><span class="nv">Carlo</span> <span class="s s-Atom">runs</span>
+
+<span class="s s-Atom">c</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="s s-Atom">xi</span><span class="o">*</span><span class="s s-Atom">m</span><span class="o">*</span><span class="s s-Atom">l**</span><span class="mi">2</span> <span class="s s-Atom">#</span><span class="p">[</span><span class="nv">N</span><span class="o">*</span><span class="s s-Atom">m</span><span class="o">*</span><span class="s s-Atom">s</span><span class="o">/</span><span class="s s-Atom">rad</span><span class="p">]</span> <span class="nv">Damping</span> <span class="s s-Atom">constant</span>  
+<span class="nv">Nt</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="s s-Atom">tmax</span><span class="o">/</span><span class="s s-Atom">dt</span><span class="p">)</span> <span class="s s-Atom">#</span><span class="p">[]</span> <span class="nv">Number</span> <span class="s s-Atom">of</span> <span class="s s-Atom">simulation</span> <span class="s s-Atom">timesteps</span>
+
+<span class="s s-Atom">#</span><span class="nv">Generate</span> <span class="s s-Atom">parameters</span> <span class="s s-Atom">for</span> <span class="nv">Monte</span><span class="o">-</span><span class="nv">Carlo</span> <span class="s s-Atom">trials</span>  
+<span class="s s-Atom">mu_theta_rad</span> <span class="o">=</span> <span class="s s-Atom">mu_theta</span><span class="o">*</span><span class="s s-Atom">sp</span><span class="p">.</span><span class="s s-Atom">pi</span><span class="o">/</span><span class="mi">180</span>  
+<span class="s s-Atom">sigma_theta_rad</span> <span class="o">=</span> <span class="s s-Atom">sigma_theta</span><span class="o">*</span><span class="s s-Atom">sp</span><span class="p">.</span><span class="s s-Atom">pi</span><span class="o">/</span><span class="mi">180</span>  
+<span class="s s-Atom">thetas</span> <span class="o">=</span> <span class="s s-Atom">sp</span><span class="p">.</span><span class="nf">randn</span><span class="p">((</span><span class="nv">N</span><span class="p">))</span><span class="o">*</span><span class="s s-Atom">sigma_theta_rad</span> <span class="o">+</span> <span class="s s-Atom">mu_theta_rad</span>  
+<span class="s s-Atom">t</span> <span class="o">=</span> <span class="s s-Atom">sp</span><span class="p">.</span><span class="nf">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s s-Atom">tmax</span><span class="p">,</span> <span class="s s-Atom">dt</span><span class="p">)</span>
+
+<span class="s s-Atom">#</span><span class="nv">Recast</span> <span class="s s-Atom">problem</span> <span class="s s-Atom">as</span> <span class="s s-Atom">a</span> <span class="s s-Atom">set</span> <span class="s s-Atom">of</span> <span class="s s-Atom">first</span> <span class="s s-Atom">order</span> <span class="nv">ODEs</span>  
+<span class="s s-Atom">b</span> <span class="o">=</span> <span class="o">-</span><span class="s s-Atom">c/</span><span class="p">(</span><span class="s s-Atom">m</span><span class="o">*</span><span class="s s-Atom">l**</span><span class="mi">2</span><span class="p">)</span>  
+<span class="s s-Atom">a</span> <span class="o">=</span> <span class="s s-Atom">g</span><span class="o">/</span><span class="s s-Atom">l</span>  
+<span class="s s-Atom">def</span> <span class="nf">func</span><span class="p">(</span><span class="s s-Atom">y</span><span class="p">,</span> <span class="s s-Atom">t</span><span class="p">)</span><span class="s s-Atom">:</span>  
+    <span class="s s-Atom">return</span> <span class="p">[</span><span class="s s-Atom">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="s s-Atom">a</span><span class="o">*</span><span class="s s-Atom">sp</span><span class="p">.</span><span class="nf">sin</span><span class="p">(</span><span class="s s-Atom">y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="s s-Atom">b</span><span class="o">*</span><span class="s s-Atom">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">]</span>
+
+<span class="s s-Atom">def</span> <span class="nf">gradient</span><span class="p">(</span><span class="s s-Atom">y</span><span class="p">,</span><span class="s s-Atom">t</span><span class="p">)</span><span class="s s-Atom">:</span>  
+    <span class="s s-Atom">return</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">],[</span><span class="s s-Atom">a</span><span class="o">*</span><span class="s s-Atom">sp</span><span class="p">.</span><span class="nf">cos</span><span class="p">(</span><span class="s s-Atom">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="s s-Atom">b</span><span class="p">]]</span>
+
+<span class="s s-Atom">#</span><span class="nv">Do</span> <span class="s s-Atom">the</span> <span class="nv">Monte</span><span class="o">-</span><span class="nv">Carlo</span> <span class="s s-Atom">runs</span>  
+<span class="s s-Atom">if</span> <span class="nn">compute</span><span class="p">:</span>  
+    <span class="s s-Atom">yall</span> <span class="o">=</span> <span class="s s-Atom">sp</span><span class="p">.</span><span class="nf">zeros</span><span class="p">((</span><span class="nv">Nt</span><span class="p">,</span><span class="nv">N</span><span class="p">))</span>  
+    <span class="s s-Atom">i</span> <span class="o">=</span> <span class="mi">0</span>  
+    <span class="s s-Atom">for</span> <span class="s s-Atom">theta_0</span> <span class="s s-Atom">in</span> <span class="nn">thetas</span><span class="p">:</span>  
+        <span class="s s-Atom">y0</span> <span class="o">=</span> <span class="p">[</span><span class="s s-Atom">theta_0</span><span class="o">*</span><span class="s s-Atom">sp</span><span class="p">.</span><span class="s s-Atom">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">,</span> <span class="s s-Atom">theta_0_dot</span><span class="o">*</span><span class="s s-Atom">sp</span><span class="p">.</span><span class="s s-Atom">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">]</span>  
+        <span class="s s-Atom">y</span> <span class="o">=</span> <span class="nf">odeint</span><span class="p">(</span><span class="s s-Atom">func</span><span class="p">,</span> <span class="s s-Atom">y0</span><span class="p">,</span> <span class="s s-Atom">t</span><span class="p">,</span> <span class="nv">Dfun</span><span class="o">=</span><span class="s s-Atom">gradient</span><span class="p">)</span>  
+        <span class="s s-Atom">yall</span><span class="p">[</span><span class="s s-Atom">:</span><span class="p">,</span><span class="s s-Atom">i</span><span class="p">]</span> <span class="o">=</span> <span class="s s-Atom">y</span><span class="p">[</span><span class="s s-Atom">:</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>  
+        <span class="s s-Atom">print</span> <span class="s2">&quot;Case {} of {}&quot;</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="s s-Atom">i</span><span class="p">,</span><span class="nv">N</span><span class="p">)</span>  
+        <span class="s s-Atom">i+=</span> <span class="mi">1</span>
+
+<span class="s s-Atom">#</span> <span class="nv">Some</span> <span class="nf">plotting</span> <span class="p">(</span><span class="s s-Atom">animation</span> <span class="s s-Atom">after</span> <span class="s s-Atom">a</span> <span class="s s-Atom">tutorial</span> <span class="s s-Atom">found</span> <span class="s s-Atom">in</span> <span class="nn">http</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">jakevdp</span><span class="p">.</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">io</span><span class="o">/</span><span class="s s-Atom">blog</span><span class="o">/</span><span class="mi">2012</span><span class="o">/</span><span class="mi">08</span><span class="o">/</span><span class="mi">18</span><span class="o">/</span><span class="s s-Atom">matplotlib</span><span class="o">-</span><span class="s s-Atom">animation</span><span class="o">-</span><span class="s s-Atom">tutorial/</span><span class="p">)</span>  
+<span class="s s-Atom">#</span> <span class="nv">Also</span> <span class="s s-Atom">look</span> <span class="s s-Atom">at</span> <span class="nn">http</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">matplotlib</span><span class="p">.</span><span class="s s-Atom">org</span><span class="o">/</span><span class="s s-Atom">api</span><span class="o">/</span><span class="s s-Atom">animation_api</span><span class="p">.</span><span class="s s-Atom">html</span>  
+<span class="s s-Atom">plt</span><span class="p">.</span><span class="nf">close</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+
+<span class="s s-Atom">from</span> <span class="s s-Atom">matplotlib</span> <span class="s s-Atom">import</span> <span class="s s-Atom">animation</span>
+
+<span class="s s-Atom">#</span> <span class="nv">First</span> <span class="s s-Atom">set</span> <span class="s s-Atom">up</span> <span class="s s-Atom">the</span> <span class="s s-Atom">figure</span><span class="p">,</span> <span class="s s-Atom">the</span> <span class="s s-Atom">axis</span><span class="p">,</span> <span class="s s-Atom">and</span> <span class="s s-Atom">the</span> <span class="s s-Atom">plot</span> <span class="s s-Atom">element</span> <span class="s s-Atom">we</span> <span class="s s-Atom">want</span> <span class="s s-Atom">to</span>
+<span class="s s-Atom">animate</span>  
+<span class="s s-Atom">fig</span> <span class="o">=</span> <span class="s s-Atom">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">()</span>  
+<span class="s s-Atom">ax</span> <span class="o">=</span> <span class="s s-Atom">plt</span><span class="p">.</span><span class="nf">axes</span><span class="p">(</span><span class="s s-Atom">xlim=</span><span class="p">(</span><span class="o">-</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span> <span class="s s-Atom">ylim=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>  
+<span class="s s-Atom">ax</span><span class="p">.</span><span class="nf">grid</span><span class="p">()</span>  
+<span class="s s-Atom">ax</span><span class="p">.</span><span class="nf">set_xticks</span><span class="p">(</span><span class="s s-Atom">sp</span><span class="p">.</span><span class="nf">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">270</span><span class="p">,</span><span class="mi">270</span><span class="p">,</span><span class="s s-Atom">num</span><span class="o">=</span><span class="mi">7</span><span class="p">))</span>  
+<span class="s s-Atom">ax</span><span class="p">.</span><span class="nf">set_xlabel</span><span class="p">(</span><span class="err">&quot;$</span><span class="s s-Atom">\\\theta$</span><span class="s2">&quot;)  </span>
+<span class="s2">ax.set_ylabel(&quot;</span><span class="err">$</span><span class="s s-Atom">f_</span><span class="p">{</span><span class="s s-Atom">\\\theta</span><span class="p">}(</span><span class="s s-Atom">\\\theta</span><span class="p">,</span> <span class="s s-Atom">t</span><span class="p">)</span><span class="err">$</span><span class="s2">&quot;)</span>
+
+<span class="s2">line, = ax.plot([], [], lw=2)</span>
+
+<span class="s2">time_text = ax.text(-270, 9, &#39;&#39;)#, transform=ax.transAxes)</span>
+
+<span class="s2">from scipy.interpolate import interp1d  </span>
+<span class="s2">probability_thresholds = sp.linspace(0,1,21)</span>
+
+<span class="s2">def myhistogram(y):  </span>
+<span class="s2">    yn = sp.array(y)  </span>
+<span class="s2">    yn.sort()  </span>
+<span class="s2">    cdf = sp.linspace(0,1,yn.size)  </span>
+<span class="s2">    y_bins = interp1d(cdf, yn, kind=&#39;linear&#39;, axis=-1, copy=True,</span>
+<span class="s2">    bounds_error=True)(probability_thresholds)  </span>
+<span class="s2">    return probability_thresholds, y_bins</span>
+
+<span class="s2">def init():  </span>
+<span class="s2">    line.set_data([],[])  </span>
+<span class="s2">    time_text.set_text(&quot;&quot;)  </span>
+<span class="s2">    return line, time_text</span>
+
+<span class="s2">def animate(i):  </span>
+<span class="s2">    cdf, y_bins = myhistogram(yall[i,:])  </span>
+<span class="s2">    pdf = sp.diff(cdf) / sp.diff(y_bins)  </span>
+<span class="s2">    y_bins_centers = 0.5*(y_bins[0:-1] + y_bins[1::])  </span>
+<span class="s2">    # pdf, y_bins = sp.histogram(yall[i,:], bins = Nbins, density =</span>
+<span class="s2">    True)  </span>
+<span class="s2">    # y_bins_centers = 0.5*(y_bins[0:-1] + y_bins[1::])  </span>
+<span class="s2">    line.set_data(y_bins_centers*180/sp.pi, pdf)  </span>
+<span class="s2">    time_text.set_text(&quot;</span><span class="nv">Time</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="s s-Atom">:</span><span class="mf">4.2</span><span class="s s-Atom">f</span><span class="p">}</span> <span class="s s-Atom">s</span><span class="s2">&quot;.format(t[i]))  </span>
+<span class="s2">    return line, time_text</span>
+
+<span class="s2">anim = animation.FuncAnimation(fig, animate, init_func=init,  </span>
+<span class="s2">frames=1000, interval=1, blit=True)  </span>
+<span class="s2">#anim.save(&#39;basic_animation.mp4&#39;, fps=30, extra_args=[&#39;-vcodec&#39;,</span>
+<span class="s2">&#39;libx264&#39;])</span>
+
+<span class="s2">plt.show()</span>
+
+<span class="s2">#plt.figure()  </span>
+<span class="s2">#plt.plot(t,yall[:,0]*180/sp.pi)  </span>
+<span class="s2">#plt.grid()  </span>
+<span class="s2">#plt.yticks(sp.linspace(-270,270,num=13))  </span>
+<span class="s2">#plt.xlabel(&quot;</span><span class="err">$</span><span class="s s-Atom">t$</span><span class="s2">&quot;)  </span>
+<span class="s2">#plt.ylabel(&quot;</span><span class="err">$</span><span class="s s-Atom">\\\</span><span class="nf">theta</span><span class="p">(</span><span class="s s-Atom">t</span><span class="p">)</span><span class="err">$&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js','color.js','mhchem.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script></p>
+        </div>
+    </div>
+
+<div class="fh5co-narrow-content">
+<div class="animate-box" data-animate-effect="fadeInLeft">
+    <h2><!-- <i class="icon-speech-bubble"></i>  -->Comments</h2>
+</div>
+<div class="animate-box" data-animate-effect="fadeInLeft">
+    <div id="disqus_thread"></div>
+</div>
+
+<script>
+var disqus_config = function () { 
+  this.language = "en";
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript><a href="https://disqus.com/?ref_noscript">Please enable JavaScript to view the comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://joseabell.com/theme/js/jquery.min.js"></script>
+    <!-- jQuery Easing -->
+    <script src="https://joseabell.com/theme/js/jquery.easing.1.3.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://joseabell.com/theme/js/bootstrap.min.js"></script>
+    <!-- Waypoints -->
+    <script src="https://joseabell.com/theme/js/jquery.waypoints.min.js"></script>
+    <!-- Flexslider -->
+    <script src="https://joseabell.com/theme/js/jquery.flexslider-min.js"></script>
+
+    
+
+    <!-- MAIN JS -->
+    <script src="https://joseabell.com/theme/js/main.js"></script>
+    
+    </body>
+</html>

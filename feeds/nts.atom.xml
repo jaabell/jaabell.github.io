@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog - NTS</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/nts.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2013-10-28T18:57:00-07:00</updated><entry><title>NTS (Note-To-Self): Creating dynamically linked libraries</title><link href="https://joseabell.com/posts/2013/nts-note-to-self-creating-dynamically-linked-libraries.html" rel="alternate"></link><published>2013-10-28T18:57:00-07:00</published><updated>2013-10-28T18:57:00-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2013-10-28:/posts/2013/nts-note-to-self-creating-dynamically-linked-libraries.html</id><summary type="html">&lt;p&gt;A nice extensive tutorial can be found &lt;a href="http://www.yolinux.com/TUTORIALS/LibraryArchives-StaticAndDynamic.html"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In a …&lt;/p&gt;</summary><content type="html">&lt;p&gt;A nice extensive tutorial can be found &lt;a href="http://www.yolinux.com/TUTORIALS/LibraryArchives-StaticAndDynamic.html"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In a nutshell:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;gcc -Wall -fPIC -c \*.c  &lt;/span&gt;
+&lt;span class="err"&gt;gcc -shared -Wl,-soname,libctest.so.1 -o libctest.so.1.0 \*.o  &lt;/span&gt;
+&lt;span class="err"&gt;mv libctest.so.1.0 /opt/lib  &lt;/span&gt;
+&lt;span class="err"&gt;ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so.1  &lt;/span&gt;
+&lt;span class="err"&gt;ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;!--more--&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-Wall&lt;/code&gt;: include warnings. See man page for warnings specified.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-fPIC&lt;/code&gt;: Compiler directive to output position independent code, a
+    characteristic required by shared libraries. Also see
+    "-fpic".&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-shared&lt;/code&gt;: Produce a shared object which can then be linked with other objects
+    to form an executable.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-Wl,options&lt;/code&gt;: Pass options to linker.&lt;/li&gt;
+&lt;li&gt;In this example the options to be passed on to the linker are: &lt;code&gt;-soname
+    libctest.so.1&lt;/code&gt;. The name after the &lt;code&gt;-o&lt;/code&gt; option is passed to
+    gcc.&lt;/li&gt;
+&lt;li&gt;Option &lt;code&gt;-o&lt;/code&gt;:
+    Output of operation. In this case the name of the shared object to
+    be output will be &lt;code&gt;libctest.so.1.0&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;See note on "Library Paths"&lt;/p&gt;</content><category term="NTS"></category><category term="c++"></category><category term="coding"></category><category term="compiler"></category><category term="gcc"></category><category term="library"></category><category term="linux"></category><category term="note to self"></category><category term="programming"></category><category term="reminder"></category><category term="tutorial"></category></entry></feed>
