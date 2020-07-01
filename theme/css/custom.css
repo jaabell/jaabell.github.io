@@ -268,3 +268,27 @@ h3, h4, h5, h6 {
   padding: 4px;
   margin: 0;
 }
+
+.page-content details details {
+  width: 100%;
+  top: 2px;
+  bottom: 2px;
+}
+
+
+.page-content details > summary {
+  padding: 4px;
+  width: 100%;
+  background-color: #BBD6FF;
+  border: none;
+  cursor: pointer;
+}
+
+.page-content details > p {
+  background-color: #F8F8FF;
+  width: 100%;
+  padding: 4px;
+  margin: 0;
+  top: 2px;
+  bottom: 2px;
+}
