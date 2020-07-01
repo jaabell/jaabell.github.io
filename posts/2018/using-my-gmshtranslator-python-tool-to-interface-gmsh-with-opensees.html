@@ -12,12 +12,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta name="author" content="jaabell" />
-    <meta name="description" content="I wrote the gmshtranslator tool a while back during my PhD, to easily parse gmsh msh files to any other format. I've been using it for years now with not much change for both research and consulting, and have been contacted by other researchers that want to use it. I will soon write a tool, powered by gmshtranslator, to more easily translate from gmsh into OpenSees. Meanwhile, here is a short example on how to use gmshtranslator to create OpenSees models. The example assumes you know gmsh formats (.geo and .msh) and python. The example consists on the simple cantilever beam shown in the following figure." />
+    <meta name="description" content="I wrote the gmshtranslator tool a while back during my …" />
     <meta name="keywords" content="OpenSees, gmsh, gmshtranslator, python, pre-proceesing, meshing">
 <!-- Facebook and Twitter integration -->
 <meta property="og:site_name" content="Jose Abells Reasearch Blog"/>
 <meta property="og:title" content="Using my gmshtranslator python tool to interface gmsh with opensees."/>
-<meta property="og:description" content="I wrote the gmshtranslator tool a while back during my PhD, to easily parse gmsh msh files to any other format. I've been using it for years now with not much change for both research and consulting, and have been contacted by other researchers that want to use it. I will soon write a tool, powered by gmshtranslator, to more easily translate from gmsh into OpenSees. Meanwhile, here is a short example on how to use gmshtranslator to create OpenSees models. The example assumes you know gmsh formats (.geo and .msh) and python. The example consists on the simple cantilever beam shown in the following figure."/>
+<meta property="og:description" content="I wrote the gmshtranslator tool a while back during my …"/>
 <meta property="og:url" content="https://joseabell.com/posts/2018/using-my-gmshtranslator-python-tool-to-interface-gmsh-with-opensees.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2018-02-26 13:55:13-08:00"/>
@@ -426,7 +426,7 @@
     <div id="disqus_thread"></div>
 </div>
 
-<script>
+<!-- <script>
 var disqus_config = function () { 
   this.language = "en";
 };
@@ -437,7 +437,28 @@ s.setAttribute('data-timestamp', +new Date());
 (d.head || d.body).appendChild(s);
 })();
 </script>
-<noscript><a href="https://disqus.com/?ref_noscript">Please enable JavaScript to view the comments powered by Disqus.</a></noscript>
+<noscript><a href="https://disqus.com/?ref_noscript">Please enable JavaScript to view the comments powered by Disqus.</a></noscript> -->
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+// var disqus_config = function () {
+// this.page.url = www.joseabell.com;  // Replace PAGE_URL with your page's canonical URL variable
+// this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+// };
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://joseabell.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         </div>
     </div>
 
@@ -456,6 +477,7 @@ s.setAttribute('data-timestamp', +new Date());
 
     <!-- MAIN JS -->
     <script src="https://joseabell.com/theme/js/main.js"></script>
+    <script id="dsq-count-scr" src="//joseabell.disqus.com/count.js" async></script>
     
     </body>
 </html>

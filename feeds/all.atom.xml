@@ -1,24 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/all.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2020-06-30T23:33:09-07:00</updated><entry><title>Paper04 - Modelling the cyclic ratcheting of sands through memory-enhanced bounding surface plasticity.</title><link href="https://joseabell.com/posts/2020/paper04-modelling-the-cyclic-ratcheting-of-sands-through-memory-enhanced-bounding-surface-plasticity.html" rel="alternate"></link><published>2020-06-30T23:33:09-07:00</published><updated>2020-06-30T23:33:09-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-06-30:/posts/2020/paper04-modelling-the-cyclic-ratcheting-of-sands-through-memory-enhanced-bounding-surface-plasticity.html</id><summary type="html">
-&lt;p&gt;The modelling and simulation of cyclic sand ratcheting is tackled via a plasticity model formulated withinthe well-known critical state, bounding surface SANISAND framework. For this purpose, a third locus –termed ‘memory surface’ – is cast into the constitutive formulation, so as to phenomenologically capturemicro-mechanical, fabric-related processes directly relevant to the cyclic response. The predictive capabilityof the model under numerous loading cycles (‘high-cyclic’ loading) is explored with focus on drainedloading conditions, and validated against experimental test results from the literature – including triaxial,simple shear and oedometer cyclic loading. The model proves capable of reproducing the transition fromratcheting to shakedown response, in combination with a single set of soil parameters for different initial,boundary and loading conditions. This work contributes to the analysis of soil-structure interaction underhigh-cyclic loading events, such as those induced by environmental and/or traffic loads. &lt;/p&gt;
-</summary><content type="html">&lt;!-- SUMMARY BEGIN --&gt;
-
-&lt;p&gt;The modelling and simulation of cyclic sand ratcheting is tackled via a plasticity model formulated withinthe well-known critical state, bounding surface SANISAND framework. For this purpose, a third locus –termed ‘memory surface’ – is cast into the constitutive formulation, so as to phenomenologically capturemicro-mechanical, fabric-related processes directly relevant to the cyclic response. The predictive capabilityof the model under numerous loading cycles (‘high-cyclic’ loading) is explored with focus on drainedloading conditions, and validated against experimental test results from the literature – including triaxial,simple shear and oedometer cyclic loading. The model proves capable of reproducing the transition fromratcheting to shakedown response, in combination with a single set of soil parameters for different initial,boundary and loading conditions. This work contributes to the analysis of soil-structure interaction underhigh-cyclic loading events, such as those induced by environmental and/or traffic loads. &lt;/p&gt;
-&lt;!-- SUMMARY END --&gt;</content><category term="Publications"></category><category term="Papers"></category><category term="Constitutive Modeling"></category></entry><entry><title>Large earthquake in Mexico triggers tsunami warnings</title><link href="https://joseabell.com/large-earthquake-in-mexico-triggers-tsunami-warnings-EN.html" rel="alternate"></link><published>2020-06-23T12:23:30-07:00</published><updated>2020-06-23T12:23:30-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-06-23:/large-earthquake-in-mexico-triggers-tsunami-warnings-EN.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/all.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2020-06-23T12:23:30-07:00</updated><entry><title>Large earthquake in Mexico triggers tsunami warnings</title><link href="https://joseabell.com/large-earthquake-in-mexico-triggers-tsunami-warnings-EN.html" rel="alternate"></link><published>2020-06-23T12:23:30-07:00</published><updated>2020-06-23T12:23:30-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-06-23:/large-earthquake-in-mexico-triggers-tsunami-warnings-EN.html</id><summary type="html">
 &lt;blockquote class="twitter-tweet"&gt;&lt;p dir="ltr" lang="en"&gt;The magnitude I gave came from the Tsunami threat record. &lt;a href="https://t.co/2h5dppVLLQ"&gt;pic.twitter.com/2h5dppVLLQ&lt;/a&gt;&lt;/p&gt;— José A. Abell 🇻🇦🇨🇱 (@jose_abell) &lt;a href="https://twitter.com/jose_abell/status/1275464037069991944?ref_src=twsrc%5Etfw"&gt;June 23, 2020&lt;/a&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"&gt;&lt;/script&gt;&lt;/p&gt;
-</summary><content type="html">&lt;!-- SUMMARY BEGIN --&gt;
+&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;The magnitude I gave came from the Tsunami threat record. &lt;a href="https://t.co/2h5dppVLLQ"&gt;pic.twitter.com/2h5dppVLLQ&lt;/a&gt;&lt;/p&gt;&amp;mdash; José A. Abell 🇻🇦🇨🇱 (@jose_abell) &lt;a href="https://twitter.com/jose_abell/status/1275464037069991944?ref_src=twsrc%5Etfw"&gt;June 23, 2020&lt;/a&gt;&lt;/blockquote&gt;
 
 &lt;p&gt;&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;&lt;/p&gt;
-&lt;!-- SUMMARY END --&gt;</content><category term="Earthquakes"></category><category term="Earthquakes"></category><category term="tsunami"></category><category term="twitter"></category></entry><entry><title>#EngineeringWizardry | 00 | new series</title><link href="https://joseabell.com/posts/2020/engineeringwizardry-00-new-series.html" rel="alternate"></link><published>2020-06-12T18:03:54-07:00</published><updated>2020-06-12T18:03:54-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-06-12:/posts/2020/engineeringwizardry-00-new-series.html</id><summary type="html">
+&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;</content><category term="Earthquakes"></category><category term="Earthquakes"></category><category term="tsunami"></category><category term="twitter"></category></entry><entry><title>#EngineeringWizardry | 00 | new series</title><link href="https://joseabell.com/posts/2020/engineeringwizardry-00-new-series.html" rel="alternate"></link><published>2020-06-12T18:03:54-07:00</published><updated>2020-06-12T18:03:54-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-06-12:/posts/2020/engineeringwizardry-00-new-series.html</id><summary type="html">
 &lt;div align="left" class="videoWrapper"&gt;
 &lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/F5xoTIT2uW4" width="640"&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 &lt;p&gt;Stuck teaching during COVID-19 lockdowns in Chile has reminded me one crucial thing 
 about statics (the class I'm teaching this first semester in the southern hemisphere): &lt;strong&gt;it can be very frustrating for students&lt;/strong&gt;. This frustriation comes from unmet expectations. They're just finishing their early maths and physics formation (Calculus, Linear Algebra, Differential Equations, physics etc. ), an ideal world where problems have nice answers such as &lt;span class="math"&gt;\(\sqrt{2}  \pi\)&lt;/span&gt; or no answer at all. Then, along comes statics, and the world seems upside down. &lt;/p&gt;
-</summary><content type="html">&lt;!-- SUMMARY BEGIN --&gt;
+&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+&lt;p&gt;Not only are the contents of statics deceptively simple (&lt;span class="math"&gt;\(\sum F=0\)&lt;/span&gt; pretty much sums it up... get it?... sums?... ok), the only way through is through exercising... a lot. This cannot be over-emphasized. &lt;/p&gt;
+&lt;p&gt;The biggest hurdle through this is, ironically, maths. Yes! The very thing they've been becoming experts at. Take this example:&lt;/p&gt;
+&lt;!-- ![problem1](/images/engineering-wizardry/engineering-wizardry-00-new-series-fig00.svg) --&gt;
+&lt;div align="left" class="responsive-image"&gt;
+&lt;img src="/images/engineering-wizardry/engineering-wizardry-00-new-series-fig00.svg"/&gt;
+&lt;/div&gt;
+&lt;p&gt;The problem comes in two flavors depending what you ask for: &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Given how much you want the vertex node to move (that is, give values to &lt;span class="math"&gt;\(u_x\)&lt;/span&gt; and &lt;span class="math"&gt;\(u_y\)&lt;/span&gt;), find the forces &lt;span class="math"&gt;\(F_x\)&lt;/span&gt; and &lt;span class="math"&gt;\(F_y\)&lt;/span&gt; that need to be applied. &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Given the forces &lt;span class="math"&gt;\(F_x\)&lt;/span&gt; and &lt;span class="math"&gt;\(F_y\)&lt;/span&gt; find out the displacement of the vertex node (&lt;span class="math"&gt;\(u_x\)&lt;/span&gt; and &lt;span class="math"&gt;\(u_y\)&lt;/span&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;One of this forms is easier thant the other. Which one? Think about it... take your time.&lt;/p&gt;
+&lt;details&gt;
+&lt;p&gt;&lt;summary&gt;Click to know the answer...&lt;/summary&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NUMBER 2&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Why? Glad you asked!  In #2 you &lt;em&gt;fix the geometry&lt;/em&gt; of the problem. Finding the change in length of the springs is trivial.From that you can find the forces carried by each spring and from that the force applied comes from stating a simple particle force equilibrium at the vertex. &lt;/p&gt;
+&lt;p&gt;Form #1 fixes the applied forces. This means that the geometry is unknown, which leads to a &lt;em&gt;nonlinear system of equations&lt;/em&gt; that needs to be solved so that the displacements &lt;span class="math"&gt;\(u_x\)&lt;/span&gt; and &lt;span class="math"&gt;\(u_y\)&lt;/span&gt; result in spring stretches such that the equilibrium is satisfied. &lt;/p&gt;
+&lt;/details&gt;
+&lt;p&gt;&lt;br/&gt;
+The form of the problem notwidthstanding, to me as a teacher what's important about this problem is:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Stating the single-particle equilibrium where the springs meet. &lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Drawing&lt;/em&gt; a free body diagram. &lt;/li&gt;
+&lt;li&gt;This is the same for both forms.&lt;/li&gt;
+&lt;li&gt;Expressing the forces of the springs as a function of the stretch. &lt;/li&gt;
+&lt;li&gt;Expressing the direction of the forces as a function of the point displacements. &lt;/li&gt;
+&lt;li&gt;Writing down equilibrium&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Getting an answer and &lt;em&gt;check whether it makes sense&lt;/em&gt;. &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Part 1 can be done, with experience, in under 5 minutes. Part 2, on the other hand, can take about 10 to 15 minutes if form 1 is used. If form 2 is used all bets are off, the students can't be expected to solve those equations in a quiz/midterm/exam setting. (This is another subtle issue, that easy-to-state problems can easily derail into a mathematical nightmare if one is not careful).&lt;/p&gt;
+&lt;p&gt;The main problem, then, is that students spend &lt;em&gt;a lot of time&lt;/em&gt; doing maths instead of statics. Since answers are important, to check whether the results make sense, gain experience and because otherwise nothing would make sense; the effort of solving problems must be addressed. If the way to study statics is solving as many problems as one can, but the math/geometry is what takes up all the time and is least important to becoming a good engineering modeler, how to avoid this?&lt;/p&gt;
+&lt;p&gt;Programming is a way to go. But, as much as I regret it, that does not come easy to all students at this point of their formation: would result in two problems instead of one. &lt;/p&gt;
+&lt;p&gt;But there is hope: behold &lt;a href="geogebra.org"&gt;geogebra&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;It's a powerful and intuitive set of apps for the PC, cellphone, through the browser, etc. I'm planning on using this to bridge the math gap and accelerate student learning. &lt;/p&gt;
+&lt;p&gt;After this long roundabout, I can finally state that this is my motivation behind the #EngineeringWizardry youtube series I intent to develop in the next months. I hope it helps you and my students. &lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js','color.js','mhchem.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;div class="videoWrapper" align="left"&gt;
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/F5xoTIT2uW4" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
@@ -26,7 +124,7 @@ about statics (the class I'm teaching this first semester in the southern hemisp
 
 &lt;p&gt;Stuck teaching during COVID-19 lockdowns in Chile has reminded me one crucial thing 
 about statics (the class I'm teaching this first semester in the southern hemisphere): &lt;strong&gt;it can be very frustrating for students&lt;/strong&gt;. This frustriation comes from unmet expectations. They're just finishing their early maths and physics formation (Calculus, Linear Algebra, Differential Equations, physics etc. ), an ideal world where problems have nice answers such as &lt;span class="math"&gt;\(\sqrt{2}  \pi\)&lt;/span&gt; or no answer at all. Then, along comes statics, and the world seems upside down. &lt;/p&gt;
-&lt;!-- SUMMARY END --&gt;
+&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;p&gt;Not only are the contents of statics deceptively simple (&lt;span class="math"&gt;\(\sum F=0\)&lt;/span&gt; pretty much sums it up... get it?... sums?... ok), the only way through is through exercising... a lot. This cannot be over-emphasized. &lt;/p&gt;
 &lt;p&gt;The biggest hurdle through this is, ironically, maths. Yes! The very thing they've been becoming experts at. Take this example:&lt;/p&gt;
@@ -132,10 +230,9 @@ The form of the problem notwidthstanding, to me as a teacher what's important ab
     (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content><category term="EngineeringWizardry"></category><category term="video EngineeringWizardry youtube teaching opensource programming geogebra"></category></entry><entry><title>Using my gmshtranslator python tool to interface gmsh with opensees.</title><link href="https://joseabell.com/posts/2018/using-my-gmshtranslator-python-tool-to-interface-gmsh-with-opensees.html" rel="alternate"></link><published>2018-02-26T13:55:13-08:00</published><updated>2018-02-26T13:55:13-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2018-02-26:/posts/2018/using-my-gmshtranslator-python-tool-to-interface-gmsh-with-opensees.html</id><summary type="html">
-&lt;p&gt;I wrote the &lt;a href="https://github.com/jaabell/gmshtranslator"&gt;&lt;em&gt;gmshtranslator&lt;/em&gt;&lt;/a&gt; tool a while back during my PhD, to easily parse &lt;a href="http://gmsh.info/"&gt;&lt;em&gt;gmsh&lt;/em&gt;&lt;/a&gt; &lt;code&gt;msh&lt;/code&gt; files to any other format. I've been using it for years now with not much change for both research and consulting, and have been contacted by other researchers that want to use it. I will soon write a tool, powered by &lt;em&gt;gmshtranslator&lt;/em&gt;, to more easily translate from &lt;em&gt;gmsh&lt;/em&gt; into OpenSees. Meanwhile, here is a short example on how to use gmshtranslator to create &lt;a href="opensees.berkeley.edu"&gt;&lt;em&gt;OpenSees&lt;/em&gt;&lt;/a&gt; models. The example assumes you know &lt;em&gt;gmsh&lt;/em&gt; formats (&lt;code&gt;.geo&lt;/code&gt; and &lt;code&gt;.msh&lt;/code&gt;) and python. &lt;/p&gt;
-&lt;p&gt;The example consists on the simple cantilever beam shown in the following figure.&lt;/p&gt;
-</summary><content type="html">&lt;!-- SUMMARY BEGIN --&gt;
+&lt;/script&gt;</content><category term="EngineeringWizardry"></category><category term="video EngineeringWizardry youtube teaching opensource programming geogebra"></category></entry><entry><title>Using my gmshtranslator python tool to interface gmsh with opensees.</title><link href="https://joseabell.com/posts/2018/using-my-gmshtranslator-python-tool-to-interface-gmsh-with-opensees.html" rel="alternate"></link><published>2018-02-26T13:55:13-08:00</published><updated>2018-02-26T13:55:13-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2018-02-26:/posts/2018/using-my-gmshtranslator-python-tool-to-interface-gmsh-with-opensees.html</id><summary type="html">&lt;!-- SUMMARY BEGIN --&gt;
+
+&lt;p&gt;I wrote the &lt;a href="https://github.com/jaabell/gmshtranslator"&gt;&lt;em&gt;gmshtranslator&lt;/em&gt;&lt;/a&gt; tool a while back during my …&lt;/p&gt;</summary><content type="html">&lt;!-- SUMMARY BEGIN --&gt;
 
 &lt;p&gt;I wrote the &lt;a href="https://github.com/jaabell/gmshtranslator"&gt;&lt;em&gt;gmshtranslator&lt;/em&gt;&lt;/a&gt; tool a while back during my PhD, to easily parse &lt;a href="http://gmsh.info/"&gt;&lt;em&gt;gmsh&lt;/em&gt;&lt;/a&gt; &lt;code&gt;msh&lt;/code&gt; files to any other format. I've been using it for years now with not much change for both research and consulting, and have been contacted by other researchers that want to use it. I will soon write a tool, powered by &lt;em&gt;gmshtranslator&lt;/em&gt;, to more easily translate from &lt;em&gt;gmsh&lt;/em&gt; into OpenSees. Meanwhile, here is a short example on how to use gmshtranslator to create &lt;a href="opensees.berkeley.edu"&gt;&lt;em&gt;OpenSees&lt;/em&gt;&lt;/a&gt; models. The example assumes you know &lt;em&gt;gmsh&lt;/em&gt; formats (&lt;code&gt;.geo&lt;/code&gt; and &lt;code&gt;.msh&lt;/code&gt;) and python. &lt;/p&gt;
 &lt;p&gt;The example consists on the simple cantilever beam shown in the following figure.&lt;/p&gt;
@@ -424,16 +521,80 @@ The form of the problem notwidthstanding, to me as a teacher what's important ab
 &lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/_ye7wjjywSw" width="640"&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 &lt;p&gt;The RC shear-wall building is modeled in OpenSees using non-linear fiber based beam column elements. Soil is modeled as a continuum using quad elements and linear stress-strain relationship. Soil shear wave-speed is varied in depth such as to obtain a &lt;span class="math"&gt;\(V_{s30}\)&lt;/span&gt; consistent with a class B site according to chilean seismic code. Lysmer-Kulhemeyer dashpots are used along the soil boundary to model seismic radiation and earthquake wave-field input.&lt;/p&gt;
-</summary><content type="html">&lt;!-- Image: https://www.dropbox.com/s/24tkmfk1y1r0wz5/disp.png?raw=1 --&gt;
+&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+&lt;p&gt;The performance of the building will be assessed for varying site fundamental periods. This is an aspect of SSI that is not covered by the chilean seismic code, and has been shown to be a problem in past earthquakes. &lt;/p&gt;
+&lt;p&gt;This is part of an on-going study with Prof. &lt;a href="http://cigiden.cl/es/carolina-magna/"&gt;Carolina Magna&lt;/a&gt; from Adolfo Ibañez Unversity and her MS student Miguel Ángel Rodriguez from UDP. &lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "0em",
+        linebreak = "false";
 
-&lt;!-- SUMMARY BEGIN --&gt;
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js','color.js','mhchem.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><content type="html">&lt;!-- Image: https://www.dropbox.com/s/24tkmfk1y1r0wz5/disp.png?raw=1 --&gt;
+
+&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;div class="videoWrapper" align="left"&gt;
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/_ye7wjjywSw" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 
 &lt;p&gt;The RC shear-wall building is modeled in OpenSees using non-linear fiber based beam column elements. Soil is modeled as a continuum using quad elements and linear stress-strain relationship. Soil shear wave-speed is varied in depth such as to obtain a &lt;span class="math"&gt;\(V_{s30}\)&lt;/span&gt; consistent with a class B site according to chilean seismic code. Lysmer-Kulhemeyer dashpots are used along the soil boundary to model seismic radiation and earthquake wave-field input.&lt;/p&gt;
-&lt;!-- SUMMARY END --&gt;
+&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;p&gt;The performance of the building will be assessed for varying site fundamental periods. This is an aspect of SSI that is not covered by the chilean seismic code, and has been shown to be a problem in past earthquakes. &lt;/p&gt;
 &lt;p&gt;This is part of an on-going study with Prof. &lt;a href="http://cigiden.cl/es/carolina-magna/"&gt;Carolina Magna&lt;/a&gt; from Adolfo Ibañez Unversity and her MS student Miguel Ángel Rodriguez from UDP. &lt;/p&gt;
@@ -504,7 +665,87 @@ The form of the problem notwidthstanding, to me as a teacher what's important ab
 &lt;/div&gt;
 &lt;p&gt;With my student, Pablo Ibañez, we implemented a new &lt;a href="http://opensees.berkeley.edu/wiki/index.php/CatenaryCableElement"&gt;catenary cable element&lt;/a&gt; in OpenSees. This element is based on the work by Salehi et al[1].&lt;/p&gt;
 &lt;p&gt;The stiffness of this element is obtained using a flexibility formulation. Basically the shape of the cable is determined by the integral:&lt;/p&gt;
-</summary><content type="html">&lt;!-- SUMMARY BEGIN --&gt;
+&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+&lt;div class="math"&gt;$$
+\newcommand{\pare}[1]{\left( #1 \right)}
+\newcommand{\brak}[1]{\left[ #1 \right]}
+\newcommand{\brac}[1]{\left\lbrace #1 \right\rbrace}
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+\newcommand{\uv}[1]{\hat{\boldsymbol{#1}}}
+\newcommand{\ud}{\,\mathrm{d}}
+\begin{align*}
+\vect{x}(s) = \vect{x}_1 - \int_0^s \dfrac{\vect{w}s + \vect{f}}{\Vert \vect{w}s + \vect{f} \Vert^2}\pare{\dfrac{\Vert \vect{w}s + \vect{f} \Vert}{EA} + \pare{1 + \alpha \Delta T}} \ud s \\
+\vect{w} = \brak{w_1,\, w_2,\, w_3}^T \qquad
+\vect{f} = \brak{f_1,\, f_2,\, f_3}^T 
+\end{align*}
+$$&lt;/div&gt;
+&lt;p&gt;Where &lt;span class="math"&gt;\(\vect{x_1}\)&lt;/span&gt; is the position of the first node of the cable, &lt;span class="math"&gt;\(\vect{w}\)&lt;/span&gt; is the weight vector in each direction, &lt;span class="math"&gt;\(EA\)&lt;/span&gt; is the stiffness, &lt;span class="math"&gt;\(\alpha \Delta T\)&lt;/span&gt; is the change in strain due to temperature and &lt;span class="math"&gt;\(\vect{f}\)&lt;/span&gt; is the force vector at the start node. This equation is iterated (with the forces as variable) upon until the the shape of the cable matches the nodal postiions imposed by the finite element program (trial displacements). Then it is used to derive a stiffness matrix. &lt;/p&gt;
+&lt;p&gt;The element, as is, passes all our static verification tests. With the additional assumption of a lumped-mass matrix, we're currently working on a dynamic verification suite as well as some validation experiments. &lt;/p&gt;
+&lt;p&gt;The animation above was created using &lt;a href="http://opensees.berkeley.edu/"&gt;OpenSees&lt;/a&gt; to simulate the cable and &lt;a href="http://www.blender.org"&gt;Blender&lt;/a&gt; to render it. &lt;/p&gt;
+&lt;p&gt;Reference&lt;/p&gt;
+&lt;p&gt;[1] Salehi Ahmad Abad, M., Shooshtari, A., Esmaeili, V., &amp;amp; Naghavi Riabi, A. (2013). &lt;em&gt;Nonlinear analysis of cable structures under general loadings.&lt;/em&gt; Finite Elements in Analysis and Design, 73, 11–19. https://doi.org/10.1016/j.finel.2013.05.002&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js','color.js','mhchem.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;div class="videoWrapper" align="left"&gt;
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/MX_--SI_vKg" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
@@ -512,7 +753,7 @@ The form of the problem notwidthstanding, to me as a teacher what's important ab
 
 &lt;p&gt;With my student, Pablo Ibañez, we implemented a new &lt;a href="http://opensees.berkeley.edu/wiki/index.php/CatenaryCableElement"&gt;catenary cable element&lt;/a&gt; in OpenSees. This element is based on the work by Salehi et al[1].&lt;/p&gt;
 &lt;p&gt;The stiffness of this element is obtained using a flexibility formulation. Basically the shape of the cable is determined by the integral:&lt;/p&gt;
-&lt;!-- SUMMARY END --&gt;
+&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;div class="math"&gt;$$
 \newcommand{\pare}[1]{\left( #1 \right)}
