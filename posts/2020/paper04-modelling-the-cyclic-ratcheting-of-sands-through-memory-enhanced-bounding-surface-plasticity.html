@@ -12,12 +12,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta name="author" content="jaabell" />
-    <meta name="description" content="The modelling and simulation of cyclic sand ratcheting is tackled via a plasticity model formulated withinthe well-known critical state, bounding surface SANISAND framework. For this purpose, a third locus –termed ‘memory surface’ – is cast into the constitutive formulation, so as to phenomenologically capturemicro-mechanical, fabric-related processes directly relevant to the cyclic response. The predictive capabilityof the model under numerous loading cycles (‘high-cyclic’ loading) is explored with focus on drainedloading conditions, and validated against experimental test results from the literature – including triaxial,simple shear and oedometer cyclic loading. The model proves capable of reproducing the transition fromratcheting to shakedown response, in combination with a single set of soil parameters for different initial,boundary and loading conditions. This work contributes to the analysis of soil-structure interaction underhigh-cyclic loading events, such as those induced by environmental and/or traffic loads." />
+    <meta name="description" content="This is the first paper fruit of the on-going collaboration with Federico Pisanò at TU Delft. Here we tackle the problem of formulating a constitutive model, derived from the SAniSand framework by Yannis Dafalias, which can replicate the ratcheting phenomenon on sands. What is ratcheting?" />
     <meta name="keywords" content="Papers, Constitutive Modeling">
 <!-- Facebook and Twitter integration -->
 <meta property="og:site_name" content="Jose Abells Reasearch Blog"/>
 <meta property="og:title" content="Paper04 - Modelling the cyclic ratcheting of sands through memory-enhanced bounding surface plasticity."/>
-<meta property="og:description" content="The modelling and simulation of cyclic sand ratcheting is tackled via a plasticity model formulated withinthe well-known critical state, bounding surface SANISAND framework. For this purpose, a third locus –termed ‘memory surface’ – is cast into the constitutive formulation, so as to phenomenologically capturemicro-mechanical, fabric-related processes directly relevant to the cyclic response. The predictive capabilityof the model under numerous loading cycles (‘high-cyclic’ loading) is explored with focus on drainedloading conditions, and validated against experimental test results from the literature – including triaxial,simple shear and oedometer cyclic loading. The model proves capable of reproducing the transition fromratcheting to shakedown response, in combination with a single set of soil parameters for different initial,boundary and loading conditions. This work contributes to the analysis of soil-structure interaction underhigh-cyclic loading events, such as those induced by environmental and/or traffic loads."/>
+<meta property="og:description" content="This is the first paper fruit of the on-going collaboration with Federico Pisanò at TU Delft. Here we tackle the problem of formulating a constitutive model, derived from the SAniSand framework by Yannis Dafalias, which can replicate the ratcheting phenomenon on sands. What is ratcheting?"/>
 <meta property="og:url" content="https://joseabell.com/posts/2020/paper04-modelling-the-cyclic-ratcheting-of-sands-through-memory-enhanced-bounding-surface-plasticity.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2020-06-30 23:33:09-07:00"/>
@@ -144,10 +144,104 @@
             </div>
 
         <div class="animate-box" data-animate-effect="fadeInLeft">
-            <p class="animate-box" data-animate-effect="fadeInLeft"><!-- SUMMARY BEGIN -->
+            <p class="animate-box" data-animate-effect="fadeInLeft"><blockquote class="highlights">
+<blockquote>
+<strong>Abstract</strong></blockquote>
+<p>The modelling and simulation of cyclic sand ratcheting is tackled via a plasticity model formulated withinthe well-known critical state, bounding surface SANISAND framework. For this purpose, a third locus –termed ‘memory surface’ – is cast into the constitutive formulation, so as to phenomenologically capturemicro-mechanical, fabric-related processes directly relevant to the cyclic response. The predictive capabilityof the model under numerous loading cycles (‘high-cyclic’ loading) is explored with focus on drainedloading conditions, and validated against experimental test results from the literature – including triaxial,simple shear and oedometer cyclic loading. The model proves capable of reproducing the transition fromratcheting to shakedown response, in combination with a single set of soil parameters for different initial,boundary and loading conditions. This work contributes to the analysis of soil-structure interaction underhigh-cyclic loading events, such as those induced by environmental and/or traffic loads.</p>
+</blockquote>
+<!-- PELICAN_BEGIN_SUMMARY -->
+<p>This is the first paper fruit of the on-going collaboration with <a class="reference external" href="https://online-learning.tudelft.nl/instructors/federico-pisano/">Federico Pisanò</a> at TU Delft. Here we tackle the problem of formulating a constitutive model, derived from the SAniSand framework by Yannis Dafalias, which can replicate the <em>ratcheting</em> phenomenon on sands.</p>
+<p>What is ratcheting?</p>
+<!-- PELICAN_END_SUMMARY -->
+<p>This is a ratchet! Ratchetin' is what it do.</p>
+<div class="figure">
+<img alt="" src="https://www.dropbox.com/s/ksbd0a86m4728wk/ratchet-2.png?raw=1" style="width: 40%;" />
+<p class="caption"><em>This is a ratchet. It ratechets.</em></p>
+</div>
+<p>In all seriousness, when soils are subjected to asymmetrical loading, for example because there may be a static shear load acting on it and then it gets shaken, the soil accumulates irrecoverable strain as it cycles. Typical constitutive models predict a constant rate of strain accumulation for this type of loading, and that is what needs to be fixed. Only <em>drained</em> ratcheting response is pursued here, the <em>undrained</em> behavior is get its own (already accepted) article (see <a class="reference external" href="https://en.wikipedia.org/wiki/Least_publishable_unit">this</a> for more info on this publishing strategy. <em>(joke Fede)</em>).</p>
+<p>So, Federico and his great PhD student Haoyuan Liu together with Andrea Diambra at Bristol University integrated the idea of <em>memory surface</em> (which was applied to granular soils by <a class="reference external" href="https://research-information.bris.ac.uk/en/publications/memory-surface-hardening-model-for-granular-soils-under-repeated-">Corti and Diambra in 2016</a>) to extend the SAniSand constitutive and fix this. We affectionately baptized this model <cite>RatchySand</cite>... a play on the SAniSand origins of the model and ratchyness. We've recently received the blessing of Yannis Dafalias himself to name the model <cite>SAniSand-MS</cite>, in line with other models that have been developed.</p>
+<div class="figure">
+<img alt="" src="https://www.dropbox.com/s/xis1190jcxkv410/ratchy_team.png?raw=1" style="width: 100%;" />
+</div>
+<p>The concept of memory surface (MS) is a way to keep track of stress states that the soil has <em>visited</em> previously, a type of soil fabric effect. When the soil re-visits this area then it should <em>remember</em> and respond with higher stiffness. Its explained in greater depth in the article, <a class="reference external" href="https://www.researchgate.net/publication/328211282_Modelling_the_cyclic_ratcheting_of_sands_through_memory-enhanced_bounding_surface_plasticity">go read it to get the best experience</a>. The main point is that SAniSand's fabric tensor gets replaced with a new formulation based on the MS.</p>
+<div class="figure">
+<img alt="The memory surface" src="https://www.dropbox.com/s/sqc6efifafocw2c/fig1-deviatoric.png?raw=1" style="width: 60%;" />
+<p class="caption"><em>The memory surface remains within the yield surface which remains within the bounding surface throughout material response. The more surfaces the better.</em></p>
+</div>
+<p>The model adds a few extra parameters to the original formulation, these parameters control the way the memory surface <em>hardens</em> and expands or contracts, all while ensuring that the yield surface stays within the MS.</p>
+<div class="figure">
+<img alt="Calibration" src="https://www.dropbox.com/s/rb6adj20w3qhl1c/fig3-calibration.png?raw=1" style="width: 100%;" />
+<p class="caption"><em>Calibration of the new model parameters requires cyclic asymmetric DSS or Drained Triaxial data... for a lot of cycles... many. (Calibration data comes from</em> <a class="reference external" href="https://www.researchgate.net/publication/282252289_Explicit_Accumulation_Model_for_Non-cohesive_Soils_under_Cyclic_Loading">Wichtman et. al. 2005</a> <em>).</em></p>
+</div>
+<p>In this <span class="math">\(q-\epsilon_a\)</span> plot the constitutive response is shown to reach a limiting value for increasing number of cycles.</p>
+<div class="figure">
+<img alt="Response" src="https://www.dropbox.com/s/clz3s9odnbze3xg/fig2-response.png?raw=1" style="width: 100%;" />
+<p class="caption">Response</p>
+</div>
+<p>You might be askin: <em>but what did</em> <strong>you</strong> <em>do José</em>. My humble contribution was to implement this constitutive model for general states of stress in <a class="reference external" href="https://opensees.berkeley.edu/">OpenSees</a>. For some time I've been in the developer team for OpenSees... which means my portrait appears on the <a class="reference external" href="https://github.com/OpenSees">OpenSees Project github page</a> (which is nice).  Anyway, the process of implementing and testing the model on OpenSees gave some nice insights into the model and allowed testing in some uncharted territory of the deviatoric plane. The idea, obviously, is to follow-up with some FEM applications using the power of this new tool. We already have some things to show for this, which are coming up.</p>
+<p>Just would like to close thanking my collaborators: Federico, Andrea and most especially he who did the hard work Haoyuan. Y'all rock.</p>
+<script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "0em",
+        linebreak = "false";
 
-<p>The modelling and simulation of cyclic sand ratcheting is tackled via a plasticity model formulated withinthe well-known critical state, bounding surface SANISAND framework. For this purpose, a third locus –termed ‘memory surface’ – is cast into the constitutive formulation, so as to phenomenologically capturemicro-mechanical, fabric-related processes directly relevant to the cyclic response. The predictive capabilityof the model under numerous loading cycles (‘high-cyclic’ loading) is explored with focus on drainedloading conditions, and validated against experimental test results from the literature – including triaxial,simple shear and oedometer cyclic loading. The model proves capable of reproducing the transition fromratcheting to shakedown response, in combination with a single set of soil parameters for different initial,boundary and loading conditions. This work contributes to the analysis of soil-structure interaction underhigh-cyclic loading events, such as those induced by environmental and/or traffic loads. </p>
-<!-- SUMMARY END --></p>
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js','color.js','mhchem.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script></p>
         </div>
     </div>
 
@@ -159,7 +253,7 @@
     <div id="disqus_thread"></div>
 </div>
 
-<script>
+<!-- <script>
 var disqus_config = function () { 
   this.language = "en";
 };
@@ -170,7 +264,28 @@ s.setAttribute('data-timestamp', +new Date());
 (d.head || d.body).appendChild(s);
 })();
 </script>
-<noscript><a href="https://disqus.com/?ref_noscript">Please enable JavaScript to view the comments powered by Disqus.</a></noscript>
+<noscript><a href="https://disqus.com/?ref_noscript">Please enable JavaScript to view the comments powered by Disqus.</a></noscript> -->
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+// var disqus_config = function () {
+// this.page.url = www.joseabell.com;  // Replace PAGE_URL with your page's canonical URL variable
+// this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+// };
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://joseabell.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         </div>
     </div>
 
@@ -189,6 +304,7 @@ s.setAttribute('data-timestamp', +new Date());
 
     <!-- MAIN JS -->
     <script src="https://joseabell.com/theme/js/main.js"></script>
+    <script id="dsq-count-scr" src="//joseabell.disqus.com/count.js" async></script>
     
     </body>
 </html>

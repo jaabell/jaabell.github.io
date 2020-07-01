@@ -1,5 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/all.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2020-06-23T12:23:30-07:00</updated><entry><title>Large earthquake in Mexico triggers tsunami warnings</title><link href="https://joseabell.com/large-earthquake-in-mexico-triggers-tsunami-warnings-EN.html" rel="alternate"></link><published>2020-06-23T12:23:30-07:00</published><updated>2020-06-23T12:23:30-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-06-23:/large-earthquake-in-mexico-triggers-tsunami-warnings-EN.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/all.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2020-06-30T23:33:09-07:00</updated><entry><title>Paper04 - Modelling the cyclic ratcheting of sands through memory-enhanced bounding surface plasticity.</title><link href="https://joseabell.com/posts/2020/paper04-modelling-the-cyclic-ratcheting-of-sands-through-memory-enhanced-bounding-surface-plasticity.html" rel="alternate"></link><published>2020-06-30T23:33:09-07:00</published><updated>2020-06-30T23:33:09-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-06-30:/posts/2020/paper04-modelling-the-cyclic-ratcheting-of-sands-through-memory-enhanced-bounding-surface-plasticity.html</id><summary type="html">
+&lt;p&gt;This is the first paper fruit of the on-going collaboration with &lt;a class="reference external" href="https://online-learning.tudelft.nl/instructors/federico-pisano/"&gt;Federico Pisanò&lt;/a&gt; at TU Delft. Here we tackle the problem of formulating a constitutive model, derived from the SAniSand framework by Yannis Dafalias, which can replicate the &lt;em&gt;ratcheting&lt;/em&gt; phenomenon on sands.&lt;/p&gt;
+&lt;p&gt;What is ratcheting?&lt;/p&gt;
+</summary><content type="html">&lt;blockquote class="highlights"&gt;
+&lt;blockquote&gt;
+&lt;strong&gt;Abstract&lt;/strong&gt;&lt;/blockquote&gt;
+&lt;p&gt;The modelling and simulation of cyclic sand ratcheting is tackled via a plasticity model formulated withinthe well-known critical state, bounding surface SANISAND framework. For this purpose, a third locus –termed ‘memory surface’ – is cast into the constitutive formulation, so as to phenomenologically capturemicro-mechanical, fabric-related processes directly relevant to the cyclic response. The predictive capabilityof the model under numerous loading cycles (‘high-cyclic’ loading) is explored with focus on drainedloading conditions, and validated against experimental test results from the literature – including triaxial,simple shear and oedometer cyclic loading. The model proves capable of reproducing the transition fromratcheting to shakedown response, in combination with a single set of soil parameters for different initial,boundary and loading conditions. This work contributes to the analysis of soil-structure interaction underhigh-cyclic loading events, such as those induced by environmental and/or traffic loads.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+&lt;p&gt;This is the first paper fruit of the on-going collaboration with &lt;a class="reference external" href="https://online-learning.tudelft.nl/instructors/federico-pisano/"&gt;Federico Pisanò&lt;/a&gt; at TU Delft. Here we tackle the problem of formulating a constitutive model, derived from the SAniSand framework by Yannis Dafalias, which can replicate the &lt;em&gt;ratcheting&lt;/em&gt; phenomenon on sands.&lt;/p&gt;
+&lt;p&gt;What is ratcheting?&lt;/p&gt;
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+&lt;p&gt;This is a ratchet! Ratchetin' is what it do.&lt;/p&gt;
+&lt;div class="figure"&gt;
+&lt;img alt="" src="https://www.dropbox.com/s/ksbd0a86m4728wk/ratchet-2.png?raw=1" style="width: 40%;" /&gt;
+&lt;p class="caption"&gt;&lt;em&gt;This is a ratchet. It ratechets.&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;In all seriousness, when soils are subjected to asymmetrical loading, for example because there may be a static shear load acting on it and then it gets shaken, the soil accumulates irrecoverable strain as it cycles. Typical constitutive models predict a constant rate of strain accumulation for this type of loading, and that is what needs to be fixed. Only &lt;em&gt;drained&lt;/em&gt; ratcheting response is pursued here, the &lt;em&gt;undrained&lt;/em&gt; behavior is get its own (already accepted) article (see &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Least_publishable_unit"&gt;this&lt;/a&gt; for more info on this publishing strategy. &lt;em&gt;(joke Fede)&lt;/em&gt;).&lt;/p&gt;
+&lt;p&gt;So, Federico and his great PhD student Haoyuan Liu together with Andrea Diambra at Bristol University integrated the idea of &lt;em&gt;memory surface&lt;/em&gt; (which was applied to granular soils by &lt;a class="reference external" href="https://research-information.bris.ac.uk/en/publications/memory-surface-hardening-model-for-granular-soils-under-repeated-"&gt;Corti and Diambra in 2016&lt;/a&gt;) to extend the SAniSand constitutive and fix this. We affectionately baptized this model &lt;cite&gt;RatchySand&lt;/cite&gt;... a play on the SAniSand origins of the model and ratchyness. We've recently received the blessing of Yannis Dafalias himself to name the model &lt;cite&gt;SAniSand-MS&lt;/cite&gt;, in line with other models that have been developed.&lt;/p&gt;
+&lt;div class="figure"&gt;
+&lt;img alt="" src="https://www.dropbox.com/s/xis1190jcxkv410/ratchy_team.png?raw=1" style="width: 100%;" /&gt;
+&lt;/div&gt;
+&lt;p&gt;The concept of memory surface (MS) is a way to keep track of stress states that the soil has &lt;em&gt;visited&lt;/em&gt; previously, a type of soil fabric effect. When the soil re-visits this area then it should &lt;em&gt;remember&lt;/em&gt; and respond with higher stiffness. Its explained in greater depth in the article, &lt;a class="reference external" href="https://www.researchgate.net/publication/328211282_Modelling_the_cyclic_ratcheting_of_sands_through_memory-enhanced_bounding_surface_plasticity"&gt;go read it to get the best experience&lt;/a&gt;. The main point is that SAniSand's fabric tensor gets replaced with a new formulation based on the MS.&lt;/p&gt;
+&lt;div class="figure"&gt;
+&lt;img alt="The memory surface" src="https://www.dropbox.com/s/sqc6efifafocw2c/fig1-deviatoric.png?raw=1" style="width: 60%;" /&gt;
+&lt;p class="caption"&gt;&lt;em&gt;The memory surface remains within the yield surface which remains within the bounding surface throughout material response. The more surfaces the better.&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;The model adds a few extra parameters to the original formulation, these parameters control the way the memory surface &lt;em&gt;hardens&lt;/em&gt; and expands or contracts, all while ensuring that the yield surface stays within the MS.&lt;/p&gt;
+&lt;div class="figure"&gt;
+&lt;img alt="Calibration" src="https://www.dropbox.com/s/rb6adj20w3qhl1c/fig3-calibration.png?raw=1" style="width: 100%;" /&gt;
+&lt;p class="caption"&gt;&lt;em&gt;Calibration of the new model parameters requires cyclic asymmetric DSS or Drained Triaxial data... for a lot of cycles... many. (Calibration data comes from&lt;/em&gt; &lt;a class="reference external" href="https://www.researchgate.net/publication/282252289_Explicit_Accumulation_Model_for_Non-cohesive_Soils_under_Cyclic_Loading"&gt;Wichtman et. al. 2005&lt;/a&gt; &lt;em&gt;).&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;In this &lt;span class="math"&gt;\(q-\epsilon_a\)&lt;/span&gt; plot the constitutive response is shown to reach a limiting value for increasing number of cycles.&lt;/p&gt;
+&lt;div class="figure"&gt;
+&lt;img alt="Response" src="https://www.dropbox.com/s/clz3s9odnbze3xg/fig2-response.png?raw=1" style="width: 100%;" /&gt;
+&lt;p class="caption"&gt;Response&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;You might be askin: &lt;em&gt;but what did&lt;/em&gt; &lt;strong&gt;you&lt;/strong&gt; &lt;em&gt;do José&lt;/em&gt;. My humble contribution was to implement this constitutive model for general states of stress in &lt;a class="reference external" href="https://opensees.berkeley.edu/"&gt;OpenSees&lt;/a&gt;. For some time I've been in the developer team for OpenSees... which means my portrait appears on the &lt;a class="reference external" href="https://github.com/OpenSees"&gt;OpenSees Project github page&lt;/a&gt; (which is nice).  Anyway, the process of implementing and testing the model on OpenSees gave some nice insights into the model and allowed testing in some uncharted territory of the deviatoric plane. The idea, obviously, is to follow-up with some FEM applications using the power of this new tool. We already have some things to show for this, which are coming up.&lt;/p&gt;
+&lt;p&gt;Just would like to close thanking my collaborators: Federico, Andrea and most especially he who did the hard work Haoyuan. Y'all rock.&lt;/p&gt;
+&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "left",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js','color.js','mhchem.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="Publications"></category><category term="Papers"></category><category term="Constitutive Modeling"></category></entry><entry><title>Large earthquake in Mexico triggers tsunami warnings</title><link href="https://joseabell.com/large-earthquake-in-mexico-triggers-tsunami-warnings-EN.html" rel="alternate"></link><published>2020-06-23T12:23:30-07:00</published><updated>2020-06-23T12:23:30-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-06-23:/large-earthquake-in-mexico-triggers-tsunami-warnings-EN.html</id><summary type="html">
 &lt;blockquote class="twitter-tweet"&gt;&lt;p dir="ltr" lang="en"&gt;The magnitude I gave came from the Tsunami threat record. &lt;a href="https://t.co/2h5dppVLLQ"&gt;pic.twitter.com/2h5dppVLLQ&lt;/a&gt;&lt;/p&gt;— José A. Abell 🇻🇦🇨🇱 (@jose_abell) &lt;a href="https://twitter.com/jose_abell/status/1275464037069991944?ref_src=twsrc%5Etfw"&gt;June 23, 2020&lt;/a&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"&gt;&lt;/script&gt;&lt;/p&gt;
 &lt;!-- PELICAN_BEGIN_SUMMARY --&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
