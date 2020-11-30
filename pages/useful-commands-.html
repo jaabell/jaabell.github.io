@@ -376,7 +376,7 @@ producing a slightly different output</p>
 <h3>IPython Notebook</h3>
 <p>Install pip</p>
 <div class="highlight"><pre><span></span><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="o">-</span><span class="k">get</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">python</span><span class="o">-</span><span class="n">pip</span><span class="w"></span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">ipython</span><span class="w"> </span><span class="c1">--upgrade</span>
+<span class="n">sudo</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">ipython</span><span class="w"> </span><span class="o">--</span><span class="n">upgrade</span><span class="w"></span>
 <span class="n">sudo</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">ipython</span><span class="o">[</span><span class="n">notebook</span><span class="o">]</span><span class="w"></span>
 </pre></div>
 
@@ -499,27 +499,27 @@ should return
 Has nice viewer, apparently. </p>
 <h4>Building and installation</h4>
 <p>From http://hpctoolkit.org/. Checkout both hpctoolkit and hpctoolkit-externalsL:</p>
-<div class="highlight"><pre><span></span><span class="err">svn co http://hpctoolkit.googlecode.com/svn/trunk hpctoolkit</span>
-<span class="err">svn co http://hpctoolkit.googlecode.com/svn/externals hpctoolkit-externals</span>
+<div class="highlight"><pre><span></span><span class="n">svn</span> <span class="n">co</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">hpctoolkit</span><span class="o">.</span><span class="n">googlecode</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">svn</span><span class="o">/</span><span class="n">trunk</span> <span class="n">hpctoolkit</span>
+<span class="n">svn</span> <span class="n">co</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">hpctoolkit</span><span class="o">.</span><span class="n">googlecode</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">svn</span><span class="o">/</span><span class="n">externals</span> <span class="n">hpctoolkit</span><span class="o">-</span><span class="n">externals</span>
 </pre></div>
 
 
 <p>Build externals (prefix set to a local dir):</p>
-<div class="highlight"><pre><span></span><span class="err">cd hpctoolkit-externals</span>
-<span class="err">mkdir BUILD &amp;&amp; cd BUILD</span>
-<span class="err">../configure CC=gcc CXX=g++ --prefix=/home/jaabell/Programs/local/</span>
-<span class="err">make -j 8</span>
-<span class="err">make install</span>
-<span class="err">make clean</span>
+<div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">hpctoolkit</span><span class="o">-</span><span class="n">externals</span>
+<span class="n">mkdir</span> <span class="n">BUILD</span> <span class="o">&amp;&amp;</span> <span class="n">cd</span> <span class="n">BUILD</span>
+<span class="o">../</span><span class="n">configure</span> <span class="n">CC</span><span class="o">=</span><span class="n">gcc</span> <span class="n">CXX</span><span class="o">=</span><span class="n">g</span><span class="o">++</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">jaabell</span><span class="o">/</span><span class="n">Programs</span><span class="o">/</span><span class="n">local</span><span class="o">/</span>
+<span class="n">make</span> <span class="o">-</span><span class="n">j</span> <span class="mi">8</span>
+<span class="n">make</span> <span class="n">install</span>
+<span class="n">make</span> <span class="n">clean</span>
 </pre></div>
 
 
 <p>Build the toolkit. On ubuntu 14.04 libpapi is located on /usr/lib/x86_64-linux-gnu, make links into /usr/lib for this to work. </p>
-<div class="highlight"><pre><span></span><span class="err">cd hpctoolkit</span>
-<span class="err">mkdir BUILD &amp;&amp; cd BUILD</span>
-<span class="err">../configure CC=gcc CXX=g++ MPICXX=mpic++ --prefix=/usr/local --with-externals=/home/jaabell/Programs/local --with-papi=/usr/</span>
-<span class="err">make -j 8</span>
-<span class="err">sudo make install -j 8</span>
+<div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">hpctoolkit</span>
+<span class="n">mkdir</span> <span class="n">BUILD</span> <span class="o">&amp;&amp;</span> <span class="n">cd</span> <span class="n">BUILD</span>
+<span class="o">../</span><span class="n">configure</span> <span class="n">CC</span><span class="o">=</span><span class="n">gcc</span> <span class="n">CXX</span><span class="o">=</span><span class="n">g</span><span class="o">++</span> <span class="n">MPICXX</span><span class="o">=</span><span class="n">mpic</span><span class="o">++</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">externals</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">jaabell</span><span class="o">/</span><span class="n">Programs</span><span class="o">/</span><span class="n">local</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">papi</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span>
+<span class="n">make</span> <span class="o">-</span><span class="n">j</span> <span class="mi">8</span>
+<span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span> <span class="o">-</span><span class="n">j</span> <span class="mi">8</span>
 </pre></div>
 
 
