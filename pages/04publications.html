@@ -131,21 +131,55 @@
 <h2>Journal Articles</h2>
 <p>Click to get details!</p>
 <!---------------------------------------------------------------- 
+Paper10
+------------------------------------------------------------------>
+
+<details>
+<p><summary> [<strong>In review</strong>] 
+<a href="self"><strong>Jose A. Abell.</strong></a>, Jorge G.F. Crempien, Matías Recabarren
+<em><code>ShakerMaker</code>: A framework that simplifies the simulation of seismic ground-motions</em>. SoftwareX
+</summary></p>
+<p><img alt="Fig 1" src="https://www.dropbox.com/s/v7ylof57q5ritmy/fig1.png?raw=1"></p>
+<h4>Abstract</h4>
+<p><code>ShakerMaker</code> is an open-source python framework which simplifies the
+generation of synthetic broad-band seismograms, produced by finite-fault
+kinematic representations of earthquake ruptures, using a 1-D layered model
+of the crust and the frequency-wavenumber (<span class="math">\(f\)</span>–<span class="math">\(k\)</span>) method. It is designed to
+bring closer the engineering seismology and earthquake engineering communi-
+ties, by catering to the earthquake simulation needs of both disciplines. One
+particular goal of this framework is to provide a simple way to produce high-
+fidelity earthquake motions for use with the domain-reduction method, sim-
+plifying the setup of physically accurate finite-element simulations of multi-
+scale seismological and earthquake engineering problems through the use of
+a new specialized file format.
+<code>ShakerMaker</code>’s core is composed of a high-performance Fortran imple-
+mentation of the <span class="math">\(f\)</span>-<span class="math">\(k\)</span> method, that is exposed to the user as a python frame-
+work. Its software architecture emphasizes simplicity, extensibility, and per-
+formance, allowing users to specify complex simulation scenarios with short
+scripts. The message passing interface is used to achieve scalability from
+simple single-processor machines to HPC clusters.</p>
+<p>[PDF] [BLOG]</p>
+</details>
+<!---------------------------------------------------------------- 
 Paper09
 ------------------------------------------------------------------>
 
 <details>
 <p><summary> [<strong>In review</strong>] 
 Francisco Pinto, Christian Ledezma, Rodrigo Astroza, <a href="self"><strong>Jose A. Abell.</strong></a>
-<em>The modeling of vibration energy loss to seismic radiation and its
-contribution to low-amplitude modal damping</em>. Earthquake Engineering and Structural Dynamics. 
+<em>Understanding the loss of vibration energy in buildings to elastic-waves induced in foundation site with high-fidelity finite-element modeling</em>. Journal of Earthquake Engineering. 
 </summary></p>
 <p><img alt="Fig 1" src="https://www.dropbox.com/s/h3w5ghavuftxtb4/fig1.png?raw=1">
 <img alt="Fig 2" src="https://www.dropbox.com/s/2lix2nezgxjmn1i/fig2.png?raw=1"></p>
 <h4>Abstract</h4>
-<p>Modeling energy loss to seismic radiation requires damping out-going waves produced by the soil-structure system at the model boundaries. A simple criterion is proposed to evaluate whether the adopted method for boundary attenuation is adequate. Succinctly, if the out-going seismic waves are adequately silenced, the response of the system should not change if the distance to the boundary changes. Four high-fidelity linear finite-element models of building-site systems, ranging from 20 stories and two underground levels to 50 stories and 7 underground levels and
-having millions of degrees-of-freedom, are developed and simulated in OpenSees to evaluate a proper setup of the absorbent boundary based on the proposed criterion. Then, their step-response is used to evaluate the apparent modal damping accrued by concept of seismic radiation only.</p>
-<p>Apparent modal damping is found to depend on building size and depth of embedment. The tall buildings show as much as 1% damping in their first vibration mode due to seismic radiation and are not very sensitive to number of sub-levels while the shorter buildings show low damping in their first modes but up to 0.5% in their higher modes and are sensitive to depth of embedment.</p>
+<p>The modeling of structural damping due to the excitation of elastic-waves into
+the surrounding soil domain, and its effect on structural response as apparent
+modal damping is explored herein. Four high-fidelity, linear finite-element mod-
+els of building-site systems, with 20 to 50 storeys and 2 to 7 basement levels, are
+simulated in OpenSees to evaluate their frequency response. Radiation-damping is
+provided by a layer of high-damping elements, which design is explored in detail.
+Results show that up to 1% of apparent, low-amplitude damping can be attributed
+to radiation-damping depending on number of stories and depth of embedment.</p>
 <p>[PDF] [BLOG]</p>
 </details>
 <!---------------------------------------------------------------- 
@@ -241,7 +275,7 @@ Paper02
 <p><img alt="Fig 1" src="https://www.dropbox.com/s/e01a725qraknovc/fig-1.png?raw=1">
 <img alt="Fig 2" src="https://www.dropbox.com/s/yknqfvy8ztqnbyl/fig-2.png?raw=1"></p>
 <h4>Abstract</h4>
-<p>Conventional acceleration records do not properly account for the observed coseismic ground displacements, thus leading to an inaccurate definition of the seismic demand needed for the design of flexible (long-period) structures. Large coseismic displacements observed during the Feb 27, 2010, Maule earthquake, suggest that this effect should be included in the design of flexible structures by modifying the design ground-motions and spectra considered. Consequently, Green’s Functions are used herein to compute synthetic low-frequency seismograms that are consistent with the coseismic displacement field obtained from interferometry using synthetic aperture radar images. In this case, the coseismic displacement field was determined by interfering twenty SAR images of the ALOS-PALSAR satellite taken between 10/12/2007 and 05/28/2010. These images cover the region affected by the M w 8.8 2010, Maule earthquake. Synthetic broadband seismograms are built by superimposing the low-pass filtered synthetic low-frequency seismograms with high-frequency strong-motion data. The broadband seismograms generated are then consistent with the coseismic displacement field and the high-frequency content of the earthquake. A sensitivity analysis is performed using three different fault and slip parameters, the rupture velocity, the corner frequency, and the slip rise time. Results show that the optimal corner frequency of the low-pass filter <div class="math">$$f_c = 1/T_c$$</div> , leads to a trade-off between acceleration and displacement accuracy. Furthermore, spectral response for long periods, say <div class="math">$$T \ge 8s$$</div>, is relatively insensitive to the value of <div class="math">$$T_c$$</div> , while shorter periods are strongly dependent on both, the slip rise time and <div class="math">$$T_c$$</div> . In general, larger displacements consistent with coseismic data are obtained using this technique instead of digitally processing the acceleration ground-motion records.</p>
+<p>Conventional acceleration records do not properly account for the observed coseismic ground displacements, thus leading to an inaccurate definition of the seismic demand needed for the design of flexible (long-period) structures. Large coseismic displacements observed during the Feb 27, 2010, Maule earthquake, suggest that this effect should be included in the design of flexible structures by modifying the design ground-motions and spectra considered. Consequently, Green’s Functions are used herein to compute synthetic low-frequency seismograms that are consistent with the coseismic displacement field obtained from interferometry using synthetic aperture radar images. In this case, the coseismic displacement field was determined by interfering twenty SAR images of the ALOS-PALSAR satellite taken between 10/12/2007 and 05/28/2010. These images cover the region affected by the M w 8.8 2010, Maule earthquake. Synthetic broadband seismograms are built by superimposing the low-pass filtered synthetic low-frequency seismograms with high-frequency strong-motion data. The broadband seismograms generated are then consistent with the coseismic displacement field and the high-frequency content of the earthquake. A sensitivity analysis is performed using three different fault and slip parameters, the rupture velocity, the corner frequency, and the slip rise time. Results show that the optimal corner frequency of the low-pass filter <span class="math">\(f_c = 1/T_c\)</span> , leads to a trade-off between acceleration and displacement accuracy. Furthermore, spectral response for long periods, say <span class="math">\(T \ge 8s\)</span>, is relatively insensitive to the value of <span class="math">\(T_c\)</span> , while shorter periods are strongly dependent on both, the slip rise time and <span class="math">\(T_c\)</span> . In general, larger displacements consistent with coseismic data are obtained using this technique instead of digitally processing the acceleration ground-motion records.</p>
 <p>[<a href="https://www.researchgate.net/publication/271386799_Synthetic_Hybrid_Broadband_Seismograms_Based_on_InSAR_Coseismic_Displacements">PDF</a>]
 [[BLOG]]</p>
 </details>
@@ -257,7 +291,7 @@ Paper01
 <img alt="Fig 2" src="https://www.dropbox.com/s/9ts6lp2dkxwzx14/fig-2.png?raw=1">
 <img alt="Fig 3" src="https://www.dropbox.com/s/8fvwddy2cfoq5ia/fig-3.png?raw=1"></p>
 <h4>Abstract</h4>
-<p>Tall buildings and flexible structures require a better characterization of long period ground motion spectra than the one provided by current seismic building codes. Motivated by that, a methodology is proposed and tested to improve recorded and synthetic ground motions which are consistent with the observed co-seismic displacement field obtained from interferometric synthetic aperture radar (InSAR) analysis of image data for the Tocopilla 2007 earthquake (Mw=7.7) in Northern Chile. A methodology is proposed to correct the observed motions such that, after double integration, they are coherent with the local value of the residual displacement. Synthetic records are generated by using a stochastic finite-fault model coupled with a long period pulse to capture the long period fling effect.It is observed that the proposed co-seismic correction yields records with more accurate long-period spectral components as compared with regular correction schemes such as acausal filtering. These signals provide an estimate for the velocity and displacement spectra, which are essential for tall-building design. Furthermore, hints are provided as to the shape of long-period spectra for seismic zones prone to large co-seismic displacements such as the Nazca-South American zone.</p>
+<p>Tall buildings and flexible structures require a better characterization of long period ground motion spectra than the one provided by current seismic building codes. Motivated by that, a methodology is proposed and tested to improve recorded and synthetic ground motions which are consistent with the observed co-seismic displacement field obtained from interferometric synthetic aperture radar (InSAR) analysis of image data for the Tocopilla 2007 earthquake (<span class="math">\(M_w=7.7\)</span>) in Northern Chile. A methodology is proposed to correct the observed motions such that, after double integration, they are coherent with the local value of the residual displacement. Synthetic records are generated by using a stochastic finite-fault model coupled with a long period pulse to capture the long period fling effect.It is observed that the proposed co-seismic correction yields records with more accurate long-period spectral components as compared with regular correction schemes such as acausal filtering. These signals provide an estimate for the velocity and displacement spectra, which are essential for tall-building design. Furthermore, hints are provided as to the shape of long-period spectra for seismic zones prone to large co-seismic displacements such as the Nazca-South American zone.</p>
 <p>[<a href="https://www.researchgate.net/publication/251544639_Enhancement_of_long_period_components_of_recorded_and_synthetic_ground_motions_using_InSAR">PDF</a>]
 [[BLOG]]</p>
 </details>
