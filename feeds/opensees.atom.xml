@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog - OpenSees</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/opensees.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2020-11-30T12:19:44-08:00</updated><entry><title>STKO OpenSees review</title><link href="https://joseabell.com/stko-opensees-review-EN.html" rel="alternate"></link><published>2020-11-30T12:19:44-08:00</published><updated>2020-11-30T12:19:44-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-11-30:/stko-opensees-review-EN.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog - OpenSees</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/opensees.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2020-12-01T11:22:13-08:00</updated><entry><title>Compiling OpenSees 3.2.0 on Ubuntu 20.10: a tutorial and commentary</title><link href="https://joseabell.com/compiling-opensees-320-on-ubuntu-2010-a-tutorial-and-commentary-EN.html" rel="alternate"></link><published>2020-12-01T11:22:13-08:00</published><updated>2020-12-01T11:22:13-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-12-01:/compiling-opensees-320-on-ubuntu-2010-a-tutorial-and-commentary-EN.html</id><summary type="html">
+&lt;p&gt;In this short video I teach you how to compile OpenSees 3.2.0 on Ubuntu Linux 20.10. &lt;/p&gt;
+&lt;div align="left" class="videoWrapper"&gt;
+&lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/esMK3f5G90Y" width="640"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+&lt;p&gt;Compilation is setup with no "bells and whistles", meaning its not optimized in any way
+and does not include any extra features. &lt;/p&gt;
+&lt;p&gt;The history file mentioned in the video can be found &lt;a href="https://www.dropbox.com/s/bcmfjkrxla9n6je/hist.txt?dl=0"&gt;here&lt;/a&gt; and this is the &lt;a href="https://www.dropbox.com/s/gj7sfmqqlz8dhh5/Makefile.def?dl=0"&gt;Makefile.def&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Check out &lt;a href="https://courses.silviasbrainery.com/"&gt;Silvia's Brainery&lt;/a&gt; and &lt;a href="https://portwooddigital.com/"&gt;Michael Scott's blog&lt;/a&gt; for more awesome OpenSees stuff!&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;In this short video I teach you how to compile OpenSees 3.2.0 on Ubuntu Linux 20.10. &lt;/p&gt;
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/esMK3f5G90Y" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;Compilation is setup with no "bells and whistles", meaning its not optimized in any way
+and does not include any extra features. &lt;/p&gt;
+&lt;p&gt;The history file mentioned in the video can be found &lt;a href="https://www.dropbox.com/s/bcmfjkrxla9n6je/hist.txt?dl=0"&gt;here&lt;/a&gt; and this is the &lt;a href="https://www.dropbox.com/s/gj7sfmqqlz8dhh5/Makefile.def?dl=0"&gt;Makefile.def&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Check out &lt;a href="https://courses.silviasbrainery.com/"&gt;Silvia's Brainery&lt;/a&gt; and &lt;a href="https://portwooddigital.com/"&gt;Michael Scott's blog&lt;/a&gt; for more awesome OpenSees stuff!&lt;/p&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="tutorial"></category><category term="compilation"></category><category term="linux"></category><category term="YouTube"></category></entry><entry><title>STKO OpenSees review</title><link href="https://joseabell.com/stko-opensees-review-EN.html" rel="alternate"></link><published>2020-11-30T12:19:44-08:00</published><updated>2020-11-30T12:19:44-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-11-30:/stko-opensees-review-EN.html</id><summary type="html">
 &lt;blockquote class="twitter-tweet"&gt;&lt;p dir="ltr" lang="en"&gt;A created a short &lt;a href="https://twitter.com/hashtag/review?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#review&lt;/a&gt; of STKO: a pre/post processor for &lt;a href="https://twitter.com/hashtag/OpenSees?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#OpenSees&lt;/a&gt; which I think is really cool and brings fresh new stuff into OpenSees to benefit all. &lt;a href="https://t.co/EnMAVAnRya"&gt;https://t.co/EnMAVAnRya&lt;/a&gt;&lt;/p&gt;— José Antonio Abell (@RealJoseAbell) &lt;a href="https://twitter.com/RealJoseAbell/status/1333422948607287297?ref_src=twsrc%5Etfw"&gt;November 30, 2020&lt;/a&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"&gt;&lt;/script&gt;&lt;/p&gt;
 &lt;!-- PELICAN_BEGIN_SUMMARY --&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
