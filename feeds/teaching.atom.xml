@@ -1,5 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog - Teaching</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/teaching.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2016-11-22T14:55:42-08:00</updated><entry><title>Finite Elements for Shallow Water Equations</title><link href="https://joseabell.com/posts/2016/finite-elements-for-shallow-water-equations.html" rel="alternate"></link><published>2016-11-22T14:55:42-08:00</published><updated>2016-11-22T14:55:42-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2016-11-22:/posts/2016/finite-elements-for-shallow-water-equations.html</id><summary type="html">&lt;div class="videoWrapper" align="left"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog - Teaching</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/teaching.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2020-12-11T09:31:34-08:00</updated><entry><title>Temas de Magister/Memoria 2021</title><link href="https://joseabell.com/temas-de-magistermemoria-2021-ES.html" rel="alternate"></link><published>2020-12-11T09:31:34-08:00</published><updated>2020-12-11T09:31:34-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-12-11:/temas-de-magistermemoria-2021-ES.html</id><summary type="html">
+&lt;p&gt;Al final de la licenciatura el alumno UANDES debe comenzar a considerar si extenderá su carrera con un magister de continuidad o cerrará con un proyecto de título. En cualquier caso se deben considerar posibles temas a estudiar en esta etapa. &lt;/p&gt;
+&lt;p&gt;Esta es mi oferta de temas de magister o proyecto de título. Para más detalles y/o ayuda a discernir esta etapa, no dudes en contactarme directamente para conversar y aclarar dudas. &lt;/p&gt;
+&lt;h2&gt;Magister&lt;/h2&gt;
+&lt;p&gt;Se busca alumno de Magister para el siguiente tema:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;"Modelación de alta-fidelidad para análisis de ciclo de vida de puentes chilenos"&lt;/em&gt;&lt;/p&gt;
+&lt;!-- ![Modelo FEM de un puente](https://www.dropbox.com/s/yk1b6j9ylfnfy54/Bridge_FEM.png?raw=1) --&gt;
+&lt;div class="responsive-image"&gt;
+&lt;img src="https://www.dropbox.com/s/yk1b6j9ylfnfy54/Bridge_FEM.png?raw=1"/&gt;
+&lt;/div&gt;
+</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;Al final de la licenciatura el alumno UANDES debe comenzar a considerar si extenderá su carrera con un magister de continuidad o cerrará con un proyecto de título. En cualquier caso se deben considerar posibles temas a estudiar en esta etapa. &lt;/p&gt;
+&lt;p&gt;Esta es mi oferta de temas de magister o proyecto de título. Para más detalles y/o ayuda a discernir esta etapa, no dudes en contactarme directamente para conversar y aclarar dudas. &lt;/p&gt;
+&lt;h2&gt;Magister&lt;/h2&gt;
+&lt;p&gt;Se busca alumno de Magister para el siguiente tema:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;"Modelación de alta-fidelidad para análisis de ciclo de vida de puentes chilenos"&lt;/em&gt;&lt;/p&gt;
+&lt;!-- ![Modelo FEM de un puente](https://www.dropbox.com/s/yk1b6j9ylfnfy54/Bridge_FEM.png?raw=1) --&gt;
+
+&lt;div class="responsive-image"&gt;
+&lt;img src="https://www.dropbox.com/s/yk1b6j9ylfnfy54/Bridge_FEM.png?raw=1" /&gt;
+&lt;/div&gt;
+
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+&lt;p&gt;En esta investigación se utilizarán herramientas de simulación estructural avanzadas para construir modelos no-lineales dinámicos de un puente chileno. Este modelo incorporará la capacidad de predecir daño en elementos estructurales de hormigón armado para distintos niveles de degradación por corrosión. Además se modelarará en detalle la interacción suelo-estructura en cepas y pilotes de fundación, incorporando una modelación simplificada de la posibilidad de socavación por crecidas de río. Finalmente, se someterá el modelo a simulaciones transientes para determinar la capacidad de &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Hay financiamiento FONDECYT para pagar matrícula o estipendio&lt;/strong&gt;. Se busca un alumno con aptitudes para programar, capaz de usar Linux (o muchas ganas de aprender) y un interés por la simulación avanzada en ingeniería estructural y el uso de computación de alto desempeño. &lt;/p&gt;
+&lt;h2&gt;Memorias&lt;/h2&gt;
+&lt;p&gt;Se ofrecen los siguientes temas:&lt;/p&gt;
+&lt;h3&gt;TEMA01: Desarrollo de un amortiguador friccional en base a impresión 3-D.&lt;/h3&gt;
+&lt;div class="responsive-image"&gt;
+&lt;img src="https://www.dropbox.com/s/46c7cnhcoxiw1tt/tema1.png?raw=1" /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Este tema mezcla modelación e impresión 3-D con simulación numérica para realizar el diseño de un dispositivo de disipación de energía friccional. Se continúa el trabajo de Joaquín Andreani en el tema. &lt;/p&gt;
+&lt;h3&gt;TEMA02: Modelación y simulación de colapso de represas por desbordamiento.&lt;/h3&gt;
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/V71YppdE0eE" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;En un estudio anterior (Magister Nicolás Galano), se desarrolló una extensión al programa de elementos finitos OpenSees que permite simular explícitamente el proceso de socavación. Ahora, se busca aplicar este programa en la simulación del colapso de represas por desbordamiento. &lt;/p&gt;
+&lt;h3&gt;TEMA03: Análisis de agrietamiento térmico de hormigones masivos&lt;/h3&gt;
+&lt;div class="responsive-image"&gt;
+&lt;img src="https://www.dropbox.com/s/arm8eh21g74eypx/tema3.png?raw=1" /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Este tema mezcla adquisición de datos experimentales usando sensores y placas Raspberri Pi y simulación numérica para estudiar el tema de agrietamiento térmico en hormigones. Se continúa el trabajo de Álvaro Contreras y José Tomás Arteaga, extendiendolo al problema de predicción de agrietamiento.&lt;/p&gt;</content><category term="Teaching"></category><category term="teaching"></category><category term="temas de memoria"></category><category term="alumnos"></category></entry><entry><title>Finite Elements for Shallow Water Equations</title><link href="https://joseabell.com/posts/2016/finite-elements-for-shallow-water-equations.html" rel="alternate"></link><published>2016-11-22T14:55:42-08:00</published><updated>2016-11-22T14:55:42-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2016-11-22:/posts/2016/finite-elements-for-shallow-water-equations.html</id><summary type="html">&lt;div class="videoWrapper" align="left"&gt;
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/ghdvW-2XzKA" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 
