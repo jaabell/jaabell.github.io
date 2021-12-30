@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>New 2021 additions to OpenSees</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content="jaabell" />
+    <meta name="description" content="2021 has almost gone, I haven't written on my blog almost all year, but there has been progress! I've made a bunch of small contributions this year to OpenSees (see all contributions here) but two big ones: a new material model for high-cyclic analysis of sands (SANISAND-MS with my collaborators at TU Delft, NGI and Bristol, see here) and added isogeometric analysis (IGA) of shells capabilities. This last contribution is very recent and is still (as of writing this) in pull request mode. I'll let some time pass, for possible review, before I definitely merge into main OpenSees." />
+    <meta name="keywords" content="OpenSees, additions, materials, IGA">
+<!-- Facebook and Twitter integration -->
+<meta property="og:site_name" content="Jose Abells Reasearch Blog"/>
+<meta property="og:title" content="New 2021 additions to OpenSees"/>
+<meta property="og:description" content="2021 has almost gone, I haven't written on my blog almost all year, but there has been progress! I've made a bunch of small contributions this year to OpenSees (see all contributions here) but two big ones: a new material model for high-cyclic analysis of sands (SANISAND-MS with my collaborators at TU Delft, NGI and Bristol, see here) and added isogeometric analysis (IGA) of shells capabilities. This last contribution is very recent and is still (as of writing this) in pull request mode. I'll let some time pass, for possible review, before I definitely merge into main OpenSees."/>
+<meta property="og:url" content="https://joseabell.com/new-2021-additions-to-opensees-EN.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2021-12-28 17:45:29-08:00"/>
+<meta property="article:modified_time" content="2021-12-28 17:45:29-08:00"/>
+<meta property="article:author" content="https://joseabell.com/author/jaabell.html">
+<meta property="article:section" content="OpenSees"/>
+    <meta property="article:tag" content="OpenSees"/>
+    <meta property="article:tag" content="additions"/>
+    <meta property="article:tag" content="materials"/>
+    <meta property="article:tag" content="IGA"/>
+    <meta property="og:image" content="/images/sitelogo.svg">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/icomoon.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/bootstrap.css">
+    <!-- Flexslider  -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/flexslider.css">
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/style.css">
+    <!-- Custom style  -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/custom.css">
+    <!-- pygments code highlight -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/pygments.css">
+    <!-- tipue search -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/tipuesearch/css/tipuesearch.css">
+    <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" > -->
+    <script src="https://kit.fontawesome.com/2dfe6f2f70.js" crossorigin="anonymous"></script>
+
+
+    <!-- Modernizr JS -->
+    <script src="https://joseabell.com/theme/js/modernizr-2.6.2.min.js"></script>
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+    <script src="/theme/js/respond.min.js"></script>
+    <![endif]-->
+        <link href="https://joseabell.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Jose Abells Reasearch Blog Atom">
+
+
+
+
+    </head>
+    <body>
+    <!-- Uncomment for fun -->
+    <!-- <marquee bgcolor="red" height="50px" style="color:yellow;font-size:30px;"> OMG COVID--19 ALERT TAKE COVER ALL!!! </marquee> -->
+    <div id="fh5co-page">
+        <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+        <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
+
+
+            <nav class="fh5co-main-menu" role="navigation">
+            </nav>
+
+
+            
+            <div class="clearfix"></div>
+            <h1  id="fh5co-logo">
+                <a href="https://joseabell.com/index.html">
+                    <img src="/images/sitelogo.svg" />
+                </a>
+            </h1>
+
+
+            <nav class="fh5co-main-menu" role="navigation">
+
+<ul>
+    <!-- home link -->
+    <li><a href="https://joseabell.com/">Home</a></li>
+
+    <!-- page links -->
+            <li><a href="https://joseabell.com/pages/01about.html">About</a></li>
+            <li><a href="https://joseabell.com/pages/04publications.html">Publications</a></li>
+            <li><a href="https://joseabell.com/pages/05tools.html">Tools</a></li>
+
+    <!-- categories -->
+        <li><a href="https://joseabell.com/categories.html">Categories</a></li>
+
+    <!-- tags -->
+        <li><a href="https://joseabell.com/tags.html">Tags</a></li>
+
+    <!-- additional menu items from config -->
+
+</ul><!--                 <ul><li><form id="searchform" action="https://joseabell.com/search.html">
+    <input id="tipue_search_input" data-siteurl="https://joseabell.com" type="text" size="60" class="form-control search-field" name="q">
+
+    <button type="submit" class="btn btn-primary search-submit"><i class="icon-search4"></i></button>
+</form></li></ul> -->
+
+
+
+<ul id="social"><li>
+            <li><a href="https://www.github.com/jaabell" alt="Github"><i class="fab fa-github fa-2x"></i></a></li>
+            <li><a href="https://www.youtube.com/user/eivelinsar" alt="Youtube"><i class="fab fa-youtube fa-2x"></i></a></li>
+
+            <li><a href="https://www.researchgate.net/profile/Jose_Abell/" alt="researchgate"><i class="fab fa-researchgate fa-2x"></i></a></li>
+
+</li>
+</ul>            
+            <ul id="map">
+                <li>
+                Visitors come from
+                <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=b3b3b3&w=250&t=n&d=XCjx4HKZp-atwA8u2pe4wbQt9_6FCkYMlpMpnxG6qMU&co=f5f5f5&cmo=027aae&cmn=a03338&ct=808080"></script>
+                </li>
+            </ul>
+            </nav>
+
+        </aside>
+
+        <div id="fh5co-main">
+
+    <div class="fh5co-narrow-content article-content">
+        <h1 class="fh5co-heading-colored">New 2021 additions to OpenSees</h1>
+
+        <div>by
+                <a href="author/jaabell.html">jaabell</a> - Tue, 28 Dec 2021
+        </div>
+
+            <div><span>Tags: </span>
+                    <span><a href="https://joseabell.com/tag/opensees.html">#OpenSees</a> </span>
+                    <span><a href="https://joseabell.com/tag/additions.html">#additions</a> </span>
+                    <span><a href="https://joseabell.com/tag/materials.html">#materials</a> </span>
+                    <span><a href="https://joseabell.com/tag/iga.html">#IGA</a> </span>
+            </div>
+
+        <div class="animate-box" data-animate-effect="fadeInLeft">
+            <p class="animate-box" data-animate-effect="fadeInLeft"><!-- PELICAN_BEGIN_SUMMARY -->
+
+<p>2021 has almost gone, I haven't written on my blog almost all year, but there has been progress! I've made a bunch of small contributions this year to OpenSees (see all contributions <a href="https://github.com/jaabell/OpenSees/commits?author=jaabell">here</a>) but two big ones: a new material model for high-cyclic analysis of sands (SANISAND-MS with my collaborators at TU Delft, NGI and Bristol, see <a href="https://opensees.github.io/OpenSeesDocumentation/user/manual/material/ndMaterials/SAniSandMS.html">here</a>) and added isogeometric analysis (IGA) of shells capabilities. This last contribution is very recent and is still (as of writing this) in <a href="https://github.com/OpenSees/OpenSees/pull/751">pull request</a> mode. I'll let some time pass, for possible review, before I definitely merge into main OpenSees. </p>
+<div class="responsive-image">
+<img src="https://www.dropbox.com/s/yze9aihu4xg742f/fig-07.png?raw=1" / alt="Really large deformations!">
+</div>
+
+<!-- PELICAN_END_SUMMARY -->
+
+<p>Briefly, IGA uses <a href="https://en.wikipedia.org/wiki/Non-uniform_rational_B-spline">NURBS</a> as a functional basis instead of regular polynomials. NURBS is a well developed CAD technology that allows very smooth modeling of lines, surfaces and volumes. Because in continuum mechanics we use lots of derivatives of the main solution field (strains, stresses come from derivatives of the displacement field) this smoothness is an advantage over regular FEM in that you can ensure inter-element continuity of these fields. This, in turn, produces some nice convergence properties. </p>
+<p>In the figure above, we can see that IGA allows for large deformation modeling. Shown is the "pinched cylinder" benchmark case. You can see we replicate a reference solution with accuracy. </p>
+<p>Anyway, like any new technology there are trade-offs to keep in mind. In IGA there are two nice features of FEM which are lost: first, the concept of element and, second, the interpolatory property for nodal values. </p>
+<p>In the first issue, the higher continuity attained by the NURBS basis is obtained by "overlaping" elements for continuity order 2 and above. Thus, in IGA one is more preoccupied with "patches" of elements, which for all intents and purposes can be thought of as a regular finite element with a variable (large) number of nodes which is mapped onto a rectangular parent domain. </p>
+<p>Regarding the second issue, lets use a picture</p>
+<div class="responsive-image">
+<img src="https://www.dropbox.com/s/frojrd80mp5q683/fig-01.png?raw=1" / alt="NURBS in general are not interpolatory. :/">
+</div>
+
+<p>Shown is a standard cantilever beam modeled as a single "patch" of IGA "elements", with a tip load and solved using the new OpenSees capabilities (see script <a href="https://github.com/jaabell/OpenSees-IGA-Examples/blob/master/KLShell/igaCantilever.py">here</a>). Depending on the order of continuity you can have 2 elements (order 2) or 1 element (order 3) in the longitudinal direction, whereas order is 1 in the transverse direction. You can see the <em>control points</em> (terminology for nodes in IGA) do not belong to the surface, except at the edges of the patch. Depending on specific details, not even the patch edges are generally included in the surface. The DOFs at the control points are the displacements of the control points, which uniquely describe the shape of the surface. The other thing to note is that two rows of control points are fixed. This is to enforce the no-rotation (clamped) boundary condition at the left edge. The shell formulation used is a Kirchoff-Love formulation which only has displacements at the control points as DOFS (no rotations). This can take a bit getting used to if you do classical shell analysis where elements have 6 DOFS (3 displacements and 3 rotations) at each node. Oh, by the way, that is not an amplified deformed shape, e.g. those are real displacements... </p>
+<p>Another annoying thing about IGA is that if you want to do anything more complex (or you want a better mesh) you'll need several patches. If the edge nodes are interpolatory (as is assumed in the OpenSees implementation for shells), then only C0 continuity is available across patches, which means you have to do some tricks to guarantee bending stiffness across patch boundaries. More on this in a future video I hope. </p>
+<p>For now, I'll wrap up with more pics of large deformation, highly-nonlinear, snappy-throughy analysis cases whet your appetite for IGA. All can be found in the examples repo (<a href="https://github.com/jaabell/OpenSees-IGA-Examples/blob/master/KLShell">here</a>) if you're patient. </p>
+<div class="responsive-image">
+<img src="https://www.dropbox.com/s/oobjk7ugj2syu4t/fig-09.png?raw=1" / alt="Laaaaarge displacements! :)">
+</div>
+
+<div class="responsive-image">
+<img src="https://www.dropbox.com/s/uth3fv0zyqzhil4/fig-11.png?raw=1" / alt="We implemented this for composite analysis, so orthotropic variable orientation layups are possible.">
+</div>
+
+<div class="responsive-image">
+<img src="https://www.dropbox.com/s/0mzy08bdfpw675r/fig-10.png?raw=1" / alt="And we do have some benchmarks to show that we did a good job! ;)">
+</div></p>
+        </div>
+    </div>
+
+<div class="fh5co-narrow-content">
+<div class="animate-box" data-animate-effect="fadeInLeft">
+    <h2><!-- <i class="icon-speech-bubble"></i>  -->Comments</h2>
+</div>
+<div class="animate-box" data-animate-effect="fadeInLeft">
+    <div id="disqus_thread"></div>
+</div>
+
+<!-- <script>
+var disqus_config = function () { 
+  this.language = "en";
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript><a href="https://disqus.com/?ref_noscript">Please enable JavaScript to view the comments powered by Disqus.</a></noscript> -->
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+// var disqus_config = function () {
+// this.page.url = www.joseabell.com;  // Replace PAGE_URL with your page's canonical URL variable
+// this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+// };
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://joseabell.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://joseabell.com/theme/js/jquery.min.js"></script>
+    <!-- jQuery Easing -->
+    <script src="https://joseabell.com/theme/js/jquery.easing.1.3.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://joseabell.com/theme/js/bootstrap.min.js"></script>
+    <!-- Waypoints -->
+    <script src="https://joseabell.com/theme/js/jquery.waypoints.min.js"></script>
+    <!-- Flexslider -->
+    <script src="https://joseabell.com/theme/js/jquery.flexslider-min.js"></script>
+
+    
+
+    <!-- MAIN JS -->
+    <script src="https://joseabell.com/theme/js/main.js"></script>
+    <script id="dsq-count-scr" src="//joseabell.disqus.com/count.js" async></script>
+    
+    </body>
+</html>
