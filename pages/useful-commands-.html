@@ -128,150 +128,125 @@
 <p>[TOC]</p>
 <h2>Linux Management</h2>
 <p>To use find to remove files</p>
-<div class="highlight"><pre><span></span><span class="err">find . -name &quot;*.o&quot; -exec rm {} \;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nv">find</span> . <span class="o">-</span><span class="nv">name</span> <span class="s2">&quot;</span><span class="s">*.o</span><span class="s2">&quot;</span> <span class="o">-</span><span class="k">exec</span> <span class="nv">rm</span> {} \<span class="c1">;</span>
+</code></pre></div>
 
 <p>To find and delete files matching a criteria but not another</p>
-<div class="highlight"><pre><span></span><span class="err">find . -depth -name &quot;*.pdf&quot; -prune -not -name &quot;*graded.pdf&quot; -delete</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>find . -depth -name &quot;*.pdf&quot; -prune -not -name &quot;*graded.pdf&quot; -delete
+</code></pre></div>
 
 <p>From: <a href="http://rushi.wordpress.com/2008/08/05/find-replace-across-multiple-files-in-linux/">rushi.wordpress.com/2008/08/05/find-replace-across-multiple-files-in-linux/</a>)</p>
-<div class="highlight"><pre><span></span><span class="err">find . -name &quot;*.cpp&quot; -print | xargs sed -i &#39;s/jose/jaabell/g&#39;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>find . -name &quot;*.cpp&quot; -print | xargs sed -i &#39;s/jose/jaabell/g&#39;
+</code></pre></div>
 
 <p>Find recently changed files</p>
-<div class="highlight"><pre><span></span><span class="err">find -mtime 0 -type f -print</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>find -mtime 0 -type f -print
+</code></pre></div>
 
 <p>Find where apt-get installs things</p>
-<div class="highlight"><pre><span></span><span class="err">sudo dpkg -L packagename</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>sudo dpkg -L packagename
+</code></pre></div>
 
 <p>Killing a screen session</p>
-<div class="highlight"><pre><span></span><span class="err">screen -X -S [session # you want to kill] quit</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>screen -X -S [session # you want to kill] quit
+</code></pre></div>
 
 <p>Deleting lines from file matching a criteria</p>
-<div class="highlight"><pre><span></span><span class="err">sed &#39;/pattern to match/d&#39; ./infile</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>sed &#39;/pattern to match/d&#39; ./infile
+</code></pre></div>
 
 <p>Control volume from command line</p>
-<div class="highlight"><pre><span></span><span class="err">amixer -D pulse sset Master 100%</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>amixer -D pulse sset Master 100%
+</code></pre></div>
 
 <p>Find and delete all broken symlinks in a folder</p>
-<div class="highlight"><pre><span></span><span class="err">find . -xtype l -delete</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>find . -xtype l -delete
+</code></pre></div>
 
 <p>List folders by space utilized</p>
-<div class="highlight"><pre><span></span><span class="err">du -hs * | sort -h</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>du -hs * | sort -h
+</code></pre></div>
 
 <h2>Networking</h2>
 <p>Setting IP address from Command Line:</p>
-<div class="highlight"><pre><span></span><span class="err">sudo ifconfig eth0   192.168.0.1 netmask 255.255.255.0</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>sudo ifconfig eth0   192.168.0.1 netmask 255.255.255.0
+</code></pre></div>
 
 <h2>Linux system setup</h2>
 <h3>Printer</h3>
 <p>Don't use gnome app, simply use</p>
-<div class="highlight"><pre><span></span><span class="err">system-config-printer</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>system-config-printer
+</code></pre></div>
 
 <p>View printing queue from command line</p>
-<div class="highlight"><pre><span></span><span class="err">lpq</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>lpq
+</code></pre></div>
 
 <p>Cancel a job</p>
-<div class="highlight"><pre><span></span><span class="err">lprm</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>lprm
+</code></pre></div>
 
 <p>Encrypt and decrypt files</p>
-<div class="highlight"><pre><span></span><span class="err">Encrypt</span>
-<span class="err">  openssl enc -aes-256-cbc -e &gt; out.tar.gz.enc</span>
-<span class="err">Decrypt</span>
-<span class="err">  openssl enc aes-256-cbc -d -in out.tar.gz.enc | tar xz</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>Encrypt
+  openssl enc -aes-256-cbc -e &gt; out.tar.gz.enc
+Decrypt
+  openssl enc aes-256-cbc -d -in out.tar.gz.enc | tar xz
+</code></pre></div>
 
 <h2>Git Management</h2>
 <p>Create and checkout a local branch and set it up to track a remote branch</p>
-<div class="highlight"><pre><span></span><span class="err">git checkout -b master -t origin/master</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git checkout -b master -t origin/master
+</code></pre></div>
 
 <p>Where <code>origin/master</code> is a remote branch.</p>
 <p>Git history cleanup:</p>
-<div class="highlight"><pre><span></span><span class="err">git gc --aggressive</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git gc --aggressive
+</code></pre></div>
 
 <p>Adding a branch</p>
-<div class="highlight"><pre><span></span><span class="err">git push &lt;remote-name&gt; &lt;branch-name&gt;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git push &lt;remote-name&gt; &lt;branch-name&gt;
+</code></pre></div>
 
 <p>Formally git push <remote-name> <local-branch-name>:<remote-branch-name>
 But when you omit one, it assumes both names are the same. Do:</p>
-<div class="highlight"><pre><span></span><span class="err">git push -u &lt;remote-name&gt; &lt;branch-name&gt;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git push -u &lt;remote-name&gt; &lt;branch-name&gt;
+</code></pre></div>
 
 <p>So that a subsequent git pull will know what to do (set upstream tracking)</p>
 <p>Setting up a non-empty folder to be a git repo</p>
-<div class="highlight"><pre><span></span><span class="err">cd &lt;localdir&gt;</span>
-<span class="err">git init</span>
-<span class="err">git add .</span>
-<span class="err">git commit -m &#39;message&#39;</span>
-<span class="err">git remote add origin &lt;url&gt;</span>
-<span class="err">git push -u origin master</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>cd &lt;localdir&gt;
+git init
+git add .
+git commit -m &#39;message&#39;
+git remote add origin &lt;url&gt;
+git push -u origin master
+</code></pre></div>
 
 <p>Setting up upstream in GitHub</p>
-<div class="highlight"><pre><span></span><span class="err">git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY
+</code></pre></div>
 
 <p>Verify</p>
-<div class="highlight"><pre><span></span><span class="err">git remote -v</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git remote -v
+</code></pre></div>
 
 <h2>SSH Tricks</h2>
 <h3>Shutdown a frozen SSH session. Press :</h3>
-<div class="highlight"><pre><span></span><span class="k">[Enter]</span>
-<span class="na">~</span>
-<span class="na">.</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="k">[Enter]</span><span class="w"></span>
+<span class="na">~</span><span class="w"></span>
+<span class="na">.</span><span class="w"></span>
+</code></pre></div>
 
 <p>Proceed to resume happyness.</p>
 <h3>Tunnelling all traffic through SSH tunnel</h3>
 <p>Use <code>sshuttle</code>. </p>
-<div class="highlight"><pre><span></span><span class="err">sshuttle -r essi 0/0 -vv</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>sshuttle -r essi 0/0 -vv
+</code></pre></div>
 
 <h2>Managing gitolite</h2>
 <p>Checkout the gitolite admin repo:</p>
-<div class="highlight"><pre><span></span><span class="err">git clone git@powa:gitolite-admin gadmin</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="n">git</span><span class="nv">@powa</span><span class="err">:</span><span class="n">gitolite</span><span class="o">-</span><span class="k">admin</span><span class="w"> </span><span class="n">gadmin</span><span class="w"></span>
+</code></pre></div>
 
 <p>To add a user SSH key do the following:</p>
 <ul>
@@ -285,17 +260,15 @@ But when you omit one, it assumes both names are the same. Do:</p>
 </li>
 <li>
 <p>Stage it and commit it</p>
-<div class="highlight"><pre><span></span><span class="err">git add . </span>
-<span class="err">git commit -m &quot;message&quot;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git add . 
+git commit -m &quot;message&quot;
+</code></pre></div>
 
 </li>
 <li>
 <p>Push to the gitolite repo</p>
-<div class="highlight"><pre><span></span><span class="err">git push</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git push
+</code></pre></div>
 
 </li>
 </ul>
@@ -306,10 +279,9 @@ But when you omit one, it assumes both names are the same. Do:</p>
 </li>
 <li>
 <p>Make changes, commit and push</p>
-<div class="highlight"><pre><span></span><span class="err">git commit -am &quot;message&quot;</span>
-<span class="err">git push</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git commit -am &quot;message&quot;
+git push
+</code></pre></div>
 
 </li>
 </ul>
@@ -317,18 +289,16 @@ But when you omit one, it assumes both names are the same. Do:</p>
 <ul>
 <li>
 <p>Remember to use:</p>
-<div class="highlight"><pre><span></span><span class="err">ssh (myusername)@powa.engr.ucdavis.edu</span>
-<span class="err">su git  [input the typical CompGeoMech password]</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">ssh</span><span class="w"> </span><span class="p">(</span><span class="n">myusername</span><span class="p">)</span><span class="nv">@powa</span><span class="p">.</span><span class="n">engr</span><span class="p">.</span><span class="n">ucdavis</span><span class="p">.</span><span class="n">edu</span><span class="w"></span>
+<span class="n">su</span><span class="w"> </span><span class="n">git</span><span class="w">  </span><span class="o">[</span><span class="n">input the typical CompGeoMech password</span><span class="o">]</span><span class="w"></span>
+</code></pre></div>
 
 </li>
 <li>
 <p>Make some changes and then </p>
-<div class="highlight"><pre><span></span><span class="err">gl-setup</span>
-<span class="err">gl-admin-push</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>gl-setup
+gl-admin-push
+</code></pre></div>
 
 </li>
 </ul>
@@ -343,124 +313,107 @@ But when you omit one, it assumes both names are the same. Do:</p>
 <h2>Python cool stuff</h2>
 <h3>Iteration awesomeness.</h3>
 <p>Define,</p>
-<div class="highlight"><pre><span></span><span class="err">a = [&#39;a1&#39;, &#39;a2&#39;, &#39;a3&#39;]</span>
-<span class="err">b = [&#39;b1&#39;, &#39;b2&#39;]</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>a = [&#39;a1&#39;, &#39;a2&#39;, &#39;a3&#39;]
+b = [&#39;b1&#39;, &#39;b2&#39;]
+</code></pre></div>
 
 <p>will iterate 3 times, the last iteration, b will be None.</p>
-<div class="highlight"><pre><span></span><span class="err">print &quot;Map:&quot;</span>
-<span class="err">for x, y in map(None, a, b):</span>
-<span class="err">  print x, y</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nv">print</span> <span class="s2">&quot;</span><span class="s">Map:</span><span class="s2">&quot;</span>
+<span class="k">for</span> <span class="nv">x</span>, <span class="nv">y</span> <span class="nv">in</span> <span class="nv">map</span><span class="ss">(</span><span class="nv">None</span>, <span class="nv">a</span>, <span class="nv">b</span><span class="ss">)</span>:
+  <span class="nv">print</span> <span class="nv">x</span>, <span class="nv">y</span>
+</code></pre></div>
 
 <p>will iterate 2 times,
 the third value of a will not be used</p>
-<div class="highlight"><pre><span></span><span class="err">print &quot;Zip:&quot;</span>
-<span class="err">for x, y in zip(a, b):</span>
-<span class="err">  print x, y</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nv">print</span> <span class="s2">&quot;</span><span class="s">Zip:</span><span class="s2">&quot;</span>
+<span class="k">for</span> <span class="nv">x</span>, <span class="nv">y</span> <span class="nv">in</span> <span class="nv">zip</span><span class="ss">(</span><span class="nv">a</span>, <span class="nv">b</span><span class="ss">)</span>:
+  <span class="nv">print</span> <span class="nv">x</span>, <span class="nv">y</span>
+</code></pre></div>
 
 <p>will iterate 6 times,
 it will iterate over each b, for each a
 producing a slightly different output</p>
-<div class="highlight"><pre><span></span><span class="err">print &quot;List:&quot;</span>
-<span class="err">for x, y in [(x,y) for x in a for y in b]:</span>
-<span class="err">    print x, y</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nv">print</span> <span class="s2">&quot;</span><span class="s">List:</span><span class="s2">&quot;</span>
+<span class="k">for</span> <span class="nv">x</span>, <span class="nv">y</span> <span class="nv">in</span> [<span class="ss">(</span><span class="nv">x</span>,<span class="nv">y</span><span class="ss">)</span> <span class="k">for</span> <span class="nv">x</span> <span class="nv">in</span> <span class="nv">a</span> <span class="k">for</span> <span class="nv">y</span> <span class="nv">in</span> <span class="nv">b</span>]:
+    <span class="nv">print</span> <span class="nv">x</span>, <span class="nv">y</span>
+</code></pre></div>
 
 <h3>IPython Notebook</h3>
 <p>Install pip</p>
-<div class="highlight"><pre><span></span><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="o">-</span><span class="k">get</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">python</span><span class="o">-</span><span class="n">pip</span><span class="w"></span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">ipython</span><span class="w"> </span><span class="c1">--upgrade</span>
+<div class="highlight"><pre><span></span><code><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="o">-</span><span class="k">get</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">python</span><span class="o">-</span><span class="n">pip</span><span class="w"></span>
+<span class="n">sudo</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">ipython</span><span class="w"> </span><span class="o">--</span><span class="n">upgrade</span><span class="w"></span>
 <span class="n">sudo</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">ipython</span><span class="o">[</span><span class="n">notebook</span><span class="o">]</span><span class="w"></span>
-</pre></div>
-
+</code></pre></div>
 
 <h3>IPython Notebook server</h3>
 <h4>Installation</h4>
-<div class="highlight"><pre><span></span><span class="err">sudo apt-get install ipython-notebook</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>sudo apt-get install ipython-notebook
+</code></pre></div>
 
 <h4>Setup</h4>
-<div class="highlight"><pre><span></span><span class="n">ipython</span>
+<div class="highlight"><pre><span></span><code><span class="n">ipython</span>
 <span class="kn">from</span> <span class="nn">IPython.lib</span> <span class="kn">import</span> <span class="n">passwd</span>
 <span class="n">passwd</span><span class="p">()</span>
 
 <span class="c1">#Enter passwd</span>
 <span class="c1">#u&#39;sha1:e6356b6e0ee8:1906d7f56995bc18925c4af976ac3a588bc10913&#39;</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Create an SSL certificate to encrypt session
     openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem</p>
 <p>Edit <code>ipython_notebook_config.py</code> to look something like this</p>
-<div class="highlight"><pre><span></span><span class="err">c = get_config()</span>
-<span class="err">c.NotebookApp.open_browser = False</span>
-<span class="err">c.NotebookApp.port = 16562</span>
-<span class="err">c.NotebookApp.certfile = u&#39;/home/jaabell/ipython_notebook_ssl_certificate.pem&#39;</span>
-<span class="err">c.NotebookApp.password = u&#39;sha1:e6356b6e0ee8:1906d7f56995bc18925c4af976ac3a588bc10913&#39;</span>
-<span class="err">c.IPKernelApp.ip = u&#39;*&#39;</span>
-<span class="err">c.IPKernelApp.pylab = &#39;inline&#39;</span>
-<span class="err">c.FileNotebookManager.notebook_dir = u&#39;/home/jaabell/www/blog/content/ipython_notebooks&#39;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>c = get_config()
+c.NotebookApp.open_browser = False
+c.NotebookApp.port = 16562
+c.NotebookApp.certfile = u&#39;/home/jaabell/ipython_notebook_ssl_certificate.pem&#39;
+c.NotebookApp.password = u&#39;sha1:e6356b6e0ee8:1906d7f56995bc18925c4af976ac3a588bc10913&#39;
+c.IPKernelApp.ip = u&#39;*&#39;
+c.IPKernelApp.pylab = &#39;inline&#39;
+c.FileNotebookManager.notebook_dir = u&#39;/home/jaabell/www/blog/content/ipython_notebooks&#39;
+</code></pre></div>
 
 <p>Create a profile for the server</p>
-<div class="highlight"><pre><span></span><span class="err">ipython profile create nbserver</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>ipython profile create nbserver
+</code></pre></div>
 
 <p>Edit <code>~/.config/ipython/profile_nbserver/ipython_notebook_config.py</code></p>
 <p>Run the server </p>
-<div class="highlight"><pre><span></span><span class="err"> ipython notebook --profile=nbserver</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code> ipython notebook --profile=nbserver
+</code></pre></div>
 
 <p>Keep the server alive with <code>supervisor</code></p>
-<div class="highlight"><pre><span></span><span class="err">sudo apt-get install supervisor</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>sudo apt-get install supervisor
+</code></pre></div>
 
 <h2>C++</h2>
 <p>To view contents of a static library (*.a) </p>
-<div class="highlight"><pre><span></span><span class="err">nm -C &lt;PATH_TO_LIB&gt;.a &gt; contents.txt</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>nm -C &lt;PATH_TO_LIB&gt;.a &gt; contents.txt
+</code></pre></div>
 
 <p>The <code>-C</code> flag is for C++.</p>
 <p>To search a bunch of libraries for a specific function:</p>
-<div class="highlight"><pre><span></span><span class="err">for lib in $(find $PATH -name \*.a) ; do echo $lib ; nm $lib | grep &quot;specific_function&quot; | grep -v &quot; U &quot;   ; done</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>for lib in $(find $PATH -name \*.a) ; do echo $lib ; nm $lib | grep &quot;specific_function&quot; | grep -v &quot; U &quot;   ; done
+</code></pre></div>
 
 <p>Profiling....</p>
 <p>After running a program compile with -g -pg the call graph can be visualized with gprof2dot.py and
 xdot (or dot).</p>
-<div class="highlight"><pre><span></span><span class="err">gprof ~/bin/essi_semidebug | gprof2dot.py | dot -Tdot -o output.dot</span>
-<span class="err">xdot output.dot</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>gprof ~/bin/essi_semidebug | gprof2dot.py | dot -Tdot -o output.dot
+xdot output.dot
+</code></pre></div>
 
 <p>or just create a png</p>
-<div class="highlight"><pre><span></span><span class="err">gprof ~/bin/essi_semidebug | gprof2dot.py | dot -Tpng -o output.png</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>gprof ~/bin/essi_semidebug | gprof2dot.py | dot -Tpng -o output.png
+</code></pre></div>
 
 <h2>MVAPICH stuff</h2>
 <p>Compile MVAPICH2 with message queue debugging.</p>
-<div class="highlight"><pre><span></span><span class="err">./configure --prefix=&quot;..&quot; --enable-debuginfo --disable-mcast</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>./configure --prefix=&quot;..&quot; --enable-debuginfo --disable-mcast
+</code></pre></div>
 
 <p>Get <code>libnuma</code> to do optimization for NUMA architechtures.</p>
-<div class="highlight"><pre><span></span><span class="err">sudo apt-get install libnuma-dev</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>sudo apt-get install libnuma-dev
+</code></pre></div>
 
 <h2>OpenMPI</h2>
 <p>To use a different compiler with mpicc and mpic++
@@ -472,25 +425,22 @@ xdot (or dot).</p>
 <h3>mpiP</h3>
 <p>Get from http://mpip.sourceforge.net/</p>
 <p>Requires libunwind, binutils and libiberty</p>
-<div class="highlight"><pre><span></span><span class="err">sudo apt-get install libunwind8 libunwind8-dev binutils-dev libiberty-dev</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>sudo apt-get install libunwind8 libunwind8-dev binutils-dev libiberty-dev
+</code></pre></div>
 
 <p>Configure</p>
-<div class="highlight"><pre><span></span><span class="err">./configure --enable-collective-report-default --enable-demangling=GNU --with-cc=mpicc --with-cxx=mpic++ --with-f77=mpif77 --prefix=/usr/local </span>
-<span class="err">make -j 24</span>
-<span class="err">sudo make install</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>./configure --enable-collective-report-default --enable-demangling=GNU --with-cc=mpicc --with-cxx=mpic++ --with-f77=mpif77 --prefix=/usr/local 
+make -j 24
+sudo make install
+</code></pre></div>
 
 <p>If all good 
     ll /usr/local/lib/libmp* 
 should return 
     /usr/local/lib/libmpiP.a</p>
 <p>Append to code at linktime the following flags</p>
-<div class="highlight"><pre><span></span><span class="err">-lmpiP -lbfd -liberty -lunwind</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>-lmpiP -lbfd -liberty -lunwind
+</code></pre></div>
 
 <p>Possibly also the place where libmpiP.a is available throught the -L option. Ie. for above <code>-L/usr/local</code>... unnecesarry. </p>
 <h3>HPCToolkit</h3>
@@ -498,62 +448,55 @@ should return
 Has nice viewer, apparently. </p>
 <h4>Building and installation</h4>
 <p>From http://hpctoolkit.org/. Checkout both hpctoolkit and hpctoolkit-externalsL:</p>
-<div class="highlight"><pre><span></span><span class="err">svn co http://hpctoolkit.googlecode.com/svn/trunk hpctoolkit</span>
-<span class="err">svn co http://hpctoolkit.googlecode.com/svn/externals hpctoolkit-externals</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">svn</span><span class="w"> </span><span class="n">co</span><span class="w"> </span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">hpctoolkit</span><span class="o">.</span><span class="n">googlecode</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">svn</span><span class="o">/</span><span class="n">trunk</span><span class="w"> </span><span class="n">hpctoolkit</span><span class="w"></span>
+<span class="n">svn</span><span class="w"> </span><span class="n">co</span><span class="w"> </span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">hpctoolkit</span><span class="o">.</span><span class="n">googlecode</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">svn</span><span class="o">/</span><span class="n">externals</span><span class="w"> </span><span class="n">hpctoolkit</span><span class="o">-</span><span class="n">externals</span><span class="w"></span>
+</code></pre></div>
 
 <p>Build externals (prefix set to a local dir):</p>
-<div class="highlight"><pre><span></span><span class="err">cd hpctoolkit-externals</span>
-<span class="err">mkdir BUILD &amp;&amp; cd BUILD</span>
-<span class="err">../configure CC=gcc CXX=g++ --prefix=/home/jaabell/Programs/local/</span>
-<span class="err">make -j 8</span>
-<span class="err">make install</span>
-<span class="err">make clean</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">cd</span><span class="w"> </span><span class="n">hpctoolkit</span><span class="o">-</span><span class="n">externals</span><span class="w"></span>
+<span class="n">mkdir</span><span class="w"> </span><span class="n">BUILD</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">BUILD</span><span class="w"></span>
+<span class="o">../</span><span class="n">configure</span><span class="w"> </span><span class="n">CC</span><span class="o">=</span><span class="n">gcc</span><span class="w"> </span><span class="n">CXX</span><span class="o">=</span><span class="n">g</span><span class="o">++</span><span class="w"> </span><span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">jaabell</span><span class="o">/</span><span class="n">Programs</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="w"></span>
+<span class="n">make</span><span class="w"> </span><span class="o">-</span><span class="n">j</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="n">make</span><span class="w"> </span><span class="n">install</span><span class="w"></span>
+<span class="n">make</span><span class="w"> </span><span class="n">clean</span><span class="w"></span>
+</code></pre></div>
 
 <p>Build the toolkit. On ubuntu 14.04 libpapi is located on /usr/lib/x86_64-linux-gnu, make links into /usr/lib for this to work. </p>
-<div class="highlight"><pre><span></span><span class="err">cd hpctoolkit</span>
-<span class="err">mkdir BUILD &amp;&amp; cd BUILD</span>
-<span class="err">../configure CC=gcc CXX=g++ MPICXX=mpic++ --prefix=/usr/local --with-externals=/home/jaabell/Programs/local --with-papi=/usr/</span>
-<span class="err">make -j 8</span>
-<span class="err">sudo make install -j 8</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">cd</span><span class="w"> </span><span class="n">hpctoolkit</span><span class="w"></span>
+<span class="n">mkdir</span><span class="w"> </span><span class="n">BUILD</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">BUILD</span><span class="w"></span>
+<span class="o">../</span><span class="n">configure</span><span class="w"> </span><span class="n">CC</span><span class="o">=</span><span class="n">gcc</span><span class="w"> </span><span class="n">CXX</span><span class="o">=</span><span class="n">g</span><span class="o">++</span><span class="w"> </span><span class="n">MPICXX</span><span class="o">=</span><span class="n">mpic</span><span class="o">++</span><span class="w"> </span><span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="w"> </span><span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">externals</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">jaabell</span><span class="o">/</span><span class="n">Programs</span><span class="o">/</span><span class="n">local</span><span class="w"> </span><span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">papi</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="w"></span>
+<span class="n">make</span><span class="w"> </span><span class="o">-</span><span class="n">j</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<span class="n">sudo</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">j</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+</code></pre></div>
 
 <h4>Usage</h4>
 <p>Figure out list of PAPI events:</p>
-<div class="highlight"><pre><span></span><span class="err">papi_avail</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>papi_avail
+</code></pre></div>
 
 <p>Some interesting ones for me, that were available on my laptop</p>
-<div class="highlight"><pre><span></span><span class="n">PAPI_L1_DCM</span>  <span class="o">:</span> <span class="n">Level</span> <span class="mi">1</span> <span class="n">data</span> <span class="n">cache</span> <span class="n">misses</span>
-<span class="n">PAPI_L2_DCM</span>  <span class="o">:</span> <span class="n">Level</span> <span class="mi">2</span> <span class="n">data</span> <span class="n">cache</span> <span class="n">misses</span>
-<span class="n">PAPI_L3_DCM</span>  <span class="o">:</span> <span class="n">Level</span> <span class="mi">3</span> <span class="n">data</span> <span class="n">cache</span> <span class="n">misses</span>
-<span class="n">PAPI_TLB_DM</span>  <span class="o">:</span> <span class="n">Data</span> <span class="n">translation</span> <span class="n">lookaside</span> <span class="n">buffer</span> <span class="n">misses</span>
-<span class="n">PAPI_FP_INS</span>  <span class="o">:</span> <span class="n">Floating</span> <span class="n">point</span> <span class="n">instructions</span>
-<span class="n">PAPI_TOT_CYC</span> <span class="o">:</span> <span class="n">Total</span> <span class="n">cycles</span>
-<span class="n">PAPI_FP_OPS</span>  <span class="o">:</span> <span class="n">Floating</span> <span class="n">point</span> <span class="n">operations</span>
-<span class="n">PAPI_VEC_DP</span>  <span class="o">:</span> <span class="n">Double</span> <span class="n">precision</span> <span class="n">vector</span><span class="o">/</span><span class="n">SIMD</span> <span class="n">instructions</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">PAPI_L1_DCM</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">cache</span><span class="w"> </span><span class="n">misses</span><span class="w"></span>
+<span class="n">PAPI_L2_DCM</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">cache</span><span class="w"> </span><span class="n">misses</span><span class="w"></span>
+<span class="n">PAPI_L3_DCM</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">cache</span><span class="w"> </span><span class="n">misses</span><span class="w"></span>
+<span class="n">PAPI_TLB_DM</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Data</span><span class="w"> </span><span class="n">translation</span><span class="w"> </span><span class="n">lookaside</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="n">misses</span><span class="w"></span>
+<span class="n">PAPI_FP_INS</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Floating</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="n">instructions</span><span class="w"></span>
+<span class="n">PAPI_TOT_CYC</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Total</span><span class="w"> </span><span class="n">cycles</span><span class="w"></span>
+<span class="n">PAPI_FP_OPS</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Floating</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="n">operations</span><span class="w"></span>
+<span class="n">PAPI_VEC_DP</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Double</span><span class="w"> </span><span class="n">precision</span><span class="w"> </span><span class="n">vector</span><span class="o">/</span><span class="n">SIMD</span><span class="w"> </span><span class="n">instructions</span><span class="w"></span>
+</code></pre></div>
 
 <p>Can also get a list of events (PAPI and native) using -L option</p>
-<div class="highlight"><pre><span></span><span class="err">hpcrun -L essi &gt; HPCeventlist.txt</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>hpcrun -L essi &gt; HPCeventlist.txt
+</code></pre></div>
 
 <p>Run application through <code>hpcrun</code> (this worked on nagoy)</p>
-<div class="highlight"><pre><span></span><span class="n">hpcrun</span> \
-<span class="o">-</span><span class="n">e</span> <span class="n">PAPI_L1_DCM</span><span class="mi">@5300013</span> \
-<span class="o">-</span><span class="n">e</span> <span class="n">PAPI_L2_DCM</span><span class="mi">@5300013</span> \
-<span class="o">-</span><span class="n">e</span> <span class="n">PAPI_TOT_CYC</span><span class="mi">@5300013</span> \
-<span class="o">-</span><span class="n">e</span> <span class="n">PAPI_FP_OPS</span><span class="mi">@5300013</span> \
-<span class="n">essi</span> <span class="o">-</span><span class="n">nf</span> <span class="o">&lt;</span><span class="n">file</span><span class="o">&gt;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">hpcrun</span><span class="w"> </span>\
+<span class="o">-</span><span class="n">e</span><span class="w"> </span><span class="n">PAPI_L1_DCM</span><span class="mi">@5300013</span><span class="w"> </span>\
+<span class="o">-</span><span class="n">e</span><span class="w"> </span><span class="n">PAPI_L2_DCM</span><span class="mi">@5300013</span><span class="w"> </span>\
+<span class="o">-</span><span class="n">e</span><span class="w"> </span><span class="n">PAPI_TOT_CYC</span><span class="mi">@5300013</span><span class="w"> </span>\
+<span class="o">-</span><span class="n">e</span><span class="w"> </span><span class="n">PAPI_FP_OPS</span><span class="mi">@5300013</span><span class="w"> </span>\
+<span class="n">essi</span><span class="w"> </span><span class="o">-</span><span class="n">nf</span><span class="w"> </span><span class="o">&lt;</span><span class="n">file</span><span class="o">&gt;</span><span class="w"></span>
+</code></pre></div>
 
 <h3>Perfsuite</h3>
 <p>Provides a simple command-line interface into performance counters.</p>
@@ -561,64 +504,56 @@ Has nice viewer, apparently. </p>
 <p>http://perfsuite.ncsa.illinois.edu/</p>
 <h4>Build</h4>
 <p>Requires PAPI library libpapi.a to be in a reasonable locations. See HPCToolkit.</p>
-<div class="highlight"><pre><span></span><span class="err">./configure --prefix=/usr/local/ --with-papi=/usr</span>
-<span class="err">make -j 16</span>
-<span class="err">sudo make install</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>./configure --prefix=/usr/local/ --with-papi=/usr
+make -j 16
+sudo make install
+</code></pre></div>
 
 <h2>HPC</h2>
 <h3>Tuning BLAS and LAPACK with ATLAS</h3>
 <h3>Pre-steps</h3>
 <p>TURN OFF AUTO CPU SCALING!!</p>
 <p>Install cpufrequtils:</p>
-<div class="highlight"><pre><span></span><span class="err">sudo apt-get install cpufrequtils</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>sudo apt-get install cpufrequtils
+</code></pre></div>
 
 <p>Then edit the following file (if it doesn't exist, create it):</p>
-<div class="highlight"><pre><span></span><span class="err">sudo nano /etc/default/cpufrequtils</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>sudo nano /etc/default/cpufrequtils
+</code></pre></div>
 
 <p>And add the following line to it:</p>
-<div class="highlight"><pre><span></span><span class="err">GOVERNOR=&quot;performance&quot;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>GOVERNOR=&quot;performance&quot;
+</code></pre></div>
 
 <p>Save and exit.</p>
 <p>If you need performance, do:</p>
-<div class="highlight"><pre><span></span><span class="err">sudo /etc/init.d/cpufrequtils restart</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>sudo /etc/init.d/cpufrequtils restart
+</code></pre></div>
 
 <h3>Finding out "real" CPUS from hyperthreading ones</h3>
 <p>On my laptop Intel(R) Core(TM) i7-2630QM CPU @ 2.00GHz</p>
 <p>Look at <code>cat /proc/cpuinfo</code> and look at the core ids. Pick processors which are on different cores.</p>
-<div class="highlight"><pre><span></span><span class="err">--force-tids=&quot;4 0 1 2 3&quot;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>--force-tids=&quot;4 0 1 2 3&quot;
+</code></pre></div>
 
 <h3>Using ATLAS</h3>
 <p>Now to tune BLAS and LAPACK with ATLAS....</p>
-<div class="highlight"><pre><span></span><span class="err">mv ATLAS ATLAS3.10.x</span>
-<span class="err">cd ATLAS3.10.x</span>
-<span class="err">mkdir linux_x86_64_intel_i7_laptop</span>
-<span class="err">cd linux_x86_64_intel_i7_laptop</span>
-<span class="err">../configure -b 64 -D c -DPentiumCPS=2000 --prefix=/home/jaabell/Programs/lib  --with-netlib-lapack-tarfile=/home/jaabell/Programs/lapack-3.5.0.tgz --force-tids=&quot;4 0 1 2 3&quot;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>mv ATLAS ATLAS3.10.x
+cd ATLAS3.10.x
+mkdir linux_x86_64_intel_i7_laptop
+cd linux_x86_64_intel_i7_laptop
+../configure -b 64 -D c -DPentiumCPS=2000 --prefix=/home/jaabell/Programs/lib  --with-netlib-lapack-tarfile=/home/jaabell/Programs/lapack-3.5.0.tgz --force-tids=&quot;4 0 1 2 3&quot;
+</code></pre></div>
 
 <p>Explanation <code>-b</code> is the pointer bitwidth, <code>-D c -DPentiumCPS=2000</code> sets the CPU clock rate so that
 ATLAS can use CPU cycles for timing, <code>--prefix</code> where to install, <code>-with-netlib-lapack-tarfile=</code> where is the lapack tarball, and <code>--force-tids="4 0 1 2 3"</code> tells
 ATLAS to only use those core ids given (first number is the number of cores to use).</p>
-<div class="highlight"><pre><span></span><span class="err">make build   # tune &amp; build lib</span>
-<span class="err">make check   # sanity check correct answer</span>
-<span class="err">make ptcheck # sanity check parallel</span>
-<span class="err">make time    # check if lib is fast</span>
-<span class="err">make install # copy libs to install dir</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nv">make</span> <span class="nv">build</span>   # <span class="nv">tune</span> <span class="o">&amp;</span> <span class="nv">build</span> <span class="nv">lib</span>
+<span class="nv">make</span> <span class="nv">check</span>   # <span class="nv">sanity</span> <span class="nv">check</span> <span class="nv">correct</span> <span class="nv">answer</span>
+<span class="nv">make</span> <span class="nv">ptcheck</span> # <span class="nv">sanity</span> <span class="nv">check</span> <span class="nv">parallel</span>
+<span class="nv">make</span> <span class="nv">time</span>    # <span class="nv">check</span> <span class="k">if</span> <span class="nv">lib</span> <span class="nv">is</span> <span class="nv">fast</span>
+<span class="nv">make</span> <span class="nv">install</span> # <span class="nv">copy</span> <span class="nv">libs</span> <span class="nv">to</span> <span class="nv">install</span> <span class="nv">dir</span>
+</code></pre></div>
 
 <h3>SparseSuite</h3>
 <p>FOr UMFPACK</p>
@@ -649,9 +584,8 @@ ATLAS to only use those core ids given (first number is the number of cores to u
 </ul>
 <h4>Making a movie from separate png images.</h4>
 <p>Avconv:</p>
-<div class="highlight"><pre><span></span><span class="err">avconv -r 60 -i movie%04d.png  movie.mp4</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>avconv -r 60 -i movie%04d.png  movie.mp4
+</code></pre></div>
 
 <p>The options are</p>
 <ul>
@@ -662,14 +596,12 @@ ATLAS to only use those core ids given (first number is the number of cores to u
 <code>movie.mp4</code> is the filename, the extension says that it is a quicktime movie. You can also create a Macromedia Flash movie by using the .flv extension.</li>
 </ul>
 <p>to get higher quality (play with <code>crf parameter</code> = 1 (best) = 31 (worst))</p>
-<div class="highlight"><pre><span></span><span class="err">avconv -r 60 -i movie%04d.png -c:v libx264 -crf 2 ../../movie_2_npps.mp4</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>avconv -r 60 -i movie%04d.png -c:v libx264 -crf 2 ../../movie_2_npps.mp4
+</code></pre></div>
 
 <p>for non-even sized movies a little trick should be played:</p>
-<div class="highlight"><pre><span></span><span class="err">avconv -r 60 -i movie%04d.png  -vf &quot;scale=trunc(iw/2)*2:trunc(ih/2)*2&quot; movie.mp4</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>avconv -r 60 -i movie%04d.png  -vf &quot;scale=trunc(iw/2)*2:trunc(ih/2)*2&quot; movie.mp4
+</code></pre></div>
 
 <p>Explanation for <code>-vf</code> parameter, from StackOverflow</p>
 <p>Basically the issue stems from a bug(?) in libx264 where it complains if the width or height is not an even number. This is weird in the case where I don't want to perform any scaling at all. So the command above will:</p>
@@ -679,31 +611,26 @@ ATLAS to only use those core ids given (first number is the number of cores to u
 <li>Multiply it by 2 again, thus making it an even number </li>
 </ul>
 <p>To get it to work on adobe reader use h264 encoder!</p>
-<div class="highlight"><pre><span></span><span class="err">avconv -i source -c:v h264 -c:a copy out.mkv</span>
-<span class="err">avconv -i source -c:v libx264 -c:a copy out.mkv</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>avconv -i source -c:v h264 -c:a copy out.mkv
+avconv -i source -c:v libx264 -c:a copy out.mkv
+</code></pre></div>
 
 <p>To stick together two videos side by side</p>
-<div class="highlight"><pre><span></span><span class="n">avconv</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="n">movie_left</span><span class="p">.</span><span class="n">mp4</span><span class="w"> </span><span class="o">-</span><span class="n">vf</span><span class="w"> </span><span class="ss">&quot;[in] scale=trunc(iw/2)*2:trunc(ih/2)*2, pad=2*iw:ih [left];     movie=movie_right.mp4, scale=trunc(iw/2)*2:trunc(ih/2)*2 [right];     [left][right] overlay=main_w/2:0 [out]&quot;</span><span class="w">  </span><span class="k">Output</span><span class="p">.</span><span class="n">mp4</span><span class="w"></span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">avconv</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="n">movie_left</span><span class="p">.</span><span class="n">mp4</span><span class="w"> </span><span class="o">-</span><span class="n">vf</span><span class="w"> </span><span class="ss">&quot;[in] scale=trunc(iw/2)*2:trunc(ih/2)*2, pad=2*iw:ih [left];     movie=movie_right.mp4, scale=trunc(iw/2)*2:trunc(ih/2)*2 [right];     [left][right] overlay=main_w/2:0 [out]&quot;</span><span class="w">  </span><span class="k">Output</span><span class="p">.</span><span class="n">mp4</span><span class="w"></span>
+</code></pre></div>
 
 <h2>Debugging!</h2>
 <p>On Ubuntu <code>gdb</code> attaching to processes is forbidden... because hackers. To allow:</p>
-<div class="highlight"><pre><span></span><span class="err">echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+</code></pre></div>
 
 <p>To permanently allow it edit <code>/etc/sysctl.d/10-ptrace.conf</code> and change the line:</p>
-<div class="highlight"><pre><span></span><span class="err">kernel.yama.ptrace_scope = 1</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>kernel.yama.ptrace_scope = 1
+</code></pre></div>
 
 <p>To read</p>
-<div class="highlight"><pre><span></span><span class="err">kernel.yama.ptrace_scope = 0</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>kernel.yama.ptrace_scope = 0
+</code></pre></div>
 
 <h2>Website Management (with pelican)</h2>
 <p>Install pelican using tutorials in website.</p>
@@ -713,21 +640,18 @@ ATLAS to only use those core ids given (first number is the number of cores to u
     sudo pip install pelican markdown typogrify pelican_youtube ipython</p>
 <p>Use fabric or make to build</p>
 <p>Using vitualenv</p>
-<div class="highlight"><pre><span></span><span class="err">virtualenv ~/virtualenvs/pelican</span>
-<span class="err">cd ~/virtualenvs/pelican</span>
-<span class="err">. bin/activate</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>virtualenv ~/virtualenvs/pelican
+cd ~/virtualenvs/pelican
+. bin/activate
+</code></pre></div>
 
 <p>Download the [ipythonnb plugin][https://github.com/danielfrg/pelican-ipythonnb]</p>
-<div class="highlight"><pre><span></span><span class="err">git clone https://github.com/danielfrg/pelican-ipythonnb.git</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>git clone https://github.com/danielfrg/pelican-ipythonnb.git
+</code></pre></div>
 
 <p>Will need <a href="http://johnmacfarlane.net/pandoc/">pandoc</a> </p>
-<div class="highlight"><pre><span></span><span class="err">sudo apt-get install pandoc pandoc-citeproc</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>sudo apt-get install pandoc pandoc-citeproc
+</code></pre></div>
 
 <h2>Apache management</h2>
 <p>Once apache is running</p>
@@ -761,61 +685,56 @@ ATLAS to only use those core ids given (first number is the number of cores to u
 </ul>
 <h2>Tweaks to .bashrc</h2>
 <p>Add screen name to prompt</p>
-<div class="highlight"><pre><span></span><span class="err">#For screen</span>
-<span class="err">if [ &quot;$TERM&quot; = screen ]; then</span>
-<span class="err">    PS1=&quot;(screen,$STY)\n$PS1&quot;</span>
-<span class="err">fi</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>#<span class="k">For</span> <span class="nv">screen</span>
+<span class="k">if</span> [ <span class="s2">&quot;</span><span class="s">$TERM</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="nv">screen</span> ]<span class="c1">; then</span>
+    <span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">(screen,$STY)</span><span class="se">\n</span><span class="s">$PS1</span><span class="s2">&quot;</span>
+<span class="nv">fi</span>
+</code></pre></div>
 
 <h2>Make terminals solarized</h2>
-<div class="highlight"><pre><span></span><span class="n">cd</span>
-<span class="n">wget</span> <span class="c1">--no-check-certificate https://raw.github.com/seebi/dircolors-solarized/master/dircolors.ansi- dark</span>
-<span class="n">mv</span> <span class="n">dircolors</span><span class="p">.</span><span class="n">ansi</span><span class="o">-</span><span class="n">dark</span> <span class="p">.</span><span class="n">dircolors</span>
-<span class="n">eval</span> <span class="o">`</span><span class="n">dircolors</span> <span class="o">~/</span><span class="p">.</span><span class="n">dircolors</span><span class="o">`</span>
+<div class="highlight"><pre><span></span><code>cd
+wget --no-check-certificate https://raw.github.com/seebi/dircolors-solarized/master/dircolors.ansi- dark
+mv dircolors.ansi-dark .dircolors
+eval `dircolors ~/.dircolors`
 
-<span class="n">cd</span>
-<span class="n">wget</span> <span class="c1">--no-check-certificate https://raw.github.com/seebi/dircolors-solarized/master/dircolors.ansi- light</span>
-<span class="n">mv</span> <span class="n">dircolors</span><span class="p">.</span><span class="n">ansi</span><span class="o">-</span><span class="n">light</span> <span class="p">.</span><span class="n">dircolors</span>
-<span class="n">eval</span> <span class="o">`</span><span class="n">dircolors</span> <span class="o">~/</span><span class="p">.</span><span class="n">dircolors</span><span class="o">`</span>
+cd
+wget --no-check-certificate https://raw.github.com/seebi/dircolors-solarized/master/dircolors.ansi- light
+mv dircolors.ansi-light .dircolors
+eval `dircolors ~/.dircolors`
 
-<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="k">get</span> <span class="n">install</span> <span class="n">git</span><span class="o">-</span><span class="n">core</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">sigurdga</span><span class="o">/</span><span class="n">gnome</span><span class="o">-</span><span class="n">terminal</span><span class="o">-</span><span class="n">colors</span><span class="o">-</span><span class="n">solarized</span><span class="p">.</span><span class="n">git</span>
-<span class="n">cd</span> <span class="n">gnome</span><span class="o">-</span><span class="n">terminal</span><span class="o">-</span><span class="n">colors</span><span class="o">-</span><span class="n">solarized</span>
+sudo apt-get install git-core
+git clone https://github.com/sigurdga/gnome-terminal-colors-solarized.git
+cd gnome-terminal-colors-solarized
 
-<span class="p">.</span><span class="o">/</span><span class="n">set_dark</span><span class="p">.</span><span class="n">sh</span>
-<span class="p">.</span><span class="o">/</span><span class="n">set_light</span><span class="p">.</span><span class="n">sh</span>
-</pre></div>
-
+./set_dark.sh
+./set_light.sh
+</code></pre></div>
 
 <h2>VisIt tricks</h2>
 <h3>Make window a given size</h3>
 <p>Save a session file, and edit these lines to achieve desired res:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;Field</span> <span class="na">name=</span><span class="s">&quot;windowSize&quot;</span> <span class="na">type=</span><span class="s">&quot;intArray&quot;</span> <span class="na">length=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>1024 828 <span class="nt">&lt;/Field&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;Field</span> <span class="na">name=</span><span class="s">&quot;windowSize&quot;</span> <span class="na">type=</span><span class="s">&quot;intArray&quot;</span> <span class="na">length=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>1024 828 <span class="nt">&lt;/Field&gt;</span>
 <span class="nt">&lt;Field</span> <span class="na">name=</span><span class="s">&quot;windowImageSize&quot;</span> <span class="na">type=</span><span class="s">&quot;intArray&quot;</span> <span class="na">length=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>1024 768 <span class="nt">&lt;/Field&gt;</span>
 <span class="nt">&lt;Field</span> <span class="na">name=</span><span class="s">&quot;windowLocation&quot;</span> <span class="na">type=</span><span class="s">&quot;intArray&quot;</span> <span class="na">length=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>719 133 <span class="nt">&lt;/Field&gt;</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>HDF5 Tricks</h2>
 <h3>Dump part of an array</h3>
 <p><code>h5dump</code> can be used to output portions of an HDF5 file into text, binary or other HDF5 files. </p>
 <p><strong>Example 1</strong> Dump 1000 timesteps of the first row of generalized displacements in FILENAME.h5.feioutput. </p>
-<div class="highlight"><pre><span></span><span class="err">h5dump -d &quot;/Model/Nodes/Generalized_Displacements&quot; --start=&quot;0,0&quot; --count=&quot;1,1000&quot; FILENAME.h5.feioutput</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>h5dump -d &quot;/Model/Nodes/Generalized_Displacements&quot; --start=&quot;0,0&quot; --count=&quot;1,1000&quot; FILENAME.h5.feioutput
+</code></pre></div>
 
 <h3>Repacking an HDF5 file</h3>
 <p>Repacking is useful to change chunking layout or add filters (such as compression) after the file
 has been created.</p>
 <p><strong>Example 1</strong>  Change the chunking for the generalized displacements dataset to be 10x20. Do:</p>
-<div class="highlight"><pre><span></span><span class="err">h5repack -v -l &quot;/Model/Nodes/Generalized_Displacements&quot;:CHUNK=10x20 FILENAME_IN.h5.feioutput FILENAME_OUT.h5.feioutput</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>h5repack -v -l &quot;/Model/Nodes/Generalized_Displacements&quot;:CHUNK=10x20 FILENAME_IN.h5.feioutput FILENAME_OUT.h5.feioutput
+</code></pre></div>
 
 <p><strong>Example 2</strong> Apply the best compression (GZIP) to all arrays in a file:</p>
-<div class="highlight"><pre><span></span><span class="err">h5repack -v -f GZIP=9 FILENAME_IN.h5.feioutput  FILENAME_IN.h5.gzip.feioutput</span>
-</pre></div></p>
+<div class="highlight"><pre><span></span><code>h5repack -v -f GZIP=9 FILENAME_IN.h5.feioutput  FILENAME_IN.h5.gzip.feioutput
+</code></pre></div></p>
         </div>
     </div>
 

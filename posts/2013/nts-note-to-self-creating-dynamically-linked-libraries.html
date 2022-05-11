@@ -164,13 +164,12 @@
         <div class="animate-box" data-animate-effect="fadeInLeft">
             <p class="animate-box" data-animate-effect="fadeInLeft"><p>A nice extensive tutorial can be found <a href="http://www.yolinux.com/TUTORIALS/LibraryArchives-StaticAndDynamic.html">here</a>.</p>
 <p>In a nutshell:</p>
-<div class="highlight"><pre><span></span><span class="err">gcc -Wall -fPIC -c \*.c  </span>
-<span class="err">gcc -shared -Wl,-soname,libctest.so.1 -o libctest.so.1.0 \*.o  </span>
-<span class="err">mv libctest.so.1.0 /opt/lib  </span>
-<span class="err">ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so.1  </span>
-<span class="err">ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>gcc -Wall -fPIC -c \*.c  
+gcc -shared -Wl,-soname,libctest.so.1 -o libctest.so.1.0 \*.o  
+mv libctest.so.1.0 /opt/lib  
+ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so.1  
+ln -sf /opt/lib/libctest.so.1.0 /opt/lib/libctest.so
+</code></pre></div>
 
 <!--more-->
 

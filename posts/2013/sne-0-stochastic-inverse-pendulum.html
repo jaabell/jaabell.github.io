@@ -174,9 +174,9 @@ pendulum.</em> What I mean in this case is an inverse pendulum (shown left)
 with a random initial condition. The purpose is to obtain the
 time-evolving probability density function (PDF) of the pendulum's
 position. I will be doing Monte-Carlo simulations to obtain an
-approximation to this PDF.<br>
-<!--more--><br>
-The response of the system is governed by the following nonlinear
+approximation to this PDF.  </p>
+<!--more-->
+<p>The response of the system is governed by the following nonlinear
 ordinary differential equation in terms of the angular displacement
 <span class="math">\(\theta\)</span> with respect to the vertical:</p>
 <div class="math">$$
@@ -222,7 +222,7 @@ mathematical tool used.</p>
 <p>These spurious peaks generate unrealistic dispersion in the distribution
 of results. Is there a way to identify them and get rid of them?</p>
 <p>The following python code produces these results.</p>
-<div class="highlight"><pre><span></span><span class="s s-Atom">#</span><span class="p">!</span><span class="o">/</span><span class="s s-Atom">bin</span><span class="o">/</span><span class="s s-Atom">python</span>  
+<div class="highlight"><pre><span></span><code><span class="s s-Atom">#</span><span class="p">!</span><span class="o">/</span><span class="s s-Atom">bin</span><span class="o">/</span><span class="s s-Atom">python</span>  
 <span class="s s-Atom">#</span> <span class="s s-Atom">-*-</span> <span class="nn">coding</span><span class="p">:</span> <span class="s s-Atom">utf</span><span class="o">-</span><span class="mi">8</span> <span class="s s-Atom">-*-</span>  
 <span class="s s-Atom">#</span> <span class="nv">Small</span> <span class="s s-Atom">numerical</span> <span class="s s-Atom">experiments</span> <span class="s s-Atom">#</span> <span class="mi">00</span>  
 <span class="s2">&quot;&quot;&quot;  </span>
@@ -297,55 +297,54 @@ of results. Is there a way to identify them and get rid of them?</p>
 <span class="s s-Atom">ax</span> <span class="o">=</span> <span class="s s-Atom">plt</span><span class="p">.</span><span class="nf">axes</span><span class="p">(</span><span class="s s-Atom">xlim=</span><span class="p">(</span><span class="o">-</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span> <span class="s s-Atom">ylim=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>  
 <span class="s s-Atom">ax</span><span class="p">.</span><span class="nf">grid</span><span class="p">()</span>  
 <span class="s s-Atom">ax</span><span class="p">.</span><span class="nf">set_xticks</span><span class="p">(</span><span class="s s-Atom">sp</span><span class="p">.</span><span class="nf">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">270</span><span class="p">,</span><span class="mi">270</span><span class="p">,</span><span class="s s-Atom">num</span><span class="o">=</span><span class="mi">7</span><span class="p">))</span>  
-<span class="s s-Atom">ax</span><span class="p">.</span><span class="nf">set_xlabel</span><span class="p">(</span><span class="err">&quot;$</span><span class="s s-Atom">\\\theta$</span><span class="s2">&quot;)  </span>
-<span class="s2">ax.set_ylabel(&quot;</span><span class="err">$</span><span class="s s-Atom">f_</span><span class="p">{</span><span class="s s-Atom">\\\theta</span><span class="p">}(</span><span class="s s-Atom">\\\theta</span><span class="p">,</span> <span class="s s-Atom">t</span><span class="p">)</span><span class="err">$</span><span class="s2">&quot;)</span>
+<span class="s s-Atom">ax</span><span class="p">.</span><span class="nf">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$\\\theta$&quot;</span><span class="p">)</span>  
+<span class="s s-Atom">ax</span><span class="p">.</span><span class="nf">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$f_{\\\theta}(\\\theta, t)$&quot;</span><span class="p">)</span>
 
-<span class="s2">line, = ax.plot([], [], lw=2)</span>
+<span class="s s-Atom">line</span><span class="p">,</span> <span class="o">=</span> <span class="s s-Atom">ax</span><span class="p">.</span><span class="nf">plot</span><span class="p">([],</span> <span class="p">[],</span> <span class="s s-Atom">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="s2">time_text = ax.text(-270, 9, &#39;&#39;)#, transform=ax.transAxes)</span>
+<span class="s s-Atom">time_text</span> <span class="o">=</span> <span class="s s-Atom">ax</span><span class="p">.</span><span class="nf">text</span><span class="p">(</span><span class="o">-</span><span class="mi">270</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="s s-Atom">&#39;&#39;</span><span class="p">)</span><span class="s s-Atom">#</span><span class="p">,</span> <span class="s s-Atom">transform</span><span class="o">=</span><span class="s s-Atom">ax</span><span class="p">.</span><span class="s s-Atom">transAxes</span><span class="p">)</span>
 
-<span class="s2">from scipy.interpolate import interp1d  </span>
-<span class="s2">probability_thresholds = sp.linspace(0,1,21)</span>
+<span class="s s-Atom">from</span> <span class="s s-Atom">scipy</span><span class="p">.</span><span class="s s-Atom">interpolate</span> <span class="s s-Atom">import</span> <span class="s s-Atom">interp1d</span>  
+<span class="s s-Atom">probability_thresholds</span> <span class="o">=</span> <span class="s s-Atom">sp</span><span class="p">.</span><span class="nf">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>
 
-<span class="s2">def myhistogram(y):  </span>
-<span class="s2">    yn = sp.array(y)  </span>
-<span class="s2">    yn.sort()  </span>
-<span class="s2">    cdf = sp.linspace(0,1,yn.size)  </span>
-<span class="s2">    y_bins = interp1d(cdf, yn, kind=&#39;linear&#39;, axis=-1, copy=True,</span>
-<span class="s2">    bounds_error=True)(probability_thresholds)  </span>
-<span class="s2">    return probability_thresholds, y_bins</span>
+<span class="s s-Atom">def</span> <span class="nf">myhistogram</span><span class="p">(</span><span class="s s-Atom">y</span><span class="p">)</span><span class="s s-Atom">:</span>  
+    <span class="s s-Atom">yn</span> <span class="o">=</span> <span class="s s-Atom">sp</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="s s-Atom">y</span><span class="p">)</span>  
+    <span class="s s-Atom">yn</span><span class="p">.</span><span class="nf">sort</span><span class="p">()</span>  
+    <span class="s s-Atom">cdf</span> <span class="o">=</span> <span class="s s-Atom">sp</span><span class="p">.</span><span class="nf">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s s-Atom">yn</span><span class="p">.</span><span class="s s-Atom">size</span><span class="p">)</span>  
+    <span class="s s-Atom">y_bins</span> <span class="o">=</span> <span class="nf">interp1d</span><span class="p">(</span><span class="s s-Atom">cdf</span><span class="p">,</span> <span class="s s-Atom">yn</span><span class="p">,</span> <span class="s s-Atom">kind=&#39;linear&#39;</span><span class="p">,</span> <span class="s s-Atom">axis=-</span><span class="mi">1</span><span class="p">,</span> <span class="s s-Atom">copy</span><span class="o">=</span><span class="nv">True</span><span class="p">,</span>
+    <span class="s s-Atom">bounds_error</span><span class="o">=</span><span class="nv">True</span><span class="p">)(</span><span class="s s-Atom">probability_thresholds</span><span class="p">)</span>  
+    <span class="s s-Atom">return</span> <span class="s s-Atom">probability_thresholds</span><span class="p">,</span> <span class="s s-Atom">y_bins</span>
 
-<span class="s2">def init():  </span>
-<span class="s2">    line.set_data([],[])  </span>
-<span class="s2">    time_text.set_text(&quot;&quot;)  </span>
-<span class="s2">    return line, time_text</span>
+<span class="s s-Atom">def</span> <span class="nf">init</span><span class="p">()</span><span class="s s-Atom">:</span>  
+    <span class="s s-Atom">line</span><span class="p">.</span><span class="nf">set_data</span><span class="p">([],[])</span>  
+    <span class="s s-Atom">time_text</span><span class="p">.</span><span class="nf">set_text</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>  
+    <span class="s s-Atom">return</span> <span class="s s-Atom">line</span><span class="p">,</span> <span class="s s-Atom">time_text</span>
 
-<span class="s2">def animate(i):  </span>
-<span class="s2">    cdf, y_bins = myhistogram(yall[i,:])  </span>
-<span class="s2">    pdf = sp.diff(cdf) / sp.diff(y_bins)  </span>
-<span class="s2">    y_bins_centers = 0.5*(y_bins[0:-1] + y_bins[1::])  </span>
-<span class="s2">    # pdf, y_bins = sp.histogram(yall[i,:], bins = Nbins, density =</span>
-<span class="s2">    True)  </span>
-<span class="s2">    # y_bins_centers = 0.5*(y_bins[0:-1] + y_bins[1::])  </span>
-<span class="s2">    line.set_data(y_bins_centers*180/sp.pi, pdf)  </span>
-<span class="s2">    time_text.set_text(&quot;</span><span class="nv">Time</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="s s-Atom">:</span><span class="mf">4.2</span><span class="s s-Atom">f</span><span class="p">}</span> <span class="s s-Atom">s</span><span class="s2">&quot;.format(t[i]))  </span>
-<span class="s2">    return line, time_text</span>
+<span class="s s-Atom">def</span> <span class="nf">animate</span><span class="p">(</span><span class="s s-Atom">i</span><span class="p">)</span><span class="s s-Atom">:</span>  
+    <span class="s s-Atom">cdf</span><span class="p">,</span> <span class="s s-Atom">y_bins</span> <span class="o">=</span> <span class="nf">myhistogram</span><span class="p">(</span><span class="s s-Atom">yall</span><span class="p">[</span><span class="s s-Atom">i</span><span class="p">,</span><span class="s s-Atom">:</span><span class="p">])</span>  
+    <span class="s s-Atom">pdf</span> <span class="o">=</span> <span class="s s-Atom">sp</span><span class="p">.</span><span class="nf">diff</span><span class="p">(</span><span class="s s-Atom">cdf</span><span class="p">)</span> <span class="o">/</span> <span class="s s-Atom">sp</span><span class="p">.</span><span class="nf">diff</span><span class="p">(</span><span class="s s-Atom">y_bins</span><span class="p">)</span>  
+    <span class="s s-Atom">y_bins_centers</span> <span class="o">=</span> <span class="mf">0.5</span><span class="s s-Atom">*</span><span class="p">(</span><span class="s s-Atom">y_bins</span><span class="p">[</span><span class="mi">0</span><span class="p">:-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s s-Atom">y_bins</span><span class="p">[</span><span class="mi">1</span><span class="s s-Atom">::</span><span class="p">])</span>  
+    <span class="s s-Atom">#</span> <span class="s s-Atom">pdf</span><span class="p">,</span> <span class="s s-Atom">y_bins</span> <span class="o">=</span> <span class="s s-Atom">sp</span><span class="p">.</span><span class="nf">histogram</span><span class="p">(</span><span class="s s-Atom">yall</span><span class="p">[</span><span class="s s-Atom">i</span><span class="p">,</span><span class="s s-Atom">:</span><span class="p">],</span> <span class="s s-Atom">bins</span> <span class="o">=</span> <span class="nv">Nbins</span><span class="p">,</span> <span class="s s-Atom">density</span> <span class="o">=</span>
+    <span class="nv">True</span><span class="p">)</span>  
+    <span class="s s-Atom">#</span> <span class="s s-Atom">y_bins_centers</span> <span class="o">=</span> <span class="mf">0.5</span><span class="s s-Atom">*</span><span class="p">(</span><span class="s s-Atom">y_bins</span><span class="p">[</span><span class="mi">0</span><span class="p">:-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s s-Atom">y_bins</span><span class="p">[</span><span class="mi">1</span><span class="s s-Atom">::</span><span class="p">])</span>  
+    <span class="s s-Atom">line</span><span class="p">.</span><span class="nf">set_data</span><span class="p">(</span><span class="s s-Atom">y_bins_centers</span><span class="o">*</span><span class="mi">180</span><span class="o">/</span><span class="s s-Atom">sp</span><span class="p">.</span><span class="s s-Atom">pi</span><span class="p">,</span> <span class="s s-Atom">pdf</span><span class="p">)</span>  
+    <span class="s s-Atom">time_text</span><span class="p">.</span><span class="nf">set_text</span><span class="p">(</span><span class="s2">&quot;Time = {0:4.2f} s&quot;</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="s s-Atom">t</span><span class="p">[</span><span class="s s-Atom">i</span><span class="p">]))</span>  
+    <span class="s s-Atom">return</span> <span class="s s-Atom">line</span><span class="p">,</span> <span class="s s-Atom">time_text</span>
 
-<span class="s2">anim = animation.FuncAnimation(fig, animate, init_func=init,  </span>
-<span class="s2">frames=1000, interval=1, blit=True)  </span>
-<span class="s2">#anim.save(&#39;basic_animation.mp4&#39;, fps=30, extra_args=[&#39;-vcodec&#39;,</span>
-<span class="s2">&#39;libx264&#39;])</span>
+<span class="s s-Atom">anim</span> <span class="o">=</span> <span class="s s-Atom">animation</span><span class="p">.</span><span class="nv">FuncAnimation</span><span class="p">(</span><span class="s s-Atom">fig</span><span class="p">,</span> <span class="s s-Atom">animate</span><span class="p">,</span> <span class="s s-Atom">init_func</span><span class="o">=</span><span class="s s-Atom">init</span><span class="p">,</span>  
+<span class="s s-Atom">frames</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="s s-Atom">interval</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="s s-Atom">blit</span><span class="o">=</span><span class="nv">True</span><span class="p">)</span>  
+<span class="s s-Atom">#anim</span><span class="p">.</span><span class="nf">save</span><span class="p">(</span><span class="s s-Atom">&#39;basic_animation.mp4&#39;</span><span class="p">,</span> <span class="s s-Atom">fps</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="s s-Atom">extra_args</span><span class="o">=</span><span class="p">[</span><span class="s s-Atom">&#39;-vcodec&#39;</span><span class="p">,</span>
+<span class="s s-Atom">&#39;libx264&#39;</span><span class="p">])</span>
 
-<span class="s2">plt.show()</span>
+<span class="s s-Atom">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
 
-<span class="s2">#plt.figure()  </span>
-<span class="s2">#plt.plot(t,yall[:,0]*180/sp.pi)  </span>
-<span class="s2">#plt.grid()  </span>
-<span class="s2">#plt.yticks(sp.linspace(-270,270,num=13))  </span>
-<span class="s2">#plt.xlabel(&quot;</span><span class="err">$</span><span class="s s-Atom">t$</span><span class="s2">&quot;)  </span>
-<span class="s2">#plt.ylabel(&quot;</span><span class="err">$</span><span class="s s-Atom">\\\</span><span class="nf">theta</span><span class="p">(</span><span class="s s-Atom">t</span><span class="p">)</span><span class="err">$&quot;</span><span class="p">)</span>
-</pre></div>
-
+<span class="s s-Atom">#plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">()</span>  
+<span class="s s-Atom">#plt</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="s s-Atom">t</span><span class="p">,</span><span class="s s-Atom">yall</span><span class="p">[</span><span class="s s-Atom">:</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">180</span><span class="o">/</span><span class="s s-Atom">sp</span><span class="p">.</span><span class="s s-Atom">pi</span><span class="p">)</span>  
+<span class="s s-Atom">#plt</span><span class="p">.</span><span class="nf">grid</span><span class="p">()</span>  
+<span class="s s-Atom">#plt</span><span class="p">.</span><span class="nf">yticks</span><span class="p">(</span><span class="s s-Atom">sp</span><span class="p">.</span><span class="nf">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">270</span><span class="p">,</span><span class="mi">270</span><span class="p">,</span><span class="s s-Atom">num</span><span class="o">=</span><span class="mi">13</span><span class="p">))</span>  
+<span class="s s-Atom">#plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="s2">&quot;$t$&quot;</span><span class="p">)</span>  
+<span class="s s-Atom">#plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="s2">&quot;$\\\theta(t)$&quot;</span><span class="p">)</span>
+</code></pre></div>
 
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "left",

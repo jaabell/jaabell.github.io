@@ -126,11 +126,10 @@
             <p class="animate-box " data-animate-effect="fadeInLeft"><h1>Como compilar kratos en leftraru</h1>
 <p>Resumen: <em>hay que compilar todo a mano</em></p>
 <h2>Cargar modulos necesarios:</h2>
-<div class="highlight"><pre><span></span><span class="err">module load intel/2018c       </span>
-<span class="err">module load impi/2018.2.199   </span>
-<span class="err">module load metis/5.1.0</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">intel</span><span class="o">/</span><span class="mi">2018</span><span class="n">c</span><span class="w">       </span>
+<span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">impi</span><span class="o">/</span><span class="mf">2018.2</span><span class="o">.</span><span class="mi">199</span><span class="w">   </span>
+<span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">metis</span><span class="o">/</span><span class="mf">5.1</span><span class="o">.</span><span class="mi">0</span><span class="w"></span>
+</code></pre></div>
 
 <h2>Descargar dependencias:</h2>
 <p>Necesitamos descargar y compilar a mano las siguientes librerias</p>
@@ -142,283 +141,264 @@
 <li>Kratos</li>
 </ul>
 <p>Bajarlas usando:</p>
-<div class="highlight"><pre><span></span><span class="err">wget https://zlib.net/zlib-1.2.11.tar.gz</span>
-<span class="err">wget https://www.python.org/ftp/python/3.5.5/Python-3.5.5.tgz</span>
-<span class="err">wget http://trilinos.csbsju.edu/download/files/trilinos-12.12.1-Source.tar.gz</span>
-<span class="err">wget https://sourceforge.net/projects/boost/files/boost/1.59.0/boost_1_59_0.tar.gz</span>
-<span class="err">git clone https://github.com/KratosMultiphysics/Kratos.git</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">wget</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">zlib</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">zlib</span><span class="o">-</span><span class="mf">1.2</span><span class="o">.</span><span class="mf">11.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span><span class="w"></span>
+<span class="n">wget</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">ftp</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">5</span><span class="o">/</span><span class="n">Python</span><span class="o">-</span><span class="mf">3.5</span><span class="o">.</span><span class="mf">5.</span><span class="n">tgz</span><span class="w"></span>
+<span class="n">wget</span><span class="w"> </span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">trilinos</span><span class="o">.</span><span class="n">csbsju</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">trilinos</span><span class="o">-</span><span class="mf">12.12</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">Source</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span><span class="w"></span>
+<span class="n">wget</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">sourceforge</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">boost</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">boost</span><span class="o">/</span><span class="mf">1.59</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">boost_1_59_0</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span><span class="w"></span>
+<span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">KratosMultiphysics</span><span class="o">/</span><span class="n">Kratos</span><span class="o">.</span><span class="n">git</span><span class="w"></span>
+</code></pre></div>
 
 <p>Descomprimir dependencias:</p>
-<div class="highlight"><pre><span></span><span class="err">tar -xzvf zlib-1.2.11.tar.gz</span>
-<span class="err">tar -xzvf Python-3.5.5.tgz</span>
-<span class="err">tar -xzvf trilinos-12.12.1-Source.tar.gz</span>
-<span class="err">tar -xzvf boost_1_59_0.tar.gz</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>tar -xzvf zlib-1.2.11.tar.gz
+tar -xzvf Python-3.5.5.tgz
+tar -xzvf trilinos-12.12.1-Source.tar.gz
+tar -xzvf boost_1_59_0.tar.gz
+</code></pre></div>
 
 <h2>Compilar zlib</h2>
-<div class="highlight"><pre><span></span><span class="err">cd zlib-1.2.11</span>
-<span class="err">export CC=icc</span>
-<span class="err">export CFLAGS=&#39;-O3 -xHost -ip&#39;</span>
-<span class="err">./configure --prefix=$HOME</span>
-<span class="err">make -j 20</span>
-<span class="err">make install</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">cd</span><span class="w"> </span><span class="n">zlib</span><span class="o">-</span><span class="mf">1.2</span><span class="o">.</span><span class="mi">11</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="n">CC</span><span class="o">=</span><span class="n">icc</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="n">CFLAGS</span><span class="o">=</span><span class="s1">&#39;-O3 -xHost -ip&#39;</span><span class="w"></span>
+<span class="o">./</span><span class="n">configure</span><span class="w"> </span><span class="o">--</span><span class="n">prefix</span><span class="o">=$</span><span class="n">HOME</span><span class="w"></span>
+<span class="n">make</span><span class="w"> </span><span class="o">-</span><span class="n">j</span><span class="w"> </span><span class="mi">20</span><span class="w"></span>
+<span class="n">make</span><span class="w"> </span><span class="n">install</span><span class="w"></span>
+</code></pre></div>
 
 <p>Una vez listo, deberiamos tener las librerias compiladas en <code>$HOME</code>.</p>
-<div class="highlight"><pre><span></span><span class="err">ls $HOME/lib/libz*</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>ls $HOME/lib/libz*
+</code></pre></div>
 
 <p>Entrega algo como:</p>
-<div class="highlight"><pre><span></span><span class="err">/home/jabell/lib/libz.a  /home/jabell/lib/libz.so  /home/jabell/lib/libz.so.1  /home/jabell/lib/libz.so.1.2.11</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>/home/jabell/lib/libz.a  /home/jabell/lib/libz.so  /home/jabell/lib/libz.so.1  /home/jabell/lib/libz.so.1.2.11
+</code></pre></div>
 
 <p>Volver al home </p>
-<div class="highlight"><pre><span></span><span class="err">cd ~</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>cd ~
+</code></pre></div>
 
 <h2>Compilar python3</h2>
 <p>Compilar e instalar</p>
-<div class="highlight"><pre><span></span><span class="err">cd Python-3.5.5</span>
-<span class="err">./configure --with-icc --without-gcc --prefix=$HOME --enable-shared</span>
-<span class="err">make -j 20</span>
-<span class="err">make install</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>cd Python-3.5.5
+./configure --with-icc --without-gcc --prefix=$HOME --enable-shared
+make -j 20
+make install
+</code></pre></div>
 
 <p>Hacer un link simbolico para que no se maree trilinos</p>
-<div class="highlight"><pre><span></span><span class="err">cd ~/include</span>
-<span class="err">ln -s python3.5m/ python3.5</span>
-<span class="err">cd ..</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nv">cd</span> <span class="o">~/</span><span class="k">include</span>
+<span class="nv">ln</span> <span class="o">-</span><span class="nv">s</span> <span class="nv">python3</span>.<span class="mi">5</span><span class="nv">m</span><span class="o">/</span> <span class="nv">python3</span>.<span class="mi">5</span>
+<span class="nv">cd</span> ..
+</code></pre></div>
 
 <h2>Compilar boost</h2>
 <p>Esto es cacho. Tener paciencia, como dice el compilador a cada rato...</p>
-<div class="highlight"><pre><span></span><span class="err">cd boost_1_59_0</span>
-<span class="err">./bootstrap.sh  --with-python-version=3.5 --with-libraries=python,mpi,serialization --with-toolset=intel-linux --with-python=$HOME/bin/python3.5m --with-python-root=$HOME/</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">cd</span><span class="w"> </span><span class="n">boost_1_59_0</span><span class="w"></span>
+<span class="o">./</span><span class="n">bootstrap</span><span class="o">.</span><span class="n">sh</span><span class="w">  </span><span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">version</span><span class="o">=</span><span class="mf">3.5</span><span class="w"> </span><span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">libraries</span><span class="o">=</span><span class="n">python</span><span class="p">,</span><span class="n">mpi</span><span class="p">,</span><span class="n">serialization</span><span class="w"> </span><span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">toolset</span><span class="o">=</span><span class="n">intel</span><span class="o">-</span><span class="n">linux</span><span class="w"> </span><span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">python</span><span class="o">=$</span><span class="n">HOME</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">5</span><span class="n">m</span><span class="w"> </span><span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">root</span><span class="o">=$</span><span class="n">HOME</span><span class="o">/</span><span class="w"></span>
+</code></pre></div>
 
 <p>Editar <code>project-config.jam</code> usando nano</p>
-<div class="highlight"><pre><span></span><span class="err">nano project-config.jam</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>nano project-config.jam
+</code></pre></div>
 
 <p>Al final del archivo agregar la linea:</p>
-<div class="highlight"><pre><span></span><span class="err">using mpi : /home/apps/intel/2018/compilers_and_libraries_2018.2.199/linux/mpi_2019/intel64/bin/mpicc ;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>using mpi : /home/apps/intel/2018/compilers_and_libraries_2018.2.199/linux/mpi_2019/intel64/bin/mpicc ;
+</code></pre></div>
 
 <p>Luego llamar el compilado:</p>
-<div class="highlight"><pre><span></span><span class="err">./b2 stage --with-python --with-serialization --with-mpi variant=release cxxflags=&quot;-std=c++11&quot; link=shared address-model=64 toolset=intel </span>
-<span class="err">./b2 install --prefix=$HOME</span>
-<span class="err">cd ..</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="o">./</span><span class="n">b2</span><span class="w"> </span><span class="n">stage</span><span class="w"> </span><span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">python</span><span class="w"> </span><span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">serialization</span><span class="w"> </span><span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">mpi</span><span class="w"> </span><span class="n">variant</span><span class="o">=</span><span class="n">release</span><span class="w"> </span><span class="n">cxxflags</span><span class="o">=</span><span class="s2">&quot;-std=c++11&quot;</span><span class="w"> </span><span class="n">link</span><span class="o">=</span><span class="n">shared</span><span class="w"> </span><span class="n">address</span><span class="o">-</span><span class="n">model</span><span class="o">=</span><span class="mi">64</span><span class="w"> </span><span class="n">toolset</span><span class="o">=</span><span class="n">intel</span><span class="w"> </span>
+<span class="o">./</span><span class="n">b2</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">--</span><span class="n">prefix</span><span class="o">=$</span><span class="n">HOME</span><span class="w"></span>
+<span class="n">cd</span><span class="w"> </span><span class="o">..</span><span class="w"></span>
+</code></pre></div>
 
 <h2>Compilar Trilinos</h2>
 <p>En este se usa CMAKE</p>
-<div class="highlight"><pre><span></span><span class="err">cd trilinos-12.12.1-Source</span>
-<span class="err">mkdir build</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>cd trilinos-12.12.1-Source
+mkdir build
+</code></pre></div>
 
 <p>Crear <code>do_configure.sh</code> estos eran los contenidos del mio:</p>
-<div class="highlight"><pre><span></span>TRILINOS_ROOT=&quot;<span class="cp">${</span><span class="n">HOME</span><span class="cp">}</span>/trilinos-12.12.1-Source&quot;
-EXTRA_LINK_FLAGS=&quot;&quot;
-EXTRA_ARGS=$@
-MPI_ROOT=&quot;<span class="cp">${</span><span class="n">MPI_ROOT</span><span class="cp">}</span>&quot;
-METIS_ROOT=&quot;/home/apps/parmetis/4.0.3/&quot;
-LAPACK_ROOT=&quot;<span class="cp">${</span><span class="n">MKLROOT</span><span class="cp">}</span>/lib/intel64&quot;
+<div class="highlight"><pre><span></span><code><span class="n">TRILINOS_ROOT</span><span class="o">=</span><span class="s2">&quot;${HOME}/trilinos-12.12.1-Source&quot;</span><span class="w"></span>
+<span class="n">EXTRA_LINK_FLAGS</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="w"></span>
+<span class="n">EXTRA_ARGS</span><span class="o">=$</span><span class="err">@</span><span class="w"></span>
+<span class="n">MPI_ROOT</span><span class="o">=</span><span class="s2">&quot;${MPI_ROOT}&quot;</span><span class="w"></span>
+<span class="n">METIS_ROOT</span><span class="o">=</span><span class="s2">&quot;/home/apps/parmetis/4.0.3/&quot;</span><span class="w"></span>
+<span class="n">LAPACK_ROOT</span><span class="o">=</span><span class="s2">&quot;${MKLROOT}/lib/intel64&quot;</span><span class="w"></span>
 
-echo &quot;TRILINOS_ROOT = <span class="nv">$TRILINOS_ROOT</span>&quot;
-echo &quot;EXTRA_LINK_FLAGS = <span class="nv">$EXTRA_LINK_FLAGS</span>&quot;
-echo &quot;EXTRA_ARGS = <span class="nv">$EXTRA_ARGS</span>&quot;
-echo &quot;MPI_ROOT = <span class="nv">$MPI_ROOT</span>&quot;
-echo &quot;METIS_ROOT = <span class="nv">$METIS_ROOT</span>&quot;
-echo &quot;LAPACK_ROOT = <span class="nv">$LAPACK_ROOT</span>&quot;
+<span class="n">echo</span><span class="w"> </span><span class="s2">&quot;TRILINOS_ROOT = $TRILINOS_ROOT&quot;</span><span class="w"></span>
+<span class="n">echo</span><span class="w"> </span><span class="s2">&quot;EXTRA_LINK_FLAGS = $EXTRA_LINK_FLAGS&quot;</span><span class="w"></span>
+<span class="n">echo</span><span class="w"> </span><span class="s2">&quot;EXTRA_ARGS = $EXTRA_ARGS&quot;</span><span class="w"></span>
+<span class="n">echo</span><span class="w"> </span><span class="s2">&quot;MPI_ROOT = $MPI_ROOT&quot;</span><span class="w"></span>
+<span class="n">echo</span><span class="w"> </span><span class="s2">&quot;METIS_ROOT = $METIS_ROOT&quot;</span><span class="w"></span>
+<span class="n">echo</span><span class="w"> </span><span class="s2">&quot;LAPACK_ROOT = $LAPACK_ROOT&quot;</span><span class="w"></span>
 
-rm CMakeCache.txt
-rm -rf CMakeFiles
-rm *.cmake
-
-
-module load intel/2018c       
-module load boost/1.59        
-module load python/3.5.2      
-module load parmetis/4.0.3
-module load impi/2018.2.199   
-module load llvm/3.8.1        
-module load metis/5.1.0
+<span class="n">rm</span><span class="w"> </span><span class="n">CMakeCache</span><span class="o">.</span><span class="n">txt</span><span class="w"></span>
+<span class="n">rm</span><span class="w"> </span><span class="o">-</span><span class="n">rf</span><span class="w"> </span><span class="n">CMakeFiles</span><span class="w"></span>
+<span class="n">rm</span><span class="w"> </span><span class="o">*.</span><span class="n">cmake</span><span class="w"></span>
 
 
-cmake \
-  -DCMAKE_INSTALL_PREFIX:FILEPATH=&quot;<span class="cp">${</span><span class="n">TRILINOS_ROOT</span><span class="cp">}</span>&quot; \
-  -DCMAKE_BUILD_TYPE:STRING=RELEASE \
-  -DTrilinos_SOURCE_DIR=&quot;<span class="cp">${</span><span class="n">TRILINOS_SOURCE</span><span class="cp">}</span>&quot; \
-  -DCMAKE_CXX_COMPILER=icpc \
-  -DCMAKE_C_COMPILER=icc \
-  -DCMAKE_Fortran_COMPILER=ifort \
-  -DTPL_ENABLE_MPI:BOOL=ON \
-  -DTrilinos_ENABLE_CXX11=ON\
-  -DMPI_BASE_DIR=&quot;<span class="cp">${</span><span class="n">MPI_ROOT</span><span class="cp">}</span>&quot; \
-  -DMPI_INCLUDE_DIRS:PATH=&quot;<span class="cp">${</span><span class="n">MPI_ROOT</span><span class="cp">}</span>/include&quot; \
-  -DBUILD_SHARED_LIBS:BOOL=ON \
-  -DBLAS_LIBRARY_DIRS:FILEPATH=&quot;<span class="cp">${</span><span class="n">MKLROOT</span><span class="cp">}</span>/lib/intel64&quot; \
-  -DBLAS_LIBRARY_NAMES:STRING=&quot;mkl_rt&quot; \
-  -DLAPACK_LIBRARY_DIRS:FILEPATH=&quot;<span class="cp">${</span><span class="n">MKLROOT</span><span class="cp">}</span>/lib/intel64&quot; \
-  -DLAPACK_LIBRARY_NAMES:STRING=&quot;mkl_rt&quot; \
-  -DTPL_ENABLE_MKL:BOOL=ON \
-  -DMKL_LIBRARY_DIRS:FILEPATH=&quot;<span class="cp">${</span><span class="n">MKLROOT</span><span class="cp">}</span>/lib/intel64&quot; \
-  -DMKL_LIBRARY_NAMES:STRING=&quot;mkl_rt&quot; \
-  -DMKL_INCLUDE_DIRS:FILEPATH=&quot;<span class="cp">${</span><span class="n">MKLROOT</span><span class="cp">}</span>/include&quot; \
-  -DTPL_ENABLE_ParMETIS:BOOL=ON \
-  -DParMETIS_INCLUDE_DIRS:PATH=&quot;<span class="cp">${</span><span class="n">METIS_ROOT</span><span class="cp">}</span>/include&quot; \
-  -DParMETIS_LIBRARY_NAMES:STRING=&quot;parmetis&quot; \
-  -DParMETIS_LIBRARY_DIRS:PATH=&quot;<span class="cp">${</span><span class="n">METIS_ROOT</span><span class="cp">}</span>/lib&quot; \
-  -DTPL_ENABLE_METIS:BOOL=ON \
-  -DMETIS_INCLUDE_DIRS:PATH=&quot;<span class="cp">${</span><span class="n">METIS_ROOT</span><span class="cp">}</span>/include&quot; \
-  -DMETIS_LIBRARY_NAMES:STRING=&quot;metis&quot; \
-  -DMETIS_LIBRARY_DIRS:PATH=&quot;<span class="cp">${</span><span class="n">METIS_ROOT</span><span class="cp">}</span>/lib&quot; \
-  -DTrilinos_EXTRA_LINK_FLAGS:STRING=&quot;<span class="nv">$EXTRA_LINK_FLAGS</span>&quot; \
-  -DTrilinos_ENABLE_Amesos:BOOL=ON \
-  -DAmesos_ENABLE_SuperLUDist:BOOL=OFF \
-  -DTrilinos_ENABLE_Anasazi:BOOL=ON \
-  -DTrilinos_ENABLE_AztecOO:BOOL=ON \
-  -DAztecOO_ENABLE_Teuchos:BOOL=ON \
-  -DTrilinos_ENABLE_Didasko:BOOL=ON \
-  -DTrilinos_ENABLE_Epetra:BOOL=ON \
-  -DTrilinos_ENABLE_EpetraExt:BOOL=ON \
-  -DTrilinos_ENABLE_Galeri:BOOL=ON \
-  -DTrilinos_ENABLE_Ifpack:BOOL=ON \
-  -DTrilinos_ENABLE_ML:BOOL=ON \
-  -DTrilinos_ENABLE_PyTrilinos:BOOL=OFF \
-  -DTrilinos_ENABLE_Teuchos:BOOL=ON \
-  -DTrilinos_ENABLE_Triutils:BOOL=ON \
-  -DDART_TESTING_TIMEOUT:STRING=600 \
-  -DCMAKE_Fortran_FLAGS:STRING=&quot;-O5 -funroll-all-loops -fPIC&quot; \
-  -DCMAKE_C_FLAGS:STRING=&quot;-O3 -fPIC -funroll-loops -march=native&quot; \
-  -DCMAKE_CXX_FLAGS:STRING=&quot;-O3 -fPIC -funroll-loops -ffast-math -march=native -DMPICH_IGNORE_CXX_SEEK&quot; \
-  <span class="nv">$EXTRA_ARGS</span> \
-  <span class="cp">${</span><span class="n">TRILINOS_SOURCE</span><span class="cp">}</span> ..
-</pre></div>
+<span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">intel</span><span class="o">/</span><span class="mi">2018</span><span class="n">c</span><span class="w">       </span>
+<span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">boost</span><span class="o">/</span><span class="mf">1.59</span><span class="w">        </span>
+<span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">python</span><span class="o">/</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span><span class="w">      </span>
+<span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">parmetis</span><span class="o">/</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">3</span><span class="w"></span>
+<span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">impi</span><span class="o">/</span><span class="mf">2018.2</span><span class="o">.</span><span class="mi">199</span><span class="w">   </span>
+<span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">llvm</span><span class="o">/</span><span class="mf">3.8</span><span class="o">.</span><span class="mi">1</span><span class="w">        </span>
+<span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">metis</span><span class="o">/</span><span class="mf">5.1</span><span class="o">.</span><span class="mi">0</span><span class="w"></span>
 
+
+<span class="n">cmake</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="p">:</span><span class="n">FILEPATH</span><span class="o">=</span><span class="s2">&quot;${TRILINOS_ROOT}&quot;</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="p">:</span><span class="n">STRING</span><span class="o">=</span><span class="n">RELEASE</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DTrilinos_SOURCE_DIR</span><span class="o">=</span><span class="s2">&quot;${TRILINOS_SOURCE}&quot;</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">icpc</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DCMAKE_C_COMPILER</span><span class="o">=</span><span class="n">icc</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DCMAKE_Fortran_COMPILER</span><span class="o">=</span><span class="n">ifort</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DTPL_ENABLE_MPI</span><span class="p">:</span><span class="n">BOOL</span><span class="o">=</span><span class="n">ON</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DTrilinos_ENABLE_CXX11</span><span class="o">=</span><span class="n">ON</span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DMPI_BASE_DIR</span><span class="o">=</span><span class="s2">&quot;${MPI_ROOT}&quot;</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DMPI_INCLUDE_DIRS</span><span class="p">:</span><span class="n">PATH</span><span class="o">=</span><span class="s2">&quot;${MPI_ROOT}/include&quot;</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DBUILD_SHARED_LIBS</span><span class="p">:</span><span class="n">BOOL</span><span class="o">=</span><span class="n">ON</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DBLAS_LIBRARY_DIRS</span><span class="p">:</span><span class="n">FILEPATH</span><span class="o">=</span><span class="s2">&quot;${MKLROOT}/lib/intel64&quot;</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DBLAS_LIBRARY_NAMES</span><span class="p">:</span><span class="n">STRING</span><span class="o">=</span><span class="s2">&quot;mkl_rt&quot;</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DLAPACK_LIBRARY_DIRS</span><span class="p">:</span><span class="n">FILEPATH</span><span class="o">=</span><span class="s2">&quot;${MKLROOT}/lib/intel64&quot;</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DLAPACK_LIBRARY_NAMES</span><span class="p">:</span><span class="n">STRING</span><span class="o">=</span><span class="s2">&quot;mkl_rt&quot;</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DTPL_ENABLE_MKL</span><span class="p">:</span><span class="n">BOOL</span><span class="o">=</span><span class="n">ON</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DMKL_LIBRARY_DIRS</span><span class="p">:</span><span class="n">FILEPATH</span><span class="o">=</span><span class="s2">&quot;${MKLROOT}/lib/intel64&quot;</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DMKL_LIBRARY_NAMES</span><span class="p">:</span><span class="n">STRING</span><span class="o">=</span><span class="s2">&quot;mkl_rt&quot;</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DMKL_INCLUDE_DIRS</span><span class="p">:</span><span class="n">FILEPATH</span><span class="o">=</span><span class="s2">&quot;${MKLROOT}/include&quot;</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DTPL_ENABLE_ParMETIS</span><span class="p">:</span><span class="n">BOOL</span><span class="o">=</span><span class="n">ON</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DParMETIS_INCLUDE_DIRS</span><span class="p">:</span><span class="n">PATH</span><span class="o">=</span><span class="s2">&quot;${METIS_ROOT}/include&quot;</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DParMETIS_LIBRARY_NAMES</span><span class="p">:</span><span class="n">STRING</span><span class="o">=</span><span class="s2">&quot;parmetis&quot;</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DParMETIS_LIBRARY_DIRS</span><span class="p">:</span><span class="n">PATH</span><span class="o">=</span><span class="s2">&quot;${METIS_ROOT}/lib&quot;</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DTPL_ENABLE_METIS</span><span class="p">:</span><span class="n">BOOL</span><span class="o">=</span><span class="n">ON</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DMETIS_INCLUDE_DIRS</span><span class="p">:</span><span class="n">PATH</span><span class="o">=</span><span class="s2">&quot;${METIS_ROOT}/include&quot;</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DMETIS_LIBRARY_NAMES</span><span class="p">:</span><span class="n">STRING</span><span class="o">=</span><span class="s2">&quot;metis&quot;</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DMETIS_LIBRARY_DIRS</span><span class="p">:</span><span class="n">PATH</span><span class="o">=</span><span class="s2">&quot;${METIS_ROOT}/lib&quot;</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DTrilinos_EXTRA_LINK_FLAGS</span><span class="p">:</span><span class="n">STRING</span><span class="o">=</span><span class="s2">&quot;$EXTRA_LINK_FLAGS&quot;</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DTrilinos_ENABLE_Amesos</span><span class="p">:</span><span class="n">BOOL</span><span class="o">=</span><span class="n">ON</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DAmesos_ENABLE_SuperLUDist</span><span class="p">:</span><span class="n">BOOL</span><span class="o">=</span><span class="n">OFF</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DTrilinos_ENABLE_Anasazi</span><span class="p">:</span><span class="n">BOOL</span><span class="o">=</span><span class="n">ON</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DTrilinos_ENABLE_AztecOO</span><span class="p">:</span><span class="n">BOOL</span><span class="o">=</span><span class="n">ON</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DAztecOO_ENABLE_Teuchos</span><span class="p">:</span><span class="n">BOOL</span><span class="o">=</span><span class="n">ON</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DTrilinos_ENABLE_Didasko</span><span class="p">:</span><span class="n">BOOL</span><span class="o">=</span><span class="n">ON</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DTrilinos_ENABLE_Epetra</span><span class="p">:</span><span class="n">BOOL</span><span class="o">=</span><span class="n">ON</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DTrilinos_ENABLE_EpetraExt</span><span class="p">:</span><span class="n">BOOL</span><span class="o">=</span><span class="n">ON</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DTrilinos_ENABLE_Galeri</span><span class="p">:</span><span class="n">BOOL</span><span class="o">=</span><span class="n">ON</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DTrilinos_ENABLE_Ifpack</span><span class="p">:</span><span class="n">BOOL</span><span class="o">=</span><span class="n">ON</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DTrilinos_ENABLE_ML</span><span class="p">:</span><span class="n">BOOL</span><span class="o">=</span><span class="n">ON</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DTrilinos_ENABLE_PyTrilinos</span><span class="p">:</span><span class="n">BOOL</span><span class="o">=</span><span class="n">OFF</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DTrilinos_ENABLE_Teuchos</span><span class="p">:</span><span class="n">BOOL</span><span class="o">=</span><span class="n">ON</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DTrilinos_ENABLE_Triutils</span><span class="p">:</span><span class="n">BOOL</span><span class="o">=</span><span class="n">ON</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DDART_TESTING_TIMEOUT</span><span class="p">:</span><span class="n">STRING</span><span class="o">=</span><span class="mi">600</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DCMAKE_Fortran_FLAGS</span><span class="p">:</span><span class="n">STRING</span><span class="o">=</span><span class="s2">&quot;-O5 -funroll-all-loops -fPIC&quot;</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DCMAKE_C_FLAGS</span><span class="p">:</span><span class="n">STRING</span><span class="o">=</span><span class="s2">&quot;-O3 -fPIC -funroll-loops -march=native&quot;</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">-</span><span class="n">DCMAKE_CXX_FLAGS</span><span class="p">:</span><span class="n">STRING</span><span class="o">=</span><span class="s2">&quot;-O3 -fPIC -funroll-loops -ffast-math -march=native -DMPICH_IGNORE_CXX_SEEK&quot;</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">$</span><span class="n">EXTRA_ARGS</span><span class="w"> </span>\<span class="w"></span>
+<span class="w">  </span><span class="o">$</span><span class="p">{</span><span class="n">TRILINOS_SOURCE</span><span class="p">}</span><span class="w"> </span><span class="o">..</span><span class="w"></span>
+</code></pre></div>
 
 <p>Preparar compilado</p>
-<div class="highlight"><pre><span></span><span class="err">sh do_configure.sh</span>
-<span class="err">make -j 20</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>sh do_configure.sh
+make -j 20
+</code></pre></div>
 
 <p>TENER MUCHA PACIENCIA</p>
-<div class="highlight"><pre><span></span><span class="err">cd ..</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>cd ..
+</code></pre></div>
 
 <h2>Compilar Kratos</h2>
-<div class="highlight"><pre><span></span><span class="err">cd Kratos</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>cd Kratos
+</code></pre></div>
 
 <p>Descargar <code>tetgen</code></p>
-<div class="highlight"><pre><span></span><span class="err">cd applications/PfemApplication/external_modules/</span>
-<span class="err">git clone https://github.com/ufz/tetgen.git</span>
-<span class="err">cd ../../../</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>cd applications/PfemApplication/external_modules/
+git clone https://github.com/ufz/tetgen.git
+cd ../../../
+</code></pre></div>
 
 <p>Preparar configuracion</p>
-<div class="highlight"><pre><span></span><span class="err">mkdir build</span>
-<span class="err">cd build</span>
-<span class="err">nano conf.sh</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>mkdir build
+cd build
+nano conf.sh
+</code></pre></div>
 
 <p>Este es mi archivo <code>conf.sh</code>.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/sh</span>
 
 <span class="c1"># this is an example file...please DO NOT MODIFY if you don&#39;t want to do it for everyone</span>
 <span class="c1">#to use it, copy it to another file and run it</span>
@@ -495,107 +475,95 @@ cmake ..                                                              <span clas
     -DSOLID_MECHANICS_APPLICATION<span class="o">=</span>ON                                      <span class="se">\</span>
     -DZLIB_LIBRARY<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/lib/libz.so&quot;</span>                                      <span class="se">\</span>
     -DPOROMECHANICS_APPLICATION<span class="o">=</span>ON
-</pre></div>
+</code></pre></div>
 </td></tr></table>
-
 <p>Luego configurar, compilar e instalar</p>
-<div class="highlight"><pre><span></span><span class="err">sh conf.sh</span>
-<span class="err">make -j 20</span>
-<span class="err">make install</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>sh conf.sh
+make -j 20
+make install
+</code></pre></div>
 
 <p>Irse a caminar un rato o practicar los trucos de magia...</p>
 <p>Al instalar, si sale un error parecido a:</p>
-<div class="highlight"><pre><span></span><span class="err">CMake Error at cmake_install.cmake:69 (FILE):</span>
-<span class="err">   file INSTALL cannot find &quot;/home/jabell/Kratos/-lm&quot;.</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>CMake Error at cmake_install.cmake:69 (FILE):
+   file INSTALL cannot find &quot;/home/jabell/Kratos/-lm&quot;.
+</code></pre></div>
 
 <p>Editar <code>cmake_install.sh</code></p>
-<div class="highlight"><pre><span></span><span class="err">nano cmake_install.sh</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>nano cmake_install.sh
+</code></pre></div>
 
 <p>Y quitar (CTRL+K) la linea que dice:</p>
-<div class="highlight"><pre><span></span><span class="err">&quot;/home/jabell/Kratos/-lm&quot;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>&quot;/home/jabell/Kratos/-lm&quot;
+</code></pre></div>
 
 <p>(Pro tip: busqueda con nano es "CTRL+/" colocar <code>-lm</code>).</p>
 <h2>Modificar .bashrc</h2>
 <p>Editar <code>.bashrc</code></p>
-<div class="highlight"><pre><span></span><span class="err">cd ~</span>
-<span class="err">nano .bashrc</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>cd ~
+nano .bashrc
+</code></pre></div>
 
 <p>Agregar las siguientes lineas al final del <code>.bashrc</code></p>
-<div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="err">$</span><span class="n">PATH</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jabell</span><span class="o">/</span><span class="n">Kratos</span><span class="o">/</span>
-<span class="n">export</span> <span class="n">PYTHONPATH</span><span class="o">=</span><span class="err">$</span><span class="n">PYTHONPATH</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jabell</span><span class="o">/</span><span class="n">Kratos</span><span class="o">/</span>
-<span class="n">export</span> <span class="n">LD_LIBRARY_PATH</span><span class="o">=</span><span class="err">$</span><span class="n">LD_LIBRARY_PATH</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jabell</span><span class="o">/</span><span class="n">Kratos</span><span class="o">/</span><span class="n">libs</span>
-<span class="n">export</span> <span class="n">LD_LIBRARY_PATH</span><span class="o">=</span><span class="err">$</span><span class="n">LD_LIBRARY_PATH</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jabell</span><span class="o">/</span><span class="n">lib</span>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="n">PATH</span><span class="o">=$</span><span class="n">PATH</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jabell</span><span class="o">/</span><span class="n">Kratos</span><span class="o">/</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="n">PYTHONPATH</span><span class="o">=$</span><span class="n">PYTHONPATH</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jabell</span><span class="o">/</span><span class="n">Kratos</span><span class="o">/</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="n">LD_LIBRARY_PATH</span><span class="o">=$</span><span class="n">LD_LIBRARY_PATH</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jabell</span><span class="o">/</span><span class="n">Kratos</span><span class="o">/</span><span class="n">libs</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="n">LD_LIBRARY_PATH</span><span class="o">=$</span><span class="n">LD_LIBRARY_PATH</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">jabell</span><span class="o">/</span><span class="n">lib</span><span class="w"></span>
 
 
-<span class="n">module</span> <span class="k">load</span> <span class="n">parmetis</span><span class="o">/</span><span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">3</span>
-<span class="n">module</span> <span class="k">load</span> <span class="n">metis</span><span class="o">/</span><span class="mi">5</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span>
-</pre></div>
-
+<span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">parmetis</span><span class="o">/</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">3</span><span class="w"></span>
+<span class="n">module</span><span class="w"> </span><span class="nb">load</span><span class="w"> </span><span class="n">metis</span><span class="o">/</span><span class="mf">5.1</span><span class="o">.</span><span class="mi">0</span><span class="w"></span>
+</code></pre></div>
 
 <p>Guardar y salirse. Incorporar los cambios al <code>.bashrc</code></p>
-<div class="highlight"><pre><span></span><span class="err">source .bashrc</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>source .bashrc
+</code></pre></div>
 
 <h2>PROBAR LA BESTIA!!!</h2>
 <p>Crear un archivo <code>testkratos.py</code> en el home</p>
-<div class="highlight"><pre><span></span><span class="err">nano testkratos.py</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>nano testkratos.py
+</code></pre></div>
 
 <p>Poner adentro:</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">KratosMultiphysics</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">KratosMultiphysics</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">KratosMultiphysics.mpi</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">KratosMultiphysics.MetisApplication</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">KratosMultiphysics.TrilinosApplication</span> <span class="kn">import</span> <span class="o">*</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Guardar y ejecutar</p>
-<div class="highlight"><pre><span></span><span class="err">runkratos testkratos.py</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>runkratos testkratos.py
+</code></pre></div>
 
 <p>Deberia resultar en </p>
-<div class="highlight"><pre><span></span><span class="err"> |  /           |             </span>
-<span class="err"> &#39; /   __| _` | __|  _ \   __|</span>
-<span class="err"> . \  |   (   | |   (   |\__ \ </span>
-<span class="err">_|\_\_|  \__,_|\__|\___/ ____/</span>
-<span class="err">           Multi-Physics 6.0.0-4212599</span>
-<span class="err">Importing    KratosMetisApplication</span>
-<span class="err">Initializing Kratos MetisApplication... </span>
-<span class="err">Importing    KratosTrilinosApplication</span>
-<span class="err">     KRATOS   _____     _ _ _                 </span>
-<span class="err">             |_   _| __(_) (_)_ __   ___  ___ </span>
-<span class="err">               | || &#39;__| | | | &#39;_ \ / _ \/ __|</span>
-<span class="err">               | || |  | | | | | | | (_) \__ \</span>
-<span class="err">               |_||_|  |_|_|_|_| |_|\___/|___/ APPLICATION     </span>
-<span class="err">KRATOS TERMINATED CORRECTLY</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code> |  /           |             
+ &#39; /   __| _` | __|  _ \   __|
+ . \  |   (   | |   (   |\__ \ 
+<span class="ge">_|\_</span>\_|  \__,_|\__|\___/ ____/
+           Multi-Physics 6.0.0-4212599
+Importing    KratosMetisApplication
+Initializing Kratos MetisApplication... 
+Importing    KratosTrilinosApplication
+     KRATOS   _____     <span class="ge">_ _</span> _                 
+             |_   _| __(_) (_)_ __   ___  ___ 
+               | || &#39;__| | | | &#39;_ \ / _ \/ __|
+               | || |  | | | | | | | (_) \__ \
+               |_||_|  |_|_|_|_| |_|\___/|___/ APPLICATION     
+KRATOS TERMINATED CORRECTLY
+</code></pre></div>
 
 <h2>Probar Kratos en el gestor de colas</h2>
 <p>Crear un batch script para SLURM (el gestor de colas) llamado <code>testkratos.sh</code> que contenga</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash -l</span>
 <span class="c1">#SBATCH -n 2  # pedir dos procesos</span>
 <span class="c1">#SBATCH -J testkratos</span>
 <span class="c1">#SBATCH --time=00:01:00  #Time requested</span>
@@ -605,103 +573,89 @@ cmake ..                                                              <span clas
 <span class="c1">#SBATCH --mail-user=ja.abell@gmail.com # Email to which notifications will be sent</span>
 
 srun runkratos testkratos.py
-</pre></div>
+</code></pre></div>
 </td></tr></table>
-
 <p>Este archivo especifica los requerimientos de recursos a leftraru. Debiera ser bastante obvio lo que significa todo. Por siacaso aqui esta la expliacion</p>
 <p>Pedir cantidad de procesos</p>
-<div class="highlight"><pre><span></span><span class="err">#SBATCH -n 2  # pedir dos procesos</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>#SBATCH -n 2  # pedir dos procesos
+</code></pre></div>
 
 <p>Hay comandos para solicitar cierto numero de nodos o de proceso por nodo y otras configuraciones. Tambien se pueden correr <code>arreglos</code> o familias de tareas relacionadas usando la opcion <code>array</code>.</p>
 <p>Nombre de la tarea </p>
-<div class="highlight"><pre><span></span><span class="err">#SBATCH -J testkratos</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>#SBATCH -J testkratos
+</code></pre></div>
 
 <p>Tiempo solicitado.</p>
-<div class="highlight"><pre><span></span><span class="err">#SBATCH --time=00:01:00  #Time requested</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>#SBATCH --time=00:01:00  #Time requested
+</code></pre></div>
 
 <p>La salida del programa, error y standar-out, se redirigen a los archivos especificados por las lineas:</p>
-<div class="highlight"><pre><span></span><span class="err">#SBATCH --error=testkratos.%A.err</span>
-<span class="err">#SBATCH --output=testkratos.%A.out</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>#SBATCH --error=testkratos.%A.err
+#SBATCH --output=testkratos.%A.out
+</code></pre></div>
 
 <p>Donde <code>%A</code> se reemplaza por el numero de la tarea. </p>
 <p>Para mandar un email con cada cambio de estado de la tarea usar:</p>
-<div class="highlight"><pre><span></span><span class="err">#SBATCH --mail-type=ALL # Type of email notification- BEGIN,END,FAIL,ALL</span>
-<span class="err">#SBATCH --mail-user=ja.abell@gmail.com # Email to which notifications will be sent</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">#SBATCH</span><span class="w"> </span><span class="o">--</span><span class="n">mail</span><span class="o">-</span><span class="n">type</span><span class="o">=</span><span class="ow">ALL</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="n">Type</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="n">notification</span><span class="o">-</span><span class="w"> </span><span class="k">BEGIN</span><span class="p">,</span><span class="k">END</span><span class="p">,</span><span class="n">FAIL</span><span class="p">,</span><span class="ow">ALL</span><span class="w"></span>
+<span class="n">#SBATCH</span><span class="w"> </span><span class="c1">--mail-user=ja.abell@gmail.com # Email to which notifications will be sent</span>
+</code></pre></div>
 
 <p>Finalmente, este es el comando que queremos ejecutar:</p>
-<div class="highlight"><pre><span></span><span class="err">srun runkratos testkratos.py</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>srun runkratos testkratos.py
+</code></pre></div>
 
 <p>Pueden haber mas comandos o pasos a seguir. Aqui <code>srun</code> reemplaza la llamada a <code>mpirun</code>.</p>
 <p>Ejecutar el script (poner en la cola)</p>
-<div class="highlight"><pre><span></span><span class="err">sbatch testkratos.sh</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>sbatch testkratos.sh
+</code></pre></div>
 
 <p>Deberia decir algo como </p>
-<div class="highlight"><pre><span></span><span class="err">Submitted batch job 10894854</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>Submitted batch job 10894854
+</code></pre></div>
 
 <p>Se puede revisar el status de la tarea solicitada mediante</p>
-<div class="highlight"><pre><span></span><span class="err">squeue</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>squeue
+</code></pre></div>
 
 <p>Que dice algo como esto cuanto la tarea esta corriendo </p>
-<div class="highlight"><pre><span></span><span class="err">[jabell@leftraru3 ~]$ squeue</span>
-<span class="err">             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)</span>
-<span class="err">          10894854     slims testkrat   jabell PD       0:00      1 (Priority)</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="o">[</span><span class="n">jabell@leftraru3 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">squeue</span><span class="w"></span>
+<span class="w">             </span><span class="n">JOBID</span><span class="w"> </span><span class="k">PARTITION</span><span class="w">     </span><span class="n">NAME</span><span class="w">     </span><span class="k">USER</span><span class="w"> </span><span class="n">ST</span><span class="w">       </span><span class="nc">TIME</span><span class="w">  </span><span class="n">NODES</span><span class="w"> </span><span class="n">NODELIST</span><span class="p">(</span><span class="n">REASON</span><span class="p">)</span><span class="w"></span>
+<span class="w">          </span><span class="mi">10894854</span><span class="w">     </span><span class="n">slims</span><span class="w"> </span><span class="n">testkrat</span><span class="w">   </span><span class="n">jabell</span><span class="w"> </span><span class="n">PD</span><span class="w">       </span><span class="mi">0</span><span class="err">:</span><span class="mi">00</span><span class="w">      </span><span class="mi">1</span><span class="w"> </span><span class="p">(</span><span class="n">Priority</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
 
 <p>La salida del programa la encontramos en los archivos .err y .out generados. En mi caso, </p>
-<div class="highlight"><pre><span></span><span class="err">more testkratos.10894854.4294967294.err</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>more testkratos.10894854.4294967294.err
+</code></pre></div>
 
 <p>Resulta vacio, y </p>
-<div class="highlight"><pre><span></span><span class="err">more testkratos.10894854.4294967294.out</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>more testkratos.10894854.4294967294.out
+</code></pre></div>
 
 <p>resulta en </p>
-<div class="highlight"><pre><span></span><span class="err"> |  /           |             </span>
-<span class="err"> &#39; /   __| _` | __|  _ \   __|</span>
-<span class="err"> . \  |   (   | |   (   |\__ \ </span>
-<span class="err">_|\_\_|  \__,_|\__|\___/ ____/</span>
-<span class="err">           Multi-Physics 6.0.0-4212599</span>
-<span class="err"> |  /           |             </span>
-<span class="err"> &#39; /   __| _` | __|  _ \   __|</span>
-<span class="err"> . \  |   (   | |   (   |\__ \ </span>
-<span class="err">_|\_\_|  \__,_|\__|\___/ ____/</span>
-<span class="err">           Multi-Physics 6.0.0-4212599</span>
-<span class="err">Initializing Kratos MetisApplication... </span>
-<span class="err">Initializing Kratos MetisApplication... </span>
-<span class="err">     KRATOS   _____     _ _ _                 </span>
-<span class="err">             |_   _| __(_) (_)_ __   ___  ___ </span>
-<span class="err">               | || &#39;__| | | | &#39;_ \ / _ \/ __|</span>
-<span class="err">               | || |  | | | | | | | (_) \__ \</span>
-<span class="err">               |_||_|  |_|_|_|_| |_|\___/|___/ APPLICATION     </span>
-<span class="err">Importing    KratosMetisApplication</span>
-<span class="err">Importing    KratosTrilinosApplication</span>
-<span class="err">KRATOS TERMINATED CORRECTLY</span>
-<span class="err">Importing    KratosMetisApplication</span>
-<span class="err">Importing    KratosTrilinosApplication</span>
-<span class="err">KRATOS TERMINATED CORRECTLY</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code> |  /           |             
+ &#39; /   __| _` | __|  _ \   __|
+ . \  |   (   | |   (   |\__ \ 
+<span class="ge">_|\_</span>\_|  \__,_|\__|\___/ ____/
+           Multi-Physics 6.0.0-4212599
+ |  /           |             
+ &#39; /   __| _` | __|  _ \   __|
+ . \  |   (   | |   (   |\__ \ 
+<span class="ge">_|\_</span>\_|  \__,_|\__|\___/ ____/
+           Multi-Physics 6.0.0-4212599
+Initializing Kratos MetisApplication... 
+Initializing Kratos MetisApplication... 
+     KRATOS   _____     <span class="ge">_ _</span> _                 
+             |_   _| __(_) (_)_ __   ___  ___ 
+               | || &#39;__| | | | &#39;_ \ / _ \/ __|
+               | || |  | | | | | | | (_) \__ \
+               |_||_|  |_|_|_|_| |_|\___/|___/ APPLICATION     
+Importing    KratosMetisApplication
+Importing    KratosTrilinosApplication
+KRATOS TERMINATED CORRECTLY
+Importing    KratosMetisApplication
+Importing    KratosTrilinosApplication
+KRATOS TERMINATED CORRECTLY
+</code></pre></div>
 
 <p>Notar que corrieron dos Kratos (pedimos dos procesos). Supongo que hay mas cambios que hay que hacer en los scripts python que queremos correr, pero eso es todo por ahora. </p>
 <p><img alt="Arrivederci" src="https://i.gifer.com/4xw2.gif"></p></p>

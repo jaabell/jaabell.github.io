@@ -7,9 +7,10 @@ consists of&lt;/p&gt;
 &lt;li&gt;1200 time-steps (dt = 0.01s)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Results were stored in the new format of output for ESSI simulator and
-visualized in VisIt post-processor where the movie was created.&lt;br&gt;
-&lt;!--more--&gt;&lt;br&gt;
-&lt;!--http://youtu.be/VURohwb-OJQ--&gt;&lt;/p&gt;
+visualized in VisIt post-processor where the movie was created.  &lt;/p&gt;
+&lt;!--more--&gt;
+&lt;!--http://youtu.be/VURohwb-OJQ--&gt;
+
 &lt;div class="youtube" align="left"&gt;
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/VURohwb-OJQ" frameborder="0"&gt;&lt;/iframe&gt;
 &lt;/div&gt;</content><category term="Small Numerical Experiments"></category><category term="animation"></category><category term="c++"></category><category term="ESSI"></category><category term="linux"></category><category term="post-processing"></category><category term="small numerical experiments"></category><category term="sne"></category><category term="visitESSI"></category><category term="movie"></category></entry><entry><title>SNE # 0. Stochastic inverse pendulum</title><link href="https://joseabell.com/posts/2013/sne-0-stochastic-inverse-pendulum.html" rel="alternate"></link><published>2013-10-09T20:37:00-07:00</published><updated>2013-10-09T20:37:00-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2013-10-09:/posts/2013/sne-0-stochastic-inverse-pendulum.html</id><summary type="html">&lt;p&gt;This is the first installment of "Small Numerical Experiments" (SNE …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is the first installment of "Small Numerical Experiments" (SNE), a
@@ -22,9 +23,9 @@ pendulum.&lt;/em&gt; What I mean in this case is an inverse pendulum (shown lef
 with a random initial condition. The purpose is to obtain the
 time-evolving probability density function (PDF) of the pendulum's
 position. I will be doing Monte-Carlo simulations to obtain an
-approximation to this PDF.&lt;br&gt;
-&lt;!--more--&gt;&lt;br&gt;
-The response of the system is governed by the following nonlinear
+approximation to this PDF.  &lt;/p&gt;
+&lt;!--more--&gt;
+&lt;p&gt;The response of the system is governed by the following nonlinear
 ordinary differential equation in terms of the angular displacement
 &lt;span class="math"&gt;\(\theta\)&lt;/span&gt; with respect to the vertical:&lt;/p&gt;
 &lt;div class="math"&gt;$$
@@ -70,7 +71,7 @@ mathematical tool used.&lt;/p&gt;
 &lt;p&gt;These spurious peaks generate unrealistic dispersion in the distribution
 of results. Is there a way to identify them and get rid of them?&lt;/p&gt;
 &lt;p&gt;The following python code produces these results.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="s s-Atom"&gt;#&lt;/span&gt;&lt;span class="p"&gt;!&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="s s-Atom"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="s s-Atom"&gt;python&lt;/span&gt;  
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="s s-Atom"&gt;#&lt;/span&gt;&lt;span class="p"&gt;!&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="s s-Atom"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="s s-Atom"&gt;python&lt;/span&gt;  
 &lt;span class="s s-Atom"&gt;#&lt;/span&gt; &lt;span class="s s-Atom"&gt;-*-&lt;/span&gt; &lt;span class="nn"&gt;coding&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s s-Atom"&gt;utf&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt; &lt;span class="s s-Atom"&gt;-*-&lt;/span&gt;  
 &lt;span class="s s-Atom"&gt;#&lt;/span&gt; &lt;span class="nv"&gt;Small&lt;/span&gt; &lt;span class="s s-Atom"&gt;numerical&lt;/span&gt; &lt;span class="s s-Atom"&gt;experiments&lt;/span&gt; &lt;span class="s s-Atom"&gt;#&lt;/span&gt; &lt;span class="mi"&gt;00&lt;/span&gt;  
 &lt;span class="s2"&gt;&amp;quot;&amp;quot;&amp;quot;  &lt;/span&gt;
@@ -145,55 +146,54 @@ of results. Is there a way to identify them and get rid of them?&lt;/p&gt;
 &lt;span class="s s-Atom"&gt;ax&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;plt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;axes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;xlim=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;300&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;300&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s s-Atom"&gt;ylim=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;  
 &lt;span class="s s-Atom"&gt;ax&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  
 &lt;span class="s s-Atom"&gt;ax&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;set_xticks&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;linspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;270&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;270&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s s-Atom"&gt;num&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;  
-&lt;span class="s s-Atom"&gt;ax&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;set_xlabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;$&lt;/span&gt;&lt;span class="s s-Atom"&gt;\\\theta$&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;)  &lt;/span&gt;
-&lt;span class="s2"&gt;ax.set_ylabel(&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="s s-Atom"&gt;f_&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s s-Atom"&gt;\\\theta&lt;/span&gt;&lt;span class="p"&gt;}(&lt;/span&gt;&lt;span class="s s-Atom"&gt;\\\theta&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;)&lt;/span&gt;
+&lt;span class="s s-Atom"&gt;ax&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;set_xlabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$\\\theta$&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+&lt;span class="s s-Atom"&gt;ax&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;set_ylabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$f_{\\\theta}(\\\theta, t)$&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-&lt;span class="s2"&gt;line, = ax.plot([], [], lw=2)&lt;/span&gt;
+&lt;span class="s s-Atom"&gt;line&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;ax&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;([],&lt;/span&gt; &lt;span class="p"&gt;[],&lt;/span&gt; &lt;span class="s s-Atom"&gt;lw&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-&lt;span class="s2"&gt;time_text = ax.text(-270, 9, &amp;#39;&amp;#39;)#, transform=ax.transAxes)&lt;/span&gt;
+&lt;span class="s s-Atom"&gt;time_text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;ax&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;270&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="s s-Atom"&gt;#&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;transform&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s s-Atom"&gt;ax&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s s-Atom"&gt;transAxes&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-&lt;span class="s2"&gt;from scipy.interpolate import interp1d  &lt;/span&gt;
-&lt;span class="s2"&gt;probability_thresholds = sp.linspace(0,1,21)&lt;/span&gt;
+&lt;span class="s s-Atom"&gt;from&lt;/span&gt; &lt;span class="s s-Atom"&gt;scipy&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s s-Atom"&gt;interpolate&lt;/span&gt; &lt;span class="s s-Atom"&gt;import&lt;/span&gt; &lt;span class="s s-Atom"&gt;interp1d&lt;/span&gt;  
+&lt;span class="s s-Atom"&gt;probability_thresholds&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;linspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;21&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-&lt;span class="s2"&gt;def myhistogram(y):  &lt;/span&gt;
-&lt;span class="s2"&gt;    yn = sp.array(y)  &lt;/span&gt;
-&lt;span class="s2"&gt;    yn.sort()  &lt;/span&gt;
-&lt;span class="s2"&gt;    cdf = sp.linspace(0,1,yn.size)  &lt;/span&gt;
-&lt;span class="s2"&gt;    y_bins = interp1d(cdf, yn, kind=&amp;#39;linear&amp;#39;, axis=-1, copy=True,&lt;/span&gt;
-&lt;span class="s2"&gt;    bounds_error=True)(probability_thresholds)  &lt;/span&gt;
-&lt;span class="s2"&gt;    return probability_thresholds, y_bins&lt;/span&gt;
+&lt;span class="s s-Atom"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;myhistogram&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="s s-Atom"&gt;:&lt;/span&gt;  
+    &lt;span class="s s-Atom"&gt;yn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+    &lt;span class="s s-Atom"&gt;yn&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;sort&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  
+    &lt;span class="s s-Atom"&gt;cdf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;linspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s s-Atom"&gt;yn&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s s-Atom"&gt;size&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+    &lt;span class="s s-Atom"&gt;y_bins&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nf"&gt;interp1d&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;cdf&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;yn&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;kind=&amp;#39;linear&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;axis=-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;copy&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s s-Atom"&gt;bounds_error&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)(&lt;/span&gt;&lt;span class="s s-Atom"&gt;probability_thresholds&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+    &lt;span class="s s-Atom"&gt;return&lt;/span&gt; &lt;span class="s s-Atom"&gt;probability_thresholds&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;y_bins&lt;/span&gt;
 
-&lt;span class="s2"&gt;def init():  &lt;/span&gt;
-&lt;span class="s2"&gt;    line.set_data([],[])  &lt;/span&gt;
-&lt;span class="s2"&gt;    time_text.set_text(&amp;quot;&amp;quot;)  &lt;/span&gt;
-&lt;span class="s2"&gt;    return line, time_text&lt;/span&gt;
+&lt;span class="s s-Atom"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;init&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="s s-Atom"&gt;:&lt;/span&gt;  
+    &lt;span class="s s-Atom"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;set_data&lt;/span&gt;&lt;span class="p"&gt;([],[])&lt;/span&gt;  
+    &lt;span class="s s-Atom"&gt;time_text&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;set_text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+    &lt;span class="s s-Atom"&gt;return&lt;/span&gt; &lt;span class="s s-Atom"&gt;line&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;time_text&lt;/span&gt;
 
-&lt;span class="s2"&gt;def animate(i):  &lt;/span&gt;
-&lt;span class="s2"&gt;    cdf, y_bins = myhistogram(yall[i,:])  &lt;/span&gt;
-&lt;span class="s2"&gt;    pdf = sp.diff(cdf) / sp.diff(y_bins)  &lt;/span&gt;
-&lt;span class="s2"&gt;    y_bins_centers = 0.5*(y_bins[0:-1] + y_bins[1::])  &lt;/span&gt;
-&lt;span class="s2"&gt;    # pdf, y_bins = sp.histogram(yall[i,:], bins = Nbins, density =&lt;/span&gt;
-&lt;span class="s2"&gt;    True)  &lt;/span&gt;
-&lt;span class="s2"&gt;    # y_bins_centers = 0.5*(y_bins[0:-1] + y_bins[1::])  &lt;/span&gt;
-&lt;span class="s2"&gt;    line.set_data(y_bins_centers*180/sp.pi, pdf)  &lt;/span&gt;
-&lt;span class="s2"&gt;    time_text.set_text(&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;Time&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="s s-Atom"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;4.2&lt;/span&gt;&lt;span class="s s-Atom"&gt;f&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="s s-Atom"&gt;s&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;.format(t[i]))  &lt;/span&gt;
-&lt;span class="s2"&gt;    return line, time_text&lt;/span&gt;
+&lt;span class="s s-Atom"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;animate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="s s-Atom"&gt;:&lt;/span&gt;  
+    &lt;span class="s s-Atom"&gt;cdf&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;y_bins&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nf"&gt;myhistogram&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;yall&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s s-Atom"&gt;:&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;  
+    &lt;span class="s s-Atom"&gt;pdf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;cdf&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="s s-Atom"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;y_bins&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+    &lt;span class="s s-Atom"&gt;y_bins_centers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="s s-Atom"&gt;*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;y_bins&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s s-Atom"&gt;y_bins&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="s s-Atom"&gt;::&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;  
+    &lt;span class="s s-Atom"&gt;#&lt;/span&gt; &lt;span class="s s-Atom"&gt;pdf&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;y_bins&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;histogram&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;yall&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s s-Atom"&gt;:&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s s-Atom"&gt;bins&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;Nbins&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;density&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;
+    &lt;span class="nv"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+    &lt;span class="s s-Atom"&gt;#&lt;/span&gt; &lt;span class="s s-Atom"&gt;y_bins_centers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="s s-Atom"&gt;*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;y_bins&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s s-Atom"&gt;y_bins&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="s s-Atom"&gt;::&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;  
+    &lt;span class="s s-Atom"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;set_data&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;y_bins_centers&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;180&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="s s-Atom"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s s-Atom"&gt;pi&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;pdf&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+    &lt;span class="s s-Atom"&gt;time_text&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;set_text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Time = {0:4.2f} s&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;t&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt;  
+    &lt;span class="s s-Atom"&gt;return&lt;/span&gt; &lt;span class="s s-Atom"&gt;line&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;time_text&lt;/span&gt;
 
-&lt;span class="s2"&gt;anim = animation.FuncAnimation(fig, animate, init_func=init,  &lt;/span&gt;
-&lt;span class="s2"&gt;frames=1000, interval=1, blit=True)  &lt;/span&gt;
-&lt;span class="s2"&gt;#anim.save(&amp;#39;basic_animation.mp4&amp;#39;, fps=30, extra_args=[&amp;#39;-vcodec&amp;#39;,&lt;/span&gt;
-&lt;span class="s2"&gt;&amp;#39;libx264&amp;#39;])&lt;/span&gt;
+&lt;span class="s s-Atom"&gt;anim&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;animation&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;FuncAnimation&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;fig&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;animate&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;init_func&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s s-Atom"&gt;init&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  
+&lt;span class="s s-Atom"&gt;frames&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;interval&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;blit&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+&lt;span class="s s-Atom"&gt;#anim&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;&amp;#39;basic_animation.mp4&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;fps&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;extra_args&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;&amp;#39;-vcodec&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="s s-Atom"&gt;&amp;#39;libx264&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 
-&lt;span class="s2"&gt;plt.show()&lt;/span&gt;
+&lt;span class="s s-Atom"&gt;plt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 
-&lt;span class="s2"&gt;#plt.figure()  &lt;/span&gt;
-&lt;span class="s2"&gt;#plt.plot(t,yall[:,0]*180/sp.pi)  &lt;/span&gt;
-&lt;span class="s2"&gt;#plt.grid()  &lt;/span&gt;
-&lt;span class="s2"&gt;#plt.yticks(sp.linspace(-270,270,num=13))  &lt;/span&gt;
-&lt;span class="s2"&gt;#plt.xlabel(&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="s s-Atom"&gt;t$&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;)  &lt;/span&gt;
-&lt;span class="s2"&gt;#plt.ylabel(&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="s s-Atom"&gt;\\\&lt;/span&gt;&lt;span class="nf"&gt;theta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;$&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;span class="s s-Atom"&gt;#plt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;figure&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  
+&lt;span class="s s-Atom"&gt;#plt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s s-Atom"&gt;yall&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s s-Atom"&gt;:&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;180&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="s s-Atom"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s s-Atom"&gt;pi&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+&lt;span class="s s-Atom"&gt;#plt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  
+&lt;span class="s s-Atom"&gt;#plt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;yticks&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;linspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;270&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;270&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s s-Atom"&gt;num&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;  
+&lt;span class="s s-Atom"&gt;#plt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;xlabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$t$&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+&lt;span class="s s-Atom"&gt;#plt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;ylabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$\\\theta(t)$&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "left",

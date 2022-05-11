@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog - EngineeringWizardry</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/engineeringwizardry.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2020-06-12T18:03:54-07:00</updated><entry><title>#EngineeringWizardry | 00 | new series</title><link href="https://joseabell.com/posts/2020/engineeringwizardry-00-new-series.html" rel="alternate"></link><published>2020-06-12T18:03:54-07:00</published><updated>2020-06-12T18:03:54-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-06-12:/posts/2020/engineeringwizardry-00-new-series.html</id><summary type="html">
-&lt;div align="left" class="videoWrapper"&gt;
-&lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/F5xoTIT2uW4" width="640"&gt;&lt;/iframe&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog - EngineeringWizardry</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/engineeringwizardry.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2020-06-12T18:03:54-07:00</updated><entry><title>#EngineeringWizardry | 00 | new series</title><link href="https://joseabell.com/posts/2020/engineeringwizardry-00-new-series.html" rel="alternate"></link><published>2020-06-12T18:03:54-07:00</published><updated>2020-06-12T18:03:54-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-06-12:/posts/2020/engineeringwizardry-00-new-series.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/F5xoTIT2uW4" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
-&lt;p&gt;Stuck teaching during COVID-19 lockdowns in Chile has reminded me one crucial thing 
-about statics (the class I'm teaching this first semester in the southern hemisphere): &lt;strong&gt;it can be very frustrating for students&lt;/strong&gt;. This frustriation comes from unmet expectations. They're just finishing their early maths and physics formation (Calculus, Linear Algebra, Differential Equations, physics etc. ), an ideal world where problems have nice answers such as &lt;span class="math"&gt;\(\sqrt{2}  \pi\)&lt;/span&gt; or no answer at all. Then, along comes statics, and the world seems upside down. &lt;/p&gt;
-</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;Stuck teaching during COVID-19 lockdowns in Chile has reminded me …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;div class="videoWrapper" align="left"&gt;
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/F5xoTIT2uW4" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
@@ -18,7 +18,6 @@ about statics (the class I'm teaching this first semester in the southern hemisp
 &lt;p&gt;Not only are the contents of statics deceptively simple (&lt;span class="math"&gt;\(\sum F=0\)&lt;/span&gt; pretty much sums it up... get it?... sums?... ok), the only way through is through exercising... a lot. This cannot be over-emphasized. &lt;/p&gt;
 &lt;p&gt;The biggest hurdle through this is, ironically, maths. Yes! The very thing they've been becoming experts at. Take this example:&lt;/p&gt;
 &lt;!-- ![problem1](/images/engineering-wizardry/engineering-wizardry-00-new-series-fig00.svg) --&gt;
-
 &lt;div class="responsive-image" align="left"&gt;
 &lt;img src="/images/engineering-wizardry/engineering-wizardry-00-new-series-fig00.svg"&gt;
 &lt;/div&gt;
@@ -34,7 +33,7 @@ about statics (the class I'm teaching this first semester in the southern hemisp
 &lt;/ol&gt;
 &lt;p&gt;One of this forms is easier thant the other. Which one? Think about it... take your time.&lt;/p&gt;
 &lt;details&gt;
-&lt;p&gt;&lt;summary&gt;Click to know the answer...&lt;/summary&gt;&lt;/p&gt;
+&lt;summary&gt;Click to know the answer...&lt;/summary&gt;
 &lt;p&gt;&lt;strong&gt;NUMBER 2&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Why? Glad you asked!  In #2 you &lt;em&gt;fix the geometry&lt;/em&gt; of the problem. Finding the change in length of the springs is trivial.From that you can find the forces carried by each spring and from that the force applied comes from stating a simple particle force equilibrium at the vertex. &lt;/p&gt;
 &lt;p&gt;Form #1 fixes the applied forces. This means that the geometry is unknown, which leads to a &lt;em&gt;nonlinear system of equations&lt;/em&gt; that needs to be solved so that the displacements &lt;span class="math"&gt;\(u_x\)&lt;/span&gt; and &lt;span class="math"&gt;\(u_y\)&lt;/span&gt; result in spring stretches such that the equilibrium is satisfied. &lt;/p&gt;
