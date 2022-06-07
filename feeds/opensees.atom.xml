@@ -1,5 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog - OpenSees</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/opensees.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2021-12-28T17:45:29-08:00</updated><entry><title>New 2021 additions to OpenSees</title><link href="https://joseabell.com/new-2021-additions-to-opensees-EN.html" rel="alternate"></link><published>2021-12-28T17:45:29-08:00</published><updated>2021-12-28T17:45:29-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2021-12-28:/new-2021-additions-to-opensees-EN.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog - OpenSees</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/opensees.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2022-06-07T16:46:49-07:00</updated><entry><title>Buidling a computer cluster for OpenSees</title><link href="https://joseabell.com/posts/2022/buidling-a-computer-cluster-for-opensees.html" rel="alternate"></link><published>2022-06-07T16:46:49-07:00</published><updated>2022-06-07T16:46:49-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-06-07:/posts/2022/buidling-a-computer-cluster-for-opensees.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;div class="responsive-image"&gt;
+&lt;img src="https://www.dropbox.com/s/vd3t55bh6ffxxj5/IMG-20220602-WA0013.jpeg?raw=1" / alt="Initial setup!"&gt;
+&lt;/div&gt;
+
+&lt;p&gt;As part of my recently-awarded research grant where I'll study …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;div class="responsive-image"&gt;
+&lt;img src="https://www.dropbox.com/s/vd3t55bh6ffxxj5/IMG-20220602-WA0013.jpeg?raw=1" / alt="Initial setup!"&gt;
+&lt;/div&gt;
+
+&lt;p&gt;As part of my recently-awarded research grant where I'll study the effects of near-field earthquakes in Santiago Chile (more on that in the future, maybe) I'm building a small cluster of computers (a &lt;a href="https://en.wikipedia.org/wiki/Beowulf_cluster"&gt;beowulf cluster&lt;/a&gt;). &lt;/p&gt;
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+&lt;p&gt;The main considerations were&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Maximum number of processores cores I can afford. &lt;/li&gt;
+&lt;li&gt;3 to 4 Gb of RAM per core. &lt;/li&gt;
+&lt;li&gt;Setup with Ubuntu Linux (22.04) running ansible for software provisioning, SLURM, OpenMPI, and all of the OpenSees dependencies. &lt;/li&gt;
+&lt;li&gt;A network shared folder for home folders and results using something fast. &lt;/li&gt;
+&lt;li&gt;Connect to main node using a mixture of SSH and remote desktop software. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Talking with Massimo Petarca of ASDEA, as well as based on my previous experience with running parallel OpenSees, it seems that OpenSees does not scale linearly with number of processors past 16 processes. This led me to hypothesize that we can get better performance from a distributed-memory system rather than one big server that fits all of the specs. &lt;/p&gt;
+&lt;p&gt;So here is a bit of my reasoning for how I finally designed this system. &lt;/p&gt;
+&lt;p&gt;Lets start with processors. Having had ample experience with Intel and knowing that they provide very fast linear algebra through the (now free to use) MLK library I initially quoted Intel-based systems. Xeons are one of the go-tos for the HPC industry. With Xeons you can get two or more sockets in the same motherboard and insane ammounts of ECC memory.  This is all fine for HPC servers (which require uptime and reliability) but I don't really care for the ECC and we also won't gain much in a single motherboard because of the afore-mentioned scaling issue. What I really need is OpenSees in scalar mode (as well as in parallel with low process counts) to run fast. FastFAST! Fast Xeon processors are incredibly expensive. I side-looked into AMD territory, I've been hearing that in the desktop market AMD has been giving Intel a whopping. I was impressed and tempted with AMD Threadrippers, but I really don't need 32 cores and if I get the 16 core I might as well go cheaper with Ryzen 9's 5950X with the same core count and higher clock speeds. I also looked into the new Intel i9's which are impressive, but, though the core count is the same, i9s actually have two types of cores: performance cores (clocks over 5.0GHz) and eficiency cores (around 4.0GHz)... I really want all performance cores. Also tempting is the new DDR5 memory, but its spanking new and bound to be yet technologically unstable as motherboard manufacturers learn the tricks to tap into DDR5 territory (which is somewhat significantly different and more expensive than previous generation DDR4 memory. ). Oh... AMD can handle ECC memory BTW. &lt;/p&gt;
+&lt;p&gt;Coming back to that Intel MKL, I was under the impression that it only worked on Intel computers (duh)... but its turns out you can work around this and get some break-neck performance boosts with MKL on AMDs too! (see &lt;a href="https://www.pugetsystems.com/labs/hpc/How-To-Use-MKL-with-AMD-Ryzen-and-Threadripper-CPU-s-Effectively-for-Python-Numpy-And-Other-Applications-1637/"&gt;this&lt;/a&gt; and &lt;a href="https://www.reddit.com/r/matlab/comments/dxn38s/howto_force_matlab_to_use_a_fast_codepath_on_amd/"&gt;this too&lt;/a&gt;). So this removed the final barrier for me to opt for AMD for my cluster.  &lt;/p&gt;
+&lt;p&gt;So, based on all of this and my budget, for the compute nodes I'm getting 8 gaming computers outfitted with liquid cooled Ryzen 9 5950Xs (yes we will be overclocking these to get that performance boost and break into 5.0GHz territory), 64 Gb of DDR4 each, high-end Aorus motherboards, 2.5GbE network cards, and 500Gb M.2 NVMe PCIe x16 SSDs for OS and local (fast) storage options. The main (login) node will have a humbler Ryzen 9 5900X (12 cores instead of 16) and only 32 Gigs of RAM, because this is just used for login, compiling and maybe some pre/post-processing. Also it will be used for storage so its getting an extra 2Tb NVMe drive for the home folders, maybe I'll get some RAID SSDs next year. &lt;/p&gt;
+&lt;p&gt;GPU you're asking? What GPU?&lt;/p&gt;
+&lt;p&gt;To finish the cluster, I need a fast switch. I started out with a 48-port gigabit switch I had lying around (the one you'll see in the pictures). This is totally incapable of writing to that SSD (which can theoretically write up to 7.2 GBit/s). So I bought a couple of &lt;a href="https://www.qnap.com/en/product/qsw-m2108-2c"&gt;8port 2.5GbE QNAP managed switches&lt;/a&gt; that come with two 10GbE SFP+ ports. I also added a twin-port SFP+ capable ethernet card to the main node. I'll be doing some benchmarks of all this stuff shortly to see if I get the kind of write-performance that I want on this beast. &lt;/p&gt;
+&lt;p&gt;To setup the software stack, I used the &lt;a href="https://github.com/jaabell/BeowulfInstaller"&gt;BeowulfInstaller&lt;/a&gt; that my CS students developed last year. It installs smoothly over Ubuntu 22.04 so I'm really happy with that. We added a few extra things so I can share the large storage in the main node through NFS. &lt;/p&gt;
+&lt;p&gt;I'm having lots of fun these days building, testing, benchmarking and improving this system. I'm developing and sharing all my custom benchmarks on &lt;a href="https://github.com/jaabell/ClusterBenchmarks"&gt;this GitHub repo&lt;/a&gt;. &lt;a href="https://github.com/jaabell/ShakerMaker"&gt;ShakeMaker&lt;/a&gt; is running smoothly on the cluster and scaling linearly to all currently available 128 cores. Will be running OpenSees very soon. &lt;/p&gt;
+&lt;p&gt;I want to finish with some special thanks to all that have contributed to this project over the years. &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Carlos Castex (team v.1)&lt;/li&gt;
+&lt;li&gt;José Luis Assadi (team v.1)&lt;/li&gt;
+&lt;li&gt;Cristobal Griffero (team v.1)&lt;/li&gt;
+&lt;li&gt;Sebastián Baixas (team v.2 and v.3)&lt;/li&gt;
+&lt;li&gt;Joaquin Fernandez (team v.2)&lt;/li&gt;
+&lt;li&gt;José Tomás Gutiérrez (team v.2)&lt;/li&gt;
+&lt;li&gt;Omar Oyarce (team v.3)&lt;/li&gt;
+&lt;li&gt;Alberto Hurtado (team v.3)&lt;/li&gt;
+&lt;li&gt;José Luis Larenas (team v.3)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Here are some pics of us having fun configuring this thing in the civil engineering lab at UANDES.&lt;/p&gt;
+&lt;!-- &lt;div class="responsive-image"&gt;&lt;img src="" / alt="Initial setup day! Pizzas are a must!"&gt;&lt;/div&gt; --&gt;
+
+&lt;div class="responsive-image"&gt;&lt;img src="https://www.dropbox.com/s/06s4s3l3mo02sfg/20220517_222312.jpg?raw=1" / alt="Initial setup!"&gt;Initial setup day! Pizzas are a must!
+&lt;/div&gt;
+
+&lt;div class="responsive-image"&gt;&lt;img src="https://www.dropbox.com/s/k21v3x6p1tx907f/20220517_222342.jpg?raw=1" / alt="Initial setup!"&gt;
+Omar (MS student), myself and Sebastián (former undergrad student, original creator of BeowulfInstaller) started working around 9PM
+&lt;/div&gt;
+&lt;div class="responsive-image"&gt;&lt;img src="https://www.dropbox.com/s/nl2zxzig5sa4s2n/20220517_222349.jpg?raw=1" / alt=""&gt;Main node is up and running. Installing Ubuntu on a compute node. &lt;/div&gt;
+
+&lt;div class="responsive-image"&gt;&lt;img src="https://www.dropbox.com/s/1fg60l4nqbgygzl/20220517_230021.jpg?raw=1" / alt=""&gt;JL Larenas (future MS student) is also here for emotional support. &lt;/div&gt;
+
+&lt;div class="responsive-image"&gt;&lt;img src="https://www.dropbox.com/s/b6lrnnvv61it5cq/20220518_005352.jpg?raw=1" / alt=""&gt;Main node, two compute nodes and a switch. The basic setup to start testing and setting up with BeowulfInstaller&lt;/div&gt;
+
+&lt;div class="responsive-image"&gt;&lt;img src="https://www.dropbox.com/s/m9o6jus4dczpk9y/20220525_134638.jpg?raw=1" / alt=""&gt;The next day I added two more nodes. Some gibberish on-screen. Nice RGB lights on the RAM, I did not ask for those! &lt;/div&gt;
+
+&lt;div class="responsive-image"&gt;&lt;img src="https://www.dropbox.com/s/mcd4o2r4w2n649o/20220602_095204.jpg?raw=1" / alt="Initial setup!"&gt;Setting up more nodes and an old-fashioned rack to get everything tidy. &lt;/div&gt;
+
+&lt;div class="responsive-image"&gt;&lt;img src="https://www.dropbox.com/s/2dai1gnampzs1ab/20220602_102809.jpg?raw=1" / alt="Initial setup!"&gt;Special visit by Rodrigo who is a EE student taking my undergrad statics class that wanted to take a look. &lt;/div&gt;
+
+&lt;div class="responsive-image"&gt;&lt;img src="https://www.dropbox.com/s/vd3t55bh6ffxxj5/IMG-20220602-WA0013.jpeg?raw=1" / alt="Initial setup!"&gt;The current setup. All my 8 nodes are up. I need to configure the QNAP switch and see what kind of performance gains I get with that. The campus electrician will help me tidy up the cables and get more power for 4 more nodes (next year we'll duplicate the ammount of nodes!)&lt;/div&gt;
+
+&lt;div class="responsive-image"&gt;&lt;img src="https://www.dropbox.com/s/jjxwa9twob6b878/20201209_152907.jpg?raw=1" / alt="Initial setup!"&gt;v.2 of the Cluster was using these computer labs. On the picure Joaco Fernandez and JT Gutierrez.  This was summer of 2020 before the pandemic. &lt;/div&gt;
+
+&lt;div class="responsive-image"&gt;&lt;img src="https://www.dropbox.com/s/o3zl3i8yemdn70a/20210129_151546.jpg?raw=1" / alt="Initial setup!"&gt;Joaco, me, JT and Sebastián Baixas. The birth of BeowulfInstaller. What a team!  &lt;/div&gt;</content><category term="OpenSees"></category><category term="opensees"></category><category term="hpc"></category><category term="cluster"></category></entry><entry><title>New 2021 additions to OpenSees</title><link href="https://joseabell.com/new-2021-additions-to-opensees-EN.html" rel="alternate"></link><published>2021-12-28T17:45:29-08:00</published><updated>2021-12-28T17:45:29-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2021-12-28:/new-2021-additions-to-opensees-EN.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;p&gt;2021 has almost gone, I haven't written on my blog …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
