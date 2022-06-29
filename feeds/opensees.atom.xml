@@ -33,7 +33,7 @@
 &lt;p&gt;I'm having lots of fun these days building, testing, benchmarking and improving this system. I'm developing and sharing all my custom benchmarks on &lt;a href="https://github.com/jaabell/ClusterBenchmarks"&gt;this GitHub repo&lt;/a&gt;. &lt;a href="https://github.com/jaabell/ShakerMaker"&gt;ShakeMaker&lt;/a&gt; is running smoothly on the cluster and scaling linearly to all currently available 128 cores. Will be running OpenSees very soon. &lt;/p&gt;
 &lt;p&gt;I want to finish with some special thanks to all that have contributed to this project over the years. &lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Carlos Castex (team v.1)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.uandes.cl/personas/carlos-castex/"&gt;Carlos Castex&lt;/a&gt; (permanently on the team)&lt;/li&gt;
 &lt;li&gt;José Luis Assadi (team v.1)&lt;/li&gt;
 &lt;li&gt;Cristobal Griffero (team v.1)&lt;/li&gt;
 &lt;li&gt;Sebastián Baixas (team v.2 and v.3)&lt;/li&gt;
