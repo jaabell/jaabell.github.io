@@ -1,5 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog - OpenSees</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/opensees.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2022-07-06T09:46:19-07:00</updated><entry><title>EOSD2022 Summer School SSI Modeling</title><link href="https://joseabell.com/posts/2022/eosd2022-summer-school-ssi-modeling.html" rel="alternate"></link><published>2022-07-06T09:46:19-07:00</published><updated>2022-07-06T09:46:19-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-07-06:/posts/2022/eosd2022-summer-school-ssi-modeling.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog - OpenSees</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/opensees.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2022-07-19T15:41:47-07:00</updated><entry><title>EOSD2022 Recap</title><link href="https://joseabell.com/posts/2022/eosd2022-recap.html" rel="alternate"></link><published>2022-07-19T15:41:47-07:00</published><updated>2022-07-19T15:41:47-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-07-19:/posts/2022/eosd2022-recap.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;div class="responsive-image"&gt;
+&lt;img src="https://www.dropbox.com/s/68kr85qqa3gwej0/eosd2022.png?raw=1" / alt="Model"&gt;
+&lt;/div&gt;
+&lt;div class="responsive-image"&gt;
+&lt;img src="https://www.dropbox.com/s/s1swwzen2tehcnz/students-arduino.jpg?raw=1" / alt="Model"&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The Eurasian OpenSees days 2022 conference was a lot of …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;div class="responsive-image"&gt;
+&lt;img src="https://www.dropbox.com/s/68kr85qqa3gwej0/eosd2022.png?raw=1" / alt="Model"&gt;
+&lt;/div&gt;
+&lt;div class="responsive-image"&gt;
+&lt;img src="https://www.dropbox.com/s/s1swwzen2tehcnz/students-arduino.jpg?raw=1" / alt="Model"&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The Eurasian OpenSees days 2022 conference was a lot of fun! Especially because I had the opportunity to go with two students: Omar Oyarce and Alberto Hurtado (shown in the picture above with professor Pedro Arduino from University of Washington, Seattle) and show them what this little academic niche is all about. &lt;/p&gt;
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+&lt;div class="responsive-image"&gt;
+&lt;img src="https://www.dropbox.com/s/2rlaoy4jnvyzcld/me-keynote.jpg?raw=1" / alt="Model"&gt;
+&lt;/div&gt;
+&lt;p&gt;Also, I had the honor of being invited to give a keynote lecture! This is my first one, and I really hope I could get some of my research ideas across, despite taking to much of my audiences tme. I talked about my current research grant objectives and how some new available tools in OpenSees (and the jungle around OpenSees), together with my new HPC cluster make it possible. Here is a pic from the keynote. I'd like to reiterate and make public my gratitude towards the organizers for selecting me for this. &lt;/p&gt;
+&lt;div class="responsive-image"&gt;
+&lt;img src="https://www.dropbox.com/s/ghsdtlggolexzt2/me-iga.jpg?raw=1" / alt="Model"&gt;
+&lt;/div&gt;
+&lt;p&gt;I also gave a talk on my former student &lt;a href="{filename}/new-2021-additions-to-opensees.md"&gt;Felipe Elgueta's implementation of isogeometric analysis of shells in OpenSees&lt;/a&gt; and his thesis work. &lt;/p&gt;
+&lt;div class="responsive-image"&gt;
+&lt;img src="https://www.dropbox.com/s/4ck4ph34w58l1wr/group-arduino-spacone.jpg?raw=1" / alt="Model"&gt;
+&lt;/div&gt;
+&lt;p&gt;We got to hang out with well established professors such as Enrico Spacone, Guido Camata, and Pedro Arduino. &lt;/p&gt;
+&lt;p&gt;And also meet the new, rising stars in the OpenSees world: Davide Gorini, Fabio Di Trapani, Cristoforo Demartino, Tony Fierro,  to name a few but leaving out so many. See the list at the bottom of this article for a more complete appreciation list. &lt;/p&gt;
+&lt;p&gt;OpenSees is really going in different, new exciting directions, as can be seen from the breath of the subjects covered in the conference. Striking new directions include metamaterial modeling and molecular dynamics. But also there is a lot going on in more classic study areas such as soil-structure interaction modeling (still no dogmas on SSI modeling I'm afraid... more research is needed) and structural mechanics. Not a lot of soil modeling going on (outside SSI) in the conference, I know there is some new stuff (geotechs should get their stuff together!). AI is entering the OpenSees stage with a lot of strength. It's cool to see all the new tools surrounding OpenSees which people are coming up with (visualizers, python interfaces, site response analysis aids, you name it!). The big star is STKO from ASDEA group, that has reached an amazing level of maturisty since last OpenSees days conference at Porto, Portugal. A lot of new research is being powered by STKO, with stunning visuals, and its good to see all the open contributions to OpenSees coming from that team.  &lt;/p&gt;
+&lt;p&gt;I was impressed by a few talks and I hope to hear more from the authors. Here are some in no particular order (the order of the program):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Parametric investigation on damping properties of a type of snapping metamaterial&lt;/em&gt;. Luca Aceto, Guido Camata&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;A finite element investigation of the size-dependent mechanical properties of graphene&lt;/em&gt;. Dag Pasca, Matteo Pelliciari, Angelo Aloisio, Angelo M. Tarantino&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Brand new symmetric and asymmetric hysteresis models in OpenSees&lt;/em&gt; Salvatore Sessa, Nicolò Vaiana, Francesco Marmo, Luciano Rosati.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Assessment of the additional shear demand due to infills through a refined micromodel&lt;/em&gt;. Fabio Di Trapani, Valentina Bogatkina, Massimo Petracca, Guido Camata&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;A disruptive strategy for structural health monitoring with STKO&lt;/em&gt;. Alessia Amelio, Roberto Boccagna, Maurizio Bottini, Guido Camata, Nicola Germano, Massimo Petracca, Giuseppe Quaranta&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;On the seismic protection of existing structures: a large-scale modelling of nonlinear soil-structure-TMD interaction&lt;/em&gt;. Davide Noè Gorini, Guglielmo Clarizia, Pasquale Roberto Marrazzo, Rosario Montuori, Elide Nastri&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Enhancing seismic performance of semi-rigid connection using Shape Memory Alloy (SMA) bolts considering nonlinear soil–structure interaction&lt;/em&gt;. Benyamin Mohebi, Farzin Kazemi, Atefeh Yousefi&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Numerical evaluation of the soil-structure interaction effects on the seismic performance and vulnerability of high-rise RC buildings in southwestern Spain&lt;/em&gt;. Maria-Victoria Requena-Garcia-Cruz, Emilio Romero-Sanchez, Antonio Morales-Esteban&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Three-dimensional nonlinear soil-structure interaction modeling of a church bell tower in Guardiagrele, Italy&lt;/em&gt;. Onur Deniz Akan, Massimo Petracca, Guido Camata, Carlo Giovanni Lai, Enrico Spacone&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Modelling nonlinear static analysis for soil-structure interaction problems&lt;/em&gt;. Domenico Gallese, Davide Noè Gorini, Luigi Callisto&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Influence of boundary conditions on the site response of a basin&lt;/em&gt;. Tony Fierro, Maria Giovanna Durante, Massimina Castiglia, Filippo Santucci de Magistris&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;LTruss structures in OpenSees with steel to LVL or Glubam bolted connections&lt;/em&gt;. Da Shi, Cristoforo Demartino, and Zhi Li&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;A thermodynamic-based macroelement approach for dynamic analysis of soil-structure systems&lt;/em&gt;. Davide Noè Gorini, Luigi Callisto&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Authors: if you see this, get in touch! My email is my github handle followed by uandes.cl. &lt;/p&gt;</content><category term="OpenSees"></category><category term="opensees"></category><category term="conference"></category><category term="EOSD"></category><category term="python"></category><category term="gmsh"></category></entry><entry><title>EOSD2022 Summer School SSI Modeling</title><link href="https://joseabell.com/posts/2022/eosd2022-summer-school-ssi-modeling.html" rel="alternate"></link><published>2022-07-06T09:46:19-07:00</published><updated>2022-07-06T09:46:19-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-07-06:/posts/2022/eosd2022-summer-school-ssi-modeling.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;div class="responsive-image"&gt;
 &lt;img src="https://www.dropbox.com/s/i31g9x7x1ku5yn7/figura.png?raw=1" / alt="Model"&gt;
