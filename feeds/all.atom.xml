@@ -8,11 +8,10 @@
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/S7AjsGX0t2I" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 
-&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
-
 &lt;p&gt;Compilation is setup with no "bells and whistles", meaning its not optimized in any way
 and does not include any extra features. &lt;/p&gt;
-&lt;p&gt;The history file mentioned in the video can be found &lt;a href="https://www.dropbox.com/s/rhk54u42xrk37dk/history.txt?dl=0"&gt;here&lt;/a&gt; and this is the &lt;a href="https://www.dropbox.com/s/dyyz6qs3a1aoi7m/CMakeLists.txt?dl=0"&gt;CMakeLists.tex&lt;/a&gt; file.&lt;/p&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="tutorial"></category><category term="compilation"></category><category term="linux"></category><category term="YouTube"></category></entry><entry><title>EOSD2022 Recap</title><link href="https://joseabell.com/posts/2022/eosd2022-recap.html" rel="alternate"></link><published>2022-07-19T15:41:47-07:00</published><updated>2022-07-19T15:41:47-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-07-19:/posts/2022/eosd2022-recap.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+&lt;p&gt;The history file mentioned in the video can be found &lt;a href="https://www.dropbox.com/s/rhk54u42xrk37dk/history.txt?dl=0"&gt;here&lt;/a&gt; and this is the &lt;a href="https://www.dropbox.com/s/dyyz6qs3a1aoi7m/CMakeLists.txt?dl=0"&gt;CMakeLists.tex&lt;/a&gt; file.&lt;/p&gt;
+&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="tutorial"></category><category term="compilation"></category><category term="linux"></category><category term="YouTube"></category></entry><entry><title>EOSD2022 Recap</title><link href="https://joseabell.com/posts/2022/eosd2022-recap.html" rel="alternate"></link><published>2022-07-19T15:41:47-07:00</published><updated>2022-07-19T15:41:47-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-07-19:/posts/2022/eosd2022-recap.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;div class="responsive-image"&gt;
 &lt;img src="https://www.dropbox.com/s/68kr85qqa3gwej0/eosd2022.png?raw=1" / alt="Model"&gt;
