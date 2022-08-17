@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/all.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2022-07-19T15:41:47-07:00</updated><entry><title>EOSD2022 Recap</title><link href="https://joseabell.com/posts/2022/eosd2022-recap.html" rel="alternate"></link><published>2022-07-19T15:41:47-07:00</published><updated>2022-07-19T15:41:47-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-07-19:/posts/2022/eosd2022-recap.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/all.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2022-08-17T13:21:30-07:00</updated><entry><title>Building OpenSees and OpenSeesPy on Ubuntu 22.04 using CMAKE</title><link href="https://joseabell.com/building-opensees-and-openseespy-on-ubuntu-2204-using-cmake-EN.html" rel="alternate"></link><published>2022-08-17T13:21:30-07:00</published><updated>2022-08-17T13:21:30-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-08-17:/building-opensees-and-openseespy-on-ubuntu-2204-using-cmake-EN.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;In this short video I teach you how to compile …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;In this short video I teach you how to compile the latest OpenSees and OpenSeesPy on Ubuntu Linux 22.04. &lt;/p&gt;
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/S7AjsGX0t2I" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;Compilation is setup with no "bells and whistles", meaning its not optimized in any way
+and does not include any extra features. &lt;/p&gt;
+&lt;p&gt;The history file mentioned in the video can be found &lt;a href="https://www.dropbox.com/s/rhk54u42xrk37dk/history.txt?dl=0"&gt;here&lt;/a&gt; and this is the &lt;a href="https://www.dropbox.com/s/dyyz6qs3a1aoi7m/CMakeLists.txt?dl=0"&gt;CMakeLists.tex&lt;/a&gt; file.&lt;/p&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="tutorial"></category><category term="compilation"></category><category term="linux"></category><category term="YouTube"></category></entry><entry><title>EOSD2022 Recap</title><link href="https://joseabell.com/posts/2022/eosd2022-recap.html" rel="alternate"></link><published>2022-07-19T15:41:47-07:00</published><updated>2022-07-19T15:41:47-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-07-19:/posts/2022/eosd2022-recap.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;div class="responsive-image"&gt;
 &lt;img src="https://www.dropbox.com/s/68kr85qqa3gwej0/eosd2022.png?raw=1" / alt="Model"&gt;
