@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/all.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2022-12-05T14:28:57-08:00</updated><entry><title>Animate transient results with gmsh2opensees</title><link href="https://joseabell.com/animate-transient-results-with-gmsh2opensees-EN.html" rel="alternate"></link><published>2022-12-05T14:28:57-08:00</published><updated>2022-12-05T14:28:57-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-12-05:/animate-transient-results-with-gmsh2opensees-EN.html</id><summary type="html">
-&lt;div align="left" class="videoWrapper"&gt;
-&lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/pPOCSHs7bAM" width="640"&gt;&lt;/iframe&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/all.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2022-12-05T14:28:57-08:00</updated><entry><title>Animate transient results with gmsh2opensees</title><link href="https://joseabell.com/animate-transient-results-with-gmsh2opensees-EN.html" rel="alternate"></link><published>2022-12-05T14:28:57-08:00</published><updated>2022-12-05T14:28:57-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-12-05:/animate-transient-results-with-gmsh2opensees-EN.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/pPOCSHs7bAM" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
-&lt;p&gt;Another tutorial on leveraging the power of OpenSeesPy with gmsh and my library gmsh2opensees. In this one we also look into performing transient analysis in OpenSeesPy with a simple model. &lt;/p&gt;
-</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;Another tutorial on leveraging the power of OpenSeesPy with gmsh …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;div class="videoWrapper" align="left"&gt;
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/pPOCSHs7bAM" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 
 &lt;p&gt;Another tutorial on leveraging the power of OpenSeesPy with gmsh and my library gmsh2opensees. In this one we also look into performing transient analysis in OpenSeesPy with a simple model. &lt;/p&gt;
-&lt;!-- PELICAN_END_SUMMARY --&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="OpenSeesPy"></category><category term="gmsh"></category><category term="modeling"></category><category term="YouTube"></category></entry><entry><title>Using OpenSeesPy with gmsh in python</title><link href="https://joseabell.com/using-openseespy-with-gmsh-in-python-EN.html" rel="alternate"></link><published>2022-12-01T10:30:26-08:00</published><updated>2022-12-01T10:30:26-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-12-01:/using-openseespy-with-gmsh-in-python-EN.html</id><summary type="html">
-&lt;div align="left" class="videoWrapper"&gt;
-&lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/Jj1TqGVdKeY" width="640"&gt;&lt;/iframe&gt;
+&lt;!-- PELICAN_END_SUMMARY --&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="OpenSeesPy"></category><category term="gmsh"></category><category term="modeling"></category><category term="YouTube"></category></entry><entry><title>Using OpenSeesPy with gmsh in python</title><link href="https://joseabell.com/using-openseespy-with-gmsh-in-python-EN.html" rel="alternate"></link><published>2022-12-01T10:30:26-08:00</published><updated>2022-12-01T10:30:26-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-12-01:/using-openseespy-with-gmsh-in-python-EN.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/Jj1TqGVdKeY" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
-&lt;p&gt;In this tutorial, I teach you how to create wonderful continuum FE models in OpenSeesPy using gmsh as pre and post-processor. We'll be using my new module &lt;a href="https://github.com/jaabell/gmsh2opensees"&gt;gmsh2opensees&lt;/a&gt;.&lt;/p&gt;
-</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;In this tutorial, I teach you how to create wonderful …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;div class="videoWrapper" align="left"&gt;
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/Jj1TqGVdKeY" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
@@ -30,13 +32,13 @@
 &lt;li&gt;&lt;a href="https://www.dropbox.com/s/rxutgc5zwvvtk9v/example.geo?dl=1"&gt;example.geo&lt;/a&gt; - gmsh geometry file&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.dropbox.com/s/0urxpezg5cp1yth/example.msh?dl=1"&gt;example.msh&lt;/a&gt; - gmsh mesh file &lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.dropbox.com/s/b5i56mepjdqm2k8/example1.py?dl=0"&gt;example1.py&lt;/a&gt; - model python script&lt;/li&gt;
-&lt;/ul&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="OpenSeesPy"></category><category term="gmsh"></category><category term="modeling"></category><category term="YouTube"></category></entry><entry><title>Advanced seismic analysis with H5DRM OpenSees load pattern</title><link href="https://joseabell.com/advanced-seismic-analysis-with-h5drm-opensees-load-pattern-EN.html" rel="alternate"></link><published>2022-08-22T17:47:42-07:00</published><updated>2022-09-01T14:22:59-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-08-22:/advanced-seismic-analysis-with-h5drm-opensees-load-pattern-EN.html</id><summary type="html">
-&lt;div align="left" class="videoWrapper"&gt;
-&lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/4BxzkkUzYok" width="640"&gt;&lt;/iframe&gt;
+&lt;/ul&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="OpenSeesPy"></category><category term="gmsh"></category><category term="modeling"></category><category term="YouTube"></category></entry><entry><title>Advanced seismic analysis with H5DRM OpenSees load pattern</title><link href="https://joseabell.com/advanced-seismic-analysis-with-h5drm-opensees-load-pattern-EN.html" rel="alternate"></link><published>2022-08-22T17:47:42-07:00</published><updated>2022-09-01T14:22:59-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-08-22:/advanced-seismic-analysis-with-h5drm-opensees-load-pattern-EN.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/4BxzkkUzYok" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
-&lt;p&gt;Check out the new H5DRM load pattern for DRM-based seismic analysis on OpenSees. You can find the documentation and all the example files &lt;a href="https://opensees.github.io/OpenSeesDocumentation/user/manual/model/H5DRM.html"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;DRM stands for the Domain Reduction Method. It is a game-changer for seismic analysis. The DRM allows the analyst to subject their soil-structure systems to earthquake input featuring rich 3D motions. That is, you're no-longer restricted to assuming that the in-coming seismic wave-field is a planar wave, which is what 99% of analysis nowadays still assume. This is very important for several types of structures, for example as I showed was true &lt;a href="https://doi.org/10.1002/eqe.3026"&gt;for nuclear power plants subjected to near-field earthquake motions&lt;/a&gt;.&lt;/p&gt;
-</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;Check out the new H5DRM load pattern for DRM-based seismic …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;div class="videoWrapper" align="left"&gt;
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/4BxzkkUzYok" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
@@ -54,15 +56,9 @@
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/WOhd4KzacxI" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Finally, I want to bring attention to the H5DRM data format we devised for ShakerMaker and OpenSees. I would wish that this format becomes a standard for the exchange of DRM motion datasets and becomes implemented by seismic programs like SW4 and Hercules, and also by FE analysis software like LS-Dyna, Abaqus, Plaxis, Ansys, etc. Alternatively, I would also take any other format that became popular, or maybe improvements on this format. We just need to be able to store and exchange these datasets so that fancy seismic computations that are being done on large supercomputers today can have an additional impact on engineering by allowing us to subject civil engineering structural models to rich seismic wave fields coming from these large sims. &lt;/p&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="analysis"></category><category term="seismic"></category><category term="DRM"></category><category term="YouTube"></category><category term="earthquake"></category></entry><entry><title>Building OpenSees and OpenSeesPy on Ubuntu 22.04 using CMAKE</title><link href="https://joseabell.com/building-opensees-and-openseespy-on-ubuntu-2204-using-cmake-EN.html" rel="alternate"></link><published>2022-08-17T13:21:30-07:00</published><updated>2022-08-17T13:21:30-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-08-17:/building-opensees-and-openseespy-on-ubuntu-2204-using-cmake-EN.html</id><summary type="html">
-&lt;p&gt;In this short video I teach you how to compile the latest OpenSees and OpenSeesPy on Ubuntu Linux 22.04. &lt;/p&gt;
-&lt;div align="left" class="videoWrapper"&gt;
-&lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/S7AjsGX0t2I" width="640"&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-&lt;p&gt;Compilation is setup with no "bells and whistles", meaning its not optimized in any way
-and does not include any extra features. &lt;/p&gt;
-&lt;p&gt;The history file mentioned in the video can be found &lt;a href="https://www.dropbox.com/s/rhk54u42xrk37dk/history.txt?dl=0"&gt;here&lt;/a&gt; and this is the &lt;a href="https://www.dropbox.com/s/dyyz6qs3a1aoi7m/CMakeLists.txt?dl=0"&gt;CMakeLists.tex&lt;/a&gt; file.&lt;/p&gt;
-&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+&lt;p&gt;Finally, I want to bring attention to the H5DRM data format we devised for ShakerMaker and OpenSees. I would wish that this format becomes a standard for the exchange of DRM motion datasets and becomes implemented by seismic programs like SW4 and Hercules, and also by FE analysis software like LS-Dyna, Abaqus, Plaxis, Ansys, etc. Alternatively, I would also take any other format that became popular, or maybe improvements on this format. We just need to be able to store and exchange these datasets so that fancy seismic computations that are being done on large supercomputers today can have an additional impact on engineering by allowing us to subject civil engineering structural models to rich seismic wave fields coming from these large sims. &lt;/p&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="analysis"></category><category term="seismic"></category><category term="DRM"></category><category term="YouTube"></category><category term="earthquake"></category></entry><entry><title>Building OpenSees and OpenSeesPy on Ubuntu 22.04 using CMAKE</title><link href="https://joseabell.com/building-opensees-and-openseespy-on-ubuntu-2204-using-cmake-EN.html" rel="alternate"></link><published>2022-08-17T13:21:30-07:00</published><updated>2022-08-17T13:21:30-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-08-17:/building-opensees-and-openseespy-on-ubuntu-2204-using-cmake-EN.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;In this short video I teach you how to compile …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;p&gt;In this short video I teach you how to compile the latest OpenSees and OpenSeesPy on Ubuntu Linux 22.04. &lt;/p&gt;
 &lt;div class="videoWrapper" align="left"&gt;
@@ -72,15 +68,16 @@ and does not include any extra features. &lt;/p&gt;
 &lt;p&gt;Compilation is setup with no "bells and whistles", meaning its not optimized in any way
 and does not include any extra features. &lt;/p&gt;
 &lt;p&gt;The history file mentioned in the video can be found &lt;a href="https://www.dropbox.com/s/rhk54u42xrk37dk/history.txt?dl=0"&gt;here&lt;/a&gt; and this is the &lt;a href="https://www.dropbox.com/s/dyyz6qs3a1aoi7m/CMakeLists.txt?dl=0"&gt;CMakeLists.tex&lt;/a&gt; file.&lt;/p&gt;
-&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="tutorial"></category><category term="compilation"></category><category term="linux"></category><category term="YouTube"></category></entry><entry><title>EOSD2022 Recap</title><link href="https://joseabell.com/posts/2022/eosd2022-recap.html" rel="alternate"></link><published>2022-07-19T15:41:47-07:00</published><updated>2022-07-19T15:41:47-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-07-19:/posts/2022/eosd2022-recap.html</id><summary type="html">
+&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="tutorial"></category><category term="compilation"></category><category term="linux"></category><category term="YouTube"></category></entry><entry><title>EOSD2022 Recap</title><link href="https://joseabell.com/posts/2022/eosd2022-recap.html" rel="alternate"></link><published>2022-07-19T15:41:47-07:00</published><updated>2022-07-19T15:41:47-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-07-19:/posts/2022/eosd2022-recap.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
 &lt;div class="responsive-image"&gt;
-&lt;img alt="Model" src="https://www.dropbox.com/s/68kr85qqa3gwej0/eosd2022.png?raw=1"/&gt;
+&lt;img src="https://www.dropbox.com/s/68kr85qqa3gwej0/eosd2022.png?raw=1" / alt="Model"&gt;
 &lt;/div&gt;
 &lt;div class="responsive-image"&gt;
-&lt;img alt="Model" src="https://www.dropbox.com/s/s1swwzen2tehcnz/students-arduino.jpg?raw=1"/&gt;
+&lt;img src="https://www.dropbox.com/s/s1swwzen2tehcnz/students-arduino.jpg?raw=1" / alt="Model"&gt;
 &lt;/div&gt;
-&lt;p&gt;The Eurasian OpenSees days 2022 conference was a lot of fun! Especially because I had the opportunity to go with two students: Omar Oyarce and Alberto Hurtado (shown in the picture above with professor Pedro Arduino from University of Washington, Seattle) and show them what this little academic niche is all about. &lt;/p&gt;
-</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;The Eurasian OpenSees days 2022 conference was a lot of …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;div class="responsive-image"&gt;
 &lt;img src="https://www.dropbox.com/s/68kr85qqa3gwej0/eosd2022.png?raw=1" / alt="Model"&gt;
@@ -148,20 +145,13 @@ and does not include any extra features. &lt;/p&gt;
 &lt;p&gt;&lt;em&gt;A thermodynamic-based macroelement approach for dynamic analysis of soil-structure systems&lt;/em&gt;. Davide Noè Gorini, Luigi Callisto&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Authors: if you see this, get in touch! My email is my github handle followed by uandes.cl. &lt;/p&gt;</content><category term="OpenSees"></category><category term="opensees"></category><category term="conference"></category><category term="EOSD"></category><category term="python"></category><category term="gmsh"></category></entry><entry><title>EOSD2022 Summer School SSI Modeling</title><link href="https://joseabell.com/posts/2022/eosd2022-summer-school-ssi-modeling.html" rel="alternate"></link><published>2022-07-06T09:46:19-07:00</published><updated>2022-07-06T09:46:19-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-07-06:/posts/2022/eosd2022-summer-school-ssi-modeling.html</id><summary type="html">
+&lt;p&gt;Authors: if you see this, get in touch! My email is my github handle followed by uandes.cl. &lt;/p&gt;</content><category term="OpenSees"></category><category term="opensees"></category><category term="conference"></category><category term="EOSD"></category><category term="python"></category><category term="gmsh"></category></entry><entry><title>EOSD2022 Summer School SSI Modeling</title><link href="https://joseabell.com/posts/2022/eosd2022-summer-school-ssi-modeling.html" rel="alternate"></link><published>2022-07-06T09:46:19-07:00</published><updated>2022-07-06T09:46:19-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-07-06:/posts/2022/eosd2022-summer-school-ssi-modeling.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
 &lt;div class="responsive-image"&gt;
-&lt;img alt="Model" src="https://www.dropbox.com/s/i31g9x7x1ku5yn7/figura.png?raw=1"/&gt;
+&lt;img src="https://www.dropbox.com/s/i31g9x7x1ku5yn7/figura.png?raw=1" / alt="Model"&gt;
 &lt;/div&gt;
-&lt;p&gt;Short applicative lecture given at Eurasian OpenSees Days 2022 in Turin, Italy on July 6th. &lt;/p&gt;
-&lt;p&gt;Supplementary material:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://www.dropbox.com/s/slnk9s1z9dips22/presentation1-workshop.pdf?dl=1"&gt;Slides&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.dropbox.com/s/oaf5iiifizpc2k6/gmshopstools.py?dl=1"&gt;mshopstools.py&lt;/a&gt; - A toy library to interface &lt;em&gt;gmsh&lt;/em&gt; with &lt;code&gt;openseespy&lt;/code&gt;. &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.dropbox.com/s/9sf8aox89wcxkxu/workshop-ssi1.geo?dl=1"&gt;workshop-ssi1.geo&lt;/a&gt; - SSI &lt;em&gt;gmsh&lt;/em&gt; &lt;code&gt;.geo&lt;/code&gt; (geometry) file for the application. &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.dropbox.com/s/z50ujz48ukjlesd/workshop-ssi1.msh?dl=1"&gt;workshop-ssi1.msh&lt;/a&gt; - SSI &lt;em&gt;gmsh&lt;/em&gt; &lt;code&gt;.msh&lt;/code&gt; (mesh) file for the application, generated from the above file without any modifications. &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.dropbox.com/s/gjuswd4szpbr7we/workshop-ssi1.py?dl=1"&gt;workshop-ssi1.py&lt;/a&gt; - Python script that reads the &lt;code&gt;.msh&lt;/code&gt; file and creates and runs the OpenSees model using &lt;code&gt;openseespy&lt;/code&gt;. &lt;/li&gt;
-&lt;/ul&gt;
-</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;Short applicative lecture given at Eurasian OpenSees Days 2022 in …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;div class="responsive-image"&gt;
 &lt;img src="https://www.dropbox.com/s/i31g9x7x1ku5yn7/figura.png?raw=1" / alt="Model"&gt;
@@ -176,12 +166,13 @@ and does not include any extra features. &lt;/p&gt;
 &lt;li&gt;&lt;a href="https://www.dropbox.com/s/z50ujz48ukjlesd/workshop-ssi1.msh?dl=1"&gt;workshop-ssi1.msh&lt;/a&gt; - SSI &lt;em&gt;gmsh&lt;/em&gt; &lt;code&gt;.msh&lt;/code&gt; (mesh) file for the application, generated from the above file without any modifications. &lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.dropbox.com/s/gjuswd4szpbr7we/workshop-ssi1.py?dl=1"&gt;workshop-ssi1.py&lt;/a&gt; - Python script that reads the &lt;code&gt;.msh&lt;/code&gt; file and creates and runs the OpenSees model using &lt;code&gt;openseespy&lt;/code&gt;. &lt;/li&gt;
 &lt;/ul&gt;
-&lt;!-- PELICAN_END_SUMMARY --&gt;</content><category term="OpenSees"></category><category term="opensees"></category><category term="conference"></category><category term="EOSD"></category><category term="python"></category><category term="gmsh"></category></entry><entry><title>Buidling a computer cluster for OpenSees</title><link href="https://joseabell.com/posts/2022/buidling-a-computer-cluster-for-opensees.html" rel="alternate"></link><published>2022-06-07T16:46:49-07:00</published><updated>2022-06-07T16:46:49-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-06-07:/posts/2022/buidling-a-computer-cluster-for-opensees.html</id><summary type="html">
+&lt;!-- PELICAN_END_SUMMARY --&gt;</content><category term="OpenSees"></category><category term="opensees"></category><category term="conference"></category><category term="EOSD"></category><category term="python"></category><category term="gmsh"></category></entry><entry><title>Buidling a computer cluster for OpenSees</title><link href="https://joseabell.com/posts/2022/buidling-a-computer-cluster-for-opensees.html" rel="alternate"></link><published>2022-06-07T16:46:49-07:00</published><updated>2022-06-07T16:46:49-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-06-07:/posts/2022/buidling-a-computer-cluster-for-opensees.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
 &lt;div class="responsive-image"&gt;
-&lt;img alt="Initial setup!" src="https://www.dropbox.com/s/vd3t55bh6ffxxj5/IMG-20220602-WA0013.jpeg?raw=1"/&gt;
+&lt;img src="https://www.dropbox.com/s/vd3t55bh6ffxxj5/IMG-20220602-WA0013.jpeg?raw=1" / alt="Initial setup!"&gt;
 &lt;/div&gt;
-&lt;p&gt;As part of my recently-awarded research grant where I'll study the effects of near-field earthquakes in Santiago Chile (more on that in the future, maybe) I'm building a small cluster of computers (a &lt;a href="https://en.wikipedia.org/wiki/Beowulf_cluster"&gt;beowulf cluster&lt;/a&gt;). &lt;/p&gt;
-</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;As part of my recently-awarded research grant where I'll study …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;div class="responsive-image"&gt;
 &lt;img src="https://www.dropbox.com/s/vd3t55bh6ffxxj5/IMG-20220602-WA0013.jpeg?raw=1" / alt="Initial setup!"&gt;
@@ -247,12 +238,9 @@ Omar (MS student), myself and Sebastián (former undergrad student, original cre
 &lt;div class="responsive-image"&gt;&lt;img src="https://www.dropbox.com/s/o3zl3i8yemdn70a/20210129_151546.jpg?raw=1" / alt="Initial setup!"&gt;Joaco, me, JT and Sebastián Baixas. The birth of BeowulfInstaller. What a team!  &lt;/div&gt;
 
 &lt;div class="responsive-image"&gt;&lt;img src="https://www.dropbox.com/s/avvnlv50ro44ihw/DZThqffVMAA8rJU.jpeg?raw=1" / alt="Initial setup!"&gt;  &lt;/div&gt;
-&lt;p&gt;José Luis Assadi, Cristoba Griffero, Carlos Castex and me. The original cluster team!! Photo is from March 2018.&lt;/p&gt;</content><category term="OpenSees"></category><category term="opensees"></category><category term="hpc"></category><category term="cluster"></category></entry><entry><title>New 2021 additions to OpenSees</title><link href="https://joseabell.com/new-2021-additions-to-opensees-EN.html" rel="alternate"></link><published>2021-12-28T17:45:29-08:00</published><updated>2021-12-28T17:45:29-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2021-12-28:/new-2021-additions-to-opensees-EN.html</id><summary type="html">
-&lt;p&gt;2021 has almost gone, I haven't written on my blog almost all year, but there has been progress! I've made a bunch of small contributions this year to OpenSees (see all contributions &lt;a href="https://github.com/jaabell/OpenSees/commits?author=jaabell"&gt;here&lt;/a&gt;) but two big ones: a new material model for high-cyclic analysis of sands (SANISAND-MS with my collaborators at TU Delft, NGI and Bristol, see &lt;a href="https://opensees.github.io/OpenSeesDocumentation/user/manual/material/ndMaterials/SAniSandMS.html"&gt;here&lt;/a&gt;) and added isogeometric analysis (IGA) of shells capabilities. This last contribution is very recent and is still (as of writing this) in &lt;a href="https://github.com/OpenSees/OpenSees/pull/751"&gt;pull request&lt;/a&gt; mode. I'll let some time pass, for possible review, before I definitely merge into main OpenSees. &lt;/p&gt;
-&lt;div class="responsive-image"&gt;
-&lt;img alt="Really large deformations!" src="https://www.dropbox.com/s/yze9aihu4xg742f/fig-07.png?raw=1"/&gt;
-&lt;/div&gt;
-</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+&lt;p&gt;José Luis Assadi, Cristoba Griffero, Carlos Castex and me. The original cluster team!! Photo is from March 2018.&lt;/p&gt;</content><category term="OpenSees"></category><category term="opensees"></category><category term="hpc"></category><category term="cluster"></category></entry><entry><title>New 2021 additions to OpenSees</title><link href="https://joseabell.com/new-2021-additions-to-opensees-EN.html" rel="alternate"></link><published>2021-12-28T17:45:29-08:00</published><updated>2021-12-28T17:45:29-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2021-12-28:/new-2021-additions-to-opensees-EN.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;2021 has almost gone, I haven't written on my blog …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;p&gt;2021 has almost gone, I haven't written on my blog almost all year, but there has been progress! I've made a bunch of small contributions this year to OpenSees (see all contributions &lt;a href="https://github.com/jaabell/OpenSees/commits?author=jaabell"&gt;here&lt;/a&gt;) but two big ones: a new material model for high-cyclic analysis of sands (SANISAND-MS with my collaborators at TU Delft, NGI and Bristol, see &lt;a href="https://opensees.github.io/OpenSeesDocumentation/user/manual/material/ndMaterials/SAniSandMS.html"&gt;here&lt;/a&gt;) and added isogeometric analysis (IGA) of shells capabilities. This last contribution is very recent and is still (as of writing this) in &lt;a href="https://github.com/OpenSees/OpenSees/pull/751"&gt;pull request&lt;/a&gt; mode. I'll let some time pass, for possible review, before I definitely merge into main OpenSees. &lt;/p&gt;
 &lt;div class="responsive-image"&gt;
@@ -283,17 +271,9 @@ Omar (MS student), myself and Sebastián (former undergrad student, original cre
 
 &lt;div class="responsive-image"&gt;
 &lt;img src="https://www.dropbox.com/s/0mzy08bdfpw675r/fig-10.png?raw=1" / alt="And we do have some benchmarks to show that we did a good job! ;)"&gt;
-&lt;/div&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="additions"></category><category term="materials"></category><category term="IGA"></category></entry><entry><title>Temas de Magister/Memoria 2022</title><link href="https://joseabell.com/temas-de-magistermemoria-2022-ES.html" rel="alternate"></link><published>2021-11-24T18:05:09-08:00</published><updated>2021-11-24T18:05:09-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2021-11-24:/temas-de-magistermemoria-2022-ES.html</id><summary type="html">
-&lt;p&gt;Al final de la licenciatura (terminando "Métodos Computacionales en Obras Civiles") el alumno UANDES de la especialidad de Obras Civiles debe considerar si se va por la mención de "Estructuras" o por la de "Diseño de Proyecto de Infraestructuras". Además, si extenderá su carrera con un magister de continuidad o cerrará con un proyecto de título (memorias en la jerga antigua).&lt;/p&gt;
-&lt;p&gt;Esta es mi oferta de temas de magister o proyecto de título:&lt;/p&gt;
-&lt;!-- ![Modelo FEM de un puente](https://www.dropbox.com/s/yk1b6j9ylfnfy54/Bridge_FEM.png?raw=1) --&gt;
-&lt;div class="responsive-image"&gt;
-&lt;img src="https://www.dropbox.com/s/mq6z1x7yg9nysbx/tema-ms-1.png?raw=1"/&gt;
-&lt;/div&gt;
-&lt;h2&gt;Magister&lt;/h2&gt;
-&lt;p&gt;Se busca alumno de Magister para el siguiente tema:&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;"Modelación de alta-fidelidad para análisis de estructuras sometidas a sismos de campo cercano "&lt;/em&gt;&lt;/p&gt;
-</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+&lt;/div&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="additions"></category><category term="materials"></category><category term="IGA"></category></entry><entry><title>Temas de Magister/Memoria 2022</title><link href="https://joseabell.com/temas-de-magistermemoria-2022-ES.html" rel="alternate"></link><published>2021-11-24T18:05:09-08:00</published><updated>2021-11-24T18:05:09-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2021-11-24:/temas-de-magistermemoria-2022-ES.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;Al final de la licenciatura (terminando "Métodos Computacionales en Obras …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;p&gt;Al final de la licenciatura (terminando "Métodos Computacionales en Obras Civiles") el alumno UANDES de la especialidad de Obras Civiles debe considerar si se va por la mención de "Estructuras" o por la de "Diseño de Proyecto de Infraestructuras". Además, si extenderá su carrera con un magister de continuidad o cerrará con un proyecto de título (memorias en la jerga antigua).&lt;/p&gt;
 &lt;p&gt;Esta es mi oferta de temas de magister o proyecto de título:&lt;/p&gt;
@@ -332,17 +312,9 @@ Omar (MS student), myself and Sebastián (former undergrad student, original cre
 &lt;/div&gt;
 
 &lt;p&gt;Este tema está orientado a alumnos de ingeniería de computación (aunque también para un ingeniero eléctrico que sea buen programador) con ganas de trabajar más a bajo nivel. Durante el 2020 y el verano del 2021 se reconfiguró a sala de computación de ingeniería (100 computadores) para trabajar como un clúster de supercómputo. Esto significa que se puede coordinar la ejecución de tareas utilizando los recursos de los 100 computadores de manera simultánea (600 cores, 1.6Tb de memoria RAM distribuída, 10Tb de almacenamiento) para resolver problemas de mayor envergadura (por complejidad computacional y/o cantidad). &lt;/p&gt;
-&lt;p&gt;La idea es desarrollar una serie de benchmarkas (problemas tipo) a resolver que permita entender el desempeño de este sistema en términos de su capacidad computacional e identificar el tipo de problemas para el que resulte más eficiente. &lt;/p&gt;</content><category term="Teaching"></category><category term="teaching"></category><category term="temas de memoria"></category><category term="alumnos"></category></entry><entry><title>Temas de Magister/Memoria 2021</title><link href="https://joseabell.com/temas-de-magistermemoria-2021-ES.html" rel="alternate"></link><published>2020-12-11T09:31:34-08:00</published><updated>2021-02-04T15:33:52-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-12-11:/temas-de-magistermemoria-2021-ES.html</id><summary type="html">
-&lt;p&gt;Al final de la licenciatura el alumno UANDES debe comenzar a considerar si extenderá su carrera con un magister de continuidad o cerrará con un proyecto de título. En cualquier caso se deben considerar posibles temas a estudiar en esta etapa. &lt;/p&gt;
-&lt;p&gt;Esta es mi oferta de temas de magister o proyecto de título. Para más detalles y/o ayuda a discernir esta etapa, no dudes en contactarme directamente para conversar y aclarar dudas. &lt;/p&gt;
-&lt;h2&gt;Magister&lt;/h2&gt;
-&lt;p&gt;Se busca alumno de Magister para el siguiente tema:&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;"Modelación de alta-fidelidad para análisis de ciclo de vida de puentes chilenos"&lt;/em&gt;&lt;/p&gt;
-&lt;!-- ![Modelo FEM de un puente](https://www.dropbox.com/s/yk1b6j9ylfnfy54/Bridge_FEM.png?raw=1) --&gt;
-&lt;div class="responsive-image"&gt;
-&lt;img src="https://www.dropbox.com/s/yk1b6j9ylfnfy54/Bridge_FEM.png?raw=1"/&gt;
-&lt;/div&gt;
-</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+&lt;p&gt;La idea es desarrollar una serie de benchmarkas (problemas tipo) a resolver que permita entender el desempeño de este sistema en términos de su capacidad computacional e identificar el tipo de problemas para el que resulte más eficiente. &lt;/p&gt;</content><category term="Teaching"></category><category term="teaching"></category><category term="temas de memoria"></category><category term="alumnos"></category></entry><entry><title>Temas de Magister/Memoria 2021</title><link href="https://joseabell.com/temas-de-magistermemoria-2021-ES.html" rel="alternate"></link><published>2020-12-11T09:31:34-08:00</published><updated>2021-02-04T15:33:52-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-12-11:/temas-de-magistermemoria-2021-ES.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;Al final de la licenciatura el alumno UANDES debe comenzar …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;p&gt;Al final de la licenciatura el alumno UANDES debe comenzar a considerar si extenderá su carrera con un magister de continuidad o cerrará con un proyecto de título. En cualquier caso se deben considerar posibles temas a estudiar en esta etapa. &lt;/p&gt;
 &lt;p&gt;Esta es mi oferta de temas de magister o proyecto de título. Para más detalles y/o ayuda a discernir esta etapa, no dudes en contactarme directamente para conversar y aclarar dudas. &lt;/p&gt;
@@ -386,16 +358,9 @@ Omar (MS student), myself and Sebastián (former undergrad student, original cre
 &lt;/div&gt;
 
 &lt;p&gt;Este tema está orientado a alumnos de ingeniería de computación (aunque también para un ingeniero eléctrico que sea buen programador) con ganas de trabajar más a bajo nivel. Durante el 2020 y el verano del 2021 se reconfiguró a sala de computación de ingeniería (100 computadores) para trabajar como un clúster de supercómputo. Esto significa que se puede coordinar la ejecución de tareas utilizando los recursos de los 100 computadores de manera simultánea (600 cores, 1.6Tb de memoria RAM distribuída, 10Tb de almacenamiento) para resolver problemas de mayor envergadura (por complejidad computacional y/o cantidad). &lt;/p&gt;
-&lt;p&gt;La idea es desarrollar una serie de benchmarkas (problemas tipo) a resolver que permita entender el desempeño de este sistema en términos de su capacidad computacional e identificar el tipo de problemas para el que resulte más eficiente. &lt;/p&gt;</content><category term="Teaching"></category><category term="teaching"></category><category term="temas de memoria"></category><category term="alumnos"></category></entry><entry><title>Compiling OpenSees 3.2.0 on Ubuntu 20.10: a tutorial and commentary</title><link href="https://joseabell.com/compiling-opensees-320-on-ubuntu-2010-a-tutorial-and-commentary-EN.html" rel="alternate"></link><published>2020-12-01T11:22:13-08:00</published><updated>2020-12-01T11:22:13-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-12-01:/compiling-opensees-320-on-ubuntu-2010-a-tutorial-and-commentary-EN.html</id><summary type="html">
-&lt;p&gt;In this short video I teach you how to compile OpenSees 3.2.0 on Ubuntu Linux 20.10. &lt;/p&gt;
-&lt;div align="left" class="videoWrapper"&gt;
-&lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/esMK3f5G90Y" width="640"&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
-&lt;p&gt;Compilation is setup with no "bells and whistles", meaning its not optimized in any way
-and does not include any extra features. &lt;/p&gt;
-&lt;p&gt;The history file mentioned in the video can be found &lt;a href="https://www.dropbox.com/s/bcmfjkrxla9n6je/hist.txt?dl=0"&gt;here&lt;/a&gt; and this is the &lt;a href="https://www.dropbox.com/s/gj7sfmqqlz8dhh5/Makefile.def?dl=0"&gt;Makefile.def&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Check out &lt;a href="https://courses.silviasbrainery.com/"&gt;Silvia's Brainery&lt;/a&gt; and &lt;a href="https://portwooddigital.com/"&gt;Michael Scott's blog&lt;/a&gt; for more awesome OpenSees stuff!&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+&lt;p&gt;La idea es desarrollar una serie de benchmarkas (problemas tipo) a resolver que permita entender el desempeño de este sistema en términos de su capacidad computacional e identificar el tipo de problemas para el que resulte más eficiente. &lt;/p&gt;</content><category term="Teaching"></category><category term="teaching"></category><category term="temas de memoria"></category><category term="alumnos"></category></entry><entry><title>Compiling OpenSees 3.2.0 on Ubuntu 20.10: a tutorial and commentary</title><link href="https://joseabell.com/compiling-opensees-320-on-ubuntu-2010-a-tutorial-and-commentary-EN.html" rel="alternate"></link><published>2020-12-01T11:22:13-08:00</published><updated>2020-12-01T11:22:13-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-12-01:/compiling-opensees-320-on-ubuntu-2010-a-tutorial-and-commentary-EN.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;In this short video I teach you how to compile …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;p&gt;In this short video I teach you how to compile OpenSees 3.2.0 on Ubuntu Linux 20.10. &lt;/p&gt;
 &lt;div class="videoWrapper" align="left"&gt;
@@ -407,21 +372,17 @@ and does not include any extra features. &lt;/p&gt;
 &lt;p&gt;Compilation is setup with no "bells and whistles", meaning its not optimized in any way
 and does not include any extra features. &lt;/p&gt;
 &lt;p&gt;The history file mentioned in the video can be found &lt;a href="https://www.dropbox.com/s/bcmfjkrxla9n6je/hist.txt?dl=0"&gt;here&lt;/a&gt; and this is the &lt;a href="https://www.dropbox.com/s/gj7sfmqqlz8dhh5/Makefile.def?dl=0"&gt;Makefile.def&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Check out &lt;a href="https://courses.silviasbrainery.com/"&gt;Silvia's Brainery&lt;/a&gt; and &lt;a href="https://portwooddigital.com/"&gt;Michael Scott's blog&lt;/a&gt; for more awesome OpenSees stuff!&lt;/p&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="tutorial"></category><category term="compilation"></category><category term="linux"></category><category term="YouTube"></category></entry><entry><title>STKO OpenSees review</title><link href="https://joseabell.com/stko-opensees-review-EN.html" rel="alternate"></link><published>2020-11-30T12:19:44-08:00</published><updated>2020-11-30T12:19:44-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-11-30:/stko-opensees-review-EN.html</id><summary type="html">
-&lt;blockquote class="twitter-tweet"&gt;&lt;p dir="ltr" lang="en"&gt;A created a short &lt;a href="https://twitter.com/hashtag/review?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#review&lt;/a&gt; of STKO: a pre/post processor for &lt;a href="https://twitter.com/hashtag/OpenSees?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#OpenSees&lt;/a&gt; which I think is really cool and brings fresh new stuff into OpenSees to benefit all. &lt;a href="https://t.co/EnMAVAnRya"&gt;https://t.co/EnMAVAnRya&lt;/a&gt;&lt;/p&gt;— José Antonio Abell (@RealJoseAbell) &lt;a href="https://twitter.com/RealJoseAbell/status/1333422948607287297?ref_src=twsrc%5Etfw"&gt;November 30, 2020&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"&gt;&lt;/script&gt;
-&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+&lt;p&gt;Check out &lt;a href="https://courses.silviasbrainery.com/"&gt;Silvia's Brainery&lt;/a&gt; and &lt;a href="https://portwooddigital.com/"&gt;Michael Scott's blog&lt;/a&gt; for more awesome OpenSees stuff!&lt;/p&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="tutorial"></category><category term="compilation"></category><category term="linux"></category><category term="YouTube"></category></entry><entry><title>STKO OpenSees review</title><link href="https://joseabell.com/stko-opensees-review-EN.html" rel="alternate"></link><published>2020-11-30T12:19:44-08:00</published><updated>2020-11-30T12:19:44-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-11-30:/stko-opensees-review-EN.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;A created a short &lt;a href="https://twitter.com/hashtag/review?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#review&lt;/a&gt; of STKO: a pre/post …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;A created a short &lt;a href="https://twitter.com/hashtag/review?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#review&lt;/a&gt; of STKO: a pre/post processor for &lt;a href="https://twitter.com/hashtag/OpenSees?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#OpenSees&lt;/a&gt; which I think is really cool and brings fresh new stuff into OpenSees to benefit all. &lt;a href="https://t.co/EnMAVAnRya"&gt;https://t.co/EnMAVAnRya&lt;/a&gt;&lt;/p&gt;&amp;mdash; José Antonio Abell (@RealJoseAbell) &lt;a href="https://twitter.com/RealJoseAbell/status/1333422948607287297?ref_src=twsrc%5Etfw"&gt;November 30, 2020&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
 
-&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="review"></category><category term="YouTube"></category></entry><entry><title>Nicolás Galano defends his MS Thesis</title><link href="https://joseabell.com/nicol%C3%A1s-galano-defends-his-ms-thesis-EN.html" rel="alternate"></link><published>2020-09-09T10:17:56-07:00</published><updated>2020-09-09T10:17:56-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-09-09:/nicolás-galano-defends-his-ms-thesis-EN.html</id><summary type="html">
+&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="review"></category><category term="YouTube"></category></entry><entry><title>Nicolás Galano defends his MS Thesis</title><link href="https://joseabell.com/nicol%C3%A1s-galano-defends-his-ms-thesis-EN.html" rel="alternate"></link><published>2020-09-09T10:17:56-07:00</published><updated>2020-09-09T10:17:56-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-09-09:/nicolás-galano-defends-his-ms-thesis-EN.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
 &lt;p&gt;Congratulations Nico!&lt;/p&gt;
-&lt;blockquote class="twitter-tweet"&gt;&lt;p dir="ltr" lang="en"&gt;Remember this tweet? &lt;br/&gt;&lt;br/&gt;I'm proud to announce the MS defense of my (co)-MS student Nicolás Galano, who worked on extending &lt;a href="https://twitter.com/hashtag/PFEM?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#PFEM&lt;/a&gt; on &lt;a href="https://twitter.com/hashtag/OpenSees?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#OpenSees&lt;/a&gt; for scour modeling. &lt;br/&gt;&lt;br/&gt;We stand on the shoulder of giants. Original &lt;a href="https://twitter.com/hashtag/PFEM?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#PFEM&lt;/a&gt; implementation by &lt;a href="https://twitter.com/mikusscott?ref_src=twsrc%5Etfw"&gt;@mikusscott&lt;/a&gt; and &lt;a href="https://twitter.com/MinjieZhuOS?ref_src=twsrc%5Etfw"&gt;@MinjieZhuOS&lt;/a&gt;. Thanks guys! &lt;a href="https://t.co/K6rfp8FjPj"&gt;https://t.co/K6rfp8FjPj&lt;/a&gt; &lt;a href="https://t.co/AiwGGnSFQH"&gt;pic.twitter.com/AiwGGnSFQH&lt;/a&gt;&lt;/p&gt;— José Antonio Abell (@RealJoseAbell) &lt;a href="https://twitter.com/RealJoseAbell/status/1303680903193952257?ref_src=twsrc%5Etfw"&gt;September 9, 2020&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"&gt;&lt;/script&gt;
-&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
-&lt;blockquote class="twitter-tweet" data-conversation="none"&gt;&lt;p dir="ltr" lang="en"&gt;Great results! &lt;a href="https://t.co/L6NikXiqh3"&gt;pic.twitter.com/L6NikXiqh3&lt;/a&gt;&lt;/p&gt;— José Antonio Abell (@RealJoseAbell) &lt;a href="https://twitter.com/RealJoseAbell/status/1303682401453965319?ref_src=twsrc%5Etfw"&gt;September 9, 2020&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"&gt;&lt;/script&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+&lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;Remember this tweet? &lt;br&gt;&lt;br&gt;I&amp;#39;m proud to announce …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;p&gt;Congratulations Nico!&lt;/p&gt;
 &lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;Remember this tweet? &lt;br&gt;&lt;br&gt;I&amp;#39;m proud to announce the MS defense of my (co)-MS student Nicolás Galano, who worked on extending &lt;a href="https://twitter.com/hashtag/PFEM?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#PFEM&lt;/a&gt; on &lt;a href="https://twitter.com/hashtag/OpenSees?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#OpenSees&lt;/a&gt; for scour modeling. &lt;br&gt;&lt;br&gt;We stand on the shoulder of giants. Original &lt;a href="https://twitter.com/hashtag/PFEM?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#PFEM&lt;/a&gt; implementation by &lt;a href="https://twitter.com/mikusscott?ref_src=twsrc%5Etfw"&gt;@mikusscott&lt;/a&gt; and &lt;a href="https://twitter.com/MinjieZhuOS?ref_src=twsrc%5Etfw"&gt;@MinjieZhuOS&lt;/a&gt;. Thanks guys! &lt;a href="https://t.co/K6rfp8FjPj"&gt;https://t.co/K6rfp8FjPj&lt;/a&gt; &lt;a href="https://t.co/AiwGGnSFQH"&gt;pic.twitter.com/AiwGGnSFQH&lt;/a&gt;&lt;/p&gt;&amp;mdash; José Antonio Abell (@RealJoseAbell) &lt;a href="https://twitter.com/RealJoseAbell/status/1303680903193952257?ref_src=twsrc%5Etfw"&gt;September 9, 2020&lt;/a&gt;&lt;/blockquote&gt;
@@ -430,10 +391,10 @@ and does not include any extra features. &lt;/p&gt;
 &lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;blockquote class="twitter-tweet" data-conversation="none"&gt;&lt;p lang="en" dir="ltr"&gt;Great results! &lt;a href="https://t.co/L6NikXiqh3"&gt;pic.twitter.com/L6NikXiqh3&lt;/a&gt;&lt;/p&gt;&amp;mdash; José Antonio Abell (@RealJoseAbell) &lt;a href="https://twitter.com/RealJoseAbell/status/1303682401453965319?ref_src=twsrc%5Etfw"&gt;September 9, 2020&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="GroupNews"></category><category term="PFEM"></category><category term="OpenSees"></category><category term="defense"></category><category term="tsunami"></category><category term="twitter"></category></entry><entry><title>Paper04 - Modelling the cyclic ratcheting of sands through memory-enhanced bounding surface plasticity.</title><link href="https://joseabell.com/posts/2020/paper04-modelling-the-cyclic-ratcheting-of-sands-through-memory-enhanced-bounding-surface-plasticity.html" rel="alternate"></link><published>2020-06-30T23:33:09-07:00</published><updated>2020-06-30T23:33:09-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-06-30:/posts/2020/paper04-modelling-the-cyclic-ratcheting-of-sands-through-memory-enhanced-bounding-surface-plasticity.html</id><summary type="html">
-&lt;p&gt;This is the first paper fruit of the on-going collaboration with &lt;a class="reference external" href="https://online-learning.tudelft.nl/instructors/federico-pisano/"&gt;Federico Pisanò&lt;/a&gt; at TU Delft. Here we tackle the problem of formulating a constitutive model, derived from the SAniSand framework by Yannis Dafalias, which can replicate the &lt;em&gt;ratcheting&lt;/em&gt; phenomenon on sands.&lt;/p&gt;
-&lt;p&gt;What is ratcheting?&lt;/p&gt;
-</summary><content type="html">&lt;blockquote class="highlights"&gt;
+&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</content><category term="GroupNews"></category><category term="PFEM"></category><category term="OpenSees"></category><category term="defense"></category><category term="tsunami"></category><category term="twitter"></category></entry><entry><title>Paper04 - Modelling the cyclic ratcheting of sands through memory-enhanced bounding surface plasticity.</title><link href="https://joseabell.com/posts/2020/paper04-modelling-the-cyclic-ratcheting-of-sands-through-memory-enhanced-bounding-surface-plasticity.html" rel="alternate"></link><published>2020-06-30T23:33:09-07:00</published><updated>2020-06-30T23:33:09-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-06-30:/posts/2020/paper04-modelling-the-cyclic-ratcheting-of-sands-through-memory-enhanced-bounding-surface-plasticity.html</id><summary type="html">&lt;blockquote class="highlights"&gt;
+&lt;blockquote&gt;
+&lt;strong&gt;Abstract&lt;/strong&gt;&lt;/blockquote&gt;
+&lt;p&gt;The modelling and simulation of cyclic sand ratcheting is …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;blockquote class="highlights"&gt;
 &lt;blockquote&gt;
 &lt;strong&gt;Abstract&lt;/strong&gt;&lt;/blockquote&gt;
 &lt;p&gt;The modelling and simulation of cyclic sand ratcheting is tackled via a plasticity model formulated withinthe well-known critical state, bounding surface SANISAND framework. For this purpose, a third locus –termed ‘memory surface’ – is cast into the constitutive formulation, so as to phenomenologically capturemicro-mechanical, fabric-related processes directly relevant to the cyclic response. The predictive capabilityof the model under numerous loading cycles (‘high-cyclic’ loading) is explored with focus on drainedloading conditions, and validated against experimental test results from the literature – including triaxial,simple shear and oedometer cyclic loading. The model proves capable of reproducing the transition fromratcheting to shakedown response, in combination with a single set of soil parameters for different initial,boundary and loading conditions. This work contributes to the analysis of soil-structure interaction underhigh-cyclic loading events, such as those induced by environmental and/or traffic loads.&lt;/p&gt;
@@ -530,21 +491,20 @@ and does not include any extra features. &lt;/p&gt;
     (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content><category term="Publications"></category><category term="Papers"></category><category term="Constitutive Modeling"></category></entry><entry><title>Large earthquake in Mexico triggers tsunami warnings</title><link href="https://joseabell.com/large-earthquake-in-mexico-triggers-tsunami-warnings-EN.html" rel="alternate"></link><published>2020-06-23T12:23:30-07:00</published><updated>2020-06-23T12:23:30-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-06-23:/large-earthquake-in-mexico-triggers-tsunami-warnings-EN.html</id><summary type="html">
-&lt;blockquote class="twitter-tweet"&gt;&lt;p dir="ltr" lang="en"&gt;The magnitude I gave came from the Tsunami threat record. &lt;a href="https://t.co/2h5dppVLLQ"&gt;pic.twitter.com/2h5dppVLLQ&lt;/a&gt;&lt;/p&gt;— José A. Abell 🇻🇦🇨🇱 (@jose_abell) &lt;a href="https://twitter.com/jose_abell/status/1275464037069991944?ref_src=twsrc%5Etfw"&gt;June 23, 2020&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"&gt;&lt;/script&gt;
-&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+&lt;/script&gt;</content><category term="Publications"></category><category term="Papers"></category><category term="Constitutive Modeling"></category></entry><entry><title>Large earthquake in Mexico triggers tsunami warnings</title><link href="https://joseabell.com/large-earthquake-in-mexico-triggers-tsunami-warnings-EN.html" rel="alternate"></link><published>2020-06-23T12:23:30-07:00</published><updated>2020-06-23T12:23:30-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-06-23:/large-earthquake-in-mexico-triggers-tsunami-warnings-EN.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;The magnitude I gave came from the Tsunami threat record …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;The magnitude I gave came from the Tsunami threat record. &lt;a href="https://t.co/2h5dppVLLQ"&gt;pic.twitter.com/2h5dppVLLQ&lt;/a&gt;&lt;/p&gt;&amp;mdash; José A. Abell 🇻🇦🇨🇱 (@jose_abell) &lt;a href="https://twitter.com/jose_abell/status/1275464037069991944?ref_src=twsrc%5Etfw"&gt;June 23, 2020&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
 
-&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;</content><category term="Earthquakes"></category><category term="Earthquakes"></category><category term="tsunami"></category><category term="twitter"></category></entry><entry><title>#EngineeringWizardry | 00 | new series</title><link href="https://joseabell.com/posts/2020/engineeringwizardry-00-new-series.html" rel="alternate"></link><published>2020-06-12T18:03:54-07:00</published><updated>2020-06-12T18:03:54-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-06-12:/posts/2020/engineeringwizardry-00-new-series.html</id><summary type="html">
-&lt;div align="left" class="videoWrapper"&gt;
-&lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/F5xoTIT2uW4" width="640"&gt;&lt;/iframe&gt;
+&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;</content><category term="Earthquakes"></category><category term="Earthquakes"></category><category term="tsunami"></category><category term="twitter"></category></entry><entry><title>#EngineeringWizardry | 00 | new series</title><link href="https://joseabell.com/posts/2020/engineeringwizardry-00-new-series.html" rel="alternate"></link><published>2020-06-12T18:03:54-07:00</published><updated>2020-06-12T18:03:54-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-06-12:/posts/2020/engineeringwizardry-00-new-series.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/F5xoTIT2uW4" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
-&lt;p&gt;Stuck teaching during COVID-19 lockdowns in Chile has reminded me one crucial thing 
-about statics (the class I'm teaching this first semester in the southern hemisphere): &lt;strong&gt;it can be very frustrating for students&lt;/strong&gt;. This frustriation comes from unmet expectations. They're just finishing their early maths and physics formation (Calculus, Linear Algebra, Differential Equations, physics etc. ), an ideal world where problems have nice answers such as &lt;span class="math"&gt;\(\sqrt{2}  \pi\)&lt;/span&gt; or no answer at all. Then, along comes statics, and the world seems upside down. &lt;/p&gt;
-</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;Stuck teaching during COVID-19 lockdowns in Chile has reminded me …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;div class="videoWrapper" align="left"&gt;
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/F5xoTIT2uW4" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
@@ -930,76 +890,14 @@ The form of the problem notwidthstanding, to me as a teacher what's important ab
 &lt;p&gt;This was submitted for review Jan 6 2017, it took over a year to get acceptance! Three iterations of peer-review were done. Admittedly, I did take too much time to answer. Tough year was 2017. Although the reviewers were very picky, which led to article improvement--especially the introduction--, the main content of the article changed little. We have the same results and conclusions. &lt;/p&gt;
 &lt;p&gt;Where from here?&lt;/p&gt;
 &lt;p&gt;It think DRM-based SSI analysis is &lt;em&gt;the&lt;/em&gt; methodology to produce the highest-possible fidelity modeling of SSI. But generating these DRM motions is costly, we need supercomputers for that. Highly-detailed modeling of seismic motions is currently underway, it would be rather cheap for the researchers doing these simulations to also generate DRM-compatible motions for future exploration, making these simulations even more relevant. There needs to be an agreed format for the distribution of DRM motions, and a repository of validated motions to be used for modeling. &lt;/p&gt;
-&lt;p&gt;Is it worthwhile? That's a research question in of itself. Clearly we can build to withstand earthquakes, so its not a safety-critical issue to use advanced SSI modeling. Might be an economic one. Maybe some case-studies can be reinterpreted in the light of 3-D motions to suggest that they were to blame in unexpected performance of existing infrastructure. Some structures will be more sensitive to these effects than others, which? how much so? under what conditions? is it necessary to model them in this way? There is great value in high-fidelity SSI modeling, is there a way to bring this into practice? All questions I want to answer in the years to come. &lt;/p&gt;</content><category term="Publications"></category><category term="Papers"></category><category term="DRM"></category><category term="ESSI"></category></entry><entry><title>Video of 2-D SSI model of an RC Shear Wall Building</title><link href="https://joseabell.com/posts/2017/video-of-2-d-ssi-model-of-an-rc-shear-wall-building.html" rel="alternate"></link><published>2017-11-09T13:21:21-08:00</published><updated>2017-11-09T13:21:21-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2017-11-09:/posts/2017/video-of-2-d-ssi-model-of-an-rc-shear-wall-building.html</id><summary type="html">
-&lt;div align="left" class="videoWrapper"&gt;
-&lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/_ye7wjjywSw" width="640"&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-&lt;p&gt;The RC shear-wall building is modeled in OpenSees using non-linear fiber based beam column elements. Soil is modeled as a continuum using quad elements and linear stress-strain relationship. Soil shear wave-speed is varied in depth such as to obtain a &lt;span class="math"&gt;\(V_{s30}\)&lt;/span&gt; consistent with a class B site according to chilean seismic code. Lysmer-Kulhemeyer dashpots are used along the soil boundary to model seismic radiation and earthquake wave-field input.&lt;/p&gt;
+&lt;p&gt;Is it worthwhile? That's a research question in of itself. Clearly we can build to withstand earthquakes, so its not a safety-critical issue to use advanced SSI modeling. Might be an economic one. Maybe some case-studies can be reinterpreted in the light of 3-D motions to suggest that they were to blame in unexpected performance of existing infrastructure. Some structures will be more sensitive to these effects than others, which? how much so? under what conditions? is it necessary to model them in this way? There is great value in high-fidelity SSI modeling, is there a way to bring this into practice? All questions I want to answer in the years to come. &lt;/p&gt;</content><category term="Publications"></category><category term="Papers"></category><category term="DRM"></category><category term="ESSI"></category></entry><entry><title>Video of 2-D SSI model of an RC Shear Wall Building</title><link href="https://joseabell.com/posts/2017/video-of-2-d-ssi-model-of-an-rc-shear-wall-building.html" rel="alternate"></link><published>2017-11-09T13:21:21-08:00</published><updated>2017-11-09T13:21:21-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2017-11-09:/posts/2017/video-of-2-d-ssi-model-of-an-rc-shear-wall-building.html</id><summary type="html">&lt;!-- Image: https://www.dropbox.com/s/24tkmfk1y1r0wz5/disp.png?raw=1 --&gt;
+
 &lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
-&lt;p&gt;The performance of the building will be assessed for varying site fundamental periods. This is an aspect of SSI that is not covered by the chilean seismic code, and has been shown to be a problem in past earthquakes. &lt;/p&gt;
-&lt;p&gt;This is part of an on-going study with Prof. &lt;a href="http://cigiden.cl/es/carolina-magna/"&gt;Carolina Magna&lt;/a&gt; from Adolfo Ibañez Unversity and her MS student Miguel Ángel Rodriguez from UDP. &lt;/p&gt;
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "left",
-        indent = "0em",
-        linebreak = "false";
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/_ye7wjjywSw" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
 
-    if (false) {
-        align = (screen.width &lt; 768) ? "left" : align;
-        indent = (screen.width &lt; 768) ? "0em" : indent;
-        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-
-    var configscript = document.createElement('script');
-    configscript.type = 'text/x-mathjax-config';
-    configscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js','color.js','mhchem.js'], equationNumbers: { autoNumber: 'none' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        availableFonts: ['STIX', 'TeX']," +
-        "        preferredFont: 'STIX'," +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</summary><content type="html">&lt;!-- Image: https://www.dropbox.com/s/24tkmfk1y1r0wz5/disp.png?raw=1 --&gt;
+&lt;p&gt;The RC shear-wall building is modeled in OpenSees using non-linear …&lt;/p&gt;</summary><content type="html">&lt;!-- Image: https://www.dropbox.com/s/24tkmfk1y1r0wz5/disp.png?raw=1 --&gt;
 
 &lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 &lt;div class="videoWrapper" align="left"&gt;
@@ -1072,93 +970,13 @@ The form of the problem notwidthstanding, to me as a teacher what's important ab
     (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content><category term="ResearchHighlight"></category><category term="OpenSees"></category><category term="Paraview"></category><category term="Building"></category><category term="FEM"></category></entry><entry><title>New cable element in OpenSees</title><link href="https://joseabell.com/posts/2017/new-cable-element-in-opensees.html" rel="alternate"></link><published>2017-09-07T20:13:57-07:00</published><updated>2017-09-07T20:13:57-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2017-09-07:/posts/2017/new-cable-element-in-opensees.html</id><summary type="html">
-&lt;div align="left" class="videoWrapper"&gt;
-&lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/MX_--SI_vKg" width="640"&gt;&lt;/iframe&gt;
+&lt;/script&gt;</content><category term="ResearchHighlight"></category><category term="OpenSees"></category><category term="Paraview"></category><category term="Building"></category><category term="FEM"></category></entry><entry><title>New cable element in OpenSees</title><link href="https://joseabell.com/posts/2017/new-cable-element-in-opensees.html" rel="alternate"></link><published>2017-09-07T20:13:57-07:00</published><updated>2017-09-07T20:13:57-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2017-09-07:/posts/2017/new-cable-element-in-opensees.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/MX_--SI_vKg" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
-&lt;p&gt;With my student, Pablo Ibañez, we implemented a new &lt;a href="http://opensees.berkeley.edu/wiki/index.php/CatenaryCableElement"&gt;catenary cable element&lt;/a&gt; in OpenSees. This element is based on the work by Salehi et al[1].&lt;/p&gt;
-&lt;p&gt;The stiffness of this element is obtained using a flexibility formulation. Basically the shape of the cable is determined by the integral:&lt;/p&gt;
-&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
-&lt;div class="math"&gt;$$
-\newcommand{\pare}[1]{\left( #1 \right)}
-\newcommand{\brak}[1]{\left[ #1 \right]}
-\newcommand{\brac}[1]{\left\lbrace #1 \right\rbrace}
-\newcommand{\vect}[1]{\boldsymbol{#1}}
-\newcommand{\uv}[1]{\hat{\boldsymbol{#1}}}
-\newcommand{\ud}{\,\mathrm{d}}
-\begin{align*}
-\vect{x}(s) = \vect{x}_1 - \int_0^s \dfrac{\vect{w}s + \vect{f}}{\Vert \vect{w}s + \vect{f} \Vert^2}\pare{\dfrac{\Vert \vect{w}s + \vect{f} \Vert}{EA} + \pare{1 + \alpha \Delta T}} \ud s \\
-\vect{w} = \brak{w_1,\, w_2,\, w_3}^T \qquad
-\vect{f} = \brak{f_1,\, f_2,\, f_3}^T 
-\end{align*}
-$$&lt;/div&gt;
-&lt;p&gt;Where &lt;span class="math"&gt;\(\vect{x_1}\)&lt;/span&gt; is the position of the first node of the cable, &lt;span class="math"&gt;\(\vect{w}\)&lt;/span&gt; is the weight vector in each direction, &lt;span class="math"&gt;\(EA\)&lt;/span&gt; is the stiffness, &lt;span class="math"&gt;\(\alpha \Delta T\)&lt;/span&gt; is the change in strain due to temperature and &lt;span class="math"&gt;\(\vect{f}\)&lt;/span&gt; is the force vector at the start node. This equation is iterated (with the forces as variable) upon until the the shape of the cable matches the nodal postiions imposed by the finite element program (trial displacements). Then it is used to derive a stiffness matrix. &lt;/p&gt;
-&lt;p&gt;The element, as is, passes all our static verification tests. With the additional assumption of a lumped-mass matrix, we're currently working on a dynamic verification suite as well as some validation experiments. &lt;/p&gt;
-&lt;p&gt;The animation above was created using &lt;a href="http://opensees.berkeley.edu/"&gt;OpenSees&lt;/a&gt; to simulate the cable and &lt;a href="http://www.blender.org"&gt;Blender&lt;/a&gt; to render it. &lt;/p&gt;
-&lt;p&gt;Reference&lt;/p&gt;
-&lt;p&gt;[1] Salehi Ahmad Abad, M., Shooshtari, A., Esmaeili, V., &amp;amp; Naghavi Riabi, A. (2013). &lt;em&gt;Nonlinear analysis of cable structures under general loadings.&lt;/em&gt; Finite Elements in Analysis and Design, 73, 11–19. https://doi.org/10.1016/j.finel.2013.05.002&lt;/p&gt;
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "left",
-        indent = "0em",
-        linebreak = "false";
 
-    if (false) {
-        align = (screen.width &lt; 768) ? "left" : align;
-        indent = (screen.width &lt; 768) ? "0em" : indent;
-        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-
-    var configscript = document.createElement('script');
-    configscript.type = 'text/x-mathjax-config';
-    configscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js','color.js','mhchem.js'], equationNumbers: { autoNumber: 'none' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        availableFonts: ['STIX', 'TeX']," +
-        "        preferredFont: 'STIX'," +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+&lt;p&gt;With my student, Pablo Ibañez, we implemented a new &lt;a href="http://opensees.berkeley.edu/wiki/index.php/CatenaryCableElement"&gt;catenary …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;div class="videoWrapper" align="left"&gt;
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/MX_--SI_vKg" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;

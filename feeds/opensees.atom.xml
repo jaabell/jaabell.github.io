@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog - OpenSees</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/opensees.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2022-12-05T14:28:57-08:00</updated><entry><title>Animate transient results with gmsh2opensees</title><link href="https://joseabell.com/animate-transient-results-with-gmsh2opensees-EN.html" rel="alternate"></link><published>2022-12-05T14:28:57-08:00</published><updated>2022-12-05T14:28:57-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-12-05:/animate-transient-results-with-gmsh2opensees-EN.html</id><summary type="html">
-&lt;div align="left" class="videoWrapper"&gt;
-&lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/pPOCSHs7bAM" width="640"&gt;&lt;/iframe&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog - OpenSees</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/opensees.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2022-12-05T14:28:57-08:00</updated><entry><title>Animate transient results with gmsh2opensees</title><link href="https://joseabell.com/animate-transient-results-with-gmsh2opensees-EN.html" rel="alternate"></link><published>2022-12-05T14:28:57-08:00</published><updated>2022-12-05T14:28:57-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-12-05:/animate-transient-results-with-gmsh2opensees-EN.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/pPOCSHs7bAM" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
-&lt;p&gt;Another tutorial on leveraging the power of OpenSeesPy with gmsh and my library gmsh2opensees. In this one we also look into performing transient analysis in OpenSeesPy with a simple model. &lt;/p&gt;
-</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;Another tutorial on leveraging the power of OpenSeesPy with gmsh …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;div class="videoWrapper" align="left"&gt;
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/pPOCSHs7bAM" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 
 &lt;p&gt;Another tutorial on leveraging the power of OpenSeesPy with gmsh and my library gmsh2opensees. In this one we also look into performing transient analysis in OpenSeesPy with a simple model. &lt;/p&gt;
-&lt;!-- PELICAN_END_SUMMARY --&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="OpenSeesPy"></category><category term="gmsh"></category><category term="modeling"></category><category term="YouTube"></category></entry><entry><title>Using OpenSeesPy with gmsh in python</title><link href="https://joseabell.com/using-openseespy-with-gmsh-in-python-EN.html" rel="alternate"></link><published>2022-12-01T10:30:26-08:00</published><updated>2022-12-01T10:30:26-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-12-01:/using-openseespy-with-gmsh-in-python-EN.html</id><summary type="html">
-&lt;div align="left" class="videoWrapper"&gt;
-&lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/Jj1TqGVdKeY" width="640"&gt;&lt;/iframe&gt;
+&lt;!-- PELICAN_END_SUMMARY --&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="OpenSeesPy"></category><category term="gmsh"></category><category term="modeling"></category><category term="YouTube"></category></entry><entry><title>Using OpenSeesPy with gmsh in python</title><link href="https://joseabell.com/using-openseespy-with-gmsh-in-python-EN.html" rel="alternate"></link><published>2022-12-01T10:30:26-08:00</published><updated>2022-12-01T10:30:26-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-12-01:/using-openseespy-with-gmsh-in-python-EN.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/Jj1TqGVdKeY" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
-&lt;p&gt;In this tutorial, I teach you how to create wonderful continuum FE models in OpenSeesPy using gmsh as pre and post-processor. We'll be using my new module &lt;a href="https://github.com/jaabell/gmsh2opensees"&gt;gmsh2opensees&lt;/a&gt;.&lt;/p&gt;
-</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;In this tutorial, I teach you how to create wonderful …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;div class="videoWrapper" align="left"&gt;
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/Jj1TqGVdKeY" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
@@ -30,13 +32,13 @@
 &lt;li&gt;&lt;a href="https://www.dropbox.com/s/rxutgc5zwvvtk9v/example.geo?dl=1"&gt;example.geo&lt;/a&gt; - gmsh geometry file&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.dropbox.com/s/0urxpezg5cp1yth/example.msh?dl=1"&gt;example.msh&lt;/a&gt; - gmsh mesh file &lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.dropbox.com/s/b5i56mepjdqm2k8/example1.py?dl=0"&gt;example1.py&lt;/a&gt; - model python script&lt;/li&gt;
-&lt;/ul&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="OpenSeesPy"></category><category term="gmsh"></category><category term="modeling"></category><category term="YouTube"></category></entry><entry><title>Advanced seismic analysis with H5DRM OpenSees load pattern</title><link href="https://joseabell.com/advanced-seismic-analysis-with-h5drm-opensees-load-pattern-EN.html" rel="alternate"></link><published>2022-08-22T17:47:42-07:00</published><updated>2022-09-01T14:22:59-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-08-22:/advanced-seismic-analysis-with-h5drm-opensees-load-pattern-EN.html</id><summary type="html">
-&lt;div align="left" class="videoWrapper"&gt;
-&lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/4BxzkkUzYok" width="640"&gt;&lt;/iframe&gt;
+&lt;/ul&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="OpenSeesPy"></category><category term="gmsh"></category><category term="modeling"></category><category term="YouTube"></category></entry><entry><title>Advanced seismic analysis with H5DRM OpenSees load pattern</title><link href="https://joseabell.com/advanced-seismic-analysis-with-h5drm-opensees-load-pattern-EN.html" rel="alternate"></link><published>2022-08-22T17:47:42-07:00</published><updated>2022-09-01T14:22:59-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-08-22:/advanced-seismic-analysis-with-h5drm-opensees-load-pattern-EN.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/4BxzkkUzYok" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
-&lt;p&gt;Check out the new H5DRM load pattern for DRM-based seismic analysis on OpenSees. You can find the documentation and all the example files &lt;a href="https://opensees.github.io/OpenSeesDocumentation/user/manual/model/H5DRM.html"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;DRM stands for the Domain Reduction Method. It is a game-changer for seismic analysis. The DRM allows the analyst to subject their soil-structure systems to earthquake input featuring rich 3D motions. That is, you're no-longer restricted to assuming that the in-coming seismic wave-field is a planar wave, which is what 99% of analysis nowadays still assume. This is very important for several types of structures, for example as I showed was true &lt;a href="https://doi.org/10.1002/eqe.3026"&gt;for nuclear power plants subjected to near-field earthquake motions&lt;/a&gt;.&lt;/p&gt;
-</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;Check out the new H5DRM load pattern for DRM-based seismic …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;div class="videoWrapper" align="left"&gt;
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/4BxzkkUzYok" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
@@ -54,15 +56,9 @@
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/WOhd4KzacxI" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Finally, I want to bring attention to the H5DRM data format we devised for ShakerMaker and OpenSees. I would wish that this format becomes a standard for the exchange of DRM motion datasets and becomes implemented by seismic programs like SW4 and Hercules, and also by FE analysis software like LS-Dyna, Abaqus, Plaxis, Ansys, etc. Alternatively, I would also take any other format that became popular, or maybe improvements on this format. We just need to be able to store and exchange these datasets so that fancy seismic computations that are being done on large supercomputers today can have an additional impact on engineering by allowing us to subject civil engineering structural models to rich seismic wave fields coming from these large sims. &lt;/p&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="analysis"></category><category term="seismic"></category><category term="DRM"></category><category term="YouTube"></category><category term="earthquake"></category></entry><entry><title>Building OpenSees and OpenSeesPy on Ubuntu 22.04 using CMAKE</title><link href="https://joseabell.com/building-opensees-and-openseespy-on-ubuntu-2204-using-cmake-EN.html" rel="alternate"></link><published>2022-08-17T13:21:30-07:00</published><updated>2022-08-17T13:21:30-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-08-17:/building-opensees-and-openseespy-on-ubuntu-2204-using-cmake-EN.html</id><summary type="html">
-&lt;p&gt;In this short video I teach you how to compile the latest OpenSees and OpenSeesPy on Ubuntu Linux 22.04. &lt;/p&gt;
-&lt;div align="left" class="videoWrapper"&gt;
-&lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/S7AjsGX0t2I" width="640"&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-&lt;p&gt;Compilation is setup with no "bells and whistles", meaning its not optimized in any way
-and does not include any extra features. &lt;/p&gt;
-&lt;p&gt;The history file mentioned in the video can be found &lt;a href="https://www.dropbox.com/s/rhk54u42xrk37dk/history.txt?dl=0"&gt;here&lt;/a&gt; and this is the &lt;a href="https://www.dropbox.com/s/dyyz6qs3a1aoi7m/CMakeLists.txt?dl=0"&gt;CMakeLists.tex&lt;/a&gt; file.&lt;/p&gt;
-&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+&lt;p&gt;Finally, I want to bring attention to the H5DRM data format we devised for ShakerMaker and OpenSees. I would wish that this format becomes a standard for the exchange of DRM motion datasets and becomes implemented by seismic programs like SW4 and Hercules, and also by FE analysis software like LS-Dyna, Abaqus, Plaxis, Ansys, etc. Alternatively, I would also take any other format that became popular, or maybe improvements on this format. We just need to be able to store and exchange these datasets so that fancy seismic computations that are being done on large supercomputers today can have an additional impact on engineering by allowing us to subject civil engineering structural models to rich seismic wave fields coming from these large sims. &lt;/p&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="analysis"></category><category term="seismic"></category><category term="DRM"></category><category term="YouTube"></category><category term="earthquake"></category></entry><entry><title>Building OpenSees and OpenSeesPy on Ubuntu 22.04 using CMAKE</title><link href="https://joseabell.com/building-opensees-and-openseespy-on-ubuntu-2204-using-cmake-EN.html" rel="alternate"></link><published>2022-08-17T13:21:30-07:00</published><updated>2022-08-17T13:21:30-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-08-17:/building-opensees-and-openseespy-on-ubuntu-2204-using-cmake-EN.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;In this short video I teach you how to compile …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;p&gt;In this short video I teach you how to compile the latest OpenSees and OpenSeesPy on Ubuntu Linux 22.04. &lt;/p&gt;
 &lt;div class="videoWrapper" align="left"&gt;
@@ -72,15 +68,16 @@ and does not include any extra features. &lt;/p&gt;
 &lt;p&gt;Compilation is setup with no "bells and whistles", meaning its not optimized in any way
 and does not include any extra features. &lt;/p&gt;
 &lt;p&gt;The history file mentioned in the video can be found &lt;a href="https://www.dropbox.com/s/rhk54u42xrk37dk/history.txt?dl=0"&gt;here&lt;/a&gt; and this is the &lt;a href="https://www.dropbox.com/s/dyyz6qs3a1aoi7m/CMakeLists.txt?dl=0"&gt;CMakeLists.tex&lt;/a&gt; file.&lt;/p&gt;
-&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="tutorial"></category><category term="compilation"></category><category term="linux"></category><category term="YouTube"></category></entry><entry><title>EOSD2022 Recap</title><link href="https://joseabell.com/posts/2022/eosd2022-recap.html" rel="alternate"></link><published>2022-07-19T15:41:47-07:00</published><updated>2022-07-19T15:41:47-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-07-19:/posts/2022/eosd2022-recap.html</id><summary type="html">
+&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="tutorial"></category><category term="compilation"></category><category term="linux"></category><category term="YouTube"></category></entry><entry><title>EOSD2022 Recap</title><link href="https://joseabell.com/posts/2022/eosd2022-recap.html" rel="alternate"></link><published>2022-07-19T15:41:47-07:00</published><updated>2022-07-19T15:41:47-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-07-19:/posts/2022/eosd2022-recap.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
 &lt;div class="responsive-image"&gt;
-&lt;img alt="Model" src="https://www.dropbox.com/s/68kr85qqa3gwej0/eosd2022.png?raw=1"/&gt;
+&lt;img src="https://www.dropbox.com/s/68kr85qqa3gwej0/eosd2022.png?raw=1" / alt="Model"&gt;
 &lt;/div&gt;
 &lt;div class="responsive-image"&gt;
-&lt;img alt="Model" src="https://www.dropbox.com/s/s1swwzen2tehcnz/students-arduino.jpg?raw=1"/&gt;
+&lt;img src="https://www.dropbox.com/s/s1swwzen2tehcnz/students-arduino.jpg?raw=1" / alt="Model"&gt;
 &lt;/div&gt;
-&lt;p&gt;The Eurasian OpenSees days 2022 conference was a lot of fun! Especially because I had the opportunity to go with two students: Omar Oyarce and Alberto Hurtado (shown in the picture above with professor Pedro Arduino from University of Washington, Seattle) and show them what this little academic niche is all about. &lt;/p&gt;
-</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;The Eurasian OpenSees days 2022 conference was a lot of …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;div class="responsive-image"&gt;
 &lt;img src="https://www.dropbox.com/s/68kr85qqa3gwej0/eosd2022.png?raw=1" / alt="Model"&gt;
@@ -148,20 +145,13 @@ and does not include any extra features. &lt;/p&gt;
 &lt;p&gt;&lt;em&gt;A thermodynamic-based macroelement approach for dynamic analysis of soil-structure systems&lt;/em&gt;. Davide Noè Gorini, Luigi Callisto&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Authors: if you see this, get in touch! My email is my github handle followed by uandes.cl. &lt;/p&gt;</content><category term="OpenSees"></category><category term="opensees"></category><category term="conference"></category><category term="EOSD"></category><category term="python"></category><category term="gmsh"></category></entry><entry><title>EOSD2022 Summer School SSI Modeling</title><link href="https://joseabell.com/posts/2022/eosd2022-summer-school-ssi-modeling.html" rel="alternate"></link><published>2022-07-06T09:46:19-07:00</published><updated>2022-07-06T09:46:19-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-07-06:/posts/2022/eosd2022-summer-school-ssi-modeling.html</id><summary type="html">
+&lt;p&gt;Authors: if you see this, get in touch! My email is my github handle followed by uandes.cl. &lt;/p&gt;</content><category term="OpenSees"></category><category term="opensees"></category><category term="conference"></category><category term="EOSD"></category><category term="python"></category><category term="gmsh"></category></entry><entry><title>EOSD2022 Summer School SSI Modeling</title><link href="https://joseabell.com/posts/2022/eosd2022-summer-school-ssi-modeling.html" rel="alternate"></link><published>2022-07-06T09:46:19-07:00</published><updated>2022-07-06T09:46:19-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-07-06:/posts/2022/eosd2022-summer-school-ssi-modeling.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
 &lt;div class="responsive-image"&gt;
-&lt;img alt="Model" src="https://www.dropbox.com/s/i31g9x7x1ku5yn7/figura.png?raw=1"/&gt;
+&lt;img src="https://www.dropbox.com/s/i31g9x7x1ku5yn7/figura.png?raw=1" / alt="Model"&gt;
 &lt;/div&gt;
-&lt;p&gt;Short applicative lecture given at Eurasian OpenSees Days 2022 in Turin, Italy on July 6th. &lt;/p&gt;
-&lt;p&gt;Supplementary material:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://www.dropbox.com/s/slnk9s1z9dips22/presentation1-workshop.pdf?dl=1"&gt;Slides&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.dropbox.com/s/oaf5iiifizpc2k6/gmshopstools.py?dl=1"&gt;mshopstools.py&lt;/a&gt; - A toy library to interface &lt;em&gt;gmsh&lt;/em&gt; with &lt;code&gt;openseespy&lt;/code&gt;. &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.dropbox.com/s/9sf8aox89wcxkxu/workshop-ssi1.geo?dl=1"&gt;workshop-ssi1.geo&lt;/a&gt; - SSI &lt;em&gt;gmsh&lt;/em&gt; &lt;code&gt;.geo&lt;/code&gt; (geometry) file for the application. &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.dropbox.com/s/z50ujz48ukjlesd/workshop-ssi1.msh?dl=1"&gt;workshop-ssi1.msh&lt;/a&gt; - SSI &lt;em&gt;gmsh&lt;/em&gt; &lt;code&gt;.msh&lt;/code&gt; (mesh) file for the application, generated from the above file without any modifications. &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.dropbox.com/s/gjuswd4szpbr7we/workshop-ssi1.py?dl=1"&gt;workshop-ssi1.py&lt;/a&gt; - Python script that reads the &lt;code&gt;.msh&lt;/code&gt; file and creates and runs the OpenSees model using &lt;code&gt;openseespy&lt;/code&gt;. &lt;/li&gt;
-&lt;/ul&gt;
-</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;Short applicative lecture given at Eurasian OpenSees Days 2022 in …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;div class="responsive-image"&gt;
 &lt;img src="https://www.dropbox.com/s/i31g9x7x1ku5yn7/figura.png?raw=1" / alt="Model"&gt;
@@ -176,12 +166,13 @@ and does not include any extra features. &lt;/p&gt;
 &lt;li&gt;&lt;a href="https://www.dropbox.com/s/z50ujz48ukjlesd/workshop-ssi1.msh?dl=1"&gt;workshop-ssi1.msh&lt;/a&gt; - SSI &lt;em&gt;gmsh&lt;/em&gt; &lt;code&gt;.msh&lt;/code&gt; (mesh) file for the application, generated from the above file without any modifications. &lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.dropbox.com/s/gjuswd4szpbr7we/workshop-ssi1.py?dl=1"&gt;workshop-ssi1.py&lt;/a&gt; - Python script that reads the &lt;code&gt;.msh&lt;/code&gt; file and creates and runs the OpenSees model using &lt;code&gt;openseespy&lt;/code&gt;. &lt;/li&gt;
 &lt;/ul&gt;
-&lt;!-- PELICAN_END_SUMMARY --&gt;</content><category term="OpenSees"></category><category term="opensees"></category><category term="conference"></category><category term="EOSD"></category><category term="python"></category><category term="gmsh"></category></entry><entry><title>Buidling a computer cluster for OpenSees</title><link href="https://joseabell.com/posts/2022/buidling-a-computer-cluster-for-opensees.html" rel="alternate"></link><published>2022-06-07T16:46:49-07:00</published><updated>2022-06-07T16:46:49-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-06-07:/posts/2022/buidling-a-computer-cluster-for-opensees.html</id><summary type="html">
+&lt;!-- PELICAN_END_SUMMARY --&gt;</content><category term="OpenSees"></category><category term="opensees"></category><category term="conference"></category><category term="EOSD"></category><category term="python"></category><category term="gmsh"></category></entry><entry><title>Buidling a computer cluster for OpenSees</title><link href="https://joseabell.com/posts/2022/buidling-a-computer-cluster-for-opensees.html" rel="alternate"></link><published>2022-06-07T16:46:49-07:00</published><updated>2022-06-07T16:46:49-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-06-07:/posts/2022/buidling-a-computer-cluster-for-opensees.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
 &lt;div class="responsive-image"&gt;
-&lt;img alt="Initial setup!" src="https://www.dropbox.com/s/vd3t55bh6ffxxj5/IMG-20220602-WA0013.jpeg?raw=1"/&gt;
+&lt;img src="https://www.dropbox.com/s/vd3t55bh6ffxxj5/IMG-20220602-WA0013.jpeg?raw=1" / alt="Initial setup!"&gt;
 &lt;/div&gt;
-&lt;p&gt;As part of my recently-awarded research grant where I'll study the effects of near-field earthquakes in Santiago Chile (more on that in the future, maybe) I'm building a small cluster of computers (a &lt;a href="https://en.wikipedia.org/wiki/Beowulf_cluster"&gt;beowulf cluster&lt;/a&gt;). &lt;/p&gt;
-</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;As part of my recently-awarded research grant where I'll study …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;div class="responsive-image"&gt;
 &lt;img src="https://www.dropbox.com/s/vd3t55bh6ffxxj5/IMG-20220602-WA0013.jpeg?raw=1" / alt="Initial setup!"&gt;
@@ -247,12 +238,9 @@ Omar (MS student), myself and Sebastián (former undergrad student, original cre
 &lt;div class="responsive-image"&gt;&lt;img src="https://www.dropbox.com/s/o3zl3i8yemdn70a/20210129_151546.jpg?raw=1" / alt="Initial setup!"&gt;Joaco, me, JT and Sebastián Baixas. The birth of BeowulfInstaller. What a team!  &lt;/div&gt;
 
 &lt;div class="responsive-image"&gt;&lt;img src="https://www.dropbox.com/s/avvnlv50ro44ihw/DZThqffVMAA8rJU.jpeg?raw=1" / alt="Initial setup!"&gt;  &lt;/div&gt;
-&lt;p&gt;José Luis Assadi, Cristoba Griffero, Carlos Castex and me. The original cluster team!! Photo is from March 2018.&lt;/p&gt;</content><category term="OpenSees"></category><category term="opensees"></category><category term="hpc"></category><category term="cluster"></category></entry><entry><title>New 2021 additions to OpenSees</title><link href="https://joseabell.com/new-2021-additions-to-opensees-EN.html" rel="alternate"></link><published>2021-12-28T17:45:29-08:00</published><updated>2021-12-28T17:45:29-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2021-12-28:/new-2021-additions-to-opensees-EN.html</id><summary type="html">
-&lt;p&gt;2021 has almost gone, I haven't written on my blog almost all year, but there has been progress! I've made a bunch of small contributions this year to OpenSees (see all contributions &lt;a href="https://github.com/jaabell/OpenSees/commits?author=jaabell"&gt;here&lt;/a&gt;) but two big ones: a new material model for high-cyclic analysis of sands (SANISAND-MS with my collaborators at TU Delft, NGI and Bristol, see &lt;a href="https://opensees.github.io/OpenSeesDocumentation/user/manual/material/ndMaterials/SAniSandMS.html"&gt;here&lt;/a&gt;) and added isogeometric analysis (IGA) of shells capabilities. This last contribution is very recent and is still (as of writing this) in &lt;a href="https://github.com/OpenSees/OpenSees/pull/751"&gt;pull request&lt;/a&gt; mode. I'll let some time pass, for possible review, before I definitely merge into main OpenSees. &lt;/p&gt;
-&lt;div class="responsive-image"&gt;
-&lt;img alt="Really large deformations!" src="https://www.dropbox.com/s/yze9aihu4xg742f/fig-07.png?raw=1"/&gt;
-&lt;/div&gt;
-</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+&lt;p&gt;José Luis Assadi, Cristoba Griffero, Carlos Castex and me. The original cluster team!! Photo is from March 2018.&lt;/p&gt;</content><category term="OpenSees"></category><category term="opensees"></category><category term="hpc"></category><category term="cluster"></category></entry><entry><title>New 2021 additions to OpenSees</title><link href="https://joseabell.com/new-2021-additions-to-opensees-EN.html" rel="alternate"></link><published>2021-12-28T17:45:29-08:00</published><updated>2021-12-28T17:45:29-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2021-12-28:/new-2021-additions-to-opensees-EN.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;2021 has almost gone, I haven't written on my blog …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;p&gt;2021 has almost gone, I haven't written on my blog almost all year, but there has been progress! I've made a bunch of small contributions this year to OpenSees (see all contributions &lt;a href="https://github.com/jaabell/OpenSees/commits?author=jaabell"&gt;here&lt;/a&gt;) but two big ones: a new material model for high-cyclic analysis of sands (SANISAND-MS with my collaborators at TU Delft, NGI and Bristol, see &lt;a href="https://opensees.github.io/OpenSeesDocumentation/user/manual/material/ndMaterials/SAniSandMS.html"&gt;here&lt;/a&gt;) and added isogeometric analysis (IGA) of shells capabilities. This last contribution is very recent and is still (as of writing this) in &lt;a href="https://github.com/OpenSees/OpenSees/pull/751"&gt;pull request&lt;/a&gt; mode. I'll let some time pass, for possible review, before I definitely merge into main OpenSees. &lt;/p&gt;
 &lt;div class="responsive-image"&gt;
@@ -283,16 +271,9 @@ Omar (MS student), myself and Sebastián (former undergrad student, original cre
 
 &lt;div class="responsive-image"&gt;
 &lt;img src="https://www.dropbox.com/s/0mzy08bdfpw675r/fig-10.png?raw=1" / alt="And we do have some benchmarks to show that we did a good job! ;)"&gt;
-&lt;/div&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="additions"></category><category term="materials"></category><category term="IGA"></category></entry><entry><title>Compiling OpenSees 3.2.0 on Ubuntu 20.10: a tutorial and commentary</title><link href="https://joseabell.com/compiling-opensees-320-on-ubuntu-2010-a-tutorial-and-commentary-EN.html" rel="alternate"></link><published>2020-12-01T11:22:13-08:00</published><updated>2020-12-01T11:22:13-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-12-01:/compiling-opensees-320-on-ubuntu-2010-a-tutorial-and-commentary-EN.html</id><summary type="html">
-&lt;p&gt;In this short video I teach you how to compile OpenSees 3.2.0 on Ubuntu Linux 20.10. &lt;/p&gt;
-&lt;div align="left" class="videoWrapper"&gt;
-&lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/esMK3f5G90Y" width="640"&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
-&lt;p&gt;Compilation is setup with no "bells and whistles", meaning its not optimized in any way
-and does not include any extra features. &lt;/p&gt;
-&lt;p&gt;The history file mentioned in the video can be found &lt;a href="https://www.dropbox.com/s/bcmfjkrxla9n6je/hist.txt?dl=0"&gt;here&lt;/a&gt; and this is the &lt;a href="https://www.dropbox.com/s/gj7sfmqqlz8dhh5/Makefile.def?dl=0"&gt;Makefile.def&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Check out &lt;a href="https://courses.silviasbrainery.com/"&gt;Silvia's Brainery&lt;/a&gt; and &lt;a href="https://portwooddigital.com/"&gt;Michael Scott's blog&lt;/a&gt; for more awesome OpenSees stuff!&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+&lt;/div&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="additions"></category><category term="materials"></category><category term="IGA"></category></entry><entry><title>Compiling OpenSees 3.2.0 on Ubuntu 20.10: a tutorial and commentary</title><link href="https://joseabell.com/compiling-opensees-320-on-ubuntu-2010-a-tutorial-and-commentary-EN.html" rel="alternate"></link><published>2020-12-01T11:22:13-08:00</published><updated>2020-12-01T11:22:13-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-12-01:/compiling-opensees-320-on-ubuntu-2010-a-tutorial-and-commentary-EN.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;p&gt;In this short video I teach you how to compile …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;p&gt;In this short video I teach you how to compile OpenSees 3.2.0 on Ubuntu Linux 20.10. &lt;/p&gt;
 &lt;div class="videoWrapper" align="left"&gt;
@@ -304,10 +285,9 @@ and does not include any extra features. &lt;/p&gt;
 &lt;p&gt;Compilation is setup with no "bells and whistles", meaning its not optimized in any way
 and does not include any extra features. &lt;/p&gt;
 &lt;p&gt;The history file mentioned in the video can be found &lt;a href="https://www.dropbox.com/s/bcmfjkrxla9n6je/hist.txt?dl=0"&gt;here&lt;/a&gt; and this is the &lt;a href="https://www.dropbox.com/s/gj7sfmqqlz8dhh5/Makefile.def?dl=0"&gt;Makefile.def&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Check out &lt;a href="https://courses.silviasbrainery.com/"&gt;Silvia's Brainery&lt;/a&gt; and &lt;a href="https://portwooddigital.com/"&gt;Michael Scott's blog&lt;/a&gt; for more awesome OpenSees stuff!&lt;/p&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="tutorial"></category><category term="compilation"></category><category term="linux"></category><category term="YouTube"></category></entry><entry><title>STKO OpenSees review</title><link href="https://joseabell.com/stko-opensees-review-EN.html" rel="alternate"></link><published>2020-11-30T12:19:44-08:00</published><updated>2020-11-30T12:19:44-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-11-30:/stko-opensees-review-EN.html</id><summary type="html">
-&lt;blockquote class="twitter-tweet"&gt;&lt;p dir="ltr" lang="en"&gt;A created a short &lt;a href="https://twitter.com/hashtag/review?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#review&lt;/a&gt; of STKO: a pre/post processor for &lt;a href="https://twitter.com/hashtag/OpenSees?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#OpenSees&lt;/a&gt; which I think is really cool and brings fresh new stuff into OpenSees to benefit all. &lt;a href="https://t.co/EnMAVAnRya"&gt;https://t.co/EnMAVAnRya&lt;/a&gt;&lt;/p&gt;— José Antonio Abell (@RealJoseAbell) &lt;a href="https://twitter.com/RealJoseAbell/status/1333422948607287297?ref_src=twsrc%5Etfw"&gt;November 30, 2020&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"&gt;&lt;/script&gt;
-&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+&lt;p&gt;Check out &lt;a href="https://courses.silviasbrainery.com/"&gt;Silvia's Brainery&lt;/a&gt; and &lt;a href="https://portwooddigital.com/"&gt;Michael Scott's blog&lt;/a&gt; for more awesome OpenSees stuff!&lt;/p&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="tutorial"></category><category term="compilation"></category><category term="linux"></category><category term="YouTube"></category></entry><entry><title>STKO OpenSees review</title><link href="https://joseabell.com/stko-opensees-review-EN.html" rel="alternate"></link><published>2020-11-30T12:19:44-08:00</published><updated>2020-11-30T12:19:44-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2020-11-30:/stko-opensees-review-EN.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;A created a short &lt;a href="https://twitter.com/hashtag/review?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#review&lt;/a&gt; of STKO: a pre/post …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;A created a short &lt;a href="https://twitter.com/hashtag/review?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#review&lt;/a&gt; of STKO: a pre/post processor for &lt;a href="https://twitter.com/hashtag/OpenSees?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#OpenSees&lt;/a&gt; which I think is really cool and brings fresh new stuff into OpenSees to benefit all. &lt;a href="https://t.co/EnMAVAnRya"&gt;https://t.co/EnMAVAnRya&lt;/a&gt;&lt;/p&gt;&amp;mdash; José Antonio Abell (@RealJoseAbell) &lt;a href="https://twitter.com/RealJoseAbell/status/1333422948607287297?ref_src=twsrc%5Etfw"&gt;November 30, 2020&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
