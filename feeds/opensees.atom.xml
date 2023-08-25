@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog - OpenSees</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/opensees.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2022-12-05T14:28:57-08:00</updated><entry><title>Animate transient results with gmsh2opensees</title><link href="https://joseabell.com/animate-transient-results-with-gmsh2opensees-EN.html" rel="alternate"></link><published>2022-12-05T14:28:57-08:00</published><updated>2022-12-05T14:28:57-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-12-05:/animate-transient-results-with-gmsh2opensees-EN.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog - OpenSees</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/opensees.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2023-08-25T11:37:31-07:00</updated><entry><title>Building the Ultimate OpenSees Rig: HPC Cluster SUPERCOMPUTER Using Gaming Workstations!</title><link href="https://joseabell.com/building-the-ultimate-opensees-rig-hpc-cluster-supercomputer-using-gaming-workstations-EN.html" rel="alternate"></link><published>2023-08-25T11:37:31-07:00</published><updated>2023-08-25T11:37:31-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2023-08-25:/building-the-ultimate-opensees-rig-hpc-cluster-supercomputer-using-gaming-workstations-EN.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/csR-ODGgumg" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In this video, I take you on a behind-the-scenes tour …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/csR-ODGgumg" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In this video, I take you on a behind-the-scenes tour of my custom-built cluster, designed specifically for high-performance parallel computing using OpenSees.&lt;/p&gt;
+&lt;!-- PELICAN_END_SUMMARY --&gt;</content><category term="OpenSees"></category><category term="OpenSees"></category><category term="parallel"></category><category term="programming"></category><category term="YouTube"></category></entry><entry><title>Animate transient results with gmsh2opensees</title><link href="https://joseabell.com/animate-transient-results-with-gmsh2opensees-EN.html" rel="alternate"></link><published>2022-12-05T14:28:57-08:00</published><updated>2022-12-05T14:28:57-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2022-12-05:/animate-transient-results-with-gmsh2opensees-EN.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;div class="videoWrapper" align="left"&gt;
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/pPOCSHs7bAM" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
