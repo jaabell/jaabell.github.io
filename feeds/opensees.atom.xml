@@ -15,6 +15,11 @@
 
 &lt;p&gt;Please get the latest version of gmsh2opensees from &lt;a href="https://github.com/jaabell/gmsh2opensees"&gt;here&lt;/a&gt;. &lt;/p&gt;
 &lt;p&gt;If you want to use my latest opensees code to run these examples (needed for high-order visualization of stress results) get my OpenSees github fork (10nt-thermal branch) from &lt;a href="https://github.com/jaabell/OpenSees/tree/10nt-thermal"&gt;here&lt;/a&gt;. Otherwise comment that function and use the other one for plotting.&lt;/p&gt;
+&lt;p&gt;Documentation:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://opensees.github.io/OpenSeesDocumentation/user/manual/model/elements/FourNodeTetrahedron.html"&gt;FourNodeTetrahedron&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://opensees.github.io/OpenSeesDocumentation/user/manual/model/elements/TenNodeTetrahedron.html"&gt;TenNodeTetrahedron&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;Files:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://www.dropbox.com/scl/fi/9pggxjkf2bsgu1ki2u6i5/example6.geo?rlkey=bcd9etrp99ngzszerk38tqkww&amp;amp;dl=1"&gt;example6.geo&lt;/a&gt; - gmsh geometry file&lt;/li&gt;
