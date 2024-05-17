@@ -128,7 +128,7 @@
 <p>[TOC]</p>
 <h2>Linux Management</h2>
 <p>To use find to remove files</p>
-<div class="highlight"><pre><span></span><code><span class="nv">find</span> . <span class="o">-</span><span class="nv">name</span> <span class="s2">&quot;</span><span class="s">*.o</span><span class="s2">&quot;</span> <span class="o">-</span><span class="k">exec</span> <span class="nv">rm</span> {} \<span class="c1">;</span>
+<div class="highlight"><pre><span></span><code>find . -name &quot;*.o&quot; -exec rm {} \;
 </code></pre></div>
 
 <p>To find and delete files matching a criteria but not another</p>
@@ -140,11 +140,11 @@
 </code></pre></div>
 
 <p>Find recently changed files</p>
-<div class="highlight"><pre><span></span><code>find -mtime 0 -type f -print
+<div class="highlight"><pre><span></span><code><span class="nx">find</span><span class="w"> </span><span class="o">-</span><span class="nx">mtime</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">-</span><span class="k">type</span><span class="w"> </span><span class="nx">f</span><span class="w"> </span><span class="o">-</span><span class="nx">print</span>
 </code></pre></div>
 
 <p>Find where apt-get installs things</p>
-<div class="highlight"><pre><span></span><code>sudo dpkg -L packagename
+<div class="highlight"><pre><span></span><code><span class="nx">sudo</span><span class="w"> </span><span class="nx">dpkg</span><span class="w"> </span><span class="o">-</span><span class="nx">L</span><span class="w"> </span><span class="nx">packagename</span>
 </code></pre></div>
 
 <p>Killing a screen session</p>
@@ -160,7 +160,7 @@
 </code></pre></div>
 
 <p>Find and delete all broken symlinks in a folder</p>
-<div class="highlight"><pre><span></span><code>find . -xtype l -delete
+<div class="highlight"><pre><span></span><code><span class="nx">find</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="o">-</span><span class="nx">xtype</span><span class="w"> </span><span class="nx">l</span><span class="w"> </span><span class="o">-</span><span class="nx">delete</span>
 </code></pre></div>
 
 <p>List folders by space utilized</p>
@@ -232,9 +232,9 @@ git push -u origin master
 
 <h2>SSH Tricks</h2>
 <h3>Shutdown a frozen SSH session. Press :</h3>
-<div class="highlight"><pre><span></span><code><span class="k">[Enter]</span><span class="w"></span>
-<span class="na">~</span><span class="w"></span>
-<span class="na">.</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">[Enter]</span>
+<span class="na">~</span>
+<span class="na">.</span>
 </code></pre></div>
 
 <p>Proceed to resume happyness.</p>
@@ -245,7 +245,7 @@ git push -u origin master
 
 <h2>Managing gitolite</h2>
 <p>Checkout the gitolite admin repo:</p>
-<div class="highlight"><pre><span></span><code><span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="n">git</span><span class="nv">@powa</span><span class="err">:</span><span class="n">gitolite</span><span class="o">-</span><span class="k">admin</span><span class="w"> </span><span class="n">gadmin</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="n">git</span><span class="nv">@powa</span><span class="err">:</span><span class="n">gitolite</span><span class="o">-</span><span class="k">admin</span><span class="w"> </span><span class="n">gadmin</span>
 </code></pre></div>
 
 <p>To add a user SSH key do the following:</p>
@@ -289,8 +289,8 @@ git push
 <ul>
 <li>
 <p>Remember to use:</p>
-<div class="highlight"><pre><span></span><code><span class="n">ssh</span><span class="w"> </span><span class="p">(</span><span class="n">myusername</span><span class="p">)</span><span class="nv">@powa</span><span class="p">.</span><span class="n">engr</span><span class="p">.</span><span class="n">ucdavis</span><span class="p">.</span><span class="n">edu</span><span class="w"></span>
-<span class="n">su</span><span class="w"> </span><span class="n">git</span><span class="w">  </span><span class="o">[</span><span class="n">input the typical CompGeoMech password</span><span class="o">]</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">ssh</span><span class="w"> </span><span class="p">(</span><span class="n">myusername</span><span class="p">)</span><span class="nv">@powa</span><span class="p">.</span><span class="n">engr</span><span class="p">.</span><span class="n">ucdavis</span><span class="p">.</span><span class="n">edu</span>
+<span class="n">su</span><span class="w"> </span><span class="n">git</span><span class="w">  </span><span class="o">[</span><span class="n">input the typical CompGeoMech password</span><span class="o">]</span>
 </code></pre></div>
 
 </li>
@@ -318,31 +318,31 @@ b = [&#39;b1&#39;, &#39;b2&#39;]
 </code></pre></div>
 
 <p>will iterate 3 times, the last iteration, b will be None.</p>
-<div class="highlight"><pre><span></span><code><span class="nv">print</span> <span class="s2">&quot;</span><span class="s">Map:</span><span class="s2">&quot;</span>
-<span class="k">for</span> <span class="nv">x</span>, <span class="nv">y</span> <span class="nv">in</span> <span class="nv">map</span><span class="ss">(</span><span class="nv">None</span>, <span class="nv">a</span>, <span class="nv">b</span><span class="ss">)</span>:
-  <span class="nv">print</span> <span class="nv">x</span>, <span class="nv">y</span>
+<div class="highlight"><pre><span></span><code><span class="nv">print</span><span class="w"> </span><span class="s2">&quot;Map:&quot;</span>
+<span class="k">for</span><span class="w"> </span><span class="nv">x</span>,<span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">map</span><span class="ss">(</span><span class="nv">None</span>,<span class="w"> </span><span class="nv">a</span>,<span class="w"> </span><span class="nv">b</span><span class="ss">)</span>:
+<span class="w">  </span><span class="nv">print</span><span class="w"> </span><span class="nv">x</span>,<span class="w"> </span><span class="nv">y</span>
 </code></pre></div>
 
 <p>will iterate 2 times,
 the third value of a will not be used</p>
-<div class="highlight"><pre><span></span><code><span class="nv">print</span> <span class="s2">&quot;</span><span class="s">Zip:</span><span class="s2">&quot;</span>
-<span class="k">for</span> <span class="nv">x</span>, <span class="nv">y</span> <span class="nv">in</span> <span class="nv">zip</span><span class="ss">(</span><span class="nv">a</span>, <span class="nv">b</span><span class="ss">)</span>:
-  <span class="nv">print</span> <span class="nv">x</span>, <span class="nv">y</span>
+<div class="highlight"><pre><span></span><code><span class="nv">print</span><span class="w"> </span><span class="s2">&quot;Zip:&quot;</span>
+<span class="k">for</span><span class="w"> </span><span class="nv">x</span>,<span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">zip</span><span class="ss">(</span><span class="nv">a</span>,<span class="w"> </span><span class="nv">b</span><span class="ss">)</span>:
+<span class="w">  </span><span class="nv">print</span><span class="w"> </span><span class="nv">x</span>,<span class="w"> </span><span class="nv">y</span>
 </code></pre></div>
 
 <p>will iterate 6 times,
 it will iterate over each b, for each a
 producing a slightly different output</p>
-<div class="highlight"><pre><span></span><code><span class="nv">print</span> <span class="s2">&quot;</span><span class="s">List:</span><span class="s2">&quot;</span>
-<span class="k">for</span> <span class="nv">x</span>, <span class="nv">y</span> <span class="nv">in</span> [<span class="ss">(</span><span class="nv">x</span>,<span class="nv">y</span><span class="ss">)</span> <span class="k">for</span> <span class="nv">x</span> <span class="nv">in</span> <span class="nv">a</span> <span class="k">for</span> <span class="nv">y</span> <span class="nv">in</span> <span class="nv">b</span>]:
-    <span class="nv">print</span> <span class="nv">x</span>, <span class="nv">y</span>
+<div class="highlight"><pre><span></span><code><span class="nv">print</span><span class="w"> </span><span class="s2">&quot;List:&quot;</span>
+<span class="k">for</span><span class="w"> </span><span class="nv">x</span>,<span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span>[<span class="ss">(</span><span class="nv">x</span>,<span class="nv">y</span><span class="ss">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">b</span>]:
+<span class="w">    </span><span class="nv">print</span><span class="w"> </span><span class="nv">x</span>,<span class="w"> </span><span class="nv">y</span>
 </code></pre></div>
 
 <h3>IPython Notebook</h3>
 <p>Install pip</p>
-<div class="highlight"><pre><span></span><code><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="o">-</span><span class="k">get</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">python</span><span class="o">-</span><span class="n">pip</span><span class="w"></span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">ipython</span><span class="w"> </span><span class="o">--</span><span class="n">upgrade</span><span class="w"></span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">ipython</span><span class="o">[</span><span class="n">notebook</span><span class="o">]</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="o">-</span><span class="k">get</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">python</span><span class="o">-</span><span class="n">pip</span>
+<span class="n">sudo</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">ipython</span><span class="w"> </span><span class="o">--</span><span class="n">upgrade</span>
+<span class="n">sudo</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">ipython</span><span class="o">[</span><span class="n">notebook</span><span class="o">]</span>
 </code></pre></div>
 
 <h3>IPython Notebook server</h3>
@@ -352,7 +352,7 @@ producing a slightly different output</p>
 
 <h4>Setup</h4>
 <div class="highlight"><pre><span></span><code><span class="n">ipython</span>
-<span class="kn">from</span> <span class="nn">IPython.lib</span> <span class="kn">import</span> <span class="n">passwd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.lib</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">passwd</span>
 <span class="n">passwd</span><span class="p">()</span>
 
 <span class="c1">#Enter passwd</span>
@@ -448,25 +448,25 @@ should return
 Has nice viewer, apparently. </p>
 <h4>Building and installation</h4>
 <p>From http://hpctoolkit.org/. Checkout both hpctoolkit and hpctoolkit-externalsL:</p>
-<div class="highlight"><pre><span></span><code><span class="n">svn</span><span class="w"> </span><span class="n">co</span><span class="w"> </span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">hpctoolkit</span><span class="o">.</span><span class="n">googlecode</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">svn</span><span class="o">/</span><span class="n">trunk</span><span class="w"> </span><span class="n">hpctoolkit</span><span class="w"></span>
-<span class="n">svn</span><span class="w"> </span><span class="n">co</span><span class="w"> </span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">hpctoolkit</span><span class="o">.</span><span class="n">googlecode</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">svn</span><span class="o">/</span><span class="n">externals</span><span class="w"> </span><span class="n">hpctoolkit</span><span class="o">-</span><span class="n">externals</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">svn</span><span class="w"> </span><span class="n">co</span><span class="w"> </span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">hpctoolkit</span><span class="o">.</span><span class="n">googlecode</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">svn</span><span class="o">/</span><span class="n">trunk</span><span class="w"> </span><span class="n">hpctoolkit</span>
+<span class="n">svn</span><span class="w"> </span><span class="n">co</span><span class="w"> </span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">hpctoolkit</span><span class="o">.</span><span class="n">googlecode</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">svn</span><span class="o">/</span><span class="n">externals</span><span class="w"> </span><span class="n">hpctoolkit</span><span class="o">-</span><span class="n">externals</span>
 </code></pre></div>
 
 <p>Build externals (prefix set to a local dir):</p>
-<div class="highlight"><pre><span></span><code><span class="n">cd</span><span class="w"> </span><span class="n">hpctoolkit</span><span class="o">-</span><span class="n">externals</span><span class="w"></span>
-<span class="n">mkdir</span><span class="w"> </span><span class="n">BUILD</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">BUILD</span><span class="w"></span>
-<span class="o">../</span><span class="n">configure</span><span class="w"> </span><span class="n">CC</span><span class="o">=</span><span class="n">gcc</span><span class="w"> </span><span class="n">CXX</span><span class="o">=</span><span class="n">g</span><span class="o">++</span><span class="w"> </span><span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">jaabell</span><span class="o">/</span><span class="n">Programs</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="w"></span>
-<span class="n">make</span><span class="w"> </span><span class="o">-</span><span class="n">j</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
-<span class="n">make</span><span class="w"> </span><span class="n">install</span><span class="w"></span>
-<span class="n">make</span><span class="w"> </span><span class="n">clean</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">cd</span><span class="w"> </span><span class="n">hpctoolkit</span><span class="o">-</span><span class="n">externals</span>
+<span class="n">mkdir</span><span class="w"> </span><span class="n">BUILD</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">BUILD</span>
+<span class="o">../</span><span class="n">configure</span><span class="w"> </span><span class="n">CC</span><span class="o">=</span><span class="n">gcc</span><span class="w"> </span><span class="n">CXX</span><span class="o">=</span><span class="n">g</span><span class="o">++</span><span class="w"> </span><span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">jaabell</span><span class="o">/</span><span class="n">Programs</span><span class="o">/</span><span class="n">local</span><span class="o">/</span>
+<span class="n">make</span><span class="w"> </span><span class="o">-</span><span class="n">j</span><span class="w"> </span><span class="mi">8</span>
+<span class="n">make</span><span class="w"> </span><span class="n">install</span>
+<span class="n">make</span><span class="w"> </span><span class="n">clean</span>
 </code></pre></div>
 
 <p>Build the toolkit. On ubuntu 14.04 libpapi is located on /usr/lib/x86_64-linux-gnu, make links into /usr/lib for this to work. </p>
-<div class="highlight"><pre><span></span><code><span class="n">cd</span><span class="w"> </span><span class="n">hpctoolkit</span><span class="w"></span>
-<span class="n">mkdir</span><span class="w"> </span><span class="n">BUILD</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">BUILD</span><span class="w"></span>
-<span class="o">../</span><span class="n">configure</span><span class="w"> </span><span class="n">CC</span><span class="o">=</span><span class="n">gcc</span><span class="w"> </span><span class="n">CXX</span><span class="o">=</span><span class="n">g</span><span class="o">++</span><span class="w"> </span><span class="n">MPICXX</span><span class="o">=</span><span class="n">mpic</span><span class="o">++</span><span class="w"> </span><span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="w"> </span><span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">externals</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">jaabell</span><span class="o">/</span><span class="n">Programs</span><span class="o">/</span><span class="n">local</span><span class="w"> </span><span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">papi</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="w"></span>
-<span class="n">make</span><span class="w"> </span><span class="o">-</span><span class="n">j</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
-<span class="n">sudo</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">j</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">cd</span><span class="w"> </span><span class="n">hpctoolkit</span>
+<span class="n">mkdir</span><span class="w"> </span><span class="n">BUILD</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">BUILD</span>
+<span class="o">../</span><span class="n">configure</span><span class="w"> </span><span class="n">CC</span><span class="o">=</span><span class="n">gcc</span><span class="w"> </span><span class="n">CXX</span><span class="o">=</span><span class="n">g</span><span class="o">++</span><span class="w"> </span><span class="n">MPICXX</span><span class="o">=</span><span class="n">mpic</span><span class="o">++</span><span class="w"> </span><span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="w"> </span><span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">externals</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">jaabell</span><span class="o">/</span><span class="n">Programs</span><span class="o">/</span><span class="n">local</span><span class="w"> </span><span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">papi</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span>
+<span class="n">make</span><span class="w"> </span><span class="o">-</span><span class="n">j</span><span class="w"> </span><span class="mi">8</span>
+<span class="n">sudo</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">j</span><span class="w"> </span><span class="mi">8</span>
 </code></pre></div>
 
 <h4>Usage</h4>
@@ -475,14 +475,14 @@ Has nice viewer, apparently. </p>
 </code></pre></div>
 
 <p>Some interesting ones for me, that were available on my laptop</p>
-<div class="highlight"><pre><span></span><code><span class="n">PAPI_L1_DCM</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">cache</span><span class="w"> </span><span class="n">misses</span><span class="w"></span>
-<span class="n">PAPI_L2_DCM</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">cache</span><span class="w"> </span><span class="n">misses</span><span class="w"></span>
-<span class="n">PAPI_L3_DCM</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">cache</span><span class="w"> </span><span class="n">misses</span><span class="w"></span>
-<span class="n">PAPI_TLB_DM</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Data</span><span class="w"> </span><span class="n">translation</span><span class="w"> </span><span class="n">lookaside</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="n">misses</span><span class="w"></span>
-<span class="n">PAPI_FP_INS</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Floating</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="n">instructions</span><span class="w"></span>
-<span class="n">PAPI_TOT_CYC</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Total</span><span class="w"> </span><span class="n">cycles</span><span class="w"></span>
-<span class="n">PAPI_FP_OPS</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Floating</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="n">operations</span><span class="w"></span>
-<span class="n">PAPI_VEC_DP</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Double</span><span class="w"> </span><span class="n">precision</span><span class="w"> </span><span class="n">vector</span><span class="o">/</span><span class="n">SIMD</span><span class="w"> </span><span class="n">instructions</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">PAPI_L1_DCM</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">cache</span><span class="w"> </span><span class="n">misses</span>
+<span class="n">PAPI_L2_DCM</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">cache</span><span class="w"> </span><span class="n">misses</span>
+<span class="n">PAPI_L3_DCM</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">cache</span><span class="w"> </span><span class="n">misses</span>
+<span class="n">PAPI_TLB_DM</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Data</span><span class="w"> </span><span class="n">translation</span><span class="w"> </span><span class="n">lookaside</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="n">misses</span>
+<span class="n">PAPI_FP_INS</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Floating</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="n">instructions</span>
+<span class="n">PAPI_TOT_CYC</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Total</span><span class="w"> </span><span class="n">cycles</span>
+<span class="n">PAPI_FP_OPS</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Floating</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="n">operations</span>
+<span class="n">PAPI_VEC_DP</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Double</span><span class="w"> </span><span class="n">precision</span><span class="w"> </span><span class="n">vector</span><span class="o">/</span><span class="n">SIMD</span><span class="w"> </span><span class="n">instructions</span>
 </code></pre></div>
 
 <p>Can also get a list of events (PAPI and native) using -L option</p>
@@ -495,7 +495,7 @@ Has nice viewer, apparently. </p>
 <span class="o">-</span><span class="n">e</span><span class="w"> </span><span class="n">PAPI_L2_DCM</span><span class="mi">@5300013</span><span class="w"> </span>\
 <span class="o">-</span><span class="n">e</span><span class="w"> </span><span class="n">PAPI_TOT_CYC</span><span class="mi">@5300013</span><span class="w"> </span>\
 <span class="o">-</span><span class="n">e</span><span class="w"> </span><span class="n">PAPI_FP_OPS</span><span class="mi">@5300013</span><span class="w"> </span>\
-<span class="n">essi</span><span class="w"> </span><span class="o">-</span><span class="n">nf</span><span class="w"> </span><span class="o">&lt;</span><span class="n">file</span><span class="o">&gt;</span><span class="w"></span>
+<span class="n">essi</span><span class="w"> </span><span class="o">-</span><span class="n">nf</span><span class="w"> </span><span class="o">&lt;</span><span class="n">file</span><span class="o">&gt;</span>
 </code></pre></div>
 
 <h3>Perfsuite</h3>
@@ -548,11 +548,11 @@ cd linux_x86_64_intel_i7_laptop
 <p>Explanation <code>-b</code> is the pointer bitwidth, <code>-D c -DPentiumCPS=2000</code> sets the CPU clock rate so that
 ATLAS can use CPU cycles for timing, <code>--prefix</code> where to install, <code>-with-netlib-lapack-tarfile=</code> where is the lapack tarball, and <code>--force-tids="4 0 1 2 3"</code> tells
 ATLAS to only use those core ids given (first number is the number of cores to use).</p>
-<div class="highlight"><pre><span></span><code><span class="nv">make</span> <span class="nv">build</span>   # <span class="nv">tune</span> <span class="o">&amp;</span> <span class="nv">build</span> <span class="nv">lib</span>
-<span class="nv">make</span> <span class="nv">check</span>   # <span class="nv">sanity</span> <span class="nv">check</span> <span class="nv">correct</span> <span class="nv">answer</span>
-<span class="nv">make</span> <span class="nv">ptcheck</span> # <span class="nv">sanity</span> <span class="nv">check</span> <span class="nv">parallel</span>
-<span class="nv">make</span> <span class="nv">time</span>    # <span class="nv">check</span> <span class="k">if</span> <span class="nv">lib</span> <span class="nv">is</span> <span class="nv">fast</span>
-<span class="nv">make</span> <span class="nv">install</span> # <span class="nv">copy</span> <span class="nv">libs</span> <span class="nv">to</span> <span class="nv">install</span> <span class="nv">dir</span>
+<div class="highlight"><pre><span></span><code><span class="nv">make</span><span class="w"> </span><span class="nv">build</span><span class="w">   </span>#<span class="w"> </span><span class="nv">tune</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">build</span><span class="w"> </span><span class="nv">lib</span>
+<span class="nv">make</span><span class="w"> </span><span class="nv">check</span><span class="w">   </span>#<span class="w"> </span><span class="nv">sanity</span><span class="w"> </span><span class="nv">check</span><span class="w"> </span><span class="nv">correct</span><span class="w"> </span><span class="nv">answer</span>
+<span class="nv">make</span><span class="w"> </span><span class="nv">ptcheck</span><span class="w"> </span>#<span class="w"> </span><span class="nv">sanity</span><span class="w"> </span><span class="nv">check</span><span class="w"> </span><span class="nv">parallel</span>
+<span class="nv">make</span><span class="w"> </span><span class="nv">time</span><span class="w">    </span>#<span class="w"> </span><span class="nv">check</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">lib</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">fast</span>
+<span class="nv">make</span><span class="w"> </span><span class="nv">install</span><span class="w"> </span>#<span class="w"> </span><span class="nv">copy</span><span class="w"> </span><span class="nv">libs</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">install</span><span class="w"> </span><span class="nv">dir</span>
 </code></pre></div>
 
 <h3>SparseSuite</h3>
@@ -616,7 +616,7 @@ avconv -i source -c:v libx264 -c:a copy out.mkv
 </code></pre></div>
 
 <p>To stick together two videos side by side</p>
-<div class="highlight"><pre><span></span><code><span class="n">avconv</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="n">movie_left</span><span class="p">.</span><span class="n">mp4</span><span class="w"> </span><span class="o">-</span><span class="n">vf</span><span class="w"> </span><span class="ss">&quot;[in] scale=trunc(iw/2)*2:trunc(ih/2)*2, pad=2*iw:ih [left];     movie=movie_right.mp4, scale=trunc(iw/2)*2:trunc(ih/2)*2 [right];     [left][right] overlay=main_w/2:0 [out]&quot;</span><span class="w">  </span><span class="k">Output</span><span class="p">.</span><span class="n">mp4</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">avconv</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="n">movie_left</span><span class="p">.</span><span class="n">mp4</span><span class="w"> </span><span class="o">-</span><span class="n">vf</span><span class="w"> </span><span class="ss">&quot;[in] scale=trunc(iw/2)*2:trunc(ih/2)*2, pad=2*iw:ih [left];     movie=movie_right.mp4, scale=trunc(iw/2)*2:trunc(ih/2)*2 [right];     [left][right] overlay=main_w/2:0 [out]&quot;</span><span class="w">  </span><span class="k">Output</span><span class="p">.</span><span class="n">mp4</span>
 </code></pre></div>
 
 <h2>Debugging!</h2>
@@ -685,9 +685,9 @@ cd ~/virtualenvs/pelican
 </ul>
 <h2>Tweaks to .bashrc</h2>
 <p>Add screen name to prompt</p>
-<div class="highlight"><pre><span></span><code>#<span class="k">For</span> <span class="nv">screen</span>
-<span class="k">if</span> [ <span class="s2">&quot;</span><span class="s">$TERM</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="nv">screen</span> ]<span class="c1">; then</span>
-    <span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">(screen,$STY)</span><span class="se">\n</span><span class="s">$PS1</span><span class="s2">&quot;</span>
+<div class="highlight"><pre><span></span><code>#<span class="k">For</span><span class="w"> </span><span class="nv">screen</span>
+<span class="k">if</span><span class="w"> </span>[<span class="w"> </span><span class="s2">&quot;$TERM&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">screen</span><span class="w"> </span>]<span class="c1">; then</span>
+<span class="w">    </span><span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;(screen,$STY)\n$PS1&quot;</span>
 <span class="nv">fi</span>
 </code></pre></div>
 
@@ -695,12 +695,12 @@ cd ~/virtualenvs/pelican
 <div class="highlight"><pre><span></span><code>cd
 wget --no-check-certificate https://raw.github.com/seebi/dircolors-solarized/master/dircolors.ansi- dark
 mv dircolors.ansi-dark .dircolors
-eval `dircolors ~/.dircolors`
+eval <span class="sb">`dircolors ~/.dircolors`</span>
 
 cd
 wget --no-check-certificate https://raw.github.com/seebi/dircolors-solarized/master/dircolors.ansi- light
 mv dircolors.ansi-light .dircolors
-eval `dircolors ~/.dircolors`
+eval <span class="sb">`dircolors ~/.dircolors`</span>
 
 sudo apt-get install git-core
 git clone https://github.com/sigurdga/gnome-terminal-colors-solarized.git
@@ -713,9 +713,9 @@ cd gnome-terminal-colors-solarized
 <h2>VisIt tricks</h2>
 <h3>Make window a given size</h3>
 <p>Save a session file, and edit these lines to achieve desired res:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;Field</span> <span class="na">name=</span><span class="s">&quot;windowSize&quot;</span> <span class="na">type=</span><span class="s">&quot;intArray&quot;</span> <span class="na">length=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>1024 828 <span class="nt">&lt;/Field&gt;</span>
-<span class="nt">&lt;Field</span> <span class="na">name=</span><span class="s">&quot;windowImageSize&quot;</span> <span class="na">type=</span><span class="s">&quot;intArray&quot;</span> <span class="na">length=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>1024 768 <span class="nt">&lt;/Field&gt;</span>
-<span class="nt">&lt;Field</span> <span class="na">name=</span><span class="s">&quot;windowLocation&quot;</span> <span class="na">type=</span><span class="s">&quot;intArray&quot;</span> <span class="na">length=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>719 133 <span class="nt">&lt;/Field&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;Field</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;windowSize&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;intArray&quot;</span><span class="w"> </span><span class="na">length=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>1024<span class="w"> </span>828<span class="w"> </span><span class="nt">&lt;/Field&gt;</span>
+<span class="nt">&lt;Field</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;windowImageSize&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;intArray&quot;</span><span class="w"> </span><span class="na">length=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>1024<span class="w"> </span>768<span class="w"> </span><span class="nt">&lt;/Field&gt;</span>
+<span class="nt">&lt;Field</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;windowLocation&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;intArray&quot;</span><span class="w"> </span><span class="na">length=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>719<span class="w"> </span>133<span class="w"> </span><span class="nt">&lt;/Field&gt;</span>
 </code></pre></div>
 
 <h2>HDF5 Tricks</h2>
