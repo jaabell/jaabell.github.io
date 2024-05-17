@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/all.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2023-11-24T18:05:09-08:00</updated><entry><title>Temas de Magister/Memoria 2022</title><link href="https://joseabell.com/temas-de-magistermemoria-2024-ES.html" rel="alternate"></link><published>2023-11-24T18:05:09-08:00</published><updated>2023-11-24T18:05:09-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2023-11-24:/temas-de-magistermemoria-2024-ES.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/all.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2023-11-24T18:05:09-08:00</updated><entry><title>Temas de Magister/Memoria 2024</title><link href="https://joseabell.com/temas-de-magistermemoria-2024-ES.html" rel="alternate"></link><published>2023-11-24T18:05:09-08:00</published><updated>2023-11-24T18:05:09-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2023-11-24:/temas-de-magistermemoria-2024-ES.html</id><summary type="html">
 &lt;p&gt;Esta es mi oferta de temas de magister o proyecto de título:&lt;/p&gt;
 &lt;!-- ![Modelo FEM de un puente](https://www.dropbox.com/s/yk1b6j9ylfnfy54/Bridge_FEM.png?raw=1) --&gt;
-&lt;div class="responsive-image"&gt;
-&lt;img src="https://www.dropbox.com/scl/fi/fyoye0eowdjmhn3onbfc9/ai-engineer.jpg?raw=1"/&gt;
-&lt;/div&gt;
 &lt;h2&gt;Magister&lt;/h2&gt;
 &lt;h3&gt;Tema 2024-1: &lt;em&gt;"Aplicación de Inteligencia Artificial al diseño por desempeño de estructuras"&lt;/em&gt;&lt;/h3&gt;
+&lt;div class="responsive-image"&gt;
+&lt;img src="https://www.dropbox.com/scl/fi/fyoye0eowdjmhn3onbfc9/ai-engineer.jpg?rlkey=vcl2yspoc2qltp5iupsb0kvn4&amp;amp;raw=1"/&gt;
+&lt;/div&gt;
 </summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;p&gt;Esta es mi oferta de temas de magister o proyecto de título:&lt;/p&gt;
 &lt;!-- ![Modelo FEM de un puente](https://www.dropbox.com/s/yk1b6j9ylfnfy54/Bridge_FEM.png?raw=1) --&gt;
-&lt;div class="responsive-image"&gt;
-&lt;img src="https://www.dropbox.com/scl/fi/fyoye0eowdjmhn3onbfc9/ai-engineer.jpg?raw=1" /&gt;
-&lt;/div&gt;
 
 &lt;h2&gt;Magister&lt;/h2&gt;
 &lt;h3&gt;Tema 2024-1: &lt;em&gt;"Aplicación de Inteligencia Artificial al diseño por desempeño de estructuras"&lt;/em&gt;&lt;/h3&gt;
+&lt;div class="responsive-image"&gt;
+&lt;img src="https://www.dropbox.com/scl/fi/fyoye0eowdjmhn3onbfc9/ai-engineer.jpg?rlkey=vcl2yspoc2qltp5iupsb0kvn4&amp;raw=1" /&gt;
+&lt;/div&gt;
+
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 
 &lt;p&gt;El diseño por desempeño es muy sensible a los detalles de simulación, por lo que su aplicación correcta require de grandes y detallados modelos. La idea de este trabajo, que se realiza en equipo con otros alumnos de doctorado y post-grado, es acelerar las capacidades de diseño de sistemas estructurales, usando filosofía de diseño por desempeño, planteando y algoritmos de  inteligencia artifical (IA) y computación de alto desempeño. &lt;/p&gt;
 &lt;p&gt;Existe financiamiento posible para interesados. &lt;/p&gt;
 &lt;h3&gt;Tema 2024-2: &lt;em&gt;"Estabilidad de relaves mineros para una minería sustentable y resiliente"&lt;/em&gt;&lt;/h3&gt;
 &lt;div class="responsive-image"&gt;
-&lt;img src="https://www.dropbox.com/scl/fi/cjcr6k11e9y9cqpeap7dd/msci-suremin.png?raw=1" /&gt;
+&lt;img src="https://www.dropbox.com/scl/fi/cjcr6k11e9y9cqpeap7dd/msci-suremin.png?rlkey=n82cedsujb962smw4lj1xe5kp&amp;raw=1" /&gt;
 &lt;/div&gt;
 
 &lt;p&gt;Este trabajo incluye una estadía pagada en Enero a Febrero 2025 en Northwestern University en Evanston, IL, financiadas por el centro global &lt;a href="https://sustainablemineralsupply.northwestern.edu/"&gt;SuReMin&lt;/a&gt;. Consiste en desarrollar modelos numéricos para analizar la estabilidad en el largo plazo de depósitos de relaves. Con estos modelos se desarrollará, en conjunto con un trabajo doctoral de un alumno NWU, modelos simplificados que sirvan para hacer estimaciones de incerteza y cálculos de riesgo durante el ciclo de vida de la actividad minera. &lt;/p&gt;
@@ -42,14 +43,7 @@
 
 &lt;p&gt;Este tema mezcla adquisición de datos experimentales usando sensores y placas Raspberri Pi y simulación numérica para estudiar el tema de agrietamiento térmico en hormigones. Se continúa el trabajo de Álvaro Contreras y José Tomás Arteaga, extendiendolo al problema de predicción de agrietamiento.&lt;/p&gt;
 &lt;h3&gt;TEMA04: Desarrollo y simulación de un sistema avanzado de fundaciones para edificios&lt;/h3&gt;
-&lt;p&gt;En este trabajo se trabajará en conjunto con la empresa geotécnica &lt;a href="https://www.ryv.cl/"&gt;R&amp;amp;V&lt;/a&gt; en el desarrollo de un diseño innovador de fundaciones profundas optimizadas para edificioes en Chile. &lt;/p&gt;
-&lt;h3&gt;TEMA05: Benchmarking del clúster de supercómputo de la facultad de ingeniería&lt;/h3&gt;
-&lt;div class="responsive-image"&gt;
-&lt;img src="https://www.dropbox.com/s/0nxgad06vxxznzy/tema5.jpeg?raw=1" /&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Este tema está orientado a alumnos de ingeniería de computación (aunque también para un ingeniero eléctrico que sea buen programador) con ganas de trabajar más a bajo nivel. Durante el 2020 y el verano del 2021 se reconfiguró a sala de computación de ingeniería (100 computadores) para trabajar como un clúster de supercómputo. Esto significa que se puede coordinar la ejecución de tareas utilizando los recursos de los 100 computadores de manera simultánea (600 cores, 1.6Tb de memoria RAM distribuída, 10Tb de almacenamiento) para resolver problemas de mayor envergadura (por complejidad computacional y/o cantidad). &lt;/p&gt;
-&lt;p&gt;La idea es desarrollar una serie de benchmarkas (problemas tipo) a resolver que permita entender el desempeño de este sistema en términos de su capacidad computacional e identificar el tipo de problemas para el que resulte más eficiente. &lt;/p&gt;</content><category term="Teaching"></category><category term="teaching"></category><category term="temas de memoria"></category><category term="alumnos"></category></entry><entry><title>All about tetrahedral elements</title><link href="https://joseabell.com/all-about-tetrahedral-elements-EN.html" rel="alternate"></link><published>2023-08-31T14:09:49-07:00</published><updated>2023-08-31T14:09:49-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2023-08-31:/all-about-tetrahedral-elements-EN.html</id><summary type="html">
+&lt;p&gt;En este trabajo se trabajará en conjunto con la empresa geotécnica &lt;a href="https://www.ryv.cl/"&gt;R&amp;amp;V&lt;/a&gt; en el desarrollo de un diseño innovador de fundaciones profundas optimizadas para edificioes en Chile. &lt;/p&gt;</content><category term="Teaching"></category><category term="teaching"></category><category term="temas de memoria"></category><category term="alumnos"></category></entry><entry><title>All about tetrahedral elements</title><link href="https://joseabell.com/all-about-tetrahedral-elements-EN.html" rel="alternate"></link><published>2023-08-31T14:09:49-07:00</published><updated>2023-08-31T14:09:49-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2023-08-31:/all-about-tetrahedral-elements-EN.html</id><summary type="html">
 &lt;div align="left" class="videoWrapper"&gt;
 &lt;iframe allowfullscreen="" frameborder="0" height="480" src="https://www.youtube.com/embed/2doC5QXQXOI" width="640"&gt;&lt;/iframe&gt;
 &lt;/div&gt;
