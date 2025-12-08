@@ -178,23 +178,17 @@ approximation to this PDF.  </p>
 <!--more-->
 <p>The response of the system is governed by the following nonlinear
 ordinary differential equation in terms of the angular displacement
-<span class="math">\(\theta\)</span> with respect to the vertical:</p>
-<div class="math">$$
+$\theta$ with respect to the vertical:</p>
+<p>$$
  m l^2 \ddot{\theta} + c \dot{\theta} - mgl \sin \theta = 0
-$$</div>
-<p>Subject to an initial condition </p>
-<div class="math">$$ \theta(0) = \theta_0$$</div>
-<p> and
-</p>
-<div class="math">$$ \dot{\theta}(0) =\dot{\theta}_0$$</div>
-<p>. In this case, the initial
+$$</p>
+<p>Subject to an initial condition $$ \theta(0) = \theta_0$$ and
+$$ \dot{\theta}(0) =\dot{\theta}_0$$. In this case, the initial
 angular velocity is set to zero and the initial angular displacement is
 set to have a Gaussian random distribution with mean zero and standard
 deviation of 10 degrees. The linear damping constant is set to 10%
 critical damping the system would have in the case of small oscillations
-about the final equilibrium point </p>
-<div class="math">$$\theta = 180^{\circ}$$</div>
-<p>.</p>
+about the final equilibrium point $$\theta = 180^{\circ}$$.</p>
 <p>The example is coded in python and solved using the <em>odeint </em>solver
 available in <a href="http://www.scipy.org">scipy</a>. Here is an example response for a given nonzero
 initial condition.</p>
@@ -206,7 +200,7 @@ the right. This would result in a bimodal distribution and is a mere
 artifact of the mathematical model used. Indeed, what the model
 perceives as two distinct equilibrium points are actually the same
 position for the pendulum. This arises because of the periodicity in the
-<span class="math">\(\sin()\)</span> function.</p>
+$\sin()$ function.</p>
 <p>From this set of motions a PDF may be computed for each time and
 animated to show the evolution of the PDF with time.</p>
 <div class="youtube" align="left">
@@ -344,70 +338,7 @@ of results. Is there a way to identify them and get rid of them?</p>
 <span class="c1">#plt.yticks(sp.linspace(-270,270,num=13))  </span>
 <span class="c1">#plt.xlabel(&quot;$t$&quot;)  </span>
 <span class="c1">#plt.ylabel(&quot;$\\\theta(t)$&quot;)</span>
-</code></pre></div>
-
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "left",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-
-    var configscript = document.createElement('script');
-    configscript.type = 'text/x-mathjax-config';
-    configscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js','color.js','mhchem.js'], equationNumbers: { autoNumber: 'none' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        availableFonts: ['STIX', 'TeX']," +
-        "        preferredFont: 'STIX'," +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script></p>
+</code></pre></div></p>
         </div>
     </div>
 

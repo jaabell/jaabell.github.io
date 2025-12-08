@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog - Small Numerical Experiments</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/small-numerical-experiments.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2014-05-16T19:37:00-07:00</updated><entry><title>SNE # 01. Example of ESSI simulation and visualization with visitESSI</title><link href="https://joseabell.com/posts/2014/sne-01-example-of-essi-simulation-and-visualization-with-visitessi.html" rel="alternate"></link><published>2014-05-16T19:37:00-07:00</published><updated>2014-05-16T19:37:00-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2014-05-16:/posts/2014/sne-01-example-of-essi-simulation-and-visualization-with-visitessi.html</id><summary type="html">&lt;p&gt;These are the results of a simple elastic-domain simulation. Mesh …&lt;/p&gt;</summary><content type="html">&lt;p&gt;These are the results of a simple elastic-domain simulation. Mesh
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog - Small Numerical Experiments</title><link href="https://joseabell.com/" rel="alternate"/><link href="https://joseabell.com/feeds/small-numerical-experiments.atom.xml" rel="self"/><id>https://joseabell.com/</id><updated>2014-05-16T19:37:00-07:00</updated><entry><title>SNE # 01. Example of ESSI simulation and visualization with visitESSI</title><link href="https://joseabell.com/posts/2014/sne-01-example-of-essi-simulation-and-visualization-with-visitessi.html" rel="alternate"/><published>2014-05-16T19:37:00-07:00</published><updated>2014-05-16T19:37:00-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2014-05-16:/posts/2014/sne-01-example-of-essi-simulation-and-visualization-with-visitessi.html</id><summary type="html">&lt;p&gt;These are the results of a simple elastic-domain simulation. Mesh …&lt;/p&gt;</summary><content type="html">&lt;p&gt;These are the results of a simple elastic-domain simulation. Mesh
 consists of&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;span style="line-height: 14px;"&gt;154523 Nodes (46359 DOFs)&lt;/span&gt;&lt;/li&gt;
@@ -13,7 +13,7 @@ visualized in VisIt post-processor where the movie was created.  &lt;/p&gt;
 
 &lt;div class="youtube" align="left"&gt;
 &lt;iframe width="640" height="480" src="https://www.youtube.com/embed/VURohwb-OJQ" frameborder="0"&gt;&lt;/iframe&gt;
-&lt;/div&gt;</content><category term="Small Numerical Experiments"></category><category term="animation"></category><category term="c++"></category><category term="ESSI"></category><category term="linux"></category><category term="post-processing"></category><category term="small numerical experiments"></category><category term="sne"></category><category term="visitESSI"></category><category term="movie"></category></entry><entry><title>SNE # 0. Stochastic inverse pendulum</title><link href="https://joseabell.com/posts/2013/sne-0-stochastic-inverse-pendulum.html" rel="alternate"></link><published>2013-10-09T20:37:00-07:00</published><updated>2013-10-09T20:37:00-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2013-10-09:/posts/2013/sne-0-stochastic-inverse-pendulum.html</id><summary type="html">&lt;p&gt;This is the first installment of "Small Numerical Experiments" (SNE …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is the first installment of "Small Numerical Experiments" (SNE), a
+&lt;/div&gt;</content><category term="Small Numerical Experiments"/><category term="animation"/><category term="c++"/><category term="ESSI"/><category term="linux"/><category term="post-processing"/><category term="small numerical experiments"/><category term="sne"/><category term="visitESSI"/><category term="movie"/></entry><entry><title>SNE # 0. Stochastic inverse pendulum</title><link href="https://joseabell.com/posts/2013/sne-0-stochastic-inverse-pendulum.html" rel="alternate"/><published>2013-10-09T20:37:00-07:00</published><updated>2013-10-09T20:37:00-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2013-10-09:/posts/2013/sne-0-stochastic-inverse-pendulum.html</id><summary type="html">&lt;p&gt;This is the first installment of "Small Numerical Experiments" (SNE …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is the first installment of "Small Numerical Experiments" (SNE), a
 section where I upload and comment (briefly) some small numerical
 example. The purpose is to prove a point to myself, test some code,
 ideas, etc.&lt;/p&gt;
@@ -27,23 +27,17 @@ approximation to this PDF.  &lt;/p&gt;
 &lt;!--more--&gt;
 &lt;p&gt;The response of the system is governed by the following nonlinear
 ordinary differential equation in terms of the angular displacement
-&lt;span class="math"&gt;\(\theta\)&lt;/span&gt; with respect to the vertical:&lt;/p&gt;
-&lt;div class="math"&gt;$$
+$\theta$ with respect to the vertical:&lt;/p&gt;
+&lt;p&gt;$$
  m l^2 \ddot{\theta} + c \dot{\theta} - mgl \sin \theta = 0
-$$&lt;/div&gt;
-&lt;p&gt;Subject to an initial condition &lt;/p&gt;
-&lt;div class="math"&gt;$$ \theta(0) = \theta_0$$&lt;/div&gt;
-&lt;p&gt; and
-&lt;/p&gt;
-&lt;div class="math"&gt;$$ \dot{\theta}(0) =\dot{\theta}_0$$&lt;/div&gt;
-&lt;p&gt;. In this case, the initial
+$$&lt;/p&gt;
+&lt;p&gt;Subject to an initial condition $$ \theta(0) = \theta_0$$ and
+$$ \dot{\theta}(0) =\dot{\theta}_0$$. In this case, the initial
 angular velocity is set to zero and the initial angular displacement is
 set to have a Gaussian random distribution with mean zero and standard
 deviation of 10 degrees. The linear damping constant is set to 10%
 critical damping the system would have in the case of small oscillations
-about the final equilibrium point &lt;/p&gt;
-&lt;div class="math"&gt;$$\theta = 180^{\circ}$$&lt;/div&gt;
-&lt;p&gt;.&lt;/p&gt;
+about the final equilibrium point $$\theta = 180^{\circ}$$.&lt;/p&gt;
 &lt;p&gt;The example is coded in python and solved using the &lt;em&gt;odeint &lt;/em&gt;solver
 available in &lt;a href="http://www.scipy.org"&gt;scipy&lt;/a&gt;. Here is an example response for a given nonzero
 initial condition.&lt;/p&gt;
@@ -55,7 +49,7 @@ the right. This would result in a bimodal distribution and is a mere
 artifact of the mathematical model used. Indeed, what the model
 perceives as two distinct equilibrium points are actually the same
 position for the pendulum. This arises because of the periodicity in the
-&lt;span class="math"&gt;\(\sin()\)&lt;/span&gt; function.&lt;/p&gt;
+$\sin()$ function.&lt;/p&gt;
 &lt;p&gt;From this set of motions a PDF may be computed for each time and
 animated to show the evolution of the PDF with time.&lt;/p&gt;
 &lt;div class="youtube" align="left"&gt;
@@ -193,67 +187,4 @@ of results. Is there a way to identify them and get rid of them?&lt;/p&gt;
 &lt;span class="c1"&gt;#plt.yticks(sp.linspace(-270,270,num=13))  &lt;/span&gt;
 &lt;span class="c1"&gt;#plt.xlabel(&amp;quot;$t$&amp;quot;)  &lt;/span&gt;
 &lt;span class="c1"&gt;#plt.ylabel(&amp;quot;$\\\theta(t)$&amp;quot;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "left",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width &lt; 768) ? "left" : align;
-        indent = (screen.width &lt; 768) ? "0em" : indent;
-        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-
-    var configscript = document.createElement('script');
-    configscript.type = 'text/x-mathjax-config';
-    configscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js','color.js','mhchem.js'], equationNumbers: { autoNumber: 'none' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        availableFonts: ['STIX', 'TeX']," +
-        "        preferredFont: 'STIX'," +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'gray ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</content><category term="Small Numerical Experiments"></category><category term="animation"></category><category term="bimodal"></category><category term="matplotlib"></category><category term="Monte-Carlo"></category><category term="multimodal"></category><category term="ode"></category><category term="python"></category><category term="scipy"></category><category term="small numerical experiments"></category><category term="sne"></category><category term="stochastic"></category></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Small Numerical Experiments"/><category term="animation"/><category term="bimodal"/><category term="matplotlib"/><category term="Monte-Carlo"/><category term="multimodal"/><category term="ode"/><category term="python"/><category term="scipy"/><category term="small numerical experiments"/><category term="sne"/><category term="stochastic"/></entry></feed>

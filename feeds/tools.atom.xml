@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog - Tools</title><link href="https://joseabell.com/" rel="alternate"></link><link href="https://joseabell.com/feeds/tools.atom.xml" rel="self"></link><id>https://joseabell.com/</id><updated>2016-11-17T15:36:31-08:00</updated><entry><title>Paralelism in the RealESSI Simulator</title><link href="https://joseabell.com/posts/2016/paralelism-in-the-realessi-simulator.html" rel="alternate"></link><published>2016-11-17T15:36:31-08:00</published><updated>2016-11-17T15:36:31-08:00</updated><author><name>Jose Abell</name></author><id>tag:joseabell.com,2016-11-17:/posts/2016/paralelism-in-the-realessi-simulator.html</id><summary type="html">&lt;p&gt;A brief description of parallelism in RealESSI Simuator&lt;/p&gt;</summary><content type="html">&lt;p&gt;by: José Abell&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog - Tools</title><link href="https://joseabell.com/" rel="alternate"/><link href="https://joseabell.com/feeds/tools.atom.xml" rel="self"/><id>https://joseabell.com/</id><updated>2016-11-17T15:36:31-08:00</updated><entry><title>Paralelism in the RealESSI Simulator</title><link href="https://joseabell.com/posts/2016/paralelism-in-the-realessi-simulator.html" rel="alternate"/><published>2016-11-17T15:36:31-08:00</published><updated>2016-11-17T15:36:31-08:00</updated><author><name>Jose Abell</name></author><id>tag:joseabell.com,2016-11-17:/posts/2016/paralelism-in-the-realessi-simulator.html</id><summary type="html">&lt;p&gt;A brief description of parallelism in RealESSI Simuator&lt;/p&gt;</summary><content type="html">&lt;p&gt;by: José Abell&lt;/p&gt;
 &lt;h1&gt;Paralelism in the RealESSI Simulator&lt;/h1&gt;
 &lt;p&gt;Introduction&lt;/p&gt;
 &lt;h6&gt;&lt;/h6&gt;
@@ -32,4 +32,4 @@
 &lt;li&gt;
 &lt;p&gt;&lt;a id="lecture_notes"&gt;&lt;/a&gt; Lecture Notes on Computational Geomechanics: Inelastic Finite Elements for Pressure Sensitive Materials, UC Davis, CompGeoMech group&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ol&gt;</content><category term="Tools"></category><category term="parallel computing"></category><category term="RealESSI"></category><category term="MPI"></category></entry></feed>
+&lt;/ol&gt;</content><category term="Tools"/><category term="parallel computing"/><category term="RealESSI"/><category term="MPI"/></entry></feed>
