@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog</title><link href="https://joseabell.com/" rel="alternate"/><link href="https://joseabell.com/feeds/all.atom.xml" rel="self"/><id>https://joseabell.com/</id><updated>2023-11-24T18:05:09-08:00</updated><entry><title>Temas de Magister/Memoria 2024</title><link href="https://joseabell.com/temas-de-magistermemoria-2024-ES.html" rel="alternate"/><published>2023-11-24T18:05:09-08:00</published><updated>2023-11-24T18:05:09-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2023-11-24:/temas-de-magistermemoria-2024-ES.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog</title><link href="https://joseabell.com/" rel="alternate"/><link href="https://joseabell.com/feeds/all.atom.xml" rel="self"/><id>https://joseabell.com/</id><updated>2025-12-15T16:42:40-08:00</updated><entry><title>HPC in Civil Engineering for the next 25 years!</title><link href="https://joseabell.com/hpc-next-25-years-EN.html" rel="alternate"/><published>2025-12-15T16:42:40-08:00</published><updated>2025-12-15T16:42:40-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2025-12-15:/hpc-next-25-years-EN.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/MgeV9tJTzI0" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This video is kind of a research statement on where …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+
+&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/MgeV9tJTzI0" frameborder="0"  allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This video is kind of a research statement on where I want to be contributing for the rest of my career. &lt;/p&gt;
+&lt;!-- PELICAN_END_SUMMARY --&gt;</content><category term="OpenSees"/><category term="OpenSees"/><category term="OpenSeesPy"/><category term="gmsh"/><category term="modeling"/><category term="YouTube"/></entry><entry><title>Temas de Magister/Memoria 2024</title><link href="https://joseabell.com/temas-de-magistermemoria-2024-ES.html" rel="alternate"/><published>2023-11-24T18:05:09-08:00</published><updated>2023-11-24T18:05:09-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2023-11-24:/temas-de-magistermemoria-2024-ES.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
 &lt;p&gt;Esta es mi oferta de temas de magister o proyecto …&lt;/p&gt;</summary><content type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 
