@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog - ResearchHighlight</title><link href="https://joseabell.com/" rel="alternate"/><link href="https://joseabell.com/feeds/researchhighlight.atom.xml" rel="self"/><id>https://joseabell.com/</id><updated>2017-11-09T13:21:21-08:00</updated><entry><title>Video of 2-D SSI model of an RC Shear Wall Building</title><link href="https://joseabell.com/posts/2017/video-of-2-d-ssi-model-of-an-rc-shear-wall-building.html" rel="alternate"/><published>2017-11-09T13:21:21-08:00</published><updated>2017-11-09T13:21:21-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2017-11-09:/posts/2017/video-of-2-d-ssi-model-of-an-rc-shear-wall-building.html</id><summary type="html">&lt;!-- Image: https://www.dropbox.com/s/24tkmfk1y1r0wz5/disp.png?raw=1 --&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Jose Abells Reasearch Blog - ResearchHighlight</title><link href="https://joseabell.com/" rel="alternate"/><link href="https://joseabell.com/feeds/researchhighlight.atom.xml" rel="self"/><id>https://joseabell.com/</id><updated>2026-04-21T10:00:00-07:00</updated><entry><title>Journal Club: Dynamic amplification of isolated shear walls: Insights from layered shell modeling</title><link href="https://joseabell.com/posts/2026/journal-club-dynamic-amplification-isolated-shear-walls-layered-shell-modeling.html" rel="alternate"/><published>2026-04-21T10:00:00-07:00</published><updated>2026-04-21T10:00:00-07:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2026-04-21:/posts/2026/journal-club-dynamic-amplification-isolated-shear-walls-layered-shell-modeling.html</id><summary type="html">&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/fMmhSz4bC9U" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This journal club video discusses our recent paper on dynamic …&lt;/p&gt;</summary><content type="html">&lt;div class="videoWrapper" align="left"&gt;
+&lt;iframe width="640" height="480" src="https://www.youtube.com/embed/fMmhSz4bC9U" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This journal club video discusses our recent paper on dynamic shear amplification in reinforced concrete shear walls, published in Engineering Structures.&lt;/p&gt;
+&lt;p&gt;The paper presents a comprehensive study using high-fidelity layered shell finite element models to investigate dynamic shear amplification factors. Key findings include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Amplification factors range from 1.0 to 2.75 depending on wall geometry and axial load&lt;/li&gt;
+&lt;li&gt;The normalized position of the resultant lateral force is the best predictor of amplification&lt;/li&gt;
+&lt;li&gt;Results provide validation for ACI 318-25 formulations with some scatter&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This work was a collaboration with Patricio Palacios B., Nicolás Mora Bowen, and Rafael Delpiano.&lt;/p&gt;</content><category term="ResearchHighlight"/><category term="Journal Club"/><category term="Shear Walls"/><category term="Dynamic Amplification"/><category term="Layered Shell"/><category term="ACI"/></entry><entry><title>Video of 2-D SSI model of an RC Shear Wall Building</title><link href="https://joseabell.com/posts/2017/video-of-2-d-ssi-model-of-an-rc-shear-wall-building.html" rel="alternate"/><published>2017-11-09T13:21:21-08:00</published><updated>2017-11-09T13:21:21-08:00</updated><author><name>jaabell</name></author><id>tag:joseabell.com,2017-11-09:/posts/2017/video-of-2-d-ssi-model-of-an-rc-shear-wall-building.html</id><summary type="html">&lt;!-- Image: https://www.dropbox.com/s/24tkmfk1y1r0wz5/disp.png?raw=1 --&gt;
 
 &lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 &lt;div class="videoWrapper" align="left"&gt;
