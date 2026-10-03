@@ -133,14 +133,14 @@
         background: #19374a url('/images/hero/uandes-fm-above.jpg') center / cover;
     }
     .home-intro-slides { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
-    .home-intro-slide { position: absolute; inset: 0; opacity: 0; background-size: cover; background-position: center; animation: home-hero-fade 36s infinite; }
-    @keyframes home-hero-fade {
-        0% { opacity: 0; }
-        2.0% { opacity: 1; }
-        14.0% { opacity: 1; }
-        18.67%, 100% { opacity: 0; }
-    }
+    .home-intro-slide { position: absolute; inset: 0; opacity: 0; background-size: cover; background-position: center; transition: opacity .9s ease; }
+    .home-intro-slide.is-active { opacity: 1; }
     .home-intro::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(100deg, rgba(15, 38, 54, .62), rgba(15, 38, 54, .28)); pointer-events: none; }
+    .home-hero-dots { position: absolute; z-index: 2; right: clamp(32px, 5vw, 64px); bottom: 14px; display: flex; gap: 2px; }
+    .home-hero-dot { display: grid; place-items: center; width: 28px; height: 28px; padding: 0; border: 0; background: none; cursor: pointer; }
+    .home-hero-dot::before { content: ""; width: 9px; height: 9px; border: 1px solid rgba(255, 255, 255, .85); border-radius: 50%; background: rgba(15, 38, 54, .3); box-shadow: 0 1px 4px rgba(0, 0, 0, .25); }
+    .home-hero-dot.is-active::before { background: #fff; border-color: #fff; box-shadow: 0 0 0 2px rgba(15, 38, 54, .35); }
+    .home-hero-dot:focus-visible { outline: 2px solid #fff; outline-offset: 2px; border-radius: 50%; }
     .home-intro h1 { margin: 10px 0 18px; color: #fff; font-size: clamp(32px, 3.5vw, 48px); line-height: 1.12; text-shadow: 0 2px 12px rgba(0, 0, 0, .22); }
     .home-intro p { margin: 0 0 26px; color: rgba(255, 255, 255, .86); font-size: 16px; line-height: 1.6; }
     .home-kicker { color: #a8d6ee; font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
@@ -175,7 +175,8 @@
         .home-feature { max-width: 480px; }
     }
     @media (max-width: 768px) {
-        .home-intro { gap: 28px; padding: 56px 24px 32px; }
+        .home-intro { gap: 28px; padding: 56px 24px 78px; }
+        .home-hero-dots { right: 24px; bottom: 18px; }
         #fh5co-main .home-explore { width: 100%; padding: 20px 16px 0; grid-template-columns: repeat(3, 180px); overflow-x: auto; }
         #fh5co-main .home-feed { padding-top: 36px; }
         .article-feed-item { grid-template-columns: minmax(0, 1fr) 112px; gap: 14px; padding: 22px 0; }
@@ -184,19 +185,18 @@
         #recent-articles { padding-top: 48px; }
     }
     @media (prefers-reduced-motion: reduce) {
-        .home-intro-slide { animation: none; }
-        .home-intro-slide:first-child { opacity: 1; }
+        .home-intro-slide { transition: none; }
     }
 </style>
 
 <section class="home-intro" aria-label="Introduction and featured article">
     <div class="home-intro-slides" aria-hidden="true">
-        <div class="home-intro-slide" style="background-image: url('/images/hero/uandes-fm-above.jpg'); animation-delay: 0s;"></div>
-        <div class="home-intro-slide" style="background-image: url('/images/hero/hpc.jpg'); animation-delay: 6s;"></div>
-        <div class="home-intro-slide" style="background-image: url('/images/hero/playa.jpg'); animation-delay: 12s;"></div>
-        <div class="home-intro-slide" style="background-image: url('/images/hero/chilly1.jpg'); animation-delay: 18s;"></div>
-        <div class="home-intro-slide" style="background-image: url('/images/hero/chilly2.jpg'); animation-delay: 24s;"></div>
-        <div class="home-intro-slide" style="background-image: url('/images/hero/asado2025.jpg'); animation-delay: 30s;"></div>
+        <div class="home-intro-slide is-active" style="background-image: url('/images/hero/uandes-fm-above.jpg');"></div>
+        <div class="home-intro-slide" style="background-image: url('/images/hero/hpc.jpg');"></div>
+        <div class="home-intro-slide" style="background-image: url('/images/hero/playa.jpg');"></div>
+        <div class="home-intro-slide" style="background-image: url('/images/hero/chilly1.jpg');"></div>
+        <div class="home-intro-slide" style="background-image: url('/images/hero/chilly2.jpg');"></div>
+        <div class="home-intro-slide" style="background-image: url('/images/hero/asado2025.jpg');"></div>
     </div>
     <div>
         <span class="home-kicker">Research &middot; Engineering &middot; Open source</span>
@@ -212,6 +212,14 @@
             <small>Watch video &rarr;</small>
         </span>
     </a>
+    <div class="home-hero-dots" role="group" aria-label="Choose hero image">
+        <button class="home-hero-dot is-active" type="button" aria-label="Show image 1 of 6" aria-pressed="true"></button>
+        <button class="home-hero-dot" type="button" aria-label="Show image 2 of 6" aria-pressed="false"></button>
+        <button class="home-hero-dot" type="button" aria-label="Show image 3 of 6" aria-pressed="false"></button>
+        <button class="home-hero-dot" type="button" aria-label="Show image 4 of 6" aria-pressed="false"></button>
+        <button class="home-hero-dot" type="button" aria-label="Show image 5 of 6" aria-pressed="false"></button>
+        <button class="home-hero-dot" type="button" aria-label="Show image 6 of 6" aria-pressed="false"></button>
+    </div>
 </section>
 
 <nav class="home-explore" aria-label="Explore topics">
@@ -673,6 +681,41 @@
     <!-- Flexslider -->
     <script src="https://joseabell.com/theme/js/jquery.flexslider-min.js"></script>
 
+<script>
+    (() => {
+        const slides = [...document.querySelectorAll('.home-intro-slide')];
+        const dots = [...document.querySelectorAll('.home-hero-dot')];
+        if (slides.length < 2) return;
+
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        let selected = 0;
+        let timer;
+
+        function show(index) {
+            selected = index;
+            slides.forEach((slide, i) => slide.classList.toggle('is-active', i === index));
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('is-active', i === index);
+                dot.setAttribute('aria-pressed', String(i === index));
+            });
+        }
+
+        function restart() {
+            clearInterval(timer);
+            if (!reducedMotion.matches && !document.hidden) {
+                timer = setInterval(() => show((selected + 1) % slides.length), 6000);
+            }
+        }
+
+        dots.forEach((dot, index) => dot.addEventListener('click', () => {
+            show(index);
+            restart();
+        }));
+        reducedMotion.addEventListener('change', restart);
+        document.addEventListener('visibilitychange', restart);
+        restart();
+    })();
+</script>
 
 
     <!-- MAIN JS -->
