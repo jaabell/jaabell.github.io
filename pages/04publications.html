@@ -7,7 +7,7 @@
     <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Publications</title>
+    <title>Publications | José Abell's Research Blog</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -119,202 +119,137 @@
         </aside>
 
         <div id="fh5co-main">
+<style>
+    #fh5co-main .pub-page { width: 90%; max-width: 1100px; margin: 0 auto; padding: 48px 0 80px; }
+    .pub-intro { padding: clamp(28px, 5vw, 58px); border-radius: 16px; color: #fff; background: linear-gradient(105deg, rgba(14, 39, 57, .93), rgba(14, 39, 57, .62)), url('/images/hero/uandes-fm-above.jpg') center / cover; }
+    .pub-eyebrow { color: #a8d6ee; font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+    .pub-intro h1 { margin: 12px 0; color: #fff; font-size: clamp(36px, 4vw, 52px); }
+    .pub-intro p { max-width: 650px; margin: 0 0 24px; color: rgba(255, 255, 255, .92); font-size: 17px; line-height: 1.6; }
+    .pub-links-top, .pub-jump { display: flex; flex-wrap: wrap; gap: 10px; }
+    .pub-links-top a { padding: 8px 14px; border: 1px solid rgba(255, 255, 255, .65); border-radius: 24px; color: #fff; font-weight: 600; }
+    .pub-links-top a:hover { background: #fff; color: #164766; }
+    .pub-jump { margin: 26px 0 32px; }
+    .pub-jump a { padding: 8px 14px; border-radius: 22px; background: #e9f2f7; color: #145b83; font-size: 13px; font-weight: 700; }
+    .pub-jump a:hover { background: #d5e8f2; }
+    .pub-feature-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .pub-feature { display: block; overflow: hidden; border: 1px solid #e2e9ed; border-radius: 14px; background: #fff; box-shadow: 0 8px 24px rgba(24, 50, 67, .06); }
+    .pub-feature img { display: block; width: 100%; aspect-ratio: 16 / 8; object-fit: cover; }
+    .pub-feature span { display: block; padding: 20px 22px 22px; }
+    .pub-feature small { display: block; margin-bottom: 8px; color: #1e7cb1; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .pub-feature strong { display: block; color: #20313b; font-size: 18px; line-height: 1.35; }
+    .pub-feature em { display: block; margin-top: 10px; color: #56636b; font-size: 14px; font-style: normal; line-height: 1.5; }
+    .pub-feature:hover strong { color: #1e7cb1; }
+    .pub-content h2 { margin: 52px 0 22px; color: #20313b; font-size: 28px; }
+    .pub-content h2[id] { scroll-margin-top: 64px; }
+    .pub-content h3 { margin: 36px 0 16px; color: #52616c; font-size: 19px; }
+    .pub-entry { margin: 0 0 12px; border: 1px solid #e2e9ed; border-radius: 12px; background: #fff; }
+    .pub-entry summary { position: relative; display: grid; gap: 7px; padding: 20px 50px 20px 22px; cursor: pointer; list-style: none; }
+    .pub-entry summary::-webkit-details-marker { display: none; }
+    .pub-entry summary::after { content: '+'; position: absolute; top: 20px; right: 22px; color: #1e7cb1; font-size: 25px; line-height: 1; }
+    .pub-entry[open] summary::after { content: '−'; }
+    .pub-entry summary:focus-visible { outline: 2px solid #1e7cb1; outline-offset: 2px; }
+    .pub-entry[open] summary { border-bottom: 1px solid #edf0f2; }
+    .pub-entry .pub-venue { color: #1e7cb1; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .pub-entry summary strong { color: #20313b; font-size: 18px; line-height: 1.35; }
+    .pub-entry .pub-authors, .pub-entry .pub-source { color: #586773; font-size: 13px; line-height: 1.5; }
+    .pub-entry > p { margin: 18px 22px; color: #3d4b55; line-height: 1.7; }
+    .pub-entry .pub-actions { display: flex; flex-wrap: wrap; gap: 12px; padding: 0 22px 22px; }
+    .pub-entry .pub-actions a { color: #1e7cb1; font-weight: 700; }
+    .pub-entry .pub-actions a:hover { text-decoration: underline; }
+    .pub-conference { margin: 0 0 14px; padding: 16px 20px; border-left: 3px solid #1e7cb1; background: #f5f8fa; line-height: 1.6; }
+    .pub-conference strong { color: #20313b; }
+    .pub-conference span { color: #586773; }
+    @media (max-width: 768px) {
+        #fh5co-main .pub-page { width: 100%; padding: 56px 16px 48px; }
+        .pub-feature-grid { grid-template-columns: 1fr; }
+        .pub-intro h1 { font-size: 36px; }
+        .pub-entry summary { padding: 18px 42px 18px 18px; }
+    }
+</style>
+<div class="pub-page">
+    <header class="pub-intro">
+        <span class="pub-eyebrow">Research &middot; Papers &middot; Software</span>
+        <h1>Publications</h1>
+        <p>Earthquake engineering, computational mechanics, geotechnics, open-source simulation, and how we teach the next generation of engineers.</p>
+        <div class="pub-links-top">
+            <a href="https://scholar.google.com/citations?user=mcmCTfQAAAAJ">Google Scholar</a>
+            <a href="https://orcid.org/0000-0002-2735-6547">ORCID</a>
+            <a href="https://www.researchgate.net/profile/Jose_Abell/">ResearchGate</a>
+        </div>
+    </header>
+    <nav class="pub-jump" aria-label="Publication sections">
+        <a href="#journal-articles">Journal articles</a>
+        <a href="#conference-papers">Conference papers</a>
+        <a href="#theses">Theses</a>
+    </nav>
+    <div class="pub-feature-grid">
+        <a class="pub-feature" href="https://doi.org/10.1016/j.engstruct.2026.122641">
+            <img src="https://www.dropbox.com/scl/fi/puuzupw3jqim6w3m5ok7c/paper17_thumbnail.png?rlkey=dite4yzwij8273j9uo7gcx1xg&amp;raw=1" alt="Layered shell model of a shear wall" loading="lazy">
+            <span><small>2026 · Engineering Structures</small><strong>Dynamic amplification of isolated shear walls</strong><em>What controls the seismic shear amplification in reinforced-concrete walls?</em></span>
+        </a>
+        <a class="pub-feature" href="https://doi.org/10.1002/eqe.4340">
+            <img src="/images/publications/ssi-building-model.png" alt="Engineering building and its soil–structure numerical model" loading="lazy">
+            <span><small>2025 · Earthquake Engineering &amp; Structural Dynamics</small><strong>How much do SSI modeling choices change a building's predicted response?</strong><em>Comparing detailed wave-field, plane-wave, and fixed-base simulations.</em></span>
+        </a>
+    </div>
+    <div class="pub-content"><h2 id="journal-articles">Journal articles</h2>
 
-    <div class="fh5co-narrow-content page-content">
-        <h1 class="fh5co-heading-colored"><i class=""></i> Publications</h1>
-        <div class="animate-box" data-animate-effect="fadeInLeft">
-            <!-- <p class="fh5co-lead animate-box" data-animate-effect="fadeInLeft"><p>Publications</p></p> -->
-            <p class="animate-box " data-animate-effect="fadeInLeft"><center>
-<a title="José A. Abell" href="https://www.researchgate.net/profile/Jose_Abell/"><img src="https://www.researchgate.net/images/public/profile_share_badge.png" alt="José A. Abell" /></a>
-<a href="https://scholar.google.com/citations?user=mcmCTfQAAAAJ&hl=en"><img height="70px" src="/images/other/gscholar.png" alt="José A. Abell" />Google Scholar</a>
-<a href="https://orcid.org/0000-0002-2735-6547">
-<img alt="ORCID logo" src="https://www.dropbox.com/s/c0o23zsp78k54i9/orcid_16x16.gif?raw=1" width="16" height="16" />
-0000-0002-2735-6547
-</a>
-</center>
+<p>Select a paper to read its overview and follow the publication link.</p>
+<h3>2026</h3>
 
-<h2>Journal Articles</h2>
-<p>Click to get details!</p>
-<!---------------------------------------------------------------- 
-Paper17
------------------------------------------------------------------->
-
-<details>
-<summary>• Patricio Palacios B., Nicolás Mora Bowen, Rafael Delpiano, <a href="self"><strong>José A. Abell</strong></a>.
-<em>Dynamic amplification of isolated shear walls: Insights from layered shell modeling</em>. <em>Engineering Structures</em>, <strong>358</strong>:122641, July 2026. <a href="https://doi.org/10.1016/j.engstruct.2026.122641">10.1016/j.engstruct.2026.122641</a>
+<details class="pub-entry">
+<summary>
+<span class="pub-venue">Engineering Structures · 2026</span>
+<strong>Dynamic amplification of isolated shear walls: Insights from layered shell modeling</strong>
+<span class="pub-authors">Patricio Palacios B., Nicolás Mora Bowen, Rafael Delpiano, José A. Abell</span>
+<span class="pub-source">358, 122641 · DOI: 10.1016/j.engstruct.2026.122641</span>
 </summary>
-<p><img alt="Fig 1" src="https://joseabell.com/images/paper17_thumbnail.jpg"></p>
-<h4>Abstract</h4>
 <p>This study investigates the dynamic shear amplification factors in reinforced concrete wall systems subjected to seismic ground motions. After validating a modeling strategy for shear walls using layered shell elements, a comprehensive parametric analysis was performed using approximately 1460 numerical models, of which 343 satisfied convergence and capacity criteria and were retained for evaluation. Analysis of walls ranging from 35 to 105 m in height with web transverse reinforcement from 0.25% to 1.40% revealed dynamic shear amplification factors between 1.0 and 2.75. Maximum amplification occurred in taller walls under low axial load ratio (0.10 fc′Ag), while high axial load ratios (0.30 fc′Ag) reduced peak amplification to approximately 1.5. Statistical analysis identified the normalized position of the resultant lateral force as the most accurate predictor of dynamic amplification. A regression model based on the normalized force resultant position was developed and validated through normality tests of residuals, demonstrating robust agreement with observed data. Mean amplification trends showed reasonable agreement with ACI 318-25 formulations, though substantial scatter indicates that the effective position of the force resultant is essential for accurate prediction beyond the number of stories alone.</p>
-<p>[<a href="https://joseabell.com/posts/2026/paper17-dynamic-amplification-of-isolated-shear-walls-insights-from-layered-shell-modeling.html">BLOG</a>]</p>
-<div align="left" class="videoWrapper">
-<iframe allow="autoplay; encrypted-media" allowfullscreen frameborder="0" height="480" src="https://www.youtube.com/embed/fMmhSz4bC9U" width="640"></iframe>
-</div>
+<div class="pub-actions"><a href="https://doi.org/10.1016/j.engstruct.2026.122641">Read paper ↗</a><a href="https://joseabell.com/posts/2026/paper17-dynamic-amplification-of-isolated-shear-walls-insights-from-layered-shell-modeling.html">Blog post ↗</a></div>
 </details>
-<!---------------------------------------------------------------- 
-Paper16
------------------------------------------------------------------->
+<h3>2025</h3>
 
-<details>
-<summary>• Alberto Hurtado Valdés, Eduardo Torres, Guido Camata, Massimo Petracca, Jorge G. F. Crempien, <a href="self"><strong>José A. Abell</strong></a>.
-<em>Impact of Soil–Structure Interaction Modeling Simplifications and Structural Nonlinearity on Uncertainty in EDPs: A Case Study on an Existing RC Building in Santiago</em>. <em>Earthquake Engineering &amp; Structural Dynamics</em>, <strong>54</strong>(8):2062–2083, 2025. <a href="https://doi.org/10.1002/eqe.4340">10.1002/eqe.4340</a>
+<details class="pub-entry">
+<summary>
+<span class="pub-venue">Earthquake Engineering &amp; Structural Dynamics · 2025</span>
+<strong>Impact of Soil–Structure Interaction Modeling Simplifications and Structural Nonlinearity on Uncertainty in EDPs: A Case Study on an Existing RC Building in Santiago</strong>
+<span class="pub-authors">Alberto Hurtado Valdés, Eduardo Torres, Guido Camata, Massimo Petracca, Jorge G. F. Crempien, José A. Abell</span>
+<span class="pub-source">54(8), 2062–2083 · DOI: 10.1002/eqe.4340</span>
 </summary>
-<h4>Abstract</h4>
-<p>This study examines how modeling simplifications in soil–structure interaction
-(SSI) analyses influence the uncertainty of engineering demand parameters (EDPs)
-for a real reinforced concrete building in Santiago, Chile. Using a suite of
-three-dimensional models with varying levels of soil and structural fidelity, we
-evaluate how assumptions in foundation representation, soil domain extent,
-material nonlinearity, and kinematic interaction propagate into demand-level
-predictions.</p>
-<p>A Bayesian inference framework is used to quantify epistemic uncertainty,
-allowing a direct comparison of how different modeling choices affect both the
-median response and its dispersion. Results show that (1) oversimplified SSI
-representations systematically underestimate key EDPs, (2) the interaction
-between structural nonlinearity and foundation flexibility has a pronounced
-effect on lateral demands, and (3) uncertainty bands widen significantly when
-soil nonlinearity and realistic damping mechanisms are included.</p>
-<p>The findings highlight the need for balanced modeling strategies in performance-
-based assessment of existing structures, particularly in seismically active
-regions where SSI effects are non-negligible. Recommendations are provided for
-future studies and engineering practice, emphasizing model-selection criteria,
-minimum soil-domain requirements, and the treatment of nonlinear mechanisms.</p>
-<p>[PDF] [BLOG]</p>
+<p>This study investigates the impact of modeling simplifications on the uncertainty of seismic response in numerical simulations, focusing on a five-story, asymmetric-plan, reinforced-concrete building in Santiago, Chile, subjected to simulated seismic motions from hypothetical events at the San Ramón fault (SRF). A comparative analysis is conducted between a high-complexity reference model and lower-complexity models. The reference model incorporates three-dimensional seismic inputs using the domain reduction method (DRM) and a detailed structural model accounting for material nonlinear behavior. The complexity of the models is systematically reduced to assess the effects of different soil–structure interaction (SSI) modeling assumptions, including DRM and plane-wave (PW) input and fixed-base (FB) conditions. For each model, both linear and nonlinear material behaviors are considered. Given the lack of historical records from the SRF, the study employs source-to-structure physical simulation. Simulations are conducted in OpenSees using input motions from 10 realizations of a Mw = 6.7 event at the SRF, generated with the ShakerMaker Python library. With respect to the reference model, PW assumptions moderately increase uncertainty across different engineering demand parameters (EDPs) and analysis directions. Conversely, FB conditions significantly elevate modeling uncertainty, drastically changing the mean and variance of computed EDPs. A simple EDP sensitivity score is proposed to compare the statistics of computed EDPs and rank models with respect to the reference model. Linear FB models may outperform nonlinear FB models, highlighting a complex relationship between structural nonlinearity and soil flexibility modeling. High-complexity modeling accounting for the spatiotemporal complexity of the seismic wave field may be needed for response quantities sensitive to high frequencies. Even for this building, located on very stiff soil, SSI effects cannot be neglected because they can produce unpredictable changes in the mean and variance of computed EDPs.</p>
+<div class="pub-actions"><a href="https://doi.org/10.1002/eqe.4340">Read paper ↗</a></div>
 </details>
-<!---------------------------------------------------------------- 
-Paper15
------------------------------------------------------------------->
+<h3>2024</h3>
 
-<details>
-<summary>• <a href="self"><strong>José A. Abell</strong></a>, <a href="pato">Patricio A. Moreno-Casas</a>, Matías Recabarren.
-<em>Integrating advanced computational skills into engineering education: A discipline-based approach</em>. <em>Computer Applications in Engineering Education</em>, <strong>32</strong>(6):e22784, 2024. <a href="https://doi.org/10.1002/cae.22784">10.1002/cae.22784</a>
+<details class="pub-entry">
+<summary>
+<span class="pub-venue">Computer Applications in Engineering Education · 2024</span>
+<strong>Integrating advanced computational skills into engineering education: A discipline-based approach</strong>
+<span class="pub-authors">José A. Abell, Patricio A. Moreno-Casas, Matías Recabarren</span>
+<span class="pub-source">32(6), e22784 · DOI: 10.1002/cae.22784</span>
 </summary>
-<h4>Abstract</h4>
-<p>This article presents a discipline-based strategy for integrating advanced
-computational skills into undergraduate engineering curricula. The approach
-addresses a growing need for engineers who can work effectively with numerical
-simulation, data analysis, and high-performance scientific computing.</p>
-<p>We propose a multi-tier instructional framework that blends domain theory,
-computing concepts, and authentic engineering applications. The framework was
-implemented across several civil and environmental engineering courses, ranging
-from introductory numerical methods to high-fidelity finite element modeling.</p>
-<p>Results from multi-year deployments show significant gains in student autonomy,
-conceptual understanding, and computational proficiency. The approach also
-improves students’ ability to transfer skills across disciplinary contexts,
-particularly when courses include project-based components rooted in real
-engineering workflows.</p>
-<p>The paper offers guidelines for instructors wishing to incorporate similar
-strategies, highlighting practical considerations, examples of modular content,
-and observed student learning trajectories. The proposed methodology can be
-adapted to diverse engineering programs seeking to modernize computational
-education.</p>
-<p>[PDF] [BLOG]</p>
+<p>In an era where technology continually reshapes the landscape of professional practice, it has become relevant to equip engineering students with advanced computational skills beyond programming. This article presents a novel discipline-based framework designed to integrate advanced computational skills into engineering education. Responding to challenges such as the disconnection between computational abilities and domain-specific knowledge, and student demotivation due to overwhelming technological challenges, this study aims to validate the impact of the framework on domain learning, computational skill acquisition, and perceived future utility. Implementing a case study approach, we explore the development of high-performance computing skills within a project-based learning context in Civil Engineering. Results indicate significant improvements in students' understanding of both computational concepts and the engineering domain, evidenced by enhanced self-perception and positive Technology Acceptance Model outcomes. The framework facilitated a meaningful connection between computational skills and professional applications, as seen in students' project reflections. Despite the promising results, the necessity for instructors to possess and impart computational knowledge is highlighted as an important factor for successful integration. This study contributes to educational computing research by providing a scalable approach to embedding advanced computational skills in engineering curricula, addressing existing educational challenges, and suggesting directions for future research.</p>
+<div class="pub-actions"><a href="https://doi.org/10.1002/cae.22784">Read paper ↗</a></div>
 </details>
-<!---------------------------------------------------------------- 
-Paper14
------------------------------------------------------------------->
-
-<details>
-<summary>• M. Birrell, C. Pastén, <a href="self"><strong>J.A. Abell</strong></a>, <a href="Rorro">R. Astroza</a>, <em>Probabilistic characterization of a high-cycle accumulation model for sands</em>. Computers and Geotechnics, Volume 147, 2022, <a href="https://doi.org/10.1016/j.compgeo.2022.104798">https://doi.org/10.1016/j.compgeo.2022.104798</a>.
+<details class="pub-entry">
+<summary>
+<span class="pub-venue">Advances in Engineering Software · 2024</span>
+<strong>Domain specific language for finite element modeling and simulation</strong>
+<span class="pub-authors">Yuan Feng, José Antonio Abell Mena, Han Yang, Hexiang Wang, Boris Jeremić</span>
+<span class="pub-source">193, 103666 · DOI: 10.1016/j.advengsoft.2024.103666</span>
 </summary>
-<h4>Abstract</h4>
-<p><img alt="Fig 1" src="https://www.dropbox.com/s/cvjj5elggsv71kq/fig1.jpg?raw=1"></p>
-<p>In this paper, we employ a Bayesian approach to estimate the parameters of a high cycle accumulation model for sands using experimental data. Global sensitivity analysis and Markov-Chain Monte Carlo simulation are conducted for each of the twenty-four available experimental drained triaxial test results, considering the effect of estimating soil parameters at each strain-cycle under several loading conditions. Probability distributions inferred from each data source are then combined to obtain a single distribution for model parameters. Model calibration is then validated against new observations. The accumulated strain model is calibrated through explicit computation of strain at each cycle and the strain dependence of model parameters is included through the cyclic variation of the model constants.</p>
-<p><img alt="Fig 2" src="https://www.dropbox.com/s/sxq7w3qg55ew6ka/fig2.jpg?raw=1"></p>
-<p>[PDF] [BLOG]</p>
+<p>This paper introduces the Finite Element Interpreter (FEI), a domain-specific language for linear and nonlinear finite-element analysis of soils and structures. Its self-documenting scripts make physical units and modeling choices explicit, with examples ranging from small test problems to Real-ESSI simulations.</p>
+<div class="pub-actions"><a href="https://doi.org/10.1016/j.advengsoft.2024.103666">Read paper ↗</a></div>
 </details>
-<!---------------------------------------------------------------- 
-Paper13
------------------------------------------------------------------->
+<h3>2023</h3>
 
-<details>
-<summary>• Marco Tulio Herrera, <a href="Georgie">Jorge G. F. Crempien</a>, Roberto Benavente, <a href="self"><strong>Jose A. Abell.</strong></a>
-<em>Bayesian ground motion model selection method based on evidence and information criteria</em>. Bulletin of the Seismological Society of America
+<details class="pub-entry">
+<summary>
+<span class="pub-venue">Soil Dynamics and Earthquake Engineering · 2023</span>
+<strong>How do tall buildings affect seismic earth pressures on their basement walls?</strong>
+<span class="pub-authors">Francisco J. Pinto, Shideh Dashti, Christian Ledezma, José A. Abell</span>
+<span class="pub-source">171, 107968 · DOI: 10.1016/j.soildyn.2023.107968</span>
 </summary>
-<p><img alt="Fig 1" src="https://www.dropbox.com/s/pov2nm3rtm1ame9/fig1.png?raw=1"></p>
-<h4>Abstract</h4>
-<p>Quicumque vult salvus esse, ante omnia opus est,
-ut teneat catholicam fidem:
-Quam nisi quisque integram inviolatamque servaverit,
-absque dubio in aeternum peribit.
-Fides autem catholica haec est:
-ut unum Deum in Trinitate,
-et Trinitatem in unitate veneremur.
-Neque confundentes personas,
-neque substantiam separantes.</p>
-<p>Alia est enim persona Patris alia Filii,
-alia Spiritus Sancti: Sed Patris, et Filii,
-et Spiritus Sancti una est divinitas,
-aequalis gloria, coeterna maiestas.
-Qualis Pater, talis Filius, talis Spiritus Sanctus.
-Increatus Pater, increatus Filius,
-increatus Spiritus Sanctus.
-Immensus Pater, immensus Filius,
-immensus Spiritus Sanctus.
-Aeternus Pater, aeternus Filius,
-aeternus Spiritus Sanctus.</p>
-<p>Et tamen non tres aeterni, sed unus aeternus.
-Sicut non tres increati, nec tres immensi,
-sed unus increatus, et unus immensus.
-Similiter omnipotens Pater,
-omnipotens Filius, omnipotens Spiritus Sanctus.
-Et tamen non tres omnipotentes, sed unus omnipotens.
-Ita Deus Pater, Deus Filius, Deus Spiritus Sanctus.
-Et tamen non tres dei, sed unus est Deus.
-Ita Dominus Pater, Dominus Filius,
-Dominus Spiritus Sanctus.
-Et tamen non tres Domini, sed unus est Dominus.</p>
-<p>Haec est fides catholica,
-quam nisi quisque fideliter
-firmiterque crediderit,
-salvus esse non poterit.</p>
-<p>[PDF] [BLOG]</p>
-</details>
-<!---------------------------------------------------------------- 
-Paper12
------------------------------------------------------------------->
-
-<details>
-<summary>• Francisco J. Pinto, Christian Ledezma, <a href="self"><strong>Jose A. Abell.</strong></a>, <a href="Rorro">Rodrigo Astroza</a>, <a href="Shideh">Shideh Dashti</a>
-<em>Soil-Basement Interaction Effects on the Seismic Response of Tall Buildings with Basement Levels</em>. Engineering structures
-</summary>
-<p><img alt="Fig 1" src="https://www.dropbox.com/s/y7aczbgu4xxoy6g/fig1.png?raw=1"></p>
-<h4>Abstract</h4>
-<p>The need to build tall buildings has been increasing worldwide, creating new
-challenges in earthquake engineering and design. Many of the current analysis
-methods cannot be extrapolated beyond the definition under which they were
-established. Prior studies and existing seismic design guidelines have indicated that
-the current fixed-base hypothesis for evaluating the seismic response of structures is
-not sufficient to properly represent the boundary conditions and behavior of tall
-buildings with basement levels. Studies of soil-structure interaction (SSI) for tall
-buildings have, however, typically been inconclusive. It is not clear under which
-conditions consideration of soil-basement-structure interaction (SBSI) is necessary for
-the design of the superstructure, foundation, and basement levels and when it can
-safely be avoided. Given the rising demand, it is essential to evaluate the relation of
-global system variables such as the basement depth, structure height, and soil
-characteristics with the building's response via numerical and experimental modeling.
-Therefore, an experimental-numerical approach is presented to better understand the
-seismic response of tall buildings with basement levels, considering explicit SBSI
-modeling. Chilean tall buildings and soil conditions are used as study cases, analyzed
-using non-linear finite element analyses in conjunction with results from centrifuge
-experiments. The results show how seismic response parameters and modals
-characteristics, such as inter-story drifts, shear force, bending moment, natural
-frequencies and damping ratios, change when SBSI is appropriately incorporated. The
-results point to the importance of considering soil-basement-interaction effects to
-evaluate the seismic response of tall buildings with basement levels and avoid unsafe
-estimations or the need for overdesign.</p>
-<p>[PDF] [BLOG]</p>
-</details>
-<!---------------------------------------------------------------- 
-Paper11
------------------------------------------------------------------->
-
-<details>
-<summary>• Francisco Pinto, Shideh Dashti, Christian Ledezma, <a href="self"><strong>Jose A. Abell.</strong></a>
-<em>How Do Tall Buildings Affect Seismic Earth Pressures on Their Basement Walls?</em>. Soil Dynamics and Earthquake Engineering
-</summary>
-<p>![Fig 1](<img alt="Fig 1" src="https://www.dropbox.com/s/qi1wfe4qzbknv76/fig1.png?raw=1"></p>
-<h4>Abstract</h4>
 <p>Construction of tall buildings has recently gone through an exponential growth in major
 cities, creating new challenges in earthquake engineering and design. For instance,
 existing analytical procedures for evaluating seismic lateral earth pressures on
@@ -346,18 +281,59 @@ system in relation to the underlying soil. The results point to the importance o
 considering the building’s dynamic properties and inertia in evaluation of seismic earth
 pressures on basement walls, in order to avoid unsafe estimations or the need for
 overdesign.</p>
-<p>[PDF] [BLOG]</p>
+<div class="pub-actions"><a href="https://doi.org/10.1016/j.soildyn.2023.107968">Read paper ↗</a></div>
 </details>
-<!---------------------------------------------------------------- 
-Paper10
------------------------------------------------------------------->
+<h3>2022</h3>
 
-<details>
-<summary>• <a href="self"><strong>Jose A. Abell.</strong></a>, <a href="Georgie">Jorge G.F. Crempien</a>, Matías Recabarren
-<code>ShakerMaker</code>: A framework that simplifies the simulation of seismic ground-motions. SoftwareX 
+<details class="pub-entry">
+<summary>
+<span class="pub-venue">Computers and Geotechnics · 2022</span>
+<strong>Probabilistic characterization of a high-cycle accumulation model for sands</strong>
+<span class="pub-authors">M. Birrell, C. Pastén, J. A. Abell, R. Astroza</span>
+<span class="pub-source">147, 104798 · DOI: 10.1016/j.compgeo.2022.104798</span>
 </summary>
-<p><img alt="Fig 1" src="https://www.dropbox.com/s/v7ylof57q5ritmy/fig1.png?raw=1"></p>
-<h4>Abstract</h4>
+<p>In this paper, we employ a Bayesian approach to estimate the parameters of a high cycle accumulation model for sands using experimental data. Global sensitivity analysis and Markov-Chain Monte Carlo simulation are conducted for each of the twenty-four available experimental drained triaxial test results, considering the effect of estimating soil parameters at each strain-cycle under several loading conditions. Probability distributions inferred from each data source are then combined to obtain a single distribution for model parameters. Model calibration is then validated against new observations. The accumulated strain model is calibrated through explicit computation of strain at each cycle and the strain dependence of model parameters is included through the cyclic variation of the model constants.</p>
+<div class="pub-actions"><a href="https://doi.org/10.1016/j.compgeo.2022.104798">Read paper ↗</a></div>
+</details>
+<details class="pub-entry">
+<summary>
+<span class="pub-venue">Engineering Structures · 2022</span>
+<strong>Soil–basement interaction effects on the seismic response of tall buildings with basement levels</strong>
+<span class="pub-authors">Francisco J. Pinto, Christian Ledezma, José A. Abell, Rodrigo Astroza, Shideh Dashti</span>
+<span class="pub-source">263, 114406 · DOI: 10.1016/j.engstruct.2022.114406</span>
+</summary>
+<p>The need to build tall buildings has been increasing worldwide, creating new
+challenges in earthquake engineering and design. Many of the current analysis
+methods cannot be extrapolated beyond the definition under which they were
+established. Prior studies and existing seismic design guidelines have indicated that
+the current fixed-base hypothesis for evaluating the seismic response of structures is
+not sufficient to properly represent the boundary conditions and behavior of tall
+buildings with basement levels. Studies of soil-structure interaction (SSI) for tall
+buildings have, however, typically been inconclusive. It is not clear under which
+conditions consideration of soil-basement-structure interaction (SBSI) is necessary for
+the design of the superstructure, foundation, and basement levels and when it can
+safely be avoided. Given the rising demand, it is essential to evaluate the relation of
+global system variables such as the basement depth, structure height, and soil
+characteristics with the building's response via numerical and experimental modeling.
+Therefore, an experimental-numerical approach is presented to better understand the
+seismic response of tall buildings with basement levels, considering explicit SBSI
+modeling. Chilean tall buildings and soil conditions are used as study cases, analyzed
+using non-linear finite element analyses in conjunction with results from centrifuge
+experiments. The results show how seismic response parameters and modals
+characteristics, such as inter-story drifts, shear force, bending moment, natural
+frequencies and damping ratios, change when SBSI is appropriately incorporated. The
+results point to the importance of considering soil-basement-interaction effects to
+evaluate the seismic response of tall buildings with basement levels and avoid unsafe
+estimations or the need for overdesign.</p>
+<div class="pub-actions"><a href="https://doi.org/10.1016/j.engstruct.2022.114406">Read paper ↗</a></div>
+</details>
+<details class="pub-entry">
+<summary>
+<span class="pub-venue">SoftwareX · 2022</span>
+<strong>ShakerMaker: A framework that simplifies the simulation of seismic ground-motions</strong>
+<span class="pub-authors">José A. Abell, Jorge G. F. Crempien, Matías Recabarren</span>
+<span class="pub-source">17, 100911 · DOI: 10.1016/j.softx.2021.100911</span>
+</summary>
 <p><code>ShakerMaker</code> is an open-source python framework which simplifies the
 generation of synthetic broad-band seismograms, produced by finite-fault
 kinematic representations of earthquake ruptures, using a 1-D layered model
@@ -375,19 +351,27 @@ work. Its software architecture emphasizes simplicity, extensibility, and per-
 formance, allowing users to specify complex simulation scenarios with short
 scripts. The message passing interface is used to achieve scalability from
 simple single-processor machines to HPC clusters.</p>
-<p>[PDF] [BLOG]</p>
+<div class="pub-actions"><a href="https://doi.org/10.1016/j.softx.2021.100911">Read paper ↗</a><a href="https://github.com/jaabell/ShakerMaker">ShakerMaker code ↗</a></div>
 </details>
-<!---------------------------------------------------------------- 
-Paper09
------------------------------------------------------------------->
-
-<details>
-<summary>• Francisco Pinto, Christian Ledezma, Rodrigo Astroza, <a href="self"><strong>Jose A. Abell.</strong></a>
-<em>Modeling the loss of vibration energy in buildings to elastic-waves using high-fidelity FE modeling and absorbent exterior boundaries</em>. Journal of Earthquake Engineering. 
+<details class="pub-entry">
+<summary>
+<span class="pub-venue">Géotechnique · 2022</span>
+<strong>From cyclic sand ratcheting to tilt accumulation of offshore monopiles: 3D FE modelling using SANISAND-MS</strong>
+<span class="pub-authors">Haoyuan Liu, Evangelos Kementzetzidis, José Antonio Abell, Federico Pisanò</span>
+<span class="pub-source">72(9), 753–768 · DOI: 10.1680/jgeot.20.p.029</span>
 </summary>
-<p><img alt="Fig 1" src="https://www.dropbox.com/s/h3w5ghavuftxtb4/fig1.png?raw=1">
-<img alt="Fig 2" src="https://www.dropbox.com/s/2lix2nezgxjmn1i/fig2.png?raw=1"></p>
-<h4>Abstract</h4>
+<p>Serviceability criteria for offshore monopiles include the estimation of long-term, permanent tilt under repeated operational loads. In the lack of well-established analysis methods, experimental and numerical research has been carried out in the last decade to support the fundamental understanding of monopile-soil interaction mechanisms, and the conception of engineering methods for monopile tilt predictions. With focus on the case of monopiles in sand, this work shows how step-by-step/implicit, three-dimensional finite element modelling can be fruitfully applied to the analysis of cyclic monopile-soil interaction and related soil deformation mechanisms. To achieve adequate simulation of cyclic sand ratcheting and densification around the pile, the SANISAND-MS model recently proposed by Liu et al. (2019) is adopted. The link between local soil behaviour and global monopile response to cyclic loading is discussed through detailed analysis of model prediction. Overall, the results of numerical parametric studies confirm that the proposed 3D FE modelling framework can reproduce relevant experimental evidence about monopile-soil interaction, and support future improvement of engineering design methods.</p>
+<div class="pub-actions"><a href="https://doi.org/10.1680/jgeot.20.p.029">Read paper ↗</a></div>
+</details>
+<h3>2021</h3>
+
+<details class="pub-entry">
+<summary>
+<span class="pub-venue">Journal of Earthquake Engineering · 2021 online</span>
+<strong>Modeling the loss of vibration energy in buildings to elastic-waves using high-fidelity FE modeling and absorbent exterior boundaries</strong>
+<span class="pub-authors">Francisco J. Pinto, Christian Ledezma, Rodrigo Astroza, J. A. Abell Mena</span>
+<span class="pub-source">DOI: 10.1080/13632469.2021.1927904</span>
+</summary>
 <p>The modeling of structural damping due to the excitation of elastic-waves into
 the surrounding soil domain, and its effect on structural response as apparent
 modal damping is explored herein. Four high-fidelity, linear finite-element mod-
@@ -396,154 +380,112 @@ simulated in OpenSees to evaluate their frequency response. Radiation-damping is
 provided by a layer of high-damping elements, which design is explored in detail.
 Results show that up to 1% of apparent, low-amplitude damping can be attributed
 to radiation-damping depending on number of stories and depth of embedment.</p>
-<p>[PDF] [BLOG]</p>
+<div class="pub-actions"><a href="https://doi.org/10.1080/13632469.2021.1927904">Read paper ↗</a></div>
 </details>
-<!---------------------------------------------------------------- 
-Paper08
------------------------------------------------------------------->
-
-<details>
-<summary>• Haoyuan Liu, Evangelos Kementzetzidis, <a href="self"><strong>José Antonio Abell</strong></a>, <a href="fede">Federico Pisanò</a>
-<em>From cyclic sand ratcheting to tilt accumulation in offshore monopiles: 3D FE modelling using SANISAND-MS</em>. Géotechnique. Online March 8, 2021 (Ahead of print)
+<details class="pub-entry">
+<summary>
+<span class="pub-venue">Computer Methods in Applied Mechanics and Engineering · 2021</span>
+<strong>Extending the Particle Finite Element Method for sediment transport simulation</strong>
+<span class="pub-authors">Nicolás Galano, Patricio A. Moreno-Casas, José A. Abell</span>
+<span class="pub-source">380, 113772 · DOI: 10.1016/j.cma.2021.113772</span>
 </summary>
-<p><img alt="Fig 1" src="https://www.dropbox.com/s/dfyutj7p9fejzuc/fig.png?raw=1"></p>
-<h4>Abstract</h4>
-<p>Serviceability criteria for offshore monopiles include the estimation of long-term, permanent tilt under repeated operational loads. In the lack of well-established analysis methods, experimental and numerical research has been carried out in the last decade to support the fundamental understanding of monopile-soil interaction mechanisms, and the conception of engineering methods for monopile tilt predictions. With focus on the case of monopiles in sand, this work shows how step-by-step/implicit, three-dimensional finite element modelling can be fruitfully applied to the analysis of cyclic monopile-soil interaction and related soil deformation mechanisms. To achieve adequate simulation of cyclic sand ratcheting and densification around the pile, the SANISAND-MS model recently proposed by Liu et al. (2019) is adopted. The link between local soil behaviour and global monopile response to cyclic loading is discussed through detailed analysis of model prediction. Overall, the results of numerical parametric studies confirm that the proposed 3D FE modelling framework can reproduce relevant experimental evidence about monopile-soil interaction, and support future improvement of engineering design methods.</p>
-<p>[PDF] [BLOG]</p>
-</details>
-<!-- ![Fig 1](https://www.dropbox.com/s/hwvo1eu292lgjgo/Fig1.png?raw=1) -->
-<!-- Serviceability criteria for offshore monopiles include the estimation of long-term, permanent tilt under repeated operational loads. In the lack of well-established analysis methods, experimental and numerical research has been carried out in the last decade to support the fundamental understanding of monopile-soil interaction mechanisms, and the conception of engineering methods for monopile tilt predictions. With focus on the case of monopiles in sand, this work shows how step-by-step/implicit, three-dimensional finite element modelling can be fruitfully applied to the analysis of cyclic monopile-soil interaction and related soil deformation mechanisms. To achieve adequate simulation of cyclic sand ratcheting and densification around the pile, the SANISAND-MS model recently proposed by Liu et al. (2019) is adopted. The link between local soil behaviour and global monopile response to cyclic loading is discussed through detailed analysis of model prediction. Overall, the results of numerical parametric studies confirm that the proposed 3D FE modelling framework can reproduce relevant experimental evidence about monopile-soil interaction, and support future improvement of engineering design methods. -->
-
-<!---------------------------------------------------------------- 
-Paper07
------------------------------------------------------------------->
-
-<details>
-<summary>• Nicolás Andrés Galano, <a href="pato">Patricio Alejandro Moreno-Casas</a>, <a href="self"><strong>Jose Antonio Abell</strong></a>. 
-<em>Extending the Particle Finite Element Method for Sediment Transport Simulation</em>. Computer Methods in Applied Mechanics and Engineering, Vol 380, 1 July 2021.
-</summary>
-<p><img alt="Fig 1" src="https://www.dropbox.com/s/hwvo1eu292lgjgo/Fig1.png?raw=1"></p>
-<h4>Abstract</h4>
 <p>The present work extends the capabilities of the Particle Finite Element Method (PFEM), which allows modeling of soil-fluid-structure interaction problems, to allow the modeling of sediment transport and scouring effects. This is accomplished by implementing scouring rules on an evolving scourable-interface, i.e. the interface surface between fluid and soil. The proposed method improves upon previous proposals by jointly capturing both the temporal and spatial scales of scouring evolution, as shown in the presented validation exercise, and also because its parametrization is conforms with commonplace engineering procedures for scouring prediction. The extension preserves desirable PFEM properties such as conservation of mass, mesh-size independence, and stability of the numerical solution of the PFEM equations.</p>
-<p>[PDF] [BLOG]</p>
+<div class="pub-actions"><a href="https://doi.org/10.1016/j.cma.2021.113772">Read paper ↗</a></div>
 </details>
-<!---------------------------------------------------------------- 
-Paper06
------------------------------------------------------------------->
+<h3>2020</h3>
 
-<details>
-<summary>• Haoyuan Liu, <a href="Diambra">Andrea Diambra</a>, <a href="self"><strong>José Antonio Abell</strong></a>, <a href="Pisano">Federico Pisanò</a>. 
-<em>Memory-enhanced plasticity modelling of sand behaviour under undrained cyclic loading</em>. Journal of Geotechnical and Geoenvironmental Engineering, Vol. 146, Issue 11 (November 2020).
+<details class="pub-entry">
+<summary>
+<span class="pub-venue">Journal of Geotechnical and Geoenvironmental Engineering · 2020</span>
+<strong>Memory-Enhanced Plasticity Modeling of Sand Behavior under Undrained Cyclic Loading</strong>
+<span class="pub-authors">Haoyuan Liu, Andrea Diambra, José A. Abell, Federico Pisanò</span>
+<span class="pub-source">146(11) · DOI: 10.1061/(ASCE)GT.1943-5606.0002362</span>
 </summary>
-<h4>Abstract</h4>
 <p>This work presents a critical state plasticity model for predicting the response of sands to cyclic loading. The well-known bounding surface SANISAND framework by Dafalias &amp; Manzari (2004) is enhanced with a `memory surface' to capture micro-mechanical, fabric-related processes directly effecting cyclic sand behaviour. The resulting model, SANISAND-MS, was recently proposed by Liu et al. (2019) , and successfully applied to the simulation of drained sand ratcheting under thousands of loading cycles. Herein, novel ingredients are embedded into Liu et al. (2019) 's formulation to better capture the effects of fabric evolution history on sand stiffness and dilatancy. The new features enable remarkable accuracy in simulating undrained pore pressure build-up and cyclic mobility behaviour in medium-dense/dense sand. The performance of the upgraded SANISAND-MS is validated against experimental test results from the literature - including undrained cyclic triaxial tests at varying cyclic loading conditions and pre-cyclic consolidation histories. The proposed modelling platform will positively impact the study of relevant cyclic/dynamic problems, for instance, in the fields of earthquake and offshore geotechnics.</p>
-<p><a href="https://www.researchgate.net/publication/344014750_Memory-Enhanced_Plasticity_Modeling_of_Sand_Behavior_under_Undrained_Cyclic_Loading">[PDF]</a> [BLOG]</p>
+<div class="pub-actions"><a href="https://doi.org/10.1061/(ASCE)GT.1943-5606.0002362">Read paper ↗</a></div>
 </details>
-<!---------------------------------------------------------------- 
-Paper05
------------------------------------------------------------------->
-
-<details>
-<summary>• <a href="Pato">Patricio A. Moreno-Casas</a>, <a href="scottypippen">Felipe Scott</a>, <a href="JoeDelpiano">José Delpiano</a>, <a href="https://www.researchgate.net/researcher/2024071206_Jose_A_Abell/"><strong>José A. Abell</strong></a>, Francisco Caicedo, Raúl Muñoz, and <a href="albertovergara">Alberto Vergara-Fernández</a>. <em>Mechanistic Description of Convective Gas–Liquid Mass Transfer in Biotrickling Filters Using CFD Modeling.</em> Environmental Science &amp; Technology 2020 54 (1), 419-426
+<details class="pub-entry">
+<summary>
+<span class="pub-venue">Environmental Science &amp; Technology · 2020</span>
+<strong>Mechanistic Description of Convective Gas–Liquid Mass Transfer in Biotrickling Filters Using CFD Modeling</strong>
+<span class="pub-authors">Patricio A. Moreno-Casas, Felipe Scott, José Delpiano, José A. Abell, Francisco Caicedo, Raúl Muñoz, Alberto Vergara-Fernández</span>
+<span class="pub-source">54(1), 419–426 · DOI: 10.1021/acs.est.9b02662</span>
 </summary>
-<p><img alt="Fig 1" src="https://www.dropbox.com/s/d1n9ckosxi0cfvl/fig1.png?raw=1"></p>
-<h4>Abstract</h4>
 <p>The gas−liquid mass transfer coefficient is a key parameter to the design and operation of biotrickling filters that governs the transport rate of contaminants and oxygen from the gas phase to the liquid phase, where pollutant biodegradation occurs. Mass transfer coefficients are typically estimated via experimental procedures to produce empirical correlations, which are only valid for the bioreactor configuration and range of operational conditions under investigation. In this work, a new method for the estimation of the gas−liquid mass transfer coefficient in biotrickling filters is presented. This novel methodology couples a realistic description of the packing media (polyurethane foam without a biofilm) obtained using microtomography with computational fluid dynamics. The two-dimensional analysis reported in this study allowed capturing the mechanisms of the complex processes involved in the creeping porous air and water flow in the presence of capillary effects in biotrickling filters. Model predictions matched the experimental mass transfer coefficients (±30%) under a wide range of operational conditions.</p>
-<p>[<a href="https://www.researchgate.net/publication/337698382_Mechanistic_Description_of_Convective_Gas-Liquid_Mass_Transfer_in_Biotrickling_Filters_Using_CFD_Modeling">PDF</a>] [BLOG]</p>
+<div class="pub-actions"><a href="https://doi.org/10.1021/acs.est.9b02662">Read paper ↗</a></div>
 </details>
-<!---------------------------------------------------------------- 
-Paper04
------------------------------------------------------------------->
+<h3>2019</h3>
 
-<details>
+<details class="pub-entry">
 <summary>
-Hao Yuan Liu, <a href="self"><strong>José Antonio Abell</strong></a>, <a href="Diambra">Andrea Diambra</a>, and <a href="Pisano">Federico Pisanò</a>. 
-<em>Modelling the cyclic ratcheting of sands through memory-enhanced bounding surface plasticity.</em> Géotechnique 2019 69:9, 783-800.
+<span class="pub-venue">Géotechnique · 2019</span>
+<strong>Modelling the cyclic ratcheting of sands through memory-enhanced bounding surface plasticity</strong>
+<span class="pub-authors">Hao Yuan Liu, José Antonio Abell, Andrea Diambra, Federico Pisanò</span>
+<span class="pub-source">69(9), 783–800 · DOI: 10.1680/jgeot.17.P.307</span>
 </summary>
-<p><img alt="Fig 1" src="https://www.dropbox.com/s/clz3s9odnbze3xg/fig2-response.png?raw=1"></p>
-<h4>Abstract</h4>
-<p>The modelling and simulation of cyclic sand ratcheting is tackled via a plasticity model formulated withinthe well-known critical state, bounding surface SANISAND framework. For this purpose, a third locus –termed ‘memory surface’ – is cast into the constitutive formulation, so as to phenomenologically capturemicro-mechanical, fabric-related processes directly relevant to the cyclic response. The predictive capabilityof the model under numerous loading cycles (‘high-cyclic’ loading) is explored with focus on drainedloading conditions, and validated against experimental test results from the literature – including triaxial,simple shear and oedometer cyclic loading. The model proves capable of reproducing the transition fromratcheting to shakedown response, in combination with a single set of soil parameters for different initial,boundary and loading conditions. This work contributes to the analysis of soil-structure interaction underhigh-cyclic loading events, such as those induced by environmental and/or traffic loads. </p>
-<p>[<a href="https://www.researchgate.net/publication/328211282_Modelling_the_cyclic_ratcheting_of_sands_through_memory-enhanced_bounding_surface_plasticity">PDF</a>]
-[<a href="https://joseabell.com/posts/2020/paper04-modelling-the-cyclic-ratcheting-of-sands-through-memory-enhanced-bounding-surface-plasticity.html">BLOG</a>]</p>
+<p>The modelling and simulation of cyclic sand ratcheting is tackled via a plasticity model formulated within the critical-state, bounding-surface SANISAND framework. For this purpose, a third locus—termed the “memory surface”—is cast into the constitutive formulation to capture fabric-related processes relevant to cyclic response. The predictive capability of the model under numerous loading cycles is explored under drained loading conditions and validated against triaxial, simple-shear, and oedometer test results. The model reproduces the transition from ratcheting to shakedown with a single set of soil parameters across different initial, boundary, and loading conditions. This work contributes to the analysis of soil–structure interaction under high-cyclic loading events, such as those induced by environmental or traffic loads.</p>
+<div class="pub-actions"><a href="https://doi.org/10.1680/jgeot.17.P.307">Read paper ↗</a><a href="https://joseabell.com/posts/2020/paper04-modelling-the-cyclic-ratcheting-of-sands-through-memory-enhanced-bounding-surface-plasticity.html">Blog post ↗</a></div>
 </details>
-<!---------------------------------------------------------------- 
-Paper03
------------------------------------------------------------------->
+<h3>2018</h3>
 
-<details>
+<details class="pub-entry">
 <summary>
-<a href="self"><strong>José. A. Abell</strong></a>, Nebojša Orbović, David B. McCallen and Boris Jeremić. 
-<em>Earthquake Soil Structure Interaction of Nuclear Power Plants, differences in response to 3-D, 3×1-D, and 1-D excitations</em>. Earthquake Engineering and Structural Dynamics, 2018.
+<span class="pub-venue">Earthquake Engineering &amp; Structural Dynamics · 2018</span>
+<strong>Earthquake soil–structure interaction of nuclear power plants, differences in response to 3-D, 3 × 1-D, and 1-D excitations</strong>
+<span class="pub-authors">José A. Abell, Nebojša Orbović, David B. McCallen, Boris Jeremić</span>
+<span class="pub-source">47(6), 1478–1495 · DOI: 10.1002/eqe.3026</span>
 </summary>
-<p><img alt="Fig 1" src="https://www.dropbox.com/s/sxthk6218su7ajt/fig5-reduced.png?raw=1"></p>
 <p>In soil-structure interaction modeling of systems subjected to earthquake motions, it is classically assumed that the incoming wave field, produced by an earthquake, is unidimensional and vertically propagating. This work explores the validity of this assumption by performing earthquake soil-structure interaction modeling, including explicit modeling of sources, seismic wave propagation, site, and structure. The domain reduction method is used to couple seismic (near-field) simulations with local soil-structure interaction response. The response of a generic nuclear power plant model computed using full earthquake soil-structure interaction simulations is compared with the current state-of-the-art method of deconvolving in depth the (simulated) free-field motions, recorded at the site of interest, and assuming that the earthquake wave field is spatially unidimensional. Results show that the 1-D wave-field assumption does not hold in general. It is shown that the way in which full 3-D analysis results differ from those which assume a 1-D wave field is dependent on fault-to-site geometry and motion frequency content. It is argued that this is especially important for certain classes of soil-structure systems of which nuclear power plants subjected to near-field earthquakes are an example.</p>
-<p>[<a href="https://www.researchgate.net/publication/323417515_Earthquake_soil-structure_interaction_of_nuclear_power_plants_differences_in_response_to_3-D_3_1-D_and_1-D_excitations">PDF</a>]
-[<a href="https://joseabell.com/posts/2018/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations.html">BLOG</a>]</p>
+<div class="pub-actions"><a href="https://doi.org/10.1002/eqe.3026">Read paper ↗</a><a href="https://joseabell.com/posts/2018/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations.html">Blog post ↗</a></div>
 </details>
-<!---------------------------------------------------------------- 
-Paper02
------------------------------------------------------------------->
+<h3>2014</h3>
 
-<details>
-<summary>• Catalina Fortuño, <a href="https://www.researchgate.net/researcher/58984602_Juan_Carlos_de_la_Llera/">Juan Carlos de la Llera</a>, <a href="https://www.researchgate.net/researcher/2023911886_Charles_W_Wicks/">Charles W. Wicks</a>, and <strong><a href="https://www.researchgate.net/researcher/2024071206_Jose_A_Abell/">José A. Abell</a></strong> - <em>Synthetic Hybrid Broadband Seismograms Based on InSAR Coseismic Displacements</em>. Bulletin of the Seismological Society of America published ahead of print November 18, 2014, doi:10.1785/0120130293
+<details class="pub-entry">
+<summary>
+<span class="pub-venue">Bulletin of the Seismological Society of America · 2014</span>
+<strong>Synthetic Hybrid Broadband Seismograms Based on InSAR Coseismic Displacements</strong>
+<span class="pub-authors">Catalina Fortuño, Juan Carlos de la Llera, Charles W. Wicks, José A. Abell</span>
+<span class="pub-source">104(6), 2735–2754 · DOI: 10.1785/0120130293</span>
 </summary>
-<p><img alt="Fig 1" src="https://www.dropbox.com/s/e01a725qraknovc/fig-1.png?raw=1">
-<img alt="Fig 2" src="https://www.dropbox.com/s/yknqfvy8ztqnbyl/fig-2.png?raw=1"></p>
-<h4>Abstract</h4>
 <p>Conventional acceleration records do not properly account for the observed coseismic ground displacements, thus leading to an inaccurate definition of the seismic demand needed for the design of flexible (long-period) structures. Large coseismic displacements observed during the Feb 27, 2010, Maule earthquake, suggest that this effect should be included in the design of flexible structures by modifying the design ground-motions and spectra considered. Consequently, Green’s Functions are used herein to compute synthetic low-frequency seismograms that are consistent with the coseismic displacement field obtained from interferometry using synthetic aperture radar images. In this case, the coseismic displacement field was determined by interfering twenty SAR images of the ALOS-PALSAR satellite taken between 10/12/2007 and 05/28/2010. These images cover the region affected by the M w 8.8 2010, Maule earthquake. Synthetic broadband seismograms are built by superimposing the low-pass filtered synthetic low-frequency seismograms with high-frequency strong-motion data. The broadband seismograms generated are then consistent with the coseismic displacement field and the high-frequency content of the earthquake. A sensitivity analysis is performed using three different fault and slip parameters, the rupture velocity, the corner frequency, and the slip rise time. Results show that the optimal corner frequency of the low-pass filter $f_c = 1/T_c$ , leads to a trade-off between acceleration and displacement accuracy. Furthermore, spectral response for long periods, say $T \ge 8s$, is relatively insensitive to the value of $T_c$ , while shorter periods are strongly dependent on both, the slip rise time and $T_c$ . In general, larger displacements consistent with coseismic data are obtained using this technique instead of digitally processing the acceleration ground-motion records.</p>
-<p>[<a href="https://www.researchgate.net/publication/271386799_Synthetic_Hybrid_Broadband_Seismograms_Based_on_InSAR_Coseismic_Displacements">PDF</a>]
-[[BLOG]]</p>
+<div class="pub-actions"><a href="https://doi.org/10.1785/0120130293">Read paper ↗</a></div>
 </details>
-<!---------------------------------------------------------------- 
-Paper01
------------------------------------------------------------------->
-<details>
-<summary>• <strong><a href="https://www.researchgate.net/researcher/2024071206_Jose_A_Abell/">José A. Abell</a></strong>, <a href="https://www.researchgate.net/researcher/58984602_Juan_Carlos_de_la_Llera/">Juan Carlos de la Llera</a>, <a href="https://www.researchgate.net/researcher/2023911886_Charles_W_Wicks/">Charles W. Wicks</a> - <em>Enhancement of long period components of recorded and synthetic ground motions using InSAR</em>. Soil Dynamics and Earthquake Engineering <strong>01/2011; 31(5):817-829</strong>. DOI:10.1016/j.soildyn.2011.01.005
+<h3>2011</h3>
+
+<details class="pub-entry">
+<summary>
+<span class="pub-venue">Soil Dynamics and Earthquake Engineering · 2011</span>
+<strong>Enhancement of long period components of recorded and synthetic ground motions using InSAR</strong>
+<span class="pub-authors">José A. Abell, Juan Carlos de la Llera, Charles W. Wicks</span>
+<span class="pub-source">31(5), 817–829 · DOI: 10.1016/j.soildyn.2011.01.005</span>
 </summary>
-<p><img alt="Fig 1" src="https://www.dropbox.com/s/pvouvs9lggmepmi/fig-1.png?raw=1">
-<img alt="Fig 2" src="https://www.dropbox.com/s/9ts6lp2dkxwzx14/fig-2.png?raw=1">
-<img alt="Fig 3" src="https://www.dropbox.com/s/8fvwddy2cfoq5ia/fig-3.png?raw=1"></p>
-<h4>Abstract</h4>
 <p>Tall buildings and flexible structures require a better characterization of long period ground motion spectra than the one provided by current seismic building codes. Motivated by that, a methodology is proposed and tested to improve recorded and synthetic ground motions which are consistent with the observed co-seismic displacement field obtained from interferometric synthetic aperture radar (InSAR) analysis of image data for the Tocopilla 2007 earthquake ($M_w=7.7$) in Northern Chile. A methodology is proposed to correct the observed motions such that, after double integration, they are coherent with the local value of the residual displacement. Synthetic records are generated by using a stochastic finite-fault model coupled with a long period pulse to capture the long period fling effect.It is observed that the proposed co-seismic correction yields records with more accurate long-period spectral components as compared with regular correction schemes such as acausal filtering. These signals provide an estimate for the velocity and displacement spectra, which are essential for tall-building design. Furthermore, hints are provided as to the shape of long-period spectra for seismic zones prone to large co-seismic displacements such as the Nazca-South American zone.</p>
-<p>[<a href="https://www.researchgate.net/publication/251544639_Enhancement_of_long_period_components_of_recorded_and_synthetic_ground_motions_using_InSAR">PDF</a>]
-[[BLOG]]</p>
+<div class="pub-actions"><a href="https://doi.org/10.1016/j.soildyn.2011.01.005">Read paper ↗</a></div>
 </details>
-<p><br></p>
-<h2>Conference Proceedings</h2>
-<p>Please check my <a href="https://www.researchgate.net/profile/Jose_Abell">ResearchGate profile</a> for the most up-to-date list of conference papers. </p>
-<ul>
-<li>
-<p>Yuan Feng, <a href="https://www.researchgate.net/researcher/2024071206_Jose_A_Abell/"><strong>José Abell</strong></a>, Sumeet Kumar Sinha, Han Yang, Fatemah Behbehani, Hexian Wang, Nebojša Orbović, David B McCallen and <a href="http://sokocalo.engr.ucdavis.edu/~jeremic/Bib_WWW.html">Boris Jeremić</a>. <em>Verification for the Real ESSI Simulator</em>. In proceedings of Structural Mechanics in Reactor Technology (SMiRT) 24 conference, Busan, South Korea, August 20-25, 2017.</p>
-</li>
-<li>
-<p><a href="https://www.researchgate.net/researcher/2024071206_Jose_A_Abell/"><strong>J. A. Abell</strong></a>, <a href="Georgie">J. G. F. Crempien</a>, and <a href="http://sokocalo.engr.ucdavis.edu/~jeremic/Bib_WWW.html">B. Jeremić</a> - <em>Physics-Based Scenario Modeling for Earthquake-Soil-Structure Interaction of Buildings</em> in Proceedings of the 16th. World Conference on Earthquake Engineering, 2017.</p>
-</li>
-<li>
-<p><a href="https://www.researchgate.net/researcher/2024071206_Jose_A_Abell/"><strong>José Antonio Abell Mena</strong></a>, Sumeet Kumar Sinha, <a href="http://sokocalo.engr.ucdavis.edu/~jeremic/Bib_WWW.html">Boris Jeremić</a> - <em>Wavelet Based Synthetic Earthquake Sources for Path and Soil Structure Interaction Modeling: Stress Testing of Nuclear Power Plants</em> Proceedings of IAEA conference on: Best Practices in Physics-based Fault Rupture Models for Seismic Hazard Assessment of Nuclear Installations, Vienna, Austria, November 1820, 2015</p>
-</li>
-<li>
-<p>Nebojša Orbović, <a href="http://sokocalo.engr.ucdavis.edu/~jeremic/Bib_WWW.html">Boris Jeremić</a>, <a href="https://www.researchgate.net/researcher/2024071206_Jose_A_Abell/"><strong>José Antonio Abell Mena</strong></a>, Chao Luo, Robert P. Kennedy and Andrei Blaihoanu - <em>Use of Nonlinear, Time Domain Analysis for Design of NPPs</em> in Proceedings of the Structural Mechanics in Reactor Technology (SMiRT) 2015 Conference, Manchester, August 10-14, 2015.</p>
-</li>
-<li>
-<p>N.Tafazzoli, <a href="https://www.tudelft.nl/citg/over-faculteit/afdelingen/geoscience-engineering/sections/geo-engineering/staff/academic-staff/dr-f-federico-pisano">F. Pisanò</a>, <a href="https://www.researchgate.net/researcher/2024071206_Jose_A_Abell/"><strong>J. A. Abell M.</strong></a>, B. Kamrani, C.-G. Jeong, B. Aldridge, R. Roche, A. Kammerer, and <a href="http://sokocalo.engr.ucdavis.edu/~jeremic/Bib_WWW.html">B. Jeremic</a> - * ESSI Simulator Program, Current Status* . Proceedings of the 22nd. Structural Mechanics in Reactor Technology (SMiRT 22) Conference, San Francisco, California, U.S.A. </p>
-</li>
-</ul>
-<p><strong><em>Ph.D. Dissertation</em></strong></p>
-<p><a href="phdthesis">Earthquake-Soil-Structure Interaction Modeling of Nuclear Power Plants for Near-Field Events</a> - Ph.D. Dissertation
-- University of California at Davis, March 2016</p>
-<p><strong><em>Masters Thesis</em></strong></p>
-<p><a href="msthesis">InSAR Compatible Ground Motions for Northern Chile</a>  - Masters Thesis
-- Pontificia Universidad Católica de Chile, August 2009</p></p>
-        </div>
-    </div>
+<h2 id="conference-papers">Conference papers</h2>
 
+<div class="pub-conference"><strong>Importance of detailed modeling of near-field seismic wave complexity in the estimation of earthquake response of reinforced-concrete buildings</strong><br><span>A. Hurtado, T. Vergara, E. Torres, J. A. Abell · World Conference on Earthquake Engineering, 2024.</span></div>
 
-    <!-- <div class="fh5co-footer">
-    <p><small>&copy; 2016 Blend Free HTML5. All Rights Reserved.</span> <span>Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a></span>
-    <br /><span>Pelican Theme by: <a href="https://github.com/claudio-walser/pelican-fh5co-marble" target="_blank">Claudio Walser</a></span></small></p>
+<div class="pub-conference"><strong>Verification for the Real ESSI Simulator</strong><br><span>Yuan Feng, José Abell, Sumeet Kumar Sinha, Han Yang, Fatemah Behbehani, Hexian Wang, Nebojša Orbović, David B. McCallen, Boris Jeremić · SMiRT 24, Busan, 2017.</span></div>
 
-</div>                 -->
+<div class="pub-conference"><strong>Physics-Based Scenario Modeling for Earthquake-Soil-Structure Interaction of Buildings</strong><br><span>J. A. Abell, J. G. F. Crempien, Boris Jeremić · 16th World Conference on Earthquake Engineering, 2017.</span></div>
 
+<div class="pub-conference"><strong>Wavelet Based Synthetic Earthquake Sources for Path and Soil Structure Interaction Modeling: Stress Testing of Nuclear Power Plants</strong><br><span>José Antonio Abell Mena, Sumeet Kumar Sinha, Boris Jeremić · IAEA conference on physics-based fault rupture models for seismic hazard assessment of nuclear installations, Vienna, 2015.</span></div>
+
+<div class="pub-conference"><strong>Use of Nonlinear, Time Domain Analysis for Design of NPPs</strong><br><span>Nebojša Orbović, Boris Jeremić, José Antonio Abell Mena, Chao Luo, Robert P. Kennedy, Andrei Blaihoanu · SMiRT 2015, Manchester.</span></div>
+
+<div class="pub-conference"><strong>ESSI Simulator Program, Current Status</strong><br><span>N. Tafazzoli, F. Pisanò, J. A. Abell M., B. Kamrani, C.-G. Jeong, B. Aldridge, R. Roche, A. Kammerer, Boris Jeremić · SMiRT 22, San Francisco, 2013.</span></div>
+
+<h2 id="theses">Theses</h2>
+
+<div class="pub-conference"><strong><a href="https://www.dropbox.com/s/bgnqt9wj0nm8ru4/Abell%20-%202016%20-%20Earthquake-Soil-Structure%20Interaction%20Modeling%20of%20Nuclear%20Power%20Plants%20for%20Near-Field%20Events.pdf?dl=0">Earthquake-Soil-Structure Interaction Modeling of Nuclear Power Plants for Near-Field Events</a></strong><br><span>Ph.D. dissertation · University of California, Davis · 2016.</span></div>
+
+<div class="pub-conference"><strong>InSAR Compatible Ground Motions for Northern Chile</strong><br><span>Master's thesis · Pontificia Universidad Católica de Chile · 2009.</span></div>
+
+<h2>Research manuscripts</h2>
+
+<div class="pub-conference"><strong>Ground motion model selection method based on evidence and information criteria</strong><br><span>Marco Herrera, Jorge G. F. Crempien, Roberto Benavente, José A. Abell · Manuscript.</span></div></div>
+</div>
         </div>
     </div>
 
