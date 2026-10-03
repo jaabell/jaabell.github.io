@@ -119,382 +119,523 @@
         </aside>
 
         <div id="fh5co-main">
+<style>
+    .home-intro {
+        min-height: 380px;
+        padding: clamp(32px, 5vw, 64px);
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(250px, 360px);
+        gap: 36px;
+        align-items: center;
+        color: #fff;
+        background: linear-gradient(100deg, rgba(15, 38, 54, .94), rgba(15, 38, 54, .65)), url('/images/hero/uandes-fm-above.jpg') center / cover;
+    }
+    .home-intro h1 { margin: 10px 0 18px; color: #fff; font-size: clamp(32px, 3.5vw, 48px); line-height: 1.12; }
+    .home-intro p { margin: 0 0 26px; color: rgba(255, 255, 255, .86); font-size: 16px; line-height: 1.6; }
+    .home-kicker { color: #a8d6ee; font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+    .home-cta { display: inline-block; padding: 11px 20px; border-radius: 30px; background: #fff; color: #16658f; font-weight: 700; }
+    .home-cta:hover { background: #e4f3fa; color: #124b6d; }
+    .home-feature { display: block; overflow: hidden; border-radius: 14px; background: #fff; box-shadow: 0 16px 38px rgba(0, 0, 0, .22); }
+    .home-feature img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+    .home-feature-text { display: block; padding: 16px 19px 18px; }
+    .home-feature-label { display: block; margin-bottom: 7px; color: #1e7cb1; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .home-feature strong { display: block; color: #20313b; font-size: 17px; line-height: 1.35; }
+    .home-feature small { display: block; margin-top: 10px; color: #1e7cb1; font-size: 13px; font-weight: 700; }
+    #fh5co-main .home-explore { width: 90%; margin: 0 auto; padding: 28px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .home-track { min-height: 120px; padding: 22px; display: flex; flex-direction: column; justify-content: flex-end; border-radius: 12px; background-size: cover; background-position: center; color: #fff; }
+    .home-track:hover { color: #fff; }
+    .home-track strong { display: block; font-size: 19px; line-height: 1.2; }
+    .home-track span { margin-top: 4px; font-size: 12px; color: rgba(255, 255, 255, .88); }
+    #fh5co-main .home-feed { padding-top: 48px; }
+    .article-feed { max-width: 920px; margin: 0 auto; }
+    .article-feed-item { display: grid; grid-template-columns: minmax(0, 1fr) minmax(190px, 32%); gap: 26px; align-items: center; padding: 26px 0; border-bottom: 1px solid #e6e9eb; }
+    .article-feed-item:first-of-type { padding-top: 0; }
+    .article-feed-item h3 { margin: 8px 0 10px; font-size: 22px; line-height: 1.35; }
+    .article-feed-item h3 a { color: #20313b; }
+    .article-feed-item h3 a:hover { color: #1e7cb1; }
+    .article-feed-meta { color: #76818a; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+    .article-feed-excerpt { margin: 0 0 12px; color: #52606a; line-height: 1.6; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+    .article-feed-link { color: #1e7cb1; font-weight: 700; }
+    .article-feed-image { display: block; overflow: hidden; border-radius: 10px; background: #e6e9eb; }
+    .article-feed-image img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; transition: transform .25s ease; }
+    .article-feed-image:hover img { transform: scale(1.04); }
+    @media (max-width: 920px) {
+        .home-intro { grid-template-columns: 1fr; padding: 38px 32px; }
+        .home-feature { max-width: 480px; }
+    }
+    @media (max-width: 768px) {
+        .home-intro { gap: 28px; padding: 56px 24px 32px; }
+        #fh5co-main .home-explore { width: 100%; padding: 20px 16px 0; grid-template-columns: repeat(3, 180px); overflow-x: auto; }
+        #fh5co-main .home-feed { padding-top: 36px; }
+        .article-feed-item { grid-template-columns: minmax(0, 1fr) 112px; gap: 14px; padding: 22px 0; }
+        .article-feed-item h3 { font-size: 18px; }
+        .article-feed-excerpt { font-size: 13px; line-height: 1.5; }
+        #recent-articles { padding-top: 48px; }
+    }
+</style>
 
-<aside id="fh5co-hero" class="js-fullheight">
-    <div class="flexslider js-fullheight">
-        <ul class="slides">
-                <li style="background-image: url(/images/hero/uandes-fm-above.jpg);">
-                    <div class="overlay"></div>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
-                                <div class="slider-text-inner">
-                                            <h1>José Abell's Research Blog</h1>
-                                    
-                                            <h2>Numerical modeling in engineering | Earthquakes | HPC | OpenSource</h2>
-                                    
-                                    <p>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li style="background-image: url(/images/hero/hpc.jpg);">
-                    <div class="overlay"></div>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
-                                <div class="slider-text-inner">
-                                            <h1>José Abell's Research Blog</h1>
-                                    
-                                            <h2>Numerical modeling in engineering | Earthquakes | HPC | OpenSource</h2>
-                                    
-                                    <p>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li style="background-image: url(/images/hero/playa.jpg);">
-                    <div class="overlay"></div>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
-                                <div class="slider-text-inner">
-                                            <h1>José Abell's Research Blog</h1>
-                                    
-                                            <h2>Numerical modeling in engineering | Earthquakes | HPC | OpenSource</h2>
-                                    
-                                    <p>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li style="background-image: url(/images/hero/chilly1.jpg);">
-                    <div class="overlay"></div>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
-                                <div class="slider-text-inner">
-                                            <h1>José Abell's Research Blog</h1>
-                                    
-                                            <h2>Numerical modeling in engineering | Earthquakes | HPC | OpenSource</h2>
-                                    
-                                    <p>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li style="background-image: url(/images/hero/chilly2.jpg);">
-                    <div class="overlay"></div>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
-                                <div class="slider-text-inner">
-                                            <h1>José Abell's Research Blog</h1>
-                                    
-                                            <h2>Numerical modeling in engineering | Earthquakes | HPC | OpenSource</h2>
-                                    
-                                    <p>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li style="background-image: url(/images/hero/asado2025.jpg);">
-                    <div class="overlay"></div>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
-                                <div class="slider-text-inner">
-                                            <h1>José Abell's Research Blog</h1>
-                                    
-                                            <h2>Numerical modeling in engineering | Earthquakes | HPC | OpenSource</h2>
-                                    
-                                    <p>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-        </ul>
+<section class="home-intro" aria-label="Introduction and featured article">
+    <div>
+        <span class="home-kicker">Research &middot; Engineering &middot; Open source</span>
+        <h1>José Abell's Research Blog</h1>
+        <p>Numerical modeling in engineering | Earthquakes | HPC | OpenSource</p>
+        <a class="home-cta" href="#recent-articles">Browse all articles &darr;</a>
     </div>
-</aside>
-<section class="fh5co-narrow-content" aria-labelledby="recent-articles">
-    <style>
-        .article-feed { max-width: 800px; margin: 0 auto; }
-        .article-feed-item { padding: 32px 0; border-bottom: 1px solid #e5e5e5; }
-        .article-feed-item:first-child { padding-top: 0; }
-        .article-feed-item h3 { margin: 0 0 10px; font-size: 22px; line-height: 1.35; }
-        .article-feed-item h3 a { color: #222; }
-        .article-feed-meta { color: #777; font-size: 12px; letter-spacing: .05em; text-transform: uppercase; }
-        .article-feed-excerpt { margin: 14px 0; line-height: 1.7; }
-        .article-feed-link { color: #1e7cb1; font-weight: 600; }
-        @media (max-width: 768px) {
-            #recent-articles { padding-top: 48px; }
-            .article-feed-item { padding: 24px 0; }
-            .article-feed-item h3 { font-size: 20px; }
-        }
-    </style>
+    <a class="home-feature" href="https://joseabell.com/posts/2026/upgrading-my-opensees-supercomputer.html">
+        <img src="https://i.ytimg.com/vi/VN8E_bvR6JI/hqdefault.jpg" alt="" fetchpriority="high">
+        <span class="home-feature-text">
+            <span class="home-feature-label">Latest article</span>
+            <strong>Upgrading My OpenSees SUPERCOMPUTER: 100G Network, Diskless Nodes & an RTX 5090!</strong>
+            <small>Watch video &rarr;</small>
+        </span>
+    </a>
+</section>
+
+<nav class="home-explore" aria-label="Explore topics">
+    <a class="home-track" href="https://joseabell.com/category/opensees.html" style="background-image: linear-gradient(0deg, rgba(12, 36, 52, .85), rgba(12, 36, 52, .12)), url('https://joseabell.com/images/hero/hpc.jpg');">
+        <strong>OpenSees</strong><span>Models, tutorials &amp; HPC</span>
+    </a>
+    <a class="home-track" href="https://joseabell.com/category/researchhighlight.html" style="background-image: linear-gradient(0deg, rgba(12, 36, 52, .85), rgba(12, 36, 52, .12)), url('https://joseabell.com/images/hero/uandes-fm-above.jpg');">
+        <strong>Research</strong><span>Projects &amp; discoveries</span>
+    </a>
+    <a class="home-track" href="https://joseabell.com/tag/youtube.html" style="background-image: linear-gradient(0deg, rgba(12, 36, 52, .85), rgba(12, 36, 52, .12)), url('https://joseabell.com/images/hero/chilly2.jpg');">
+        <strong>Videos</strong><span>Talks, demos &amp; walkthroughs</span>
+    </a>
+</nav>
+
+<section class="fh5co-narrow-content home-feed" aria-labelledby="recent-articles">
     <div class="article-feed">
         <h2 id="recent-articles" class="fh5co-heading">All articles</h2>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Thu, 01 Oct 2026 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
-            <h3><a href="https://joseabell.com/posts/2026/upgrading-my-opensees-supercomputer.html">Upgrading My OpenSees SUPERCOMPUTER: 100G Network, Diskless Nodes & an RTX 5090!</a></h3>
-            <p class="article-feed-excerpt">In this video, I upgrade my OpenSees cluster with a …</p>
-            <a class="article-feed-link" href="https://joseabell.com/posts/2026/upgrading-my-opensees-supercomputer.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Thu, 01 Oct 2026 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
+                <h3><a href="https://joseabell.com/posts/2026/upgrading-my-opensees-supercomputer.html">Upgrading My OpenSees SUPERCOMPUTER: 100G Network, Diskless Nodes & an RTX 5090!</a></h3>
+                <p class="article-feed-excerpt">In this video, I upgrade my OpenSees cluster with a 100G network, diskless nodes, and an RTX 5090.</p>
+                <a class="article-feed-link" href="https://joseabell.com/posts/2026/upgrading-my-opensees-supercomputer.html">Watch video &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/posts/2026/upgrading-my-opensees-supercomputer.html" aria-label="Upgrading My OpenSees SUPERCOMPUTER: 100G Network, Diskless Nodes & an RTX 5090!">
+                <img src="https://i.ytimg.com/vi/VN8E_bvR6JI/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Mon, 27 Apr 2026 &middot; <a href="https://joseabell.com/category/researchhighlight.html">ResearchHighlight</a></div>
-            <h3><a href="https://joseabell.com/posts/2026/sneak-preview-of-upcoming-paper.html">Sneak preview of upcoming paper!</a></h3>
-            <p class="article-feed-excerpt">Sneak preview of an upcoming research paper. Stay tuned for …</p>
-            <a class="article-feed-link" href="https://joseabell.com/posts/2026/sneak-preview-of-upcoming-paper.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Mon, 27 Apr 2026 &middot; <a href="https://joseabell.com/category/researchhighlight.html">ResearchHighlight</a></div>
+                <h3><a href="https://joseabell.com/posts/2026/sneak-preview-of-upcoming-paper.html">Sneak preview of upcoming paper!</a></h3>
+                <p class="article-feed-excerpt">Sneak preview of an upcoming research paper. Stay tuned for more details!</p>
+                <a class="article-feed-link" href="https://joseabell.com/posts/2026/sneak-preview-of-upcoming-paper.html">Watch video &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/posts/2026/sneak-preview-of-upcoming-paper.html" aria-label="Sneak preview of upcoming paper!">
+                <img src="https://i.ytimg.com/vi/vPDPfRjHshs/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Tue, 21 Apr 2026 &middot; <a href="https://joseabell.com/category/researchhighlight.html">ResearchHighlight</a></div>
-            <h3><a href="https://joseabell.com/posts/2026/journal-club-dynamic-amplification-isolated-shear-walls-layered-shell-modeling.html">Journal Club: Dynamic amplification of isolated shear walls: Insights from layered shell modeling</a></h3>
-            <p class="article-feed-excerpt">This journal club video discusses our recent paper on dynamic …</p>
-            <a class="article-feed-link" href="https://joseabell.com/posts/2026/journal-club-dynamic-amplification-isolated-shear-walls-layered-shell-modeling.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Tue, 21 Apr 2026 &middot; <a href="https://joseabell.com/category/researchhighlight.html">ResearchHighlight</a></div>
+                <h3><a href="https://joseabell.com/posts/2026/journal-club-dynamic-amplification-isolated-shear-walls-layered-shell-modeling.html">Journal Club: Dynamic amplification of isolated shear walls: Insights from layered shell modeling</a></h3>
+                <p class="article-feed-excerpt">This journal club video discusses our recent paper on dynamic shear amplification in reinforced concrete shear walls, published in Engineering Structures.…</p>
+                <a class="article-feed-link" href="https://joseabell.com/posts/2026/journal-club-dynamic-amplification-isolated-shear-walls-layered-shell-modeling.html">Watch video &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/posts/2026/journal-club-dynamic-amplification-isolated-shear-walls-layered-shell-modeling.html" aria-label="Journal Club: Dynamic amplification of isolated shear walls: Insights from layered shell modeling">
+                <img src="https://i.ytimg.com/vi/fMmhSz4bC9U/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Sat, 18 Apr 2026 &middot; <a href="https://joseabell.com/category/publications.html">Publications</a></div>
-            <h3><a href="https://joseabell.com/posts/2026/paper17-dynamic-amplification-of-isolated-shear-walls-insights-from-layered-shell-modeling.html">Paper17 - Dynamic amplification of isolated shear walls: Insights from layered shell modeling</a></h3>
-            <p class="article-feed-excerpt">Summary: New paper published in Engineering Structures on dynamic shear …</p>
-            <a class="article-feed-link" href="https://joseabell.com/posts/2026/paper17-dynamic-amplification-of-isolated-shear-walls-insights-from-layered-shell-modeling.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Sat, 18 Apr 2026 &middot; <a href="https://joseabell.com/category/publications.html">Publications</a></div>
+                <h3><a href="https://joseabell.com/posts/2026/paper17-dynamic-amplification-of-isolated-shear-walls-insights-from-layered-shell-modeling.html">Paper17 - Dynamic amplification of isolated shear walls: Insights from layered shell modeling</a></h3>
+                <p class="article-feed-excerpt">Summary: New paper published in Engineering Structures on dynamic shear amplification in reinforced concrete shear walls using high-fidelity layered shell…</p>
+                <a class="article-feed-link" href="https://joseabell.com/posts/2026/paper17-dynamic-amplification-of-isolated-shear-walls-insights-from-layered-shell-modeling.html">Watch video &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/posts/2026/paper17-dynamic-amplification-of-isolated-shear-walls-insights-from-layered-shell-modeling.html" aria-label="Paper17 - Dynamic amplification of isolated shear walls: Insights from layered shell modeling">
+                <img src="https://www.dropbox.com/scl/fi/puuzupw3jqim6w3m5ok7c/paper17_thumbnail.png?rlkey=dite4yzwij8273j9uo7gcx1xg&amp;raw=1" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Mon, 15 Dec 2025 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
-            <h3><a href="https://joseabell.com/hpc-next-25-years-EN.html">HPC in Civil Engineering for the next 25 years!</a></h3>
-            <p class="article-feed-excerpt">This video is kind of a research statement on where …</p>
-            <a class="article-feed-link" href="https://joseabell.com/hpc-next-25-years-EN.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Mon, 15 Dec 2025 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
+                <h3><a href="https://joseabell.com/hpc-next-25-years-EN.html">HPC in Civil Engineering for the next 25 years!</a></h3>
+                <p class="article-feed-excerpt">This video is kind of a research statement on where I want to be contributing for the rest of my career.</p>
+                <a class="article-feed-link" href="https://joseabell.com/hpc-next-25-years-EN.html">Watch video &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/hpc-next-25-years-EN.html" aria-label="HPC in Civil Engineering for the next 25 years!">
+                <img src="https://i.ytimg.com/vi/MgeV9tJTzI0/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Fri, 09 May 2025 &middot; <a href="https://joseabell.com/category/activities.html">activities</a></div>
-            <h3><a href="https://joseabell.com/posts/2025/the-2025-group-asado.html">The 2025 Group Asado</a></h3>
-            <p class="article-feed-excerpt">The 2025 Group Asado</p>
-            <a class="article-feed-link" href="https://joseabell.com/posts/2025/the-2025-group-asado.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Fri, 09 May 2025 &middot; <a href="https://joseabell.com/category/activities.html">activities</a></div>
+                <h3><a href="https://joseabell.com/posts/2025/the-2025-group-asado.html">The 2025 Group Asado</a></h3>
+                <p class="article-feed-excerpt">The 2025 Research Group Asado. From the left. Felipe Elgueta (Past MS), Prof. Álvaro Paul, Nicolás Mora Bowen (PhD Student), Isidora Linacre (Felipe's wif…</p>
+                <a class="article-feed-link" href="https://joseabell.com/posts/2025/the-2025-group-asado.html">Read more &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/posts/2025/the-2025-group-asado.html" aria-label="The 2025 Group Asado">
+                <img src="https://www.dropbox.com/scl/fi/u71djlyxllxzycvauw2gh/2025.jpg?rlkey=rk0i35yfd0mdyzqlt6ll94ov9&amp;raw=1" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Fri, 24 Nov 2023 &middot; <a href="https://joseabell.com/category/teaching.html">Teaching</a></div>
-            <h3><a href="https://joseabell.com/temas-de-magistermemoria-2024-ES.html">Temas de Magister/Memoria 2024</a></h3>
-            <p class="article-feed-excerpt">Esta es mi oferta de temas de magister o proyecto …</p>
-            <a class="article-feed-link" href="https://joseabell.com/temas-de-magistermemoria-2024-ES.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Fri, 24 Nov 2023 &middot; <a href="https://joseabell.com/category/teaching.html">Teaching</a></div>
+                <h3><a href="https://joseabell.com/temas-de-magistermemoria-2024-ES.html">Temas de Magister/Memoria 2024</a></h3>
+                <p class="article-feed-excerpt">Esta es mi oferta de temas de magister o proyecto de título: Magister Tema 2024-1: "Aplicación de Inteligencia Artificial al diseño por desempeño de estru…</p>
+                <a class="article-feed-link" href="https://joseabell.com/temas-de-magistermemoria-2024-ES.html">Watch video &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/temas-de-magistermemoria-2024-ES.html" aria-label="Temas de Magister/Memoria 2024">
+                <img src="https://i.ytimg.com/vi/V71YppdE0eE/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Thu, 31 Aug 2023 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
-            <h3><a href="https://joseabell.com/all-about-tetrahedral-elements-EN.html">All about tetrahedral elements</a></h3>
-            <p class="article-feed-excerpt">This tutorial explores the advantages on using high-order meshes for …</p>
-            <a class="article-feed-link" href="https://joseabell.com/all-about-tetrahedral-elements-EN.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Thu, 31 Aug 2023 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
+                <h3><a href="https://joseabell.com/all-about-tetrahedral-elements-EN.html">All about tetrahedral elements</a></h3>
+                <p class="article-feed-excerpt">This tutorial explores the advantages on using high-order meshes for finite-element modeling of solids using continuum formulations. Please get the latest…</p>
+                <a class="article-feed-link" href="https://joseabell.com/all-about-tetrahedral-elements-EN.html">Watch video &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/all-about-tetrahedral-elements-EN.html" aria-label="All about tetrahedral elements">
+                <img src="https://i.ytimg.com/vi/2doC5QXQXOI/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Fri, 25 Aug 2023 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
-            <h3><a href="https://joseabell.com/building-the-ultimate-opensees-rig-hpc-cluster-supercomputer-using-gaming-workstations-EN.html">Building the Ultimate OpenSees Rig: HPC Cluster SUPERCOMPUTER  Using Gaming Workstations!</a></h3>
-            <p class="article-feed-excerpt">In this video, I take you on a behind-the-scenes tour …</p>
-            <a class="article-feed-link" href="https://joseabell.com/building-the-ultimate-opensees-rig-hpc-cluster-supercomputer-using-gaming-workstations-EN.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Fri, 25 Aug 2023 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
+                <h3><a href="https://joseabell.com/building-the-ultimate-opensees-rig-hpc-cluster-supercomputer-using-gaming-workstations-EN.html">Building the Ultimate OpenSees Rig: HPC Cluster SUPERCOMPUTER  Using Gaming Workstations!</a></h3>
+                <p class="article-feed-excerpt">In this video, I take you on a behind-the-scenes tour of my custom-built cluster, designed specifically for high-performance parallel computing using OpenSees.</p>
+                <a class="article-feed-link" href="https://joseabell.com/building-the-ultimate-opensees-rig-hpc-cluster-supercomputer-using-gaming-workstations-EN.html">Watch video &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/building-the-ultimate-opensees-rig-hpc-cluster-supercomputer-using-gaming-workstations-EN.html" aria-label="Building the Ultimate OpenSees Rig: HPC Cluster SUPERCOMPUTER  Using Gaming Workstations!">
+                <img src="https://i.ytimg.com/vi/csR-ODGgumg/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Mon, 05 Dec 2022 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
-            <h3><a href="https://joseabell.com/animate-transient-results-with-gmsh2opensees-EN.html">Animate transient results with gmsh2opensees</a></h3>
-            <p class="article-feed-excerpt">Another tutorial on leveraging the power of OpenSeesPy with gmsh …</p>
-            <a class="article-feed-link" href="https://joseabell.com/animate-transient-results-with-gmsh2opensees-EN.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Mon, 05 Dec 2022 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
+                <h3><a href="https://joseabell.com/animate-transient-results-with-gmsh2opensees-EN.html">Animate transient results with gmsh2opensees</a></h3>
+                <p class="article-feed-excerpt">Another tutorial on leveraging the power of OpenSeesPy with gmsh and my library gmsh2opensees. In this one we also look into performing transient analysis…</p>
+                <a class="article-feed-link" href="https://joseabell.com/animate-transient-results-with-gmsh2opensees-EN.html">Watch video &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/animate-transient-results-with-gmsh2opensees-EN.html" aria-label="Animate transient results with gmsh2opensees">
+                <img src="https://i.ytimg.com/vi/pPOCSHs7bAM/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Thu, 01 Dec 2022 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
-            <h3><a href="https://joseabell.com/using-openseespy-with-gmsh-in-python-EN.html">Using OpenSeesPy with gmsh in python</a></h3>
-            <p class="article-feed-excerpt">In this tutorial, I teach you how to create wonderful …</p>
-            <a class="article-feed-link" href="https://joseabell.com/using-openseespy-with-gmsh-in-python-EN.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Thu, 01 Dec 2022 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
+                <h3><a href="https://joseabell.com/using-openseespy-with-gmsh-in-python-EN.html">Using OpenSeesPy with gmsh in python</a></h3>
+                <p class="article-feed-excerpt">In this tutorial, I teach you how to create wonderful continuum FE models in OpenSeesPy using gmsh as pre and post-processor. We'll be using my new module…</p>
+                <a class="article-feed-link" href="https://joseabell.com/using-openseespy-with-gmsh-in-python-EN.html">Watch video &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/using-openseespy-with-gmsh-in-python-EN.html" aria-label="Using OpenSeesPy with gmsh in python">
+                <img src="https://i.ytimg.com/vi/Jj1TqGVdKeY/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Mon, 22 Aug 2022 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
-            <h3><a href="https://joseabell.com/advanced-seismic-analysis-with-h5drm-opensees-load-pattern-EN.html">Advanced seismic analysis with H5DRM OpenSees load pattern</a></h3>
-            <p class="article-feed-excerpt">Check out the new H5DRM load pattern for DRM-based seismic …</p>
-            <a class="article-feed-link" href="https://joseabell.com/advanced-seismic-analysis-with-h5drm-opensees-load-pattern-EN.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Mon, 22 Aug 2022 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
+                <h3><a href="https://joseabell.com/advanced-seismic-analysis-with-h5drm-opensees-load-pattern-EN.html">Advanced seismic analysis with H5DRM OpenSees load pattern</a></h3>
+                <p class="article-feed-excerpt">Check out the new H5DRM load pattern for DRM-based seismic analysis on OpenSees. You can find the documentation and all the example files here. DRM stands…</p>
+                <a class="article-feed-link" href="https://joseabell.com/advanced-seismic-analysis-with-h5drm-opensees-load-pattern-EN.html">Watch video &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/advanced-seismic-analysis-with-h5drm-opensees-load-pattern-EN.html" aria-label="Advanced seismic analysis with H5DRM OpenSees load pattern">
+                <img src="https://i.ytimg.com/vi/4BxzkkUzYok/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Wed, 17 Aug 2022 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
-            <h3><a href="https://joseabell.com/building-opensees-and-openseespy-on-ubuntu-2204-using-cmake-EN.html">Building OpenSees and OpenSeesPy on Ubuntu 22.04 using CMAKE</a></h3>
-            <p class="article-feed-excerpt">In this short video I teach you how to compile …</p>
-            <a class="article-feed-link" href="https://joseabell.com/building-opensees-and-openseespy-on-ubuntu-2204-using-cmake-EN.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Wed, 17 Aug 2022 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
+                <h3><a href="https://joseabell.com/building-opensees-and-openseespy-on-ubuntu-2204-using-cmake-EN.html">Building OpenSees and OpenSeesPy on Ubuntu 22.04 using CMAKE</a></h3>
+                <p class="article-feed-excerpt">In this short video I teach you how to compile the latest OpenSees and OpenSeesPy on Ubuntu Linux 22.04. Compilation is setup with no "bells and whistles"…</p>
+                <a class="article-feed-link" href="https://joseabell.com/building-opensees-and-openseespy-on-ubuntu-2204-using-cmake-EN.html">Watch video &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/building-opensees-and-openseespy-on-ubuntu-2204-using-cmake-EN.html" aria-label="Building OpenSees and OpenSeesPy on Ubuntu 22.04 using CMAKE">
+                <img src="https://i.ytimg.com/vi/S7AjsGX0t2I/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Tue, 19 Jul 2022 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
-            <h3><a href="https://joseabell.com/posts/2022/eosd2022-recap.html">EOSD2022 Recap</a></h3>
-            <p class="article-feed-excerpt">The Eurasian OpenSees days 2022 conference was a lot of …</p>
-            <a class="article-feed-link" href="https://joseabell.com/posts/2022/eosd2022-recap.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Tue, 19 Jul 2022 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
+                <h3><a href="https://joseabell.com/posts/2022/eosd2022-recap.html">EOSD2022 Recap</a></h3>
+                <p class="article-feed-excerpt">The Eurasian OpenSees days 2022 conference was a lot of fun! Especially because I had the opportunity to go with two students: Omar Oyarce and Alberto Hur…</p>
+                <a class="article-feed-link" href="https://joseabell.com/posts/2022/eosd2022-recap.html">Read more &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/posts/2022/eosd2022-recap.html" aria-label="EOSD2022 Recap">
+                <img src="https://www.dropbox.com/s/68kr85qqa3gwej0/eosd2022.png?raw=1" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Wed, 06 Jul 2022 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
-            <h3><a href="https://joseabell.com/posts/2022/eosd2022-summer-school-ssi-modeling.html">EOSD2022 Summer School SSI Modeling</a></h3>
-            <p class="article-feed-excerpt">Short applicative lecture given at Eurasian OpenSees Days 2022 in …</p>
-            <a class="article-feed-link" href="https://joseabell.com/posts/2022/eosd2022-summer-school-ssi-modeling.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Wed, 06 Jul 2022 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
+                <h3><a href="https://joseabell.com/posts/2022/eosd2022-summer-school-ssi-modeling.html">EOSD2022 Summer School SSI Modeling</a></h3>
+                <p class="article-feed-excerpt">Short applicative lecture given at Eurasian OpenSees Days 2022 in Turin, Italy on July 6th. Supplementary material: Slides mshopstools.py - A toy library …</p>
+                <a class="article-feed-link" href="https://joseabell.com/posts/2022/eosd2022-summer-school-ssi-modeling.html">Read more &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/posts/2022/eosd2022-summer-school-ssi-modeling.html" aria-label="EOSD2022 Summer School SSI Modeling">
+                <img src="https://www.dropbox.com/s/i31g9x7x1ku5yn7/figura.png?raw=1" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Tue, 07 Jun 2022 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
-            <h3><a href="https://joseabell.com/posts/2022/buidling-a-computer-cluster-for-opensees.html">Buidling a computer cluster for OpenSees</a></h3>
-            <p class="article-feed-excerpt">As part of my recently-awarded research grant where I'll study …</p>
-            <a class="article-feed-link" href="https://joseabell.com/posts/2022/buidling-a-computer-cluster-for-opensees.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Tue, 07 Jun 2022 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
+                <h3><a href="https://joseabell.com/posts/2022/buidling-a-computer-cluster-for-opensees.html">Buidling a computer cluster for OpenSees</a></h3>
+                <p class="article-feed-excerpt">As part of my recently-awarded research grant where I'll study the effects of near-field earthquakes in Santiago Chile (more on that in the future, maybe)…</p>
+                <a class="article-feed-link" href="https://joseabell.com/posts/2022/buidling-a-computer-cluster-for-opensees.html">Read more &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/posts/2022/buidling-a-computer-cluster-for-opensees.html" aria-label="Buidling a computer cluster for OpenSees">
+                <img src="https://www.dropbox.com/s/vd3t55bh6ffxxj5/IMG-20220602-WA0013.jpeg?raw=1" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Tue, 28 Dec 2021 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
-            <h3><a href="https://joseabell.com/new-2021-additions-to-opensees-EN.html">New 2021 additions to OpenSees</a></h3>
-            <p class="article-feed-excerpt">2021 has almost gone, I haven't written on my blog …</p>
-            <a class="article-feed-link" href="https://joseabell.com/new-2021-additions-to-opensees-EN.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Tue, 28 Dec 2021 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
+                <h3><a href="https://joseabell.com/new-2021-additions-to-opensees-EN.html">New 2021 additions to OpenSees</a></h3>
+                <p class="article-feed-excerpt">2021 has almost gone, I haven't written on my blog almost all year, but there has been progress! I've made a bunch of small contributions this year to Ope…</p>
+                <a class="article-feed-link" href="https://joseabell.com/new-2021-additions-to-opensees-EN.html">Read more &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/new-2021-additions-to-opensees-EN.html" aria-label="New 2021 additions to OpenSees">
+                <img src="https://www.dropbox.com/s/yze9aihu4xg742f/fig-07.png?raw=1" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Wed, 24 Nov 2021 &middot; <a href="https://joseabell.com/category/teaching.html">Teaching</a></div>
-            <h3><a href="https://joseabell.com/temas-de-magistermemoria-2022-ES.html">Temas de Magister/Memoria 2022</a></h3>
-            <p class="article-feed-excerpt">Al final de la licenciatura (terminando "Métodos Computacionales en Obras …</p>
-            <a class="article-feed-link" href="https://joseabell.com/temas-de-magistermemoria-2022-ES.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Wed, 24 Nov 2021 &middot; <a href="https://joseabell.com/category/teaching.html">Teaching</a></div>
+                <h3><a href="https://joseabell.com/temas-de-magistermemoria-2022-ES.html">Temas de Magister/Memoria 2022</a></h3>
+                <p class="article-feed-excerpt">Al final de la licenciatura (terminando "Métodos Computacionales en Obras Civiles") el alumno UANDES de la especialidad de Obras Civiles debe considerar s…</p>
+                <a class="article-feed-link" href="https://joseabell.com/temas-de-magistermemoria-2022-ES.html">Watch video &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/temas-de-magistermemoria-2022-ES.html" aria-label="Temas de Magister/Memoria 2022">
+                <img src="https://i.ytimg.com/vi/V71YppdE0eE/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Fri, 11 Dec 2020 &middot; <a href="https://joseabell.com/category/teaching.html">Teaching</a></div>
-            <h3><a href="https://joseabell.com/temas-de-magistermemoria-2021-ES.html">Temas de Magister/Memoria 2021</a></h3>
-            <p class="article-feed-excerpt">Al final de la licenciatura el alumno UANDES debe comenzar …</p>
-            <a class="article-feed-link" href="https://joseabell.com/temas-de-magistermemoria-2021-ES.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Fri, 11 Dec 2020 &middot; <a href="https://joseabell.com/category/teaching.html">Teaching</a></div>
+                <h3><a href="https://joseabell.com/temas-de-magistermemoria-2021-ES.html">Temas de Magister/Memoria 2021</a></h3>
+                <p class="article-feed-excerpt">Al final de la licenciatura el alumno UANDES debe comenzar a considerar si extenderá su carrera con un magister de continuidad o cerrará con un proyecto d…</p>
+                <a class="article-feed-link" href="https://joseabell.com/temas-de-magistermemoria-2021-ES.html">Watch video &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/temas-de-magistermemoria-2021-ES.html" aria-label="Temas de Magister/Memoria 2021">
+                <img src="https://i.ytimg.com/vi/V71YppdE0eE/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Tue, 01 Dec 2020 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
-            <h3><a href="https://joseabell.com/compiling-opensees-320-on-ubuntu-2010-a-tutorial-and-commentary-EN.html">Compiling OpenSees 3.2.0 on Ubuntu 20.10: a tutorial and commentary</a></h3>
-            <p class="article-feed-excerpt">In this short video I teach you how to compile …</p>
-            <a class="article-feed-link" href="https://joseabell.com/compiling-opensees-320-on-ubuntu-2010-a-tutorial-and-commentary-EN.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Tue, 01 Dec 2020 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
+                <h3><a href="https://joseabell.com/compiling-opensees-320-on-ubuntu-2010-a-tutorial-and-commentary-EN.html">Compiling OpenSees 3.2.0 on Ubuntu 20.10: a tutorial and commentary</a></h3>
+                <p class="article-feed-excerpt">In this short video I teach you how to compile OpenSees 3.2.0 on Ubuntu Linux 20.10. Compilation is setup with no "bells and whistles", meaning its not op…</p>
+                <a class="article-feed-link" href="https://joseabell.com/compiling-opensees-320-on-ubuntu-2010-a-tutorial-and-commentary-EN.html">Watch video &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/compiling-opensees-320-on-ubuntu-2010-a-tutorial-and-commentary-EN.html" aria-label="Compiling OpenSees 3.2.0 on Ubuntu 20.10: a tutorial and commentary">
+                <img src="https://i.ytimg.com/vi/esMK3f5G90Y/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Mon, 30 Nov 2020 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
-            <h3><a href="https://joseabell.com/stko-opensees-review-EN.html">STKO OpenSees review</a></h3>
-            <p class="article-feed-excerpt">A created a short #review of STKO: a pre/post …</p>
-            <a class="article-feed-link" href="https://joseabell.com/stko-opensees-review-EN.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Mon, 30 Nov 2020 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
+                <h3><a href="https://joseabell.com/stko-opensees-review-EN.html">STKO OpenSees review</a></h3>
+                <p class="article-feed-excerpt">A created a short #review of STKO: a pre/post processor for #OpenSees which I think is really cool and brings fresh new stuff into OpenSees to benefit all…</p>
+                <a class="article-feed-link" href="https://joseabell.com/stko-opensees-review-EN.html">Read more &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/stko-opensees-review-EN.html" aria-label="STKO OpenSees review">
+                <img src="https://joseabell.com/images/hero/hpc.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Wed, 09 Sep 2020 &middot; <a href="https://joseabell.com/category/groupnews.html">GroupNews</a></div>
-            <h3><a href="https://joseabell.com/nicolás-galano-defends-his-ms-thesis-EN.html">Nicolás Galano defends his MS Thesis</a></h3>
-            <p class="article-feed-excerpt">Congratulations Nico! Remember this tweet? I'm proud to announce …</p>
-            <a class="article-feed-link" href="https://joseabell.com/nicolás-galano-defends-his-ms-thesis-EN.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Wed, 09 Sep 2020 &middot; <a href="https://joseabell.com/category/groupnews.html">GroupNews</a></div>
+                <h3><a href="https://joseabell.com/nicolás-galano-defends-his-ms-thesis-EN.html">Nicolás Galano defends his MS Thesis</a></h3>
+                <p class="article-feed-excerpt">Congratulations Nico! Remember this tweet? I'm proud to announce the MS defense of my (co)-MS student Nicolás Galano, who worked on extending #PFEM on #Op…</p>
+                <a class="article-feed-link" href="https://joseabell.com/nicolás-galano-defends-his-ms-thesis-EN.html">Read more &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/nicolás-galano-defends-his-ms-thesis-EN.html" aria-label="Nicolás Galano defends his MS Thesis">
+                <img src="https://joseabell.com/images/hero/uandes-fm-above.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Tue, 30 Jun 2020 &middot; <a href="https://joseabell.com/category/publications.html">Publications</a></div>
-            <h3><a href="https://joseabell.com/posts/2020/paper04-modelling-the-cyclic-ratcheting-of-sands-through-memory-enhanced-bounding-surface-plasticity.html">Paper04 - Modelling the cyclic ratcheting of sands through memory-enhanced bounding surface plasticity.</a></h3>
-            <p class="article-feed-excerpt">Abstract The modelling and simulation of cyclic sand ratcheting is …</p>
-            <a class="article-feed-link" href="https://joseabell.com/posts/2020/paper04-modelling-the-cyclic-ratcheting-of-sands-through-memory-enhanced-bounding-surface-plasticity.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Tue, 30 Jun 2020 &middot; <a href="https://joseabell.com/category/publications.html">Publications</a></div>
+                <h3><a href="https://joseabell.com/posts/2020/paper04-modelling-the-cyclic-ratcheting-of-sands-through-memory-enhanced-bounding-surface-plasticity.html">Paper04 - Modelling the cyclic ratcheting of sands through memory-enhanced bounding surface plasticity.</a></h3>
+                <p class="article-feed-excerpt">Abstract The modelling and simulation of cyclic sand ratcheting is tackled via a plasticity model formulated withinthe well-known critical state, bounding…</p>
+                <a class="article-feed-link" href="https://joseabell.com/posts/2020/paper04-modelling-the-cyclic-ratcheting-of-sands-through-memory-enhanced-bounding-surface-plasticity.html">Read more &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/posts/2020/paper04-modelling-the-cyclic-ratcheting-of-sands-through-memory-enhanced-bounding-surface-plasticity.html" aria-label="Paper04 - Modelling the cyclic ratcheting of sands through memory-enhanced bounding surface plasticity.">
+                <img src="https://www.dropbox.com/s/sqc6efifafocw2c/fig1-deviatoric.png?raw=1" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Tue, 23 Jun 2020 &middot; <a href="https://joseabell.com/category/earthquakes.html">Earthquakes</a></div>
-            <h3><a href="https://joseabell.com/large-earthquake-in-mexico-triggers-tsunami-warnings-EN.html">Large earthquake in Mexico triggers tsunami warnings</a></h3>
-            <p class="article-feed-excerpt">The magnitude I gave came from the Tsunami threat record …</p>
-            <a class="article-feed-link" href="https://joseabell.com/large-earthquake-in-mexico-triggers-tsunami-warnings-EN.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Tue, 23 Jun 2020 &middot; <a href="https://joseabell.com/category/earthquakes.html">Earthquakes</a></div>
+                <h3><a href="https://joseabell.com/large-earthquake-in-mexico-triggers-tsunami-warnings-EN.html">Large earthquake in Mexico triggers tsunami warnings</a></h3>
+                <p class="article-feed-excerpt">The magnitude I gave came from the Tsunami threat record. pic.twitter.com/2h5dppVLLQ— José A. Abell 🇻🇦🇨🇱 (@jose_abell) June 23, 2020</p>
+                <a class="article-feed-link" href="https://joseabell.com/large-earthquake-in-mexico-triggers-tsunami-warnings-EN.html">Read more &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/large-earthquake-in-mexico-triggers-tsunami-warnings-EN.html" aria-label="Large earthquake in Mexico triggers tsunami warnings">
+                <img src="https://joseabell.com/images/hero/chilly1.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Fri, 12 Jun 2020 &middot; <a href="https://joseabell.com/category/engineeringwizardry.html">EngineeringWizardry</a></div>
-            <h3><a href="https://joseabell.com/posts/2020/engineeringwizardry-00-new-series.html">#EngineeringWizardry | 00 | new series</a></h3>
-            <p class="article-feed-excerpt">Stuck teaching during COVID-19 lockdowns in Chile has reminded me …</p>
-            <a class="article-feed-link" href="https://joseabell.com/posts/2020/engineeringwizardry-00-new-series.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Fri, 12 Jun 2020 &middot; <a href="https://joseabell.com/category/engineeringwizardry.html">EngineeringWizardry</a></div>
+                <h3><a href="https://joseabell.com/posts/2020/engineeringwizardry-00-new-series.html">#EngineeringWizardry | 00 | new series</a></h3>
+                <p class="article-feed-excerpt">Stuck teaching during COVID-19 lockdowns in Chile has reminded me one crucial thing about statics (the class I'm teaching this first semester in the south…</p>
+                <a class="article-feed-link" href="https://joseabell.com/posts/2020/engineeringwizardry-00-new-series.html">Watch video &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/posts/2020/engineeringwizardry-00-new-series.html" aria-label="#EngineeringWizardry | 00 | new series">
+                <img src="https://i.ytimg.com/vi/F5xoTIT2uW4/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Mon, 26 Feb 2018 &middot; <a href="https://joseabell.com/category/tutorials.html">Tutorials</a></div>
-            <h3><a href="https://joseabell.com/posts/2018/using-my-gmshtranslator-python-tool-to-interface-gmsh-with-opensees.html">Using my gmshtranslator python tool to interface gmsh with opensees.</a></h3>
-            <p class="article-feed-excerpt">I wrote the gmshtranslator tool a while back during my …</p>
-            <a class="article-feed-link" href="https://joseabell.com/posts/2018/using-my-gmshtranslator-python-tool-to-interface-gmsh-with-opensees.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Mon, 26 Feb 2018 &middot; <a href="https://joseabell.com/category/tutorials.html">Tutorials</a></div>
+                <h3><a href="https://joseabell.com/posts/2018/using-my-gmshtranslator-python-tool-to-interface-gmsh-with-opensees.html">Using my gmshtranslator python tool to interface gmsh with opensees.</a></h3>
+                <p class="article-feed-excerpt">I wrote the gmshtranslator tool a while back during my PhD, to easily parse gmsh msh files to any other format. I've been using it for years now with not …</p>
+                <a class="article-feed-link" href="https://joseabell.com/posts/2018/using-my-gmshtranslator-python-tool-to-interface-gmsh-with-opensees.html">Read more &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/posts/2018/using-my-gmshtranslator-python-tool-to-interface-gmsh-with-opensees.html" aria-label="Using my gmshtranslator python tool to interface gmsh with opensees.">
+                <img src="https://www.dropbox.com/s/24tkmfk1y1r0wz5/disp.png?raw=1" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Tue, 20 Feb 2018 &middot; <a href="https://joseabell.com/category/publications.html">Publications</a></div>
-            <h3><a href="https://joseabell.com/posts/2018/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations.html">Paper03 - Earthquake Soil Structure Interaction of Nuclear Power Plants, differences in response to 3-D, 3 × 1-D, and 1-D excitations</a></h3>
-            <p class="article-feed-excerpt">Summary: Finally! First paper since PhD was accepted for publication …</p>
-            <a class="article-feed-link" href="https://joseabell.com/posts/2018/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Tue, 20 Feb 2018 &middot; <a href="https://joseabell.com/category/publications.html">Publications</a></div>
+                <h3><a href="https://joseabell.com/posts/2018/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations.html">Paper03 - Earthquake Soil Structure Interaction of Nuclear Power Plants, differences in response to 3-D, 3 × 1-D, and 1-D excitations</a></h3>
+                <p class="article-feed-excerpt">Summary: Finally! First paper since PhD was accepted for publication. I'll take this opportunity to start a tradition and review my own papers here. I thi…</p>
+                <a class="article-feed-link" href="https://joseabell.com/posts/2018/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations.html">Watch video &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/posts/2018/paper03-earthquake-soil-structure-interaction-of-nuclear-power-plants-differences-in-response-to-3-d-3-1-d-and-1-d-excitations.html" aria-label="Paper03 - Earthquake Soil Structure Interaction of Nuclear Power Plants, differences in response to 3-D, 3 × 1-D, and 1-D excitations">
+                <img src="https://www.dropbox.com/s/dj6ruypv0722qh2/fem_mesh.png?raw=1" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Thu, 09 Nov 2017 &middot; <a href="https://joseabell.com/category/researchhighlight.html">ResearchHighlight</a></div>
-            <h3><a href="https://joseabell.com/posts/2017/video-of-2-d-ssi-model-of-an-rc-shear-wall-building.html">Video of 2-D SSI model of an RC Shear Wall Building</a></h3>
-            <p class="article-feed-excerpt">The RC shear-wall building is modeled in OpenSees using non-linear …</p>
-            <a class="article-feed-link" href="https://joseabell.com/posts/2017/video-of-2-d-ssi-model-of-an-rc-shear-wall-building.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Thu, 09 Nov 2017 &middot; <a href="https://joseabell.com/category/researchhighlight.html">ResearchHighlight</a></div>
+                <h3><a href="https://joseabell.com/posts/2017/video-of-2-d-ssi-model-of-an-rc-shear-wall-building.html">Video of 2-D SSI model of an RC Shear Wall Building</a></h3>
+                <p class="article-feed-excerpt">The RC shear-wall building is modeled in OpenSees using non-linear fiber based beam column elements. Soil is modeled as a continuum using quad elements an…</p>
+                <a class="article-feed-link" href="https://joseabell.com/posts/2017/video-of-2-d-ssi-model-of-an-rc-shear-wall-building.html">Watch video &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/posts/2017/video-of-2-d-ssi-model-of-an-rc-shear-wall-building.html" aria-label="Video of 2-D SSI model of an RC Shear Wall Building">
+                <img src="https://i.ytimg.com/vi/_ye7wjjywSw/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Thu, 07 Sep 2017 &middot; <a href="https://joseabell.com/category/researchhighlight.html">ResearchHighlight</a></div>
-            <h3><a href="https://joseabell.com/posts/2017/new-cable-element-in-opensees.html">New cable element in OpenSees</a></h3>
-            <p class="article-feed-excerpt">With my student, Pablo Ibañez, we implemented a new catenary …</p>
-            <a class="article-feed-link" href="https://joseabell.com/posts/2017/new-cable-element-in-opensees.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Thu, 07 Sep 2017 &middot; <a href="https://joseabell.com/category/researchhighlight.html">ResearchHighlight</a></div>
+                <h3><a href="https://joseabell.com/posts/2017/new-cable-element-in-opensees.html">New cable element in OpenSees</a></h3>
+                <p class="article-feed-excerpt">With my student, Pablo Ibañez, we implemented a new catenary cable element in OpenSees. This element is based on the work by Salehi et al[1]. The stiffnes…</p>
+                <a class="article-feed-link" href="https://joseabell.com/posts/2017/new-cable-element-in-opensees.html">Watch video &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/posts/2017/new-cable-element-in-opensees.html" aria-label="New cable element in OpenSees">
+                <img src="https://i.ytimg.com/vi/MX_--SI_vKg/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Sat, 14 Jan 2017 &middot; <a href="https://joseabell.com/category/blog.html">Blog</a></div>
-            <h3><a href="https://joseabell.com/posts/2017/opensees-coming-to-python.html">OpenSees coming to python!</a></h3>
-            <p class="article-feed-excerpt">One of the gripes a lot of people have with …</p>
-            <a class="article-feed-link" href="https://joseabell.com/posts/2017/opensees-coming-to-python.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Sat, 14 Jan 2017 &middot; <a href="https://joseabell.com/category/blog.html">Blog</a></div>
+                <h3><a href="https://joseabell.com/posts/2017/opensees-coming-to-python.html">OpenSees coming to python!</a></h3>
+                <p class="article-feed-excerpt">One of the gripes a lot of people have with OpenSees is that it adopts TCL as its interpreter language. Originally, OpenSees was conceived as a framework,…</p>
+                <a class="article-feed-link" href="https://joseabell.com/posts/2017/opensees-coming-to-python.html">Read more &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/posts/2017/opensees-coming-to-python.html" aria-label="OpenSees coming to python!">
+                <img src="https://joseabell.com/images/hero/uandes-fm-above.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Tue, 22 Nov 2016 &middot; <a href="https://joseabell.com/category/teaching.html">Teaching</a></div>
-            <h3><a href="https://joseabell.com/posts/2016/finite-elements-for-shallow-water-equations.html">Finite Elements for Shallow Water Equations</a></h3>
-            <a class="article-feed-link" href="https://joseabell.com/posts/2016/finite-elements-for-shallow-water-equations.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Tue, 22 Nov 2016 &middot; <a href="https://joseabell.com/category/teaching.html">Teaching</a></div>
+                <h3><a href="https://joseabell.com/posts/2016/finite-elements-for-shallow-water-equations.html">Finite Elements for Shallow Water Equations</a></h3>
+                <a class="article-feed-link" href="https://joseabell.com/posts/2016/finite-elements-for-shallow-water-equations.html">Watch video &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/posts/2016/finite-elements-for-shallow-water-equations.html" aria-label="Finite Elements for Shallow Water Equations">
+                <img src="https://i.ytimg.com/vi/ghdvW-2XzKA/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Fri, 18 Nov 2016 &middot; <a href="https://joseabell.com/category/researchhighlight.html">ResearchHighlight</a></div>
-            <h3><a href="https://joseabell.com/posts/2016/talk-given-at-ingeokring-2016-ESSI-DRM.html">Talk Given at IngeoKring 2016 - Physics-Based Earthquake-Soil-Structure Interaction for Near-Field Induced Seismicity</a></h3>
-            <p class="article-feed-excerpt">This is a talk given at the IngeoKring 2016 Autumn …</p>
-            <a class="article-feed-link" href="https://joseabell.com/posts/2016/talk-given-at-ingeokring-2016-ESSI-DRM.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Fri, 18 Nov 2016 &middot; <a href="https://joseabell.com/category/researchhighlight.html">ResearchHighlight</a></div>
+                <h3><a href="https://joseabell.com/posts/2016/talk-given-at-ingeokring-2016-ESSI-DRM.html">Talk Given at IngeoKring 2016 - Physics-Based Earthquake-Soil-Structure Interaction for Near-Field Induced Seismicity</a></h3>
+                <p class="article-feed-excerpt">This is a talk given at the IngeoKring 2016 Autumn symposium, hosted at TU Delft.</p>
+                <a class="article-feed-link" href="https://joseabell.com/posts/2016/talk-given-at-ingeokring-2016-ESSI-DRM.html">Watch video &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/posts/2016/talk-given-at-ingeokring-2016-ESSI-DRM.html" aria-label="Talk Given at IngeoKring 2016 - Physics-Based Earthquake-Soil-Structure Interaction for Near-Field Induced Seismicity">
+                <img src="https://i.ytimg.com/vi/qxVxgyVmPd4/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Thu, 17 Nov 2016 &middot; <a href="https://joseabell.com/category/tools.html">Tools</a></div>
-            <h3><a href="https://joseabell.com/posts/2016/paralelism-in-the-realessi-simulator.html">Paralelism in the RealESSI Simulator</a></h3>
-            <p class="article-feed-excerpt">A brief description of parallelism in RealESSI Simuator</p>
-            <a class="article-feed-link" href="https://joseabell.com/posts/2016/paralelism-in-the-realessi-simulator.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Thu, 17 Nov 2016 &middot; <a href="https://joseabell.com/category/tools.html">Tools</a></div>
+                <h3><a href="https://joseabell.com/posts/2016/paralelism-in-the-realessi-simulator.html">Paralelism in the RealESSI Simulator</a></h3>
+                <p class="article-feed-excerpt">by: José Abell Paralelism in the RealESSI Simulator Introduction The Real ESSI Simulator[1 and 2] is a system for simulation of ESSI (Earthquake-Soil-Stru…</p>
+                <a class="article-feed-link" href="https://joseabell.com/posts/2016/paralelism-in-the-realessi-simulator.html">Read more &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/posts/2016/paralelism-in-the-realessi-simulator.html" aria-label="Paralelism in the RealESSI Simulator">
+                <img src="https://joseabell.com/images/hero/uandes-fm-above.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Thu, 29 Jan 2015 &middot; <a href="https://joseabell.com/category/cs261-homeworks.html">CS261 Homeworks</a></div>
-            <h3><a href="https://joseabell.com/posts/2015/cs261-hw-0-describe-a-parallel-application.html">CS261 - HW # 0 : Describe a parallel application</a></h3>
-            <p class="article-feed-excerpt">This is homework # 1 for UC Berkeley class CS261: Application of Parallel Computers</p>
-            <a class="article-feed-link" href="https://joseabell.com/posts/2015/cs261-hw-0-describe-a-parallel-application.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Thu, 29 Jan 2015 &middot; <a href="https://joseabell.com/category/cs261-homeworks.html">CS261 Homeworks</a></div>
+                <h3><a href="https://joseabell.com/posts/2015/cs261-hw-0-describe-a-parallel-application.html">CS261 - HW # 0 : Describe a parallel application</a></h3>
+                <p class="article-feed-excerpt">by: José Abell Biography I am a PhD student at UCDavis CompGeoMech since Sept 2011, working on our in-house high-performance FEM simulation system. I come…</p>
+                <a class="article-feed-link" href="https://joseabell.com/posts/2015/cs261-hw-0-describe-a-parallel-application.html">Read more &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/posts/2015/cs261-hw-0-describe-a-parallel-application.html" aria-label="CS261 - HW # 0 : Describe a parallel application">
+                <img src="https://joseabell.com/images/hero/uandes-fm-above.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Sun, 30 Nov 2014 &middot; <a href="https://joseabell.com/category/researchhighlight.html">ResearchHighlight</a></div>
-            <h3><a href="https://joseabell.com/simulation-of-a-surface-wave-English.html">Simulation of a surface wave (Rayleigh)</a></h3>
-            <p class="article-feed-excerpt">This simulation, done in the UCD ESSI simulator and visualized …</p>
-            <a class="article-feed-link" href="https://joseabell.com/simulation-of-a-surface-wave-English.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Sun, 30 Nov 2014 &middot; <a href="https://joseabell.com/category/researchhighlight.html">ResearchHighlight</a></div>
+                <h3><a href="https://joseabell.com/simulation-of-a-surface-wave-English.html">Simulation of a surface wave (Rayleigh)</a></h3>
+                <p class="article-feed-excerpt">This simulation, done in the UCD ESSI simulator and visualized in VisIt using VisIt-ESSI plugin, shows the passage of a surface wave (Rayleigh wave). The …</p>
+                <a class="article-feed-link" href="https://joseabell.com/simulation-of-a-surface-wave-English.html">Watch video &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/simulation-of-a-surface-wave-English.html" aria-label="Simulation of a surface wave (Rayleigh)">
+                <img src="https://i.ytimg.com/vi/a1xBlIL6ZOM/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Sun, 23 Nov 2014 &middot; <a href="https://joseabell.com/category/tutorials.html">Tutorials</a></div>
-            <h3><a href="https://joseabell.com/visualizing-essi-output-with-visit-essi-English.html">Visualizing ESSI output with VisIt-ESSI</a></h3>
-            <p class="article-feed-excerpt">VisIt-ESSI is a plugin for the VisIt post-processor created my …</p>
-            <a class="article-feed-link" href="https://joseabell.com/visualizing-essi-output-with-visit-essi-English.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Sun, 23 Nov 2014 &middot; <a href="https://joseabell.com/category/tutorials.html">Tutorials</a></div>
+                <h3><a href="https://joseabell.com/visualizing-essi-output-with-visit-essi-English.html">Visualizing ESSI output with VisIt-ESSI</a></h3>
+                <p class="article-feed-excerpt">VisIt-ESSI is a plugin for the VisIt post-processor created my CompGeoMech. It allows for remote (soon parallel also) visualization of outputs produced by…</p>
+                <a class="article-feed-link" href="https://joseabell.com/visualizing-essi-output-with-visit-essi-English.html">Watch video &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/visualizing-essi-output-with-visit-essi-English.html" aria-label="Visualizing ESSI output with VisIt-ESSI">
+                <img src="https://i.ytimg.com/vi/mrT5L4xsKs0/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Fri, 16 May 2014 &middot; <a href="https://joseabell.com/category/small-numerical-experiments.html">Small Numerical Experiments</a></div>
-            <h3><a href="https://joseabell.com/posts/2014/sne-01-example-of-essi-simulation-and-visualization-with-visitessi.html">SNE # 01. Example of ESSI simulation and visualization with visitESSI</a></h3>
-            <p class="article-feed-excerpt">These are the results of a simple elastic-domain simulation. Mesh …</p>
-            <a class="article-feed-link" href="https://joseabell.com/posts/2014/sne-01-example-of-essi-simulation-and-visualization-with-visitessi.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Fri, 16 May 2014 &middot; <a href="https://joseabell.com/category/small-numerical-experiments.html">Small Numerical Experiments</a></div>
+                <h3><a href="https://joseabell.com/posts/2014/sne-01-example-of-essi-simulation-and-visualization-with-visitessi.html">SNE # 01. Example of ESSI simulation and visualization with visitESSI</a></h3>
+                <p class="article-feed-excerpt">These are the results of a simple elastic-domain simulation. Mesh consists of 154523 Nodes (46359 DOFs) 1250 27 node bricks (LT formulation) 1200 time-ste…</p>
+                <a class="article-feed-link" href="https://joseabell.com/posts/2014/sne-01-example-of-essi-simulation-and-visualization-with-visitessi.html">Watch video &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/posts/2014/sne-01-example-of-essi-simulation-and-visualization-with-visitessi.html" aria-label="SNE # 01. Example of ESSI simulation and visualization with visitESSI">
+                <img src="https://i.ytimg.com/vi/VURohwb-OJQ/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Mon, 28 Oct 2013 &middot; <a href="https://joseabell.com/category/nts.html">NTS</a></div>
-            <h3><a href="https://joseabell.com/posts/2013/nts-note-to-self-creating-dynamically-linked-libraries.html">NTS (Note-To-Self): Creating dynamically linked libraries</a></h3>
-            <p class="article-feed-excerpt">A nice extensive tutorial can be found here. In a …</p>
-            <a class="article-feed-link" href="https://joseabell.com/posts/2013/nts-note-to-self-creating-dynamically-linked-libraries.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Mon, 28 Oct 2013 &middot; <a href="https://joseabell.com/category/nts.html">NTS</a></div>
+                <h3><a href="https://joseabell.com/posts/2013/nts-note-to-self-creating-dynamically-linked-libraries.html">NTS (Note-To-Self): Creating dynamically linked libraries</a></h3>
+                <p class="article-feed-excerpt">A nice extensive tutorial can be found here. In a nutshell: gcc -Wall -fPIC -c \*.c gcc -shared -Wl,-soname,libctest.so.1 -o libctest.so.1.0 \*.o mv libct…</p>
+                <a class="article-feed-link" href="https://joseabell.com/posts/2013/nts-note-to-self-creating-dynamically-linked-libraries.html">Read more &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/posts/2013/nts-note-to-self-creating-dynamically-linked-libraries.html" aria-label="NTS (Note-To-Self): Creating dynamically linked libraries">
+                <img src="https://joseabell.com/images/hero/uandes-fm-above.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
         <article class="article-feed-item">
-            <div class="article-feed-meta">Wed, 09 Oct 2013 &middot; <a href="https://joseabell.com/category/small-numerical-experiments.html">Small Numerical Experiments</a></div>
-            <h3><a href="https://joseabell.com/posts/2013/sne-0-stochastic-inverse-pendulum.html">SNE # 0. Stochastic inverse pendulum</a></h3>
-            <p class="article-feed-excerpt">This is the first installment of "Small Numerical Experiments" (SNE …</p>
-            <a class="article-feed-link" href="https://joseabell.com/posts/2013/sne-0-stochastic-inverse-pendulum.html">Read more &rarr;</a>
+            <div>
+                <div class="article-feed-meta">Wed, 09 Oct 2013 &middot; <a href="https://joseabell.com/category/small-numerical-experiments.html">Small Numerical Experiments</a></div>
+                <h3><a href="https://joseabell.com/posts/2013/sne-0-stochastic-inverse-pendulum.html">SNE # 0. Stochastic inverse pendulum</a></h3>
+                <p class="article-feed-excerpt">This is the first installment of "Small Numerical Experiments" (SNE), a section where I upload and comment (briefly) some small numerical example. The pur…</p>
+                <a class="article-feed-link" href="https://joseabell.com/posts/2013/sne-0-stochastic-inverse-pendulum.html">Watch video &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/posts/2013/sne-0-stochastic-inverse-pendulum.html" aria-label="SNE # 0. Stochastic inverse pendulum">
+                <img src="https://i.ytimg.com/vi/7nzB6LfW2ys/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            </a>
         </article>
     </div>
 </section>
-
-
-<!-- 
-<div class="textwidget">
-  <div id="clustrmaps-widget"></div>
-  <script type="text/javascript">var _clustrmaps = {'url' : 'http://www.joseabell.com', 'user' : 1114615, 'server' : '2', 'id' : 'clustrmaps-widget', 'version' : 1, 'date' : '2013-09-27', 'lang' : 'en', 'corners' : 'square' };(function (){ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'http://www2.clustrmaps.com/counter/map.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);})();
-  </script>
-  <noscript>
-    <a href="http://www2.clustrmaps.com/user/ba61101f7"><img src="http://www2.clustrmaps.com/stats/maps-no_clusters/www.joseabell.com-thumb.jpg" alt="Locations of visitors to this page" />
-    </a>
-  </noscript>
-</div> -->
-
-
         </div>
     </div>
 
