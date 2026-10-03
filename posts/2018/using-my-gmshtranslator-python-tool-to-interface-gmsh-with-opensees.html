@@ -78,7 +78,7 @@
             </nav>
 
 
-            
+
             <div class="clearfix"></div>
             <h1  id="fh5co-logo">
                 <a href="https://joseabell.com/index.html">
@@ -95,6 +95,7 @@
 
     <!-- page links -->
             <li><a href="https://joseabell.com/pages/01about.html">About</a></li>
+            <li><a href="https://joseabell.com/pages/03research-projects.html">Research Projects</a></li>
             <li><a href="https://joseabell.com/pages/04publications.html">Publications</a></li>
             <li><a href="https://joseabell.com/pages/05tools.html">Tools</a></li>
             <li><a href="https://joseabell.com/pages/09people.html">People</a></li>
@@ -125,7 +126,7 @@
 
 
 </li>
-</ul>            
+</ul>
             <ul id="map">
                 <li>
                 Visitors come from
@@ -223,7 +224,7 @@
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">gmshtranslator</span> <span class="kn">import</span> <span class="n">gmshTranslator</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">gmshtranslator</span><span class="w"> </span><span class="kn">import</span> <span class="n">gmshTranslator</span>
 
 <span class="n">mshfname</span> <span class="o">=</span> <span class="s2">&quot;beam.msh&quot;</span>
 
@@ -238,14 +239,14 @@
 <p>I like writing different things (nodes, elements, etc.) in separate files for debugging. Your style might be different. <em>gmshtranslator</em> parses the file and evaluates <em>rules</em>. A rule is composed of a <em>condition</em> that must be met and an <em>action</em> to be executed, these are both python functions. There are rules for nodes and for elements. </p>
 <p>The syntax for node and element conditions are:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">node_condition</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">physgroups</span><span class="p">):</span> 
-<span class="k">def</span> <span class="nf">element_condition</span><span class="p">(</span><span class="n">eletag</span><span class="p">,</span><span class="n">eletype</span><span class="p">,</span><span class="n">physgrp</span><span class="p">,</span><span class="n">nodes</span><span class="p">):</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">node_condition</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">physgroups</span><span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">element_condition</span><span class="p">(</span><span class="n">eletag</span><span class="p">,</span><span class="n">eletype</span><span class="p">,</span><span class="n">physgrp</span><span class="p">,</span><span class="n">nodes</span><span class="p">):</span>
 </code></pre></div></td></tr></table></div>
 
 <p>These are functions that evaluate to <code>true</code> or <code>false</code> depending on the inputs. Then the syntax for <em>actions</em> are:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">node_action</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">):</span>
-<span class="k">def</span> <span class="nf">element_action</span><span class="p">(</span><span class="n">eletag</span><span class="p">,</span><span class="n">eletype</span><span class="p">,</span><span class="n">physgrp</span><span class="p">,</span><span class="n">nodes</span><span class="p">):</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">node_action</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">element_action</span><span class="p">(</span><span class="n">eletag</span><span class="p">,</span><span class="n">eletype</span><span class="p">,</span><span class="n">physgrp</span><span class="p">,</span><span class="n">nodes</span><span class="p">):</span>
 </code></pre></div></td></tr></table></div>
 
 <p>These functions don't return anything, instead excecute whatever code should be executed if the <em>condition</em> of the rule is met. Rules are added to the parser by using the <code>add_nodes_rule</code> or <code>add_elements_rule</code> function of <em>gmshtranslator</em> and are excecuted whenever the <code>parse()</code> method is called. </p>
@@ -256,10 +257,10 @@
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">is_node</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">physgroups</span><span class="p">):</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">is_node</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">physgroups</span><span class="p">):</span>
     <span class="k">return</span> <span class="kc">True</span>
 
-<span class="k">def</span> <span class="nf">add_node</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_node</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">):</span>
     <span class="n">fid_nodes</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;node </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
 
 <span class="n">gt</span><span class="o">.</span><span class="n">add_nodes_rule</span><span class="p">(</span><span class="n">is_node</span><span class="p">,</span> <span class="n">add_node</span><span class="p">)</span>
@@ -281,14 +282,14 @@
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">fix_node</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">):</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fix_node</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">):</span>
     <span class="n">fid_fixities</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;fix </span><span class="si">{}</span><span class="s2"> 1 1</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tag</span><span class="p">))</span>
 
-<span class="k">def</span> <span class="nf">add_load</span><span class="p">(</span><span class="n">eletag</span><span class="p">,</span><span class="n">eletype</span><span class="p">,</span><span class="n">physgrp</span><span class="p">,</span><span class="n">nodes</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_load</span><span class="p">(</span><span class="n">eletag</span><span class="p">,</span><span class="n">eletype</span><span class="p">,</span><span class="n">physgrp</span><span class="p">,</span><span class="n">nodes</span><span class="p">):</span>
     <span class="n">fid_loads</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;load </span><span class="si">{}</span><span class="s2"> $fx $fy</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
     <span class="n">fid_loads</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;load </span><span class="si">{}</span><span class="s2"> $fx $fy</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nodes</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 
-<span class="k">def</span> <span class="nf">add_element</span><span class="p">(</span><span class="n">eletag</span><span class="p">,</span><span class="n">eletype</span><span class="p">,</span><span class="n">physgrp</span><span class="p">,</span><span class="n">nodes</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_element</span><span class="p">(</span><span class="n">eletag</span><span class="p">,</span><span class="n">eletype</span><span class="p">,</span><span class="n">physgrp</span><span class="p">,</span><span class="n">nodes</span><span class="p">):</span>
     <span class="n">fid_elements</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;element quad </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2"> $thick PlaneStress $mat_tag</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eletag</span><span class="p">,</span> <span class="n">nodes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">nodes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">nodes</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">nodes</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
 
 
@@ -302,13 +303,13 @@
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Fixed</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Physical group number assigned by gmsh to the &#39;Fixed&#39; group</span>
-<span class="k">def</span> <span class="nf">is_node_in_Fixed</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">physgroups</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_node_in_Fixed</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">physgroups</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">Fixed</span> <span class="ow">in</span> <span class="n">physgroups</span>
 </code></pre></div></td></tr></table></div>
 
 <p>Or using <em>gmstranslator</em>s internal mapping.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">is_node_in_Fixed</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">physgroups</span><span class="p">):</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">is_node_in_Fixed</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">physgroups</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">gt</span><span class="o">.</span><span class="n">physical_groups_by_name</span><span class="p">[</span><span class="s1">&#39;Fixed&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">physgroups</span>\
 </code></pre></div></td></tr></table></div>
 
@@ -465,11 +466,11 @@ s.setAttribute('data-timestamp', +new Date());
     <!-- Flexslider -->
     <script src="https://joseabell.com/theme/js/jquery.flexslider-min.js"></script>
 
-    
+
 
     <!-- MAIN JS -->
     <script src="https://joseabell.com/theme/js/main.js"></script>
     <script id="dsq-count-scr" src="//joseabell.disqus.com/count.js" async></script>
-    
+
     </body>
 </html>
