@@ -121,6 +121,8 @@
         <div id="fh5co-main">
 <style>
     .home-intro {
+        position: relative;
+        isolation: isolate;
         min-height: 380px;
         padding: clamp(32px, 5vw, 64px);
         display: grid;
@@ -128,9 +130,18 @@
         gap: 36px;
         align-items: center;
         color: #fff;
-        background: linear-gradient(100deg, rgba(15, 38, 54, .94), rgba(15, 38, 54, .65)), url('/images/hero/uandes-fm-above.jpg') center / cover;
+        background: #19374a url('/images/hero/uandes-fm-above.jpg') center / cover;
     }
-    .home-intro h1 { margin: 10px 0 18px; color: #fff; font-size: clamp(32px, 3.5vw, 48px); line-height: 1.12; }
+    .home-intro-slides { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
+    .home-intro-slide { position: absolute; inset: 0; opacity: 0; background-size: cover; background-position: center; animation: home-hero-fade 36s infinite; }
+    @keyframes home-hero-fade {
+        0% { opacity: 0; }
+        2.0% { opacity: 1; }
+        14.0% { opacity: 1; }
+        18.67%, 100% { opacity: 0; }
+    }
+    .home-intro::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(100deg, rgba(15, 38, 54, .62), rgba(15, 38, 54, .28)); pointer-events: none; }
+    .home-intro h1 { margin: 10px 0 18px; color: #fff; font-size: clamp(32px, 3.5vw, 48px); line-height: 1.12; text-shadow: 0 2px 12px rgba(0, 0, 0, .22); }
     .home-intro p { margin: 0 0 26px; color: rgba(255, 255, 255, .86); font-size: 16px; line-height: 1.6; }
     .home-kicker { color: #a8d6ee; font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
     .home-cta { display: inline-block; padding: 11px 20px; border-radius: 30px; background: #fff; color: #16658f; font-weight: 700; }
@@ -172,9 +183,21 @@
         .article-feed-excerpt { font-size: 13px; line-height: 1.5; }
         #recent-articles { padding-top: 48px; }
     }
+    @media (prefers-reduced-motion: reduce) {
+        .home-intro-slide { animation: none; }
+        .home-intro-slide:first-child { opacity: 1; }
+    }
 </style>
 
 <section class="home-intro" aria-label="Introduction and featured article">
+    <div class="home-intro-slides" aria-hidden="true">
+        <div class="home-intro-slide" style="background-image: url('/images/hero/uandes-fm-above.jpg'); animation-delay: 0s;"></div>
+        <div class="home-intro-slide" style="background-image: url('/images/hero/hpc.jpg'); animation-delay: 6s;"></div>
+        <div class="home-intro-slide" style="background-image: url('/images/hero/playa.jpg'); animation-delay: 12s;"></div>
+        <div class="home-intro-slide" style="background-image: url('/images/hero/chilly1.jpg'); animation-delay: 18s;"></div>
+        <div class="home-intro-slide" style="background-image: url('/images/hero/chilly2.jpg'); animation-delay: 24s;"></div>
+        <div class="home-intro-slide" style="background-image: url('/images/hero/asado2025.jpg'); animation-delay: 30s;"></div>
+    </div>
     <div>
         <span class="home-kicker">Research &middot; Engineering &middot; Open source</span>
         <h1>José Abell's Research Blog</h1>
