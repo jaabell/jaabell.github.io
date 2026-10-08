@@ -147,6 +147,9 @@
     .home-kicker { color: #a8d6ee; font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
     .home-cta { display: inline-block; padding: 11px 20px; border-radius: 30px; background: #fff; color: #16658f; font-weight: 700; }
     .home-cta:hover { background: #e4f3fa; color: #124b6d; }
+    .home-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .home-cta--openings { background: #ffd477; color: #17364a; }
+    .home-cta--openings:hover { background: #ffe5a9; color: #17364a; }
     .home-feature { display: block; overflow: hidden; border-radius: 14px; background: #fff; box-shadow: 0 16px 38px rgba(0, 0, 0, .22); }
     .home-feature img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
     .home-feature-text { display: block; padding: 16px 19px 18px; }
@@ -203,14 +206,17 @@
         <span class="home-kicker">Research &middot; Engineering &middot; Open source</span>
         <h1>José Abell's Research Blog</h1>
         <p>Numerical modeling in engineering | Earthquakes | HPC | OpenSource</p>
-        <a class="home-cta" href="#recent-articles">Browse all articles &darr;</a>
+        <div class="home-actions">
+            <a class="home-cta" href="#recent-articles">Browse all articles &darr;</a>
+            <a class="home-cta home-cta--openings" href="https://joseabell.com/posts/2026/phd-postdoc-research-opportunities.html">PhD &amp; PostDoc openings &rarr;</a>
+        </div>
     </div>
-    <a class="home-feature" href="https://joseabell.com/posts/2026/upgrading-my-opensees-supercomputer.html">
-        <img src="https://i.ytimg.com/vi/VN8E_bvR6JI/hqdefault.jpg" alt="" fetchpriority="high">
+    <a class="home-feature" href="https://joseabell.com/posts/2026/phd-postdoc-research-opportunities.html">
+        <img src="/images/projects/fondecyt-1261870/building-neural-elements.png" alt="" fetchpriority="high">
         <span class="home-feature-text">
             <span class="home-feature-label">Latest article</span>
-            <strong>Upgrading My OpenSees SUPERCOMPUTER: 100G Network, Diskless Nodes & an RTX 5090!</strong>
-            <small>Watch video &rarr;</small>
+            <strong>Join our research group: PhD and postdoctoral opportunities</strong>
+            <small>Read article &rarr;</small>
         </span>
     </a>
     <div class="home-hero-dots" role="group" aria-label="Choose hero image">
@@ -238,6 +244,17 @@
 <section class="fh5co-narrow-content home-feed" aria-labelledby="recent-articles">
     <div class="article-feed">
         <h2 id="recent-articles" class="fh5co-heading">All articles</h2>
+        <article class="article-feed-item">
+            <div>
+                <div class="article-feed-meta">Thu, 08 Oct 2026 &middot; <a href="https://joseabell.com/category/groupnews.html">GroupNews</a></div>
+                <h3><a href="https://joseabell.com/posts/2026/phd-postdoc-research-opportunities.html">Join our research group: PhD and postdoctoral opportunities</a></h3>
+                <p class="article-feed-excerpt">I'm looking for researchers who want to build, test and use better models for problems that matter in civil engineering. Our group at Universidad de los A…</p>
+                <a class="article-feed-link" href="https://joseabell.com/posts/2026/phd-postdoc-research-opportunities.html">Read more &rarr;</a>
+            </div>
+            <a class="article-feed-image" href="https://joseabell.com/posts/2026/phd-postdoc-research-opportunities.html" aria-label="Join our research group: PhD and postdoctoral opportunities">
+                <img src="/images/projects/fondecyt-1261870/building-neural-elements.png" alt="" loading="lazy" decoding="async">
+            </a>
+        </article>
         <article class="article-feed-item">
             <div>
                 <div class="article-feed-meta">Thu, 01 Oct 2026 &middot; <a href="https://joseabell.com/category/opensees.html">OpenSees</a></div>
