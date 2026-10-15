@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Truss Sudoku 🧩</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg1:#e9ecff;
+    --bg2:#ffe9f6;
+    --ink:#2c2a4a;
+    --card:#ffffff;
+    --accent:#6c63ff;
+    --accent-dark:#4b43d4;
+    --tension:#19a974;
+    --compression:#ff5d7e;
+    --zero:#9aa0b4;
+    --unknown:#c9ccdc;
+    --warn:#ffb020;
+    --radius:18px;
+    --shadow:0 10px 30px rgba(44,42,74,0.12);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',system-ui,-apple-system,sans-serif;
+    color:var(--ink);
+    background:linear-gradient(135deg,var(--bg1),var(--bg2));
+    background-attachment:fixed;
+    min-height:100vh;
+    padding-bottom:40px;
+  }
+  h1,h2,h3,.title-font{font-family:'Quicksand',system-ui,sans-serif;font-weight:700;}
+  button{font-family:inherit;cursor:pointer;}
+  a{color:var(--accent-dark);}
+
+  .wrap{max-width:980px;margin:0 auto;padding:18px 16px 0;}
+
+  header.app-head{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    flex-wrap:wrap;margin-bottom:14px;
+  }
+  header.app-head .brand{display:flex;align-items:center;gap:10px;}
+  header.app-head .brand .logo{font-size:2rem;line-height:1;}
+  header.app-head h1{margin:0;font-size:1.5rem;}
+  header.app-head p{margin:0;font-size:0.85rem;opacity:0.75;}
+  .head-btns{display:flex;gap:8px;}
+  .icon-btn{
+    background:var(--card);border:none;border-radius:50%;width:40px;height:40px;
+    box-shadow:var(--shadow);font-size:1.1rem;display:flex;align-items:center;justify-content:center;
+    transition:transform .15s;
+  }
+  .icon-btn:hover{transform:scale(1.08);}
+
+  .card{
+    background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+    padding:20px;
+  }
+
+  /* ---------- level select ---------- */
+  #screen-levels .grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:16px;
+  }
+  .level-card{
+    background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+    padding:18px;text-align:left;border:3px solid transparent;transition:transform .15s,border-color .15s;
+    position:relative;overflow:hidden;
+  }
+  .level-card:not(.locked):hover{transform:translateY(-4px);border-color:var(--accent);}
+  .level-card .emoji{font-size:2.4rem;}
+  .level-card h3{margin:6px 0 2px;font-size:1.1rem;}
+  .level-card .meta{font-size:0.8rem;opacity:0.65;margin-bottom:10px;}
+  .level-card .stars{font-size:1.1rem;letter-spacing:2px;}
+  .level-card button{
+    margin-top:10px;width:100%;padding:10px;border:none;border-radius:12px;
+    background:var(--accent);color:white;font-weight:700;font-size:0.95rem;
+  }
+  .level-card.locked{opacity:0.55;}
+  .level-card.locked button{background:#b9bdd6;}
+  .level-card.locked .lockmsg{font-size:0.8rem;color:#777;}
+
+  .intro-blurb{margin-top:10px;line-height:1.5;font-size:0.95rem;}
+  .intro-blurb b{color:var(--accent-dark);}
+
+  /* ---------- play screen ---------- */
+  #screen-play{display:none;}
+  .play-top{
+    display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:12px;
+  }
+  .play-top .pill{
+    background:var(--card);border-radius:999px;padding:8px 14px;box-shadow:var(--shadow);
+    font-size:0.85rem;display:flex;align-items:center;gap:6px;font-weight:600;
+  }
+  .back-link{background:none;border:none;color:var(--accent-dark);font-weight:700;font-size:0.9rem;padding:8px 2px;}
+
+  .play-body{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;}
+  .diagram-card{flex:1 1 480px;min-width:280px;}
+  .diagram-card svg{width:100%;height:auto;display:block;touch-action:manipulation;}
+  .panel-card{flex:0 1 280px;min-width:240px;}
+  .panel-card h3{margin-top:0;font-size:1rem;}
+  .checklist{list-style:none;margin:0;padding:0;font-size:0.9rem;}
+  .checklist li{
+    display:flex;align-items:center;justify-content:space-between;gap:8px;
+    padding:6px 0;border-bottom:1px dashed #eee;
+  }
+  .checklist li .status{font-weight:800;}
+  .checklist li.solved .status.ok{color:var(--tension);}
+  .checklist li .val{font-weight:700;min-width:60px;text-align:right;}
+  .phase-badge{
+    display:inline-block;background:var(--accent);color:white;border-radius:999px;
+    padding:4px 12px;font-size:0.78rem;font-weight:700;margin-bottom:8px;
+  }
+
+  .toast{
+    position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);
+    background:var(--ink);color:white;padding:12px 20px;border-radius:14px;font-weight:600;
+    font-size:0.9rem;box-shadow:var(--shadow);opacity:0;transition:opacity .25s, transform .25s;
+    z-index:60;max-width:90vw;text-align:center;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+  .toast.good{background:var(--tension);}
+  .toast.bad{background:var(--compression);}
+
+  /* ---------- modal ---------- */
+  .modal-backdrop{
+    position:fixed;inset:0;background:rgba(44,42,74,0.45);display:none;
+    align-items:center;justify-content:center;z-index:50;padding:16px;
+  }
+  .modal-backdrop.show{display:flex;}
+  .modal{
+    background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+    max-width:460px;width:100%;padding:24px;max-height:88vh;overflow:auto;
+  }
+  .modal.modal-wide{max-width:520px;}
+
+  #joint-drag-view{margin:12px 0;}
+  #joint-polygon-svg{
+    width:100%;height:280px;background:#f8f9fd;border-radius:14px;touch-action:none;
+    display:block;
+  }
+  #joint-readouts{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+  .readout-chip{
+    background:#f5f6fb;border-radius:10px;padding:6px 12px;font-size:0.85rem;font-weight:700;
+    border:2px solid transparent;transition:border-color .2s,background .2s;
+  }
+  .readout-chip.near{border-color:var(--warn);}
+  .gap-status{
+    text-align:center;font-size:0.85rem;font-weight:700;margin-top:10px;color:#9a9fb8;
+    transition:color .2s;
+  }
+  .gap-status.close-enough{color:var(--tension);}
+  .handle-dot{cursor:grab;touch-action:none;}
+  .handle-dot:active{cursor:grabbing;}
+  .mode-toggle{
+    background:none;border:none;color:var(--accent-dark);font-weight:700;font-size:0.82rem;
+    display:block;margin:4px auto 0;text-decoration:underline;
+  }
+  .modal h2{margin-top:0;font-size:1.25rem;}
+  .modal .close-x{
+    position:absolute;top:14px;right:16px;background:none;border:none;font-size:1.2rem;opacity:0.5;
+  }
+  .modal{position:relative;}
+  .field-row{margin:14px 0;}
+  .field-row label{display:block;font-weight:700;font-size:0.88rem;margin-bottom:4px;}
+  .field-row .hint-sub{font-size:0.78rem;opacity:0.65;font-weight:400;margin-top:2px;}
+  .field-row input[type=number]{
+    width:100%;padding:10px 12px;border-radius:10px;border:2px solid #ddd;font-size:1rem;font-family:inherit;
+  }
+  .field-row input[type=number]:focus{outline:none;border-color:var(--accent);}
+  .sign-preview{font-size:0.8rem;margin-top:4px;font-weight:700;}
+  .sign-preview.t{color:var(--tension);}
+  .sign-preview.c{color:var(--compression);}
+  .known-box{
+    background:#f5f6fb;border-radius:12px;padding:10px 14px;font-size:0.85rem;margin-bottom:10px;line-height:1.6;
+  }
+  .known-box code{background:#e9ecff;padding:1px 5px;border-radius:5px;}
+  .modal-actions{display:flex;gap:10px;margin-top:18px;}
+  .btn{
+    border:none;border-radius:12px;padding:11px 18px;font-weight:700;font-size:0.95rem;flex:1;
+  }
+  .btn-primary{background:var(--accent);color:white;}
+  .btn-primary:hover{background:var(--accent-dark);}
+  .btn-secondary{background:#eee;color:var(--ink);}
+
+  .win-emoji{font-size:3rem;text-align:center;margin-bottom:6px;}
+  .win-stats{display:flex;justify-content:center;gap:24px;margin:14px 0;text-align:center;}
+  .win-stats div b{display:block;font-size:1.3rem;}
+  .stars-big{text-align:center;font-size:1.8rem;letter-spacing:6px;margin:10px 0;}
+
+  .help-body p{line-height:1.6;font-size:0.93rem;}
+  .help-body .conv{display:flex;gap:16px;margin:10px 0;flex-wrap:wrap;}
+  .conv-chip{background:#f5f6fb;border-radius:10px;padding:8px 12px;font-size:0.85rem;}
+
+  footer.app-foot{
+    text-align:center;font-size:0.8rem;opacity:0.6;margin-top:30px;padding:0 16px;
+  }
+
+  @media (max-width:600px){
+    header.app-head h1{font-size:1.25rem;}
+    .play-body{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="app-head">
+    <div class="brand">
+      <div class="logo">🧩</div>
+      <div>
+        <h1>Truss Sudoku</h1>
+        <p>Structural equilibrium, solved one clue at a time.</p>
+      </div>
+    </div>
+    <div class="head-btns">
+      <button class="icon-btn" id="btn-help" title="How to play">❓</button>
+      <button class="icon-btn" id="btn-reset" title="Reset progress">🗑️</button>
+    </div>
+  </header>
+
+  <!-- ===================== LEVEL SELECT ===================== -->
+  <section id="screen-levels">
+    <div class="card">
+      <h2 style="margin-top:0;">Pick a truss</h2>
+      <p class="intro-blurb">
+        Solving a statically determinate truss is just like solving a sudoku: you never
+        guess, you just find the <b>joint with the fewest unknowns</b> (two or fewer), pin it
+        down with equilibrium, and let that new information unlock the next joint. Repeat
+        until the whole grid — er, truss — is solved.
+      </p>
+    </div>
+    <div class="grid" id="level-grid"></div>
+  </section>
+
+  <!-- ===================== PLAY SCREEN ===================== -->
+  <section id="screen-play">
+    <div class="play-top">
+      <button class="back-link" id="btn-back">← Levels</button>
+      <div class="pill" id="pill-level"></div>
+      <div class="pill">⏱️ <span id="pill-time">0:00</span></div>
+      <div class="pill">❌ <span id="pill-mistakes">0</span></div>
+      <div class="pill" id="pill-hint-btn" style="cursor:pointer;">💡 Hint</div>
+    </div>
+
+    <div class="play-body">
+      <div class="diagram-card card">
+        <span class="phase-badge" id="phase-badge">Phase</span>
+        <svg id="truss-svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"></svg>
+      </div>
+      <div class="panel-card card">
+        <h3>🔧 Reactions</h3>
+        <ul class="checklist" id="list-reactions"></ul>
+        <h3 style="margin-top:16px;">📏 Members</h3>
+        <ul class="checklist" id="list-members"></ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="app-foot">
+    Made with ✏️ + ☕ for anyone who thinks trusses are just sudoku with vectors.
+    &nbsp;·&nbsp; <a href="../">← back to the blog</a>
+  </footer>
+</div>
+
+<!-- ===================== TOAST ===================== -->
+<div class="toast" id="toast"></div>
+
+<!-- ===================== REACTIONS MODAL ===================== -->
+<div class="modal-backdrop" id="modal-reactions">
+  <div class="modal">
+    <button class="close-x" data-close="modal-reactions">✕</button>
+    <h2>🔧 Phase 1 — Find the reactions</h2>
+    <div class="known-box">
+      Treat the <b>whole truss</b> as one rigid body. Use <code>ΣFx=0</code>,
+      <code>ΣFy=0</code> and <code>ΣM=0</code> (about either support) with the loads shown
+      on the diagram to find every reaction component. Positive = arrow direction shown.
+    </div>
+    <div id="reaction-fields"></div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" data-close="modal-reactions">Later</button>
+      <button class="btn btn-primary" id="btn-check-reactions">Check</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== JOINT MODAL ===================== -->
+<div class="modal-backdrop" id="modal-joint">
+  <div class="modal modal-wide">
+    <button class="close-x" data-close="modal-joint">✕</button>
+    <h2 id="joint-title">🔎 Joint</h2>
+    <div class="known-box" id="joint-known"></div>
+
+    <div id="joint-drag-view">
+      <svg id="joint-polygon-svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"></svg>
+      <div id="joint-readouts"></div>
+      <div id="joint-gap-status" class="gap-status">Drag the handles until the shape closes.</div>
+    </div>
+    <div id="joint-fields" style="display:none;"></div>
+
+    <button class="mode-toggle" id="btn-toggle-mode">⌨️ Type numbers instead</button>
+
+    <div class="modal-actions">
+      <button class="btn btn-secondary" data-close="modal-joint">Later</button>
+      <button class="btn btn-primary" id="btn-check-joint">Lock it in 🔒</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== BLOCKED-JOINT MODAL (too many unknowns) ===================== -->
+<div class="modal-backdrop" id="modal-blocked">
+  <div class="modal">
+    <button class="close-x" data-close="modal-blocked">✕</button>
+    <h2>🚫 Too many unknowns</h2>
+    <p id="blocked-text" style="line-height:1.5;"></p>
+    <div class="modal-actions">
+      <button class="btn btn-primary" data-close="modal-blocked">Got it</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== WIN MODAL ===================== -->
+<div class="modal-backdrop" id="modal-win">
+  <div class="modal">
+    <div class="win-emoji">🎉</div>
+    <h2 style="text-align:center;margin-top:0;">Truss solved!</h2>
+    <div class="stars-big" id="win-stars"></div>
+    <div class="win-stats">
+      <div><b id="win-time">0:00</b>time</div>
+      <div><b id="win-mistakes">0</b>mistakes</div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" id="btn-win-levels">Levels</button>
+      <button class="btn btn-primary" id="btn-win-next">Next truss →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== HELP MODAL ===================== -->
+<div class="modal-backdrop" id="modal-help">
+  <div class="modal">
+    <button class="close-x" data-close="modal-help">✕</button>
+    <h2>❓ How to play</h2>
+    <div class="help-body">
+      <p>Every truss here is <b>statically determinate</b>: it has exactly enough equations
+      to solve exactly, no more, no less — same spirit as a well-posed sudoku grid.</p>
+      <p><b>Phase 1 — Reactions.</b> Analyze the whole truss as a rigid body (global
+      ΣFx, ΣFy, ΣM) to find the support reactions first. You can't do joints yet because
+      every joint touching a support has too many unknowns until the reaction is known.</p>
+      <p><b>Phase 2 — Joints.</b> Click a joint on the diagram. If it still has more than
+      two unknown member forces, the game will tell you to look elsewhere — exactly like a
+      sudoku cell with too many candidates. Find a joint with ≤2 unknowns, apply
+      ΣFx=0 / ΣFy=0 at that joint by hand, and type in the member forces.</p>
+      <div class="conv">
+        <div class="conv-chip"><b>Members:</b> positive = tension (pulling), negative = compression (pushing).</div>
+        <div class="conv-chip"><b>Reactions:</b> positive = the arrow direction drawn on the diagram.</div>
+      </div>
+      <p>Solved members turn <span style="color:var(--tension);font-weight:700;">green</span>
+      when in tension, <span style="color:var(--compression);font-weight:700;">pink</span>
+      when in compression. A true zero is a perfectly valid (and common!) answer — those are
+      called <i>zero-force members</i>.</p>
+      <p>Stuck? Hit the 💡 Hint button — it'll glow a joint you're actually allowed to solve
+      next, without doing the math for you.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+"use strict";
+
+/* ============================================================
+   1. TRUSS DATA
+   ============================================================ */
+const LEVELS = [
+  {
+    id: "l1", name: "Warm-Up Triangle", emoji: "🔺", difficulty: "Easy",
+    nodes: {
+      A: { x: 0, y: 0, support: "pin" },
+      B: { x: 6, y: 0, support: "roller" },
+      C: { x: 3, y: 4 },
+    },
+    members: [["A","B"],["A","C"],["B","C"]],
+    loads: { C: { fx: 0, fy: -12 } },
+  },
+  {
+    id: "l2", name: "Simple Bridge", emoji: "🌉", difficulty: "Easy+",
+    nodes: {
+      A: { x: 0, y: 0, support: "pin" }, B: { x: 4, y: 0 }, C: { x: 8, y: 0, support: "roller" },
+      D: { x: 2, y: 3 }, E: { x: 6, y: 3 },
+    },
+    members: [["A","B"],["B","C"],["A","D"],["D","B"],["D","E"],["B","E"],["E","C"]],
+    loads: { D: { fx: 0, fy: -8 }, E: { fx: 0, fy: -8 } },
+  },
+  {
+    id: "l3", name: "Warren Truss", emoji: "🌊", difficulty: "Medium",
+    nodes: {
+      A: { x: 0, y: 0, support: "pin" }, B: { x: 4, y: 0 }, C: { x: 8, y: 0 }, D: { x: 12, y: 0, support: "roller" },
+      E: { x: 2, y: 3 }, F: { x: 6, y: 3 }, G: { x: 10, y: 3 },
+    },
+    members: [["A","E"],["E","B"],["B","F"],["F","C"],["C","G"],["G","D"],["E","F"],["F","G"],["A","B"],["B","C"],["C","D"]],
+    loads: { B: { fx: 0, fy: -10 }, C: { fx: 0, fy: -10 } },
+  },
+  {
+    id: "l4", name: "Boss Truss", emoji: "🏗️", difficulty: "Hard",
+    nodes: {
+      A: { x: 0, y: 0, support: "pin" }, B: { x: 4, y: 0 }, C: { x: 8, y: 0 }, D: { x: 12, y: 0 }, E: { x: 16, y: 0, support: "roller" },
+      F: { x: 2, y: 3 }, G: { x: 6, y: 3 }, H: { x: 10, y: 3 }, I: { x: 14, y: 3 },
+    },
+    members: [
+      ["A","F"],["F","B"],["B","G"],["G","C"],["C","H"],["H","D"],["D","I"],["I","E"],
+      ["F","G"],["G","H"],["H","I"],
+      ["A","B"],["B","C"],["C","D"],["D","E"],
+    ],
+    loads: { B: { fx: 0, fy: -10 }, C: { fx: 0, fy: -10 }, D: { fx: 0, fy: -10 } },
+  },
+];
+
+/* ============================================================
+   2. GENERIC STATICS SOLVER (ground truth, used only for checking)
+   ============================================================ */
+function gaussSolve(A, b) {
+  const n = A.length;
+  const M = A.map((row, i) => [...row, b[i]]);
+  for (let col = 0; col < n; col++) {
+    let pivot = col;
+    for (let r = col + 1; r < n; r++) if (Math.abs(M[r][col]) > Math.abs(M[pivot][col])) pivot = r;
+    [M[col], M[pivot]] = [M[pivot], M[col]];
+    for (let r = 0; r < n; r++) {
+      if (r === col) continue;
+      const factor = M[r][col] / M[col][col];
+      for (let c = col; c <= n; c++) M[r][c] -= factor * M[col][c];
+    }
+  }
+  return M.map((row, i) => row[n] / row[i]);
+}
+
+function solveTruss(level) {
+  const nodeIds = Object.keys(level.nodes);
+  const n = nodeIds.length;
+  const idx = {};
+  nodeIds.forEach((id, i) => (idx[id] = i));
+
+  const unknowns = [];
+  level.members.forEach(([i, j]) => unknowns.push({ type: "member", i, j, key: i + "-" + j }));
+  nodeIds.forEach((id) => {
+    const s = level.nodes[id].support;
+    if (s === "pin") {
+      unknowns.push({ type: "reaction", axis: "x", node: id });
+      unknowns.push({ type: "reaction", axis: "y", node: id });
+    } else if (s === "roller") {
+      unknowns.push({ type: "reaction", axis: "y", node: id });
+    }
+  });
+
+  const U = unknowns.length;
+  const eqs = 2 * n;
+  const A = Array.from({ length: eqs }, () => new Array(U).fill(0));
+  const b = new Array(eqs).fill(0);
+  const xEq = (id) => 2 * idx[id];
+  const yEq = (id) => 2 * idx[id] + 1;
+
+  unknowns.forEach((u, k) => {
+    if (u.type === "member") {
+      const ni = level.nodes[u.i], nj = level.nodes[u.j];
+      const dx = nj.x - ni.x, dy = nj.y - ni.y;
+      const L = Math.hypot(dx, dy);
+      const ux = dx / L, uy = dy / L;
+      A[xEq(u.i)][k] += ux; A[yEq(u.i)][k] += uy;
+      A[xEq(u.j)][k] += -ux; A[yEq(u.j)][k] += -uy;
+    } else {
+      if (u.axis === "x") A[xEq(u.node)][k] += 1;
+      else A[yEq(u.node)][k] += 1;
+    }
+  });
+
+  nodeIds.forEach((id) => {
+    const load = (level.loads && level.loads[id]) || { fx: 0, fy: 0 };
+    b[xEq(id)] = -(load.fx || 0);
+    b[yEq(id)] = -(load.fy || 0);
+  });
+
+  const sol = gaussSolve(A, b);
+  const memberForces = {};
+  const reactions = {};
+  unknowns.forEach((u, k) => {
+    if (u.type === "member") memberForces[u.key] = sol[k];
+    else {
+      reactions[u.node] = reactions[u.node] || {};
+      reactions[u.node][u.axis] = sol[k];
+    }
+  });
+  return { memberForces, reactions };
+}
+
+function memberKey(i, j) { return i + "-" + j; }
+function findMemberPair(level, key) {
+  for (const [i, j] of level.members) if (memberKey(i, j) === key) return [i, j];
+  return null;
+}
+function tolFor(truth) { return Math.max(0.15, 0.02 * Math.abs(truth)); }
+function memberDir(level, from, to) {
+  const a = level.nodes[from], b = level.nodes[to];
+  const dx = b.x - a.x, dy = b.y - a.y;
+  const L = Math.hypot(dx, dy);
+  return [dx / L, dy / L];
+}
+
+/* ============================================================
+   3. GAME STATE
+   ============================================================ */
+const STORAGE_KEY = "trussSudokuProgressV1";
+function loadProgress() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch (e) { return {}; }
+}
+function saveProgress(p) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(p)); } catch (e) {}
+}
+
+let progress = loadProgress();
+let state = null; // current play state
+let timerInterval = null;
+
+function newState(levelIndex) {
+  const level = LEVELS[levelIndex];
+  const truth = solveTruss(level);
+  return {
+    levelIndex, level, truth,
+    reactionsSolved: false,
+    solvedMembers: new Set(),
+    solvedReactionKeys: new Set(),
+    mistakes: 0,
+    startTime: Date.now(),
+    elapsed: 0,
+    finished: false,
+  };
+}
+
+function reactionUnknownsFor(level) {
+  const out = [];
+  Object.keys(level.nodes).forEach((id) => {
+    const s = level.nodes[id].support;
+    if (s === "pin") { out.push({ node: id, axis: "x" }); out.push({ node: id, axis: "y" }); }
+    else if (s === "roller") { out.push({ node: id, axis: "y" }); }
+  });
+  return out;
+}
+
+function unresolvedMembersAtJoint(level, nodeId, solvedMembers) {
+  return level.members.filter(([i, j]) => (i === nodeId || j === nodeId) && !solvedMembers.has(memberKey(i, j)));
+}
+
+function findHintJoint() {
+  if (!state.reactionsSolved) return null;
+  const level = state.level;
+  for (const id of Object.keys(level.nodes)) {
+    const unresolved = unresolvedMembersAtJoint(level, id, state.solvedMembers);
+    if (unresolved.length >= 1 && unresolved.length <= 2) return id;
+  }
+  return null;
+}
+
+function allMembersSolved() {
+  return state.solvedMembers.size === state.level.members.length;
+}
+
+/* ============================================================
+   4. RENDERING
+   ============================================================ */
+const svgNS = "http://www.w3.org/2000/svg";
+function svgEl(tag, attrs) {
+  const el = document.createElementNS(svgNS, tag);
+  for (const k in attrs) el.setAttribute(k, attrs[k]);
+  return el;
+}
+
+function worldToView(level, x, y) {
+  // flip y (svg y-down), add padding handled by viewBox
+  return { x, y: -y };
+}
+
+function computeViewBox(level) {
+  const xs = Object.values(level.nodes).map((n) => n.x);
+  const ys = Object.values(level.nodes).map((n) => -n.y);
+  const pad = 2.2;
+  const minX = Math.min(...xs) - pad, maxX = Math.max(...xs) + pad;
+  const topMostWorldY = Math.max(...Object.values(level.nodes).map((n) => n.y));
+  const bottomMostWorldY = Math.min(...Object.values(level.nodes).map((n) => n.y));
+  const hasTopLoad = Object.keys(level.loads || {}).some((id) => level.nodes[id].y === topMostWorldY && level.loads[id].fy < 0);
+  const hasBottomUpLoad = Object.keys(level.loads || {}).some((id) => level.nodes[id].y === bottomMostWorldY && level.loads[id].fy > 0);
+  const minY = Math.min(...ys) - pad - (hasTopLoad ? 1.6 : 0); // room for load arrows above, only if needed
+  const maxY = Math.max(...ys) + pad + 1.2 + (hasBottomUpLoad ? 1.6 : 0); // room for reaction arrows + any upward loads below
+  return { x: minX, y: minY, w: maxX - minX, h: maxY - minY };
+}
+
+function renderDiagram() {
+  const svg = document.getElementById("truss-svg");
+  svg.innerHTML = "";
+  const level = state.level;
+  const vb = computeViewBox(level);
+  svg.setAttribute("viewBox", `${vb.x} ${vb.y} ${vb.w} ${vb.h}`);
+
+  const strokeW = Math.max(0.08, vb.w / 160);
+
+  // members
+  for (const [i, j] of level.members) {
+    const ni = level.nodes[i], nj = level.nodes[j];
+    const p1 = worldToView(level, ni.x, ni.y), p2 = worldToView(level, nj.x, nj.y);
+    const key = memberKey(i, j);
+    const solved = state.solvedMembers.has(key);
+    let color = "var(--unknown)";
+    let value = null;
+    if (solved) {
+      value = state.truth.memberForces[key];
+      color = Math.abs(value) < 0.12 ? "var(--zero)" : value > 0 ? "var(--tension)" : "var(--compression)";
+    }
+    const line = svgEl("line", {
+      x1: p1.x, y1: p1.y, x2: p2.x, y2: p2.y,
+      stroke: color, "stroke-width": solved ? strokeW * 2.2 : strokeW * 1.4,
+      "stroke-linecap": "round",
+    });
+    svg.appendChild(line);
+
+    // length / angle label (always visible — it's geometry, not the unknown)
+    const dx = nj.x - ni.x, dy = nj.y - ni.y;
+    const L = Math.hypot(dx, dy);
+    const midx = (p1.x + p2.x) / 2, midy = (p1.y + p2.y) / 2;
+    const angle = (Math.atan2(-dy, dx) * 180) / Math.PI;
+    const labelAngle = ((angle + 90) % 180) - 90;
+    const geomLabel = svgEl("text", {
+      x: midx, y: midy, "font-size": vb.w / 55, fill: "#9a9fb8",
+      "text-anchor": "middle", transform: `rotate(${-labelAngle} ${midx} ${midy})`,
+      dy: -vb.w / 130,
+    });
+    geomLabel.textContent = `${L.toFixed(1)}`;
+    svg.appendChild(geomLabel);
+
+    if (solved) {
+      const valLabel = svgEl("text", {
+        x: midx, y: midy, "font-size": vb.w / 42, fill: color, "font-weight": "700",
+        "text-anchor": "middle", dy: vb.w / 48,
+      });
+      valLabel.textContent = Math.abs(value) < 0.12 ? "0" : value.toFixed(1);
+      svg.appendChild(valLabel);
+    }
+  }
+
+  // loads
+  Object.keys(level.loads || {}).forEach((id) => {
+    const load = level.loads[id];
+    const n = level.nodes[id];
+    const p = worldToView(level, n.x, n.y);
+    if (load.fy) {
+      const dir = load.fy < 0 ? 1 : -1;
+      const len = vb.h / 7;
+      const y0 = p.y - dir * len * 0; // start at offset
+      const start = p.y - dir * 0.35 - dir * len;
+      const end = p.y - dir * 0.35;
+      const arrow = svgEl("line", { x1: p.x, y1: start, x2: p.x, y2: end, stroke: "#4b43d4", "stroke-width": strokeW * 1.6 });
+      svg.appendChild(arrow);
+      const head = svgEl("polygon", {
+        points: `${p.x},${end + dir * 0.02} ${p.x - 0.28},${end - dir * 0.5} ${p.x + 0.28},${end - dir * 0.5}`,
+        fill: "#4b43d4",
+      });
+      svg.appendChild(head);
+      const lbl = svgEl("text", { x: p.x + 0.5, y: start + (end - start) / 2, "font-size": vb.w / 42, fill: "#4b43d4", "font-weight": "700" });
+      lbl.textContent = `${Math.abs(load.fy)} kN`;
+      svg.appendChild(lbl);
+    }
+  });
+
+  // reaction arrows (only drawn as "known" once solved; shown faint as hint before that)
+  reactionUnknownsFor(level).forEach(({ node, axis }) => {
+    const n = level.nodes[node];
+    const p = worldToView(level, n.x, n.y);
+    const key = node + axis;
+    const solved = state.reactionsSolved;
+    const val = solved ? state.truth.reactions[node][axis] : null;
+    const positiveDir = axis === "x" ? { dx: 1, dy: 0 } : { dx: 0, dy: -1 };
+    const sign = solved ? (val < 0 ? -1 : 1) : 1;
+    const len = vb.w / 11;
+    // nudge horizontal (Rx) arrows below the joint so they don't sit on top of a bottom-chord member
+    const nudgeY = axis === "x" ? vb.w / 45 : 0;
+    const sx = p.x, sy = p.y + nudgeY;
+    const ex = sx + positiveDir.dx * len * sign;
+    const ey = sy + positiveDir.dy * len * sign;
+    const color = solved ? "#4b43d4" : "#c9ccdc";
+    const arrow = svgEl("line", { x1: sx, y1: sy, x2: ex, y2: ey, stroke: color, "stroke-width": strokeW * 1.4, "stroke-dasharray": solved ? "0" : "0.3,0.25" });
+    svg.appendChild(arrow);
+    const ang = Math.atan2(ey - sy, ex - sx);
+    const headLen = 0.3;
+    const head = svgEl("polygon", {
+      points: `${ex},${ey} ${ex - headLen * Math.cos(ang - 0.4)},${ey - headLen * Math.sin(ang - 0.4)} ${ex - headLen * Math.cos(ang + 0.4)},${ey - headLen * Math.sin(ang + 0.4)}`,
+      fill: color,
+    });
+    svg.appendChild(head);
+    if (solved) {
+      const lbl = svgEl("text", { x: ex + positiveDir.dx * 0.3, y: ey + positiveDir.dy * 0.3 + (axis === "x" ? 0.45 : -0.15), "font-size": vb.w / 44, fill: color, "font-weight": "700", "text-anchor": positiveDir.dx > 0 ? "start" : "middle" });
+      lbl.textContent = `${Math.abs(val).toFixed(1)}`;
+      svg.appendChild(lbl);
+    }
+  });
+
+  // support symbols
+  Object.keys(level.nodes).forEach((id) => {
+    const n = level.nodes[id];
+    if (!n.support) return;
+    const p = worldToView(level, n.x, n.y);
+    const s = vb.w / 22;
+    if (n.support === "pin") {
+      const tri = svgEl("polygon", { points: `${p.x},${p.y} ${p.x - s},${p.y + s * 1.6} ${p.x + s},${p.y + s * 1.6}`, fill: "#dcdfef", stroke: "#9a9fb8", "stroke-width": strokeW * 0.6 });
+      svg.appendChild(tri);
+    } else if (n.support === "roller") {
+      const tri = svgEl("polygon", { points: `${p.x},${p.y} ${p.x - s},${p.y + s * 1.4} ${p.x + s},${p.y + s * 1.4}`, fill: "#dcdfef", stroke: "#9a9fb8", "stroke-width": strokeW * 0.6 });
+      svg.appendChild(tri);
+      const c1 = svgEl("circle", { cx: p.x - s * 0.55, cy: p.y + s * 1.75, r: s * 0.3, fill: "#9a9fb8" });
+      const c2 = svgEl("circle", { cx: p.x + s * 0.55, cy: p.y + s * 1.75, r: s * 0.3, fill: "#9a9fb8" });
+      svg.appendChild(c1); svg.appendChild(c2);
+    }
+  });
+
+  // joints (clickable)
+  Object.keys(level.nodes).forEach((id) => {
+    const n = level.nodes[id];
+    const p = worldToView(level, n.x, n.y);
+    const r = vb.w / 42;
+
+    let playable = false, done = false;
+    if (!state.reactionsSolved) {
+      playable = false;
+    } else {
+      const unresolved = unresolvedMembersAtJoint(level, id, state.solvedMembers);
+      done = unresolved.length === 0;
+      playable = !done && unresolved.length <= 2;
+    }
+
+    const g = svgEl("g", { style: "cursor:pointer;" });
+    if (playable) {
+      const pulse = svgEl("circle", { cx: p.x, cy: p.y, r: r * 2.1, fill: "none", stroke: "var(--warn)", "stroke-width": strokeW });
+      pulse.innerHTML = `<animate attributeName="r" values="${r * 1.6};${r * 2.6};${r * 1.6}" dur="1.6s" repeatCount="indefinite" />
+                          <animate attributeName="opacity" values="0.9;0.15;0.9" dur="1.6s" repeatCount="indefinite" />`;
+      g.appendChild(pulse);
+    }
+    const circle = svgEl("circle", {
+      cx: p.x, cy: p.y, r,
+      fill: done ? "var(--tension)" : playable ? "#fff6e0" : "#ffffff",
+      stroke: done ? "var(--tension)" : playable ? "var(--warn)" : "#9a9fb8",
+      "stroke-width": strokeW,
+    });
+    g.appendChild(circle);
+    const hit = svgEl("circle", { cx: p.x, cy: p.y, r: r * 2.4, fill: "transparent" });
+    g.appendChild(hit);
+    const label = svgEl("text", {
+      x: p.x, y: p.y - r - 0.25, "font-size": vb.w / 32, "font-weight": "700",
+      fill: "var(--ink)", "text-anchor": "middle",
+    });
+    label.textContent = id;
+    g.appendChild(label);
+
+    g.addEventListener("click", () => onJointClick(id));
+    g.dataset.joint = id;
+    g.id = "joint-g-" + id;
+    svg.appendChild(g);
+  });
+}
+
+function renderPanels() {
+  const level = state.level;
+
+  const rl = document.getElementById("list-reactions");
+  rl.innerHTML = "";
+  reactionUnknownsFor(level).forEach(({ node, axis }) => {
+    const li = document.createElement("li");
+    const solved = state.reactionsSolved;
+    li.className = solved ? "solved" : "";
+    const label = `R${axis}${node === Object.keys(level.nodes)[0] ? "" : ""} @ ${node} (${axis})`;
+    li.innerHTML = `<span>R<sub>${axis}</sub> @ ${node}</span><span class="status ${solved ? "ok" : ""}">${solved ? "✓" : "?"}</span>`;
+    rl.appendChild(li);
+  });
+
+  const ml = document.getElementById("list-members");
+  ml.innerHTML = "";
+  level.members.forEach(([i, j]) => {
+    const key = memberKey(i, j);
+    const solved = state.solvedMembers.has(key);
+    const li = document.createElement("li");
+    li.className = solved ? "solved" : "";
+    let valHtml = "";
+    if (solved) {
+      const v = state.truth.memberForces[key];
+      const tag = Math.abs(v) < 0.12 ? "0" : v > 0 ? "T" : "C";
+      valHtml = `<span class="val">${Math.abs(v) < 0.12 ? "0" : v.toFixed(1) + " " + tag}</span>`;
+    } else {
+      valHtml = `<span class="val">?</span>`;
+    }
+    li.innerHTML = `<span>${i}–${j}</span>${valHtml}`;
+    ml.appendChild(li);
+  });
+
+  document.getElementById("phase-badge").textContent = state.reactionsSolved
+    ? (allMembersSolved() ? "Phase 2 — Complete!" : "Phase 2 — Joint by joint")
+    : "Phase 1 — Find the reactions";
+}
+
+function formatTime(sec) {
+  const m = Math.floor(sec / 60), s = Math.floor(sec % 60);
+  return `${m}:${s.toString().padStart(2, "0")}`;
+}
+
+function tickTimer() {
+  if (!state || state.finished) return;
+  state.elapsed = (Date.now() - state.startTime) / 1000;
+  document.getElementById("pill-time").textContent = formatTime(state.elapsed);
+}
+
+/* ============================================================
+   5. INTERACTIONS
+   ============================================================ */
+function showToast(msg, kind) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.className = "toast show" + (kind ? " " + kind : "");
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => { t.className = "toast"; }, 2200);
+}
+
+function openModal(id) { document.getElementById(id).classList.add("show"); }
+function closeModal(id) { document.getElementById(id).classList.remove("show"); }
+
+document.querySelectorAll("[data-close]").forEach((el) => {
+  el.addEventListener("click", () => closeModal(el.dataset.close));
+});
+document.querySelectorAll(".modal-backdrop").forEach((bd) => {
+  bd.addEventListener("click", (e) => { if (e.target === bd) bd.classList.remove("show"); });
+});
+
+function onJointClick(nodeId) {
+  if (!state.reactionsSolved) {
+    openReactionsModal();
+    return;
+  }
+  const level = state.level;
+  const unresolved = unresolvedMembersAtJoint(level, nodeId, state.solvedMembers);
+  if (unresolved.length === 0) {
+    showToast(`Joint ${nodeId} is already fully solved ✅`, "good");
+    return;
+  }
+  if (unresolved.length > 2) {
+    document.getElementById("blocked-text").innerHTML =
+      `Joint <b>${nodeId}</b> still has <b>${unresolved.length}</b> unknown member forces ` +
+      `(${unresolved.map(([i, j]) => `${i}–${j}`).join(", ")}). ` +
+      `With only two equilibrium equations (ΣFx=0, ΣFy=0) at a joint, you need a joint with ` +
+      `two or fewer unknowns. Solve a neighboring joint first — just like clearing an easier ` +
+      `sudoku cell before tackling a crowded one.`;
+    openModal("modal-blocked");
+    return;
+  }
+  openJointModal(nodeId, unresolved);
+}
+
+function openReactionsModal() {
+  const level = state.level;
+  const container = document.getElementById("reaction-fields");
+  container.innerHTML = "";
+  reactionUnknownsFor(level).forEach(({ node, axis }) => {
+    const row = document.createElement("div");
+    row.className = "field-row";
+    row.innerHTML = `
+      <label>R<sub>${axis}</sub> at ${node}</label>
+      <input type="number" step="0.1" data-node="${node}" data-axis="${axis}" class="reaction-input" placeholder="kN">
+      <div class="hint-sub">Positive = arrow drawn at ${node} on the diagram.</div>
+    `;
+    container.appendChild(row);
+  });
+  openModal("modal-reactions");
+}
+
+document.getElementById("btn-check-reactions").addEventListener("click", () => {
+  const inputs = document.querySelectorAll(".reaction-input");
+  let allCorrect = true;
+  const errs = [];
+  inputs.forEach((inp) => {
+    const node = inp.dataset.node, axis = inp.dataset.axis;
+    const truth = state.truth.reactions[node][axis];
+    const val = parseFloat(inp.value);
+    if (isNaN(val) || Math.abs(val - truth) > tolFor(truth)) {
+      allCorrect = false;
+      errs.push(`R${axis}@${node}`);
+    }
+  });
+  if (allCorrect) {
+    state.reactionsSolved = true;
+    closeModal("modal-reactions");
+    showToast("Reactions locked in! Now find a joint with ≤2 unknowns.", "good");
+    renderDiagram();
+    renderPanels();
+  } else {
+    state.mistakes++;
+    document.getElementById("pill-mistakes").textContent = state.mistakes;
+    showToast(`Not quite — check ${errs.join(", ")}. Re-sum moments & forces.`, "bad");
+  }
+});
+
+/* ---------- joint force-polygon (drag-to-close) ---------- */
+let jointUI = null; // built fresh each time the joint modal opens
+
+function computeKnownChain(level, truth, nodeId) {
+  const chain = [];
+  const skipped = [];
+  const load = (level.loads || {})[nodeId];
+  if (load && (load.fx || load.fy)) {
+    chain.push({ label: "Load", vec: [load.fx || 0, load.fy || 0], color: "#4b43d4" });
+  }
+  if (level.nodes[nodeId].support) {
+    reactionUnknownsFor(level).filter((r) => r.node === nodeId).forEach((r) => {
+      const v = truth.reactions[nodeId][r.axis];
+      const vec = r.axis === "x" ? [v, 0] : [0, v];
+      if (Math.abs(v) < 0.05) skipped.push(`R${r.axis}=0`);
+      else chain.push({ label: `R${r.axis}`, vec, color: "#4b43d4" });
+    });
+  }
+  level.members.forEach(([i, j]) => {
+    if (i !== nodeId && j !== nodeId) return;
+    const key = memberKey(i, j);
+    if (!state.solvedMembers.has(key)) return;
+    const other = i === nodeId ? j : i;
+    const dir = memberDir(level, nodeId, other);
+    const F = truth.memberForces[key];
+    if (Math.abs(F) < 0.05) { skipped.push(`${nodeId}${other}=0`); return; }
+    const color = F > 0 ? "var(--tension)" : "var(--compression)";
+    chain.push({ label: `${nodeId}${other}`, vec: [F * dir[0], F * dir[1]], color });
+  });
+  return { chain, skipped };
+}
+
+function buildJointUI(nodeId, unresolved) {
+  const level = state.level;
+  const { chain, skipped } = computeKnownChain(level, state.truth, nodeId);
+  const pts = [[0, 0]];
+  chain.forEach((c) => {
+    const last = pts[pts.length - 1];
+    pts.push([last[0] + c.vec[0], last[1] + c.vec[1]]);
+  });
+  const O = [0, 0];
+  const P = pts[pts.length - 1];
+
+  const mem1 = unresolved[0];
+  const other1 = mem1[0] === nodeId ? mem1[1] : mem1[0];
+  const dir1 = memberDir(level, nodeId, other1);
+  const F1true = state.truth.memberForces[memberKey(...mem1)];
+
+  let mem2 = null, other2 = null, dir2 = null, F2true = 0, hasSecond = false;
+  if (unresolved.length === 2) {
+    mem2 = unresolved[1];
+    other2 = mem2[0] === nodeId ? mem2[1] : mem2[0];
+    dir2 = memberDir(level, nodeId, other2);
+    F2true = state.truth.memberForces[memberKey(...mem2)];
+    hasSecond = true;
+  }
+
+  // fixed viewBox sized to comfortably fit the known chain + the true solution, with slop
+  const H1true = [P[0] + F1true * dir1[0], P[1] + F1true * dir1[1]];
+  const boxPts = [O, P, H1true];
+  if (hasSecond) boxPts.push([O[0] + -F2true * dir2[0], O[1] + -F2true * dir2[1]]);
+  const xs = boxPts.map((p) => p[0]), ys = boxPts.map((p) => p[1]);
+  const spanX = Math.max(...xs) - Math.min(...xs), spanY = Math.max(...ys) - Math.min(...ys);
+  const cx = (Math.max(...xs) + Math.min(...xs)) / 2, cy = (Math.max(...ys) + Math.min(...ys)) / 2;
+  const half = Math.max(spanX, spanY) / 2 * 1.7 + 3.5;
+  const vb = { x: cx - half, y: -(cy + half), w: half * 2, h: half * 2 }; // note: SVG y is flipped
+
+  const maxT = half * 1.3;
+  const startOffset = Math.min(1.2, maxT * 0.1); // small visible nudge so handles aren't invisible at t=0
+
+  jointUI = {
+    nodeId, chain, skipped, O, P, vb, maxT,
+    mem1Key: memberKey(...mem1), other1, dir1, F1true,
+    mem2Key: hasSecond ? memberKey(...mem2) : null, other2, dir2, F2true, hasSecond,
+    t1: startOffset, t2: startOffset,
+    mode: "drag",
+  };
+}
+
+function toView(p) { return [p[0], -p[1]]; } // flip y for SVG (force-space uses math y-up)
+
+function snapTolFor(ui) { return Math.max(0.35, ui.maxT * 0.035); }
+
+function renderJointPolygon() {
+  const ui = jointUI;
+  const svg = document.getElementById("joint-polygon-svg");
+  svg.innerHTML = "";
+  svg.setAttribute("viewBox", `${ui.vb.x} ${ui.vb.y} ${ui.vb.w} ${ui.vb.h}`);
+  const sw = Math.max(0.05, ui.vb.w / 220);
+
+  // light grid for scale reference
+  const step = (() => {
+    const raw = ui.vb.w / 6;
+    const mag = Math.pow(10, Math.floor(Math.log10(raw)));
+    const n = raw / mag;
+    const nice = n < 1.5 ? 1 : n < 3.5 ? 2 : n < 7.5 ? 5 : 10;
+    return nice * mag;
+  })();
+  const gstart = Math.floor(ui.vb.x / step) * step;
+  for (let gx = gstart; gx <= ui.vb.x + ui.vb.w; gx += step) {
+    svg.appendChild(svgEl("line", { x1: gx, y1: ui.vb.y, x2: gx, y2: ui.vb.y + ui.vb.h, stroke: "#eceefc", "stroke-width": sw }));
+  }
+  const gystart = Math.floor(ui.vb.y / step) * step;
+  for (let gy = gystart; gy <= ui.vb.y + ui.vb.h; gy += step) {
+    svg.appendChild(svgEl("line", { x1: ui.vb.x, y1: gy, x2: ui.vb.x + ui.vb.w, y2: gy, stroke: "#eceefc", "stroke-width": sw }));
+  }
+  const scaleLbl = svgEl("text", { x: ui.vb.x + ui.vb.w - 0.3, y: ui.vb.y + 0.6, "font-size": ui.vb.w / 45, fill: "#c3c7de", "text-anchor": "end" });
+  scaleLbl.textContent = `grid: ${step} kN`;
+  svg.appendChild(scaleLbl);
+
+  // known chain, tip-to-tail
+  let cursor = ui.O;
+  ui.chain.forEach((c) => {
+    const next = [cursor[0] + c.vec[0], cursor[1] + c.vec[1]];
+    drawArrow(svg, toView(cursor), toView(next), c.color, sw * 1.6, c.label);
+    cursor = next;
+  });
+
+  // guide lines (long, through the chain's anchor points, along each unknown's true direction)
+  const big = ui.maxT * 1.4;
+  const g1a = toView([ui.P[0] - big * ui.dir1[0], ui.P[1] - big * ui.dir1[1]]);
+  const g1b = toView([ui.P[0] + big * ui.dir1[0], ui.P[1] + big * ui.dir1[1]]);
+  svg.appendChild(svgEl("line", { x1: g1a[0], y1: g1a[1], x2: g1b[0], y2: g1b[1], stroke: "#d7d9ea", "stroke-width": sw, "stroke-dasharray": `${sw * 4},${sw * 3}` }));
+  if (ui.hasSecond) {
+    const g2a = toView([ui.O[0] - big * ui.dir2[0], ui.O[1] - big * ui.dir2[1]]);
+    const g2b = toView([ui.O[0] + big * ui.dir2[0], ui.O[1] + big * ui.dir2[1]]);
+    svg.appendChild(svgEl("line", { x1: g2a[0], y1: g2a[1], x2: g2b[0], y2: g2b[1], stroke: "#d7d9ea", "stroke-width": sw, "stroke-dasharray": `${sw * 4},${sw * 3}` }));
+  } else {
+    // target ring at O for the single-unknown case
+    const ov = toView(ui.O);
+    const ring = svgEl("circle", { cx: ov[0], cy: ov[1], r: ui.vb.w / 28, fill: "none", stroke: "var(--warn)", "stroke-width": sw * 1.6, "stroke-dasharray": `${sw * 3},${sw * 2}` });
+    svg.appendChild(ring);
+  }
+
+  renderJointDynamic();
+  attachJointDrag();
+}
+
+function jointHandlePoints() {
+  const ui = jointUI;
+  const H1 = [ui.P[0] + ui.t1 * ui.dir1[0], ui.P[1] + ui.t1 * ui.dir1[1]];
+  const H2 = ui.hasSecond ? [ui.O[0] + ui.t2 * ui.dir2[0], ui.O[1] + ui.t2 * ui.dir2[1]] : ui.O;
+  return { H1, H2 };
+}
+
+function renderJointDynamic() {
+  const ui = jointUI;
+  const svg = document.getElementById("joint-polygon-svg");
+  const old = svg.querySelector("#joint-dynamic-layer");
+  if (old) old.remove();
+  const layer = svgEl("g", { id: "joint-dynamic-layer" });
+  svg.appendChild(layer);
+
+  const { H1, H2 } = jointHandlePoints();
+  const gap = Math.hypot(H1[0] - H2[0], H1[1] - H2[1]);
+  const closing = gap < snapTolFor(ui);
+
+  const sw = Math.max(0.05, ui.vb.w / 220);
+  const colorFor = (F) => (Math.abs(F) < 0.12 ? "var(--zero)" : F > 0 ? "var(--tension)" : "var(--compression)");
+
+  // the two "unknown" vectors, drawn live
+  drawArrow(layer, toView(ui.P), toView(H1), closing ? "var(--tension)" : colorFor(ui.t1), sw * (closing ? 2.4 : 1.8), `${ui.nodeId}${ui.other1}`);
+  if (ui.hasSecond) {
+    drawArrow(layer, toView(H2), toView(ui.O), closing ? "var(--tension)" : colorFor(-ui.t2), sw * (closing ? 2.4 : 1.8), `${ui.nodeId}${ui.other2}`);
+  }
+
+  // connector / gap indicator between the two handle tips
+  if (!closing) {
+    const a = toView(H1), b = toView(H2);
+    layer.appendChild(svgEl("line", { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: "var(--compression)", "stroke-width": sw, "stroke-dasharray": `${sw * 2},${sw * 2}`, opacity: 0.6 }));
+  }
+
+  // handles
+  const r = ui.vb.w / 32;
+  const h1v = toView(H1);
+  const h1 = svgEl("circle", { cx: h1v[0], cy: h1v[1], r, fill: closing ? "var(--tension)" : "#fff", stroke: "var(--accent)", "stroke-width": sw * 1.6, class: "handle-dot", id: "handle-1" });
+  layer.appendChild(h1);
+
+  if (ui.hasSecond) {
+    const h2v = toView(H2);
+    const h2 = svgEl("circle", { cx: h2v[0], cy: h2v[1], r, fill: closing ? "var(--tension)" : "#fff", stroke: "var(--accent)", "stroke-width": sw * 1.6, class: "handle-dot", id: "handle-2" });
+    layer.appendChild(h2);
+  }
+
+  if (closing) {
+    const glow = svgEl("circle", { cx: h1v[0], cy: h1v[1], r: r * 1.8, fill: "none", stroke: "var(--tension)", "stroke-width": sw, opacity: 0.5 });
+    layer.appendChild(glow);
+  }
+
+  // readouts
+  const ro = document.getElementById("joint-readouts");
+  ro.innerHTML = "";
+  const chip1 = document.createElement("div");
+  chip1.className = "readout-chip" + (closing ? " near" : "");
+  chip1.textContent = `${ui.nodeId}–${ui.other1}: ${Math.abs(ui.t1) < 0.12 ? "0" : ui.t1.toFixed(1)} kN ${ui.t1 > 0.12 ? "(T)" : ui.t1 < -0.12 ? "(C)" : ""}`;
+  ro.appendChild(chip1);
+  if (ui.hasSecond) {
+    const F2 = -ui.t2;
+    const chip2 = document.createElement("div");
+    chip2.className = "readout-chip" + (closing ? " near" : "");
+    chip2.textContent = `${ui.nodeId}–${ui.other2}: ${Math.abs(F2) < 0.12 ? "0" : F2.toFixed(1)} kN ${F2 > 0.12 ? "(T)" : F2 < -0.12 ? "(C)" : ""}`;
+    ro.appendChild(chip2);
+  }
+
+  const status = document.getElementById("joint-gap-status");
+  if (closing) {
+    status.textContent = "✨ Closed! Hit “Lock it in” to confirm.";
+    status.classList.add("close-enough");
+  } else {
+    status.textContent = ui.hasSecond ? "Drag both handles until they meet." : "Drag the handle onto the glowing ring.";
+    status.classList.remove("close-enough");
+  }
+}
+
+function drawArrow(parent, from, to, color, width, label) {
+  const dx = to[0] - from[0], dy = to[1] - from[1];
+  const len = Math.hypot(dx, dy);
+  if (len < 0.02) return; // nothing meaningful to draw for a near-zero vector
+  parent.appendChild(svgEl("line", { x1: from[0], y1: from[1], x2: to[0], y2: to[1], stroke: color, "stroke-width": width, "stroke-linecap": "round" }));
+  const ux = dx / len, uy = dy / len;
+  const headLen = Math.max(0.25, width * 2.2);
+  const ang = Math.atan2(uy, ux);
+  const head = svgEl("polygon", {
+    points: `${to[0]},${to[1]} ${to[0] - headLen * Math.cos(ang - 0.4)},${to[1] - headLen * Math.sin(ang - 0.4)} ${to[0] - headLen * Math.cos(ang + 0.4)},${to[1] - headLen * Math.sin(ang + 0.4)}`,
+    fill: color,
+  });
+  parent.appendChild(head);
+  if (label) {
+    const mx = (from[0] + to[0]) / 2, my = (from[1] + to[1]) / 2;
+    // offset perpendicular to the segment so labels on crossing/stacked vectors don't collide
+    const px = -uy, py = ux;
+    const off = Math.max(0.9, width * 4.2);
+    const lx = mx + px * off, ly = my + py * off;
+    const fontSize = Math.max(1.6, width * 2.4);
+    const txt = svgEl("text", {
+      x: lx, y: ly, "font-size": fontSize, fill: color, "font-weight": "700", "text-anchor": "middle",
+      stroke: "#fff", "stroke-width": fontSize * 0.22, "paint-order": "stroke",
+    });
+    txt.textContent = label;
+    parent.appendChild(txt);
+  }
+}
+
+function svgToJointSpace(svg, clientX, clientY) {
+  const pt = svg.createSVGPoint();
+  pt.x = clientX; pt.y = clientY;
+  const ctm = svg.getScreenCTM().inverse();
+  const p = pt.matrixTransform(ctm);
+  return [p.x, -p.y]; // un-flip back to math space
+}
+
+function attachJointDrag() {
+  const svg = document.getElementById("joint-polygon-svg");
+  const ui = jointUI;
+
+  function wire(handleId, onMove) {
+    const el = document.getElementById(handleId);
+    if (!el) return;
+    el.addEventListener("pointerdown", (e) => {
+      e.preventDefault();
+      el.setPointerCapture(e.pointerId);
+      const move = (ev) => {
+        const [x, y] = svgToJointSpace(svg, ev.clientX, ev.clientY);
+        onMove(x, y);
+        renderJointDynamic();
+        attachJointDrag(); // re-wire since dynamic layer was rebuilt
+      };
+      const up = () => {
+        window.removeEventListener("pointermove", move);
+        window.removeEventListener("pointerup", up);
+      };
+      window.addEventListener("pointermove", move);
+      window.addEventListener("pointerup", up);
+    });
+  }
+
+  wire("handle-1", (x, y) => {
+    const t = (x - ui.P[0]) * ui.dir1[0] + (y - ui.P[1]) * ui.dir1[1];
+    ui.t1 = Math.max(-ui.maxT, Math.min(ui.maxT, t));
+  });
+  if (ui.hasSecond) {
+    wire("handle-2", (x, y) => {
+      const t = (x - ui.O[0]) * ui.dir2[0] + (y - ui.O[1]) * ui.dir2[1];
+      ui.t2 = Math.max(-ui.maxT, Math.min(ui.maxT, t));
+    });
+  }
+}
+
+function renderJointNumericFields(unresolved, nodeId) {
+  const fields = document.getElementById("joint-fields");
+  fields.innerHTML = "";
+  unresolved.forEach(([i, j]) => {
+    const other = i === nodeId ? j : i;
+    const row = document.createElement("div");
+    row.className = "field-row";
+    row.innerHTML = `
+      <label>Member ${nodeId}–${other}</label>
+      <input type="number" step="0.1" data-key="${memberKey(i, j)}" class="joint-input" placeholder="kN (+ tension / − compression)">
+      <div class="hint-sub">+ tension &nbsp;·&nbsp; − compression</div>
+    `;
+    fields.appendChild(row);
+  });
+}
+
+function setJointMode(mode) {
+  jointUI.mode = mode;
+  const dragView = document.getElementById("joint-drag-view");
+  const fields = document.getElementById("joint-fields");
+  const toggle = document.getElementById("btn-toggle-mode");
+  if (mode === "numeric") {
+    dragView.style.display = "none";
+    fields.style.display = "block";
+    toggle.textContent = "🖱️ Drag to solve instead";
+  } else {
+    dragView.style.display = "block";
+    fields.style.display = "none";
+    toggle.textContent = "⌨️ Type numbers instead";
+  }
+}
+
+document.getElementById("btn-toggle-mode").addEventListener("click", () => {
+  setJointMode(jointUI.mode === "drag" ? "numeric" : "drag");
+});
+
+function openJointModal(nodeId, unresolved) {
+  const level = state.level;
+  document.getElementById("joint-title").textContent = `🔎 Joint ${nodeId}`;
+
+  const known = [];
+  const load = (level.loads || {})[nodeId];
+  if (load && (load.fx || load.fy)) known.push(`load`);
+  if (level.nodes[nodeId].support) known.push(`known reaction${reactionUnknownsFor(level).filter((r) => r.node === nodeId).length > 1 ? "s" : ""}`);
+  const solvedTouching = level.members.filter(([i, j]) => (i === nodeId || j === nodeId) && state.solvedMembers.has(memberKey(i, j)));
+  if (solvedTouching.length) known.push(`${solvedTouching.length} solved neighbor${solvedTouching.length > 1 ? "s" : ""}`);
+  document.getElementById("joint-known").innerHTML = known.length
+    ? `Known here: <b>${known.join(", ")}</b>. Drag the arrow(s) along their member line until the shape closes tip-to-tail — that's equilibrium.`
+    : `No loads or solved neighbors here yet — just this joint's own two members. Drag until the shape closes.`;
+
+  buildJointUI(nodeId, unresolved);
+  renderJointNumericFields(unresolved, nodeId);
+  setJointMode("drag");
+  renderJointPolygon();
+
+  document.getElementById("btn-check-joint").dataset.node = nodeId;
+  openModal("modal-joint");
+}
+
+document.getElementById("btn-check-joint").addEventListener("click", () => {
+  const nodeId = document.getElementById("btn-check-joint").dataset.node;
+  let allCorrect = true;
+  const errs = [];
+  const toSolve = [];
+
+  if (jointUI.mode === "numeric") {
+    const inputs = document.querySelectorAll(".joint-input");
+    inputs.forEach((inp) => {
+      const key = inp.dataset.key;
+      const truth = state.truth.memberForces[key];
+      const val = parseFloat(inp.value);
+      if (isNaN(val) || Math.abs(val - truth) > tolFor(truth)) {
+        allCorrect = false;
+        errs.push(key.replace("-", "–"));
+      } else {
+        toSolve.push(key);
+      }
+    });
+  } else {
+    const ui = jointUI;
+    const guesses = [[ui.mem1Key, ui.t1]];
+    if (ui.hasSecond) guesses.push([ui.mem2Key, -ui.t2]);
+    guesses.forEach(([key, val]) => {
+      const truth = state.truth.memberForces[key];
+      if (Math.abs(val - truth) > tolFor(truth)) {
+        allCorrect = false;
+        errs.push(key.replace("-", "–"));
+      } else {
+        toSolve.push(key);
+      }
+    });
+  }
+
+  if (allCorrect) {
+    toSolve.forEach((key) => state.solvedMembers.add(key));
+    closeModal("modal-joint");
+    showToast(`Joint ${nodeId} solved! 🎯`, "good");
+    renderDiagram();
+    renderPanels();
+    if (allMembersSolved()) finishLevel();
+  } else {
+    state.mistakes++;
+    document.getElementById("pill-mistakes").textContent = state.mistakes;
+    showToast(`Not balanced yet — keep adjusting ${errs.join(", ")}.`, "bad");
+  }
+});
+
+document.getElementById("pill-hint-btn").addEventListener("click", () => {
+  if (!state.reactionsSolved) {
+    showToast("Hint: find the reactions first using global equilibrium of the whole truss.", "good");
+    openReactionsModal();
+    return;
+  }
+  const hint = findHintJoint();
+  if (!hint) {
+    showToast("No joint is ready yet — double-check your solved values!", "bad");
+    return;
+  }
+  const g = document.getElementById("joint-g-" + hint);
+  if (g) {
+    g.classList.add("hint-flash");
+    showToast(`Try joint ${hint} — it has 2 or fewer unknowns.`, "good");
+    let n = 0;
+    const flash = setInterval(() => {
+      g.style.filter = n % 2 === 0 ? "drop-shadow(0 0 6px gold)" : "none";
+      n++;
+      if (n > 6) { clearInterval(flash); g.style.filter = "none"; }
+    }, 220);
+  }
+});
+
+function finishLevel() {
+  state.finished = true;
+  clearInterval(timerInterval);
+  const level = state.level;
+  const timeStr = formatTime(state.elapsed);
+  const stars = state.mistakes === 0 ? 3 : state.mistakes <= 3 ? 2 : 1;
+
+  const best = progress[level.id] || { stars: 0, bestTime: null };
+  progress[level.id] = {
+    stars: Math.max(best.stars, stars),
+    bestTime: best.bestTime ? Math.min(best.bestTime, state.elapsed) : state.elapsed,
+    unlocked: true,
+  };
+  if (LEVELS[state.levelIndex + 1]) {
+    progress[LEVELS[state.levelIndex + 1].id] = progress[LEVELS[state.levelIndex + 1].id] || { stars: 0, bestTime: null };
+    progress[LEVELS[state.levelIndex + 1].id].unlocked = true;
+  }
+  saveProgress(progress);
+
+  document.getElementById("win-stars").textContent = "★".repeat(stars) + "☆".repeat(3 - stars);
+  document.getElementById("win-time").textContent = timeStr;
+  document.getElementById("win-mistakes").textContent = state.mistakes;
+  document.getElementById("btn-win-next").style.display = LEVELS[state.levelIndex + 1] ? "block" : "none";
+  openModal("modal-win");
+}
+
+/* ============================================================
+   6. SCREEN NAVIGATION
+   ============================================================ */
+function renderLevelGrid() {
+  const grid = document.getElementById("level-grid");
+  grid.innerHTML = "";
+  LEVELS.forEach((level, idx) => {
+    const unlocked = idx === 0 || (progress[level.id] && progress[level.id].unlocked);
+    const p = progress[level.id] || { stars: 0, bestTime: null };
+    const card = document.createElement("div");
+    card.className = "level-card" + (unlocked ? "" : " locked");
+    card.innerHTML = `
+      <div class="emoji">${level.emoji}</div>
+      <h3>${level.name}</h3>
+      <div class="meta">${level.difficulty} · ${level.members.length} members</div>
+      <div class="stars">${unlocked ? "★".repeat(p.stars) + "☆".repeat(3 - p.stars) : ""}</div>
+      ${p.bestTime ? `<div class="meta">Best: ${formatTime(p.bestTime)}</div>` : ""}
+      ${unlocked ? `<button data-idx="${idx}">Play</button>` : `<div class="lockmsg">Finish the previous truss to unlock 🔒</div>`}
+    `;
+    if (unlocked) card.querySelector("button").addEventListener("click", () => startLevel(idx));
+    grid.appendChild(card);
+  });
+}
+
+function startLevel(idx) {
+  state = newState(idx);
+  document.getElementById("screen-levels").style.display = "none";
+  document.getElementById("screen-play").style.display = "block";
+  document.getElementById("pill-level").textContent = `${state.level.emoji} ${state.level.name}`;
+  document.getElementById("pill-mistakes").textContent = "0";
+  document.getElementById("pill-time").textContent = "0:00";
+  renderDiagram();
+  renderPanels();
+  clearInterval(timerInterval);
+  timerInterval = setInterval(tickTimer, 500);
+  setTimeout(() => openReactionsModal(), 350);
+}
+
+function backToLevels() {
+  clearInterval(timerInterval);
+  document.getElementById("screen-play").style.display = "none";
+  document.getElementById("screen-levels").style.display = "block";
+  renderLevelGrid();
+}
+
+document.getElementById("btn-back").addEventListener("click", backToLevels);
+document.getElementById("btn-win-levels").addEventListener("click", () => { closeModal("modal-win"); backToLevels(); });
+document.getElementById("btn-win-next").addEventListener("click", () => {
+  closeModal("modal-win");
+  if (LEVELS[state.levelIndex + 1]) startLevel(state.levelIndex + 1);
+  else backToLevels();
+});
+document.getElementById("btn-help").addEventListener("click", () => openModal("modal-help"));
+document.getElementById("btn-reset").addEventListener("click", () => {
+  if (confirm("Reset all level progress and stars?")) {
+    progress = {};
+    saveProgress(progress);
+    renderLevelGrid();
+  }
+});
+
+/* ============================================================
+   7. BOOT
+   ============================================================ */
+renderLevelGrid();
+if (!progress["l1"]) { /* first visit, no-op, just ensures level 1 unlocked path works */ }
+</script>
+</body>
+</html>
