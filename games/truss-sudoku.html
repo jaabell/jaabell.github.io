@@ -95,10 +95,17 @@
     font-size:0.85rem;display:flex;align-items:center;gap:6px;font-weight:600;
   }
   .back-link{background:none;border:none;color:var(--accent-dark);font-weight:700;font-size:0.9rem;padding:8px 2px;}
+  #pill-section-btn.active{border-color:var(--accent);background:#eceaff;}
+  #pill-section-btn:disabled{opacity:0.4;cursor:not-allowed;}
 
   .play-body{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;}
-  .diagram-card{flex:1 1 480px;min-width:280px;}
+  .diagram-card{flex:1 1 480px;min-width:280px;position:relative;}
   .diagram-card svg{width:100%;height:auto;display:block;touch-action:manipulation;}
+  #truss-svg.cutting{cursor:crosshair;touch-action:none;}
+  .section-banner{
+    background:#fff4e9;color:#8a5a00;border-radius:10px;padding:8px 12px;font-size:0.85rem;
+    font-weight:700;text-align:center;margin-bottom:10px;
+  }
   .panel-card{flex:0 1 280px;min-width:240px;}
   .panel-card h3{margin-top:0;font-size:1rem;}
   .checklist{list-style:none;margin:0;padding:0;font-size:0.9rem;}
@@ -137,10 +144,22 @@
   .modal.modal-wide{max-width:520px;}
 
   #joint-drag-view{margin:12px 0;}
+  .polygon-canvas-wrap{position:relative;}
   #joint-polygon-svg{
     width:100%;height:280px;background:#f8f9fd;border-radius:14px;touch-action:none;
-    display:block;
+    display:block;cursor:grab;
   }
+  #joint-polygon-svg.panning{cursor:grabbing;}
+  .view-controls{
+    position:absolute;top:8px;right:8px;display:flex;flex-direction:column;gap:4px;
+  }
+  .view-controls button{
+    width:30px;height:30px;border-radius:8px;border:none;background:rgba(255,255,255,0.92);
+    box-shadow:0 1px 4px rgba(44,42,74,0.2);font-size:1rem;font-weight:700;color:var(--ink);
+    line-height:1;cursor:pointer;
+  }
+  .view-controls button:hover{background:#fff;}
+  #joint-polygon-svg text, #joint-fbd-svg text{pointer-events:none;}
   #joint-readouts{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
   .readout-chip{
     background:#f5f6fb;border-radius:10px;padding:6px 12px;font-size:0.85rem;font-weight:700;
@@ -170,6 +189,19 @@
     width:100%;padding:10px 12px;border-radius:10px;border:2px solid #ddd;font-size:1rem;font-family:inherit;
   }
   .field-row input[type=number]:focus{outline:none;border-color:var(--accent);}
+  .field-slider{
+    width:100%;margin-top:8px;-webkit-appearance:none;appearance:none;height:6px;border-radius:999px;
+    background:#e4e6f5;outline:none;
+  }
+  .field-slider::-webkit-slider-thumb{
+    -webkit-appearance:none;appearance:none;width:20px;height:20px;border-radius:50%;
+    background:var(--accent);border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.3);cursor:pointer;
+  }
+  .field-slider::-moz-range-thumb{
+    width:20px;height:20px;border-radius:50%;background:var(--accent);border:3px solid #fff;
+    box-shadow:0 1px 4px rgba(0,0,0,0.3);cursor:pointer;
+  }
+  .slider-ends{display:flex;justify-content:space-between;font-size:0.72rem;opacity:0.5;margin-top:2px;}
   .sign-preview{font-size:0.8rem;margin-top:4px;font-weight:700;}
   .sign-preview.t{color:var(--tension);}
   .sign-preview.c{color:var(--compression);}
@@ -177,6 +209,28 @@
     background:#f5f6fb;border-radius:12px;padding:10px 14px;font-size:0.85rem;margin-bottom:10px;line-height:1.6;
   }
   .known-box code{background:#e9ecff;padding:1px 5px;border-radius:5px;}
+  .eq-box{
+    background:#2c2a4a;color:#e4e6ff;border-radius:12px;padding:12px 14px;margin-bottom:10px;
+    font-size:0.8rem;line-height:1.7;font-family:'Courier New',monospace;
+  }
+  .eq-box .eq-title{font-family:'Nunito',system-ui,sans-serif;font-weight:700;color:#fff;margin-bottom:4px;font-size:0.82rem;}
+  .eq-box code{background:none;color:inherit;}
+  .eq-line{white-space:normal;}
+  .term-stack{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 1px;line-height:1.25;}
+  .term-top{white-space:nowrap;border-bottom:1.5px solid #6c6a9a;padding-bottom:2px;}
+  .term-value{font-size:0.88em;color:#ffd27a;font-weight:700;margin-top:1px;}
+  .eq-rhs{font-weight:700;}
+  .eq-op{font-weight:800;font-size:1.1em;padding:0 1px;}
+  .eq-rhs.balanced, .eq-op.balanced{color:#6ee7a8;}
+  .eq-rhs.over, .eq-op.over{color:#ffb020;}
+  .eq-rhs.under, .eq-op.under{color:#7ea6ff;}
+  .view-tabs{display:flex;gap:6px;margin:10px 0;}
+  .view-tabs button{
+    flex:1;background:#f0f1f8;border:2px solid transparent;border-radius:10px;padding:8px 6px;
+    font-size:0.8rem;font-weight:700;color:var(--ink);opacity:0.6;
+  }
+  .view-tabs button.active{background:#fff;border-color:var(--accent);opacity:1;}
+  #joint-fbd-svg{width:100%;height:240px;background:#f8f9fd;border-radius:14px;display:block;}
   .modal-actions{display:flex;gap:10px;margin-top:18px;}
   .btn{
     border:none;border-radius:12px;padding:11px 18px;font-weight:700;font-size:0.95rem;flex:1;
@@ -243,11 +297,13 @@
       <div class="pill">⏱️ <span id="pill-time">0:00</span></div>
       <div class="pill">❌ <span id="pill-mistakes">0</span></div>
       <div class="pill" id="pill-hint-btn" style="cursor:pointer;">💡 Hint</div>
+      <button class="pill" id="pill-section-btn" style="cursor:pointer;border:2px solid transparent;">✂️ Section Cut</button>
     </div>
 
     <div class="play-body">
       <div class="diagram-card card">
         <span class="phase-badge" id="phase-badge">Phase</span>
+        <div id="section-banner" class="section-banner" style="display:none;">✂️ Drag a line across the members you want to cut</div>
         <svg id="truss-svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"></svg>
       </div>
       <div class="panel-card card">
@@ -270,7 +326,7 @@
 
 <!-- ===================== REACTIONS MODAL ===================== -->
 <div class="modal-backdrop" id="modal-reactions">
-  <div class="modal">
+  <div class="modal modal-wide">
     <button class="close-x" data-close="modal-reactions">✕</button>
     <h2>🔧 Phase 1 — Find the reactions</h2>
     <div class="known-box">
@@ -278,10 +334,39 @@
       <code>ΣFy=0</code> and <code>ΣM=0</code> (about either support) with the loads shown
       on the diagram to find every reaction component. Positive = arrow direction shown.
     </div>
+    <div class="known-box" id="reactions-hint" style="display:none;background:#fff4e9;"></div>
+    <div id="reaction-equations" class="eq-box"></div>
     <div id="reaction-fields"></div>
     <div class="modal-actions">
       <button class="btn btn-secondary" data-close="modal-reactions">Later</button>
       <button class="btn btn-primary" id="btn-check-reactions">Check</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SECTION MODAL (method of sections) ===================== -->
+<div class="modal-backdrop" id="modal-section">
+  <div class="modal modal-wide">
+    <button class="close-x" data-close="modal-section">✕</button>
+    <h2>✂️ Method of Sections</h2>
+    <div class="known-box" id="section-known"></div>
+    <div id="section-equations" class="eq-box"></div>
+    <div id="section-fields"></div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" data-close="modal-section">Later</button>
+      <button class="btn btn-primary" id="btn-check-section">Check</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SECTION-INVALID TOAST MODAL ===================== -->
+<div class="modal-backdrop" id="modal-section-invalid">
+  <div class="modal">
+    <button class="close-x" data-close="modal-section-invalid">✕</button>
+    <h2>✂️ Not a clean cut</h2>
+    <p id="section-invalid-text" style="line-height:1.5;"></p>
+    <div class="modal-actions">
+      <button class="btn btn-primary" data-close="modal-section-invalid">Try again</button>
     </div>
   </div>
 </div>
@@ -292,15 +377,33 @@
     <button class="close-x" data-close="modal-joint">✕</button>
     <h2 id="joint-title">🔎 Joint</h2>
     <div class="known-box" id="joint-known"></div>
+    <div id="joint-equations" class="eq-box"></div>
+
+    <div class="view-tabs">
+      <button id="tab-drag" class="active">🖱️ Drag</button>
+      <button id="tab-fbd">📐 FBD</button>
+      <button id="tab-numeric">⌨️ Numbers</button>
+    </div>
 
     <div id="joint-drag-view">
-      <svg id="joint-polygon-svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="polygon-canvas-wrap">
+        <svg id="joint-polygon-svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"></svg>
+        <div class="view-controls">
+          <button id="btn-zoom-in" title="Zoom in">+</button>
+          <button id="btn-zoom-out" title="Zoom out">−</button>
+          <button id="btn-zoom-reset" title="Reset view">⟲</button>
+        </div>
+      </div>
+      <div id="joint-chain-legend" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;"></div>
       <div id="joint-readouts"></div>
       <div id="joint-gap-status" class="gap-status">Drag the handles until the shape closes.</div>
     </div>
+    <div id="joint-fbd-view" style="display:none;">
+      <svg id="joint-fbd-svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"></svg>
+      <div id="joint-fbd-legend" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;"></div>
+      <div class="gap-status">True angles, true directions — magnitudes listed above since this joint has several forces.</div>
+    </div>
     <div id="joint-fields" style="display:none;"></div>
-
-    <button class="mode-toggle" id="btn-toggle-mode">⌨️ Type numbers instead</button>
 
     <div class="modal-actions">
       <button class="btn btn-secondary" data-close="modal-joint">Later</button>
@@ -373,12 +476,14 @@
 /* ============================================================
    1. TRUSS DATA
    ============================================================ */
+const deg = (d) => (d * Math.PI) / 180;
+
 const LEVELS = [
   {
     id: "l1", name: "Warm-Up Triangle", emoji: "🔺", difficulty: "Easy",
     nodes: {
-      A: { x: 0, y: 0, support: "pin" },
-      B: { x: 6, y: 0, support: "roller" },
+      A: { x: 0, y: 0, support: { type: "pin" } },
+      B: { x: 6, y: 0, support: { type: "roller" } },
       C: { x: 3, y: 4 },
     },
     members: [["A","B"],["A","C"],["B","C"]],
@@ -387,7 +492,7 @@ const LEVELS = [
   {
     id: "l2", name: "Simple Bridge", emoji: "🌉", difficulty: "Easy+",
     nodes: {
-      A: { x: 0, y: 0, support: "pin" }, B: { x: 4, y: 0 }, C: { x: 8, y: 0, support: "roller" },
+      A: { x: 0, y: 0, support: { type: "pin" } }, B: { x: 4, y: 0 }, C: { x: 8, y: 0, support: { type: "roller" } },
       D: { x: 2, y: 3 }, E: { x: 6, y: 3 },
     },
     members: [["A","B"],["B","C"],["A","D"],["D","B"],["D","E"],["B","E"],["E","C"]],
@@ -396,7 +501,7 @@ const LEVELS = [
   {
     id: "l3", name: "Warren Truss", emoji: "🌊", difficulty: "Medium",
     nodes: {
-      A: { x: 0, y: 0, support: "pin" }, B: { x: 4, y: 0 }, C: { x: 8, y: 0 }, D: { x: 12, y: 0, support: "roller" },
+      A: { x: 0, y: 0, support: { type: "pin" } }, B: { x: 4, y: 0 }, C: { x: 8, y: 0 }, D: { x: 12, y: 0, support: { type: "roller" } },
       E: { x: 2, y: 3 }, F: { x: 6, y: 3 }, G: { x: 10, y: 3 },
     },
     members: [["A","E"],["E","B"],["B","F"],["F","C"],["C","G"],["G","D"],["E","F"],["F","G"],["A","B"],["B","C"],["C","D"]],
@@ -405,7 +510,7 @@ const LEVELS = [
   {
     id: "l4", name: "Boss Truss", emoji: "🏗️", difficulty: "Hard",
     nodes: {
-      A: { x: 0, y: 0, support: "pin" }, B: { x: 4, y: 0 }, C: { x: 8, y: 0 }, D: { x: 12, y: 0 }, E: { x: 16, y: 0, support: "roller" },
+      A: { x: 0, y: 0, support: { type: "pin" } }, B: { x: 4, y: 0 }, C: { x: 8, y: 0 }, D: { x: 12, y: 0 }, E: { x: 16, y: 0, support: { type: "roller" } },
       F: { x: 2, y: 3 }, G: { x: 6, y: 3 }, H: { x: 10, y: 3 }, I: { x: 14, y: 3 },
     },
     members: [
@@ -414,6 +519,25 @@ const LEVELS = [
       ["A","B"],["B","C"],["C","D"],["D","E"],
     ],
     loads: { B: { fx: 0, fy: -10 }, C: { fx: 0, fy: -10 }, D: { fx: 0, fy: -10 } },
+  },
+  {
+    id: "l5", name: "Tilted Landing", emoji: "⛰️", difficulty: "Medium+",
+    nodes: {
+      A: { x: 0, y: 0, support: { type: "pin" } }, B: { x: 4, y: 0 },
+      C: { x: 8, y: 0, support: { type: "roller", dir: [-Math.sin(deg(20)), Math.cos(deg(20))] } },
+      D: { x: 2, y: 3 }, E: { x: 6, y: 3 },
+    },
+    members: [["A","B"],["B","C"],["A","D"],["D","B"],["D","E"],["B","E"],["E","C"]],
+    loads: { D: { fx: 0, fy: -8 }, E: { fx: 0, fy: -8 } },
+  },
+  {
+    id: "l6", name: "Split Span", emoji: "🔗", difficulty: "Expert", hinge: "F",
+    nodes: {
+      A: { x: 0, y: 0, support: { type: "pin" } }, B: { x: 4, y: 0 }, C: { x: 8, y: 0 }, D: { x: 12, y: 0, support: { type: "pin" } },
+      E: { x: 2, y: 3 }, F: { x: 6, y: 3 }, G: { x: 10, y: 3 },
+    },
+    members: [["A","E"],["E","B"],["B","F"],["F","C"],["C","G"],["G","D"],["E","F"],["F","G"],["A","B"],["C","D"]],
+    loads: { B: { fx: 0, fy: -10 }, C: { fx: 0, fy: -10 } },
   },
 ];
 
@@ -444,15 +568,7 @@ function solveTruss(level) {
 
   const unknowns = [];
   level.members.forEach(([i, j]) => unknowns.push({ type: "member", i, j, key: i + "-" + j }));
-  nodeIds.forEach((id) => {
-    const s = level.nodes[id].support;
-    if (s === "pin") {
-      unknowns.push({ type: "reaction", axis: "x", node: id });
-      unknowns.push({ type: "reaction", axis: "y", node: id });
-    } else if (s === "roller") {
-      unknowns.push({ type: "reaction", axis: "y", node: id });
-    }
-  });
+  reactionUnknownsFor(level).forEach((r) => unknowns.push({ type: "reaction", node: r.node, dir: r.dir, comp: r.comp }));
 
   const U = unknowns.length;
   const eqs = 2 * n;
@@ -470,8 +586,8 @@ function solveTruss(level) {
       A[xEq(u.i)][k] += ux; A[yEq(u.i)][k] += uy;
       A[xEq(u.j)][k] += -ux; A[yEq(u.j)][k] += -uy;
     } else {
-      if (u.axis === "x") A[xEq(u.node)][k] += 1;
-      else A[yEq(u.node)][k] += 1;
+      A[xEq(u.node)][k] += u.dir[0];
+      A[yEq(u.node)][k] += u.dir[1];
     }
   });
 
@@ -488,7 +604,7 @@ function solveTruss(level) {
     if (u.type === "member") memberForces[u.key] = sol[k];
     else {
       reactions[u.node] = reactions[u.node] || {};
-      reactions[u.node][u.axis] = sol[k];
+      reactions[u.node][u.comp] = sol[k];
     }
   });
   return { memberForces, reactions };
@@ -500,6 +616,37 @@ function findMemberPair(level, key) {
   return null;
 }
 function tolFor(truth) { return Math.max(0.15, 0.02 * Math.abs(truth)); }
+
+// Sizes a slider's range generously around a truth value without revealing it
+// (the range stays symmetric about 0, so neither its bounds nor its sign give anything away).
+function sliderRangeFor(truth) {
+  const raw = Math.max(10, Math.abs(truth) * 2.2);
+  return Math.ceil(raw / 5) * 5;
+}
+
+function attachFieldSlider(row, numberInput, truth) {
+  const range = sliderRangeFor(truth);
+  const wrap = document.createElement("div");
+  const slider = document.createElement("input");
+  slider.type = "range";
+  slider.min = -range; slider.max = range; slider.step = 0.1; slider.value = 0;
+  slider.className = "field-slider";
+  wrap.appendChild(slider);
+  const ends = document.createElement("div");
+  ends.className = "slider-ends";
+  ends.innerHTML = `<span>−${range}</span><span>0</span><span>+${range}</span>`;
+  wrap.appendChild(ends);
+  row.appendChild(wrap);
+
+  slider.addEventListener("input", () => {
+    numberInput.value = slider.value;
+    numberInput.dispatchEvent(new Event("input", { bubbles: true }));
+  });
+  numberInput.addEventListener("input", () => {
+    const v = parseFloat(numberInput.value);
+    if (!isNaN(v) && v >= -range && v <= range) slider.value = v;
+  });
+}
 function memberDir(level, from, to) {
   const a = level.nodes[from], b = level.nodes[to];
   const dx = b.x - a.x, dy = b.y - a.y;
@@ -534,21 +681,171 @@ function newState(levelIndex) {
     startTime: Date.now(),
     elapsed: 0,
     finished: false,
+    sectionMode: false,
+    cutDraft: null, // {x1,y1,x2,y2} in diagram view-space while actively dragging a cut line
   };
+}
+
+function rollerLabel(dir) {
+  if (Math.abs(dir[0]) < 0.02) return "y";
+  if (Math.abs(dir[1]) < 0.02) return "x";
+  return "n";
 }
 
 function reactionUnknownsFor(level) {
   const out = [];
   Object.keys(level.nodes).forEach((id) => {
     const s = level.nodes[id].support;
-    if (s === "pin") { out.push({ node: id, axis: "x" }); out.push({ node: id, axis: "y" }); }
-    else if (s === "roller") { out.push({ node: id, axis: "y" }); }
+    if (!s) return;
+    if (s.type === "pin") {
+      out.push({ node: id, dir: [1, 0], comp: "x" });
+      out.push({ node: id, dir: [0, 1], comp: "y" });
+    } else if (s.type === "roller") {
+      const dir = s.dir || [0, 1];
+      out.push({ node: id, dir, comp: rollerLabel(dir) });
+    }
   });
   return out;
 }
 
 function unresolvedMembersAtJoint(level, nodeId, solvedMembers) {
   return level.members.filter(([i, j]) => (i === nodeId || j === nodeId) && !solvedMembers.has(memberKey(i, j)));
+}
+
+// Nodes reachable from each other once the hinge joint is removed — this is what
+// lets you isolate "one side" of the truss as its own free body at the hinge.
+function partitionAtHinge(level) {
+  const hinge = level.hinge;
+  const nodeIds = Object.keys(level.nodes).filter((id) => id !== hinge);
+  const adj = {};
+  nodeIds.forEach((id) => (adj[id] = []));
+  level.members.forEach(([i, j]) => {
+    if (i === hinge || j === hinge) return;
+    if (adj[i] && adj[j]) { adj[i].push(j); adj[j].push(i); }
+  });
+  const visited = new Set();
+  const components = [];
+  nodeIds.forEach((start) => {
+    if (visited.has(start)) return;
+    const comp = [];
+    const stack = [start];
+    visited.add(start);
+    while (stack.length) {
+      const cur = stack.pop();
+      comp.push(cur);
+      adj[cur].forEach((nb) => { if (!visited.has(nb)) { visited.add(nb); stack.push(nb); } });
+    }
+    components.push(comp);
+  });
+  return components;
+}
+
+function momentAbout(pivot, point, forceVec) {
+  const dx = point[0] - pivot[0], dy = point[1] - pivot[1];
+  return dx * forceVec[1] - dy * forceVec[0];
+}
+
+/* ---------- method of sections: cutting-line geometry ---------- */
+function segmentsIntersect(p1, p2, p3, p4) {
+  const cross = (ax, ay, bx, by) => ax * by - ay * bx;
+  const d1 = cross(p4[0] - p3[0], p4[1] - p3[1], p1[0] - p3[0], p1[1] - p3[1]);
+  const d2 = cross(p4[0] - p3[0], p4[1] - p3[1], p2[0] - p3[0], p2[1] - p3[1]);
+  const d3 = cross(p2[0] - p1[0], p2[1] - p1[1], p3[0] - p1[0], p3[1] - p1[1]);
+  const d4 = cross(p2[0] - p1[0], p2[1] - p1[1], p4[0] - p1[0], p4[1] - p1[1]);
+  return ((d1 > 0 && d2 < 0) || (d1 < 0 && d2 > 0)) && ((d3 > 0 && d4 < 0) || (d3 < 0 && d4 > 0));
+}
+
+// which members (by key) the drawn cutting line crosses, in VIEW space (same space as worldToView)
+function membersCrossedBy(level, cutP1, cutP2) {
+  const keys = [];
+  level.members.forEach(([i, j]) => {
+    const p1 = worldToView(level, level.nodes[i].x, level.nodes[i].y);
+    const p2 = worldToView(level, level.nodes[j].x, level.nodes[j].y);
+    if (segmentsIntersect(cutP1, cutP2, [p1.x, p1.y], [p2.x, p2.y])) keys.push(memberKey(i, j));
+  });
+  return keys;
+}
+
+// connected components of the truss graph with the given member keys removed
+function connectivityComponents(level, excludeKeySet) {
+  const nodeIds = Object.keys(level.nodes);
+  const adj = {};
+  nodeIds.forEach((id) => (adj[id] = []));
+  level.members.forEach(([i, j]) => {
+    if (excludeKeySet.has(memberKey(i, j))) return;
+    adj[i].push(j); adj[j].push(i);
+  });
+  const visited = new Set();
+  const components = [];
+  nodeIds.forEach((start) => {
+    if (visited.has(start)) return;
+    const comp = [];
+    const stack = [start];
+    visited.add(start);
+    while (stack.length) {
+      const cur = stack.pop();
+      comp.push(cur);
+      adj[cur].forEach((nb) => { if (!visited.has(nb)) { visited.add(nb); stack.push(nb); } });
+    }
+    components.push(comp);
+  });
+  return components;
+}
+
+// Validates a candidate cut and returns either {ok:true, cutKeys, sideA, sideB} or {ok:false, reason}
+function validateCut(level, cutKeys) {
+  if (cutKeys.length === 0) return { ok: false, reason: "noop" };
+  const keySet = new Set(cutKeys);
+  const components = connectivityComponents(level, keySet);
+  if (components.length !== 2) {
+    return { ok: false, reason: `That line splits the truss into ${components.length} piece${components.length === 1 ? "" : "s"}, not two. Draw a single straight cut that goes all the way from one open side of the truss to the other.` };
+  }
+  const [sideA, sideB] = components;
+  const inA = new Set(sideA);
+  for (const key of cutKeys) {
+    const [i, j] = findMemberPair(level, key);
+    const split = inA.has(i) !== inA.has(j);
+    if (!split) {
+      return { ok: false, reason: `Member ${i}–${j} doesn't actually sit on the dividing line between the two pieces — try a cleaner straight cut.` };
+    }
+  }
+  const unsolved = cutKeys.filter((k) => !state.solvedMembers.has(k));
+  if (unsolved.length === 0) {
+    return { ok: false, reason: "Every member that line crosses is already solved — try cutting through at least one unknown member." };
+  }
+  if (unsolved.length > 3) {
+    return { ok: false, reason: `That cut has ${unsolved.length} unknown members (${unsolved.map((k) => k.replace("-", "–")).join(", ")}). With only three equilibrium equations (ΣFx=0, ΣFy=0, ΣM=0) for one side, you need a cut with three or fewer unknowns.` };
+  }
+  return { ok: true, cutKeys, sideA, sideB };
+}
+
+function renderHingeHint(level) {
+  const components = partitionAtHinge(level);
+  const H = level.nodes[level.hinge];
+  const side = components.find((c) => c.some((id) => level.nodes[id].support)) || components[0];
+  const supportNode = side.find((id) => level.nodes[id].support);
+  const reactions = reactionUnknownsFor(level).filter((r) => r.node === supportNode);
+  const terms = reactions.map((r) => {
+    const coeff = momentAbout([H.x, H.y], [level.nodes[r.node].x, level.nodes[r.node].y], r.dir);
+    return `(${coeff.toFixed(2)})·${r.node}_${r.comp}`;
+  });
+  let loadMoment = 0;
+  side.forEach((id) => {
+    const load = (level.loads || {})[id];
+    if (!load) return;
+    loadMoment += momentAbout([H.x, H.y], [level.nodes[id].x, level.nodes[id].y], [load.fx || 0, load.fy || 0]);
+  });
+  const loadTerm = Math.abs(loadMoment) < 0.005 ? "" : (loadMoment > 0 ? " + " : " − ") + Math.abs(loadMoment).toFixed(2);
+  return `
+    <b>🔗 ${level.hinge} is an articulation point:</b> remove it and the truss splits into two
+    pieces — ${side.join("")} (with ${supportNode}'s pin) on one side, the rest on the other.
+    Every member force meeting exactly at ${level.hinge} passes straight through that point, so it
+    has <b>zero moment</b> about ${level.hinge}. That means you can isolate just the
+    ${supportNode}-side piece and sum moments about ${level.hinge} using <i>only</i> its own pin
+    reaction and the loads on that side — giving you the 4th equation the 3 global ones can't:
+    <br><br>
+    <code>ΣM about ${level.hinge} (${supportNode}'s side only):<br>${terms.join(" + ")}${loadTerm} = 0</code>
+  `;
 }
 
 function findHintJoint() {
@@ -659,8 +956,9 @@ function renderDiagram() {
       const end = p.y - dir * 0.35;
       const arrow = svgEl("line", { x1: p.x, y1: start, x2: p.x, y2: end, stroke: "#4b43d4", "stroke-width": strokeW * 1.6 });
       svg.appendChild(arrow);
+      const headW = Math.max(0.45, vb.w / 30), headH = headW * 1.7;
       const head = svgEl("polygon", {
-        points: `${p.x},${end + dir * 0.02} ${p.x - 0.28},${end - dir * 0.5} ${p.x + 0.28},${end - dir * 0.5}`,
+        points: `${p.x},${end + dir * 0.02} ${p.x - headW},${end - dir * headH} ${p.x + headW},${end - dir * headH}`,
         fill: "#4b43d4",
       });
       svg.appendChild(head);
@@ -671,32 +969,32 @@ function renderDiagram() {
   });
 
   // reaction arrows (only drawn as "known" once solved; shown faint as hint before that)
-  reactionUnknownsFor(level).forEach(({ node, axis }) => {
+  reactionUnknownsFor(level).forEach(({ node, dir, comp }) => {
     const n = level.nodes[node];
     const p = worldToView(level, n.x, n.y);
-    const key = node + axis;
     const solved = state.reactionsSolved;
-    const val = solved ? state.truth.reactions[node][axis] : null;
-    const positiveDir = axis === "x" ? { dx: 1, dy: 0 } : { dx: 0, dy: -1 };
+    const val = solved ? state.truth.reactions[node][comp] : null;
+    const positiveDir = { dx: dir[0], dy: -dir[1] }; // world dir -> view space
     const sign = solved ? (val < 0 ? -1 : 1) : 1;
     const len = vb.w / 11;
-    // nudge horizontal (Rx) arrows below the joint so they don't sit on top of a bottom-chord member
-    const nudgeY = axis === "x" ? vb.w / 45 : 0;
-    const sx = p.x, sy = p.y + nudgeY;
+    // nudge perpendicular to the reaction line so it doesn't sit directly on top of a member
+    const perp = { dx: -positiveDir.dy, dy: positiveDir.dx };
+    const nudge = vb.w / 45;
+    const sx = p.x + perp.dx * nudge, sy = p.y + perp.dy * nudge;
     const ex = sx + positiveDir.dx * len * sign;
     const ey = sy + positiveDir.dy * len * sign;
     const color = solved ? "#4b43d4" : "#c9ccdc";
     const arrow = svgEl("line", { x1: sx, y1: sy, x2: ex, y2: ey, stroke: color, "stroke-width": strokeW * 1.4, "stroke-dasharray": solved ? "0" : "0.3,0.25" });
     svg.appendChild(arrow);
     const ang = Math.atan2(ey - sy, ex - sx);
-    const headLen = 0.3;
+    const headLen = Math.max(0.5, vb.w / 24);
     const head = svgEl("polygon", {
       points: `${ex},${ey} ${ex - headLen * Math.cos(ang - 0.4)},${ey - headLen * Math.sin(ang - 0.4)} ${ex - headLen * Math.cos(ang + 0.4)},${ey - headLen * Math.sin(ang + 0.4)}`,
       fill: color,
     });
     svg.appendChild(head);
     if (solved) {
-      const lbl = svgEl("text", { x: ex + positiveDir.dx * 0.3, y: ey + positiveDir.dy * 0.3 + (axis === "x" ? 0.45 : -0.15), "font-size": vb.w / 44, fill: color, "font-weight": "700", "text-anchor": positiveDir.dx > 0 ? "start" : "middle" });
+      const lbl = svgEl("text", { x: ex + positiveDir.dx * 0.3 + perp.dx * 0.4, y: ey + positiveDir.dy * 0.3 + perp.dy * 0.4, "font-size": vb.w / 44, fill: color, "font-weight": "700", "text-anchor": "middle" });
       lbl.textContent = `${Math.abs(val).toFixed(1)}`;
       svg.appendChild(lbl);
     }
@@ -708,17 +1006,31 @@ function renderDiagram() {
     if (!n.support) return;
     const p = worldToView(level, n.x, n.y);
     const s = vb.w / 22;
-    if (n.support === "pin") {
+    if (n.support.type === "pin") {
       const tri = svgEl("polygon", { points: `${p.x},${p.y} ${p.x - s},${p.y + s * 1.6} ${p.x + s},${p.y + s * 1.6}`, fill: "#dcdfef", stroke: "#9a9fb8", "stroke-width": strokeW * 0.6 });
       svg.appendChild(tri);
-    } else if (n.support === "roller") {
+    } else if (n.support.type === "roller") {
+      const dir = n.support.dir || [0, 1];
+      const downView = [-dir[0], dir[1]]; // direction the wedge points, in view space
+      const rotDeg = Math.atan2(downView[0], downView[1]) * 180 / Math.PI;
+      const g = svgEl("g", { transform: `rotate(${rotDeg} ${p.x} ${p.y})` });
       const tri = svgEl("polygon", { points: `${p.x},${p.y} ${p.x - s},${p.y + s * 1.4} ${p.x + s},${p.y + s * 1.4}`, fill: "#dcdfef", stroke: "#9a9fb8", "stroke-width": strokeW * 0.6 });
-      svg.appendChild(tri);
+      g.appendChild(tri);
       const c1 = svgEl("circle", { cx: p.x - s * 0.55, cy: p.y + s * 1.75, r: s * 0.3, fill: "#9a9fb8" });
       const c2 = svgEl("circle", { cx: p.x + s * 0.55, cy: p.y + s * 1.75, r: s * 0.3, fill: "#9a9fb8" });
-      svg.appendChild(c1); svg.appendChild(c2);
+      g.appendChild(c1); g.appendChild(c2);
+      svg.appendChild(g);
     }
   });
+
+  // hinge marker (drawn regardless of whether the hinge joint itself has a support)
+  if (level.hinge) {
+    const hn = level.nodes[level.hinge];
+    const hp = worldToView(level, hn.x, hn.y);
+    const ring1 = svgEl("circle", { cx: hp.x, cy: hp.y, r: vb.w / 34, fill: "none", stroke: "#ff9d4d", "stroke-width": strokeW * 1.6 });
+    const ring2 = svgEl("circle", { cx: hp.x, cy: hp.y, r: vb.w / 58, fill: "#ff9d4d" });
+    svg.appendChild(ring1); svg.appendChild(ring2);
+  }
 
   // joints (clickable)
   Object.keys(level.nodes).forEach((id) => {
@@ -763,6 +1075,26 @@ function renderDiagram() {
     g.id = "joint-g-" + id;
     svg.appendChild(g);
   });
+
+  // method-of-sections cut line, live while the player is dragging a candidate cut
+  if (state.cutDraft) {
+    const d = state.cutDraft;
+    const liveCutKeys = new Set(membersCrossedBy(level, [d.x1, d.y1], [d.x2, d.y2]));
+    for (const [i, j] of level.members) {
+      const key = memberKey(i, j);
+      if (!liveCutKeys.has(key)) continue;
+      const p1 = worldToView(level, level.nodes[i].x, level.nodes[i].y);
+      const p2 = worldToView(level, level.nodes[j].x, level.nodes[j].y);
+      svg.appendChild(svgEl("line", {
+        x1: p1.x, y1: p1.y, x2: p2.x, y2: p2.y, stroke: "#ff9d4d", "stroke-width": strokeW * 3.4,
+        "stroke-linecap": "round", opacity: 0.55,
+      }));
+    }
+    svg.appendChild(svgEl("line", {
+      x1: d.x1, y1: d.y1, x2: d.x2, y2: d.y2, stroke: "#e0453c", "stroke-width": strokeW * 0.9,
+      "stroke-dasharray": `${strokeW * 3},${strokeW * 2}`,
+    }));
+  }
 }
 
 function renderPanels() {
@@ -770,12 +1102,11 @@ function renderPanels() {
 
   const rl = document.getElementById("list-reactions");
   rl.innerHTML = "";
-  reactionUnknownsFor(level).forEach(({ node, axis }) => {
+  reactionUnknownsFor(level).forEach(({ node, comp }) => {
     const li = document.createElement("li");
     const solved = state.reactionsSolved;
     li.className = solved ? "solved" : "";
-    const label = `R${axis}${node === Object.keys(level.nodes)[0] ? "" : ""} @ ${node} (${axis})`;
-    li.innerHTML = `<span>R<sub>${axis}</sub> @ ${node}</span><span class="status ${solved ? "ok" : ""}">${solved ? "✓" : "?"}</span>`;
+    li.innerHTML = `<span>${node}<sub>${comp}</sub></span><span class="status ${solved ? "ok" : ""}">${solved ? "✓" : "?"}</span>`;
     rl.appendChild(li);
   });
 
@@ -836,6 +1167,7 @@ document.querySelectorAll(".modal-backdrop").forEach((bd) => {
 });
 
 function onJointClick(nodeId) {
+  if (state.sectionMode) return; // drawing a cut right now — joint clicks are suspended
   if (!state.reactionsSolved) {
     openReactionsModal();
     return;
@@ -859,20 +1191,290 @@ function onJointClick(nodeId) {
   openJointModal(nodeId, unresolved);
 }
 
+/* ---------- method of sections: drawing the cut + solving it ---------- */
+function svgToDiagramSpace(svg, clientX, clientY) {
+  const pt = svg.createSVGPoint();
+  pt.x = clientX; pt.y = clientY;
+  const ctm = svg.getScreenCTM().inverse();
+  const p = pt.matrixTransform(ctm);
+  return [p.x, p.y]; // view space — matches worldToView's output directly, no un-flip needed
+}
+
+function setSectionButtonState() {
+  const btn = document.getElementById("pill-section-btn");
+  btn.classList.toggle("active", state.sectionMode);
+  document.getElementById("truss-svg").classList.toggle("cutting", state.sectionMode);
+  document.getElementById("section-banner").style.display = state.sectionMode ? "block" : "none";
+}
+
+let sectionControlsAttached = false;
+function attachSectionCutControls() {
+  if (sectionControlsAttached) return; // #truss-svg is a static element reused across levels — wire once
+  sectionControlsAttached = true;
+  const svg = document.getElementById("truss-svg");
+  let dragging = false;
+
+  svg.addEventListener("pointerdown", (e) => {
+    if (!state.sectionMode) return;
+    dragging = true;
+    const [x, y] = svgToDiagramSpace(svg, e.clientX, e.clientY);
+    state.cutDraft = { x1: x, y1: y, x2: x, y2: y };
+    svg.setPointerCapture(e.pointerId);
+    renderDiagram();
+  });
+  svg.addEventListener("pointermove", (e) => {
+    if (!dragging || !state.cutDraft) return;
+    const [x, y] = svgToDiagramSpace(svg, e.clientX, e.clientY);
+    state.cutDraft.x2 = x; state.cutDraft.y2 = y;
+    renderDiagram();
+  });
+  function finishDrag() {
+    if (!dragging) return;
+    dragging = false;
+    const draft = state.cutDraft;
+    state.cutDraft = null;
+    if (!draft) { renderDiagram(); return; }
+    const dist = Math.hypot(draft.x2 - draft.x1, draft.y2 - draft.y1);
+    if (dist < 0.3) { renderDiagram(); return; } // too short to be a deliberate drag — treat as a stray click
+    const level = state.level;
+    const cutKeys = membersCrossedBy(level, [draft.x1, draft.y1], [draft.x2, draft.y2]);
+    const result = validateCut(level, cutKeys);
+    if (!result.ok) {
+      renderDiagram();
+      if (result.reason !== "noop") {
+        document.getElementById("section-invalid-text").textContent = result.reason;
+        openModal("modal-section-invalid");
+      }
+      return;
+    }
+    state.sectionMode = false;
+    setSectionButtonState();
+    renderDiagram();
+    openSectionModal(result);
+  }
+  svg.addEventListener("pointerup", finishDrag);
+  svg.addEventListener("pointercancel", finishDrag);
+}
+
+document.getElementById("pill-section-btn").addEventListener("click", () => {
+  if (!state.reactionsSolved) {
+    showToast("Find the reactions first — method of sections needs them too.", "bad");
+    return;
+  }
+  state.sectionMode = !state.sectionMode;
+  setSectionButtonState();
+  if (state.sectionMode) showToast("Drag a line across the members you want to cut.", "good");
+});
+
+function openSectionModal(result) {
+  const level = state.level;
+  const { cutKeys, sideA, sideB } = result;
+  const analyzed = sideA.length <= sideB.length ? sideA : sideB;
+  const otherSide = analyzed === sideA ? sideB : sideA;
+  const analyzedSet = new Set(analyzed);
+
+  const cutInfo = cutKeys.map((key) => {
+    const [i, j] = findMemberPair(level, key);
+    const onSide = analyzedSet.has(i) ? i : j;
+    const other = onSide === i ? j : i;
+    const dir = memberDir(level, onSide, other);
+    return { key, onSide, other, dir };
+  });
+
+  state.sectionUI = { cutKeys, analyzed, otherSide, cutInfo };
+
+  document.getElementById("section-known").innerHTML = `
+    Cutting through <b>${cutKeys.map((k) => k.replace("-", "–")).join(", ")}</b> splits the truss
+    into two free bodies. We're analyzing the smaller one — joints <b>${analyzed.join(", ")}</b> —
+    using its own loads/reactions plus the ${cutKeys.length} exposed member force${cutKeys.length > 1 ? "s" : ""}
+    where the cut crosses them. (Analyzing the other side, ${otherSide.join(", ")}, gives the exact
+    same answers — it's your choice which one to use.)
+  `;
+
+  const fields = document.getElementById("section-fields");
+  fields.innerHTML = "";
+  cutInfo.filter((c) => !state.solvedMembers.has(c.key)).forEach((c) => {
+    const row = document.createElement("div");
+    row.className = "field-row";
+    row.innerHTML = `
+      <label>Member ${c.key.replace("-", "–")}</label>
+      <input type="number" step="0.1" data-key="${c.key}" class="section-input" placeholder="kN (+ tension / − compression)">
+      <div class="hint-sub">+ tension &nbsp;·&nbsp; − compression</div>
+    `;
+    fields.appendChild(row);
+    attachFieldSlider(row, row.querySelector(".section-input"), state.truth.memberForces[c.key]);
+  });
+  fields.querySelectorAll(".section-input").forEach((inp) => {
+    inp.addEventListener("input", () => renderSectionEquations());
+  });
+
+  renderSectionEquations();
+  openModal("modal-section");
+}
+
+function renderSectionEquations() {
+  const ui = state.sectionUI;
+  const level = state.level;
+  const pivotId = ui.analyzed[0];
+  const pivot = level.nodes[pivotId];
+
+  let knownFx = 0, knownFy = 0, knownM = 0;
+  ui.analyzed.forEach((nodeId) => {
+    const load = (level.loads || {})[nodeId];
+    if (load && (load.fx || load.fy)) {
+      knownFx += load.fx || 0; knownFy += load.fy || 0;
+      knownM += momentAbout([pivot.x, pivot.y], [level.nodes[nodeId].x, level.nodes[nodeId].y], [load.fx || 0, load.fy || 0]);
+    }
+    if (level.nodes[nodeId].support) {
+      reactionUnknownsFor(level).filter((r) => r.node === nodeId).forEach((r) => {
+        const val = state.truth.reactions[nodeId][r.comp];
+        const vec = [val * r.dir[0], val * r.dir[1]];
+        knownFx += vec[0]; knownFy += vec[1];
+        knownM += momentAbout([pivot.x, pivot.y], [level.nodes[nodeId].x, level.nodes[nodeId].y], vec);
+      });
+    }
+  });
+  ui.cutInfo.filter((c) => state.solvedMembers.has(c.key)).forEach((c) => {
+    const F = state.truth.memberForces[c.key];
+    const vec = [F * c.dir[0], F * c.dir[1]];
+    knownFx += vec[0]; knownFy += vec[1];
+    knownM += momentAbout([pivot.x, pivot.y], [level.nodes[c.onSide].x, level.nodes[c.onSide].y], vec);
+  });
+
+  const unknownCuts = ui.cutInfo.filter((c) => !state.solvedMembers.has(c.key));
+  const currentVal = (key) => {
+    const inp = document.querySelector(`.section-input[data-key="${key}"]`);
+    const v = inp ? parseFloat(inp.value) : NaN;
+    return isNaN(v) ? 0 : v;
+  };
+  const varName = (key) => `F_${key.replace("-", "")}`;
+  const momentCoeff = (c) => momentAbout([pivot.x, pivot.y], [level.nodes[c.onSide].x, level.nodes[c.onSide].y], c.dir);
+
+  const fxTerms = unknownCuts.map((c) => eqTermStack(c.dir[0], varName(c.key), currentVal(c.key)));
+  const fyTerms = unknownCuts.map((c) => eqTermStack(c.dir[1], varName(c.key), currentVal(c.key)));
+  const mTerms = unknownCuts.map((c) => eqTermStack(momentCoeff(c), varName(c.key), currentVal(c.key)));
+
+  const fxSum = unknownCuts.reduce((s, c) => s + c.dir[0] * currentVal(c.key), knownFx);
+  const fySum = unknownCuts.reduce((s, c) => s + c.dir[1] * currentVal(c.key), knownFy);
+  const mSum = unknownCuts.reduce((s, c) => s + momentCoeff(c) * currentVal(c.key), knownM);
+
+  const fmtK = (v) => (Math.abs(v) < 0.005 ? "" : (v > 0 ? " + " : " − ") + Math.abs(v).toFixed(2));
+
+  document.getElementById("section-equations").innerHTML = `
+    <div class="eq-title">📐 Equilibrium of the ${ui.analyzed.join("")} free body — updates as you type:</div>
+    <div class="eq-line">ΣFx: ${fxTerms.join(" + ") || "0"}${fmtK(knownFx)} ${eqRelation(fxSum)}</div>
+    <div class="eq-line">ΣFy: ${fyTerms.join(" + ") || "0"}${fmtK(knownFy)} ${eqRelation(fySum)}</div>
+    <div class="eq-line">ΣM about ${pivotId}: ${mTerms.join(" + ") || "0"}${fmtK(knownM)} ${eqRelation(mSum)}</div>
+  `;
+}
+
+document.getElementById("btn-check-section").addEventListener("click", () => {
+  const ui = state.sectionUI;
+  const unknownCuts = ui.cutInfo.filter((c) => !state.solvedMembers.has(c.key));
+  let allCorrect = true;
+  const errs = [];
+  const toSolve = [];
+  unknownCuts.forEach((c) => {
+    const inp = document.querySelector(`.section-input[data-key="${c.key}"]`);
+    const val = parseFloat(inp.value);
+    const truth = state.truth.memberForces[c.key];
+    if (isNaN(val) || Math.abs(val - truth) > tolFor(truth)) {
+      allCorrect = false;
+      errs.push(c.key.replace("-", "–"));
+    } else {
+      toSolve.push(c.key);
+    }
+  });
+  if (allCorrect) {
+    toSolve.forEach((k) => state.solvedMembers.add(k));
+    closeModal("modal-section");
+    showToast(`Section solved! ${toSolve.length} member${toSolve.length > 1 ? "s" : ""} unlocked 🎯`, "good");
+    renderDiagram();
+    renderPanels();
+    if (allMembersSolved()) finishLevel();
+  } else {
+    state.mistakes++;
+    document.getElementById("pill-mistakes").textContent = state.mistakes;
+    showToast(`Not balanced yet — recheck ${errs.join(", ")}.`, "bad");
+  }
+});
+
+function currentReactionValue(node, comp) {
+  const inp = document.querySelector(`.reaction-input[data-node="${node}"][data-comp="${comp}"]`);
+  if (!inp) return 0;
+  const v = parseFloat(inp.value);
+  return isNaN(v) ? 0 : v;
+}
+
+function renderReactionsEquations(level) {
+  const reactions = reactionUnknownsFor(level);
+  const pivotId = Object.keys(level.nodes).find((id) => level.nodes[id].support);
+  const pivot = level.nodes[pivotId];
+  const loads = level.loads || {};
+
+  const fmtK = (v) => (Math.abs(v) < 0.005 ? "" : (v > 0 ? " + " : " − ") + Math.abs(v).toFixed(2));
+  const varName = (r) => `${r.node}_${r.comp}`;
+
+  const fxTerms = reactions.filter((r) => Math.abs(r.dir[0]) > 0.005).map((r) => eqTermStack(r.dir[0], varName(r), currentReactionValue(r.node, r.comp)));
+  let fxLoad = 0;
+  Object.keys(loads).forEach((id) => (fxLoad += loads[id].fx || 0));
+  const fxSum = reactions.reduce((s, r) => s + r.dir[0] * currentReactionValue(r.node, r.comp), fxLoad);
+
+  const fyTerms = reactions.filter((r) => Math.abs(r.dir[1]) > 0.005).map((r) => eqTermStack(r.dir[1], varName(r), currentReactionValue(r.node, r.comp)));
+  let fyLoad = 0;
+  Object.keys(loads).forEach((id) => (fyLoad += loads[id].fy || 0));
+  const fySum = reactions.reduce((s, r) => s + r.dir[1] * currentReactionValue(r.node, r.comp), fyLoad);
+
+  const momentTerms = [];
+  let momentSum = 0;
+  reactions.forEach((r) => {
+    const coeff = momentAbout([pivot.x, pivot.y], [level.nodes[r.node].x, level.nodes[r.node].y], r.dir);
+    momentSum += coeff * currentReactionValue(r.node, r.comp);
+    if (Math.abs(coeff) > 0.005) momentTerms.push(eqTermStack(coeff, varName(r), currentReactionValue(r.node, r.comp)));
+  });
+  let momentLoad = 0;
+  Object.keys(loads).forEach((id) => {
+    momentLoad += momentAbout([pivot.x, pivot.y], [level.nodes[id].x, level.nodes[id].y], [loads[id].fx || 0, loads[id].fy || 0]);
+  });
+  momentSum += momentLoad;
+
+  document.getElementById("reaction-equations").innerHTML = `
+    <div class="eq-title">📐 Global equilibrium — updates as you type:</div>
+    <div class="eq-line">ΣFx: ${fxTerms.join(" + ") || "0"}${fmtK(fxLoad)} ${eqRelation(fxSum)}</div>
+    <div class="eq-line">ΣFy: ${fyTerms.join(" + ") || "0"}${fmtK(fyLoad)} ${eqRelation(fySum)}</div>
+    <div class="eq-line">ΣM about ${pivotId}: ${momentTerms.join(" + ") || "0"}${fmtK(momentLoad)} ${eqRelation(momentSum)}</div>
+  `;
+}
+
 function openReactionsModal() {
   const level = state.level;
   const container = document.getElementById("reaction-fields");
   container.innerHTML = "";
-  reactionUnknownsFor(level).forEach(({ node, axis }) => {
+
+  const hintBox = document.getElementById("reactions-hint");
+  if (level.hinge) {
+    hintBox.innerHTML = renderHingeHint(level);
+    hintBox.style.display = "block";
+  } else {
+    hintBox.style.display = "none";
+  }
+
+  reactionUnknownsFor(level).forEach(({ node, comp, dir }) => {
     const row = document.createElement("div");
     row.className = "field-row";
+    const inclined = comp === "n";
     row.innerHTML = `
-      <label>R<sub>${axis}</sub> at ${node}</label>
-      <input type="number" step="0.1" data-node="${node}" data-axis="${axis}" class="reaction-input" placeholder="kN">
+      <label>${node}<sub>${comp}</sub>${inclined ? ` <span style="font-weight:400;opacity:0.7;">(perpendicular to the incline)</span>` : ""}</label>
+      <input type="number" step="0.1" data-node="${node}" data-comp="${comp}" class="reaction-input" placeholder="kN">
       <div class="hint-sub">Positive = arrow drawn at ${node} on the diagram.</div>
     `;
     container.appendChild(row);
+    attachFieldSlider(row, row.querySelector(".reaction-input"), state.truth.reactions[node][comp]);
   });
+  container.querySelectorAll(".reaction-input").forEach((inp) => {
+    inp.addEventListener("input", () => renderReactionsEquations(level));
+  });
+  renderReactionsEquations(level);
   openModal("modal-reactions");
 }
 
@@ -881,12 +1483,12 @@ document.getElementById("btn-check-reactions").addEventListener("click", () => {
   let allCorrect = true;
   const errs = [];
   inputs.forEach((inp) => {
-    const node = inp.dataset.node, axis = inp.dataset.axis;
-    const truth = state.truth.reactions[node][axis];
+    const node = inp.dataset.node, comp = inp.dataset.comp;
+    const truth = state.truth.reactions[node][comp];
     const val = parseFloat(inp.value);
     if (isNaN(val) || Math.abs(val - truth) > tolFor(truth)) {
       allCorrect = false;
-      errs.push(`R${axis}@${node}`);
+      errs.push(`${node}_${comp}`);
     }
   });
   if (allCorrect) {
@@ -910,14 +1512,16 @@ function computeKnownChain(level, truth, nodeId) {
   const skipped = [];
   const load = (level.loads || {})[nodeId];
   if (load && (load.fx || load.fy)) {
-    chain.push({ label: "Load", vec: [load.fx || 0, load.fy || 0], color: "#4b43d4" });
+    const mag = Math.hypot(load.fx || 0, load.fy || 0);
+    chain.push({ tag: "P", legendText: `Load: ${mag.toFixed(1)} kN`, vec: [load.fx || 0, load.fy || 0], color: "#4b43d4" });
   }
   if (level.nodes[nodeId].support) {
     reactionUnknownsFor(level).filter((r) => r.node === nodeId).forEach((r) => {
-      const v = truth.reactions[nodeId][r.axis];
-      const vec = r.axis === "x" ? [v, 0] : [0, v];
-      if (Math.abs(v) < 0.05) skipped.push(`R${r.axis}=0`);
-      else chain.push({ label: `R${r.axis}`, vec, color: "#4b43d4" });
+      const v = truth.reactions[nodeId][r.comp];
+      const vec = [v * r.dir[0], v * r.dir[1]];
+      const varName = `${nodeId}_${r.comp}`;
+      if (Math.abs(v) < 0.05) skipped.push(`${varName}=0`);
+      else chain.push({ tag: varName, legendText: `${varName}: ${v.toFixed(1)} kN`, vec, color: "#4b43d4" });
     });
   }
   level.members.forEach(([i, j]) => {
@@ -929,7 +1533,7 @@ function computeKnownChain(level, truth, nodeId) {
     const F = truth.memberForces[key];
     if (Math.abs(F) < 0.05) { skipped.push(`${nodeId}${other}=0`); return; }
     const color = F > 0 ? "var(--tension)" : "var(--compression)";
-    chain.push({ label: `${nodeId}${other}`, vec: [F * dir[0], F * dir[1]], color });
+    chain.push({ tag: `F_${key.replace("-", "")}`, legendText: `${nodeId}–${other}: ${F.toFixed(1)} kN ${F > 0 ? "(T)" : "(C)"}`, vec: [F * dir[0], F * dir[1]], color });
   });
   return { chain, skipped };
 }
@@ -974,6 +1578,7 @@ function buildJointUI(nodeId, unresolved) {
 
   jointUI = {
     nodeId, chain, skipped, O, P, vb, maxT,
+    view: { x: vb.x, y: vb.y, w: vb.w, h: vb.h }, // current pan/zoom framing — vb itself stays the fixed "home" view
     mem1Key: memberKey(...mem1), other1, dir1, F1true,
     mem2Key: hasSecond ? memberKey(...mem2) : null, other2, dir2, F2true, hasSecond,
     t1: startOffset, t2: startOffset,
@@ -985,14 +1590,20 @@ function toView(p) { return [p[0], -p[1]]; } // flip y for SVG (force-space uses
 
 function snapTolFor(ui) { return Math.max(0.35, ui.maxT * 0.035); }
 
+function applyJointViewBox() {
+  const ui = jointUI;
+  document.getElementById("joint-polygon-svg").setAttribute("viewBox", `${ui.view.x} ${ui.view.y} ${ui.view.w} ${ui.view.h}`);
+}
+
 function renderJointPolygon() {
   const ui = jointUI;
   const svg = document.getElementById("joint-polygon-svg");
   svg.innerHTML = "";
-  svg.setAttribute("viewBox", `${ui.vb.x} ${ui.vb.y} ${ui.vb.w} ${ui.vb.h}`);
+  applyJointViewBox();
   const sw = Math.max(0.05, ui.vb.w / 220);
 
-  // light grid for scale reference
+  // light grid for scale reference — drawn well beyond the home view so it still covers
+  // the canvas after the user pans or zooms out
   const step = (() => {
     const raw = ui.vb.w / 6;
     const mag = Math.pow(10, Math.floor(Math.log10(raw)));
@@ -1000,25 +1611,30 @@ function renderJointPolygon() {
     const nice = n < 1.5 ? 1 : n < 3.5 ? 2 : n < 7.5 ? 5 : 10;
     return nice * mag;
   })();
-  const gstart = Math.floor(ui.vb.x / step) * step;
-  for (let gx = gstart; gx <= ui.vb.x + ui.vb.w; gx += step) {
-    svg.appendChild(svgEl("line", { x1: gx, y1: ui.vb.y, x2: gx, y2: ui.vb.y + ui.vb.h, stroke: "#eceefc", "stroke-width": sw }));
+  const gcx = ui.vb.x + ui.vb.w / 2, gcy = ui.vb.y + ui.vb.h / 2;
+  const gridHalf = ui.vb.w * 3;
+  const gstart = Math.floor((gcx - gridHalf) / step) * step;
+  for (let gx = gstart; gx <= gcx + gridHalf; gx += step) {
+    svg.appendChild(svgEl("line", { x1: gx, y1: gcy - gridHalf, x2: gx, y2: gcy + gridHalf, stroke: "#eceefc", "stroke-width": sw }));
   }
-  const gystart = Math.floor(ui.vb.y / step) * step;
-  for (let gy = gystart; gy <= ui.vb.y + ui.vb.h; gy += step) {
-    svg.appendChild(svgEl("line", { x1: ui.vb.x, y1: gy, x2: ui.vb.x + ui.vb.w, y2: gy, stroke: "#eceefc", "stroke-width": sw }));
+  const gystart = Math.floor((gcy - gridHalf) / step) * step;
+  for (let gy = gystart; gy <= gcy + gridHalf; gy += step) {
+    svg.appendChild(svgEl("line", { x1: gcx - gridHalf, y1: gy, x2: gcx + gridHalf, y2: gy, stroke: "#eceefc", "stroke-width": sw }));
   }
   const scaleLbl = svgEl("text", { x: ui.vb.x + ui.vb.w - 0.3, y: ui.vb.y + 0.6, "font-size": ui.vb.w / 45, fill: "#c3c7de", "text-anchor": "end" });
   scaleLbl.textContent = `grid: ${step} kN`;
   svg.appendChild(scaleLbl);
 
-  // known chain, tip-to-tail
+  // known chain, tip-to-tail — short tags on canvas only, full values live in the legend below
   let cursor = ui.O;
   ui.chain.forEach((c) => {
     const next = [cursor[0] + c.vec[0], cursor[1] + c.vec[1]];
-    drawArrow(svg, toView(cursor), toView(next), c.color, sw * 1.6, c.label);
+    drawArrow(svg, toView(cursor), toView(next), c.color, sw * 1.6, c.tag);
     cursor = next;
   });
+
+  const legendEl = document.getElementById("joint-chain-legend");
+  legendEl.innerHTML = ui.chain.map((c) => `<div class="readout-chip" style="color:${c.color};">${c.legendText}</div>`).join("");
 
   // guide lines (long, through the chain's anchor points, along each unknown's true direction)
   const big = ui.maxT * 1.4;
@@ -1038,6 +1654,73 @@ function renderJointPolygon() {
 
   renderJointDynamic();
   attachJointDrag();
+  attachJointViewControls();
+}
+
+function svgRawPoint(svg, clientX, clientY) {
+  const pt = svg.createSVGPoint();
+  pt.x = clientX; pt.y = clientY;
+  const ctm = svg.getScreenCTM().inverse();
+  const p = pt.matrixTransform(ctm);
+  return [p.x, p.y]; // raw SVG/view space — NOT un-flipped, matches viewBox coordinates
+}
+
+function zoomJointView(factor, clientX, clientY) {
+  const ui = jointUI;
+  const svg = document.getElementById("joint-polygon-svg");
+  const rect = svg.getBoundingClientRect();
+  const [px, py] = svgRawPoint(svg, clientX ?? (rect.left + rect.width / 2), clientY ?? (rect.top + rect.height / 2));
+  const minW = ui.vb.w * 0.2, maxW = ui.vb.w * 5;
+  const newW = Math.max(minW, Math.min(maxW, ui.view.w * factor));
+  const actualFactor = newW / ui.view.w;
+  const newH = ui.view.h * actualFactor;
+  const fracX = (px - ui.view.x) / ui.view.w;
+  const fracY = (py - ui.view.y) / ui.view.h;
+  ui.view.x = px - fracX * newW;
+  ui.view.y = py - fracY * newH;
+  ui.view.w = newW;
+  ui.view.h = newH;
+  applyJointViewBox();
+}
+
+function resetJointView() {
+  const ui = jointUI;
+  ui.view = { x: ui.vb.x, y: ui.vb.y, w: ui.vb.w, h: ui.vb.h };
+  applyJointViewBox();
+}
+
+let jointViewControlsAttached = false;
+function attachJointViewControls() {
+  if (jointViewControlsAttached) return; // wire once per modal session — renderJointPolygon only runs once per open anyway
+  jointViewControlsAttached = true;
+  const svg = document.getElementById("joint-polygon-svg");
+
+  svg.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    zoomJointView(e.deltaY > 0 ? 1.15 : 1 / 1.15, e.clientX, e.clientY);
+  }, { passive: false });
+
+  let panning = false;
+  let lastX = 0, lastY = 0;
+  svg.addEventListener("pointerdown", (e) => {
+    if (e.target.classList.contains("handle-dot")) return; // handle dragging owns this gesture instead
+    panning = true;
+    lastX = e.clientX; lastY = e.clientY;
+    svg.classList.add("panning");
+    svg.setPointerCapture(e.pointerId);
+  });
+  svg.addEventListener("pointermove", (e) => {
+    if (!panning) return;
+    const p0 = svgRawPoint(svg, lastX, lastY);
+    const p1 = svgRawPoint(svg, e.clientX, e.clientY);
+    jointUI.view.x -= p1[0] - p0[0];
+    jointUI.view.y -= p1[1] - p0[1];
+    applyJointViewBox();
+    lastX = e.clientX; lastY = e.clientY;
+  });
+  const stopPan = () => { panning = false; svg.classList.remove("panning"); };
+  svg.addEventListener("pointerup", stopPan);
+  svg.addEventListener("pointercancel", stopPan);
 }
 
 function jointHandlePoints() {
@@ -1062,10 +1745,23 @@ function renderJointDynamic() {
   const sw = Math.max(0.05, ui.vb.w / 220);
   const colorFor = (F) => (Math.abs(F) < 0.12 ? "var(--zero)" : F > 0 ? "var(--tension)" : "var(--compression)");
 
-  // the two "unknown" vectors, drawn live
-  drawArrow(layer, toView(ui.P), toView(H1), closing ? "var(--tension)" : colorFor(ui.t1), sw * (closing ? 2.4 : 1.8), `${ui.nodeId}${ui.other1}`);
+  // the two "unknown" vectors, drawn live — tags sit just past each handle (not at the segment
+  // midpoint) so they stay clear of the known-chain's labels even when a handle is still near its anchor
+  function pushBeyond(anchor, point, extra) {
+    const dx = point[0] - anchor[0], dy = point[1] - anchor[1];
+    const len = Math.hypot(dx, dy) || 1;
+    return [point[0] + (dx / len) * extra, point[1] + (dy / len) * extra];
+  }
+  const tagFont = Math.max(1.3, ui.vb.w / 26);
+  const tagPush = ui.vb.w / 16;
+  const varName1 = `F_${ui.mem1Key.replace("-", "")}`;
+
+  drawArrow(layer, toView(ui.P), toView(H1), closing ? "var(--tension)" : colorFor(ui.t1), sw * (closing ? 2.8 : 2.2), null);
+  svgTipTag(layer, toView(pushBeyond(ui.P, H1, tagPush)), varName1, closing ? "var(--tension)" : colorFor(ui.t1), tagFont);
   if (ui.hasSecond) {
-    drawArrow(layer, toView(H2), toView(ui.O), closing ? "var(--tension)" : colorFor(-ui.t2), sw * (closing ? 2.4 : 1.8), `${ui.nodeId}${ui.other2}`);
+    const varName2 = `F_${ui.mem2Key.replace("-", "")}`;
+    drawArrow(layer, toView(H2), toView(ui.O), closing ? "var(--tension)" : colorFor(-ui.t2), sw * (closing ? 2.8 : 2.2), null);
+    svgTipTag(layer, toView(pushBeyond(ui.O, H2, tagPush)), varName2, closing ? "var(--tension)" : colorFor(-ui.t2), tagFont);
   }
 
   // connector / gap indicator between the two handle tips
@@ -1114,6 +1810,19 @@ function renderJointDynamic() {
     status.textContent = ui.hasSecond ? "Drag both handles until they meet." : "Drag the handle onto the glowing ring.";
     status.classList.remove("close-enough");
   }
+
+  renderJointEquationsBox();
+}
+
+// short, standalone label placed at an exact point (e.g. right next to a handle) — used instead of
+// drawArrow's own midpoint label whenever several arrows could otherwise land labels on each other
+function svgTipTag(parent, point, text, color, fontSize) {
+  const t = svgEl("text", {
+    x: point[0], y: point[1], "font-size": fontSize, "font-weight": "700", fill: color,
+    "text-anchor": "middle", stroke: "#fff", "stroke-width": fontSize * 0.28, "paint-order": "stroke",
+  });
+  t.textContent = text;
+  parent.appendChild(t);
 }
 
 function drawArrow(parent, from, to, color, width, label) {
@@ -1122,10 +1831,10 @@ function drawArrow(parent, from, to, color, width, label) {
   if (len < 0.02) return; // nothing meaningful to draw for a near-zero vector
   parent.appendChild(svgEl("line", { x1: from[0], y1: from[1], x2: to[0], y2: to[1], stroke: color, "stroke-width": width, "stroke-linecap": "round" }));
   const ux = dx / len, uy = dy / len;
-  const headLen = Math.max(0.25, width * 2.2);
+  const headLen = Math.max(0.42, width * 3.4);
   const ang = Math.atan2(uy, ux);
   const head = svgEl("polygon", {
-    points: `${to[0]},${to[1]} ${to[0] - headLen * Math.cos(ang - 0.4)},${to[1] - headLen * Math.sin(ang - 0.4)} ${to[0] - headLen * Math.cos(ang + 0.4)},${to[1] - headLen * Math.sin(ang + 0.4)}`,
+    points: `${to[0]},${to[1]} ${to[0] - headLen * Math.cos(ang - 0.45)},${to[1] - headLen * Math.sin(ang - 0.45)} ${to[0] - headLen * Math.cos(ang + 0.45)},${to[1] - headLen * Math.sin(ang + 0.45)}`,
     fill: color,
   });
   parent.appendChild(head);
@@ -1203,28 +1912,35 @@ function renderJointNumericFields(unresolved, nodeId) {
       <div class="hint-sub">+ tension &nbsp;·&nbsp; − compression</div>
     `;
     fields.appendChild(row);
+    attachFieldSlider(row, row.querySelector(".joint-input"), state.truth.memberForces[memberKey(i, j)]);
+  });
+  fields.querySelectorAll(".joint-input").forEach((inp) => {
+    inp.addEventListener("input", () => renderJointEquationsBox());
   });
 }
 
 function setJointMode(mode) {
   jointUI.mode = mode;
   const dragView = document.getElementById("joint-drag-view");
+  const fbdView = document.getElementById("joint-fbd-view");
   const fields = document.getElementById("joint-fields");
-  const toggle = document.getElementById("btn-toggle-mode");
-  if (mode === "numeric") {
-    dragView.style.display = "none";
-    fields.style.display = "block";
-    toggle.textContent = "🖱️ Drag to solve instead";
-  } else {
-    dragView.style.display = "block";
-    fields.style.display = "none";
-    toggle.textContent = "⌨️ Type numbers instead";
-  }
+  dragView.style.display = mode === "drag" ? "block" : "none";
+  fbdView.style.display = mode === "fbd" ? "block" : "none";
+  fields.style.display = mode === "numeric" ? "block" : "none";
+  ["tab-drag", "tab-fbd", "tab-numeric"].forEach((id) => {
+    document.getElementById(id).classList.toggle("active", id === `tab-${mode}`);
+  });
+  if (mode === "fbd") renderJointFBD();
+  renderJointEquationsBox();
 }
 
-document.getElementById("btn-toggle-mode").addEventListener("click", () => {
-  setJointMode(jointUI.mode === "drag" ? "numeric" : "drag");
-});
+document.getElementById("tab-drag").addEventListener("click", () => setJointMode("drag"));
+document.getElementById("tab-fbd").addEventListener("click", () => setJointMode("fbd"));
+document.getElementById("tab-numeric").addEventListener("click", () => setJointMode("numeric"));
+
+document.getElementById("btn-zoom-in").addEventListener("click", () => zoomJointView(1 / 1.3));
+document.getElementById("btn-zoom-out").addEventListener("click", () => zoomJointView(1.3));
+document.getElementById("btn-zoom-reset").addEventListener("click", () => resetJointView());
 
 function openJointModal(nodeId, unresolved) {
   const level = state.level;
@@ -1242,11 +1958,131 @@ function openJointModal(nodeId, unresolved) {
 
   buildJointUI(nodeId, unresolved);
   renderJointNumericFields(unresolved, nodeId);
+  renderJointEquationsBox();
   setJointMode("drag");
   renderJointPolygon();
 
   document.getElementById("btn-check-joint").dataset.node = nodeId;
   openModal("modal-joint");
+}
+
+function eqTermStack(coeff, varName, currentValue) {
+  return `<span class="term-stack"><span class="term-top">(${coeff.toFixed(2)})·${varName}</span><span class="term-value">${currentValue.toFixed(2)}</span></span>`;
+}
+
+function eqRelation(v, tol = 0.2) {
+  const cls = Math.abs(v) < tol ? "balanced" : v > 0 ? "over" : "under";
+  const op = Math.abs(v) < tol ? "≈" : v > 0 ? "&gt;" : "&lt;";
+  return `<span class="eq-op ${cls}">${op}</span> <span class="eq-rhs ${cls}">${v.toFixed(2)}</span>`;
+}
+
+function currentUnknownValues() {
+  const ui = jointUI;
+  if (ui.mode === "numeric") {
+    const vals = {};
+    document.querySelectorAll(".joint-input").forEach((inp) => { vals[inp.dataset.key] = parseFloat(inp.value); });
+    const F1 = isNaN(vals[ui.mem1Key]) ? 0 : vals[ui.mem1Key];
+    const F2 = ui.hasSecond ? (isNaN(vals[ui.mem2Key]) ? 0 : vals[ui.mem2Key]) : 0;
+    return [F1, F2];
+  }
+  return [ui.t1, ui.hasSecond ? -ui.t2 : 0];
+}
+
+function renderJointEquationsBox() {
+  const ui = jointUI;
+  const varName = (key) => `F_${key.replace("-", "")}`;
+  const [F1, F2] = currentUnknownValues();
+
+  const fxTerms = [eqTermStack(ui.dir1[0], varName(ui.mem1Key), F1)];
+  const fyTerms = [eqTermStack(ui.dir1[1], varName(ui.mem1Key), F1)];
+  if (ui.hasSecond) {
+    fxTerms.push(eqTermStack(ui.dir2[0], varName(ui.mem2Key), F2));
+    fyTerms.push(eqTermStack(ui.dir2[1], varName(ui.mem2Key), F2));
+  }
+  const fmtK = (v) => (Math.abs(v) < 0.005 ? "" : (v > 0 ? " + " : " − ") + Math.abs(v).toFixed(2));
+
+  const sumX = ui.dir1[0] * F1 + (ui.hasSecond ? ui.dir2[0] * F2 : 0) + ui.P[0];
+  const sumY = ui.dir1[1] * F1 + (ui.hasSecond ? ui.dir2[1] * F2 : 0) + ui.P[1];
+
+  document.getElementById("joint-equations").innerHTML = `
+    <div class="eq-title">📐 Equilibrium at joint ${ui.nodeId} — updates as you drag:</div>
+    <div class="eq-line">ΣFx: ${fxTerms.join(" + ")}${fmtK(ui.P[0])} ${eqRelation(sumX)}</div>
+    <div class="eq-line">ΣFy: ${fyTerms.join(" + ")}${fmtK(ui.P[1])} ${eqRelation(sumY)}</div>
+  `;
+}
+
+function renderJointFBD() {
+  const ui = jointUI;
+  const level = state.level;
+  const svg = document.getElementById("joint-fbd-svg");
+  svg.innerHTML = "";
+  const half = 7.5;
+  svg.setAttribute("viewBox", `${-half} ${-half} ${half * 2} ${half * 2}`);
+  const sw = half / 70;
+  const armLen = half * 0.72;
+  const legend = []; // {text, color} — rendered as a separate list so labels never overlap on the diagram
+  const viewLimit = half * 0.94;
+  const clampToView = (p) => [Math.max(-viewLimit, Math.min(viewLimit, p[0])), Math.max(-viewLimit, Math.min(viewLimit, p[1]))];
+
+  const tipTag = (point, text, color) => svgTipTag(svg, clampToView(point), text, color, Math.max(1.5, sw * 14));
+
+  level.members.forEach(([i, j]) => {
+    if (i !== ui.nodeId && j !== ui.nodeId) return;
+    const other = i === ui.nodeId ? j : i;
+    const key = memberKey(i, j);
+    const dirWorld = memberDir(level, ui.nodeId, other);
+    const dirView = [dirWorld[0], -dirWorld[1]];
+    const outer = [dirView[0] * armLen, dirView[1] * armLen];
+    const varName = `F_${key.replace("-", "")}`;
+    // push a fixed extra distance past the arrow tip (and further still past the unsolved stub's circle marker)
+    const extra = state.solvedMembers.has(key) ? 1.1 : 1.7;
+    const tagPoint = [outer[0] + dirView[0] * extra, outer[1] + dirView[1] * extra];
+    if (state.solvedMembers.has(key)) {
+      const F = state.truth.memberForces[key];
+      const zero = Math.abs(F) < 0.12;
+      const color = zero ? "var(--zero)" : F > 0 ? "var(--tension)" : "var(--compression)";
+      if (F >= -0.12) drawArrow(svg, [0, 0], outer, color, sw * 4.5, null);
+      else drawArrow(svg, outer, [0, 0], color, sw * 4.5, null);
+      tipTag(tagPoint, varName, color);
+      legend.push({ text: `${ui.nodeId}–${other}: ${zero ? "0" : F.toFixed(1)} kN ${zero ? "" : F > 0 ? "(T)" : "(C)"}`, color });
+    } else {
+      const stubColor = "#8a90ab";
+      svg.appendChild(svgEl("line", { x1: 0, y1: 0, x2: outer[0], y2: outer[1], stroke: stubColor, "stroke-width": sw * 6, "stroke-linecap": "round", "stroke-dasharray": `${sw * 9},${sw * 7}` }));
+      svg.appendChild(svgEl("circle", { cx: outer[0], cy: outer[1], r: sw * 8, fill: "#fff", stroke: stubColor, "stroke-width": sw * 4.5 }));
+      tipTag(tagPoint, varName, stubColor);
+      legend.push({ text: `${ui.nodeId}–${other}: ? (unknown)`, color: stubColor });
+    }
+  });
+
+  if (level.nodes[ui.nodeId].support) {
+    reactionUnknownsFor(level).filter((r) => r.node === ui.nodeId).forEach((r) => {
+      const val = state.truth.reactions[ui.nodeId][r.comp];
+      const dirView = [r.dir[0], -r.dir[1]];
+      const sign = val < 0 ? -1 : 1;
+      const outer = [dirView[0] * armLen * sign, dirView[1] * armLen * sign];
+      drawArrow(svg, [0, 0], outer, "#4b43d4", sw * 4.5, null);
+      tipTag([outer[0] * 1.22, outer[1] * 1.22], `${ui.nodeId}_${r.comp}`, "#4b43d4");
+      legend.push({ text: `${ui.nodeId}_${r.comp}: ${Math.abs(val).toFixed(1)} kN`, color: "#4b43d4" });
+    });
+  }
+
+  const load = (level.loads || {})[ui.nodeId];
+  if (load && (load.fx || load.fy)) {
+    const mag = Math.hypot(load.fx || 0, load.fy || 0);
+    const dirView = [(load.fx || 0) / mag, -(load.fy || 0) / mag];
+    const outer = [dirView[0] * armLen, dirView[1] * armLen];
+    drawArrow(svg, [0, 0], outer, "#4b43d4", sw * 4.5, null);
+    tipTag([outer[0] * 1.22, outer[1] * 1.22], "P", "#4b43d4");
+    legend.push({ text: `Applied load: ${mag.toFixed(1)} kN`, color: "#4b43d4" });
+  }
+
+  svg.appendChild(svgEl("circle", { cx: 0, cy: 0, r: half / 24, fill: "var(--ink)" }));
+  const idLbl = svgEl("text", { x: 0, y: -half / 18, "font-size": half / 8, "font-weight": "700", "text-anchor": "middle", fill: "var(--ink)", stroke: "#fff", "stroke-width": half / 36, "paint-order": "stroke" });
+  idLbl.textContent = ui.nodeId;
+  svg.appendChild(idLbl);
+
+  const legendEl = document.getElementById("joint-fbd-legend");
+  legendEl.innerHTML = legend.map((l) => `<div class="readout-chip" style="color:${l.color};border-color:${l.color}22;">${l.text}</div>`).join("");
 }
 
 document.getElementById("btn-check-joint").addEventListener("click", () => {
@@ -1378,6 +2214,8 @@ function startLevel(idx) {
   document.getElementById("pill-level").textContent = `${state.level.emoji} ${state.level.name}`;
   document.getElementById("pill-mistakes").textContent = "0";
   document.getElementById("pill-time").textContent = "0:00";
+  setSectionButtonState();
+  attachSectionCutControls();
   renderDiagram();
   renderPanels();
   clearInterval(timerInterval);
