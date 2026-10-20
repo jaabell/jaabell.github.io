@@ -6,34 +6,35 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Truss Sudoku 🧩</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg1:#e9ecff;
-    --bg2:#ffe9f6;
-    --ink:#2c2a4a;
+    --bg1:#eaf4fa;
+    --bg2:#f5f5f5;
+    --ink:#17364a;
     --card:#ffffff;
-    --accent:#6c63ff;
-    --accent-dark:#4b43d4;
+    --accent:#1E7CB1;
+    --accent-dark:#16658f;
     --tension:#19a974;
     --compression:#ff5d7e;
-    --zero:#9aa0b4;
-    --unknown:#c9ccdc;
+    --zero:#8a9aa6;
+    --unknown:#c3d2da;
     --warn:#ffb020;
     --radius:18px;
-    --shadow:0 10px 30px rgba(44,42,74,0.12);
+    --shadow:0 10px 30px rgba(23,54,74,0.12);
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
-    font-family:'Nunito',system-ui,-apple-system,sans-serif;
+    font-family:'Roboto',Arial,-apple-system,sans-serif;
+    font-weight:300;
     color:var(--ink);
     background:linear-gradient(135deg,var(--bg1),var(--bg2));
     background-attachment:fixed;
     min-height:100vh;
     padding-bottom:40px;
   }
-  h1,h2,h3,.title-font{font-family:'Quicksand',system-ui,sans-serif;font-weight:700;}
+  h1,h2,h3,.title-font{font-family:'Roboto',Arial,sans-serif;font-weight:700;}
   button{font-family:inherit;cursor:pointer;}
   a{color:var(--accent-dark);}
 
@@ -44,7 +45,10 @@
     flex-wrap:wrap;margin-bottom:14px;
   }
   header.app-head .brand{display:flex;align-items:center;gap:10px;}
-  header.app-head .brand .logo{font-size:2rem;line-height:1;}
+  header.app-head .brand .logo{
+    width:46px;height:46px;border-radius:50%;background:var(--accent);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:var(--shadow);
+  }
   header.app-head h1{margin:0;font-size:1.5rem;}
   header.app-head p{margin:0;font-size:0.85rem;opacity:0.75;}
   .head-btns{display:flex;gap:8px;}
@@ -79,7 +83,7 @@
     background:var(--accent);color:white;font-weight:700;font-size:0.95rem;
   }
   .level-card.locked{opacity:0.55;}
-  .level-card.locked button{background:#b9bdd6;}
+  .level-card.locked button{background:#b5c4ce;}
   .level-card.locked .lockmsg{font-size:0.8rem;color:#777;}
 
   .intro-blurb{margin-top:10px;line-height:1.5;font-size:0.95rem;}
@@ -95,7 +99,7 @@
     font-size:0.85rem;display:flex;align-items:center;gap:6px;font-weight:600;
   }
   .back-link{background:none;border:none;color:var(--accent-dark);font-weight:700;font-size:0.9rem;padding:8px 2px;}
-  #pill-section-btn.active{border-color:var(--accent);background:#eceaff;}
+  #pill-section-btn.active{border-color:var(--accent);background:#e3f0f7;}
   #pill-section-btn:disabled{opacity:0.4;cursor:not-allowed;}
 
   .play-body{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;}
@@ -133,7 +137,7 @@
 
   /* ---------- modal ---------- */
   .modal-backdrop{
-    position:fixed;inset:0;background:rgba(44,42,74,0.1);display:none;
+    position:fixed;inset:0;background:rgba(23,54,74,0.1);display:none;
     align-items:center;justify-content:center;z-index:50;padding:16px;
   }
   .modal-backdrop.show{display:flex;}
@@ -148,7 +152,7 @@
   #joint-drag-view{margin:12px 0;}
   .polygon-canvas-wrap{position:relative;}
   #joint-polygon-svg{
-    width:100%;height:280px;background:#f8f9fd;border-radius:14px;touch-action:none;
+    width:100%;height:280px;background:#f2f8fa;border-radius:14px;touch-action:none;
     display:block;cursor:grab;
   }
   #joint-polygon-svg.panning{cursor:grabbing;}
@@ -157,19 +161,19 @@
   }
   .view-controls button{
     width:30px;height:30px;border-radius:8px;border:none;background:rgba(255,255,255,0.92);
-    box-shadow:0 1px 4px rgba(44,42,74,0.2);font-size:1rem;font-weight:700;color:var(--ink);
+    box-shadow:0 1px 4px rgba(23,54,74,0.2);font-size:1rem;font-weight:700;color:var(--ink);
     line-height:1;cursor:pointer;
   }
   .view-controls button:hover{background:#fff;}
   #joint-polygon-svg text, #joint-fbd-svg text{pointer-events:none;}
   #joint-readouts{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
   .readout-chip{
-    background:#f5f6fb;border-radius:10px;padding:6px 12px;font-size:0.85rem;font-weight:700;
+    background:#eef3f7;border-radius:10px;padding:6px 12px;font-size:0.85rem;font-weight:700;
     border:2px solid transparent;transition:border-color .2s,background .2s;
   }
   .readout-chip.near{border-color:var(--warn);}
   .gap-status{
-    text-align:center;font-size:0.85rem;font-weight:700;margin-top:10px;color:#9a9fb8;
+    text-align:center;font-size:0.85rem;font-weight:700;margin-top:10px;color:#7f93a0;
     transition:color .2s;
   }
   .gap-status.close-enough{color:var(--tension);}
@@ -193,7 +197,7 @@
   .field-row input[type=number]:focus{outline:none;border-color:var(--accent);}
   .field-slider{
     width:100%;margin-top:8px;-webkit-appearance:none;appearance:none;height:6px;border-radius:999px;
-    background:#e4e6f5;outline:none;
+    background:#dce9ee;outline:none;
   }
   .field-slider::-webkit-slider-thumb{
     -webkit-appearance:none;appearance:none;width:20px;height:20px;border-radius:50%;
@@ -208,24 +212,24 @@
   .sign-preview.t{color:var(--tension);}
   .sign-preview.c{color:var(--compression);}
   .known-box{
-    background:#f5f6fb;border-radius:12px;padding:10px 14px;font-size:0.85rem;margin-bottom:10px;line-height:1.6;
+    background:#eef3f7;border-radius:12px;padding:10px 14px;font-size:0.85rem;margin-bottom:10px;line-height:1.6;
   }
-  .known-box code{background:#e9ecff;padding:1px 5px;border-radius:5px;}
+  .known-box code{background:#dceef5;padding:1px 5px;border-radius:5px;}
   .side-toggle{display:flex;gap:8px;margin:8px 0;flex-wrap:wrap;}
   .side-btn{
     flex:1;min-width:120px;padding:8px 10px;border-radius:10px;border:2px solid #ddd;background:#fff;
     font-family:inherit;font-weight:700;font-size:0.82rem;cursor:pointer;color:var(--ink);
   }
-  .side-btn.active{border-color:var(--accent);background:#eef0ff;color:var(--accent-dark);}
+  .side-btn.active{border-color:var(--accent);background:#e6f1f7;color:var(--accent-dark);}
   .eq-box{
-    background:#2c2a4a;color:#e4e6ff;border-radius:12px;padding:12px 14px;margin-bottom:10px;
+    background:#17364a;color:#dceef5;border-radius:12px;padding:12px 14px;margin-bottom:10px;
     font-size:0.8rem;line-height:1.7;font-family:'Courier New',monospace;
   }
   .eq-box .eq-title{font-family:'Nunito',system-ui,sans-serif;font-weight:700;color:#fff;margin-bottom:4px;font-size:0.82rem;}
   .eq-box code{background:none;color:inherit;}
   .eq-line{white-space:normal;}
   .term-stack{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 1px;line-height:1.25;}
-  .term-top{white-space:nowrap;border-bottom:1.5px solid #6c6a9a;padding-bottom:2px;}
+  .term-top{white-space:nowrap;border-bottom:1.5px solid #5f8396;padding-bottom:2px;}
   .term-value{font-size:0.88em;color:#ffd27a;font-weight:700;margin-top:1px;}
   .term-stack.known .term-top{border-bottom-color:#8fd6ff;}
   .term-stack.known .term-value{color:#8fd6ff;}
@@ -236,11 +240,11 @@
   .eq-rhs.under, .eq-op.under{color:#7ea6ff;}
   .view-tabs{display:flex;gap:6px;margin:10px 0;}
   .view-tabs button{
-    flex:1;background:#f0f1f8;border:2px solid transparent;border-radius:10px;padding:8px 6px;
+    flex:1;background:#eef4f7;border:2px solid transparent;border-radius:10px;padding:8px 6px;
     font-size:0.8rem;font-weight:700;color:var(--ink);opacity:0.6;
   }
   .view-tabs button.active{background:#fff;border-color:var(--accent);opacity:1;}
-  #joint-fbd-svg{width:100%;height:240px;background:#f8f9fd;border-radius:14px;display:block;}
+  #joint-fbd-svg{width:100%;height:240px;background:#f2f8fa;border-radius:14px;display:block;}
   .modal-actions{display:flex;gap:10px;margin-top:18px;}
   .btn{
     border:none;border-radius:12px;padding:11px 18px;font-weight:700;font-size:0.95rem;flex:1;
@@ -256,11 +260,15 @@
 
   .help-body p{line-height:1.6;font-size:0.93rem;}
   .help-body .conv{display:flex;gap:16px;margin:10px 0;flex-wrap:wrap;}
-  .conv-chip{background:#f5f6fb;border-radius:10px;padding:8px 12px;font-size:0.85rem;}
+  .conv-chip{background:#eef3f7;border-radius:10px;padding:8px 12px;font-size:0.85rem;}
 
   footer.app-foot{
     text-align:center;font-size:0.8rem;opacity:0.6;margin-top:30px;padding:0 16px;
   }
+  footer.app-foot .footer-credit{
+    margin-top:10px;display:flex;align-items:center;justify-content:center;gap:10px;
+  }
+  footer.app-foot .ladruno-badge{height:18px;width:auto;display:block;}
 
   @media (max-width:600px){
     header.app-head h1{font-size:1.25rem;}
@@ -273,7 +281,12 @@
 
   <header class="app-head">
     <div class="brand">
-      <div class="logo">🧩</div>
+      <div class="logo">
+        <svg width="26" height="20" viewBox="0 0 40 28" fill="none" aria-hidden="true">
+          <path d="M2 24 L10 6 L18 24 L26 6 L34 24" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="2" y1="24" x2="34" y2="24" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
       <div>
         <h1>Truss Sudoku</h1>
         <p>Structural equilibrium, solved one clue at a time.</p>
@@ -326,8 +339,11 @@
   </section>
 
   <footer class="app-foot">
-    Made with ✏️ + ☕ for anyone who thinks trusses are just sudoku with vectors.
-    &nbsp;·&nbsp; <a href="../">← back to the blog</a>
+    <div>Made with ✏️ + ☕ for anyone who thinks trusses are just sudoku with vectors.</div>
+    <div class="footer-credit">
+      <img src="ladruno-black.png" alt="Ladruño" class="ladruno-badge">
+      <a href="../">← back to the blog</a>
+    </div>
   </footer>
 </div>
 
@@ -851,32 +867,36 @@ function validateCut(level, cutKeys) {
   return { ok: true, cutKeys, sideA, sideB };
 }
 
-function renderHingeHint(level) {
+// The data behind the "4th equation" a hinge level needs: isolate the piece of the truss on one
+// side of the articulation point, and sum moments about it using only that piece's own reaction(s)
+// and loads — every member force meeting exactly at the hinge passes through that pivot, so it
+// drops out of the moment sum for free. Shared by the static explanation and the live equation line.
+function hingeEquationData(level) {
   const components = partitionAtHinge(level);
   const H = level.nodes[level.hinge];
   const side = components.find((c) => c.some((id) => level.nodes[id].support)) || components[0];
   const supportNode = side.find((id) => level.nodes[id].support);
   const reactions = reactionUnknownsFor(level).filter((r) => r.node === supportNode);
-  const terms = reactions.map((r) => {
-    const coeff = momentAbout([H.x, H.y], [level.nodes[r.node].x, level.nodes[r.node].y], r.dir);
-    return `(${coeff.toFixed(2)})·${r.node}_${r.comp}`;
-  });
   let loadMoment = 0;
   side.forEach((id) => {
     const load = (level.loads || {})[id];
     if (!load) return;
     loadMoment += momentAbout([H.x, H.y], [level.nodes[id].x, level.nodes[id].y], [load.fx || 0, load.fy || 0]);
   });
-  const loadTerm = Math.abs(loadMoment) < 0.005 ? "" : (loadMoment > 0 ? " + " : " − ") + Math.abs(loadMoment).toFixed(2);
+  return { H, side, supportNode, reactions, loadMoment };
+}
+
+function renderHingeHint(level) {
+  const { side, supportNode } = hingeEquationData(level);
   return `
     <b>🔗 ${level.hinge} is an articulation point:</b> remove it and the truss splits into two
     pieces — ${side.join("")} (with ${supportNode}'s pin) on one side, the rest on the other.
     Every member force meeting exactly at ${level.hinge} passes straight through that point, so it
     has <b>zero moment</b> about ${level.hinge}. That means you can isolate just the
     ${supportNode}-side piece and sum moments about ${level.hinge} using <i>only</i> its own pin
-    reaction and the loads on that side — giving you the 4th equation the 3 global ones can't:
-    <br><br>
-    <code>ΣM about ${level.hinge} (${supportNode}'s side only):<br>${terms.join(" + ")}${loadTerm} = 0</code>
+    reaction and the loads on that side — giving you the 4th equation the 3 global ones can't. It's
+    now live in the equation box below, right alongside the other three — all four need to balance
+    together.
   `;
 }
 
@@ -977,7 +997,7 @@ function renderDiagram() {
     const angle = (Math.atan2(-dy, dx) * 180) / Math.PI;
     const labelAngle = ((angle + 90) % 180) - 90;
     const geomLabel = svgEl("text", {
-      x: midx, y: midy, "font-size": vb.w / 55, fill: "#9a9fb8",
+      x: midx, y: midy, "font-size": vb.w / 55, fill: "#7f93a0",
       "text-anchor": "middle", transform: `rotate(${-labelAngle} ${midx} ${midy})`,
       dy: -vb.w / 130,
     });
@@ -1005,15 +1025,15 @@ function renderDiagram() {
       const y0 = p.y - dir * len * 0; // start at offset
       const start = p.y - dir * 0.35 - dir * len;
       const end = p.y - dir * 0.35;
-      const arrow = svgEl("line", { x1: p.x, y1: start, x2: p.x, y2: end, stroke: "#4b43d4", "stroke-width": strokeW * 1.6 });
+      const arrow = svgEl("line", { x1: p.x, y1: start, x2: p.x, y2: end, stroke: "#16658f", "stroke-width": strokeW * 1.6 });
       svg.appendChild(arrow);
       const headW = Math.max(0.45, vb.w / 30), headH = headW * 1.7;
       const head = svgEl("polygon", {
         points: `${p.x},${end + dir * 0.02} ${p.x - headW},${end - dir * headH} ${p.x + headW},${end - dir * headH}`,
-        fill: "#4b43d4",
+        fill: "#16658f",
       });
       svg.appendChild(head);
-      const lbl = svgEl("text", { x: p.x + 0.5, y: start + (end - start) / 2, "font-size": vb.w / 42, fill: "#4b43d4", "font-weight": "700" });
+      const lbl = svgEl("text", { x: p.x + 0.5, y: start + (end - start) / 2, "font-size": vb.w / 42, fill: "#16658f", "font-weight": "700" });
       lbl.textContent = `${Math.abs(load.fy)} kN`;
       svg.appendChild(lbl);
     }
@@ -1034,7 +1054,7 @@ function renderDiagram() {
     const sx = p.x + perp.dx * nudge, sy = p.y + perp.dy * nudge;
     const ex = sx + positiveDir.dx * len * sign;
     const ey = sy + positiveDir.dy * len * sign;
-    const color = solved ? "#4b43d4" : "#c9ccdc";
+    const color = solved ? "#16658f" : "#c3d2da";
     const arrow = svgEl("line", { x1: sx, y1: sy, x2: ex, y2: ey, stroke: color, "stroke-width": strokeW * 1.4, "stroke-dasharray": solved ? "0" : "0.3,0.25" });
     svg.appendChild(arrow);
     const ang = Math.atan2(ey - sy, ex - sx);
@@ -1058,17 +1078,17 @@ function renderDiagram() {
     const p = worldToView(level, n.x, n.y);
     const s = vb.w / 22;
     if (n.support.type === "pin") {
-      const tri = svgEl("polygon", { points: `${p.x},${p.y} ${p.x - s},${p.y + s * 1.6} ${p.x + s},${p.y + s * 1.6}`, fill: "#dcdfef", stroke: "#9a9fb8", "stroke-width": strokeW * 0.6 });
+      const tri = svgEl("polygon", { points: `${p.x},${p.y} ${p.x - s},${p.y + s * 1.6} ${p.x + s},${p.y + s * 1.6}`, fill: "#d7e6ee", stroke: "#7f93a0", "stroke-width": strokeW * 0.6 });
       svg.appendChild(tri);
     } else if (n.support.type === "roller") {
       const dir = n.support.dir || [0, 1];
       const downView = [-dir[0], dir[1]]; // direction the wedge points, in view space
       const rotDeg = Math.atan2(downView[0], downView[1]) * 180 / Math.PI;
       const g = svgEl("g", { transform: `rotate(${rotDeg} ${p.x} ${p.y})` });
-      const tri = svgEl("polygon", { points: `${p.x},${p.y} ${p.x - s},${p.y + s * 1.4} ${p.x + s},${p.y + s * 1.4}`, fill: "#dcdfef", stroke: "#9a9fb8", "stroke-width": strokeW * 0.6 });
+      const tri = svgEl("polygon", { points: `${p.x},${p.y} ${p.x - s},${p.y + s * 1.4} ${p.x + s},${p.y + s * 1.4}`, fill: "#d7e6ee", stroke: "#7f93a0", "stroke-width": strokeW * 0.6 });
       g.appendChild(tri);
-      const c1 = svgEl("circle", { cx: p.x - s * 0.55, cy: p.y + s * 1.75, r: s * 0.3, fill: "#9a9fb8" });
-      const c2 = svgEl("circle", { cx: p.x + s * 0.55, cy: p.y + s * 1.75, r: s * 0.3, fill: "#9a9fb8" });
+      const c1 = svgEl("circle", { cx: p.x - s * 0.55, cy: p.y + s * 1.75, r: s * 0.3, fill: "#7f93a0" });
+      const c2 = svgEl("circle", { cx: p.x + s * 0.55, cy: p.y + s * 1.75, r: s * 0.3, fill: "#7f93a0" });
       g.appendChild(c1); g.appendChild(c2);
       svg.appendChild(g);
     }
@@ -1108,7 +1128,7 @@ function renderDiagram() {
     const circle = svgEl("circle", {
       cx: p.x, cy: p.y, r,
       fill: done ? "var(--tension)" : playable ? "#fff6e0" : "#ffffff",
-      stroke: done ? "var(--tension)" : playable ? "var(--warn)" : "#9a9fb8",
+      stroke: done ? "var(--tension)" : playable ? "var(--warn)" : "#7f93a0",
       "stroke-width": strokeW,
     });
     g.appendChild(circle);
@@ -1572,11 +1592,29 @@ function renderReactionsEquations(level) {
   });
   momentSum += momentLoad;
 
+  // hinge levels have one more reaction unknown than the 3 global equations can pin down on their
+  // own (r=4) — the 4th comes from isolating one piece of the truss at the articulation point and
+  // summing moments about it, so it has to be solved together with the other three, not separately
+  let hingeLine = "";
+  if (level.hinge) {
+    const { H, supportNode, reactions: hingeReactions, loadMoment } = hingeEquationData(level);
+    const hingeTerms = hingeReactions.map((r) => {
+      const coeff = momentAbout([H.x, H.y], [level.nodes[r.node].x, level.nodes[r.node].y], r.dir);
+      return eqTermStack(coeff, varName(r), currentReactionValue(r.node, r.comp));
+    });
+    const hingeSum = hingeReactions.reduce((s, r) => {
+      const coeff = momentAbout([H.x, H.y], [level.nodes[r.node].x, level.nodes[r.node].y], r.dir);
+      return s + coeff * currentReactionValue(r.node, r.comp);
+    }, loadMoment);
+    hingeLine = `<div class="eq-line">ΣM about ${level.hinge} (${supportNode}'s side only): ${hingeTerms.join(" + ") || "0"}${fmtK(loadMoment)} ${eqRelation(hingeSum)}</div>`;
+  }
+
   document.getElementById("reaction-equations").innerHTML = `
     <div class="eq-title">📐 Global equilibrium — updates as you type:</div>
     <div class="eq-line">ΣFx: ${fxTerms.join(" + ") || "0"}${fmtK(fxLoad)} ${eqRelation(fxSum)}</div>
     <div class="eq-line">ΣFy: ${fyTerms.join(" + ") || "0"}${fmtK(fyLoad)} ${eqRelation(fySum)}</div>
     <div class="eq-line">ΣM about ${pivotId}: ${momentTerms.join(" + ") || "0"}${fmtK(momentLoad)} ${eqRelation(momentSum)}</div>
+    ${hingeLine}
   `;
 }
 
@@ -1647,7 +1685,7 @@ function computeKnownChain(level, truth, nodeId) {
   const load = (level.loads || {})[nodeId];
   if (load && (load.fx || load.fy)) {
     const mag = Math.hypot(load.fx || 0, load.fy || 0);
-    chain.push({ tag: "P", legendText: `Load: ${mag.toFixed(1)} kN`, vec: [load.fx || 0, load.fy || 0], color: "#4b43d4" });
+    chain.push({ tag: "P", legendText: `Load: ${mag.toFixed(1)} kN`, vec: [load.fx || 0, load.fy || 0], color: "#16658f" });
   }
   if (level.nodes[nodeId].support) {
     reactionUnknownsFor(level).filter((r) => r.node === nodeId).forEach((r) => {
@@ -1655,7 +1693,7 @@ function computeKnownChain(level, truth, nodeId) {
       const vec = [v * r.dir[0], v * r.dir[1]];
       const varName = `${nodeId}_${r.comp}`;
       if (Math.abs(v) < 0.05) skipped.push(`${varName}=0`);
-      else chain.push({ tag: varName, legendText: `${varName}: ${v.toFixed(1)} kN`, vec, color: "#4b43d4" });
+      else chain.push({ tag: varName, legendText: `${varName}: ${v.toFixed(1)} kN`, vec, color: "#16658f" });
     });
   }
   level.members.forEach(([i, j]) => {
@@ -1749,13 +1787,13 @@ function renderJointPolygon() {
   const gridHalf = ui.vb.w * 3;
   const gstart = Math.floor((gcx - gridHalf) / step) * step;
   for (let gx = gstart; gx <= gcx + gridHalf; gx += step) {
-    svg.appendChild(svgEl("line", { x1: gx, y1: gcy - gridHalf, x2: gx, y2: gcy + gridHalf, stroke: "#eceefc", "stroke-width": sw }));
+    svg.appendChild(svgEl("line", { x1: gx, y1: gcy - gridHalf, x2: gx, y2: gcy + gridHalf, stroke: "#e8f1f6", "stroke-width": sw }));
   }
   const gystart = Math.floor((gcy - gridHalf) / step) * step;
   for (let gy = gystart; gy <= gcy + gridHalf; gy += step) {
-    svg.appendChild(svgEl("line", { x1: gcx - gridHalf, y1: gy, x2: gcx + gridHalf, y2: gy, stroke: "#eceefc", "stroke-width": sw }));
+    svg.appendChild(svgEl("line", { x1: gcx - gridHalf, y1: gy, x2: gcx + gridHalf, y2: gy, stroke: "#e8f1f6", "stroke-width": sw }));
   }
-  const scaleLbl = svgEl("text", { x: ui.vb.x + ui.vb.w - 0.3, y: ui.vb.y + 0.6, "font-size": ui.vb.w / 45, fill: "#c3c7de", "text-anchor": "end" });
+  const scaleLbl = svgEl("text", { x: ui.vb.x + ui.vb.w - 0.3, y: ui.vb.y + 0.6, "font-size": ui.vb.w / 45, fill: "#b9c9d3", "text-anchor": "end" });
   scaleLbl.textContent = `grid: ${step} kN`;
   svg.appendChild(scaleLbl);
 
@@ -1774,11 +1812,11 @@ function renderJointPolygon() {
   const big = ui.maxT * 1.4;
   const g1a = toView([ui.P[0] - big * ui.dir1[0], ui.P[1] - big * ui.dir1[1]]);
   const g1b = toView([ui.P[0] + big * ui.dir1[0], ui.P[1] + big * ui.dir1[1]]);
-  svg.appendChild(svgEl("line", { x1: g1a[0], y1: g1a[1], x2: g1b[0], y2: g1b[1], stroke: "#d7d9ea", "stroke-width": sw, "stroke-dasharray": `${sw * 4},${sw * 3}` }));
+  svg.appendChild(svgEl("line", { x1: g1a[0], y1: g1a[1], x2: g1b[0], y2: g1b[1], stroke: "#cfdde6", "stroke-width": sw, "stroke-dasharray": `${sw * 4},${sw * 3}` }));
   if (ui.hasSecond) {
     const g2a = toView([ui.O[0] - big * ui.dir2[0], ui.O[1] - big * ui.dir2[1]]);
     const g2b = toView([ui.O[0] + big * ui.dir2[0], ui.O[1] + big * ui.dir2[1]]);
-    svg.appendChild(svgEl("line", { x1: g2a[0], y1: g2a[1], x2: g2b[0], y2: g2b[1], stroke: "#d7d9ea", "stroke-width": sw, "stroke-dasharray": `${sw * 4},${sw * 3}` }));
+    svg.appendChild(svgEl("line", { x1: g2a[0], y1: g2a[1], x2: g2b[0], y2: g2b[1], stroke: "#cfdde6", "stroke-width": sw, "stroke-dasharray": `${sw * 4},${sw * 3}` }));
   } else {
     // target ring at O for the single-unknown case
     const ov = toView(ui.O);
@@ -2186,7 +2224,7 @@ function renderJointFBD() {
       tipTag(tagPoint, varName, color);
       legend.push({ text: `${ui.nodeId}–${other}: ${zero ? "0" : F.toFixed(1)} kN ${zero ? "" : F > 0 ? "(T)" : "(C)"}`, color });
     } else {
-      const stubColor = "#8a90ab";
+      const stubColor = "#72899a";
       svg.appendChild(svgEl("line", { x1: 0, y1: 0, x2: outer[0], y2: outer[1], stroke: stubColor, "stroke-width": sw * 6, "stroke-linecap": "round", "stroke-dasharray": `${sw * 9},${sw * 7}` }));
       svg.appendChild(svgEl("circle", { cx: outer[0], cy: outer[1], r: sw * 8, fill: "#fff", stroke: stubColor, "stroke-width": sw * 4.5 }));
       tipTag(tagPoint, varName, stubColor);
@@ -2200,9 +2238,9 @@ function renderJointFBD() {
       const dirView = [r.dir[0], -r.dir[1]];
       const sign = val < 0 ? -1 : 1;
       const outer = [dirView[0] * armLen * sign, dirView[1] * armLen * sign];
-      drawArrow(svg, [0, 0], outer, "#4b43d4", sw * 4.5, null);
-      tipTag([outer[0] * 1.22, outer[1] * 1.22], `${ui.nodeId}_${r.comp}`, "#4b43d4");
-      legend.push({ text: `${ui.nodeId}_${r.comp}: ${Math.abs(val).toFixed(1)} kN`, color: "#4b43d4" });
+      drawArrow(svg, [0, 0], outer, "#16658f", sw * 4.5, null);
+      tipTag([outer[0] * 1.22, outer[1] * 1.22], `${ui.nodeId}_${r.comp}`, "#16658f");
+      legend.push({ text: `${ui.nodeId}_${r.comp}: ${Math.abs(val).toFixed(1)} kN`, color: "#16658f" });
     });
   }
 
@@ -2211,9 +2249,9 @@ function renderJointFBD() {
     const mag = Math.hypot(load.fx || 0, load.fy || 0);
     const dirView = [(load.fx || 0) / mag, -(load.fy || 0) / mag];
     const outer = [dirView[0] * armLen, dirView[1] * armLen];
-    drawArrow(svg, [0, 0], outer, "#4b43d4", sw * 4.5, null);
-    tipTag([outer[0] * 1.22, outer[1] * 1.22], "P", "#4b43d4");
-    legend.push({ text: `Applied load: ${mag.toFixed(1)} kN`, color: "#4b43d4" });
+    drawArrow(svg, [0, 0], outer, "#16658f", sw * 4.5, null);
+    tipTag([outer[0] * 1.22, outer[1] * 1.22], "P", "#16658f");
+    legend.push({ text: `Applied load: ${mag.toFixed(1)} kN`, color: "#16658f" });
   }
 
   svg.appendChild(svgEl("circle", { cx: 0, cy: 0, r: half / 24, fill: "var(--ink)" }));
