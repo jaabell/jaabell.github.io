@@ -539,6 +539,28 @@ const LEVELS = [
     members: [["A","E"],["E","B"],["B","F"],["F","C"],["C","G"],["G","D"],["E","F"],["F","G"],["A","B"],["C","D"]],
     loads: { B: { fx: 0, fy: -10 }, C: { fx: 0, fy: -10 } },
   },
+  {
+    id: "l7", name: "Long Haul", emoji: "🚂", difficulty: "Hard+",
+    nodes: {
+      A: { x: 0, y: 0, support: { type: "pin" } }, B: { x: 4, y: 0 }, C: { x: 8, y: 0 }, D: { x: 12, y: 0 }, E: { x: 16, y: 0 }, F: { x: 20, y: 0, support: { type: "roller" } },
+      G: { x: 2, y: 3 }, H: { x: 6, y: 3 }, I: { x: 10, y: 3 }, J: { x: 14, y: 3 }, K: { x: 18, y: 3 },
+    },
+    members: [
+      ["A","G"],["G","B"],["B","H"],["H","C"],["C","I"],["I","D"],["D","J"],["J","E"],["E","K"],["K","F"],
+      ["G","H"],["H","I"],["I","J"],["J","K"],
+      ["A","B"],["B","C"],["C","D"],["D","E"],["E","F"],
+    ],
+    loads: { B: { fx: 0, fy: -10 }, C: { fx: 0, fy: -10 }, D: { fx: 0, fy: -10 }, E: { fx: 0, fy: -10 } },
+  },
+  {
+    id: "l8", name: "Leaning Wall", emoji: "🧱", difficulty: "Medium",
+    nodes: {
+      A: { x: 0, y: 0, support: { type: "pin" } }, B: { x: 4, y: 0 }, C: { x: 8, y: 0 },
+      D: { x: 2, y: 3 }, E: { x: 6, y: 3, support: { type: "roller", dir: [1, 0] } },
+    },
+    members: [["A","B"],["B","C"],["A","D"],["D","B"],["D","E"],["B","E"],["E","C"]],
+    loads: { D: { fx: 0, fy: -8 }, C: { fx: 0, fy: -6 } },
+  },
 ];
 
 /* ============================================================
@@ -2190,7 +2212,7 @@ function renderLevelGrid() {
   const grid = document.getElementById("level-grid");
   grid.innerHTML = "";
   LEVELS.forEach((level, idx) => {
-    const unlocked = idx === 0 || (progress[level.id] && progress[level.id].unlocked);
+    const unlocked = true; // every level is playable right away — no progression gate
     const p = progress[level.id] || { stars: 0, bestTime: null };
     const card = document.createElement("div");
     card.className = "level-card" + (unlocked ? "" : " locked");
