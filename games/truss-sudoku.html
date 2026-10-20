@@ -587,6 +587,33 @@ const LEVELS = [
     members: [["A","B"],["B","C"],["A","D"],["D","B"],["D","E"],["B","E"],["E","C"]],
     loads: { D: { fx: 0, fy: -8 }, C: { fx: 0, fy: -6 } },
   },
+  {
+    id: "l9", name: "Roof Truss", emoji: "🏠", difficulty: "Medium",
+    nodes: {
+      A: { x: 0, y: 0, support: { type: "pin" } }, M: { x: 4, y: 0 }, C: { x: 8, y: 0, support: { type: "roller" } },
+      E: { x: 2, y: 1.5 }, F: { x: 4, y: 3 }, G: { x: 6, y: 1.5 },
+    },
+    members: [["A","M"],["M","C"],["A","E"],["E","F"],["F","G"],["G","C"],["E","M"],["M","G"],["F","M"]],
+    loads: { E: { fx: 0, fy: -8 }, F: { fx: 0, fy: -10 }, G: { fx: 0, fy: -8 } },
+  },
+  {
+    id: "l10", name: "Cantilever", emoji: "🎣", difficulty: "Hard",
+    nodes: {
+      A: { x: 0, y: 0, support: { type: "pin" } }, B: { x: 4, y: 0, support: { type: "roller" } }, C: { x: 8, y: 0 }, D: { x: 12, y: 0 },
+      E: { x: 2, y: 3 }, F: { x: 6, y: 3 }, G: { x: 10, y: 3 },
+    },
+    members: [["A","B"],["B","C"],["C","D"],["E","F"],["F","G"],["A","E"],["E","B"],["B","F"],["F","C"],["C","G"],["G","D"]],
+    loads: { D: { fx: 0, fy: -10 }, C: { fx: 0, fy: -6 } },
+  },
+  {
+    id: "l11", name: "Twin Peaks", emoji: "🎪", difficulty: "Medium+", hinge: "H",
+    nodes: {
+      A: { x: 0, y: 0, support: { type: "pin" } }, D: { x: 2, y: 1.8 }, H: { x: 4, y: 0.6 },
+      E: { x: 6, y: 1.8 }, C: { x: 8, y: 0, support: { type: "pin" } },
+    },
+    members: [["A","D"],["D","H"],["A","H"],["H","E"],["E","C"],["H","C"]],
+    loads: { D: { fx: 0, fy: -8 }, E: { fx: 0, fy: -8 } },
+  },
 ];
 
 /* ============================================================
@@ -929,17 +956,53 @@ function worldToView(level, x, y) {
   return { x, y: -y };
 }
 
+// Force-arrow sizing is scaled off the truss's own geometry (its shortest member — typically a
+// panel width or a diagonal) rather than the overall viewBox width. A long, flat truss (e.g. a
+// 5-panel bridge) has a huge vb.w but a short, tight vertical gap between chords; sizing arrowheads
+// off vb.w there makes them dwarf the joint circles and collide with everything around them.
+function diagramMetrics(level) {
+  const unit = Math.min(...level.members.map(([i, j]) => {
+    const a = level.nodes[i], b = level.nodes[j];
+    return Math.hypot(b.x - a.x, b.y - a.y);
+  }));
+  return {
+    unit,
+    loadShaftLen: unit * 0.3,
+    loadHeadW: unit * 0.1,
+    loadHeadH: unit * 0.1 * 1.6,
+    loadLabelGap: unit * 0.2,
+    reactionLen: unit * 0.5,
+    reactionHeadLen: unit * 0.16,
+    reactionNudge: unit * 0.14,
+  };
+}
+
 function computeViewBox(level) {
   const xs = Object.values(level.nodes).map((n) => n.x);
   const ys = Object.values(level.nodes).map((n) => -n.y);
   const pad = 2.2;
-  const minX = Math.min(...xs) - pad, maxX = Math.max(...xs) + pad;
-  const topMostWorldY = Math.max(...Object.values(level.nodes).map((n) => n.y));
-  const bottomMostWorldY = Math.min(...Object.values(level.nodes).map((n) => n.y));
-  const hasTopLoad = Object.keys(level.loads || {}).some((id) => level.nodes[id].y === topMostWorldY && level.loads[id].fy < 0);
-  const hasBottomUpLoad = Object.keys(level.loads || {}).some((id) => level.nodes[id].y === bottomMostWorldY && level.loads[id].fy > 0);
-  const minY = Math.min(...ys) - pad - (hasTopLoad ? 1.6 : 0); // room for load arrows above, only if needed
-  const maxY = Math.max(...ys) + pad + 1.2 + (hasBottomUpLoad ? 1.6 : 0); // room for reaction arrows + any upward loads below
+  let minX = Math.min(...xs) - pad, maxX = Math.max(...xs) + pad;
+  let minY = Math.min(...ys) - pad, maxY = Math.max(...ys) + pad;
+
+  const m = diagramMetrics(level);
+  const loadReach = m.loadShaftLen + m.loadHeadH + m.loadLabelGap + 0.6; // + room for the "X kN" label
+  Object.keys(level.loads || {}).forEach((id) => {
+    const load = level.loads[id];
+    const p = worldToView(level, level.nodes[id].x, level.nodes[id].y);
+    if (load.fy < 0) minY = Math.min(minY, p.y - loadReach);
+    if (load.fy > 0) maxY = Math.max(maxY, p.y + loadReach);
+  });
+
+  const reactionReach = m.reactionLen + m.reactionHeadLen + m.reactionNudge + 0.9; // + room for the value label
+  reactionUnknownsFor(level).forEach(({ node, dir }) => {
+    const p = worldToView(level, level.nodes[node].x, level.nodes[node].y);
+    const vdx = dir[0], vdy = -dir[1]; // world dir -> view space
+    minX = Math.min(minX, p.x - Math.abs(vdx) * reactionReach);
+    maxX = Math.max(maxX, p.x + Math.abs(vdx) * reactionReach);
+    minY = Math.min(minY, p.y - Math.abs(vdy) * reactionReach);
+    maxY = Math.max(maxY, p.y + Math.abs(vdy) * reactionReach);
+  });
+
   return { x: minX, y: minY, w: maxX - minX, h: maxY - minY };
 }
 
@@ -951,6 +1014,23 @@ function renderDiagram() {
   svg.setAttribute("viewBox", `${vb.x} ${vb.y} ${vb.w} ${vb.h}`);
 
   const strokeW = Math.max(0.08, vb.w / 160);
+
+  // background grid — purely a visual scale reference, drawn first so everything else sits on top
+  const gridStep = (() => {
+    const raw = vb.w / 10;
+    const mag = Math.pow(10, Math.floor(Math.log10(raw)));
+    const n = raw / mag;
+    const nice = n < 1.5 ? 1 : n < 3.5 ? 2 : n < 7.5 ? 5 : 10;
+    return nice * mag;
+  })();
+  const gridStartX = Math.ceil(vb.x / gridStep) * gridStep;
+  for (let gx = gridStartX; gx <= vb.x + vb.w; gx += gridStep) {
+    svg.appendChild(svgEl("line", { x1: gx, y1: vb.y, x2: gx, y2: vb.y + vb.h, stroke: "#e8f1f6", "stroke-width": strokeW * 0.55 }));
+  }
+  const gridStartY = Math.ceil(vb.y / gridStep) * gridStep;
+  for (let gy = gridStartY; gy <= vb.y + vb.h; gy += gridStep) {
+    svg.appendChild(svgEl("line", { x1: vb.x, y1: gy, x2: vb.x + vb.w, y2: gy, stroke: "#e8f1f6", "stroke-width": strokeW * 0.55 }));
+  }
 
   // method-of-sections: while dragging a candidate cut, preview which joints would
   // end up on which side, as soon as the drawn line splits the truss into two pieces
@@ -997,11 +1077,12 @@ function renderDiagram() {
     const angle = (Math.atan2(-dy, dx) * 180) / Math.PI;
     const labelAngle = ((angle + 90) % 180) - 90;
     const geomLabel = svgEl("text", {
-      x: midx, y: midy, "font-size": vb.w / 55, fill: "#7f93a0",
+      x: midx, y: midy, "font-size": vb.w / 65, fill: "#7f93a0",
       "text-anchor": "middle", transform: `rotate(${-labelAngle} ${midx} ${midy})`,
-      dy: -vb.w / 130,
+      dy: -vb.w / 110,
     });
-    geomLabel.textContent = `${L.toFixed(1)}`;
+    const Lr = Math.round(L * 10) / 10;
+    geomLabel.textContent = Number.isInteger(Lr) ? String(Lr) : Lr.toFixed(1);
     svg.appendChild(geomLabel);
 
     if (solved) {
@@ -1014,26 +1095,30 @@ function renderDiagram() {
     }
   }
 
-  // loads
+  // loads — sized off the truss's own geometry (diagramMetrics), not the overall canvas width,
+  // so a long flat truss doesn't get an arrowhead that dwarfs the joint it's pointing at
+  const metrics = diagramMetrics(level);
+  const jointR = vb.w / 42;
   Object.keys(level.loads || {}).forEach((id) => {
     const load = level.loads[id];
     const n = level.nodes[id];
     const p = worldToView(level, n.x, n.y);
     if (load.fy) {
       const dir = load.fy < 0 ? 1 : -1;
-      const len = vb.h / 7;
-      const y0 = p.y - dir * len * 0; // start at offset
-      const start = p.y - dir * 0.35 - dir * len;
-      const end = p.y - dir * 0.35;
-      const arrow = svgEl("line", { x1: p.x, y1: start, x2: p.x, y2: end, stroke: "#16658f", "stroke-width": strokeW * 1.6 });
+      const tip = p.y - dir * (jointR + 0.1); // arrowhead tip stops just clear of the joint circle
+      const headBase = tip - dir * metrics.loadHeadH;
+      const start = headBase - dir * metrics.loadShaftLen; // tail, furthest from the joint
+      const arrow = svgEl("line", { x1: p.x, y1: start, x2: p.x, y2: headBase, stroke: "#16658f", "stroke-width": strokeW * 1.6 });
       svg.appendChild(arrow);
-      const headW = Math.max(0.45, vb.w / 30), headH = headW * 1.7;
       const head = svgEl("polygon", {
-        points: `${p.x},${end + dir * 0.02} ${p.x - headW},${end - dir * headH} ${p.x + headW},${end - dir * headH}`,
+        points: `${p.x},${tip} ${p.x - metrics.loadHeadW},${headBase} ${p.x + metrics.loadHeadW},${headBase}`,
         fill: "#16658f",
       });
       svg.appendChild(head);
-      const lbl = svgEl("text", { x: p.x + 0.5, y: start + (end - start) / 2, "font-size": vb.w / 42, fill: "#16658f", "font-weight": "700" });
+      const lbl = svgEl("text", {
+        x: p.x + metrics.loadLabelGap, y: headBase + (start - headBase) * 0.3,
+        "font-size": vb.w / 48, fill: "#16658f", "font-weight": "700", "dominant-baseline": "middle",
+      });
       lbl.textContent = `${Math.abs(load.fy)} kN`;
       svg.appendChild(lbl);
     }
@@ -1047,10 +1132,10 @@ function renderDiagram() {
     const val = solved ? state.truth.reactions[node][comp] : null;
     const positiveDir = { dx: dir[0], dy: -dir[1] }; // world dir -> view space
     const sign = solved ? (val < 0 ? -1 : 1) : 1;
-    const len = vb.w / 11;
+    const len = metrics.reactionLen;
     // nudge perpendicular to the reaction line so it doesn't sit directly on top of a member
     const perp = { dx: -positiveDir.dy, dy: positiveDir.dx };
-    const nudge = vb.w / 45;
+    const nudge = metrics.reactionNudge;
     const sx = p.x + perp.dx * nudge, sy = p.y + perp.dy * nudge;
     const ex = sx + positiveDir.dx * len * sign;
     const ey = sy + positiveDir.dy * len * sign;
@@ -1058,14 +1143,14 @@ function renderDiagram() {
     const arrow = svgEl("line", { x1: sx, y1: sy, x2: ex, y2: ey, stroke: color, "stroke-width": strokeW * 1.4, "stroke-dasharray": solved ? "0" : "0.3,0.25" });
     svg.appendChild(arrow);
     const ang = Math.atan2(ey - sy, ex - sx);
-    const headLen = Math.max(0.5, vb.w / 24);
+    const headLen = metrics.reactionHeadLen;
     const head = svgEl("polygon", {
       points: `${ex},${ey} ${ex - headLen * Math.cos(ang - 0.4)},${ey - headLen * Math.sin(ang - 0.4)} ${ex - headLen * Math.cos(ang + 0.4)},${ey - headLen * Math.sin(ang + 0.4)}`,
       fill: color,
     });
     svg.appendChild(head);
     if (solved) {
-      const lbl = svgEl("text", { x: ex + positiveDir.dx * 0.3 + perp.dx * 0.4, y: ey + positiveDir.dy * 0.3 + perp.dy * 0.4, "font-size": vb.w / 44, fill: color, "font-weight": "700", "text-anchor": "middle" });
+      const lbl = svgEl("text", { x: ex + positiveDir.dx * 0.45 + perp.dx * 0.5, y: ey + positiveDir.dy * 0.45 + perp.dy * 0.5, "font-size": vb.w / 48, fill: color, "font-weight": "700", "text-anchor": "middle" });
       lbl.textContent = `${Math.abs(val).toFixed(1)}`;
       svg.appendChild(lbl);
     }
@@ -1134,10 +1219,15 @@ function renderDiagram() {
     g.appendChild(circle);
     const hit = svgEl("circle", { cx: p.x, cy: p.y, r: r * 2.4, fill: "transparent" });
     g.appendChild(hit);
-    const label = svgEl("text", {
-      x: p.x, y: p.y - r - 0.25, "font-size": vb.w / 32, "font-weight": "700",
-      fill: "var(--ink)", "text-anchor": "middle",
-    });
+    // a downward load arrow already occupies the space directly above the joint — move the
+    // joint's own letter off to the side there instead of fighting the arrow for the same spot
+    const hasDownLoad = level.loads && level.loads[id] && level.loads[id].fy < 0;
+    const label = svgEl(
+      "text",
+      hasDownLoad
+        ? { x: p.x - r - 0.3, y: p.y + vb.w / 180, "font-size": vb.w / 32, "font-weight": "700", fill: "var(--ink)", "text-anchor": "end" }
+        : { x: p.x, y: p.y - r - 0.25, "font-size": vb.w / 32, "font-weight": "700", fill: "var(--ink)", "text-anchor": "middle" }
+    );
     label.textContent = id;
     g.appendChild(label);
 
