@@ -133,7 +133,7 @@
 
   /* ---------- modal ---------- */
   .modal-backdrop{
-    position:fixed;inset:0;background:rgba(44,42,74,0.45);display:none;
+    position:fixed;inset:0;background:rgba(44,42,74,0.1);display:none;
     align-items:center;justify-content:center;z-index:50;padding:16px;
   }
   .modal-backdrop.show{display:flex;}
@@ -142,6 +142,8 @@
     max-width:460px;width:100%;padding:24px;max-height:88vh;overflow:auto;
   }
   .modal.modal-wide{max-width:520px;}
+  .modal h2{cursor:move;}
+  .modal.dragging{user-select:none;}
 
   #joint-drag-view{margin:12px 0;}
   .polygon-canvas-wrap{position:relative;}
@@ -209,6 +211,12 @@
     background:#f5f6fb;border-radius:12px;padding:10px 14px;font-size:0.85rem;margin-bottom:10px;line-height:1.6;
   }
   .known-box code{background:#e9ecff;padding:1px 5px;border-radius:5px;}
+  .side-toggle{display:flex;gap:8px;margin:8px 0;flex-wrap:wrap;}
+  .side-btn{
+    flex:1;min-width:120px;padding:8px 10px;border-radius:10px;border:2px solid #ddd;background:#fff;
+    font-family:inherit;font-weight:700;font-size:0.82rem;cursor:pointer;color:var(--ink);
+  }
+  .side-btn.active{border-color:var(--accent);background:#eef0ff;color:var(--accent-dark);}
   .eq-box{
     background:#2c2a4a;color:#e4e6ff;border-radius:12px;padding:12px 14px;margin-bottom:10px;
     font-size:0.8rem;line-height:1.7;font-family:'Courier New',monospace;
@@ -219,6 +227,8 @@
   .term-stack{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 1px;line-height:1.25;}
   .term-top{white-space:nowrap;border-bottom:1.5px solid #6c6a9a;padding-bottom:2px;}
   .term-value{font-size:0.88em;color:#ffd27a;font-weight:700;margin-top:1px;}
+  .term-stack.known .term-top{border-bottom-color:#8fd6ff;}
+  .term-stack.known .term-value{color:#8fd6ff;}
   .eq-rhs{font-weight:700;}
   .eq-op{font-weight:800;font-size:1.1em;padding:0 1px;}
   .eq-rhs.balanced, .eq-op.balanced{color:#6ee7a8;}
@@ -922,6 +932,25 @@ function renderDiagram() {
 
   const strokeW = Math.max(0.08, vb.w / 160);
 
+  // method-of-sections: while dragging a candidate cut, preview which joints would
+  // end up on which side, as soon as the drawn line splits the truss into two pieces
+  if (state.cutDraft) {
+    const d = state.cutDraft;
+    const previewKeys = new Set(membersCrossedBy(level, [d.x1, d.y1], [d.x2, d.y2]));
+    if (previewKeys.size > 0) {
+      const comps = connectivityComponents(level, previewKeys);
+      if (comps.length === 2) {
+        const sideColors = ["#9fc2ff", "#ffc08a"];
+        comps.forEach((comp, ci) => {
+          comp.forEach((id) => {
+            const p = worldToView(level, level.nodes[id].x, level.nodes[id].y);
+            svg.appendChild(svgEl("circle", { cx: p.x, cy: p.y, r: vb.w / 15, fill: sideColors[ci], opacity: 0.5 }));
+          });
+        });
+      }
+    }
+  }
+
   // members
   for (const [i, j] of level.members) {
     const ni = level.nodes[i], nj = level.nodes[j];
@@ -1178,7 +1207,13 @@ function showToast(msg, kind) {
   t._timer = setTimeout(() => { t.className = "toast"; }, 2200);
 }
 
-function openModal(id) { document.getElementById(id).classList.add("show"); }
+function openModal(id) {
+  const bd = document.getElementById(id);
+  const modal = bd.querySelector(".modal");
+  // every open starts centered again, even if a previous open of this same modal was dragged aside
+  if (modal) { modal.style.position = ""; modal.style.left = ""; modal.style.top = ""; modal.style.margin = ""; }
+  bd.classList.add("show");
+}
 function closeModal(id) { document.getElementById(id).classList.remove("show"); }
 
 document.querySelectorAll("[data-close]").forEach((el) => {
@@ -1187,6 +1222,43 @@ document.querySelectorAll("[data-close]").forEach((el) => {
 document.querySelectorAll(".modal-backdrop").forEach((bd) => {
   bd.addEventListener("click", (e) => { if (e.target === bd) bd.classList.remove("show"); });
 });
+
+// drag any modal by its title bar — lets players park a dialog off to the side and still see
+// the truss diagram underneath while they fill it in, instead of it blocking the whole screen
+function attachModalDragging() {
+  document.querySelectorAll(".modal-backdrop").forEach((bd) => {
+    const modal = bd.querySelector(".modal");
+    const handle = modal && modal.querySelector("h2");
+    if (!handle) return;
+    let dragging = false, startX, startY, origLeft, origTop;
+    handle.addEventListener("pointerdown", (e) => {
+      dragging = true;
+      const rect = modal.getBoundingClientRect();
+      modal.style.position = "fixed";
+      modal.style.margin = "0";
+      modal.style.left = rect.left + "px";
+      modal.style.top = rect.top + "px";
+      origLeft = rect.left; origTop = rect.top;
+      startX = e.clientX; startY = e.clientY;
+      modal.classList.add("dragging");
+      handle.setPointerCapture(e.pointerId);
+      e.preventDefault();
+    });
+    handle.addEventListener("pointermove", (e) => {
+      if (!dragging) return;
+      const dx = e.clientX - startX, dy = e.clientY - startY;
+      const maxLeft = window.innerWidth - 80, maxTop = window.innerHeight - 50;
+      const newLeft = Math.max(-modal.offsetWidth + 100, Math.min(origLeft + dx, maxLeft));
+      const newTop = Math.max(0, Math.min(origTop + dy, maxTop));
+      modal.style.left = newLeft + "px";
+      modal.style.top = newTop + "px";
+    });
+    function endDrag() { dragging = false; modal.classList.remove("dragging"); }
+    handle.addEventListener("pointerup", endDrag);
+    handle.addEventListener("pointercancel", endDrag);
+  });
+}
+attachModalDragging();
 
 function onJointClick(nodeId) {
   if (state.sectionMode) return; // drawing a cut right now — joint clicks are suspended
@@ -1289,29 +1361,54 @@ document.getElementById("pill-section-btn").addEventListener("click", () => {
 });
 
 function openSectionModal(result) {
-  const level = state.level;
   const { cutKeys, sideA, sideB } = result;
-  const analyzed = sideA.length <= sideB.length ? sideA : sideB;
-  const otherSide = analyzed === sideA ? sideB : sideA;
+  state.sectionUI = {
+    cutKeys, sideA, sideB,
+    side: sideA.length <= sideB.length ? "A" : "B", // default to the smaller free body, but either is choosable below
+  };
+  renderSectionSide();
+  openModal("modal-section");
+}
+
+// (re)builds the free-body info for whichever side is currently chosen (state.sectionUI.side),
+// and re-renders the known-box/side-toggle, the input fields and the equations to match it.
+function renderSectionSide() {
+  const level = state.level;
+  const ui = state.sectionUI;
+  const analyzed = ui.side === "A" ? ui.sideA : ui.sideB;
+  const otherSide = ui.side === "A" ? ui.sideB : ui.sideA;
   const analyzedSet = new Set(analyzed);
 
-  const cutInfo = cutKeys.map((key) => {
+  const cutInfo = ui.cutKeys.map((key) => {
     const [i, j] = findMemberPair(level, key);
     const onSide = analyzedSet.has(i) ? i : j;
     const other = onSide === i ? j : i;
     const dir = memberDir(level, onSide, other);
     return { key, onSide, other, dir };
   });
+  ui.analyzed = analyzed;
+  ui.otherSide = otherSide;
+  ui.cutInfo = cutInfo;
 
-  state.sectionUI = { cutKeys, analyzed, otherSide, cutInfo };
-
-  document.getElementById("section-known").innerHTML = `
-    Cutting through <b>${cutKeys.map((k) => k.replace("-", "–")).join(", ")}</b> splits the truss
-    into two free bodies. We're analyzing the smaller one — joints <b>${analyzed.join(", ")}</b> —
-    using its own loads/reactions plus the ${cutKeys.length} exposed member force${cutKeys.length > 1 ? "s" : ""}
-    where the cut crosses them. (Analyzing the other side, ${otherSide.join(", ")}, gives the exact
-    same answers — it's your choice which one to use.)
+  const knownBox = document.getElementById("section-known");
+  knownBox.innerHTML = `
+    Cutting through <b>${ui.cutKeys.map((k) => k.replace("-", "–")).join(", ")}</b> splits the truss
+    into two free bodies. Either one gives the exact same member forces — pick whichever is left
+    with fewer unknown loads/reactions to juggle:
+    <div class="side-toggle">
+      <button type="button" class="side-btn ${ui.side === "A" ? "active" : ""}" data-side="A">Keep ${ui.sideA.join("·")}</button>
+      <button type="button" class="side-btn ${ui.side === "B" ? "active" : ""}" data-side="B">Keep ${ui.sideB.join("·")}</button>
+    </div>
+    We're analyzing joints <b>${analyzed.join(", ")}</b> using its own loads/reactions plus the
+    ${ui.cutKeys.length} exposed member force${ui.cutKeys.length > 1 ? "s" : ""} where the cut crosses them.
   `;
+  knownBox.querySelectorAll(".side-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      if (ui.side === btn.dataset.side) return;
+      ui.side = btn.dataset.side;
+      renderSectionSide();
+    });
+  });
 
   const fields = document.getElementById("section-fields");
   fields.innerHTML = "";
@@ -1331,7 +1428,6 @@ function openSectionModal(result) {
   });
 
   renderSectionEquations();
-  openModal("modal-section");
 }
 
 function renderSectionEquations() {
@@ -1340,27 +1436,45 @@ function renderSectionEquations() {
   const pivotId = ui.analyzed[0];
   const pivot = level.nodes[pivotId];
 
+  // Known contributions (external loads, already-found reactions, already-solved cut members)
+  // are shown as their own labeled terms below — not folded into one opaque constant — so it's
+  // obvious every external force and reaction on this free body is actually in the equation.
+  const fxKnownTerms = [], fyKnownTerms = [], mKnownTerms = [];
   let knownFx = 0, knownFy = 0, knownM = 0;
   ui.analyzed.forEach((nodeId) => {
     const load = (level.loads || {})[nodeId];
     if (load && (load.fx || load.fy)) {
-      knownFx += load.fx || 0; knownFy += load.fy || 0;
-      knownM += momentAbout([pivot.x, pivot.y], [level.nodes[nodeId].x, level.nodes[nodeId].y], [load.fx || 0, load.fy || 0]);
+      const label = `P_${nodeId}`;
+      if (load.fx) { fxKnownTerms.push(knownTermStack(label, load.fx)); knownFx += load.fx; }
+      if (load.fy) { fyKnownTerms.push(knownTermStack(label, load.fy)); knownFy += load.fy; }
+      const m = momentAbout([pivot.x, pivot.y], [level.nodes[nodeId].x, level.nodes[nodeId].y], [load.fx || 0, load.fy || 0]);
+      if (Math.abs(m) > 0.005) mKnownTerms.push(knownTermStack(label, m));
+      knownM += m;
     }
     if (level.nodes[nodeId].support) {
       reactionUnknownsFor(level).filter((r) => r.node === nodeId).forEach((r) => {
         const val = state.truth.reactions[nodeId][r.comp];
+        const label = `${nodeId}_${r.comp}`;
         const vec = [val * r.dir[0], val * r.dir[1]];
+        if (Math.abs(vec[0]) > 0.005) fxKnownTerms.push(knownTermStack(label, vec[0]));
+        if (Math.abs(vec[1]) > 0.005) fyKnownTerms.push(knownTermStack(label, vec[1]));
         knownFx += vec[0]; knownFy += vec[1];
-        knownM += momentAbout([pivot.x, pivot.y], [level.nodes[nodeId].x, level.nodes[nodeId].y], vec);
+        const m = momentAbout([pivot.x, pivot.y], [level.nodes[nodeId].x, level.nodes[nodeId].y], vec);
+        if (Math.abs(m) > 0.005) mKnownTerms.push(knownTermStack(label, m));
+        knownM += m;
       });
     }
   });
   ui.cutInfo.filter((c) => state.solvedMembers.has(c.key)).forEach((c) => {
     const F = state.truth.memberForces[c.key];
+    const label = `F_${c.key.replace("-", "")}`;
     const vec = [F * c.dir[0], F * c.dir[1]];
+    if (Math.abs(vec[0]) > 0.005) fxKnownTerms.push(knownTermStack(label, vec[0]));
+    if (Math.abs(vec[1]) > 0.005) fyKnownTerms.push(knownTermStack(label, vec[1]));
     knownFx += vec[0]; knownFy += vec[1];
-    knownM += momentAbout([pivot.x, pivot.y], [level.nodes[c.onSide].x, level.nodes[c.onSide].y], vec);
+    const m = momentAbout([pivot.x, pivot.y], [level.nodes[c.onSide].x, level.nodes[c.onSide].y], vec);
+    if (Math.abs(m) > 0.005) mKnownTerms.push(knownTermStack(label, m));
+    knownM += m;
   });
 
   const unknownCuts = ui.cutInfo.filter((c) => !state.solvedMembers.has(c.key));
@@ -1372,21 +1486,19 @@ function renderSectionEquations() {
   const varName = (key) => `F_${key.replace("-", "")}`;
   const momentCoeff = (c) => momentAbout([pivot.x, pivot.y], [level.nodes[c.onSide].x, level.nodes[c.onSide].y], c.dir);
 
-  const fxTerms = unknownCuts.map((c) => eqTermStack(c.dir[0], varName(c.key), currentVal(c.key)));
-  const fyTerms = unknownCuts.map((c) => eqTermStack(c.dir[1], varName(c.key), currentVal(c.key)));
-  const mTerms = unknownCuts.map((c) => eqTermStack(momentCoeff(c), varName(c.key), currentVal(c.key)));
+  const fxTerms = unknownCuts.map((c) => eqTermStack(c.dir[0], varName(c.key), currentVal(c.key))).concat(fxKnownTerms);
+  const fyTerms = unknownCuts.map((c) => eqTermStack(c.dir[1], varName(c.key), currentVal(c.key))).concat(fyKnownTerms);
+  const mTerms = unknownCuts.map((c) => eqTermStack(momentCoeff(c), varName(c.key), currentVal(c.key))).concat(mKnownTerms);
 
   const fxSum = unknownCuts.reduce((s, c) => s + c.dir[0] * currentVal(c.key), knownFx);
   const fySum = unknownCuts.reduce((s, c) => s + c.dir[1] * currentVal(c.key), knownFy);
   const mSum = unknownCuts.reduce((s, c) => s + momentCoeff(c) * currentVal(c.key), knownM);
 
-  const fmtK = (v) => (Math.abs(v) < 0.005 ? "" : (v > 0 ? " + " : " − ") + Math.abs(v).toFixed(2));
-
   document.getElementById("section-equations").innerHTML = `
     <div class="eq-title">📐 Equilibrium of the ${ui.analyzed.join("")} free body — updates as you type:</div>
-    <div class="eq-line">ΣFx: ${fxTerms.join(" + ") || "0"}${fmtK(knownFx)} ${eqRelation(fxSum)}</div>
-    <div class="eq-line">ΣFy: ${fyTerms.join(" + ") || "0"}${fmtK(knownFy)} ${eqRelation(fySum)}</div>
-    <div class="eq-line">ΣM about ${pivotId}: ${mTerms.join(" + ") || "0"}${fmtK(knownM)} ${eqRelation(mSum)}</div>
+    <div class="eq-line">ΣFx: ${fxTerms.join(" + ") || "0"} ${eqRelation(fxSum)}</div>
+    <div class="eq-line">ΣFy: ${fyTerms.join(" + ") || "0"} ${eqRelation(fySum)}</div>
+    <div class="eq-line">ΣM about ${pivotId}: ${mTerms.join(" + ") || "0"} ${eqRelation(mSum)}</div>
   `;
 }
 
@@ -1990,6 +2102,12 @@ function openJointModal(nodeId, unresolved) {
 
 function eqTermStack(coeff, varName, currentValue) {
   return `<span class="term-stack"><span class="term-top">(${coeff.toFixed(2)})·${varName}</span><span class="term-value">${currentValue.toFixed(2)}</span></span>`;
+}
+
+// like eqTermStack, but for a quantity that's already fully known (a load or an already-solved
+// reaction/member) — shown as its own labeled term instead of being folded into an opaque constant
+function knownTermStack(label, value) {
+  return `<span class="term-stack known"><span class="term-top">${label}</span><span class="term-value">${value.toFixed(2)}</span></span>`;
 }
 
 function eqRelation(v, tol = 0.2) {
