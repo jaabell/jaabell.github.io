@@ -124,6 +124,7 @@
     display:inline-block;background:var(--accent);color:white;border-radius:999px;
     padding:4px 12px;font-size:0.78rem;font-weight:700;margin-bottom:8px;
   }
+  .diagram-title{margin:0 0 6px;font-size:1.2rem;font-weight:700;color:var(--ink);}
 
   .toast{
     position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);
@@ -257,6 +258,8 @@
   .win-stats{display:flex;justify-content:center;gap:24px;margin:14px 0;text-align:center;}
   .win-stats div b{display:block;font-size:1.3rem;}
   .stars-big{text-align:center;font-size:1.8rem;letter-spacing:6px;margin:10px 0;}
+  .win-score{text-align:center;font-size:1.4rem;font-weight:700;color:var(--accent-dark);}
+  .win-score-breakdown{text-align:center;font-size:0.78rem;opacity:0.65;margin-top:2px;}
 
   .help-body p{line-height:1.6;font-size:0.93rem;}
   .help-body .conv{display:flex;gap:16px;margin:10px 0;flex-wrap:wrap;}
@@ -269,6 +272,27 @@
     margin-top:10px;display:flex;align-items:center;justify-content:center;gap:10px;
   }
   footer.app-foot .ladruno-badge{height:18px;width:auto;display:block;}
+
+  /* ---------- stats screen ---------- */
+  .stats-totals{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-bottom:18px;
+  }
+  .stats-totals .stat-box{
+    background:#eef3f7;border-radius:14px;padding:14px 10px;text-align:center;
+  }
+  .stats-totals .stat-box b{display:block;font-size:1.5rem;color:var(--accent-dark);}
+  .stats-totals .stat-box span{font-size:0.78rem;opacity:0.7;}
+  .stats-list{list-style:none;margin:0;padding:0;}
+  .stats-list li{
+    display:flex;align-items:center;gap:10px;padding:10px 4px;border-bottom:1px dashed #eee;font-size:0.9rem;
+  }
+  .stats-list li .emoji{font-size:1.4rem;flex:0 0 28px;}
+  .stats-list li .name{flex:1 1 auto;font-weight:700;}
+  .stats-list li .stars{flex:0 0 auto;color:var(--warn);letter-spacing:1px;font-size:0.85rem;}
+  .stats-list li .score{flex:0 0 70px;text-align:right;font-weight:700;color:var(--accent-dark);}
+  .stats-list li .time{flex:0 0 55px;text-align:right;opacity:0.65;font-size:0.8rem;}
+  .stats-list li.unsolved{opacity:0.45;}
+  .stats-share{text-align:center;margin-top:18px;font-size:0.9rem;font-weight:700;color:var(--accent-dark);}
 
   @media (max-width:600px){
     header.app-head h1{font-size:1.25rem;}
@@ -293,6 +317,7 @@
       </div>
     </div>
     <div class="head-btns">
+      <button class="icon-btn" id="btn-stats" title="Your stats">📊</button>
       <button class="icon-btn" id="btn-help" title="How to play">❓</button>
       <button class="icon-btn" id="btn-reset" title="Reset progress">🗑️</button>
     </div>
@@ -325,6 +350,7 @@
 
     <div class="play-body">
       <div class="diagram-card card">
+        <h2 id="diagram-title" class="diagram-title"></h2>
         <span class="phase-badge" id="phase-badge">Phase</span>
         <div id="section-banner" class="section-banner" style="display:none;">✂️ Drag a line across the members you want to cut</div>
         <svg id="truss-svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"></svg>
@@ -335,6 +361,18 @@
         <h3 style="margin-top:16px;">📏 Members</h3>
         <ul class="checklist" id="list-members"></ul>
       </div>
+    </div>
+  </section>
+
+  <!-- ===================== STATS SCREEN ===================== -->
+  <section id="screen-stats" style="display:none;">
+    <div class="card stats-card">
+      <button class="back-link" id="btn-stats-back" style="margin:0 0 6px;padding:0;">← Levels</button>
+      <h2 id="stats-title" style="margin:4px 0 2px;"></h2>
+      <p id="stats-sub" style="margin:0 0 16px;opacity:0.7;font-size:0.9rem;"></p>
+      <div class="stats-totals" id="stats-totals"></div>
+      <ul class="stats-list" id="stats-list"></ul>
+      <p class="stats-share">📸 Take a screenshot to share your run!</p>
     </div>
   </section>
 
@@ -456,6 +494,8 @@
     <div class="win-emoji">🎉</div>
     <h2 style="text-align:center;margin-top:0;">Truss solved!</h2>
     <div class="stars-big" id="win-stars"></div>
+    <div class="win-score" id="win-score">0 pts</div>
+    <div class="win-score-breakdown" id="win-score-breakdown"></div>
     <div class="win-stats">
       <div><b id="win-time">0:00</b>time</div>
       <div><b id="win-mistakes">0</b>mistakes</div>
@@ -614,6 +654,57 @@ const LEVELS = [
     members: [["A","D"],["D","H"],["A","H"],["H","E"],["E","C"],["H","C"]],
     loads: { D: { fx: 0, fy: -8 }, E: { fx: 0, fy: -8 } },
   },
+  {
+    id: "l12", name: "Short Hop", emoji: "🌁", difficulty: "Easy+",
+    nodes: {
+      A: { x: 0, y: 0, support: { type: "pin" } }, B: { x: 2.5, y: 0 }, C: { x: 5, y: 0, support: { type: "roller" } },
+      D: { x: 1.5, y: 1.8 }, E: { x: 3.5, y: 1.8 },
+    },
+    members: [["A","B"],["B","C"],["A","D"],["D","B"],["D","E"],["B","E"],["E","C"]],
+    loads: { D: { fx: 0, fy: -14 }, E: { fx: 0, fy: -3 } },
+  },
+  {
+    id: "l13", name: "Pratt Crossing", emoji: "🛤️", difficulty: "Hard",
+    nodes: {
+      A: { x: 0, y: 0, support: { type: "pin" } }, B: { x: 3, y: 0 }, C: { x: 6, y: 0 }, D: { x: 9, y: 0, support: { type: "roller" } },
+      E: { x: 0, y: 3 }, F: { x: 3, y: 3 }, G: { x: 6, y: 3 }, H: { x: 9, y: 3 },
+    },
+    members: [
+      ["A","B"],["B","C"],["C","D"],
+      ["E","F"],["F","G"],["G","H"],
+      ["A","E"],["B","F"],["C","G"],["D","H"],
+      ["E","B"],["F","C"],["G","D"],
+    ],
+    loads: { B: { fx: 0, fy: -10 }, C: { fx: 0, fy: -16 } },
+  },
+  {
+    id: "l14", name: "Tower Block", emoji: "🏢", difficulty: "Medium+",
+    nodes: {
+      A: { x: 0, y: 0, support: { type: "pin" } }, B: { x: 3, y: 0, support: { type: "roller" } },
+      C: { x: 0, y: 3 }, D: { x: 3, y: 3 },
+      E: { x: 0, y: 6 }, F: { x: 3, y: 6 },
+    },
+    members: [["A","B"],["A","C"],["B","D"],["C","D"],["A","D"],["C","E"],["D","F"],["E","F"],["C","F"]],
+    loads: { E: { fx: 5, fy: 0 }, D: { fx: 0, fy: -6 } },
+  },
+  {
+    id: "l15", name: "Jib Crane", emoji: "🪝", difficulty: "Hard+",
+    nodes: {
+      A: { x: 0, y: 0, support: { type: "pin" } }, C: { x: 1.6, y: 0, support: { type: "roller" } },
+      B: { x: 0.8, y: 3.4 }, D: { x: 3.5, y: 3.4 }, F: { x: 3.5, y: 1.9 }, E: { x: 5.7, y: 3.4 },
+    },
+    members: [["A","B"],["B","C"],["A","C"],["B","D"],["D","E"],["B","F"],["F","D"],["F","C"],["F","E"]],
+    loads: { E: { fx: 0, fy: -9 } },
+  },
+  {
+    id: "l16", name: "Stone Arch", emoji: "🏛️", difficulty: "Expert", hinge: "F",
+    nodes: {
+      A: { x: 0, y: 0, support: { type: "pin" } }, B: { x: 4, y: 1.0 }, C: { x: 8, y: 1.0 }, D: { x: 12, y: 0, support: { type: "pin" } },
+      E: { x: 2, y: 2.5 }, F: { x: 6, y: 3.5 }, G: { x: 10, y: 2.5 },
+    },
+    members: [["A","E"],["E","B"],["B","F"],["F","C"],["C","G"],["G","D"],["E","F"],["F","G"],["A","B"],["C","D"]],
+    loads: { B: { fx: 0, fy: -10 }, C: { fx: 0, fy: -10 } },
+  },
 ];
 
 /* ============================================================
@@ -758,6 +849,8 @@ function newState(levelIndex) {
     finished: false,
     sectionMode: false,
     cutDraft: null, // {x1,y1,x2,y2} in diagram view-space while actively dragging a cut line
+    jointSolveCount: 0, // members solved via the joint (nodes) method — used for the points breakdown
+    sectionSolveCount: 0, // members solved via method of sections — worth more, since it's the harder technique
   };
 }
 
@@ -988,9 +1081,14 @@ function computeViewBox(level) {
   const loadReach = m.loadShaftLen + m.loadHeadH + m.loadLabelGap + 0.6; // + room for the "X kN" label
   Object.keys(level.loads || {}).forEach((id) => {
     const load = level.loads[id];
+    const fx = load.fx || 0, fy = load.fy || 0;
+    const mag = Math.hypot(fx, fy);
+    if (mag < 1e-9) return;
     const p = worldToView(level, level.nodes[id].x, level.nodes[id].y);
-    if (load.fy < 0) minY = Math.min(minY, p.y - loadReach);
-    if (load.fy > 0) maxY = Math.max(maxY, p.y + loadReach);
+    const ux = fx / mag, uy = -fy / mag; // view-space unit direction the force acts (same as renderDiagram)
+    const farX = p.x - ux * loadReach, farY = p.y - uy * loadReach; // tail end, furthest from the joint
+    minX = Math.min(minX, farX); maxX = Math.max(maxX, farX);
+    minY = Math.min(minY, farY); maxY = Math.max(maxY, farY);
   });
 
   const reactionReach = m.reactionLen + m.reactionHeadLen + m.reactionNudge + 0.9; // + room for the value label
@@ -1103,25 +1201,30 @@ function renderDiagram() {
     const load = level.loads[id];
     const n = level.nodes[id];
     const p = worldToView(level, n.x, n.y);
-    if (load.fy) {
-      const dir = load.fy < 0 ? 1 : -1;
-      const tip = p.y - dir * (jointR + 0.1); // arrowhead tip stops just clear of the joint circle
-      const headBase = tip - dir * metrics.loadHeadH;
-      const start = headBase - dir * metrics.loadShaftLen; // tail, furthest from the joint
-      const arrow = svgEl("line", { x1: p.x, y1: start, x2: p.x, y2: headBase, stroke: "#16658f", "stroke-width": strokeW * 1.6 });
-      svg.appendChild(arrow);
-      const head = svgEl("polygon", {
-        points: `${p.x},${tip} ${p.x - metrics.loadHeadW},${headBase} ${p.x + metrics.loadHeadW},${headBase}`,
-        fill: "#16658f",
-      });
-      svg.appendChild(head);
-      const lbl = svgEl("text", {
-        x: p.x + metrics.loadLabelGap, y: headBase + (start - headBase) * 0.3,
-        "font-size": vb.w / 48, fill: "#16658f", "font-weight": "700", "dominant-baseline": "middle",
-      });
-      lbl.textContent = `${Math.abs(load.fy)} kN`;
-      svg.appendChild(lbl);
-    }
+    const fx = load.fx || 0, fy = load.fy || 0;
+    const mag = Math.hypot(fx, fy);
+    if (mag < 1e-9) return;
+    // unit direction the force acts, in view space (same convention as computeViewBox's padding pass)
+    const ux = fx / mag, uy = -fy / mag;
+    const tip = { x: p.x - ux * (jointR + 0.1), y: p.y - uy * (jointR + 0.1) }; // stops just clear of the joint circle
+    const headBase = { x: tip.x - ux * metrics.loadHeadH, y: tip.y - uy * metrics.loadHeadH };
+    const start = { x: headBase.x - ux * metrics.loadShaftLen, y: headBase.y - uy * metrics.loadShaftLen }; // tail, furthest from the joint
+    const arrow = svgEl("line", { x1: start.x, y1: start.y, x2: headBase.x, y2: headBase.y, stroke: "#16658f", "stroke-width": strokeW * 1.6 });
+    svg.appendChild(arrow);
+    const perpX = uy, perpY = -ux; // perpendicular to the shaft, used to fan the arrowhead and offset the label
+    const head = svgEl("polygon", {
+      points: `${tip.x},${tip.y} ${headBase.x - perpX * metrics.loadHeadW},${headBase.y - perpY * metrics.loadHeadW} ${headBase.x + perpX * metrics.loadHeadW},${headBase.y + perpY * metrics.loadHeadW}`,
+      fill: "#16658f",
+    });
+    svg.appendChild(head);
+    const labelBase = { x: headBase.x + (start.x - headBase.x) * 0.3, y: headBase.y + (start.y - headBase.y) * 0.3 };
+    const lbl = svgEl("text", {
+      x: labelBase.x + perpX * metrics.loadLabelGap, y: labelBase.y + perpY * metrics.loadLabelGap,
+      "font-size": vb.w / 48, fill: "#16658f", "font-weight": "700", "dominant-baseline": "middle",
+      "text-anchor": perpX > 0.5 ? "start" : perpX < -0.5 ? "end" : "middle",
+    });
+    lbl.textContent = `${Number.isInteger(mag) ? mag : mag.toFixed(1)} kN`;
+    svg.appendChild(lbl);
   });
 
   // reaction arrows (only drawn as "known" once solved; shown faint as hint before that)
@@ -1631,6 +1734,7 @@ document.getElementById("btn-check-section").addEventListener("click", () => {
   });
   if (allCorrect) {
     toSolve.forEach((k) => state.solvedMembers.add(k));
+    state.sectionSolveCount += toSolve.length;
     closeModal("modal-section");
     showToast(`Section solved! ${toSolve.length} member${toSolve.length > 1 ? "s" : ""} unlocked 🎯`, "good");
     renderDiagram();
@@ -2389,6 +2493,7 @@ document.getElementById("btn-check-joint").addEventListener("click", () => {
 
   if (allCorrect) {
     toSolve.forEach((key) => state.solvedMembers.add(key));
+    state.jointSolveCount += toSolve.length;
     closeModal("modal-joint");
     showToast(`Joint ${nodeId} solved! 🎯`, "good");
     renderDiagram();
@@ -2425,21 +2530,48 @@ document.getElementById("pill-hint-btn").addEventListener("click", () => {
   }
 });
 
+// Points: a flat base for finishing, a bonus per member solved via method of sections (deliberately
+// worth more than the joint method since picking a clean cut and balancing 3 equations on a free
+// body is the harder skill), a time penalty once you're slower than a rough par, and a flat
+// per-mistake penalty. Floored so finishing a level is never worth next to nothing.
+function computeScore(level, state) {
+  const basePoints = 100;
+  const sectionBonus = state.sectionSolveCount * 12;
+  const jointBonus = state.jointSolveCount * 4;
+  const parTime = level.members.length * 12 + 30;
+  const timePenalty = Math.max(0, Math.round((state.elapsed - parTime) / 2));
+  const mistakePenalty = state.mistakes * 15;
+  const raw = basePoints + sectionBonus + jointBonus - timePenalty - mistakePenalty;
+  return {
+    score: Math.max(10, raw),
+    basePoints, sectionBonus, jointBonus, timePenalty, mistakePenalty,
+  };
+}
+
+function areAllLevelsComplete() {
+  return LEVELS.every((l) => progress[l.id] && progress[l.id].stars > 0);
+}
+
 function finishLevel() {
   state.finished = true;
   clearInterval(timerInterval);
   const level = state.level;
   const timeStr = formatTime(state.elapsed);
   const stars = state.mistakes === 0 ? 3 : state.mistakes <= 3 ? 2 : 1;
+  const breakdown = computeScore(level, state);
 
-  const best = progress[level.id] || { stars: 0, bestTime: null };
+  const best = progress[level.id] || { stars: 0, bestTime: null, bestScore: 0, bestScoreMistakes: null, bestScoreTime: null };
+  const isNewBestScore = breakdown.score > (best.bestScore || 0);
   progress[level.id] = {
     stars: Math.max(best.stars, stars),
     bestTime: best.bestTime ? Math.min(best.bestTime, state.elapsed) : state.elapsed,
+    bestScore: Math.max(best.bestScore || 0, breakdown.score),
+    bestScoreMistakes: isNewBestScore ? state.mistakes : (best.bestScoreMistakes ?? state.mistakes),
+    bestScoreTime: isNewBestScore ? state.elapsed : (best.bestScoreTime ?? state.elapsed),
     unlocked: true,
   };
   if (LEVELS[state.levelIndex + 1]) {
-    progress[LEVELS[state.levelIndex + 1].id] = progress[LEVELS[state.levelIndex + 1].id] || { stars: 0, bestTime: null };
+    progress[LEVELS[state.levelIndex + 1].id] = progress[LEVELS[state.levelIndex + 1].id] || { stars: 0, bestTime: null, bestScore: 0, bestScoreMistakes: null, bestScoreTime: null };
     progress[LEVELS[state.levelIndex + 1].id].unlocked = true;
   }
   saveProgress(progress);
@@ -2447,6 +2579,16 @@ function finishLevel() {
   document.getElementById("win-stars").textContent = "★".repeat(stars) + "☆".repeat(3 - stars);
   document.getElementById("win-time").textContent = timeStr;
   document.getElementById("win-mistakes").textContent = state.mistakes;
+  document.getElementById("win-score").textContent = `${breakdown.score} pts` + (isNewBestScore ? " 🌟 new best!" : "");
+  const parts = [`+${breakdown.basePoints} base`];
+  if (breakdown.sectionBonus) parts.push(`+${breakdown.sectionBonus} sections`);
+  if (breakdown.jointBonus) parts.push(`+${breakdown.jointBonus} joints`);
+  if (breakdown.timePenalty) parts.push(`−${breakdown.timePenalty} time`);
+  if (breakdown.mistakePenalty) parts.push(`−${breakdown.mistakePenalty} mistakes`);
+  document.getElementById("win-score-breakdown").textContent = parts.join("  ·  ");
+
+  const allComplete = areAllLevelsComplete();
+  document.getElementById("btn-win-levels").textContent = allComplete ? "🏆 Final stats" : "Levels";
   document.getElementById("btn-win-next").style.display = LEVELS[state.levelIndex + 1] ? "block" : "none";
   openModal("modal-win");
 }
@@ -2479,7 +2621,8 @@ function startLevel(idx) {
   state = newState(idx);
   document.getElementById("screen-levels").style.display = "none";
   document.getElementById("screen-play").style.display = "block";
-  document.getElementById("pill-level").textContent = `${state.level.emoji} ${state.level.name}`;
+  document.getElementById("diagram-title").textContent = `${state.level.emoji} ${state.level.name}`;
+  document.getElementById("pill-level").textContent = state.level.difficulty;
   document.getElementById("pill-mistakes").textContent = "0";
   document.getElementById("pill-time").textContent = "0:00";
   setSectionButtonState();
@@ -2494,12 +2637,70 @@ function startLevel(idx) {
 function backToLevels() {
   clearInterval(timerInterval);
   document.getElementById("screen-play").style.display = "none";
+  document.getElementById("screen-stats").style.display = "none";
   document.getElementById("screen-levels").style.display = "block";
   renderLevelGrid();
 }
 
+function renderStatsScreen() {
+  const allComplete = areAllLevelsComplete();
+  const solvedCount = LEVELS.filter((l) => progress[l.id] && progress[l.id].stars > 0).length;
+  document.getElementById("stats-title").textContent = allComplete ? "🏆 Every truss solved!" : "📊 Your progress";
+  document.getElementById("stats-sub").textContent = allComplete
+    ? "The whole set, start to finish. Here's the full breakdown."
+    : `${solvedCount}/${LEVELS.length} trusses solved so far — keep going.`;
+
+  let totalScore = 0, totalTime = 0, totalMistakes = 0;
+  LEVELS.forEach((l) => {
+    const p = progress[l.id];
+    if (p && p.stars > 0) {
+      totalScore += p.bestScore || 0;
+      totalTime += p.bestScoreTime != null ? p.bestScoreTime : 0;
+      totalMistakes += p.bestScoreMistakes != null ? p.bestScoreMistakes : 0;
+    }
+  });
+
+  document.getElementById("stats-totals").innerHTML = `
+    <div class="stat-box"><b>${totalScore}</b><span>total score</span></div>
+    <div class="stat-box"><b>${formatTime(totalTime)}</b><span>total time</span></div>
+    <div class="stat-box"><b>${totalMistakes}</b><span>total mistakes</span></div>
+    <div class="stat-box"><b>${solvedCount}/${LEVELS.length}</b><span>trusses solved</span></div>
+  `;
+
+  const list = document.getElementById("stats-list");
+  list.innerHTML = "";
+  LEVELS.forEach((l) => {
+    const p = progress[l.id];
+    const solved = p && p.stars > 0;
+    const li = document.createElement("li");
+    li.className = solved ? "" : "unsolved";
+    li.innerHTML = `
+      <span class="emoji">${l.emoji}</span>
+      <span class="name">${l.name}</span>
+      <span class="stars">${solved ? "★".repeat(p.stars) + "☆".repeat(3 - p.stars) : "— not solved —"}</span>
+      <span class="score">${solved ? (p.bestScore || 0) + " pts" : ""}</span>
+      <span class="time">${solved && p.bestScoreTime != null ? formatTime(p.bestScoreTime) : ""}</span>
+    `;
+    list.appendChild(li);
+  });
+}
+
+function showStats() {
+  clearInterval(timerInterval);
+  document.getElementById("screen-play").style.display = "none";
+  document.getElementById("screen-levels").style.display = "none";
+  document.getElementById("screen-stats").style.display = "block";
+  renderStatsScreen();
+}
+
+document.getElementById("btn-stats").addEventListener("click", showStats);
+document.getElementById("btn-stats-back").addEventListener("click", backToLevels);
+
 document.getElementById("btn-back").addEventListener("click", backToLevels);
-document.getElementById("btn-win-levels").addEventListener("click", () => { closeModal("modal-win"); backToLevels(); });
+document.getElementById("btn-win-levels").addEventListener("click", () => {
+  closeModal("modal-win");
+  if (areAllLevelsComplete()) showStats(); else backToLevels();
+});
 document.getElementById("btn-win-next").addEventListener("click", () => {
   closeModal("modal-win");
   if (LEVELS[state.levelIndex + 1]) startLevel(state.levelIndex + 1);
