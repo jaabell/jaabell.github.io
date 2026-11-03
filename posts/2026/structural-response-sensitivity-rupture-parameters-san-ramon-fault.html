@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Structural Response Sensitivity to Rupture Parameter Variations: A High-Fidelity Analysis of a 10-Story Building on the San Ramón Fault</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content="jaabell" />
+    <meta name="description" content="New conference paper (PBD-V, Puerto Varas) quantifying how stochastic rupture variability on the San Ramón Fault affects the seismic response of a 10-story building, with a full 3D interactive data explorer." />
+    <meta name="keywords" content="Papers, Conference, Earthquake Engineering, Soil-Structure Interaction, Domain Reduction Method, San Ramón Fault, Interactive">
+<!-- Facebook and Twitter integration -->
+<meta property="og:site_name" content="Jose Abells Reasearch Blog"/>
+<meta property="og:title" content="Structural Response Sensitivity to Rupture Parameter Variations: A High-Fidelity Analysis of a 10-Story Building on the San Ramón Fault"/>
+<meta property="og:description" content="New conference paper (PBD-V, Puerto Varas) quantifying how stochastic rupture variability on the San Ramón Fault affects the seismic response of a 10-story building, with a full 3D interactive data explorer."/>
+<meta property="og:url" content="https://joseabell.com/posts/2026/structural-response-sensitivity-rupture-parameters-san-ramon-fault.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2026-11-03 18:00:00-08:00"/>
+<meta property="article:modified_time" content="2026-11-03 18:00:00-08:00"/>
+<meta property="article:author" content="https://joseabell.com/author/jaabell.html">
+<meta property="article:section" content="Publications"/>
+    <meta property="article:tag" content="Papers"/>
+    <meta property="article:tag" content="Conference"/>
+    <meta property="article:tag" content="Earthquake Engineering"/>
+    <meta property="article:tag" content="Soil-Structure Interaction"/>
+    <meta property="article:tag" content="Domain Reduction Method"/>
+    <meta property="article:tag" content="San Ramón Fault"/>
+    <meta property="article:tag" content="Interactive"/>
+    <meta property="og:image" content="https://joseabell.com//images/blogposts/srf-sensitivity-san-ramon/srf-explorer-cover.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/icomoon.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/bootstrap.css">
+    <!-- Flexslider  -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/flexslider.css">
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/style.css">
+    <!-- Custom style  -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/custom.css">
+    <!-- pygments code highlight -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/css/pygments.css">
+    <!-- tipue search -->
+    <link rel="stylesheet" href="https://joseabell.com/theme/tipuesearch/css/tipuesearch.css">
+    <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" > -->
+    <script src="https://kit.fontawesome.com/2dfe6f2f70.js" crossorigin="anonymous"></script>
+
+
+    <!-- Modernizr JS -->
+    <script src="https://joseabell.com/theme/js/modernizr-2.6.2.min.js"></script>
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+    <script src="/theme/js/respond.min.js"></script>
+    <![endif]-->
+        <link href="https://joseabell.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Jose Abells Reasearch Blog Atom">
+
+
+
+
+    </head>
+    <body>
+    <!-- Uncomment for fun -->
+    <!-- <marquee bgcolor="red" height="50px" style="color:yellow;font-size:30px;"> OMG COVID--19 ALERT TAKE COVER ALL!!! </marquee> -->
+    <div id="fh5co-page">
+        <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+        <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
+
+
+            <nav class="fh5co-main-menu" role="navigation">
+            </nav>
+
+
+
+            <div class="clearfix"></div>
+            <h1  id="fh5co-logo">
+                <a href="https://joseabell.com/index.html">
+                    <img src="/images/sitelogo.svg" />
+                </a>
+            </h1>
+
+
+            <nav class="fh5co-main-menu" role="navigation">
+
+<ul>
+    <!-- home link -->
+    <li><a href="https://joseabell.com/">Home</a></li>
+
+    <!-- page links -->
+            <li><a href="https://joseabell.com/pages/01about.html">About</a></li>
+            <li><a href="https://joseabell.com/pages/03research-projects.html">Research Projects</a></li>
+            <li><a href="https://joseabell.com/pages/04publications.html">Publications</a></li>
+            <li><a href="https://joseabell.com/pages/05tools.html">Tools</a></li>
+            <li><a href="https://joseabell.com/pages/09people.html">People</a></li>
+
+    <!-- categories -->
+        <li><a href="https://joseabell.com/categories.html">Categories</a></li>
+
+    <!-- tags -->
+        <li><a href="https://joseabell.com/tags.html">Tags</a></li>
+
+    <!-- additional menu items from config -->
+
+</ul><!--                 <ul><li><form id="searchform" action="https://joseabell.com/search.html">
+    <input id="tipue_search_input" data-siteurl="https://joseabell.com" type="text" size="60" class="form-control search-field" name="q">
+
+    <button type="submit" class="btn btn-primary search-submit"><i class="icon-search4"></i></button>
+</form></li></ul> -->
+
+
+
+<ul id="social"><li>
+            <li><a href="https://www.github.com/jaabell" alt="Github"><i class="fab fa-github fa-2x"></i></a></li>
+            <li><a href="https://www.youtube.com/c/JoseAAbellM" alt="Youtube"><i class="fab fa-youtube fa-2x"></i></a></li>
+
+            <li><a href="https://www.researchgate.net/profile/Jose_Abell/" alt="researchgate"><i class="fab fa-researchgate fa-2x"></i></a></li>
+
+            <li><a href="linkedin.com/in/josé-abell-93194129" alt="linkedin"><i class="fab fa-linkedin fa-2x"></i></a></li>
+
+
+</li>
+</ul>
+            <ul id="map">
+                <li>
+                Visitors come from
+                <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?cl=b3b3b3&w=250&t=n&d=mbjG_bVmXfTNN0JcIPqy4zeA6ZHkBb-9NhB63cvrYRw&co=f5f5f5&cmo=027aae&cmn=a03338&ct=808080"></script>
+                </li>
+            </ul>
+            </nav>
+
+        </aside>
+
+        <div id="fh5co-main">
+
+    <div class="fh5co-narrow-content article-content">
+        <h1 class="fh5co-heading-colored">Structural Response Sensitivity to Rupture Parameter Variations: A High-Fidelity Analysis of a 10-Story Building on the San Ramón Fault</h1>
+
+        <div>by
+                <a href="author/jaabell.html">jaabell</a> - Tue, 03 Nov 2026
+        </div>
+
+            <div><span>Tags: </span>
+                    <span><a href="https://joseabell.com/tag/papers.html">#Papers</a> </span>
+                    <span><a href="https://joseabell.com/tag/conference.html">#Conference</a> </span>
+                    <span><a href="https://joseabell.com/tag/earthquake-engineering.html">#Earthquake Engineering</a> </span>
+                    <span><a href="https://joseabell.com/tag/soil-structure-interaction.html">#Soil-Structure Interaction</a> </span>
+                    <span><a href="https://joseabell.com/tag/domain-reduction-method.html">#Domain Reduction Method</a> </span>
+                    <span><a href="https://joseabell.com/tag/san-ramon-fault.html">#San Ramón Fault</a> </span>
+                    <span><a href="https://joseabell.com/tag/interactive.html">#Interactive</a> </span>
+            </div>
+
+        <div class="animate-box" data-animate-effect="fadeInLeft">
+            <p class="animate-box" data-animate-effect="fadeInLeft"><p>My student <strong>Patricio Palacios B.</strong> is presenting this work this week at <strong>PBD-V 2026</strong>, the 5th International Conference on Performance-Based Design in Earthquake Geotechnical Engineering, in Puerto Varas, Chile (4–6 November 2026). Co-authored with Nicolás Mora Bowen and myself, the paper asks a question that matters a lot for near-fault design: if you only run <em>one</em> rupture scenario for a given magnitude, how wrong could your structural demand estimate be?</p>
+<p>The answer, from a campaign of 72 soil-structure interaction analyses: quite wrong, close to the fault. We generated stochastic finite-fault ground motions for Mw 6.5 and Mw 6.6 scenarios on the San Ramón Fault (three stochastic realizations each), propagated them into a 10-story reinforced-concrete building through the Domain Reduction Method at three sites spanning 3.3 to 22.5 km from the fault, and ran a three-factor ANOVA at every floor to disaggregate response variance into magnitude, stochastic slip distribution, and source-to-site distance. Source-to-site distance dominates (60–95% of variance), but at the nearest station, inter-realization displacement differences exceed 100% — a single deterministic scenario just isn't enough to characterize near-fault structural demand.</p>
+<h2>Explore the model in 3D</h2>
+<p>Patricio built a full interactive explorer of the fault, the ground motions, the soil domain and the building response — it runs right in your browser, phone included.</p>
+<p style="text-align:center; margin: 24px 0;">
+<a href="https://joseabell.com/apps/srf/explorer/index.html" class="btn btn-primary" style="padding:12px 28px; font-size:1.05rem;">🌋 Open the interactive explorer →</a>
+</p>
+
+<p><img src="https://joseabell.com/images/blogposts/srf-sensitivity-san-ramon/srf-explorer-fault-model.png" alt="3D terrain model of the San Ramón Fault with the finite-fault rupture plane and recording sites, from the interactive explorer" style="width:100%; margin:10px 0; border-radius:8px;"/></p>
+<p style="text-align:center"><em>The San Ramón Fault model and recording sites, one of eleven chapters in the interactive explorer.</em></p>
+
+<div style="text-align:center; margin: 28px 0;">
+<img src="https://joseabell.com/images/blogposts/srf-sensitivity-san-ramon/srf-explorer-qr.png" alt="QR code linking to the interactive SRF explorer" style="width:160px; height:160px;"/>
+<p style="margin:6px 0 0; font-size:0.85rem; opacity:0.7;">Scan to open on your phone — handy if you're at the conference.</p>
+</div>
+
+<p>Citation: Patricio Palacios B., Nicolás Mora Bowen, José A. Abell. <em>Structural Response Sensitivity to Rupture Parameter Variations: A High-Fidelity Analysis of a 10-Story Building on the San Ramón Fault.</em> 5th International Conference on Performance-Based Design in Earthquake Geotechnical Engineering (PBD-V), Puerto Varas, Chile, 2026. <a href="https://joseabell.com/pdfs/palacios-moraBowen-abell-2026-pbdv-san-ramon-fault.pdf">Read the paper (PDF)</a></p></p>
+        </div>
+    </div>
+
+<div class="fh5co-narrow-content">
+<div class="animate-box" data-animate-effect="fadeInLeft">
+    <h2><!-- <i class="icon-speech-bubble"></i>  -->Comments</h2>
+</div>
+<div class="animate-box" data-animate-effect="fadeInLeft">
+    <div id="disqus_thread"></div>
+</div>
+
+<!-- <script>
+var disqus_config = function () { 
+  this.language = "en";
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript><a href="https://disqus.com/?ref_noscript">Please enable JavaScript to view the comments powered by Disqus.</a></noscript> -->
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+// var disqus_config = function () {
+// this.page.url = www.joseabell.com;  // Replace PAGE_URL with your page's canonical URL variable
+// this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+// };
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://joseabell.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://joseabell.com/theme/js/jquery.min.js"></script>
+    <!-- jQuery Easing -->
+    <script src="https://joseabell.com/theme/js/jquery.easing.1.3.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://joseabell.com/theme/js/bootstrap.min.js"></script>
+    <!-- Waypoints -->
+    <script src="https://joseabell.com/theme/js/jquery.waypoints.min.js"></script>
+    <!-- Flexslider -->
+    <script src="https://joseabell.com/theme/js/jquery.flexslider-min.js"></script>
+
+
+
+    <!-- MAIN JS -->
+    <script src="https://joseabell.com/theme/js/main.js"></script>
+    <script id="dsq-count-scr" src="//joseabell.disqus.com/count.js" async></script>
+
+    </body>
+</html>
