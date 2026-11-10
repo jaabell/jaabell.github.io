@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catenary vs. Parabola — Interactive Cable Statics</title>
+<style>
+  :root {
+    --bg: #0f2636;
+    --panel: #15324a;
+    --panel2: #1b3e5c;
+    --text: #eaf2f8;
+    --muted: #9fb7c9;
+    --accent-cat: #ff8a3d;
+    --accent-par: #4fd1ff;
+    --ok: #6fd98a;
+    --warn: #ffd477;
+    --bad: #ff6b6b;
+    --border: rgba(255,255,255,.12);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 18px 16px 48px; }
+  h1 { font-size: clamp(20px, 3vw, 28px); margin: 6px 0 4px; }
+  .sub { color: var(--muted); font-size: 14px; margin: 0 0 20px; line-height: 1.5; max-width: 760px; }
+  .layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 18px; align-items: start; }
+  @media (max-width: 820px) { .layout { grid-template-columns: 1fr; } }
+
+  .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; }
+  .panel + .panel { margin-top: 14px; }
+
+  canvas { width: 100%; display: block; background: #0a1c2a; border-radius: 10px; touch-action: none; }
+
+  .controls label { display: block; font-size: 12.5px; color: var(--muted); margin: 14px 0 4px; }
+  .controls label:first-child { margin-top: 0; }
+  .controls .row { display: flex; justify-content: space-between; align-items: baseline; }
+  .controls .row b { color: var(--text); font-size: 13.5px; font-weight: 600; }
+  .controls .row span { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; color: var(--accent-par); }
+  input[type=range] {
+    width: 100%; margin-top: 6px; accent-color: var(--accent-par);
+  }
+  .warn-box { margin-top: 14px; padding: 10px 12px; border-radius: 8px; font-size: 13px; line-height: 1.5; }
+  .warn-box.ok   { background: rgba(111,217,138,.12); color: var(--ok); border: 1px solid rgba(111,217,138,.3); }
+  .warn-box.warn { background: rgba(255,212,119,.12); color: var(--warn); border: 1px solid rgba(255,212,119,.3); }
+  .warn-box.bad  { background: rgba(255,107,107,.14); color: var(--bad); border: 1px solid rgba(255,107,107,.35); }
+
+  table.results { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 6px; }
+  table.results th, table.results td { padding: 6px 4px; text-align: right; border-bottom: 1px solid var(--border); }
+  table.results th:first-child, table.results td:first-child { text-align: left; color: var(--muted); }
+  table.results thead th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: uppercase; letter-spacing: .04em; }
+  table.results td.cat { color: var(--accent-cat); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  table.results td.par { color: var(--accent-par); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  table.results td.diff { color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12.5px; color: var(--muted); margin-top: 10px; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .swatch { width: 18px; height: 3px; border-radius: 2px; display: inline-block; }
+
+  .note { font-size: 12.5px; color: var(--muted); line-height: 1.6; margin-top: 10px; }
+  .note strong { color: var(--text); }
+  footer.credit { text-align: center; color: var(--muted); font-size: 12px; margin-top: 28px; }
+  footer.credit a { color: var(--accent-par); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Catenary vs. Parabola</h1>
+  <p class="sub">
+    A cable hanging under its own weight follows an exact <strong style="color:var(--accent-cat)">catenary</strong>.
+    Engineers often approximate it with a <strong style="color:var(--accent-par)">parabola</strong> — the exact shape for a
+    load spread uniformly over the <em>horizontal span</em> rather than along the cable, like a suspension-bridge deck.
+    Drag the sliders to change the span, support height difference, how much slack cable you have, and its mass per length,
+    and watch the two curves agree closely for a tight cable, then diverge as the sag grows.
+  </p>
+
+  <div class="layout">
+    <div class="panel">
+      <canvas id="plot" width="1400" height="820"></canvas>
+      <div class="legend">
+        <span><span class="swatch" style="background:var(--accent-cat)"></span>Catenary (exact, self-weight)</span>
+        <span><span class="swatch" style="background:var(--accent-par); border-top:2px dashed var(--accent-par); height:0;"></span>Parabola (approx., same total weight)</span>
+        <span><span class="swatch" style="background:#5c7a90"></span>Chord (straight line)</span>
+      </div>
+      <div id="warnBox" class="warn-box ok"></div>
+    </div>
+
+    <div>
+      <div class="panel controls">
+        <label>
+          <span class="row"><b>Span, L</b><span id="vSpan"></span></span>
+          <input type="range" id="span" min="5" max="80" step="0.5" value="24">
+        </label>
+        <label>
+          <span class="row"><b>Height difference, &Delta;h</b><span id="vDh"></span></span>
+          <input type="range" id="dh" min="-40" max="40" step="0.5" value="0">
+        </label>
+        <label>
+          <span class="row"><b>Slack (extra length beyond straight line)</b><span id="vSlack"></span></span>
+          <input type="range" id="slack" min="0.3" max="90" step="0.1" value="12">
+        </label>
+        <label>
+          <span class="row"><b>Mass per unit length</b><span id="vMass"></span></span>
+          <input type="range" id="mass" min="0.05" max="10" step="0.05" value="1">
+        </label>
+      </div>
+
+      <div class="panel">
+        <table class="results">
+          <thead><tr><th></th><th>Catenary</th><th>Parabola</th><th>diff</th></tr></thead>
+          <tbody id="resultsBody"></tbody>
+        </table>
+        <p class="note" id="sagRatioNote"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel note" style="margin-top:14px;">
+    <strong>What's the difference?</strong> A chain or cable hanging only under its own weight carries that weight
+    <em>per unit length along the cable</em> — the exact equilibrium shape is a catenary,
+    y(x) = a·cosh((x&minus;x&#8320;)/a). The parabola instead assumes the same total weight is spread evenly over the
+    <em>horizontal projection</em> — the classic suspension-bridge idealisation, and a textbook approximation for shallow
+    cables since d<sup>s</sup> ≈ d<sup>x</sup> when the sag is small. The horizontal tension is constant along either
+    curve; tension is largest at whichever support is higher and/or farther from the low point. Both solutions are solved
+    here in closed form (bisection on a single transcendental equation) — no simulation, just statics.
+  </div>
+
+  <footer class="credit">Interactive demo by José A. Abell · <a href="https://joseabell.com">joseabell.com</a></footer>
+</div>
+
+<script>
+(() => {
+  const g = 9.81;
+  const el = id => document.getElementById(id);
+  const spanEl = el('span'), dhEl = el('dh'), slackEl = el('slack'), massEl = el('mass');
+  const canvas = el('plot'), ctx = canvas.getContext('2d');
+  const warnBox = el('warnBox'), resultsBody = el('resultsBody'), sagRatioNote = el('sagRatioNote');
+
+  function fmt(x, digits = 3) {
+    if (!isFinite(x)) return '—';
+    const ax = Math.abs(x);
+    if (ax !== 0 && (ax < 1e-3 || ax >= 1e5)) return x.toExponential(digits - 1);
+    return x.toLocaleString('en-US', { maximumSignificantDigits: digits, minimumSignificantDigits: Math.min(digits,3) });
+  }
+  function fmtForce(n) { // Newtons -> N or kN
+    if (Math.abs(n) >= 1000) return fmt(n / 1000, 4) + ' kN';
+    return fmt(n, 4) + ' N';
+  }
+
+  // --- Catenary: supports at (0,0) and (L,h), arc length S, weight/length w (only scales tension, not shape) ---
+  function solveMonotone(targetGtP, loInit, hiInit) {
+    // bisection for an increasing function g(p) crossing 0 once on (loInit, hiInit-ish); grows hi until sign found
+    let lo = loInit, hi = hiInit;
+    let glo = targetGtP(lo);
+    let ghi = targetGtP(hi);
+    let guard = 0;
+    while (ghi < 0 && guard < 60) { hi *= 1.8; ghi = targetGtP(hi); guard++; }
+    for (let i = 0; i < 80; i++) {
+      const mid = (lo + hi) / 2;
+      const gm = targetGtP(mid);
+      if (gm > 0) hi = mid; else lo = mid;
+    }
+    return (lo + hi) / 2;
+  }
+
+  function catenary(L, h, S) {
+    const chord = Math.sqrt(L * L + h * h);
+    if (!(S > chord)) return null;
+    const R = Math.sqrt(S * S - h * h) / L; // > 1
+    const p = solveMonotone(p => Math.sinh(p) / p - R, 1e-6, 1.0);
+    const a = L / (2 * p);
+    const q = Math.atanh(Math.max(-0.999999999, Math.min(0.999999999, h / S)));
+    const u = p - q, v = p + q;
+    const xMin = a * u; // location of vertex relative to left support
+    const Cshift = -a * Math.cosh(u); // so that y(0) = 0
+    const y = x => a * Math.cosh((x - xMin) / a) + Cshift;
+    return { kind: 'cat', a, xMin, y, u, v };
+  }
+
+  // --- Parabola: supports at (0,0),(L,h), uniform load w_x per horizontal length, arc length S ---
+  function arcLenParabola(L, h, k) {
+    const mA = h / L - k * L / 2;
+    const mB = h / L + k * L / 2;
+    const F = m => m * Math.sqrt(1 + m * m) + Math.asinh(m);
+    return (F(mB) - F(mA)) / (2 * k);
+  }
+  function parabola(L, h, S, w_x) {
+    const chord = Math.sqrt(L * L + h * h);
+    if (!(S > chord)) return null;
+    const k = solveMonotone(k => arcLenParabola(L, h, Math.max(k, 1e-9)) - S, 1e-9, 0.5);
+    const H = w_x / k;
+    const y = x => (h / L) * x + (k / 2) * x * (x - L);
+    const slope = x => h / L + k * (x - L / 2);
+    const xVertex = L / 2 - h / (k * L);
+    return { kind: 'par', k, H, y, slope, xVertex };
+  }
+
+  function sagOf(y, xExtreme, L) {
+    const xv = Math.max(0, Math.min(L, xExtreme));
+    const chordY = xv / L * (y(L)); // y(0)=0
+    return { d: chordY - y(xv), x: xv, inRange: xExtreme >= -1e-6 && xExtreme <= L + 1e-6 };
+  }
+
+  function compute() {
+    const L = parseFloat(spanEl.value);
+    const h = parseFloat(dhEl.value);
+    const slackPct = parseFloat(slackEl.value);
+    const mPerLen = parseFloat(massEl.value);
+
+    spanEl.nextElementSibling; // no-op, readouts set below
+    el('vSpan').textContent = L.toFixed(1) + ' m';
+    el('vDh').textContent = (h >= 0 ? '+' : '') + h.toFixed(1) + ' m';
+    el('vSlack').textContent = slackPct.toFixed(1) + ' %';
+    el('vMass').textContent = mPerLen.toFixed(2) + ' kg/m';
+
+    const chord = Math.sqrt(L * L + h * h);
+    const S = chord * (1 + slackPct / 100);
+
+    const w_cat = mPerLen * g;           // N per unit arc length (self-weight cable)
+    const totalWeight = w_cat * S;       // N
+    const w_par = totalWeight / L;       // N per unit horizontal length (same total weight, spread over span)
+
+    const cat = catenary(L, h, S);
+    const par = parabola(L, h, S, w_par);
+
+    draw(L, h, S, cat, par);
+    report(L, h, S, w_cat, w_par, cat, par);
+  }
+
+  function report(L, h, S, w_cat, w_par, cat, par) {
+    if (!cat || !par) {
+      warnBox.className = 'warn-box bad';
+      warnBox.textContent = `No solution: the cable (${fmt(S)} m) must be longer than the straight-line distance between the supports (${fmt(Math.sqrt(L*L+h*h))} m). Increase the slack.`;
+      resultsBody.innerHTML = '';
+      sagRatioNote.textContent = '';
+      return;
+    }
+
+    const Hc = w_cat * cat.a;
+    const Tc0 = w_cat * cat.y(0) - (w_cat * 0) /* dummy */, TcA = w_cat * cat.a * Math.cosh(cat.u), TcB = w_cat * cat.a * Math.cosh(cat.v);
+    const TcMax = Math.max(TcA, TcB);
+    const sagC = sagOf(cat.y, cat.xMin, L);
+
+    const Hp = par.H;
+    const TpA = Hp * Math.sqrt(1 + par.slope(0) ** 2);
+    const TpB = Hp * Math.sqrt(1 + par.slope(L) ** 2);
+    const TpMax = Math.max(TpA, TpB);
+    const sagP = sagOf(par.y, par.xVertex, L);
+
+    const rows = [
+      ['Horizontal tension, H', fmtForce(Hc), fmtForce(Hp), pctDiff(Hc, Hp)],
+      ['Max tension, T<sub>max</sub>', fmtForce(TcMax), fmtForce(TpMax), pctDiff(TcMax, TpMax)],
+      ['Sag below chord', sagC.inRange ? fmt(sagC.d) + ' m' : '—', sagP.inRange ? fmt(sagP.d) + ' m' : '—',
+        (sagC.inRange && sagP.inRange) ? pctDiff(sagC.d, sagP.d) : '—'],
+      ['Low point position (from left)', sagC.inRange ? fmt(sagC.x) + ' m' : 'outside span', sagP.inRange ? fmt(sagP.x) + ' m' : 'outside span', ''],
+    ];
+    resultsBody.innerHTML = rows.map(r =>
+      `<tr><td>${r[0]}</td><td class="cat">${r[1]}</td><td class="par">${r[2]}</td><td class="diff">${r[3]}</td></tr>`
+    ).join('');
+
+    const sagRatio = sagC.inRange ? sagC.d / L : null;
+    if (sagRatio !== null) {
+      sagRatioNote.innerHTML = `Sag-to-span ratio d/L ≈ <strong>${(sagRatio * 100).toFixed(1)}%</strong>. ` +
+        (sagRatio < 0.08
+          ? 'Shallow cable — the parabola is a good approximation here, which is why it is used for suspension-bridge decks and tensioned lines.'
+          : sagRatio < 0.2
+          ? 'Moderate sag — the two curves are starting to visibly disagree, especially in sag and max tension.'
+          : 'Deep sag — the parabola is a poor stand-in for the real catenary at this point; use the exact solution.');
+    } else {
+      sagRatioNote.textContent = 'The height difference between supports exceeds the slack, so the cable has no interior low point — it is monotonic from one support to the other.';
+    }
+
+    warnBox.className = 'warn-box ok';
+    warnBox.textContent = `Valid solution — cable length ${fmt(S)} m vs. straight-line distance ${fmt(Math.sqrt(L*L+h*h))} m between supports.`;
+  }
+
+  function pctDiff(a, b) {
+    if (a === 0) return '—';
+    const p = (b - a) / Math.abs(a) * 100;
+    return (p >= 0 ? '+' : '') + p.toFixed(1) + '%';
+  }
+
+  function draw(L, h, S, cat, par) {
+    const W = canvas.width, H = canvas.height;
+    ctx.clearRect(0, 0, W, H);
+
+    if (!cat || !par) return;
+
+    const N = 240;
+    const xs = Array.from({ length: N + 1 }, (_, i) => i / N * L);
+    const ysCat = xs.map(cat.y);
+    const ysPar = xs.map(par.y);
+
+    let yMin = Math.min(0, h, ...ysCat, ...ysPar);
+    let yMax = Math.max(0, h, ...ysCat, ...ysPar);
+    const xMin = 0, xMax = L;
+    const padFrac = 0.14;
+    const dataW = (xMax - xMin) || 1, dataH = (yMax - yMin) || 1;
+    const avail = Math.min(W / (dataW * (1 + 2 * padFrac)), H / (dataH * (1 + 2 * padFrac)));
+    const scale = avail;
+    const drawW = dataW * scale, drawH = dataH * scale;
+    const ox = (W - drawW) / 2 - xMin * scale;
+    const oy = (H - drawH) / 2 - yMin * scale;
+
+    // y increases downward on screen but upward in physics -> flip
+    const sx = x => ox + x * scale;
+    const sy = y => H - (oy + y * scale);
+
+    // grid
+    ctx.strokeStyle = 'rgba(255,255,255,.06)';
+    ctx.lineWidth = 1;
+    const gridStep = niceStep(dataW / 8);
+    for (let gx = Math.ceil(xMin / gridStep) * gridStep; gx <= xMax; gx += gridStep) {
+      ctx.beginPath(); ctx.moveTo(sx(gx), 0); ctx.lineTo(sx(gx), H); ctx.stroke();
+    }
+    const gridStepY = niceStep(dataH / 6);
+    for (let gy = Math.ceil(yMin / gridStepY) * gridStepY; gy <= yMax; gy += gridStepY) {
+      ctx.beginPath(); ctx.moveTo(0, sy(gy)); ctx.lineTo(W, sy(gy)); ctx.stroke();
+    }
+
+    // chord
+    ctx.strokeStyle = '#5c7a90';
+    ctx.setLineDash([6, 6]);
+    ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(sx(0), sy(0)); ctx.lineTo(sx(L), sy(h)); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // parabola
+    ctx.strokeStyle = getCss('--accent-par');
+    ctx.setLineDash([9, 7]);
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    xs.forEach((x, i) => { const px = sx(x), py = sy(ysPar[i]); i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py); });
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // catenary
+    ctx.strokeStyle = getCss('--accent-cat');
+    ctx.lineWidth = 3.2;
+    ctx.beginPath();
+    xs.forEach((x, i) => { const px = sx(x), py = sy(ysCat[i]); i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py); });
+    ctx.stroke();
+
+    // supports
+    drawPin(sx(0), sy(0));
+    drawPin(sx(L), sy(h));
+
+    function drawPin(px, py) {
+      ctx.fillStyle = '#eaf2f8';
+      ctx.beginPath(); ctx.arc(px, py, 6, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = '#0a1c2a'; ctx.lineWidth = 2; ctx.stroke();
+      // hatch below to suggest a fixed support
+      ctx.strokeStyle = 'rgba(234,242,248,.55)'; ctx.lineWidth = 1.5;
+      for (let i = -2; i <= 2; i++) {
+        ctx.beginPath(); ctx.moveTo(px + i * 6, py + 10); ctx.lineTo(px + i * 6 - 6, py + 20); ctx.stroke();
+      }
+    }
+  }
+
+  function niceStep(approx) {
+    const pow = Math.pow(10, Math.floor(Math.log10(Math.max(approx, 1e-9))));
+    const n = approx / pow;
+    const base = n < 1.5 ? 1 : n < 3.5 ? 2 : n < 7.5 ? 5 : 10;
+    return base * pow;
+  }
+
+  function getCss(varName) {
+    return getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+  }
+
+  function resizeCanvas() {
+    const ratio = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = Math.max(600, rect.width * ratio);
+    canvas.height = Math.max(350, rect.width * 0.58 * ratio);
+    compute();
+  }
+
+  [spanEl, dhEl, slackEl, massEl].forEach(i => i.addEventListener('input', compute));
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+})();
+</script>
+</body>
+</html>
