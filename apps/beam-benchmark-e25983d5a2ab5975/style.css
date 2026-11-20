@@ -723,17 +723,114 @@ footer a:hover {
   color: #ffcf9b;
 }
 body.presentation .masthead,
-body.presentation .intro,
-body.presentation #performance,
-body.presentation #machines,
 body.presentation footer {
   display: none;
+}
+body.presentation main > section,
+body.presentation .intro {
+  display: none;
+}
+body.presentation[data-section="intro"] .intro {
+  display: grid;
+}
+body.presentation[data-section="explore"] #explore,
+body.presentation[data-section="performance"] #performance,
+body.presentation[data-section="machines"] #machines {
+  display: block;
+}
+body.presentation main {
+  padding-bottom: 8rem;
 }
 body.presentation #explore {
   margin-top: 1rem;
 }
 body.presentation .viewport {
   height: clamp(245px, 32vw, 460px);
+}
+.chapter-ui {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
+.chapter-ui[hidden] {
+  display: none;
+}
+.chapter-strip {
+  display: flex;
+  gap: 3px;
+  padding: 0 14px;
+  pointer-events: auto;
+}
+.chapter-strip button {
+  flex: 1;
+  height: 5px;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  background: #cfcabb;
+  opacity: 0.6;
+}
+.chapter-strip button[aria-current="true"] {
+  background: var(--accent);
+  opacity: 1;
+}
+.chapter-card {
+  pointer-events: auto;
+  margin: 10px 14px 14px;
+  padding: 0.9rem 1.1rem 1rem;
+  border-radius: 12px;
+  background: rgba(24, 38, 39, 0.92);
+  color: #f2f0e4;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  display: grid;
+  gap: 0.35rem;
+  max-width: 640px;
+}
+.chapter-card .eyebrow {
+  color: #ffcf9b;
+}
+.chapter-card h2 {
+  font-size: 1.3rem;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.chapter-card p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: #d7e3da;
+  line-height: 1.5;
+}
+.chapter-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.2rem;
+}
+.chapter-nav button {
+  min-height: 34px;
+  padding: 0.3rem 0.7rem;
+  background: #243534;
+  border-color: #4c5c58;
+  color: #f2f0e4;
+}
+.chapter-nav button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.chapter-nav span {
+  font-size: 0.8rem;
+  color: #aab6ae;
+  margin-left: auto;
+}
+@media (max-width: 680px) {
+  .chapter-card {
+    max-width: none;
+  }
 }
 @media (max-width: 960px) {
   .intro {
