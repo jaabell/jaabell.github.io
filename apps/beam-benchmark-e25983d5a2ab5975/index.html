@@ -1,42 +1,88 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow, noarchive">
-<meta name="description" content="Compare the deformed shape, material fields, force–displacement response and timings of three finite-element solvers on Esmeralda.">
-<title>The I-beam benchmark · Ladruño</title>
-<link rel="icon" href="./assets/ladruno.png">
-<link rel="stylesheet" href="./style.css">
-<script type="module" src="./app.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="description" content="A visual benchmark of three finite-element solvers on the Esmeralda cluster.">
+  <title>The I-beam benchmark · Ladruño</title>
+  <link rel="icon" href="./assets/ladruno.png">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.js"></script>
 </head>
-<body>
-<a class="skip" href="#explore">Skip to explorer</a>
-<div id="chapters" class="chapter-ui" hidden aria-live="polite"></div>
-<header class="masthead">
-  <div class="wrap header-inner">
-    <a class="brand" href="#top"><img src="./assets/ladruno.png" alt="Ladruño"><span>Computational mechanics</span></a>
-    <nav aria-label="Sections"><a href="#explore">3D explorer</a><a href="#performance">Performance</a><a href="#machines">Hardware</a></nav>
-  </div>
-</header>
-<main id="top" class="wrap">
-  <section class="intro" aria-labelledby="title">
-    <div>
-      <p class="eyebrow">Esmeralda · Finite-element study</p>
-      <h1 id="title">The I-beam benchmark</h1>
-      <p class="intro-text">Three solvers, one steel cantilever. Follow the beam as increasing self-weight drives it from elastic bending into plastic flow.</p>
-    </div>
-    <div class="solver-logos" aria-label="Compared solvers">
-      <a href="https://opensees.berkeley.edu/"><img src="./assets/opensees.gif" alt="OpenSees"></a>
-      <a href="https://github.com/KratosMultiphysics/Kratos"><img src="./assets/kratos.png" alt="Kratos Multiphysics"></a>
-      <a href="https://fenicsproject.org/"><img src="./assets/fenics.png" alt=""><span>FEniCSx</span></a>
-    </div>
-  </section>
-  <section id="explore" aria-labelledby="explore-title">
-    <div class="section-heading">
-      <div><p class="eyebrow">Deformation and material fields</p><h2 id="explore-title">Inside the load history</h2></div>
-      <button id="present" class="quiet" type="button" aria-pressed="false">Presentation view</button>
-    </div>
+<body data-slide="solvers">
+  <a class="skip" href="#deck">Skip to slides</a>
+  <header class="masthead">
+    <a href="#solvers" aria-label="Ladruño · first slide"><img src="./assets/ladruno.png" alt="Ladruño"></a>
+    <span>Esmeralda / Finite element benchmark</span>
+    <button id="present" type="button" aria-pressed="false">Fullscreen</button>
+    <button id="clean" type="button" title="Hide controls. Press H or Escape to restore them.">Clean view</button>
+  </header>
+  <svg class="sr-only" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="chip" viewBox="0 0 160 120"><path d="M46 11v21m23-21v21m23-21v21m23-21v21M46 88v21m23-21v21m23-21v21m23-21v21M11 47h25M11 72h25m88-25h25m-25 25h25" fill="none" stroke="currentColor" stroke-width="3"/><rect x="36" y="31" width="88" height="58" rx="8" fill="currentColor" opacity=".15"/><rect x="36" y="31" width="88" height="58" rx="8" fill="none" stroke="currentColor" stroke-width="3"/><path d="M63 48h34v24H63z" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+    <symbol id="gpu-card" viewBox="0 0 235 120"><path d="M14 24h197v71H14zM7 16v88m28-9v13h113V95" fill="none" stroke="currentColor" stroke-width="3"/><path d="M14 24h197v71H14z" fill="currentColor" opacity=".16"/><circle cx="67" cy="60" r="22" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="157" cy="60" r="22" fill="none" stroke="currentColor" stroke-width="3"/><path d="m60 52 15 16m0-16L60 68m90-16 15 16m0-16-15 16" stroke="currentColor" stroke-width="3"/></symbol>
+  </svg>
+  <main id="deck">
+    <section id="solvers" data-title="Solvers">
+      <h1>One beam.<br><em>Three solvers.</em></h1>
+      <div class="solver-grid">
+        <article><div class="logo-well"><img src="./assets/opensees.gif" alt="OpenSees logo"></div><h2>OpenSeesMP</h2><p>Structural simulation with Tcl commands. This run uses the Ladruño build.</p></article>
+        <article><div class="logo-well"><img src="./assets/kratos.png" alt="Kratos Multiphysics logo"></div><h2>Kratos</h2><p>Multiphysics framework. Structural Mechanics and Trilinos handle the distributed solve.</p></article>
+        <article><div class="logo-well"><img src="./assets/fenics.png" alt="FEniCS logo"></div><h2>FEniCSx</h2><p>Variational forms define the model. DOLFINx assembles it and PETSc provides the solver.</p></article>
+      </div>
+      <p class="takeaway">Same quadratic tetrahedra · Same J2 steel model · MUMPS for the CPU benchmark</p>
+    </section>
+
+    <section id="machines" data-title="Cluster" hidden>
+      <h1>Esmeralda <em>compute cluster</em></h1>
+      <div class="machine-diagram" aria-label="Two Ryzen CPU nodes linked by Ethernet and a separate GPU pilot host">
+        <article><svg aria-hidden="true"><use href="#chip"/></svg><span>node12</span><h2>Ryzen 9 5950X</h2><p>16 cores · 62.7 GiB RAM</p></article>
+        <div class="interconnect"><span>25 GbE</span><b></b><span>RoCE / TCP</span></div>
+        <article><svg aria-hidden="true"><use href="#chip"/></svg><span>node13</span><h2>Ryzen 9 5950X</h2><p>16 cores · 62.7 GiB RAM</p></article>
+        <article class="gpu-machine"><svg aria-hidden="true"><use href="#gpu-card"/></svg><span>gpu01</span><h2>RTX 5090</h2><p>Ryzen 9 9950X · 32 GB VRAM</p></article>
+      </div>
+      <div class="fact-row"><span><b>4 / 8 / 16</b> ranks on one CPU node</span><span><b>32</b> ranks across two nodes</span><span><b>Slurm 24.11.5</b> · Debian 13 · shared NVMe-backed NFS</span></div>
+    </section>
+
+    <section id="geometry" data-title="Model & load" hidden>
+      <h1>A cantilever <em>under gravity</em></h1>
+      <div class="geometry-layout">
+        <div id="geometry-view" class="viewport feature-view" tabindex="0" role="group" aria-label="Interactive beam with fixed end and gravity arrows"><span class="view-caption">Fixed at x = 0 · arrows show distributed body force</span><div class="notice" id="geometry-status">Loading the model…</div></div>
+        <aside class="section-figure">
+          <svg viewBox="0 0 210 210" role="img" aria-label="I-section, 400 millimetres deep and 200 millimetres wide">
+            <path d="M51 34h100v12h-46v148h46v12H51v-12h46V46H51z" fill="#6edcff"/>
+            <path d="M42 30v180M37 34h10m-10 172h10M51 20h100m-100-5v10m100-10v10" fill="none" stroke="#b5c5dc" stroke-width="1.5"/>
+            <text x="101" y="12" text-anchor="middle">200 mm</text><text x="27" y="119" transform="rotate(-90 27 119)" text-anchor="middle">400 mm</text>
+          </svg>
+          <strong>6.00 m span</strong><span>Flange 25 mm · web 14 mm</span>
+        </aside>
+      </div>
+      <div class="slide-controls"><button id="geometry-play" type="button" aria-pressed="false">Animate load</button><label>Gravity <input id="geometry-load" type="range" min="0" max="30" value="15" aria-label="Gravity multiplier for loading diagram"></label><output id="geometry-force"></output><button id="geometry-reset" type="button">Reset camera</button></div>
+      <p class="takeaway">250 MPa yield · 210 GPa Young’s modulus · Small-strain J2 perfect plasticity</p>
+    </section>
+
+    <section id="meshes" data-title="Mesh density" hidden>
+      <h1>Same geometry. <em>Two meshes.</em></h1>
+      <div class="visual-pair">
+        <article><h2>Coarse <span>7,140 T10 elements</span></h2><div id="mesh-coarse" class="viewport feature-view" tabindex="0" role="group" aria-label="Coarse surface mesh"></div><footer>13,041 nodes · 35 / 180 mm target section / axial spacing</footer></article>
+        <article><h2>Fine <span>69,600 T10 elements</span></h2><div id="mesh-fine" class="viewport feature-view" tabindex="0" role="group" aria-label="Fine surface mesh"></div><footer>116,781 nodes · 14 / 60 mm target section / axial spacing</footer></article>
+      </div>
+      <div class="slide-controls"><button id="mesh-detail" type="button">Zoom to clamp</button><button id="mesh-reset" type="button">Reset cameras</button></div>
+      <p class="takeaway">Gmsh ten-node tetrahedra · Mid-edge nodes retained in the surface display</p>
+    </section>
+
+    <section id="partitions" data-title="Domain decomposition" hidden>
+      <h1>Split the beam. <em>Share the solve.</em></h1>
+      <div class="visual-pair">
+        <article><h2>Coarse <span>4 MPI ranks</span></h2><div id="part-coarse" class="viewport feature-view" tabindex="0" role="group" aria-label="Explodable coarse partition domains"></div><footer>OpenSeesMP · job 9020</footer></article>
+        <article><h2>Fine <span>16 MPI ranks</span></h2><div id="part-fine" class="viewport feature-view" tabindex="0" role="group" aria-label="Explodable fine partition domains"></div><footer>OpenSeesMP · job 9580</footer></article>
+      </div>
+      <div class="slide-controls"><button id="explode-play" type="button" aria-pressed="false">Animate explosion</button><label>Separation <input id="explode" type="range" min="0" max="100" value="0" aria-label="Partition separation"></label><button id="partition-reset" type="button">Reset cameras</button></div>
+      <p class="takeaway">One color per MPI rank. Opening the domains reveals the actual shared interfaces.</p>
+    </section>
+
+    <section id="fields" data-title="Result fields" hidden>
+      <h1>Where the beam <em>yields</em></h1>
     <div class="workspace" id="workspace">
       <div class="tools">
         <label>Surface field<select id="field">
@@ -69,7 +115,7 @@
       </div>
       <div id="fallback" class="fallback" hidden>
         <p>3D requires WebGL 2. The plot, timing tables and sample field image are available below.</p>
-        <img loading="lazy" src="./assets/field-fallback.png" alt="Six static field views from the FEniCSx smoke mesh at 30 times gravity">
+        <img loading="lazy" src="./assets/field-fallback.png" alt="Six static field views from the FEniCSx coarse mesh at 30 times gravity">
       </div>
       <div class="color-and-pick">
         <div class="legend"><div id="legend-title">von Mises stress [MPa]</div><div id="colorbar"></div><div class="legend-ticks" id="legend-ticks"></div></div>
@@ -80,9 +126,13 @@
         <label><span class="sr-only">Gravity multiplier</span><input type="range" id="load" min="0" max="29" value="29" step="1"></label>
         <output id="load-readout">29× gravity</output>
       </div>
-      <p class="surface-note">Both views share one accepted load increment and color scale. Cell fields show four-point means on exterior tetrahedral faces. Drag to orbit or scroll inside a view to zoom.</p>
+      <p class="surface-note">Both views share a load and color scale. Cell fields show four-point means on exterior faces.</p>
     </div>
-    <noscript><p>Enable JavaScript to compare the runs. The benchmark used 7,140- and 69,600-element meshes, with theoretical pure-bending plastic limit 191.98 kN. Timing and download links are below.</p></noscript>
+    </section>
+
+    <section id="curves" data-title="Load response" hidden>
+      <h1>Force vs. <em>displacement</em></h1>
+      <div class="slide-controls"><label>Curves <select id="curve-mode"><option value="all">All seven archived runs</option><option value="coarse">Coarse cases</option><option value="fine">Fine cases</option><option value="selected">Pair selected on Result fields</option></select></label><label id="curve-cursor-wrap">Load cursor <input id="curve-cursor" type="range" min="0" max="30" value="29"></label><output id="curve-load"></output></div>
     <div class="response" id="response">
       <div class="plot-area">
         <div class="plot-heading"><h3>Load response</h3><div class="tabs" role="group" aria-label="Response plot"><button type="button" data-chart="force" aria-pressed="true">Force–displacement</button><button type="button" data-chart="energy" aria-pressed="false">Energy</button></div></div>
@@ -91,30 +141,54 @@
       </div>
       <aside class="plot-summary"><span class="eyebrow">Pure-bending reference</span><strong>191.98 <small>kN</small></strong><p>Fully plastic section moment of 575.94 kN·m translates to 27.895× gravity under a uniform distributed load.</p><p>The refined 3D solid reached 199.58 kN at 29×. A numerical failure in the earlier 30× fine-mesh trial leaves the 3D collapse load undetermined.</p></aside>
     </div>
-  </section>
+    </section>
 
-  <section id="performance" aria-labelledby="performance-title">
-    <div class="section-heading"><div><p class="eyebrow">180 validated CPU runs</p><h2 id="performance-title">Rank scaling and I/O</h2></div></div>
-    <p class="section-intro">Median over three repeats. Each cell shows minimal and full field output for the same solver and rank setting.</p>
-    <div class="table-control"><div class="tabs" role="group" aria-label="Timing mesh"><button type="button" data-mesh="fine" aria-pressed="true">Fine · 69,600 T10</button><button type="button" data-mesh="smoke" aria-pressed="false">Smoke · 7,140 T10</button></div><label class="inline">Metric<select id="timing-metric"><option value="wall_s">Wall time [s]</option><option value="solve_s">Solve time [s]</option><option value="output_s">Field output [s]</option><option value="bytes">Field size [MB]</option><option value="solve_through_factor_s">Solve through 29× [s]</option><option value="output_through_factor_s">Field output through 29× [s]</option></select></label></div>
+    <section id="performance" data-title="CPU results" hidden>
+      <h1>CPU <em>benchmark results</em></h1>
+      <p class="takeaway">180 runs · 3 repeats per setting · Median, minimal / full output</p>
+    <div class="table-control"><div class="tabs" role="group" aria-label="Timing mesh"><button type="button" data-mesh="fine" aria-pressed="true">Fine · 69,600 T10</button><button type="button" data-mesh="smoke" aria-pressed="false">Coarse · 7,140 T10</button></div><label class="inline">Metric<select id="timing-metric"><option value="wall_s">Wall time [s]</option><option value="solve_s">Solve time [s]</option><option value="output_s">Field output [s]</option><option value="bytes">Field size [MB]</option><option value="solve_through_factor_s">Solve through 29× [s]</option><option value="output_through_factor_s">Field output through 29× [s]</option></select></label></div>
     <div class="table-scroll" tabindex="0" role="region" aria-label="CPU timing comparisons"><table id="timings"></table></div>
     <p id="timing-note" class="note"></p>
     <div class="downloads"><a href="./data/refinement-scaling-measurements.csv" download>Fine CPU runs · CSV</a><a href="./data/smoke-scaling-measurements.csv" download>Smoke CPU runs · CSV</a><a href="./data/gpu-pilot-timings.csv" download>GPU pilots · CSV</a></div>
-    <details class="gpu-detail"><summary>RTX 5090 comparison</summary><p>Single-rank FEniCSx on the same GPU host for both backends. Assembly and field output ran on the host. The CUDA backend solved the linear system in FP64. Sparse QR exceeded available GPU memory on the fine mesh, which used conjugate gradients.</p><div class="table-scroll" tabindex="0" role="region" aria-label="GPU pilot times"><table id="gpu-timings"></table></div></details>
-  </section>
+    </section>
 
-  <section id="machines" aria-labelledby="machines-title">
-    <div class="section-heading"><div><p class="eyebrow">Universidad de los Andes · Chile</p><h2 id="machines-title">Esmeralda compute cluster</h2></div></div>
-    <div class="machines">
-      <article><p class="machine-id">CPU · <code>node12</code> and <code>node13</code></p><h3>AMD Ryzen 9 5950X</h3><dl><dt>Cores per host</dt><dd>16 physical / 32 threads</dd><dt>RAM</dt><dd>62.7 GiB visible per host</dd><dt>Fabric</dt><dd>Dual-port 25 GbE ConnectX-4 Lx, RoCE</dd><dt>Node12</dt><dd>Gigabyte X570 AORUS ELITE WIFI · BIOS F32</dd><dt>Node13</dt><dd>Gigabyte X570S AORUS PRO AX · BIOS F5</dd></dl></article>
-      <article><p class="machine-id">GPU · <code>gpu01</code></p><h3>NVIDIA GeForce RTX 5090</h3><dl><dt>Host CPU</dt><dd>AMD Ryzen 9 9950X · 16 physical cores</dd><dt>VRAM</dt><dd>32,607 MiB reported</dd><dt>Driver</dt><dd>NVIDIA 615.71.09</dd><dt>Runtime</dt><dd>JAX 0.11.2 · CUDA FP64</dd></dl></article>
-    </div>
-    <div class="technical">
-      <article><h3>Model</h3><p>6 m steel cantilever, fully fixed at the root. I-section 400 × 200 mm, flange 25 mm and web 14 mm. Small-strain J2 perfect plasticity with E = 210 GPa, ν = 0.30, yield stress 250 MPa and density 7,850 kg/m³. Gmsh ten-node tetrahedra use four integration points. Uncertainty was not quantified.</p></article>
-      <article><h3>Runtime</h3><p>Debian 13, Slurm 24.11.5, Open MPI 5 and shared NVMe-backed NFS. OpenSeesMP 3.8.0 Ladruño, Kratos 10.3.0 with Amesos MUMPS, and FEniCSx DOLFINx 0.11.0 with PETSc 3.25.6. The 32-rank CPU cases run on both hosts with 16 physical cores per host.</p></article>
-    </div>
-  </section>
-</main>
-<footer><div class="wrap"><div><strong>Ladruño · Esmeralda beam benchmark</strong><p>Cluster use supported by ANID–Fondecyt project 11220530.</p></div><div class="credit"><a href="https://opensees.berkeley.edu/">OpenSees</a> · <a href="https://github.com/KratosMultiphysics/Kratos">Kratos</a> · <a href="https://fenicsproject.org/branding/">FEniCS logo</a> by Mattias Schläger (<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>) · <a href="https://ocw.mit.edu/courses/2-002-mechanics-and-materials-ii-spring-2004/00cf4c30d2a4c4573f78f2950809e765_2002_lab_sheet.pdf">Beam reference</a></div></div></footer>
+    <section id="gpu" data-title="GPU workflow" hidden>
+      <h1>One MPI rank. <em>One GPU.</em></h1>
+      <div class="pipeline" id="gpu-pipeline">
+        <article><svg aria-hidden="true"><use href="#chip"/></svg><span>CPU · FEniCSx</span><h2>Assemble</h2><p>Form the sparse tangent and residual for each Newton iteration.</p></article>
+        <div class="pipe-arrow" aria-hidden="true">⇢</div>
+        <article><svg aria-hidden="true"><use href="#gpu-card"/></svg><span>RTX 5090 · JAX / CUDA</span><h2>Solve in FP64</h2><p>A persistent JAX worker copies the CSR matrix and right-hand side to the device, then solves for the increment.</p></article>
+        <div class="pipe-arrow" aria-hidden="true">⇢</div>
+        <article><svg aria-hidden="true"><use href="#chip"/></svg><span>CPU · FEniCSx</span><h2>Update</h2><p>Bring the increment back. Update displacement, test convergence and write fields.</p></article>
+      </div>
+      <div class="slide-controls"><button id="gpu-replay" type="button">Replay data flow</button><span class="equation">K Δu = −r</span><span>One CPU core runs the host rank that owns the whole model.</span></div>
+    </section>
+
+    <section id="gpu-results" data-title="GPU results" hidden>
+      <h1>GPU <em>benchmark results</em></h1>
+      <p class="takeaway">Three repeats per backend · Same host and single MPI rank · Median wall time</p>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="GPU versus CPU pilot times"><table id="gpu-timings"></table></div>
+      <div class="gpu-cards"><article><strong>29 pm</strong><span>Largest CPU–GPU tip difference</span></article><article><strong>3.1–16.2×</strong><span>GPU / CPU wall time in these pilots</span></article></div>
+      <p class="takeaway">Sparse QR ran out of memory on the fine mesh. The fine elastic pilot used Jacobi-preconditioned conjugate gradients.</p>
+    </section>
+
+    <section id="conclusions" data-title="Conclusions" hidden>
+      <h1>What the benchmark <em>shows</em></h1>
+      <div class="closing-grid">
+        <article><strong>+8.6%</strong><h2>Mesh sensitivity</h2><p>Fine-mesh tip displacement at 29× gravity, compared with the coarse mesh.</p></article>
+        <article><strong>32 ranks</strong><h2>Fastest on RoCE</h2><p>All three solvers reached their lowest fine-mesh wall times on two nodes.</p></article>
+        <article><strong>3 of 3</strong><h2>CPU MUMPS wins</h2><p>CPU MUMPS took less wall time in each single-rank GPU pilot.</p></article>
+      </div>
+      <p class="takeaway">191.98 kN is the pure-bending reference. The 3D collapse load remains undetermined.</p>
+      <footer class="credits">ANID–Fondecyt 11220530 · <a href="https://opensees.berkeley.edu/">OpenSees</a> · <a href="https://github.com/KratosMultiphysics/Kratos">Kratos</a> · <a href="https://fenicsproject.org/branding/">FEniCS logo</a> by Mattias Schläger (<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>)</footer>
+    </section>
+    <noscript><p>Enable JavaScript to navigate the slides and explore the measured fields.</p></noscript>
+  </main>
+  <nav class="deck-nav" aria-label="Slide navigation">
+    <button id="prev-slide" type="button">Previous</button><div id="slide-dots"></div>
+    <label class="sr-only" for="slide-picker">Slide</label><select id="slide-picker"></select>
+    <button id="next-slide" type="button">Next</button>
+  </nav>
+  <button id="restore-clean" type="button">Exit clean view</button>
 </body>
 </html>
