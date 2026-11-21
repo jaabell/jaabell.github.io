@@ -206,3 +206,28 @@ tbody tr:last-child > * { border: 0; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0ms !important; }
 }
+
+.solve-strip, .settings-controls, .settings-filters {
+  display: flex;
+  align-items: center;
+  gap: .55rem 1rem;
+  flex-wrap: wrap;
+}
+.solve-strip { margin: .7rem 0 1.05rem; }
+.solve-strip span:not(.solve-arrow) {
+  padding: .55rem .8rem;
+  border: 1px solid var(--rule);
+  background: var(--panel);
+  border-radius: 6px;
+}
+.solve-strip strong, .solve-arrow { color: var(--gold); }
+.settings-controls { margin-bottom: .75rem; }
+.settings-controls label { display: inline-flex; align-items: center; gap: .4rem; font-size: .94rem; }
+.settings-table { min-width: 790px; font-size: clamp(.92rem, 1.18vw, 1.22rem); }
+.settings-table :is(th,td) { vertical-align: top; white-space: normal; }
+.settings-table tbody th { color: var(--text); width: 15%; }
+.settings-table tbody td:nth-child(2) { width: 38%; }
+.settings-table tbody td:nth-child(3) { width: 32%; }
+.settings-table .memory-value { color: var(--gold); font-weight: 700; white-space: nowrap; }
+.settings-table small { display: block; margin-top: .25rem; color: var(--muted); font-weight: 400; }
+.clean .settings-controls { display: none; }

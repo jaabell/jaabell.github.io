@@ -7,8 +7,8 @@
   <meta name="description" content="A visual benchmark of three finite-element solvers on the Esmeralda cluster.">
   <title>The I-beam benchmark · Ladruño</title>
   <link rel="icon" href="./assets/ladruno.png">
-  <link rel="stylesheet" href="./style.css">
-  <script type="module" src="./app.js?v=mesh-edges"></script>
+  <link rel="stylesheet" href="./style.css?v=solver-options">
+  <script type="module" src="./app.js?v=solver-options"></script>
 </head>
 <body data-slide="solvers">
   <a class="skip" href="#deck">Skip to slides</a>
@@ -67,7 +67,7 @@
         <article><h2>Coarse <span>7,140 T10 elements</span></h2><div id="mesh-coarse" class="viewport feature-view" tabindex="0" role="group" aria-label="Coarse surface mesh"></div><footer>13,041 nodes · 35 / 180 mm target section / axial spacing</footer></article>
         <article><h2>Fine <span>69,600 T10 elements</span></h2><div id="mesh-fine" class="viewport feature-view" tabindex="0" role="group" aria-label="Fine surface mesh"></div><footer>116,781 nodes · 14 / 60 mm target section / axial spacing</footer></article>
       </div>
-      <div class="slide-controls"><button id="mesh-detail" type="button">Zoom to clamp</button><button id="mesh-reset" type="button">Full beam</button></div>
+      <div class="slide-controls"><button id="mesh-detail" type="button">Zoom to clamp</button><button id="mesh-reset" type="button">Full beam</button><button id="mesh-nodes" type="button" aria-pressed="false">Show surface nodes</button></div>
       <p class="takeaway">Gmsh ten-node tetrahedra · Mid-edge nodes retained in the surface display</p>
     </section>
 
@@ -141,6 +141,38 @@
       </div>
       <aside class="plot-summary"><span class="eyebrow">Pure-bending reference</span><strong>191.98 <small>kN</small></strong><p>Fully plastic section moment of 575.94 kN·m translates to 27.895× gravity under a uniform distributed load.</p><p>The refined 3D solid reached 199.58 kN at 29×. A numerical failure in the earlier 30× fine-mesh trial leaves the 3D collapse load undetermined.</p></aside>
     </div>
+    </section>
+
+    <section id="solver-options" data-title="Solver options" hidden>
+      <h1>How each solver <em>handles the equations</em></h1>
+      <div class="solve-strip" aria-label="Assemble, solve, and update the Newton system">
+        <span>Assemble tangent <strong>K</strong> and residual <strong>r</strong></span>
+        <span class="solve-arrow" aria-hidden="true">⇢</span>
+        <span>Linear SOE <strong>K Δu = −r</strong></span>
+        <span class="solve-arrow" aria-hidden="true">⇢</span>
+        <span>Update <strong>u ← u + Δu</strong></span>
+      </div>
+      <div class="settings-controls">
+        <div class="tabs" role="group" aria-label="Solver settings campaign">
+          <button type="button" data-settings-mode="cpu" aria-pressed="true">Distributed CPU</button>
+          <button type="button" data-settings-mode="gpu" aria-pressed="false">Single-rank GPU pilots</button>
+        </div>
+        <div id="settings-cpu" class="settings-filters">
+          <label>Mesh <select id="settings-mesh"><option value="coarse">Coarse</option><option value="fine" selected>Fine</option></select></label>
+          <label>Ranks <select id="settings-ranks"><option value="4:default">4</option><option value="8:default">8</option><option value="16:default" selected>16</option><option value="32:rdma-on">32 · RoCE</option><option value="32:rdma-off">32 · TCP</option></select></label>
+          <label>Output <select id="settings-output"><option value="full">Full</option><option value="minimal">Minimal</option></select></label>
+        </div>
+        <div id="settings-gpu" class="settings-filters" hidden>
+          <label>Pilot <select id="settings-profile"><option value="smoke-nonlinear">Coarse nonlinear</option><option value="smoke-elastic">Coarse elastic</option><option value="fine-elastic">Fine elastic</option></select></label>
+        </div>
+        <label>Memory <select id="settings-repeat"><option value="median">Median of 3</option><option value="1">Repeat 1</option><option value="2">Repeat 2</option><option value="3">Repeat 3</option></select></label>
+      </div>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Linear systems, solve settings, and memory">
+        <table id="settings-table" class="settings-table"></table>
+      </div>
+      <p id="settings-case" class="takeaway" aria-live="polite"></p>
+      <p id="settings-memory-note" class="note" aria-live="polite"></p>
+      <div class="downloads"><a href="./assets/solver-memory.json" download>Slurm memory data · JSON</a><a href="https://slurm.schedmd.com/sacct.html" target="_blank" rel="noopener noreferrer">Slurm accounting definitions</a></div>
     </section>
 
     <section id="performance" data-title="CPU results" hidden>
