@@ -106,6 +106,8 @@ input { accent-color: var(--cyan); }
 .slide-controls input[type="range"] { width: min(220px, 28vw); }
 .slide-controls output, .timeline output { color: var(--gold); font-weight: 700; }
 .tools { margin: 0 0 .65rem; }
+.axis-note { color: var(--muted); font-size: .88rem; margin: 0 0 .65rem; }
+.axis-note b { color: var(--text); }
 .checks, .views, .pick-controls { display: flex; align-items: center; flex-wrap: wrap; gap: .45rem; }
 .checks { gap: 1rem; }
 .views { margin-left: auto; }

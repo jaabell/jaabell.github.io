@@ -7,8 +7,8 @@
   <meta name="description" content="A visual benchmark of three finite-element solvers on the Esmeralda cluster.">
   <title>The I-beam benchmark · Ladruño</title>
   <link rel="icon" href="./assets/ladruno.png">
-  <link rel="stylesheet" href="./style.css?v=tensor-components">
-  <script type="module" src="./app.js?v=tensor-components"></script>
+  <link rel="stylesheet" href="./style.css?v=node13">
+  <script type="module" src="./app.js?v=node13"></script>
 </head>
 <body data-slide="solvers">
   <a class="skip" href="#deck">Skip to slides</a>
@@ -41,7 +41,7 @@
         <article><svg aria-hidden="true"><use href="#chip"/></svg><span>node13</span><h2>Ryzen 9 5950X</h2><p>16 cores · 62.7 GiB RAM</p></article>
         <article class="gpu-machine"><svg aria-hidden="true"><use href="#gpu-card"/></svg><span>gpu01</span><h2>RTX 5090</h2><p>Ryzen 9 9950X · 32 GB VRAM</p></article>
       </div>
-      <div class="fact-row"><span><b>4 / 8 / 16</b> ranks on one CPU node</span><span><b>32</b> ranks across two nodes</span><span><b>Slurm 24.11.5</b> · Debian 13 · shared NVMe-backed NFS</span></div>
+      <div class="fact-row"><span><b>4 / 8 / 16</b> ranks on node13</span><span><b>32</b> ranks on node12 + node13</span><span><b>Slurm 24.11.5</b> · Debian 13 · shared NVMe-backed NFS</span></div>
     </section>
 
     <section id="geometry" data-title="Model & load" hidden>
@@ -95,13 +95,14 @@
           <option value="elastic">Elastic energy density</option><option value="dissipation">Plastic dissipation density</option>
           <option value="partition">MPI partition</option><option value="geometry">Mesh only</option>
         </select></label>
-        <label id="component-control">Component <select id="component"><option value="stress">von Mises</option></select></label>
+        <label id="component-control">Component <select id="component" aria-describedby="field-axes"><option value="stress">von Mises</option></select></label>
         <label>Deformation scale<select id="scale"><option value="1">1× · true scale</option><option value="2">2×</option><option value="5">5×</option><option value="10">10×</option><option value="0">0× · undeformed</option></select></label>
         <div class="checks"><label><input id="wire" type="checkbox" checked> Mesh edges</label><label><input id="ghost" type="checkbox" checked> Undeformed outline</label></div>
         <div class="views" aria-label="Camera presets">
           <button class="quiet" id="camera-orbit" type="button">Full beam</button><button class="quiet" id="camera-side" type="button">Side</button><button class="quiet" id="camera-end" type="button">End</button><button class="quiet" id="camera-detail" type="button">Zoom to clamp</button>
         </div>
       </div>
+      <p id="field-axes" class="axis-note">Model axes · <b>+X</b> clamp to tip · <b>+Z</b> up · <b>+Y</b> right in End view</p>
       <div class="panels">
         <article class="specimen" data-slot="0">
           <div class="panel-head"><span class="case-mark case-a">A</span><label><span class="sr-only">Run A</span><select id="run-a"></select></label></div>
@@ -177,16 +178,16 @@
       </div>
       <p id="settings-case" class="takeaway" aria-live="polite"></p>
       <p id="settings-memory-note" class="note" aria-live="polite"></p>
-      <div class="downloads"><a href="./assets/solver-memory.json" download>Slurm memory data · JSON</a><a href="https://slurm.schedmd.com/sacct.html" target="_blank" rel="noopener noreferrer">Slurm accounting definitions</a></div>
+      <div class="downloads"><a href="./assets/solver-memory.json?v=node13" download>Slurm memory data · JSON</a><a href="https://slurm.schedmd.com/sacct.html" target="_blank" rel="noopener noreferrer">Slurm accounting definitions</a></div>
     </section>
 
     <section id="performance" data-title="CPU results" hidden>
       <h1>CPU <em>benchmark results</em></h1>
-      <p class="takeaway">180 runs · 3 repeats per setting · Median, minimal / full output</p>
+      <p class="takeaway">108 node13 runs + 72 two-node runs · Median of 3 repeats · Minimal / full output</p>
     <div class="table-control"><div class="tabs" role="group" aria-label="Timing mesh"><button type="button" data-mesh="fine" aria-pressed="true">Fine · 69,600 T10</button><button type="button" data-mesh="smoke" aria-pressed="false">Coarse · 7,140 T10</button></div><label class="inline">Metric<select id="timing-metric"><option value="wall_s">Wall time [s]</option><option value="solve_s">Solve time [s]</option><option value="output_s">Field output [s]</option><option value="bytes">Field size [MB]</option><option value="solve_through_factor_s">Solve through 29× [s]</option><option value="output_through_factor_s">Field output through 29× [s]</option></select></label></div>
     <div class="table-scroll" tabindex="0" role="region" aria-label="CPU timing comparisons"><table id="timings"></table></div>
     <p id="timing-note" class="note"></p>
-    <div class="downloads"><a href="./data/refinement-scaling-measurements.csv" download>Fine CPU runs · CSV</a><a href="./data/smoke-scaling-measurements.csv" download>Smoke CPU runs · CSV</a><a href="./data/gpu-pilot-timings.csv" download>GPU pilots · CSV</a></div>
+    <div class="downloads"><a href="./data/node13-fine-measurements.csv" download>Fine node13 · CSV</a><a href="./data/node13-coarse-measurements.csv" download>Coarse node13 · CSV</a><a href="./data/two-node-measurements.csv" download>32-rank runs · CSV</a></div>
     </section>
 
     <section id="gpu" data-title="GPU workflow" hidden>
@@ -207,13 +208,14 @@
       <div class="table-scroll" tabindex="0" role="region" aria-label="GPU versus CPU pilot times"><table id="gpu-timings"></table></div>
       <div class="gpu-cards"><article><strong>29 pm</strong><span>Largest CPU–GPU tip difference</span></article><article><strong>3.1–16.2×</strong><span>GPU / CPU wall time in these pilots</span></article></div>
       <p class="takeaway">Sparse QR ran out of memory on the fine mesh. The fine elastic pilot used Jacobi-preconditioned conjugate gradients.</p>
+      <div class="downloads"><a href="./data/gpu-pilot-timings.csv" download>GPU pilots · CSV</a></div>
     </section>
 
     <section id="conclusions" data-title="Conclusions" hidden>
       <h1>What the benchmark <em>shows</em></h1>
       <div class="closing-grid">
         <article><strong>+8.6%</strong><h2>Mesh sensitivity</h2><p>Fine-mesh tip displacement at 29× gravity, compared with the coarse mesh.</p></article>
-        <article><strong>32 ranks</strong><h2>Fastest on RoCE</h2><p>All three solvers reached their lowest fine-mesh wall times on two nodes.</p></article>
+        <article><strong>8 / 16 ranks</strong><h2>Fine mesh on node13</h2><p>Kratos had its lowest median at 8 ranks. OpenSeesMP and FEniCSx had theirs at 16.</p></article>
         <article><strong>3 of 3</strong><h2>CPU MUMPS wins</h2><p>CPU MUMPS took less wall time in each single-rank GPU pilot.</p></article>
       </div>
       <p class="takeaway">191.98 kN is the pure-bending reference. The 3D collapse load remains undetermined.</p>
