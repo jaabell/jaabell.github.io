@@ -7,8 +7,8 @@
   <meta name="description" content="A visual benchmark of three finite-element solvers on the Esmeralda cluster.">
   <title>The I-beam benchmark · Ladruño</title>
   <link rel="icon" href="./assets/ladruno.png">
-  <link rel="stylesheet" href="./style.css?v=t10-nodes">
-  <script type="module" src="./app.js?v=t10-nodes"></script>
+  <link rel="stylesheet" href="./style.css?v=tensor-components">
+  <script type="module" src="./app.js?v=tensor-components"></script>
 </head>
 <body data-slide="solvers">
   <a class="skip" href="#deck">Skip to slides</a>
@@ -90,11 +90,12 @@
     <div class="workspace" id="workspace">
       <div class="tools">
         <label>Surface field<select id="field">
-          <option value="stress">von Mises stress</option><option value="displacement">Displacement magnitude</option>
-          <option value="strain">Axial strain εₓₓ</option><option value="plastic">Equivalent plastic strain</option>
+          <option value="stress">Stress</option><option value="displacement">Displacement magnitude</option>
+          <option value="strain">Strain</option><option value="plastic">Equivalent plastic strain</option>
           <option value="elastic">Elastic energy density</option><option value="dissipation">Plastic dissipation density</option>
           <option value="partition">MPI partition</option><option value="geometry">Mesh only</option>
         </select></label>
+        <label id="component-control">Component <select id="component"><option value="stress">von Mises</option></select></label>
         <label>Deformation scale<select id="scale"><option value="1">1× · true scale</option><option value="2">2×</option><option value="5">5×</option><option value="10">10×</option><option value="0">0× · undeformed</option></select></label>
         <div class="checks"><label><input id="wire" type="checkbox" checked> Mesh edges</label><label><input id="ghost" type="checkbox" checked> Undeformed outline</label></div>
         <div class="views" aria-label="Camera presets">
@@ -130,7 +131,7 @@
         <label><span class="sr-only">Gravity multiplier</span><input type="range" id="load" min="0" max="29" value="29" step="1"></label>
         <output id="load-readout">29× gravity</output>
       </div>
-      <p class="surface-note">The fields use the T10 surfaces from slide 4. Cell colors show four-point means.</p>
+      <p class="surface-note">Cell colors show four-point means on the T10 surfaces. Shear strain is shown as tensor strain ε<sub>ij</sub>.</p>
     </div>
     </section>
 
