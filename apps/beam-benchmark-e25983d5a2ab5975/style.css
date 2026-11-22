@@ -231,3 +231,26 @@ tbody tr:last-child > * { border: 0; }
 .settings-table .memory-value { color: var(--gold); font-weight: 700; white-space: nowrap; }
 .settings-table small { display: block; margin-top: .25rem; color: var(--muted); font-weight: 400; }
 .clean .settings-controls { display: none; }
+
+.mesh-node-key {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  width: fit-content;
+  margin-top: .7rem;
+  padding: .35rem .7rem;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--panel);
+}
+.mesh-node-key canvas { width: min(32vw, 174px); height: auto; }
+.mesh-node-key :is(strong,span) { display: block; }
+.mesh-node-key span { margin-top: .2rem; color: var(--muted); }
+.mesh-node-key i {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-right: .3rem;
+}
+.corner-marker { background: #f4f7ff; }
+.midside-marker { background: #ffb35e; border-radius: 50%; }

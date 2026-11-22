@@ -7,8 +7,8 @@
   <meta name="description" content="A visual benchmark of three finite-element solvers on the Esmeralda cluster.">
   <title>The I-beam benchmark · Ladruño</title>
   <link rel="icon" href="./assets/ladruno.png">
-  <link rel="stylesheet" href="./style.css?v=solver-options">
-  <script type="module" src="./app.js?v=solver-options"></script>
+  <link rel="stylesheet" href="./style.css?v=t10-nodes">
+  <script type="module" src="./app.js?v=t10-nodes"></script>
 </head>
 <body data-slide="solvers">
   <a class="skip" href="#deck">Skip to slides</a>
@@ -67,8 +67,12 @@
         <article><h2>Coarse <span>7,140 T10 elements</span></h2><div id="mesh-coarse" class="viewport feature-view" tabindex="0" role="group" aria-label="Coarse surface mesh"></div><footer>13,041 nodes · 35 / 180 mm target section / axial spacing</footer></article>
         <article><h2>Fine <span>69,600 T10 elements</span></h2><div id="mesh-fine" class="viewport feature-view" tabindex="0" role="group" aria-label="Fine surface mesh"></div><footer>116,781 nodes · 14 / 60 mm target section / axial spacing</footer></article>
       </div>
-      <div class="slide-controls"><button id="mesh-detail" type="button">Zoom to clamp</button><button id="mesh-reset" type="button">Full beam</button><button id="mesh-nodes" type="button" aria-pressed="false">Show surface nodes</button></div>
-      <p class="takeaway">Gmsh ten-node tetrahedra · Mid-edge nodes retained in the surface display</p>
+      <div class="slide-controls"><button id="mesh-detail" type="button">Zoom to clamp</button><button id="mesh-reset" type="button">Full beam</button><button id="mesh-nodes" type="button" aria-pressed="false" aria-controls="mesh-node-key">Show surface nodes</button><label id="mesh-node-options" hidden><input id="midside-only" type="checkbox"> Midside only</label></div>
+      <div class="mesh-node-key" id="mesh-node-key" hidden>
+        <canvas id="mesh-face-detail" width="212" height="104" role="img" aria-label="One actual exterior triangle with three square corner markers and three round midside markers between its corners"></canvas>
+        <div><strong>One exterior face of a T10</strong><span><i class="corner-marker"></i> 3 corner nodes</span><span><i class="midside-marker"></i> 3 midside nodes</span></div>
+      </div>
+      <p class="takeaway">Gmsh ten-node tetrahedra · Exterior faces</p>
     </section>
 
     <section id="partitions" data-title="Domain decomposition" hidden>
